@@ -34,7 +34,7 @@ class Manage extends \bloc\controller
 
   public function GETperson($id)
   {
-    $this->student = Data::ID($id);
+    $this->student = new \models\Student($id);
 
     $view = new View('views/layout.html');
     $view->content = "views/form/student.html";

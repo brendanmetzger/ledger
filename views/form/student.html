@@ -5,4 +5,24 @@
     <input type="text" name="url" value="[$student:@url]"/>
     <input type="email" name="email" value="[$student:@email]"/>
   </form>
+
+  <section>
+    <h1>Graded</h1>
+    <ul>
+      <!-- iterate student:grades -->
+      <li>
+        <strong>[$assignment:@title]</strong>
+        <em>[$grade:@points / $assignment:@points]</em>
+        <span>[$grade]</span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h1>Ungraded</h1>
+    <ul>
+      <!-- iterate student:assigned -->
+      <li>[$assignment:@title]</li>
+    </ul>
+  </section>
 </article>
