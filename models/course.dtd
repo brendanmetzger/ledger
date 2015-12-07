@@ -1,0 +1,24 @@
+<!ELEMENT course (members+, assignments+, classes+)*>
+
+<!ELEMENT members (student)*>
+<!ELEMENT assignments (assignment)*>
+<!ELEMENT classes (outline)*>
+
+<!ELEMENT assignment (#PCDATA)>
+
+<!ATTLIST assignment title  CDATA #IMPLIED>
+<!ATTLIST assignment points CDATA #IMPLIED>
+<!ATTLIST assignment id     ID    #IMPLIED>
+<!ATTLIST assignment ref    IDREF #IMPLIED>
+
+<!ELEMENT student (assignment)*>
+<!ATTLIST student id    ID    #REQUIRED>
+<!ATTLIST student url   CDATA #IMPLIED>
+<!ATTLIST student name  CDATA #REQUIRED>
+<!ATTLIST student email CDATA #REQUIRED>
+
+<!ELEMENT outline (assignment*, lecture*)*>
+<!ATTLIST outline date  CDATA #IMPLIED>
+<!ATTLIST outline title CDATA #REQUIRED>
+
+<!ELEMENT lecture (#PCDATA)>

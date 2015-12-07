@@ -1,0 +1,67 @@
+body {
+  font-family: 'Avenir Next';
+  margin:0;
+  background-color:#eee;
+  font-size:62.5%;
+}
+
+header, main {
+  width:80%;
+  margin:1em auto;
+  background-color:#FEFEFE;
+  padding:1em;
+}
+
+p, li {
+  font-size:1.65em;
+}
+
+.container:after, article dl:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+
+a {
+  color:#00A4E4;
+}
+a:hover {
+  color:;
+}
+
+div, section, article, ul.inline {margin:0;padding:0}
+
+ul.inline li {
+  list-style:none;
+  display:inline-block;
+}
+
+abbr {
+  text-transform:lowercase;
+  font-variant:small-caps;
+  font-weight:500;
+  letter-spacing:0.075em;
+}
+
+code, pre {
+  background-color:#444;
+  color:#eee;
+  padding:0.125em 0.25em;
+}
+
+code.block {
+  display:block;
+  font-size:1.5em;
+  padding:1em;
+}
+
+code * {
+  color:#eee;
+}
+
+mark {
+  background-color:#FDF0AD;
+  border-bottom:1px solid #FFCF01;
+}
+.dash {
+  list-style-type: none;
+}
+.dash li:before {
+  content: '-';
+}
