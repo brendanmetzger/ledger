@@ -50,12 +50,26 @@ class Manage extends \bloc\controller
 
     $this->weeks = \Models\Outline::collect();
 
+    return $view->render($this());
+  }
+
+
+  public function GETgrade($student_id, $assignment_id)
+  {
+    $view = new View('views/layout.html');
+    $view->content = "views/form/assignment.html";
+
+    $this->assessment = new \models\Assessment([
+      'reference' => new \models\Assignment($assignment_id),
+      'container' => new \models\Student($student_id),
+    ]);
+
 
     return $view->render($this());
   }
 
-  public function GETcreate($form)
+  public function POSTgrade($student)
   {
-    return "get new student";
+    # code...
   }
 }

@@ -6,10 +6,12 @@
 
 <!ELEMENT assignment (#PCDATA)>
 
-<!ATTLIST assignment title  CDATA #IMPLIED>
-<!ATTLIST assignment points CDATA #IMPLIED>
 <!ATTLIST assignment id     ID    #IMPLIED>
 <!ATTLIST assignment ref    IDREF #IMPLIED>
+<!ATTLIST assignment case   CDATA #IMPLIED>
+<!ATTLIST assignment title  CDATA #IMPLIED>
+<!ATTLIST assignment points CDATA #IMPLIED>
+
 
 <!ELEMENT student (assignment)*>
 <!ATTLIST student id    ID    #REQUIRED>

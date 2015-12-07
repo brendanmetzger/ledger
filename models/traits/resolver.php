@@ -9,7 +9,8 @@ trait resolver {
 
   protected function initialize() {
     $data = Data::instance();
-    $node = $data->storage->createElement($this->_model);
+    $node = $data->storage->createElement(self::name());
+    $this->input(self::$fixture, $node);
     return $data->query(self::XPATH)->pick('.')->appendChild($node);
   }
 

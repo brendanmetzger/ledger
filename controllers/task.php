@@ -129,7 +129,7 @@ class Task extends \bloc\controller
     $title = trim(fgets(STDIN));
     $assignment->setAttribute('title', $title);
 
-    $id = preg_replace('/[^a-z]/i', '', $title);
+    $id = preg_replace(['/\s+/', '/[^a-z]/i'], ['-', ''], $title);
     $assignment->setAttribute('id', $id);
 
     echo "\nEnter number of points: ";
@@ -150,7 +150,7 @@ class Task extends \bloc\controller
     if (!empty($details)) {
       $assignment->setNodeValue($details);
     }
-    
+
     $this->save($doc);
   }
 }

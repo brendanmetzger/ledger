@@ -1,17 +1,17 @@
 <article>
   <form action="manage/person" method="post">
-    <input type="text" name="oasis" value="[$student:@id]"/>
-    <input type="text" name="url" value="[$student:@name]"/>
-    <input type="text" name="url" value="[$student:@url]"/>
-    <input type="email" name="email" value="[$student:@email]"/>
+    <input type="hidden" name="student[@][id]" value="[$student:@id]"/>
+    <input type="text" name="student[@][name]" value="[$student:@name]"/>
+    <input type="text" name="student[@][url]" value="[$student:@url]"/>
+    <input type="email" name="student[@][email]" value="[$student:@email]"/>
   </form>
 
   <section>
     <h1>Graded</h1>
     <ul>
-      <!-- iterate student:grades -->
+      <!-- iterate student:graded -->
       <li>
-        <strong>[$assignment:@title]</strong>
+        <strong><a href="[manage/grade/$student/$assignment:@id]">[$assignment:@title]</a></strong>
         <em>[$grade:@points / $assignment:@points]</em>
         <span>[$grade]</span>
       </li>
@@ -22,7 +22,7 @@
     <h1>Ungraded</h1>
     <ul>
       <!-- iterate student:assigned -->
-      <li>[$assignment:@title]</li>
+      <li><a href="[manage/grade/$student/$assignment:@id]">[$assignment:@title]</a></li>
     </ul>
   </section>
 </article>
