@@ -1,35 +1,95 @@
+/* Classes */
+.capitalize {
+  text-transform:capitalize;
+}
+.center {
+  text-align:center;
+}
+.float {
+  box-sizing:border-box;
+}
+.left {
+  float:left;
+}
+.status  {
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
+}
+.success {
+  color:rgb(46, 120, 60);
+}
+.info {
+  color:rgb(63, 165, 198)
+}
+.error {
+  color:rgb(181, 39, 39)
+}
+.warn {
+  color: rgb(209, 190, 23)
+}
+
+
+
+
 body {
   font-family: 'Avenir Next';
   margin:0;
-  background-color:#eee;
+  background-color:hsl(45, 50%, 95%);
   font-size:62.5%;
 }
 
-header, main {
+body > header {
+  color:hsl(10, 65%, 40%);
+}
+
+body > header, main {
   width:80%;
   margin:1em auto;
   background-color:#FEFEFE;
   padding:1em;
 }
 
-p, li {
+p, .p,  li, h4 {
   font-size:1.65em;
 }
 
 .container:after, article dl:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
 
 a {
-  color:#00A4E4;
+  color:rgb(26, 29, 32);
+  text-decoration:none;
+  border-bottom:1px dashed #AAA;
 }
 a:hover {
-  color:;
+  color:hsl(10, 65%, 40%);
+}
+h1, h2, h3, h4, h5 {
+
+  margin:0.25em 0;
 }
 
-div, section, article, ul.inline {margin:0;padding:0}
+h1 {
+  font-size:5em;
+  font-weight:200;
+}
+h2 {
+  font-size:3.5em;
+  font-weight:200;
+}
 
+h3, legend {
+  font-size:2.25em;
+  font-weight:400;
+}
+
+div, section, article, header, ul.inline, ul.plain {margin:0;padding:0}
+
+ul.plain {
+  list-style:none;
+}
 ul.inline li {
   list-style:none;
   display:inline-block;
+  padding:0 0.25em;
 }
 
 abbr {
@@ -59,12 +119,6 @@ mark {
   background-color:#FDF0AD;
   border-bottom:1px solid #FFCF01;
 }
-.dash {
-  list-style-type: none;
-}
-.dash li:before {
-  content: '-';
-}
 
 
 input, textarea {
@@ -75,4 +129,34 @@ input, textarea {
 
 textarea {
   height:10em;
+}
+
+legend {
+  padding:0 0.5em;
+}
+fieldset {
+  padding:2em;
+  border-width:1px 0 0;
+  border-style:solid;
+  border-color:#AAA;
+
+}
+
+sup {
+  padding:0.25em;
+  font-size:0.75em;
+}
+
+.save {
+  color:rgb(59, 138, 43);
+  font-weight:800;
+}
+.create, sup {
+  color:rgb(83, 168, 182);
+}
+
+
+nav li {
+  padding:0.25em;
+  margin:0;
 }

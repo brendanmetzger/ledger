@@ -9,7 +9,7 @@ namespace models;
 
   class Outline extends \bloc\Model
   {
-    use traits\resolver;
+    use traits\resolver, traits\persist;
 
     const XPATH = '/course/classes/';
 

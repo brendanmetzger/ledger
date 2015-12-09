@@ -54,7 +54,7 @@ class Manage extends \bloc\controller
   }
 
 
-  public function GETgrade($student_id, $assignment_id)
+  public function GETassignment($student_id, $assignment_id, $flag = "edit")
   {
     $view = new View('views/layout.html');
     $view->content = "views/form/assignment.html";
@@ -64,12 +64,32 @@ class Manage extends \bloc\controller
       'container' => new \models\Student($student_id),
     ]);
 
+    $this->message = $flag;
+
 
     return $view->render($this());
   }
 
-  public function POSTgrade($student)
+  public function POSTassignment($request, $student_id, $assignment_id)
   {
-    # code...
+    $instance = new \models\Assessment([
+      'reference' => new \models\Assignment($assignment_id),
+      'container' => new \models\Student($student_id),
+    ], $_POST);
+
+    
+    if ($instance && $instance->save()) {
+      \bloc\router::redirect($_SERVER['REDIRECT_URL'] . '/saved');
+    } else {
+      echo "<pre>";
+      print_r($_POST);
+
+      print_r($instance->errors);
+
+      echo $instance->context->write('true');
+
+      echo "</pre>";
+    }
+
   }
 }

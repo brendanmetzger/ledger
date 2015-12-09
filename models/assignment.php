@@ -1,5 +1,4 @@
 <?php
-
 namespace models;
 
 /**
@@ -9,7 +8,7 @@ namespace models;
 
   class Assignment extends \bloc\Model
   {
-    use traits\resolver;
+    use traits\resolver, traits\persist;
 
     const XPATH = '/course/assignments/';
 
@@ -19,4 +18,9 @@ namespace models;
         'CDATA' => '',
       ]
     ];
+
+    public function getURL(\DOMElement $context)
+    {
+      return $context['@case'];
+    }
 }

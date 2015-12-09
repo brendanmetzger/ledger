@@ -1,10 +1,24 @@
 <article>
-  <h1>[$assessment:student:@name – $assessment:assignment:@title]</h1>
-  <form action="manage/assignment" method="post">
-    <input type="hidden" name="assignment[@][ref]" value="[$assessment:assignment:@id]" />
-    <input type="range" min="0" max="[$assessment:assignment:@points]" value="[$assessment:@points]"/>
-    <label for="notes">Notes</label>
-    <textarea name="assignment[CDATA]">[$assessment]</textarea>
-    <input type="url" name='assignment[@][case]' value="[$assessment:@case]" placeholder="Enter Project url if available." />
+
+  <header>
+    <nav>
+      <ul class="inline">
+        <li><a href="[manage/person/$assessment:student:@id]">[$assessment:student:@name]</a></li>
+        <li><a href="[$assessment:student:@url]" class="external">IAM Course Site</a></li>
+      </ul>
+    </nav>
+    <h1>[$assessment:assignment:@title]</h1>
+  </header>
+
+  <form action="[manage/assignment/$assessment:student:@id/$assessment:assignment:@id]" method="post">
+    <fieldset>
+      <legend class="[capitalize $message]">[$message assignment]</legend>
+      <input type="hidden" name="assignment[@][ref]" value="[$assessment:assignment:@id]" />
+      <input type="range" name="assignment[@][points]" min="0" max="[$assessment:assignment:@points]" value="[$assessment:@points]"/>
+      <label for="notes">Notes</label>
+      <textarea name="assignment[CDATA]">[$assessment]</textarea>
+      <input type="url" name='assignment[@][case]' value="[$assessment:@case]" placeholder="Enter Project url if available." />
+      <button type="submit">Save</button>
+    </fieldset>
   </form>
 </article>

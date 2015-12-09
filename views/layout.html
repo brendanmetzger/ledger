@@ -7,13 +7,21 @@
     <link rel="stylesheet" href="css/layout.css" media="screen" title="Layout Stylesheet" charset="utf-8"/>
     <script type="text/javascript">
       // <![CDATA[
-
+      window.addEventListener('DOMContentLoaded', function (evt) {
+        var openInTab = function (evt) {
+          evt.preventDefault();
+          window.open(this.href);
+        };
+        [].forEach.call(document.querySelectorAll('a.external'), function (link) {
+          link.addEventListener('click', openInTab, false);
+        });
+      });
       // ]]>
     </script>
   </head>
   <body>
     <header>
-      <h1>[$title]</h1>
+      <h4>[$title]</h4>
       <nav>
         <ul class="inline">
           <li><a href="manage/outline">Weekly Outline</a></li>

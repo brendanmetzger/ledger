@@ -1,28 +1,34 @@
 <article>
-  <form action="manage/person" method="post">
-    <input type="hidden" name="student[@][id]" value="[$student:@id]"/>
-    <input type="text" name="student[@][name]" value="[$student:@name]"/>
-    <input type="text" name="student[@][url]" value="[$student:@url]"/>
-    <input type="email" name="student[@][email]" value="[$student:@email]"/>
-  </form>
-
-  <section>
-    <h1>Graded</h1>
-    <ul>
-      <!-- iterate student:graded -->
-      <li>
-        <strong><a href="[manage/grade/$student/$assignment:@id]">[$assignment:@title]</a></strong>
-        <em>[$grade:@points / $assignment:@points]</em>
-        <span>[$grade]</span>
-      </li>
+  <header>
+    <h1>[$student:@name]</h1>
+    <ul class="inline">
+      <li><a href="[$student:@url]" class="external">Visit Course Site</a></li>
+      <li><a href="[mailto:$student:@email]">Send Email</a></li>
     </ul>
-  </section>
+  </header>
 
   <section>
-    <h1>Ungraded</h1>
+    <h2>Grade: <strong class="[$student:grade:status]">[$student:grade:percent%]</strong></h2>
+
+
+    <!-- iterate student:grades -->
+    <div class="container" style="border-bottom:1px dashed #eee;padding:1.25em;">
+      <h3 style="width:25%;padding:0.5em 1em;" class="float left center">
+        <a href="[manage/assignment/$item:student:@id/$item:assignment:@id]">[$item:assignment:@title]</a>
+      </h3>
+      <aside style="width:75%" class="float left">
+        <h4>[Points: $item:@points / $item:assignment:@points]</h4>
+        <p>[$item]</p>
+        <a href="[$item:case:url]" class="p external">[$item:case:text]</a>
+      </aside>
+    </div>
+
+  </section>
+  <section>
+    <h2>Ungraded</h2>
     <ul>
       <!-- iterate student:assigned -->
-      <li><a href="[manage/grade/$student/$assignment:@id]">[$assignment:@title]</a></li>
+      <li><a href="[manage/assignment/$student/$assignment:@id/create]">[$assignment:@title]</a></li>
     </ul>
   </section>
 </article>

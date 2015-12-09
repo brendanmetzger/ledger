@@ -12,7 +12,7 @@ trait transfer {
 
   protected function identify($identity) {
     if (! is_array($identity)) {
-      throw new \InvalidArgumentException("Xfer object requires model as argument");
+      throw new \InvalidArgumentException("Xfer object requires array");
     }
     $this->container = $identity['container'];
     $this->reference = $identity['reference'];
