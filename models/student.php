@@ -30,7 +30,7 @@ namespace models;
       });
     }
 
-    // TODO: would prefer not to have to set item on mapped things.
+
     public function getGrades(\DOMElement $context)
     {
       return $context->find('assignment')->map(function ($item) {
