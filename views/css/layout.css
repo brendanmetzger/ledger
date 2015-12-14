@@ -11,6 +11,9 @@
 .left {
   float:left;
 }
+.half {
+  width:50%;
+}
 .status  {
   text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
 }
@@ -18,23 +21,49 @@
   color:rgb(46, 120, 60);
 }
 .info {
-  color:rgb(63, 165, 198)
+  color:rgb(63, 165, 198);
 }
 .error {
-  color:rgb(181, 39, 39)
+  color:rgb(181, 39, 39);
 }
 .warn {
-  color: rgb(209, 190, 23)
+  color: rgb(209, 190, 23);
+}
+.invert {
+  color:#fff;
+  padding:0.25em 0.5em;
+  text-shadow:0 -1px 1px rgba(0,0,0,0.1);
+  border-radius:1em;
+}
+.success.invert {
+  background-color:rgb(46, 120, 60);
+}
+.info.invert {
+  background-color:rgb(63, 165, 198);
+}
+.error.invert {
+  background-color:rgb(181, 39, 39);
+}
+.warn.invert {
+  background-color:rgb(209, 190, 23);
 }
 
+ul.matrix li {
+  width:30%;
+  padding:0.5em 0;
+}
 
 
 
 body {
   font-family: 'Avenir Next';
   margin:0;
-  background-color:hsl(45, 50%, 95%);
   font-size:62.5%;
+  background-color: hsl(45, 30%, 97.5%);
+  /*background-image:url(../image/5.png);*/
+  /*background-repeat:no-repeat;*/
+  /*background-position:0 1em;*/
+  /*background-size:10% auto;*/
 }
 
 body > header {
@@ -44,14 +73,18 @@ body > header {
 body > header, main {
   width:80%;
   margin:1em auto;
-  background-color:#FEFEFE;
-  padding:1em;
+  padding:2.5em;
+  border-left:1em solid hsla(10, 30%, 50%, 0.25);
+  background-color:rgba(255,255,255,0.5);
+  box-sizing:border-box;
 }
 
 p, .p,  li, h4 {
   font-size:1.65em;
 }
-
+p:empty {
+  display:none;
+}
 .container:after, article dl:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
 
 a {
@@ -81,6 +114,11 @@ h3, legend {
   font-weight:400;
 }
 
+
+q {
+  color:#888;
+  font-style:italic;
+}
 div, section, article, header, ul.inline, ul.plain {margin:0;padding:0}
 
 ul.plain {
@@ -89,7 +127,6 @@ ul.plain {
 ul.inline li {
   list-style:none;
   display:inline-block;
-  padding:0 0.25em;
 }
 
 abbr {
@@ -99,22 +136,11 @@ abbr {
   letter-spacing:0.075em;
 }
 
-code, pre {
-  background-color:#444;
-  color:#eee;
-  padding:0.125em 0.25em;
+hr, .ruled {
+  border-style: solid;
+  border-color: #EEE;
+  border-width:1px 0 0;
 }
-
-code.block {
-  display:block;
-  font-size:1.5em;
-  padding:1em;
-}
-
-code * {
-  color:#eee;
-}
-
 mark {
   background-color:#FDF0AD;
   border-bottom:1px solid #FFCF01;
@@ -159,4 +185,55 @@ sup {
 nav li {
   padding:0.25em;
   margin:0;
+}
+
+
+pre {
+  font-size:1.75em;
+  font-family:Inconsolata;
+}
+
+code.block {
+  display:block;
+  font-size:1.5em;
+  padding:1em;
+}
+
+code * {
+  color:#eee;
+}
+
+/* desert scheme ported from vim to google prettify */
+pre.prettyprint { display: block; background-color: #333 }
+pre .nocode { background-color: none; color: #000 }
+pre .str { color: #ffa0a0 } /* string  - pink */
+pre .kwd { color: #f0e68c; font-weight: bold }
+pre .com { color: #87ceeb } /* comment - skyblue */
+pre .typ { color: #98fb98 } /* type    - lightgreen */
+pre .lit { color: #cd5c5c } /* literal - darkred */
+pre .pun { color: #fff }    /* punctuation */
+pre .pln { color: #fff }    /* plaintext */
+pre .tag { color: #f0e68c; font-weight: bold } /* html/xml tag    - lightyellow */
+pre .atn { color: #bdb76b; font-weight: bold } /* attribute name  - khaki */
+pre .atv { color: #ffa0a0 } /* attribute value - pink */
+pre .dec { color: #98fb98 } /* decimal         - lightgreen */
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE } /* IE indents via margin-left */
+li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8 { list-style-type: none }
+/* Alternate shading for lines */
+li.L1,li.L3,li.L5,li.L7,li.L9 { }
+
+@media print {
+  pre.prettyprint { background-color: none }
+  pre .str, code .str { color: #060 }
+  pre .kwd, code .kwd { color: #006; font-weight: bold }
+  pre .com, code .com { color: #600; font-style: italic }
+  pre .typ, code .typ { color: #404; font-weight: bold }
+  pre .lit, code .lit { color: #044 }
+  pre .pun, code .pun { color: #440 }
+  pre .pln, code .pln { color: #000 }
+  pre .tag, code .tag { color: #006; font-weight: bold }
+  pre .atn, code .atn { color: #404 }
+  pre .atv, code .atv { color: #060 }
 }

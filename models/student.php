@@ -46,15 +46,15 @@ namespace models;
     // TODO: I want to be able to have count method called via tostring
     public function getStatus(\DOMElement $context)
     {
-      return $this->grades->count() . ' of ' . $this->assigned->count();
+      return ($this->assigned->count() - $this->grades->count()) . ' left';
     }
 
 
     public function getGrade(\DOMElement $context)
     {
       $grades = $this->grades;
-      $score = 3;
-      $avail = 0;
+      $score = 4;
+      $avail = 1;
 
       foreach ($grades as $grade) {
         $avail += $grade['item']['assignment']['@points'];

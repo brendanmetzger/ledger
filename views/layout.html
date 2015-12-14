@@ -5,6 +5,25 @@
     <title>[$title]</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="css/layout.css" media="screen" title="Layout Stylesheet" charset="utf-8"/>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"> </script>
+  </head>
+  <body>
+    <header style="padding-left:15em;background:url(image/5.png)no-repeat left center;background-size:auto 75%;">
+      <h4>[$title]</h4>
+      <nav>
+        <ul class="inline">
+          <li><a href="manage/outline">Weekly Outline</a></li>
+          <li><a href="manage/list/course">Students</a></li>
+          <li><a href="manage/list/assignment">Assignments</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <!-- replace content nextSibling -->
+      <section>
+        <h2>replace</h2>
+      </section>
+    </main>
     <script type="text/javascript">
       // <![CDATA[
       window.addEventListener('DOMContentLoaded', function (evt) {
@@ -16,24 +35,28 @@
           link.addEventListener('click', openInTab, false);
         });
       });
+
+      function noisyBG(opacity) {
+        var canvas = document.createElement("canvas"),
+            ctx = canvas.getContext('2d'),
+            number,
+            opacity = opacity || .2;
+        var limit = canvas.width = canvas.height = 100;
+        var count = 0;
+        while (500 > count++) {
+          ctx.fillStyle = "rgba(220,220,200," + opacity + ")";
+          var x = Math.random() * limit;
+          var y = Math.random() * limit;
+          var dir = [Math.random() * limit, 1];
+          ctx.fillRect(x, y, 1, 2*Math.random());
+        }
+        return "url(" + canvas.toDataURL("image/png") + ")";
+      }
+      document.body.style.backgroundImage = noisyBG(0.15) + ", " + noisyBG(0.15) + "," + noisyBG(0.25);
+      document.body.style.backgroundPosition = "0 0, 50px -50px, 20px 30px";
+
+
       // ]]>
     </script>
-  </head>
-  <body>
-    <header>
-      <h4>[$title]</h4>
-      <nav>
-        <ul class="inline">
-          <li><a href="manage/outline">Weekly Outline</a></li>
-          <li><a href="manage/list/student">Students</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <!-- replace content nextSibling -->
-      <section>
-        <h2>replace</h2>
-      </section>
-    </main>
   </body>
 </html>

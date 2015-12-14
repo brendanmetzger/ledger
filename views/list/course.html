@@ -1,0 +1,12 @@
+<section>
+  <h2>Students</h2>
+  <nav>
+    <ul class="plain">
+      <!-- iterate students -->
+      <li style="padding:0.5em;">
+        <span class="[$student:grade:status invert]">[$student:grade:percent% / $student:status]</span>
+        <a href="[manage/person/$student:@id]">[$student:@name]</a>
+      </li>
+    </ul>
+  </nav>
+</section>

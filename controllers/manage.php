@@ -10,15 +10,11 @@ use \models\data;
 
 class Manage extends \bloc\controller
 {
-  public function __construct($request)
-  {
-    $this->title = '36-1420-01-FA15';
-  }
+  use traits\config;
 
   public function GETindex($path = null)
   {
     $view = new View('views/layout.html');
-
     return $view->render($this());
   }
 
@@ -27,7 +23,15 @@ class Manage extends \bloc\controller
     $view = new View('views/layout.html');
     $view->content = "views/list/{$topic}.html";
 
-    $this->students = \Models\Student::collect();
+    if ($topic == 'course') {
+      $this->students = \Models\Student::collect()->sort(function($a, $b) {
+        return $a['student']->grades->count() - $b['student']->grades->count();
+      });
+    }
+
+    if ($topic == 'assignment') {
+      $this->assignments = \Models\Assignment::collect();
+    }
 
     return $view->render($this());
   }
@@ -35,11 +39,8 @@ class Manage extends \bloc\controller
   public function GETperson($id)
   {
     $this->student = new \models\Student($id);
-
     $view = new View('views/layout.html');
-    $view->content = "views/form/student.html";
-
-
+    $view->content = "views/list/student.html";
     return $view->render($this());
   }
 
@@ -47,26 +48,20 @@ class Manage extends \bloc\controller
   {
     $view = new View('views/layout.html');
     $view->content = "views/list/outline.html";
-
     $this->weeks = \Models\Outline::collect();
-
     return $view->render($this());
   }
-
 
   public function GETassignment($student_id, $assignment_id, $flag = "edit")
   {
     $view = new View('views/layout.html');
     $view->content = "views/form/assignment.html";
-
     $this->assessment = new \models\Assessment([
       'reference' => new \models\Assignment($assignment_id),
       'container' => new \models\Student($student_id),
     ]);
-
     $this->message = $flag;
-
-
+    $this->redirect = $_SERVER['HTTP_REFERER'];
     return $view->render($this());
   }
 
@@ -77,19 +72,10 @@ class Manage extends \bloc\controller
       'container' => new \models\Student($student_id),
     ], $_POST);
 
-    
     if ($instance && $instance->save()) {
-      \bloc\router::redirect($_SERVER['REDIRECT_URL'] . '/saved');
+      \bloc\router::redirect($_POST['redirect'] . '#' . $assignment_id);
     } else {
-      echo "<pre>";
-      print_r($_POST);
-
       print_r($instance->errors);
-
-      echo $instance->context->write('true');
-
-      echo "</pre>";
     }
-
   }
 }

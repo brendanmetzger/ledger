@@ -1,0 +1,89 @@
+<article class="lesson">
+  <h2>First, a benchmark.</h2>
+  <p>Type the following sentence in whataver fashion makes you comfortable.</p>
+  <div class="type-watcher">
+    <span data-value="Typing quickly is not important.">...</span>
+    <input type="readonly" value="" spellcheck="false"/>
+  </div>
+
+  <div class="type-watcher">
+    <span data-value="A goofy typist can't spot mistakes.">A good typist can spot a mistake.</span>
+    <input type="readonly" value="" spellcheck="false"/>
+  </div>
+  <script type="text/javascript">
+    // <![CDATA[
+    // TODO: implement methods to force errors, and to swap words
+    (function (container) {
+      var output = container.querySelector('span');
+      var input  = container.querySelector('input');
+      output.innerHTML = '';
+      var letters = output.dataset.value.split('').map(function (letter) {
+        var span;
+        span = output.appendChild(document.createElement('span'));
+        span.textContent = letter;
+        span.dataset.charCode = letter.charCodeAt(0);
+        span.className = "waiting";
+        return span;
+      });
+      input.addEventListener('keydown', function (evt) {
+        idx = this.value.length;
+        if (idx < 1) return;
+        if (evt.keyCode === 8) {
+          letters[idx-1].className = 'waiting';
+        }
+      });
+
+      input.addEventListener('keypress', function (evt) {
+        var idx = this.value.length;
+        if (evt.charCode.toString() === letters[idx].dataset.charCode) {
+          letters[idx].className = 'correct';
+        } else {
+          letters[idx].className = 'error';
+        }
+      });
+
+    })(document.querySelector('.type-watcher'));
+    // ]]>
+  </script>
+  <style media="screen">
+    /* <![CDATA[ */
+    .type-watcher {
+      position:relative;
+      height:10em;
+
+    }
+    .type-watcher > * {
+      font-weight:400;
+      position:absolute;
+      top:0;
+      left:0;
+      width:95%;
+      margin:0;
+      font-size:2.5em;
+      padding:2.5%;
+      font-weight:400;
+      font-family:'Courier New';
+    }
+    .type-watcher input {
+      background-color:transparent;
+      color: rgba(0,0,0,0.1);
+      border:1px solid #EEE;
+    }
+
+    .type-watcher .correct {
+      color:rgb(92, 190, 84);
+      text-decoration:underline;
+    }
+
+    .type-watcher .error {
+      color:rgb(212, 92, 92);
+      text-decoration:line-through;
+    }
+
+    .type-watcher .waiting {
+      color:#CCC;
+    }
+
+    /* ]]> */
+  </style>
+</article>

@@ -122,7 +122,7 @@ class Task extends \bloc\controller
     $xml  = new \DomXpath($doc);
 
     $assignment = $xml->query('/course/assignments')->item(0)->appendChild($doc->createElement('assignment'));
-    $weeks      = $xml->query('/course/classes/week');
+    $weeks      = $xml->query('/course/classes/outline');
     // title, points, id
 
     echo "\nEnter Assignment Title: ";
@@ -139,7 +139,7 @@ class Task extends \bloc\controller
     echo "\nWeek number: ";
 
     $week = ((int)trim(fgets(STDIN)) - 1);
-    if ($week >= 0 && $week < 16) {
+    if ($week >= 0 && $week < 15) {
       $ref = $weeks->item($week)->appendChild($doc->createElement('assignment'));
       $ref->setAttribute('ref', $id);
     }
