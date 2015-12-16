@@ -13,14 +13,19 @@
 <!ATTLIST assignment points CDATA #IMPLIED>
 
 
-<!ELEMENT student (assignment)*>
+<!ELEMENT student (participation?, assignment*)>
 <!ATTLIST student id    ID    #REQUIRED>
 <!ATTLIST student url   CDATA #IMPLIED>
 <!ATTLIST student name  CDATA #REQUIRED>
 <!ATTLIST student email CDATA #REQUIRED>
 
+<!ELEMENT participation EMPTY>
+<!ATTLIST participation attendance    CDATA #IMPLIED>
+<!ATTLIST participation documentation CDATA #IMPLIED>
+
 <!ELEMENT outline (assignment*, lecture*)*>
-<!ATTLIST outline date  CDATA #IMPLIED>
-<!ATTLIST outline title CDATA #REQUIRED>
+<!ATTLIST outline datetime  CDATA #IMPLIED>
+<!ATTLIST outline index     CDATA #IMPLIED>
+<!ATTLIST outline title     CDATA #REQUIRED>
 
 <!ELEMENT lecture (#PCDATA)>

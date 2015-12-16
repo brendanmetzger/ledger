@@ -1,7 +1,10 @@
 <article class="outline">
   <!-- iterate weeks -->
   <section>
-    <h2>[$outline:@title]</h2>
+    <hgroup>
+      <h2>[Week $outline:@index: $outline:@title]</h2>
+      <h3>[$outline:date]</h3>
+    </hgroup>
     <ul>
       <!-- iterate outline:assignments -->
       <li>[$assignment:@title]</li>

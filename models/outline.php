@@ -26,4 +26,9 @@ namespace models;
         return ['assignment' => new Assignment($item['@ref'])];
       });
     }
+
+    public function getdate(\DOMElement $context)
+    {
+      return (new \DateTime($context['@datetime']))->format('l, F jS, Y');
+    }
 }

@@ -11,6 +11,9 @@
 .left {
   float:left;
 }
+.clear {
+  clear:both;
+}
 .half {
   width:50%;
 }
@@ -79,7 +82,7 @@ body > header, main {
   box-sizing:border-box;
 }
 
-p, .p,  li, h4 {
+p, .p,  li, h4, dt, dd {
   font-size:1.65em;
 }
 p:empty {
@@ -141,6 +144,7 @@ hr, .ruled {
   border-color: #EEE;
   border-width:1px 0 0;
 }
+
 mark {
   background-color:#FDF0AD;
   border-bottom:1px solid #FFCF01;
@@ -189,38 +193,40 @@ nav li {
 
 
 pre {
-  font-size:1.75em;
   font-family:Inconsolata;
+  font-size:1.5em;
+  padding:1em 1em 0!important;
+  overflow:scroll;
 }
 
 code.block {
   display:block;
   font-size:1.5em;
-  padding:1em;
 }
 
-code * {
-  color:#eee;
+code {
+  background-color:rgba(131, 154, 224, 0.1);
+  border-bottom: 1px solid rgba(131, 154, 224, 0.5);
 }
 
 /* desert scheme ported from vim to google prettify */
-pre.prettyprint { display: block; background-color: #333 }
+pre.prettyprint { display: block; background-color: rgba(255,255,255,0.25);border-width:0 0 0 1px !important;}
 pre .nocode { background-color: none; color: #000 }
 pre .str { color: #ffa0a0 } /* string  - pink */
-pre .kwd { color: #f0e68c; font-weight: bold }
+pre .kwd { color: #b574ad; font-weight: bold }
 pre .com { color: #87ceeb } /* comment - skyblue */
-pre .typ { color: #98fb98 } /* type    - lightgreen */
-pre .lit { color: #cd5c5c } /* literal - darkred */
-pre .pun { color: #fff }    /* punctuation */
-pre .pln { color: #fff }    /* plaintext */
-pre .tag { color: #f0e68c; font-weight: bold } /* html/xml tag    - lightyellow */
+pre .typ { color: #72b072 } /* type    - lightgreen */
+pre .lit { color: #c76c6c } /* literal - darkred */
+pre .pun { color: #333 }    /* punctuation */
+pre .pln { color: #333 }    /* plaintext */
+pre .tag { color: #cfbc16; font-weight: bold } /* html/xml tag    - lightyellow */
 pre .atn { color: #bdb76b; font-weight: bold } /* attribute name  - khaki */
 pre .atv { color: #ffa0a0 } /* attribute value - pink */
-pre .dec { color: #98fb98 } /* decimal         - lightgreen */
+pre .dec { color: #72b072 } /* decimal         - lightgreen */
 
 /* Specify class=linenums on a pre to get line numbering */
 ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE } /* IE indents via margin-left */
-li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8 { list-style-type: none }
+
 /* Alternate shading for lines */
 li.L1,li.L3,li.L5,li.L7,li.L9 { }
 

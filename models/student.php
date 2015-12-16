@@ -53,7 +53,7 @@ namespace models;
     public function getGrade(\DOMElement $context)
     {
       $grades = $this->grades;
-      $score = 4;
+      $score = 5;
       $avail = 1;
 
       foreach ($grades as $grade) {
