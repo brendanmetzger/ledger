@@ -4,8 +4,17 @@
     <base href="/courses/gradebook/" />
     <title>[$title]</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/layout.css" media="screen" title="Layout Stylesheet" charset="utf-8"/>
+    <link rel="stylesheet" href="css/layout.css" charset="utf-8"/>
+    <link rel="stylesheet" href="css/code.css" charset="utf-8"/>
 
+    <script type="text/javascript">
+
+      // <![CDATA[
+      <!-- preview views/javascript/autoload.js 1..17 -->
+      // bloc.embed('/js/bloc.js', '/js/player.js');
+      bloc.employ('//cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js');
+      // ]]>
+    </script>
   </head>
   <body>
     <header style="padding-left:15em;background:url(image/5.png)no-repeat left center;background-size:auto 75%;">
@@ -58,6 +67,6 @@
 
       // ]]>
     </script>
-    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"> </script>
+    <script type="text/javascript">window.bloc.load();</script>
   </body>
 </html>

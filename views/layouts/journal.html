@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="/courses/gradebook/" />
+    <title>[$title]</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/themes/journal.css"/>
+    <link rel="stylesheet" href="css/guide.css"/>
+    <link rel="stylesheet" href="css/code.css"/>
+    <script type="text/javascript">
+      // <![CDATA[
+      // Autoload scripts
+      var bloc = window.bloc || (function(s,c,p1,p2,append) {
+        s.type='text/javascript';
+        return {
+          embed: function (u, p) {
+            var ctx = s.cloneNode(); ctx.src = u; ctx.async = p;
+                p ? p2.push(ctx) : ctx.onload = this.load.bind(ctx, p1.push(ctx));
+          },
+          load: function (i, e) {
+            if (!e) return p1.concat(p2).map(append.bind(document.body));
+            if (e && p1.length === i) for (var k in c) c[k].call(c[k], true);
+          },
+          init: function (k, f) {
+            if ('call' in f) c[k] = f; return c[k];
+          }
+        };
+      }(document.createElement('script'),{},[],[],Node.prototype.appendChild));
+
+      var mobile = (/mobile/i).test(navigator.userAgent);
+
+      // Embed script for site
+      bloc.embed('javascript/bloc.js');
+      bloc.embed('//cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js', true);
+      // ]]>
+    </script>
+  </head>
+  <body>
+    <nav class="rag-left">
+      <ul class="plain float">
+        <li><a href="manage/outline">Outlines</a></li>
+        <li><a href="manage/list/course">Students</a></li>
+        <li><a href="manage/list/assignment">Assignments</a></li>
+      </ul>
+    </nav>
+    <main>
+      <!-- replace content nextSibling -->
+      <article>
+        <h2>replace</h2>
+      </article>
+    </main>
+
+    <hr />
+    <footer>
+      <address>© <em>now</em> Brendan Metzger &#x2803;&#x2817;&#x2811;&#x281D;&#x2819;&#x2801;&#x281D; &#x280D;&#x2811;&#x281E;&#x2835;&#x281B;&#x2811;&#x2817;</address>
+    </footer>
+    <script type="text/javascript">window.bloc.load();</script>
+  </body>
+</html>

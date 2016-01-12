@@ -1,0 +1,137 @@
+/* --- lovingly devised by Brendan Metzger ---  */
+.container:after, article dl:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+*{border-color:#333;border-style:solid;border-width:0}
+a,*.colorize{color:#777;}
+a:hover{color:#555 !important} a:active,a:link:focus,a:visited:focus {outline:1px dotted #333}
+
+body,p,ul,ol,li,div,a{margin:0;text-decoration:none;}
+h1,h2,h4,dt {margin:0.65em 0}
+div.column > * {margin:0 0.5em}
+dl,dt,dd {margin:0}
+hr,blockquote,*.flag > * {margin:1em 0;}
+*.negated dt:before {content:'~'}
+
+q:before {content:'\2039';}
+q:after {content:'\203A';padding-left:0.25em;}
+blockquote{padding:1.425em 0.5em;border-width:0.25em 0;border-style:double;font:italic normal 200 1.25em/2.15em 'Baskerville Old Face',Didot,'Baskerville',Georgia;}
+blockquote q {text-indent:-1em;padding-left:0.75em} blockquote q:before{content:'\275D'} blockquote q:after{padding-left:0.25em;content:'\275E'}
+abbr{cursor:help;}
+i,.i,q {font-style:italic;}
+em, .em {font-style:oblique}
+
+strong,.strong{font-weight:600}
+
+._________  {width:90%}
+.---------  {margin-left:90%}
+.________   {width:80%}
+._______    {width:70%}
+.______     {width:60%}
+._____,.half{width:50%}
+.____       {width:40%}
+.___        {width:30%}
+.mmm {margin-left:30%}
+.__         {width:20%}
+.mm        {margin-left:20%}
+._          {width:10%}
+.m         {margin-left:10%}
+
+.full          {width:100% }
+.one-third     {width:33.3%}
+.two-thirds    {width:66.6%}
+.one-fourth    {width:25.0%}
+.three-fourths {width:75.0%}
+
+.golden          {width:61.8%}
+.golden + .float {width:38.2%}
+
+
+.columns      {-moz-column-gap:1.5vw;-webkit-column-gap:2.5vw;}
+
+
+@media only screen and (min-width: 500px){
+  .columns.two,
+  .columns.three,
+  .colums.four{-moz-column-count:2;-webkit-column-count:2;column-count:2}
+}
+
+
+@media only screen and (min-width: 800px){
+  .columns.three,
+  .colums.four {-moz-column-count:3;-webkit-column-count:3;column-count:3}
+}
+
+@media only screen and (min-width: 1000px){
+  .columns.four {-moz-column-count:4;-webkit-column-count:4;column-count:4}
+}
+
+.margins > p {
+  margin-bottom:1em;
+}
+
+.columns.ruled {
+  -webkit-column-rule: 1px solid #eee; /* Chrome, Safari, Opera */
+  -moz-column-rule: 1px solid #eee; /* Firefox */
+  column-rule: 1px solid #eee;
+}
+
+.float {box-sizing:border-box}
+.float.right {float:right}
+.float.left  {float:left }
+
+.column.ruled > * {border-right-width:1px}
+
+.top    { padding-top:0.5em}
+.bottom { padding-bottom:0.5em}
+
+.ruled.bottom {border-bottom-width:1px}
+.ruled.top    {border-top-width:1px}
+
+.plain {list-style-type:none;}
+
+a.selected:hover, address{cursor:default;font-style:normal;color:#333;} a.selected:after {content:'\2718';color:yellow;padding-left:0.5em;}
+div.pad {padding:1em;}
+.focus {padding:1em 1em 1em 3.5em;/*border-left:2.5em solid #F8F8F8*/}
+.note  em,footer > p q, blockquote em {font-style:normal;}
+.note {font-family:Baskerville;font-style:italic;padding-right:1.25em;margin-top:1em;text-align:right;}
+.ruled:not(h4),hr,li+li, div[title='Chicago Flag'],*.massive,*.side.note, h3,p.heading{border-style:dotted;border-color:#E5E5E5;}
+.invert {color:#FFF !important;background:#333 !important;padding:0 0.25em;}
+.new:after{content:"";display:block;height:0;clear:both;visibility:hidden}
+.external:after{content:' \27AD';}
+.fancy{word-spacing:0.075em;font-family:'Bickham Script Pro','Edwardian Script ITC','Snell Roundhand' !important;letter-spacing:0;}
+
+.caps {text-transform:uppercase;}
+.massive{font-size:10vw;margin:0.25em 0}
+.micro, sup,a.external:after{font-size:0.9em;line-height:0;}
+.micro.caps, abbr {text-transform:lowercase;font-variant:small-caps;letter-spacing:0.015em;}
+.centered  {text-align:center}
+.justified {text-align:justify}
+.rag-left  {text-indent:0;text-align:right}
+.rag-right {text-align:left}
+
+.strike{text-decoration:line-through;}
+
+*.tuck{margin-left:-0.15em}
+.heart:before {
+  content:'\2767';
+  padding-right:0.5em;
+}
+.indented > p, p.indented, p.indented ~ p {text-indent:1em;}
+
+.dropcap p:first-of-type {text-indent:0}
+.dropcap p:first-of-type:first-letter {text-transform:uppercase;float:left;padding:0;line-height:5.5vw;font-size:6vw;margin:0 0.1em -0.75vw 0;}
+h2.outdented,h1.h2.outdented,*.outdented > p + p, p.outdented{text-indent:-0.5em}
+div[title='Chicago Flag']{border-width:0.15em 0;margin:1.25em 1em;padding:0.5em 0;}
+div[title='Chicago Flag'] > *{border-width:1em 0;border-color:#AFD3EC;padding:1.4em 0;text-align:center;word-spacing:1em;}
+body.develop div.column, body.develop *.new,*.debug{outline:1px dotted #555;min-height:15em;}
+div#debug{display:none;font-family:Inconsolata;width:99%;left:0;color:#FFF;position:absolute;height:5em;background:#333;opacity: 0.75;-moz-opacity: 0.75;}
+
+
+
+.container > .float:first-of-type {
+  padding-right:1.25%;
+}
+
+
+p:empty {
+  display:none;
+}

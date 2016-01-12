@@ -1,0 +1,130 @@
+body{
+  font:400 0.625em/250% "Avenir Next", "HelveticaNeue-Light","Helvetica Neue",Helvetica;
+  padding:0.25em 0;
+  border-width:1em 0 0;
+  box-sizing:border-box;
+  background-color: hsl(45, 30%, 97.5%);
+}
+
+
+body > nav ul {
+  width:9vw;
+  position:fixed;
+  top:0.125em;
+  border-width:0 0 1px 0;
+  left:1vw;
+  background-color:hsla(45, 30%, 97.5%, 0.95);
+  padding:1.125em 0 0;
+
+}
+
+main {
+  width:90vw;
+  padding:0 1.5em;
+  box-sizing:border-box;
+  margin:0 0 0 10vw;
+}
+
+
+body > nav li a{display:block;padding:0.15em 0.75em;}
+body > nav {
+  border-width: 1px 0 0;
+  margin:0 0.25em;
+}
+
+body > nav li{
+  border-width:1px 0 0;
+  font-size:1.25vw;
+}
+
+hr, li+li {border-width:1px 0 0}
+*.massive{border-width:0 0 1px}
+
+mark {
+  box-shadow:0.125em 0.125em 0.5em rgba(0,0,0,0.1);
+  background-color:rgba(237, 249, 181, 0.5)
+}
+
+body > footer {
+
+  width:100%;
+  position:fixed;
+  bottom:0;
+  left:0;
+  background-color: hsla(45, 30%, 97.5%, 0.75);
+}
+
+
+.intro {
+  font-size:2em;
+  margin:2em 0;
+}
+
+
+h1,h2.h1{letter-spacing:-0.075em;font-size:4em;font:800 2em/0.75em 'Avenir Next','HelveticaNeue-Light','Helvetica Neue',Helvetica;}
+h2,h1.h2{font-size:3.25vw;line-height:150%;font-weight:200}
+h3,.h3{font-size:2vw;margin:0.5em 0;}
+h3,*.massive{font-weight:200}
+h4 {text-transform:uppercase;}
+dfn,h4,.h4{font-size:1.25vw;line-height:1.5em;}
+
+
+li{font-size:1.6em;line-height:1.5em;}
+p{font-size:1.75em;line-height:1.5em;font-variant-ligatures: normal;font-family:Baskerville,Georgia;}
+
+ol, dl.ordered {counter-reset:item -1;list-style:none}
+ol {padding:0 0 0 3em;}
+dl.ordered dt {padding-left:2em;}
+dl.ordered dd + dd {
+  border-width:1px 0 0;
+}
+ol li, ul.stylized li {
+  padding:0.5em 0;
+}
+ol li:before, dl.ordered dt:before {
+  content:'[' counter(item) ']';
+  counter-increment:item;
+  font-family:Inconsolata;
+  margin-left:-2em;
+  padding-right:0.75em;
+}
+
+ul{list-style-type:square}
+
+ul.stylized {list-style:none;padding:0 1em 0 2.75em}
+ul.stylized li:before {margin-left:-1.5em;padding-right:0.5em;}
+ul.star li:before{content:'\2736';}
+ul.cross li:before {content: '☓';}
+
+.success, ul.good li:before {color:rgb(129, 201, 120)}
+.error, ul.bad li:before {color:rgb(244, 75, 121)}
+
+.chart {
+  padding:0 2.5em;
+}
+
+
+section[class] {
+  margin:10vh 0;
+}
+
+
+.paginate article {
+  border-top-width:1em;
+  margin:10em 0;
+}
+
+
+@media only screen and (max-width: 600px){
+  main {
+    margin-left:5vw;
+  }
+  body > nav ul:hover {
+    width:20em;
+    box-shadow:0 0 1em rgba(0,0,0,0.1);
+  }
+  body > nav ul:hover li {
+    font-size:1.5em;
+    text-align:center;
+  }
+}

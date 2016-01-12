@@ -2,8 +2,8 @@
   <h2>First, a benchmark.</h2>
   <p>Type the following sentence in whataver fashion makes you comfortable.</p>
   <div class="type-watcher">
-    <span data-value="Typing quickly is not important.">...</span>
-    <input type="readonly" value="" spellcheck="false"/>
+    <input type="readonly" value="" spellcheck="false" placeholder="start here"/>
+    <span data-value="Typing quickly is not important. The important thing is not watching the keyboard, memorizing shortcuts, and developing muscle memory for ">...</span>
   </div>
 
   <div class="type-watcher">
@@ -49,25 +49,28 @@
     /* <![CDATA[ */
     .type-watcher {
       position:relative;
-      height:10em;
+      padding:1em 0;
 
     }
     .type-watcher > * {
       font-weight:400;
-      position:absolute;
-      top:0;
-      left:0;
-      width:95%;
-      margin:0;
+      display:block;
+      line-height:250%;
+      width:100%;
+      height:100%;
       font-size:2.5em;
-      padding:2.5%;
+      padding:0.125em 0;
       font-weight:400;
       font-family:'Courier New';
     }
     .type-watcher input {
       background-color:transparent;
-      color: rgba(0,0,0,0.1);
-      border:1px solid #EEE;
+      color: rgba(0,0,0,0.8);
+      border-color:red;
+    }
+
+    input:focus {
+      outline:none
     }
 
     .type-watcher .correct {

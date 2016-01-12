@@ -14,11 +14,20 @@ class Lecture extends \bloc\controller
 
   public function GETindex($topic, $lesson)
   {
-    $view = new View('views/layout.html');
+    $view = new View('views/layouts/journal.html');
 
     $view->content =  "views/topics/{$topic}/{$lesson}.html";
 
 
+    return $view->render($this());
+  }
+
+  public function GEToverview($week = 1)
+  {
+
+    $view = new View('views/layouts/journal.html');
+
+    $view->content = "views/topics/lectures/{$week}.html";
     return $view->render($this());
   }
 }

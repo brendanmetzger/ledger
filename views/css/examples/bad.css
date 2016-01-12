@@ -1,0 +1,9 @@
+/* Examples of two distinct formatting styles */
+.special {
+    font-size: 10px;
+}
+
+.special
+{
+  font-size:1.5em;
+}
