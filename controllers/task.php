@@ -58,7 +58,7 @@ class Task extends \bloc\controller
 
       $zip = new \ZipArchive;
 
-      if ($zip->open($archive_name, ZipArchive::CREATE) === TRUE) {
+      if ($zip->open($archive_name, \ZipArchive::CREATE) === TRUE) {
         $dir = preg_replace('/[\/]{2,}/', '/', $archive_folder."/");
 
         $dirs = array($dir);

@@ -135,3 +135,26 @@ div#debug{display:none;font-family:Inconsolata;width:99%;left:0;color:#FFF;posit
 p:empty {
   display:none;
 }
+
+
+table {
+  border-collapse:collapse;
+}
+table.float {
+  padding:0 2em;
+}
+tbody th {
+  text-align:right;
+  padding:1em;
+  border:1px solid #888;
+  border-width:1px 2px 1px 0;
+}
+tbody td {
+  border:1px solid #AAA;
+  padding:1em;
+  vertical-align:top;
+}
+th, td {
+  font-size:1.35em;
+  line-height:125%;
+}

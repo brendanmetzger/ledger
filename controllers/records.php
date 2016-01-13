@@ -5,12 +5,23 @@ use \bloc\view;
 use \models\data;
 
 /**
- * Explore
+ * Records Management
  */
 
-class Manage extends \bloc\controller
+class Records extends \bloc\controller
 {
   use traits\config;
+
+  public function GETstudents($id = null)
+  {
+    return "show all or just one student";
+  }
+
+  public function GETcourses($id = null, $section = null)
+  {
+    return "show all courses | show all sections of course | show single course/section";
+  }
+
 
   public function GETindex($path = null)
   {

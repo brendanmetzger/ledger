@@ -24,7 +24,7 @@ $app->prepare('http-request', function ($app, $params) {
   $router  = new Router('controllers', $request);
 
   // default controller and action as arguments, in case nothin doin in the request
-  $response->setBody($router->delegate('manage', 'index'));
+  $response->setBody($router->delegate('lecture', 'index'));
   echo $response;
 });
 
