@@ -5,7 +5,6 @@
     <h2>A foray into function binding and closures</h2>
     <p class="intro _______">I ran across an article called <a href="http://alistapart.com/article/getoutbindingsituations">Getting Out of Binding Situations in JavaScript</a> (written some years ago) and realized that programming how-to articles are sometimes heavy on solution and a little light on perspective.</p>
   </header>
-
   <section class="three columns ruled top bottom dropcap">
     <p>Without perspective people become dogmatic and rightous and maybe even a tad confused, so before taking anything as gospel, let's use the example I culled in that article and give <em>more</em> prespective (assuming you may read that one as well).</p>
     <p>Let's start right in with a tidbit of code – code that indicates we are in a bit of a pickle due to scope; provided are two  solutions to get out of that pickle. Boiled way down, we have two similar pieces of code, starting with the left, the article informs us, <q>...Notice the trailing call to bind. However, such code is not as good an idea as it may seem. We saw that achieving such a “bound reference” requires us to wrap the original method within an anonymous function, which means calling the bound method reference results in two method calls: our anonymous wrapper, and the original method.</q></p>
@@ -45,7 +44,7 @@
   <p>Now, we fixed the typeError that immediately with the example on the right. Also, by way of the author's (probably true) reasoning, it will be <em>even more efficient</em> because it makes one less function call. Now, I'm not doing this to point out egg on someone's face, just giving the introduction to this notion: in JavaScript we pass functions around like they are contageous, and we can manipulate them long after they are declared, giving us something we'll casually – though not officially – call <em>'dynamic scope'</em>. The ongoing goal of this lecture is to highlight situations where you can use either closure (lexical) or binding ('dynamic') scope and getting the difference betwixt the two. Programming is expressive and interesting, and the fact that JavaScript offers so many techniques makes it even more expressive in my opinion.</p>
   <h2>Functions beget functions</h2>
   <p>What is <code>Array.forEach</code> anyway? First, it takes a function, any function – named or anonymous – as the first argument and calls that function for every index of the array. Glancing at the homemade version below reminds us that <code>Array.forEach</code> is itself a function, thus, <em>it has it's own scope</em>, and because of that – and for for sake of simplicity – let's just say that our callback will not have the scope that it had where <em>we wrote it</em> (lexical). Moreover, the brain and eyeballs we use to scan our program's source code will no doubt have lost track of "lexical scope" by this point, so we stare cross-eyed at the nonsense in front of us, convinced that we messed something up. Rather than do that over and over, let's right now make a pithy rule of thumb called the <strong>callback principle</strong>: functions, anonymous or otherwise, passed as arguments to other functions will have their scope mangled; it will elude you; it will trick your eyeballs; predict it happening before it foils you.</p>
-  <p class="___ m float left note">Do note, in the code <span data-layout="below">to the right</span>, the the array itself is <code>this</code> from <code>forEach</code>'s perspective (which makes sense). Also, if you don't understand the difference between <em>passing</em> a named or anonymous function and <em>executing</em> a function, revist the <a href="lecture/index/programming/functions">function lecture</a></p>
+  <p class="____ m float left note">Do note, in the adjacent example, our actual Array (ie. [1,2,3]) is <code>this</code> from <code>forEach</code>'s perspective. That makes sense when tracing back to who had responsibility for declaring <code>forEach</code>. If you're fuzzy about passing functions vs. executing them, revist the <a href="lecture/index/programming/functions">function lecture</a></p>
   <pre class="_____ float left prettyprint">
     <!-- preview views/javascript/examples/binding-situations.js 26..32 -->
   </pre>
@@ -78,11 +77,11 @@
         <li>Iterate through items using <code>Array.forEach</code> and the instance method <code>markItemAsProcessed</code> as the callback argument</li>
         <li>NOTE: <code>markItemAsProcessed</code> uses <code>this</code> internally – it is defined in <strong>same scope</strong> as <code>processItems</code></li>
         <li><code>Array.forEach</code> will defeference <code>this</code> within <code>this.markItemAsProcessed</code> by way of the aforementioned <strong>callback principle</strong></li>
-        <li>Because of #2, explicitely bind <code>this</code> to <code>this.markItemAsProcessed</code></li>
+        <li>Because of [1], explicitely bind <code>this</code> to <code>this.markItemAsProcessed</code></li>
       </ol>
     </aside>
   </section>
-  <p>Introducing <code>var that = this;</code> doesn't do anything bad, but it <em>doesn't</em> do something that the second version does, and something that I consider quite beneficial. First, it is not that there is one less step in the second example – that is not an advantage, nor should concision be a goal when writing elegant or maintainable code. I prefer the design thinking of the second one because of the introduction and consideration of #2 - which never has a clear spot to introduce itself in the first example – at least it didn't to me. I was more focused on examining the scope/closure of my <em>anonymous function</em> than thinking about the context of <code>this</code> in my <em>entire object</em>.</p>
+  <p>Introducing <code>var that = this;</code> doesn't do anything bad, but it <em>doesn't</em> do something that the second version does, and something that I consider quite beneficial. First, it is not that there is one less step in the second example – that is not an advantage, nor should concision be a goal when writing elegant or maintainable code. I prefer the design thinking of the second one because of the introduction and consideration of [1] - which never has a clear spot to introduce itself in the first example – at least it didn't to me. I was more focused on examining the scope/closure of my <em>anonymous function</em> than thinking about the context of <code>this</code> in my <em>entire object</em>.</p>
   <p>Further, swapping around <code><strong>that</strong>.doingSomething</code> is a bit of linguistic subterfuge – I prefer  to stay focused on <code><strong>this</strong>.doingSomething</code>. I think a reference to <code>this</code> is something you keep track of wholistically, whereas variable scope has a more myopic role; in fact you literally need to see where things in the code are defined to put the pieces back together (by definiton of <em>lexical scope</em>). Now in a more opinionated fashion, using variables as references to <code>this</code> messes with my intuition regarding demonstrative pronouns, and choosing another variable name is all the same to me: <code><strong>(this|obj|super|whatever)</strong>.doingSomething</code> can't trump the pristine focus of <code><strong>this</strong>.doingSomething</code> – as long as I stay mindful of what <code>this</code> is.</p>
   <h2>A working version</h2>
   <p>Below there are two exampleo of some code doing the exact same things. Output <code>item.processed === ['a', 'b', 'c', 'a']</code> and have the same interface. Output available in console.</p>
@@ -95,36 +94,22 @@
     </pre>
     <hr class="clear"/>
   </div>
-
   <p>My last note, even though both examples work, in the non-bind way, I got there by trial and error because I didn't expect it to work the way it is written (ie, I was shoving more references to <code>that</code> in than I needed). This is a full concession to perhaps my weakness in understanding scope, but after calling <code>that.markItemAsProcessed</code> and then looking back into the actual <code>markItemAsProcessed</code> function definiton, I'm always a bit bemused to understand how it knows what <code>this</code> references. Then I look at it for awhile, and go "ohhhh! right...". Then I repeat my confusion a little later.</p>
   <h2>Regardless of technique</h2>
   <p>We can maintain scope through closures, or more appropriately <em>lexical scope</em>. This is a fancy way of saying, "where the code was written" or "determined at write time". Now, while I've heard that it's not technically <em>dynamic scope</em>, setting <code>this</code> via <code>Function.bind</code> or <code>Functon.call</code> gets us kind of close to something like dynamic scope, and that is, scope that is determined "where the function was called", and in that way, it is "read time". Alternatively, in my loosest way possible, binding lets you mess around with functions that already exist... functions that maybe you didn't even write! (example below)</p>
   <pre class="prettyprint">
-    // say we have a nodelist of all paragraph Elements
-    var elems = document.querySelectorAll('p');
-
-    // we love `forEach`, but nodeList has no such property.
-    elems.forEach(callback); // TypeError ... .forEach is not a function
-
-    // Array has a forEach method, let's poach it with `call`.
-    [].forEach.call(elems, callback); // works!
+    <!-- preview views/javascript/examples/binding-situations.js 102..106 -->
+    <!-- preview views/javascript/examples/binding-situations.js 109..110 -->
   </pre>
-
   <p>Further into the weeds, timeouts are mind-benders when it comets to scope in general, and we almost always find it convenient (myself included) to create a function just to call <em>one</em> other function. Example of the traditional method below left, and by binding <code>DOMTokenList.add</code> as our function on the right. Assume a scoped variable called <code>$span</code> referencing an <code>Element</code> for both examples. <code>Element</code> has a prototype of <code>Node</code>, and it's necessary to get a feel for prototypes when going hunting for functions we want to steal.</p>
   <section class="comparison container">
     <pre class="prettyprint half float left">
-      function delay() {
-        $span.classList.add('highlight');
-      };
-
-      setTimeout(delay, 25);
+      <!-- preview views/javascript/examples/binding-situations.js 96..98 -->
     </pre>
     <pre class="prettyprint half float left">
       <!-- preview views/javascript/examples/binding-situations.js 89..93 -->
     </pre>
   </section>
-
-
   <h2>The takeaway</h2>
   <p>If you made it this far, I think I can sum up what everything with: <strong>if you are binding an anonymous function, you could probably find a more consise, albeit, somewhat abstreuse technique.</strong></p>
   <footer>

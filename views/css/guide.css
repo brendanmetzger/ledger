@@ -118,7 +118,7 @@ div.pad {padding:1em;}
 .indented > p, p.indented, p.indented ~ p {text-indent:1em;}
 
 .dropcap p:first-of-type {text-indent:0}
-.dropcap p:first-of-type:first-letter {text-transform:uppercase;float:left;padding:0;line-height:5.5vw;font-size:6vw;margin:0 0.1em -0.75vw 0;}
+.dropcap p:first-of-type:first-letter {text-transform:uppercase;float:left;padding:0 1vw;line-height:6vw;font-size:6vw;margin:0 0.1em -0.75vw 0;}
 h2.outdented,h1.h2.outdented,*.outdented > p + p, p.outdented{text-indent:-0.5em}
 div[title='Chicago Flag']{border-width:0.15em 0;margin:1.25em 1em;padding:0.5em 0;}
 div[title='Chicago Flag'] > *{border-width:1em 0;border-color:#AFD3EC;padding:1.4em 0;text-align:center;word-spacing:1em;}

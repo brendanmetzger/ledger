@@ -24,7 +24,7 @@ var simpleExample = {
 };
 
 Array.prototype.forEach = function (callback, context) {
-  for (var i = 0; i < this.length; i+=1) {
+  for (var i = 0; i < this.length; i += 1) {
     // the scope where callback came from
     // doesn't matter b/c it's called HERE
     callback.call(context, this[i]);
@@ -85,11 +85,28 @@ Array.prototype.forEach = function (callback, context) {
 
 
 var examples = {
-  delayClass: function ($node) {
+  delayAddClass_v1: function ($node) {
     // `add` is a property of DOMTokenList; Which is
     // what `Node.classList` references
 
     var func = DOMTokenList.add.bind($node.classList, 'sub');
     setTimeout(func, 25);
+  },
+  delayAddClass_v2: function () {
+    function delay() {
+      $span.classList.add('highlight');
+    };
+    setTimeout(delay, 25);
+  },
+  poachFunctionPropError: function () {
+    // say we have a nodelist (array-like thing) of all p Elements
+    var elems = document.querySelectorAll('p');
+
+    // we love `forEach`, but nodeList has no such property.
+    elems.forEach(callback); // TypeError ... .forEach is not a function
+  },
+  poachFunctionProp: function () {
+    // Array has a forEach method, let's poach it with `call`.
+    [].forEach.call(elems, callback); // works!
   }
 }

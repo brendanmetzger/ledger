@@ -46,10 +46,46 @@ class Task extends \bloc\controller
     }
 
     echo "Available Methods in {$instance_class_name}\n";
-
-
     print_r($methods);
+  }
 
+  public function CLItemplate($what)
+  {
+    if ($what === 'course') {
+      echo "getting started";
+      $archive_name   = PATH."data/views.zip"; // name of zip file
+      $archive_folder = PATH . 'views'; // the folder which you archivate
+
+      $zip = new \ZipArchive;
+
+      if ($zip->open($archive_name, ZipArchive::CREATE) === TRUE) {
+        $dir = preg_replace('/[\/]{2,}/', '/', $archive_folder."/");
+
+        $dirs = array($dir);
+        while (count($dirs)) {
+          $dir = current($dirs);
+          $zip -> addEmptyDir($dir);
+
+          $dh = opendir($dir);
+          while($file = readdir($dh)) {
+            if ($file != '.' && $file != '..') {
+              if (is_file($file)) {
+                $zip -> addFile($dir.$file, $dir.$file);
+              } else if (is_dir($file)) {
+                $dirs[] = $dir.$file."/";
+              }
+            }
+          }
+          closedir($dh);
+          array_shift($dirs);
+        }
+        $zip -> close();
+        echo 'Archiving is sucessful!';
+      }
+      else {
+        echo 'Error, can\'t create a zip file!';
+      }
+    }
   }
 
   public function CLItranslate()
