@@ -2,6 +2,7 @@
 namespace controllers;
 
 use \bloc\application;
+use \bloc\DOM\Document;
 
 /**
  * Third Coast International Audio Festival Defaults
@@ -17,7 +18,7 @@ class Task extends \bloc\controller
   private function save($doc)
   {
     if ($doc->validate()) {
-      $doc->save(PATH . self::SEMESTER . '.xml');
+      $doc->save();
     } else {
       echo "ERROR \n";
       print_r($doc->errors());
@@ -88,52 +89,77 @@ class Task extends \bloc\controller
     }
   }
 
-  public function CLItranslate()
+
+
+  public function CLIimport($semester, $course, $section = 01)
   {
-    $doc  = new \bloc\DOM\Document(self::SEMESTER);
+    $path  = "data/classlists/{$semester}-{$course}-{$section}";
+
+    $doc  = new Document("data/{$semester}");
     $xml  = new \DomXpath($doc);
+    $section = $xml->query("//courses/section[@id='{$section}' and @course='{$semester}-{$course}']");
+    if ($section->length > 0) {
+      $section = $section->item(0);
+      $imports = $this->parseStudentFile(new \DomXpath(new Document($path)));
+      $translation = ['0123456789', 'QRSTUVWXYZ'];
 
-    $students = $xml->query('/course/members/student');
-    $table = \models\data::$translation;
+      foreach ($imports as $import) {
+        $student = $section->appendChild($doc->createElement('student'));
 
-    foreach ($students as $student) {
-      $id = strtoupper(strtr(dechex($student['@id']), $table['numbers'], $table['letters']));
-      $student->setAttribute('id', $id);
+
+        $student->setAttribute('name', $import['name']);
+        $student->setAttribute('email', $import['email']);
+        $key  = substr($import['email'], 0, strpos($import['email'], '@'));
+        $student->setAttribute('url', "http://iam.colum.edu/students/{$key}/{$course}");
+
+        $base = min(strlen($key), 26);
+        $id   = strtr(strtoupper(base_convert($import['id'], 10, $base)), $translation[0], $translation[1]);
+        $student->setAttribute('id', $id);
+
+      }
     }
-
     $this->save($doc);
   }
 
-  public function CLIstudent($name = false)
+  private function parseStudentFile($xml)
   {
-
-    $doc  = new \bloc\DOM\Document(self::SEMESTER);
-    $xml  = new \DomXpath($doc);
-
-    $table = \models\data::$translation;
-
-    $student = $xml->query('/course/members')->item(0)->appendChild($doc->createElement('student'));
-
-    echo "\nEnter Oasis ID: ";
-    $id = strtoupper(strtr(dechex(trim(fgets(STDIN))), $table['numbers'], $table['letters']));
-    $student->setAttribute('id', $id);
-
-    if (!$name) {
-      echo "\nEnter Student Name: ";
-      $name = trim(fgets(STDIN));
+    $headers = [];
+    foreach ($xml->query("//tr[@class='glbfieldname']/td") as $index => $header) {
+      $key = strtolower(trim($header->nodeValue));
+      $headers[$key] = $index;
     }
-    $student->setAttribute('name', $name);
 
-    echo "\nEnter email address: ";
-    $email = trim(fgets(STDIN));
-    $student->setAttribute('email', $email);
-
-    echo "\nEnter class site: ";
-    $url = trim(fgets(STDIN));
-    $student->setAttribute('url', $url);
-
-    $this->save($doc);
+    $callbacks = [
+      'email' => function ($node) {
+        return substr($node->firstChild->getAttribute('href'), 7);
+      },
+      'name' => function ($node) {
+        $split = preg_replace_callback('/(.*),\s+(.*)/', function($matches) {
+          return $matches[2] . ' ' . $matches[1];
+        }, $node->firstChild->nodeValue);
+        return $split;
+      },
+      'id' => function ($node) {
+        return (int)trim($node->nodeValue);
+      },
+      'cl' => function ($node) {
+        return $node->nodeValue;
+      },
+      'grad' => function ($node) {
+        return $node->nodeValue ?: 'N';
+      }
+    ];
+    $students = [];
+    foreach ($xml->query("//tr[@class='glbdatadark']") as $row) {
+      $fields = $row->childNodes;
+      $keys   = array_keys($callbacks);
+      $students[] = array_combine($keys, array_map(function ($key, $callback) use ($fields, $headers) {
+        return trim(call_user_func($callback, $fields->item($headers[$key])));
+      }, $keys, $callbacks));
+    }
+    return $students;
   }
+
 
   public function CLIbuildWeeks()
   {

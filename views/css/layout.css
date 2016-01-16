@@ -94,14 +94,7 @@ p:empty {
 }
 .container:after, article dl:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
 
-a {
-  color:rgb(26, 29, 32);
-  text-decoration:none;
-  border-bottom:1px dashed #AAA;
-}
-a:hover {
-  color:hsl(10, 65%, 40%);
-}
+
 h1, h2, h3, h4, h5 {
 
   margin:0.25em 0;

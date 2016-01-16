@@ -4,6 +4,7 @@ body{
   border-width:1em 0 0;
   box-sizing:border-box;
   background-color: hsl(45, 30%, 97.5%);
+  color:rgba(0,0,0,0.85);
 }
 
 
@@ -20,7 +21,7 @@ body > nav ul {
 
 main {
   width:90vw;
-  padding:0 1.5em;
+  padding:0 2.5vw 0 1.5vw;
   box-sizing:border-box;
   margin:0 0 0 10vw;
 }
@@ -53,7 +54,17 @@ body > footer {
   left:0;
   background-color: hsla(45, 30%, 97.5%, 0.75);
 }
+a {
+  color:rgb(0, 125, 175);
+}
+article a {
 
+  text-decoration:none;
+  border-bottom:1px dashed rgba(0,0,0,0.25);
+}
+a:hover {
+  color:hsl(10, 65%, 40%);
+}
 
 .intro {
   font-size:2em;
@@ -66,11 +77,11 @@ h2,h1.h2{font-size:3.25vw;line-height:150%;font-weight:200}
 h3,.h3{font-size:2vw;margin:0.5em 0;}
 h3,*.massive{font-weight:200}
 h4 {text-transform:uppercase;}
-dfn,h4,.h4{font-size:1.25vw;line-height:1.5em;}
+dfn,h4,.h4{font-size:1.5vw;line-height:1.5em;}
 
 
 li{font-size:1.6em;line-height:1.5em;}
-p{font-size:1.75em;line-height:1.5em;font-variant-ligatures: normal;font-family:Baskerville,Georgia;}
+p{font-size:1.75em;line-height:1.5em;font-variant-ligatures: normal;font-family:'Goudy Old Style',Baskerville,Georgia;}
 
 ol, dl.ordered {counter-reset:item -1;list-style:none}
 ol {padding:0 0 0 3em;}
@@ -111,7 +122,8 @@ section[class] {
 
 .paginate article {
   border-top-width:1em;
-  margin:10em 0;
+  margin:5vh 0;
+  padding:5vh 0;
 }
 
 

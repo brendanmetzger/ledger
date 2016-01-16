@@ -19,14 +19,15 @@ class Lecture extends \bloc\controller
     return $view->render($this());
   }
 
-  public function GETtopic($topic, $lesson)
+  public function GETtopic($topic = 'lectures', $lesson)
   {
     $view = new View('views/layouts/journal.html');
+    // get all topics
     $view->content =  "views/topics/{$topic}/{$lesson}.html";
     return $view->render($this());
   }
 
-  public function GEToverview($week = 1)
+  public function GEToverview($course, $week = 0)
   {
     $view = new View('views/layouts/journal.html');
     $view->content = "views/topics/lectures/{$week}.html";

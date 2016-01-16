@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <base href="/courses/gradebook/" />
     <title>[$title]</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/themes/journal.css"/>
-    <link rel="stylesheet" href="css/guide.css"/>
-    <link rel="stylesheet" href="css/code.css"/>
+    <link rel="stylesheet" href="/css/themes/journal.css"/>
+    <link rel="stylesheet" href="/css/guide.css"/>
+    <link rel="stylesheet" href="/css/code.css"/>
     <script type="text/javascript">
       // <![CDATA[
       // Autoload scripts
@@ -30,7 +29,7 @@
       var mobile = (/mobile/i).test(navigator.userAgent);
 
       // Embed script for site
-      bloc.embed('javascript/bloc.js');
+      bloc.embed('/javascript/bloc.js');
       bloc.embed('//cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js', true);
       // ]]>
     </script>
@@ -38,9 +37,9 @@
   <body>
     <nav class="rag-left">
       <ul class="plain float">
-        <li><a href="manage/outline">Outlines</a></li>
-        <li><a href="manage/list/course">Students</a></li>
-        <li><a href="manage/list/assignment">Assignments</a></li>
+        <li><a href="/records/outline">Outlines</a></li>
+        <li><a href="/records/list/course">Students</a></li>
+        <li><a href="/records/list/assignment">Assignments</a></li>
       </ul>
     </nav>
     <main>
@@ -54,6 +53,31 @@
     <footer>
       <address>© <em>now</em> Brendan Metzger &#x2803;&#x2817;&#x2811;&#x281D;&#x2819;&#x2801;&#x281D; &#x280D;&#x2811;&#x281E;&#x2835;&#x281B;&#x2811;&#x2817;</address>
     </footer>
-    <script type="text/javascript">window.bloc.load();</script>
+
+    <script type="text/javascript">
+      // <![CDATA[
+      function noisyBG(opacity) {
+        var canvas = document.createElement("canvas"),
+            ctx = canvas.getContext('2d'),
+            number,
+            opacity = opacity || 0.2;
+        var limit = canvas.width = canvas.height = 150;
+        var count = 0;
+        while (250 > count++) {
+          ctx.fillStyle = "rgba(225,225,100," +(0.8 * Math.random()) + ")";
+          var x = Math.random() * limit;
+          var y = Math.random() * limit;
+          var dir = [Math.random() * limit, 1];
+          ctx.fillRect(x, y, 1, 1);
+        }
+        return "url(" + canvas.toDataURL("image/png") + ")";
+      }
+      document.body.style.backgroundImage = noisyBG(0.1) + ", " + noisyBG(0.1);
+      document.body.style.backgroundPosition = "0 0, 50px -50px, 20px 30px";
+
+
+      window.bloc.load();
+      // ]]>
+    </script>
   </body>
 </html>

@@ -10,6 +10,7 @@ use \models\data;
 
 class Records extends \bloc\controller
 {
+  const layout = 'views/layouts/journal.html';
   use traits\config;
 
   public function GETstudents($id = null)
@@ -17,21 +18,30 @@ class Records extends \bloc\controller
     return "show all or just one student";
   }
 
-  public function GETcourses($id = null, $section = null)
+  protected function GETcourses($id = null, $section = null)
   {
-    return "show all courses | show all sections of course | show single course/section";
+    Data::$DB = 'data/SP16';
+
+    $view = new View(self::layout);
+    $view->content = 'views/layouts/courses.html';
+
+    $this->courses = \Models\Course::collect();
+
+    $this->todo = "show single course | show single section";
+
+    return $view->render($this());
   }
 
 
   public function GETindex($path = null)
   {
-    $view = new View('views/layout.html');
+    $view = new View(self::layout);
     return $view->render($this());
   }
 
   public function GETlist($topic = 'student')
   {
-    $view = new View('views/layout.html');
+    $view = new View(self::layout);
     $view->content = "views/list/{$topic}.html";
 
     if ($topic == 'course') {
@@ -47,17 +57,17 @@ class Records extends \bloc\controller
     return $view->render($this());
   }
 
-  public function GETperson($id)
+  protected function GETperson($id)
   {
     $this->student = new \models\Student($id);
-    $view = new View('views/layout.html');
+    $view = new View(self::layout);
     $view->content = "views/list/student.html";
     return $view->render($this());
   }
 
   public function GEToutline()
   {
-    $view = new View('views/layout.html');
+    $view = new View(self::layout);
     $view->content = "views/list/outline.html";
     $this->weeks = \Models\Outline::collect();
     return $view->render($this());
@@ -65,7 +75,7 @@ class Records extends \bloc\controller
 
   public function GETassignment($student_id, $assignment_id, $flag = "edit")
   {
-    $view = new View('views/layout.html');
+    $view = new View(self::layout);
     $view->content = "views/form/assignment.html";
     $this->assessment = new \models\Assessment([
       'reference' => new \models\Assignment($assignment_id),

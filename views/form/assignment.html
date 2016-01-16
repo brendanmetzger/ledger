@@ -3,14 +3,14 @@
   <header>
     <nav>
       <ul class="inline">
-        <li><a href="[manage/person/$assessment:student:@id]">[$assessment:student:@name]</a></li>
+        <li><a href="[records/person/$assessment:student:@id]">[$assessment:student:@name]</a></li>
         <li><a href="[$assessment:student:@url]" class="external">IAM Course Site</a></li>
       </ul>
     </nav>
     <h1>[$assessment:assignment:@title]</h1>
   </header>
 
-  <form action="[manage/assignment/$assessment:student:@id/$assessment:assignment:@id]" method="post">
+  <form action="[records/assignment/$assessment:student:@id/$assessment:assignment:@id]" method="post">
     <input type="hidden" name="redirect" value="[$redirect]"/>
     <fieldset>
       <legend class="[capitalize $message]">[$message assignment]</legend>

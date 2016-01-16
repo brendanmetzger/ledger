@@ -11,20 +11,17 @@ use \bloc\dom\query;
 
   class Data
   {
-    const DB = 'data/36-1420-01-FA15';
-    static public $translation = [
-      'numbers' => '0123456789',
-      'letters' => 'HIKMNXLJTU',
-    ];
+    static public $DB  = 'data/36-1420-01-FA15';
+
 
     public $storage = null;
 
-    static public function instance($resource = null)
+    static public function instance()
     {
       static $instance = null;
 
       if ($instance === null) {
-        $instance = new static($resource ?: self::DB);
+        $instance = new static(self::$DB);
       }
 
       return $instance;
@@ -37,6 +34,12 @@ use \bloc\dom\query;
         throw new \InvalidArgumentException("{$id}... Doesn't ring a bell.", 1);
       }
       return $element;
+    }
+
+    static public function FACTORY($model, $element)
+    {
+      $classname = NS . __NAMESPACE__ . NS . $model;
+      return  new $classname($element);
     }
 
 

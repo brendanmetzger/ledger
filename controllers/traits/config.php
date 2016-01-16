@@ -18,9 +18,6 @@ trait config {
         foreach ($output as $line) {
           $text .= substr($line, $whitespace);
         }
-        // $a = $view->dom->createElement('a', "// See full file");
-        // $a->setAttribute('href', $r[1].'#'.$r[2]);
-        // $stub->parentNode->insertBefore($a, $stub);
         $stub->parentNode->replaceChild($view->dom->createTextNode($text), $stub);
       }
     });
@@ -29,6 +26,22 @@ trait config {
     $this->email       = 'bmetzger@colum.edu';
     $this->_controller = $request->controller;
     $this->_action     = $request->action;
+  }
 
+  public function authenticate()
+  {
+    return true;
+  }
+
+  public function GETlogin()
+  {
+    $view = new \bloc\View(self::layout);
+    $view->content = "views/form/authenticate.html";
+    return $view->render();
+  }
+
+  public function POSTlogin()
+  {
+    # code...
   }
 }

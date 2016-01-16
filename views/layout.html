@@ -45,26 +45,6 @@
         });
       });
 
-      function noisyBG(opacity) {
-        var canvas = document.createElement("canvas"),
-            ctx = canvas.getContext('2d'),
-            number,
-            opacity = opacity || .2;
-        var limit = canvas.width = canvas.height = 100;
-        var count = 0;
-        while (500 > count++) {
-          ctx.fillStyle = "rgba(220,220,200," + opacity + ")";
-          var x = Math.random() * limit;
-          var y = Math.random() * limit;
-          var dir = [Math.random() * limit, 1];
-          ctx.fillRect(x, y, 1, 2*Math.random());
-        }
-        return "url(" + canvas.toDataURL("image/png") + ")";
-      }
-      document.body.style.backgroundImage = noisyBG(0.15) + ", " + noisyBG(0.15) + "," + noisyBG(0.25);
-      document.body.style.backgroundPosition = "0 0, 50px -50px, 20px 30px";
-
-
       // ]]>
     </script>
     <script type="text/javascript">window.bloc.load();</script>

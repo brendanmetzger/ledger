@@ -1,0 +1,15 @@
+<article>
+  <h1>[$todo]</h1>
+  <!-- iterate courses -->
+  <div>
+    <h2>[$course:@title]</h2>
+    <!-- iterate course:sections -->
+    <div>
+      <h4 class="bottom ruled">[§$section:@id $section:time]</h4>
+      <ul>
+        <!-- iterate section:students -->
+        <li>[$student:@name]</li>
+      </ul>
+    </div>
+  </div>
+</article>

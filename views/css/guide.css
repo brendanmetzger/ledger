@@ -1,8 +1,8 @@
 /* --- lovingly devised by Brendan Metzger ---  */
 .container:after, article dl:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
 *{border-color:#333;border-style:solid;border-width:0}
-a,*.colorize{color:#777;}
-a:hover{color:#555 !important} a:active,a:link:focus,a:visited:focus {outline:1px dotted #333}
+
+a:active,a:link:focus,a:visited:focus {outline:1px dotted #333}
 
 body,p,ul,ol,li,div,a{margin:0;text-decoration:none;}
 h1,h2,h4,dt {margin:0.65em 0}
@@ -11,8 +11,10 @@ dl,dt,dd {margin:0}
 hr,blockquote,*.flag > * {margin:1em 0;}
 *.negated dt:before {content:'~'}
 
-q:before {content:'\2039';}
-q:after {content:'\203A';padding-left:0.25em;}
+q:before {content:'“';letter-spacing:0.125em;}
+q:after {content:'”';letter-spacing:0.125em;}
+q q:before {content:'‛';letter-spacing:0.125em;}
+q q:after {content:'’'}
 blockquote{padding:1.425em 0.5em;border-width:0.25em 0;border-style:double;font:italic normal 200 1.25em/2.15em 'Baskerville Old Face',Didot,'Baskerville',Georgia;}
 blockquote q {text-indent:-1em;padding-left:0.75em} blockquote q:before{content:'\275D'} blockquote q:after{padding-left:0.25em;content:'\275E'}
 abbr{cursor:help;}
@@ -44,6 +46,10 @@ strong,.strong{font-weight:600}
 .golden          {width:61.8%}
 .golden + .float {width:38.2%}
 
+.t  {margin-top:2.5vh}
+.tt {margin-top:5.0vh}
+.b  {margin-bottom:2.5vh}
+.bb {margin-bottom:5.0vh}
 
 .columns      {-moz-column-gap:1.5vw;-webkit-column-gap:2.5vw;}
 
@@ -116,7 +122,6 @@ div.pad {padding:1em;}
   padding-right:0.5em;
 }
 .indented > p, p.indented, p.indented ~ p {text-indent:1em;}
-
 .dropcap p:first-of-type {text-indent:0}
 .dropcap p:first-of-type:first-letter {text-transform:uppercase;float:left;padding:0 1vw;line-height:6vw;font-size:6vw;margin:0 0.1em -0.75vw 0;}
 h2.outdented,h1.h2.outdented,*.outdented > p + p, p.outdented{text-indent:-0.5em}
@@ -125,12 +130,9 @@ div[title='Chicago Flag'] > *{border-width:1em 0;border-color:#AFD3EC;padding:1.
 body.develop div.column, body.develop *.new,*.debug{outline:1px dotted #555;min-height:15em;}
 div#debug{display:none;font-family:Inconsolata;width:99%;left:0;color:#FFF;position:absolute;height:5em;background:#333;opacity: 0.75;-moz-opacity: 0.75;}
 
-
-
 .container > .float:first-of-type {
   padding-right:1.25%;
 }
-
 
 p:empty {
   display:none;
@@ -157,4 +159,27 @@ tbody td {
 th, td {
   font-size:1.35em;
   line-height:125%;
+}
+
+.axis td {
+  text-transform:uppercase;
+  letter-spacing:0.125em;
+  text-align:center;
+}
+
+table.text {
+  display:inline-block;
+  box-shadow:0 0 0.25em rgba(0,0,0,0.2);
+  margin:1.5em 0;
+}
+table.text th {
+  font-weight:400;
+  padding:0.5em 0;
+  background-color:rgba(255,255,255,0.5);
+}
+
+table.text td {
+  text-align:center;
+  vertical-align:middle;
+  border:none;
 }

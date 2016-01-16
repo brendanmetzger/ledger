@@ -23,4 +23,15 @@ trait resolver {
                              return [$name => new self($item)];
                            });
   }
+
+  public function references($type)
+  {
+    $name  = self::name();
+    $query = "{$type}[@{$name}='{$this->context['@id']}']";
+    return Data::instance()->query(self::XPATH)
+                           ->find($query)
+                           ->map(function($item) use($type) {
+                             return [$type => Data::Factory($type, $item)];
+                           });
+  }
 }

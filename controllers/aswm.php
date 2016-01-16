@@ -7,5 +7,6 @@ namespace controllers;
 
 class aswm extends course
 {
-  const ID = "36-1420";
+  const ID = "36-2421";
+  const TITLE = "Advanced Scripting for Web/Mobile";
 }

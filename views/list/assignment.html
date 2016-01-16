@@ -2,7 +2,7 @@
   <select onchange="window.location.href = this.value">
     <option>Jump to Assignment</option>
     <!-- iterate assignments -->
-    <option value="[manage/list/assignment#$assignment:@id]">[$assignment:@title]</option>
+    <option value="[records/list/assignment#$assignment:@id]">[$assignment:@title]</option>
   </select>
   <!-- iterate assignments -->
   <div class="container" style="margin:5em 0;">
@@ -14,7 +14,7 @@
       <summary>Graded</summary>
       <ul class="inline matrix">
         <!-- iterate assignment:submissions:complete -->
-        <li><a href="[manage/assignment/$student:@id/$assignment:@id]">[$student:@name]</a></li>
+        <li><a href="[records/assignment/$student:@id/$assignment:@id]">[$student:@name]</a></li>
       </ul>
     </details>
 
@@ -22,7 +22,7 @@
       <summary>Pending</summary>
       <ul class="inline matrix">
         <!-- iterate assignment:submissions:pending -->
-        <li><a href="[manage/assignment/$student:@id/$assignment:@id/create]">[$student:@name]</a></li>
+        <li><a href="[records/assignment/$student:@id/$assignment:@id/create]">[$student:@name]</a></li>
       </ul>
     </details>
   </div>
