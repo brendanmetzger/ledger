@@ -7,29 +7,22 @@
     </ul>
   </header>
   <section>
-
     <h2>Grade: <strong class="[$student:grade:status]">[$student:grade:percent%]</strong></h2>
     <select onchange="window.location.href = this.value">
       <option>Grade Assignment</option>
       <!-- iterate student:assigned -->
-      <option value="[records/assignment/$student/$assignment:@id/create]">[$assignment:@title]</option>
+      <option value="[/records/assignment/$student/$assignment:@id/create]">[$assignment:@title]</option>
     </select>
-
-
     <!-- iterate student:grades -->
     <div class="container" style="border-bottom:1px dashed #eee;padding:1.25em;">
       <hgroup style="width:40%;padding:0.5em 1em;" class="float left">
-        <h3><a href="[records/assignment/$item:student:@id/$item:assignment:@id]">[$item:assignment:@title]</a></h3>
+        <h3><a href="[/records/assignment/$item:student:@id/$item:assignment:@id]">[$item:assignment:@title]</a></h3>
         <h4>[Points: $item:@points / $item:assignment:@points]</h4>
       </hgroup>
-
       <aside style="width:60%" class="float left">
-
         <p>[$item]</p>
         <a href="[$item:case:url]" class="p external">[$item:case:text]</a>
       </aside>
     </div>
-
   </section>
-
 </article>

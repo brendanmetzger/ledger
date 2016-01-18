@@ -10,11 +10,11 @@ namespace models;
   {
     use traits\resolver, traits\persist;
 
-    const XPATH = 'model/courses/';
+    const XPATH = '/model/courses/';
 
     static public $fixture = [
       'course' => [
-        '@' => ['title' => '', 'id' => null, 'acronym' => ''],
+        '@' => ['title' => '', 'id' => null, 'code' => ''],
         'introduction' => ['CDATA' => ''],
         'description'  => ['CDATA' => '',],
       ]
@@ -25,4 +25,10 @@ namespace models;
       return $this->references('section');
     }
 
+    public function section($section_id)
+    {
+      foreach ($this->sections as $section) {
+        if ($section['section']['@id'] == $section_id) return $section['section'];
+      }
+    }
 }

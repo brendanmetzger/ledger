@@ -10,8 +10,8 @@ use \models\data;
 
 class Records extends \bloc\controller
 {
-  const layout = 'views/layouts/journal.html';
   use traits\config;
+  const layout = 'views/layouts/journal.html';
 
   public function GETstudents($id = null)
   {
@@ -20,15 +20,10 @@ class Records extends \bloc\controller
 
   protected function GETcourses($id = null, $section = null)
   {
-    Data::$DB = 'data/SP16';
-
     $view = new View(self::layout);
     $view->content = 'views/layouts/courses.html';
-
     $this->courses = \Models\Course::collect();
-
-    $this->todo = "show single course | show single section";
-
+    $this->todo    = "show single course | show single section";
     return $view->render($this());
   }
 
@@ -68,8 +63,6 @@ class Records extends \bloc\controller
   public function GEToutline()
   {
     $view = new View(self::layout);
-    $view->content = "views/list/outline.html";
-    $this->weeks = \Models\Outline::collect();
     return $view->render($this());
   }
 

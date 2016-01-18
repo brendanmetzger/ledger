@@ -11,12 +11,11 @@ use \bloc\dom\query;
 
   class Data
   {
-    static public $DB  = 'data/36-1420-01-FA15';
-
+    static public $DB  = '';
 
     public $storage = null;
 
-    static public function instance()
+    static public function instance($id = null)
     {
       static $instance = null;
 
@@ -29,7 +28,7 @@ use \bloc\dom\query;
 
     static public function ID($id)
     {
-      if ($id === null || strpos(strtolower($id), 'pending') === 0) return null;
+      if ($id === null) return null;
       if (! $element = self::instance()->storage->getElementById($id)) {
         throw new \InvalidArgumentException("{$id}... Doesn't ring a bell.", 1);
       }
@@ -45,7 +44,7 @@ use \bloc\dom\query;
 
     private function __construct($file)
     {
-      $this->storage = new Document($file, ['validateOnParse' => true]);
+      $this->storage = new Document("data/{$file}", ['validateOnParse' => true]);
     }
 
     public function getDTD()

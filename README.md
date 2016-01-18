@@ -1,2 +1,2 @@
-# ledger
-A way to analyze the work of pupils
+# Pedagogy
+A way to Organize my teaching materials, my students, and my assignments.

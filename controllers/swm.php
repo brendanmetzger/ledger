@@ -7,5 +7,5 @@ namespace controllers;
 
 class swm extends course
 {
-  const ID = "36-2421";
+  const ID = "SWM";
 }

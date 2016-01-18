@@ -8,7 +8,7 @@ body{
 }
 
 
-body > nav ul {
+body > nav div {
   width:9vw;
   position:fixed;
   top:0.125em;
@@ -16,7 +16,11 @@ body > nav ul {
   left:1vw;
   background-color:hsla(45, 30%, 97.5%, 0.95);
   padding:1.125em 0 0;
+}
 
+nav div ul {
+  margin:0;
+  padding:0;
 }
 
 main {
@@ -47,12 +51,13 @@ mark {
 }
 
 body > footer {
-
   width:100%;
   position:fixed;
   bottom:0;
   left:0;
-  background-color: hsla(45, 30%, 97.5%, 0.75);
+  padding:0.25em 1em;
+  color: #AAA;
+  background-color:rgba(0,0,0,0.9);
 }
 a {
   color:rgb(0, 125, 175);
@@ -139,4 +144,14 @@ section[class] {
     font-size:1.5em;
     text-align:center;
   }
+}
+
+ul.context a {
+  padding:0.5em 1.5em;
+}
+ul.context li.pending a{
+  color:rgb(101, 153, 217);
+}
+ul.context li {
+  font-size:1.25em;
 }

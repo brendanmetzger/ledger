@@ -36,24 +36,28 @@
   </head>
   <body>
     <nav class="rag-left">
-      <ul class="plain float">
-        <li><a href="/records/outline">Outlines</a></li>
-        <li><a href="/records/list/course">Students</a></li>
-        <li><a href="/records/list/assignment">Assignments</a></li>
-      </ul>
+      <div>
+        <ul class="plain">
+          <li><a href="/records/outline">Outlines</a></li>
+          <li><a href="/records/list/course">Students</a></li>
+          <li><a href="/records/list/assignment">Assignments</a></li>
+        </ul>
+        <!--  replace context -->
+      </div>
     </nav>
     <main>
       <!-- replace content nextSibling -->
       <article>
-        <h2>replace</h2>
+        <ul>
+          <li><a href="/aswm/">Scripting for Web and Mobile</a></li>
+          <li><a href="/swm/">Advanced Scripting for Web and Mobile</a></li>
+        </ul>
       </article>
     </main>
-
     <hr />
     <footer>
-      <address>© <em>now</em> Brendan Metzger &#x2803;&#x2817;&#x2811;&#x281D;&#x2819;&#x2801;&#x281D; &#x280D;&#x2811;&#x281E;&#x2835;&#x281B;&#x2811;&#x2817;</address>
+      <address><em>[© $year]</em> Brendan Metzger &#x2803;&#x2817;&#x2811;&#x281D;&#x2819;&#x2801;&#x281D; &#x280D;&#x2811;&#x281E;&#x2835;&#x281B;&#x2811;&#x2817;</address>
     </footer>
-
     <script type="text/javascript">
       // <![CDATA[
       function noisyBG(opacity) {
@@ -74,8 +78,6 @@
       }
       document.body.style.backgroundImage = noisyBG(0.1) + ", " + noisyBG(0.1);
       document.body.style.backgroundPosition = "0 0, 50px -50px, 20px 30px";
-
-
       window.bloc.load();
       // ]]>
     </script>

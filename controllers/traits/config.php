@@ -4,6 +4,8 @@ namespace controllers\traits;
 trait config {
   public function __construct($request)
   {
+    \models\Data::$DB = 'SP16';
+
     \bloc\view::addRenderer('after', \bloc\view\renderer::HTML());
     \bloc\view::addRenderer('after', function($view) {
       foreach ($view->parser->queryCommentNodes('preview') as $stub) {

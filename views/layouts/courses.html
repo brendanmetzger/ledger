@@ -1,15 +1,19 @@
 <article>
   <h1>[$todo]</h1>
   <!-- iterate courses -->
-  <div>
+  <section>
     <h2>[$course:@title]</h2>
+    <p class="intro m _______">[$course:introduction]</p>
+    <p>[$course:description]</p>
+
     <!-- iterate course:sections -->
     <div>
-      <h4 class="bottom ruled">[§$section:@id $section:time]</h4>
+      <h4 class="bottom ruled">[§$section:@id $section:time $section:@room]</h4>
+      <p><a href="[/$section:@course/0/$section:@id]">Go to Outline</a></p>
       <ul>
         <!-- iterate section:students -->
         <li>[$student:@name]</li>
       </ul>
     </div>
-  </div>
+  </section>
 </article>

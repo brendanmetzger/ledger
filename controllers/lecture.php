@@ -27,10 +27,4 @@ class Lecture extends \bloc\controller
     return $view->render($this());
   }
 
-  public function GEToverview($course, $week = 0)
-  {
-    $view = new View('views/layouts/journal.html');
-    $view->content = "views/topics/lectures/{$week}.html";
-    return $view->render($this());
-  }
 }

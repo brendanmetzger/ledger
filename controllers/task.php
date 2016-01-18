@@ -15,6 +15,11 @@ class Task extends \bloc\controller
   {
   }
 
+  public function authenticate()
+  {
+    return true;
+  }
+
   private function save($doc)
   {
     if ($doc->validate()) {
@@ -89,7 +94,13 @@ class Task extends \bloc\controller
     }
   }
 
+  public function CLIout()
+  {
+    $doc  = new Document("data/SP16");
 
+    $doc->xinclude();
+    $this->save($doc);
+  }
 
   public function CLIimport($semester, $course, $section = 01)
   {

@@ -3,7 +3,7 @@
 *{border-color:#333;border-style:solid;border-width:0}
 
 a:active,a:link:focus,a:visited:focus {outline:1px dotted #333}
-
+a:not([href]) {cursor:default;text-decoration: line-through;pointer-events: none;}
 body,p,ul,ol,li,div,a{margin:0;text-decoration:none;}
 h1,h2,h4,dt {margin:0.65em 0}
 div.column > * {margin:0 0.5em}
@@ -94,7 +94,8 @@ strong,.strong{font-weight:600}
 
 .plain {list-style-type:none;}
 
-a.selected:hover, address{cursor:default;font-style:normal;color:#333;} a.selected:after {content:'\2718';color:yellow;padding-left:0.5em;}
+a.selected:hover{cursor:default;font-style:normal;color:#333;}
+a.selected:after {content:'\2718';color:#333;padding-left:0.5em;}
 div.pad {padding:1em;}
 .focus {padding:1em 1em 1em 3.5em;/*border-left:2.5em solid #F8F8F8*/}
 .note  em,footer > p q, blockquote em {font-style:normal;}
