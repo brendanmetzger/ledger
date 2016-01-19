@@ -11,16 +11,26 @@ require PATH . 'vendor/autoload.php';
 class Message
 {
   const KEY = "c446d292-5969-4148-8910-d683afd54905";
+  const SENDER = "bmetzger@colum.edu";
+  public $transactions = [
+    'login' => 'Login Link'
+  ];
 
-  public function sendTest()
+  public function send($recipient, $subject, $message)
   {
     $client = new Postmark(self::KEY);
 
     $sendResult = $client->sendEmail(
-      "bmetzger@colum.edu",
-      "brendan.metzger@gmail.com",
-      "Hello from Postmark!",
-      "This is just a friendly 'hello' from your friends at Postmark."
+      self::SENDER,
+      $recipient,
+      $subject,
+      $message
     );
+  }
+
+  static public function TRANSACTION($type, $recipient, $message)
+  {
+    $instance = new self;
+    $instance->send($recipient, $instance->transactions[$type], $message);
   }
 }

@@ -19,6 +19,11 @@ namespace models;
       ]
     ];
 
+    static public function BLEAR($key)
+    {
+      return strtr(strtoupper(base_convert((int)$key, 10, 26)), '0123456789', 'QRSTUVWXYZ');
+    }
+
     public function getAssigned(\DOMElement $context)
     {
       return Assignment::collect(function ($assignment) use ($context){

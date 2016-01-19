@@ -11,6 +11,11 @@ require  '../bloc/application.php';
 #2. Create an instance of the application
 $app = Application::instance(['mode' => getenv('MODE') ?: 'production']);
 
+#3. Get a Session ready
+$app->prepare('session-start', function ($app) {
+  $app->session('COLUM');
+});
+
 
 # main page deal
 $app->prepare('http-request', function ($app, $params) {
@@ -30,4 +35,5 @@ $app->prepare('http-request', function ($app, $params) {
 
 
 #4. Run the app. Nothing happens w/o this. Can call different stuff from the queue.
+$app->execute('session-start');
 $app->execute('http-request', $_REQUEST);

@@ -1,3 +1,8 @@
-<form action="[$_controller/login]">
-  <input type="password" value="" name="pin" />
+<form action="[/$_controller/login]" method="post">
+  <filedset>
+    <legend>[$status]</legend>
+    <input type="hidden" value="[$redirect]" name="redirect"/>
+    <input type="password" value="305967" name="pin"/>
+    <button type="submit">Send</button>
+  </filedset>
 </form>

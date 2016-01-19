@@ -108,7 +108,7 @@ class Task extends \bloc\controller
 
     $doc  = new Document("data/{$semester}");
     $xml  = new \DomXpath($doc);
-    $section = $xml->query("//courses/section[@id='{$section}' and @course='{$semester}-{$course}']");
+    $section = $xml->query("//courses/section[@id='{$section}' and @course='{$course}']");
     if ($section->length > 0) {
       $section = $section->item(0);
       $imports = $this->parseStudentFile(new \DomXpath(new Document($path)));
@@ -116,17 +116,11 @@ class Task extends \bloc\controller
 
       foreach ($imports as $import) {
         $student = $section->appendChild($doc->createElement('student'));
-
-
         $student->setAttribute('name', $import['name']);
         $student->setAttribute('email', $import['email']);
         $key  = substr($import['email'], 0, strpos($import['email'], '@'));
-        $student->setAttribute('url', "http://iam.colum.edu/students/{$key}/{$course}");
-
-        $base = min(strlen($key), 26);
-        $id   = strtr(strtoupper(base_convert($import['id'], 10, $base)), $translation[0], $translation[1]);
-        $student->setAttribute('id', $id);
-
+        $student->setAttribute('url', "http://iam.colum.edu/students/{$key}/{$course}/");
+        $student->setAttribute('id', \models\Student::BLEAR($import['id']));
       }
     }
     $this->save($doc);

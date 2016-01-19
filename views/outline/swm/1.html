@@ -1,0 +1,49 @@
+<div id="[$course:@id]">
+  <header>
+    <!-- insert views/outline/_/crumbs.html -->
+    <h1 class="massive">Components</h1>
+    <p class="intro m ______">Each week, we will add a litte bit to our repertoire, building on fundamentals week by week.</p>
+  </header>
+
+  <article>
+    <h2>Text, Editors, and Keyboards</h2>
+    <p>In this class we are going to use <a href="https://en.wikipedia.org/wiki/Text_editor">Text Editors</a>; for those unfamiliar, we'll get farther by starting with what a text editor is not. Dreamweaver, Word, Pages, or anything that gives you an option to write anything other than monospaced, non-italicized, single-weight text is <em>not a text editor</em>. Text editors write plain text—text with the sole purpose of representing sequences of characters that make up the necessary syntax of a markup language, stylesheet language, or programming language.</p>
+    <h3>Typing is important</h3>
+
+    <h3>Important Shortcuts</h3>
+
+  </article>
+  <article>
+    <h2><abbr title="hypertext markup language">HTML</abbr>: Block vs. Inline</h2>
+  </article>
+  <article>
+    <h2><abbr title="Cascading Style Sheets">CSS</abbr>: Descendant Selectors and Typography</h2>
+    <h3>Descendant Selectors</h3>
+    <h3>Typographic <abbr>CSS</abbr> selectors</h3>
+    <!-- insert views/outline/_/tables/css/typography.html -->
+    <h3>Units</h3>
+  </article>
+  <article>
+    <h2>Javascript: Intro to programming</h2>
+  </article>
+
+  <script type="text/javascript">
+    // <![CDATA[
+
+    function takeBeanFrom(beans) {
+      return beans - 1;
+    }
+
+    function giveBeanTo(beans) {
+      return beans + 1;
+    }
+
+    function addBeans(my_beans, your_beans) {
+      if (your_beans > 0) {
+        return addBeans(giveBeanTo(my_beans), takeBeanFrom(your_beans));
+      }
+      return my_beans;
+    }
+    // ]]>
+  </script>
+</div>

@@ -145,13 +145,17 @@ section[class] {
     text-align:center;
   }
 }
-
-ul.context a {
-  padding:0.5em 1.5em;
+ul.context a:not(.selected) {
+  opacity:0.5;
 }
-ul.context li.pending a{
+ul.context a {
+  text-align:center;
+  transition:opacity 0.15s;
+}
+ul.context li.pending a {
   color:rgb(101, 153, 217);
 }
 ul.context li {
-  font-size:1.25em;
+  font-size:1vw;
+  line-height:vw;
 }

@@ -54,7 +54,7 @@ namespace models;
         $date = [
           'section' => $section,
           'course' => $course,
-          'date' => $begin->format('M jS'),
+          'date' => $begin->format('M d'),
           'status' => $now > $begin ? 'transpired' : 'pending',
           'index'  => $index++,
         ];
