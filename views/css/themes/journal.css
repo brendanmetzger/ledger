@@ -30,7 +30,6 @@ main {
   margin:0 0 0 10vw;
 }
 
-
 body > nav li a{display:block;padding:0.15em 0.75em;}
 body > nav {
   border-width: 1px 0 0;
@@ -39,7 +38,7 @@ body > nav {
 
 body > nav li{
   border-width:1px 0 0;
-  font-size:1.25vw;
+  font-size:1vw;
 }
 
 hr, li+li {border-width:1px 0 0}
@@ -55,8 +54,8 @@ body > footer {
   position:fixed;
   bottom:0;
   left:0;
-  padding:0.25em 1em;
-  color: #AAA;
+  padding:0;
+  color: #EEE;
   background-color:rgba(0,0,0,0.9);
 }
 a {
@@ -79,8 +78,8 @@ a:hover {
 
 h1,h2.h1{letter-spacing:-0.075em;font-size:4em;font:800 2em/0.75em 'Avenir Next','HelveticaNeue-Light','Helvetica Neue',Helvetica;}
 h2,h1.h2{font-size:3.25vw;line-height:150%;font-weight:200}
-h3,.h3{font-size:2vw;margin:0.5em 0;}
-h3,*.massive{font-weight:200}
+h3,.h3{font-size:2vw;margin:0.5em 0;font-weight:400;}
+.massive{font-weight:200}
 h4 {text-transform:uppercase;}
 dfn,h4,.h4{font-size:1.5vw;line-height:1.5em;}
 
@@ -149,13 +148,75 @@ ul.context a:not(.selected) {
   opacity:0.5;
 }
 ul.context a {
-  text-align:center;
   transition:opacity 0.15s;
 }
 ul.context li.pending a {
   color:rgb(101, 153, 217);
 }
 ul.context li {
-  font-size:1vw;
   line-height:vw;
+}
+
+
+/* forms */
+
+form input, form textarea {
+  padding:0.25em;
+  display:block;
+  font-size:1.5em;
+  box-sizing:border-box;
+  width:100%;
+  margin:0.25em 0;
+}
+
+form textarea {
+  height:10em;
+}
+
+legend {
+  padding:0 0.5em;
+  font-size:2em;
+}
+
+fieldset {
+  margin:2em 0;
+  padding:2em;
+  border-width:1px 0 0;
+}
+form button, form input, form textarea {
+  border:1px solid rgba(0,0,0,0.1);
+  background-color:rgba(255,255,255,0.75);
+}
+form button {
+  padding:1em;
+  cursor:pointer;
+  box-shadow: 0 0 0.5em rgba(0,0,0,0.1);
+}
+form button:hover {
+  background-color:#fff;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.25);
+}
+
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: color:rgba(0,0,0,0.1);
+  font-family:"Gill Sans";
+  font-weight:200;
+  letter-spacing:0;
+}
+
+footer.hud {
+  border-width:0.5em 0 0;
+  box-sizing:border-box;
+  padding:0.25em 1em;
+  border-color:rgba(0,0,0,0.25);
+  background-color:rgba(0,0,0,0.85);
+  text-transform:lowercase;
+  font-variant:small-caps;
+}
+footer.hud nav li:first-of-type {
+  padding: 0 1em;
+}
+footer.hud nav ul.inline a {
+  padding:0 0.25em;
 }

@@ -3,6 +3,7 @@ namespace controllers;
 
 use \bloc\view;
 use \models\data;
+use \models\Instructor as Admin;
 
 /**
  * Records Management
@@ -18,7 +19,7 @@ class Records extends \bloc\controller
     return "show all or just one student";
   }
 
-  protected function GETcourses($id = null, $section = null)
+  protected function GETcourses(Admin $instructor, $id = null, $section = null)
   {
     $view = new View(self::layout);
     $view->content = 'views/layouts/courses.html';
@@ -34,7 +35,7 @@ class Records extends \bloc\controller
     return $view->render($this());
   }
 
-  public function GETlist($topic = 'student')
+  protected function GETlist(Admin $instructor, $topic = 'student')
   {
     $view = new View(self::layout);
     $view->content = "views/list/{$topic}.html";
@@ -52,7 +53,12 @@ class Records extends \bloc\controller
     return $view->render($this());
   }
 
-  protected function GETperson($id)
+  protected function GETcreate(Admin $instructor, $type)
+  {
+    return "not yet";
+  }
+
+  protected function GETperson(Admin $instructor, $id)
   {
     $this->student = new \models\Student($id);
     $view = new View(self::layout);
@@ -66,7 +72,7 @@ class Records extends \bloc\controller
     return $view->render($this());
   }
 
-  public function GETassignment($student_id, $assignment_id, $flag = "edit")
+  protected function GETassignment(Admin $instructor, $student_id, $assignment_id, $flag = "edit")
   {
     $view = new View(self::layout);
     $view->content = "views/form/assignment.html";
@@ -79,7 +85,7 @@ class Records extends \bloc\controller
     return $view->render($this());
   }
 
-  public function POSTassignment($request, $student_id, $assignment_id)
+  protected function POSTassignment(Admin $instructor, $request, $student_id, $assignment_id)
   {
     $instance = new \models\Assessment([
       'reference' => new \models\Assignment($assignment_id),
@@ -91,5 +97,12 @@ class Records extends \bloc\controller
     } else {
       print_r($instance->errors);
     }
+  }
+
+  public function GETtemplate($id = 'YNUZ')
+  {
+    $student = new \models\student(\models\data::ID($id));
+    $view = new View('views/student/site/index.html');
+    return $view->render(['student' => $student]);
   }
 }

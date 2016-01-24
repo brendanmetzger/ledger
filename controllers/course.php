@@ -3,19 +3,20 @@ namespace controllers;
 
 use \bloc\view;
 use \models\data;
+use \models\Student;
 
 /**
  * Course Controller
  */
 
-abstract class Course extends \bloc\controller
+class Course extends \bloc\controller
 {
   use traits\config;
 
   const ID = null;
   const layout = 'views/layouts/journal.html';
 
-  public function GETindex($id = '0', $section = '01')
+  protected function GETindex(Student $student, $id = '0', $section = '01')
   {
     $view = new View(static::layout);
     $view->content = "views/outline/{$id}.html";
@@ -34,8 +35,23 @@ abstract class Course extends \bloc\controller
     return $view->render($this());
   }
 
-  protected function GETstudents($section = null)
+  protected function GETdashboard(Student $student = null)
   {
-    // show list of students, show attendance.
+    $view = new View(self::layout);
+    $view->content = 'views/layouts/dashboard.html';
+    return $view->render($this());
+  }
+
+  protected function GETtemplate(Student $student)
+  {
+
+    $file = tempnam('/tmp', 'zip');
+    \models\outline::BUILD($student, $file);
+    ///Then download the zipped file.
+    header("Content-Type: application/zip");
+    header("Content-Length: " . filesize($file));
+    header("Content-Disposition: attachment; filename='{$student->course}.zip'");
+    readfile($file);
+    unlink($file);
   }
 }

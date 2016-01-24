@@ -1,0 +1,16 @@
+<section>
+  <h1>[$title]</h1>
+  <p>This is your main index page. As outlined in the syllabus</p>
+
+  <h3>Practice Assignments</h3>
+  <ul>
+    <!-- iterate student:practice -->
+    <li><a href="[./practice/$assignment:@index/index.html]">[$assignment:@index / $assignment:@title]</a></li>
+  </ul>
+
+  <h3>Projects</h3>
+  <ul>
+    <!-- iterate student:projects -->
+    <li><a href="[./project/$assignment:@index/index.html]">[$assignment:@title]</a></li>
+  </ul>
+</section>

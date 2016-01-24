@@ -1,0 +1,31 @@
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin:0;
+  font-weight:200;
+}
+
+header {
+  background-color:rgba(255,255,255,0.5);
+}
+
+header, main, footer {
+  margin:0;
+  padding:1em;
+}
+
+a {
+  color:rgb(107, 86, 136);
+  text-decoration:none;
+}
+
+a:hover {
+  text-decoration:underline;
+}
+
+blockquote {
+  font-size:200%;
+}
+
+h1 {
+  font-size:200%;
+}

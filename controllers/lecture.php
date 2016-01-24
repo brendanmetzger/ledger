@@ -12,18 +12,18 @@ class Lecture extends \bloc\controller
 {
   use traits\config;
 
-  public function GETindex($topic, $lesson)
+  const layout = 'views/layouts/journal.html';
+  public function GETindex()
   {
-    $view = new View('views/layouts/journal.html');
-    $view->content =  "views/topics/{$topic}/{$lesson}.html";
+    $view = new View(self::layout);
     return $view->render($this());
   }
 
-  public function GETtopic($topic = 'lectures', $lesson)
+  public function GETtopic($topic = null, $lesson = null)
   {
-    $view = new View('views/layouts/journal.html');
+    $view = new View(self::layout);
     // get all topics
-    $view->content =  "views/topics/{$topic}/{$lesson}.html";
+    $view->content =  sprintf("views/topics/%s.html", $topic ? "{$topic}/{$lesson}" : 'glossary' );
     return $view->render($this());
   }
 

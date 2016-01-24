@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta author="[$student:@name]" />
+    <title>[$student:@name, $title]</title>
+    <!-- The capitalized paths below need to be adjusted -->
+    <!-- Reminder, you'll need ../ (up one directory)-->
+    <link rel="stylesheet" href="./CORRECT/THIS/PATH/styles/global.css" />
+    <link rel="stylesheet" href="[./styles/$embeds.css]" />
+    <script src="./CORRECT/THIS/PATH/scripts/global.js" charset="utf-8">//empty</script>
+    <script src="[./scripts/$embeds.js]" charset="utf-8">//empty</script>
+  </head>
+  <body class="[$embeds]">
+    <header>
+      <h2>[$student:@name]</h2>
+    </header>
+    <main>
+      <!-- replace template -->
+    </main>
+    <footer>
+      <p id='copyright'>[© $student:@name (eventually)]</p>
+      <ul>
+        <li><a href="[http://$domain/]">Course Outline</a></li>
+        <li><a href="[$student:@url]">Site Index</a></li>
+      </ul>
+    </footer>
+    <script type="text/javascript">
+      // <![CDATA[
+      // here is an example of a script directly embedded in a html document.
+      // I'm using it to accurately set the copyright date.
+      // These lines followed by 2 slashes are comments in JavaScript
+      // Comments are not rendered by the javascript engine.
+      var copyright = document.getElementById('copyright');
+      var year = (new Date()).getFullYear();
+      // this is fancy, it's called a regular expression - but we'll learn easier ways
+      copyright.innerHTML = copyright.innerHTML.replace(/^(.{1})(.*)/, '$1 '+year+'$2');
+      // ]]>
+    </script>
+  </body>
+</html>

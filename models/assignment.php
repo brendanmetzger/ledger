@@ -10,11 +10,11 @@ namespace models;
   {
     use traits\resolver, traits\persist;
 
-    const XPATH = '/course/assignments/';
+    const XPATH = '/model/assignments/';
 
     static public $fixture = [
       'assignment' => [
-        '@' => ['id' => null, 'title' => '', 'points' => ''],
+        '@' => ['index' => null, 'title' => '', 'points' => '', 'type' => ''],
         'CDATA' => '',
       ]
     ];

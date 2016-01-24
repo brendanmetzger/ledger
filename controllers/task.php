@@ -55,49 +55,17 @@ class Task extends \bloc\controller
     print_r($methods);
   }
 
-  public function CLItemplate($what)
+  public function CLItemplate()
   {
-    if ($what === 'course') {
-      echo "getting started";
-      $archive_name   = PATH."data/views.zip"; // name of zip file
-      $archive_folder = PATH . 'views'; // the folder which you archivate
-
-      $zip = new \ZipArchive;
-
-      if ($zip->open($archive_name, \ZipArchive::CREATE) === TRUE) {
-        $dir = preg_replace('/[\/]{2,}/', '/', $archive_folder."/");
-
-        $dirs = array($dir);
-        while (count($dirs)) {
-          $dir = current($dirs);
-          $zip -> addEmptyDir($dir);
-
-          $dh = opendir($dir);
-          while($file = readdir($dh)) {
-            if ($file != '.' && $file != '..') {
-              if (is_file($file)) {
-                $zip -> addFile($dir.$file, $dir.$file);
-              } else if (is_dir($file)) {
-                $dirs[] = $dir.$file."/";
-              }
-            }
-          }
-          closedir($dh);
-          array_shift($dirs);
-        }
-        $zip -> close();
-        echo 'Archiving is sucessful!';
-      }
-      else {
-        echo 'Error, can\'t create a zip file!';
-      }
-    }
+    \models\data::$DB = 'SP16';
+    // should return a zip file
+    $student = new \models\student(\models\data::ID('YNUZ'));
+    $outline = \models\outline::BUILD($student, $student->course . '.zip');
   }
 
   public function CLIout()
   {
     $doc  = new Document("data/SP16");
-
     $doc->xinclude();
     $this->save($doc);
   }

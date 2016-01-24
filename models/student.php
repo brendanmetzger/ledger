@@ -6,11 +6,11 @@ namespace models;
   *
   */
 
-  class Student extends \bloc\Model
+  class Student extends \bloc\Model implements \bloc\types\authentication
   {
     use traits\resolver, traits\persist;
 
-    const XPATH = '/course/members/';
+    const XPATH = '/model/courses/section/';
 
     static public $fixture = [
       'student' => [
@@ -23,6 +23,43 @@ namespace models;
     {
       return strtr(strtoupper(base_convert((int)$key, 10, 26)), '0123456789', 'QRSTUVWXYZ');
     }
+
+    public function authenticate($token)
+    {
+      $computed = \bloc\types\token::generate($this->context['@email'], getenv('EMAIL_TOKEN'));
+      if ($token === $computed && $token === $this->context['@token']) {
+        return $this;
+      } else {
+        $message =  ($this->context['@token'] !== $computed) ? "Token has expired": "Invalid Request";
+        throw new \InvalidArgumentException($message, 401);
+      }
+    }
+
+    public function getSection(\DOMElement $context)
+    {
+      return $context->parentNode['@id'];
+    }
+
+    public function getCourse(\DOMElement $context)
+    {
+      return $context->parentNode['@course'];
+    }
+
+    public function getPractice(\DOMElement $context)
+    {
+      return Assignment::collect()->filter(function ($current) {
+        $practice = $current['assignment']->context;
+        return $practice['@type'] == 'practice' && $practice['@course'] == $this->course;
+      });
+    }
+
+    public function getProjects(\DOMElement $context)
+    {
+      return Assignment::collect()->filter(function ($current) use ($context) {
+        return $current['assignment']->context->getAttribute('type') == 'project';
+      });
+    }
+
 
     public function getAssigned(\DOMElement $context)
     {

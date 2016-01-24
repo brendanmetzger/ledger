@@ -9,14 +9,14 @@ trait resolver {
 
   protected function initialize() {
     $data = Data::instance();
-    $node = $data->storage->createElement(self::name());
+    $node = $data->storage->createElement(self::type());
     $this->input(self::$fixture, $node);
     return $data->query(self::XPATH)->pick('.')->appendChild($node);
   }
 
   static public function collect(callable $callback = null)
   {
-    $name = self::name();
+    $name = self::type();
     return Data::instance()->query(self::XPATH)
                            ->find($name)
                            ->map($callback ?: function($item) use($name) {
@@ -26,7 +26,7 @@ trait resolver {
 
   public function references($type)
   {
-    $name  = self::name();
+    $name  = self::type();
     $query = "{$type}[@{$name}='{$this->context['@id']}']";
     return Data::instance()->query(self::XPATH)
                            ->find($query)

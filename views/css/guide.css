@@ -92,7 +92,7 @@ strong,.strong{font-weight:600}
 .ruled.bottom {border-bottom-width:1px}
 .ruled.top    {border-top-width:1px}
 
-.plain {list-style-type:none;}
+.plain {list-style-type:none;padding:0;}
 
 a.selected:hover{cursor:default;font-style:normal;color:#333;}
 a.selected:after {content:'\2718';color:#333;padding-left:0.5em;}
@@ -166,6 +166,11 @@ th, td {
   text-transform:uppercase;
   letter-spacing:0.125em;
   text-align:center;
+}
+
+ul.inline li {
+  display:inline-block;
+  border:none;
 }
 
 table.text {

@@ -1,8 +1,14 @@
 <form action="[/$_controller/login]" method="post">
-  <filedset>
+  <style media="screen">
+    fieldset.login input {
+      font-size:8em;
+    }
+  </style>
+  <fieldset class="login">
     <legend>[$status]</legend>
     <input type="hidden" value="[$redirect]" name="redirect"/>
-    <input type="password" value="305967" name="pin"/>
-    <button type="submit">Send</button>
-  </filedset>
+    <!-- replace user -->
+    <input type="password" value="" name="pin" placeholder="identification / oasis" required="required"/>
+    <button type="submit">Authenticate</button>
+  </fieldset>
 </form>
