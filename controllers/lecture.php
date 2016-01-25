@@ -13,6 +13,7 @@ class Lecture extends \bloc\controller
   use traits\config;
 
   const layout = 'views/layouts/journal.html';
+
   public function GETindex()
   {
     $view = new View(self::layout);

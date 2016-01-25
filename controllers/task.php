@@ -35,7 +35,6 @@ class Task extends \bloc\controller
   {
     // show a list of methods.
     $reflection_class = new \ReflectionClass($this);
-
     $instance_class_name = get_class($this);
     $parent_class_name = $reflection_class->getParentClass()->name;
     $methods = ['instance' => [], 'parent' => []];

@@ -11,7 +11,7 @@ trait config {
     \bloc\view::addRenderer('after', Render::PREVIEWS());
 
     $this->year        = date('Y');
-    $this->title       = "Gradebook";
+    $this->title       = "*SWM";
     $this->email       = 'bmetzger@colum.edu';
     $this->_controller = $request->controller;
     $this->_action     = $request->action;
@@ -66,10 +66,19 @@ trait config {
     try {
       $user = (new \models\student(\models\Data::ID($pin)))->authenticate($token);
       \bloc\Application::instance()->session('COLUM', ['id' => $pin]);
+      \models\Data::instance()->storage->save();
       \bloc\router::redirect("/{$user->course}/dashboard");
     } catch (\InvalidArgumentException $e) {
       return $this->GETError($e->getMessage(), $e->getCode());
     }
+  }
+
+  public function GETError($message, $code)
+  {
+    $this->message = parent::GETerror($message, $code);
+    $view = new \bloc\View(self::layout);
+    $view->content = 'views/layouts/error.html';
+    return $view->render($this());
   }
 
   public function POSTlogin($request)
