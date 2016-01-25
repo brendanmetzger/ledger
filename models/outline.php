@@ -101,7 +101,7 @@ namespace models;
               }
               $zip->addFromString($path.$name, $text);
             } else {
-              $zip->addFile(PATH.$cache[$name], $path.$name);
+              $zip->addFile(PATH.$cache[$name], substr($path.$name,1));
             }
           } else {
             $zip->addEmptyDir($path.'/');
