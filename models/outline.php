@@ -99,7 +99,7 @@ namespace models;
               if ($ext != '.xml') {
                 $text = substr($text, strlen('<?xml version="1.0"?>'));
               }
-              $zip->addFromString($path.$name, $text);
+              $zip->addFromString(substr($path.$name, 1), $text);
             } else {
               $zip->addFile(PATH.$cache[$name], substr($path.$name,1));
             }
