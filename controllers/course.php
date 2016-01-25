@@ -61,10 +61,13 @@ class Course extends \bloc\controller
     $file = tempnam('/tmp', 'zip');
     \models\outline::BUILD($student, $file);
     ///Then download the zipped file.
+    ob_clean();
+    ob_end_flush();
     header("Content-Type: application/zip");
     header("Content-Length: " . filesize($file));
     header("Content-Disposition: attachment; filename='{$student->course}.zip'");
     readfile($file);
-    unlink($file);
+    @unlink($file);
+    exit();
   }
 }
