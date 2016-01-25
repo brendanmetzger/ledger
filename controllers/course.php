@@ -35,6 +35,20 @@ class Course extends \bloc\controller
     return $view->render($this());
   }
 
+  protected function GETassignment(Student $student, $topic, $index = 0)
+  {
+    $view = new View(self::layout);
+
+    if ($index != 0) {
+      $view->content = 'views/layouts/error.html';
+      $this->message = "Assignment not ready";
+    } else {
+      $view->content = "views/outline/assignments/".static::ID."/$topic/$index.html";
+    }
+
+    return $view->render($this());
+  }
+
   protected function GETdashboard(Student $student = null)
   {
     $view = new View(self::layout);
@@ -44,7 +58,6 @@ class Course extends \bloc\controller
 
   protected function GETtemplate(Student $student)
   {
-
     $file = tempnam('/tmp', 'zip');
     \models\outline::BUILD($student, $file);
     ///Then download the zipped file.

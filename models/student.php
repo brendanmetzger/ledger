@@ -47,7 +47,9 @@ namespace models;
 
     public function getPractice(\DOMElement $context)
     {
-      return Assignment::collect()->filter(function ($current) {
+      return Assignment::collect(function($item) {
+        return ['assignment' => new Assignment($item), 'student' => $this];
+      })->filter(function ($current) {
         $practice = $current['assignment']->context;
         return $practice['@type'] == 'practice' && $practice['@course'] == $this->course;
       });
