@@ -38,7 +38,7 @@ trait config {
     \bloc\router::redirect('/');
   }
 
-  public function GETlogin($redirect, $status = "default")
+  public function GETlogin($redirect = '/', $status = "default")
   {
     \bloc\Application::instance()->getExchange('response')->addHeader("HTTP/1.0 401 Unauthorized");
     $messages = [
@@ -76,7 +76,7 @@ trait config {
   {
     $pin = $request->post('pin') ?: 0;
     $uid = $request->post('uid') ?: false;
-    $redirect = $request->post('redirect');
+    $redirect = $request->post('redirect') ?: '/';
     try {
       if ($uid && $pin) {
         // authenticate user based on password
