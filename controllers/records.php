@@ -106,7 +106,7 @@ class Records extends \bloc\controller
     return $view->render(['student' => $student]);
   }
 
-  public function tests()
+  public function GETtests()
   {
     echo "<pre>" . print_r($_SERVER, true)."</pre>";
     echo "<pre>" . print_r(EMAIL_TOKEN, true)."</pre>";;
