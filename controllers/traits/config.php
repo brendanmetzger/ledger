@@ -106,15 +106,12 @@ trait config {
             'message' => 'login to course site'
           ];
 
-
-          // \models\Message::TRANSACTION('login', $user['@email'], (string)$template->render($output));
-          \models\Message::TRANSACTION('login', 'brendan.metzger@gmail.com', (string)$template->render($output));
+          \models\Message::TRANSACTION('login', $user['@email'], (string)$template->render($output));
         }
       }
-
     } catch (\InvalidArgumentException $e) {
-        $type = $e->getCode() == 1 ? 'invalid' : 'duplicate';
-        \bloc\router::redirect(sprintf('/%s/login/%s/%s',$this->_controller, base64_encode($redirect), $type));
+      $type = $e->getCode() == 1 ? 'invalid' : 'duplicate';
+      \bloc\router::redirect(sprintf('/%s/login/%s/%s',$this->_controller, base64_encode($redirect), $type));
     }
     $view = new \bloc\View(self::layout);
     $view->content = 'views/form/transaction.html';

@@ -105,4 +105,12 @@ class Records extends \bloc\controller
     $view = new View('views/student/site/index.html');
     return $view->render(['student' => $student]);
   }
+
+  public function tests()
+  {
+    echo "<pre>" . print_r($_SERVER, true)."</pre>";
+    echo "<pre>" . print_r(EMAIL_TOKEN, true)."</pre>";;
+    echo "<pre>" . print_r($_SERVER['REMOTE_ADDR'], true)."</pre>";
+    echo "<pre>" . print_r(\bloc\types\token::generate('brendan.metzger@gmail.com', getenv(EMAIL_TOKEN)), true)."</pre>";
+  }
 }
