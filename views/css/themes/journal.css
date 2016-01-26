@@ -206,7 +206,7 @@ form button:hover {
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: color:rgba(0,0,0,0.1);
-  font-family:"Gill Sans";
+  font-family:"Gill Sans", 'Avenir Next', Helvetica, Arial;
   font-weight:200;
   letter-spacing:0;
 }
