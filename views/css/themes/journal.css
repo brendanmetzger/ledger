@@ -1,6 +1,6 @@
 body{
   font:400 0.625em/250% "Avenir Next", "HelveticaNeue-Light","Helvetica Neue",Helvetica;
-  padding:0.25em 0;
+  padding:0.25em 0 5em;
   border-width:1em 0 0;
   box-sizing:border-box;
   background-color: hsl(45, 30%, 97.5%);
@@ -9,39 +9,59 @@ body{
 
 
 body > nav div {
-  width:9vw;
+  width:15vw;
   position:fixed;
-  top:0.125em;
-  border-width:0 0 1px 0;
-  left:1vw;
+  top:0;
+  border-width:1px 0;
+  bottom:4em;
+  left:0;
   background-color:hsla(45, 30%, 97.5%, 0.95);
   padding:1.125em 0 0;
+  box-shadow:0 0 0.5em rgba(0,0,0,0.25);
 }
 
-nav div ul {
-  margin:0;
-  padding:0;
+nav ul.index {
+  border-width:1px 0 0;
+  padding:1em;
+  list-style:none;
 }
 
-main {
-  width:90vw;
-  padding:0 2.5vw 0 1.5vw;
-  box-sizing:border-box;
-  margin:0 0 0 10vw;
-}
-
-body > nav li a{display:block;padding:0.15em 0.75em;}
+body > nav li a{display:block;padding:0.25em 0.75em;}
 body > nav {
   border-width: 1px 0 0;
-  margin:0 0.25em;
 }
 
 body > nav li{
-  border-width:1px 0 0;
-  font-size:1vw;
+  font-size:1.1vw;
 }
 
-hr, li+li {border-width:1px 0 0}
+ul.index li.pending a {
+  color:#CCC;
+}
+
+ul.index a:not(.selected):hover, ul.index li a.selected {
+  background-color:rgba(255,255,255,0.25);
+  box-shadow:0 0 1em rgba(255,255,255,0.5);
+  color:#333;
+background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+background: -o-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+
+}
+
+
+main {
+  width:85vw;
+  min-height:84vh;
+  padding:0 2.5vw;
+  box-sizing:border-box;
+  margin:0 0 0 15vw;
+}
+
+
+
+
+hr, li+li {border-width:1px 0 0;border-color:rgba(0,0,0,0.025);}
 *.massive{border-width:0 0 1px}
 
 mark {
@@ -150,18 +170,7 @@ section[class] {
     text-align:center;
   }
 }
-ul.context a:not(.selected) {
-  opacity:0.5;
-}
-ul.context a {
-  transition:opacity 0.15s;
-}
-ul.context li.pending a {
-  color:rgb(101, 153, 217);
-}
-ul.context li {
-  line-height:vw;
-}
+
 
 
 /* forms */

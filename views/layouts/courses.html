@@ -1,14 +1,14 @@
 <article>
   <h1>[$todo]</h1>
   <!-- iterate courses -->
-  <section>
+  <section class="container">
     <h2>[$course:@title]</h2>
     <!-- iterate course:sections -->
-    <div>
+    <div class="_____ float left">
       <h4 class="bottom ruled"><a href="[/$section:@course/0/$section:@id]">[§$section:@id]</a><span>[$section:time $section:@room]</span></h4>
       <ul>
         <!-- iterate section:students -->
-        <li>[$student:@name]</li>
+        <li><a href="[/records/student/$student:@id]">[$student:@name]</a></li>
       </ul>
     </div>
   </section>

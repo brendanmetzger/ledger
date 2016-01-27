@@ -29,6 +29,15 @@ class Records extends \bloc\controller
   }
 
 
+  protected function GETstudent(Admin $instructor, $id)
+  {
+    $this->student = new \models\Student($id);
+    $view = new View(self::layout);
+    $view->content = "views/layouts/dashboard.html";
+    return $view->render($this());
+  }
+
+
   public function GETindex($path = null)
   {
     $view = new View(self::layout);
@@ -58,13 +67,7 @@ class Records extends \bloc\controller
     return "not yet";
   }
 
-  protected function GETperson(Admin $instructor, $id)
-  {
-    $this->student = new \models\Student($id);
-    $view = new View(self::layout);
-    $view->content = "views/list/student.html";
-    return $view->render($this());
-  }
+
 
   public function GEToutline()
   {

@@ -69,28 +69,49 @@ class Task extends \bloc\controller
     $this->save($doc);
   }
 
-  public function CLIimport($semester, $course, $section = 01)
+  public function CLIimport($semester, $course, $section = '01')
   {
     $path  = "data/classlists/{$semester}-{$course}-{$section}";
-
-    $doc  = new Document("data/{$semester}");
-    $xml  = new \DomXpath($doc);
-    $section = $xml->query("//courses/section[@id='{$section}' and @course='{$course}']");
-    if ($section->length > 0) {
-      $section = $section->item(0);
-      $imports = $this->parseStudentFile(new \DomXpath(new Document($path)));
-      $translation = ['0123456789', 'QRSTUVWXYZ'];
-
-      foreach ($imports as $import) {
-        $student = $section->appendChild($doc->createElement('student'));
-        $student->setAttribute('name', $import['name']);
-        $student->setAttribute('email', $import['email']);
-        $key  = substr($import['email'], 0, strpos($import['email'], '@'));
-        $student->setAttribute('url', "http://iam.colum.edu/students/{$key}/{$course}/");
-        $student->setAttribute('id', \models\Student::BLEAR($import['id']));
-      }
+    $imports = $this->parseStudentFile(new \DomXpath(new Document($path)));
+    foreach ($imports as $import) {
+      $this->CLIenroll($semester, $course, $section, $import['id'], $import['name'], $import['email']);
     }
-    $this->save($doc);
+  }
+
+  public function CLIenroll($semester, $course, $section, $id = null, $name = null, $email = null)
+  {
+    $doc     = new Document("data/{$semester}");
+    $section = (new \DomXpath($doc))->query("//courses/section[@id='{$section}' and @course='{$course}']");
+    if ($section->length < 1) {
+      throw new \RuntimeException("No section {$section} for {$course} in {$semester}", 1);
+    }
+
+    $student = $section->item(0)->appendChild($doc->createElement('student'));
+
+    if ($name === null) {
+      echo "\nName: ";
+      $name = trim(fgets(STDIN));
+    }
+
+    if ($id === null) {
+      echo "\nOasis ID: ";
+      $id = trim(fgets(STDIN));
+    }
+
+    if ($email === null) {
+      echo "\nEmail: ";
+      $email = trim(fgets(STDIN));
+    }
+
+    $student->setAttribute('name', $name);
+    $student->setAttribute('email', $email);
+    $key  = substr($email, 0, strpos($email, '@'));
+    $student->setAttribute('url', "http://iam.colum.edu/students/{$key}/{$course}");
+    $student->setAttribute('id', \models\Student::BLEAR($id));
+    echo $student->write() . "\nCreate Account (Y/n): ";
+    if (strtoupper(trim(fgets(STDIN))) === 'Y') {
+      return $this->save($doc);
+    }
   }
 
   private function parseStudentFile($xml)

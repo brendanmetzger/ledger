@@ -3,7 +3,7 @@
 *{border-color:#333;border-style:solid;border-width:0}
 
 a:active,a:link:focus,a:visited:focus {outline:1px dotted #333}
-a:not([href]) {cursor:default;text-decoration: line-through;pointer-events: none;}
+a:not([href]) {cursor:default;text-decoration: line-through;pointer-events: none;opacity:0.5;text-decoration-style:wavy}
 body,p,ul,ol,li,div,a{margin:0;text-decoration:none;}
 h1,h2,h4,dt {margin:0.65em 0}
 div.column > * {margin:0 0.5em}
@@ -100,7 +100,7 @@ div.pad {padding:1em;}
 .focus {padding:1em 1em 1em 3.5em;/*border-left:2.5em solid #F8F8F8*/}
 .note  em,footer > p q, blockquote em {font-style:normal;}
 .note {font-family:Baskerville;font-style:italic;padding-right:1.25em;margin-top:1em;text-align:right;}
-.ruled:not(h4),hr,li+li, div[title='Chicago Flag'],*.massive,*.side.note, h3,p.heading{border-style:dotted;border-color:#E5E5E5;}
+.ruled:not(h4),hr,ul.ruled li+li, div[title='Chicago Flag'],*.massive,*.side.note, h3,p.heading{border-style:dotted;border-color:#E5E5E5;}
 .invert {color:#FFF !important;background:#333 !important;padding:0 0.25em;}
 .new:after{content:"";display:block;height:0;clear:both;visibility:hidden}
 .external:after{content:' \27AD';}

@@ -1,14 +1,48 @@
-<div>
+<article class="coursework">
+  <style media="screen">
+  /* <![CDATA[ */
+    .coursework section h3 {
+      margin:2em 0 1em;
+    }
+  /* ]]> */
+  </style>
   <h2>[$student:@name]</h2>
-  <h3>Practice Assignments</h3>
-  <ul>
-    <!-- iterate student:practice -->
-    <li><a href="[/$student:course/assignment/practice/$assignment:@index]">[$assignment:@index / $assignment:@title]</a></li>
-  </ul>
-
-  <h3>Projects</h3>
-  <ul>
-    <!-- iterate student:projects -->
-    <li>[$assignment:@title]</li>
-  </ul>
-</div>
+  <h4><a href="[$student:@url]">Go to Course Site</a></h4>
+  <section>
+    <h3>Attendance</h3>
+  </section>
+  <section>
+    <h3>Practice Assignments</h3>
+    <table class="full">
+      <colgroup>
+        <col span="1" style="width:1em;"/>
+      </colgroup>
+      <thead>
+        <tr>
+          <th>[i]</th>
+          <th>Assignment Details</th>
+          <th>Class Notes</th>
+          <th>Your page</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- iterate student:practice -->
+        <tr>
+          <td>[$assignment:@index]</td>
+          <td><a href="[/$student:course/assignment/practice/$assignment:@index]">[$assignment:@title]</a></td>
+          <td>Pending</td>
+          <td><a href="[$student:@url/practice/$assignment:@index/]">Preview</a></td>
+          <td>pending</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h3>Projects</h3>
+    <ul>
+      <!-- iterate student:projects -->
+      <li>[$assignment:@title]</li>
+    </ul>
+  </section>
+</article>

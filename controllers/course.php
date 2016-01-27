@@ -4,6 +4,7 @@ namespace controllers;
 use \bloc\view;
 use \models\data;
 use \models\Student;
+use \bloc\types\authentication as User;
 
 /**
  * Course Controller
@@ -16,7 +17,7 @@ class Course extends \bloc\controller
   const ID = null;
   const layout = 'views/layouts/journal.html';
 
-  protected function GETindex(Student $student, $id = '0', $section = '01')
+  protected function GETindex(User $user, $id = '0', $section = '01')
   {
     $view = new View(static::layout);
     $view->content    = "views/outline/{$id}.html";
@@ -35,7 +36,7 @@ class Course extends \bloc\controller
     return $view->render($this());
   }
 
-  protected function GETassignment(Student $student, $topic, $index = 0)
+  protected function GETassignment(User $user, $topic, $index = 0)
   {
     $view = new View(self::layout);
 
