@@ -1,7 +1,7 @@
 body{
   font:400 0.625em/250% "Avenir Next", "HelveticaNeue-Light","Helvetica Neue",Helvetica;
   padding:0.25em 0 5em;
-  border-width:1em 0 0;
+  border-width:1em 0 1em;
   box-sizing:border-box;
   background-color: hsl(45, 30%, 97.5%);
   color:rgba(0,0,0,0.85);
@@ -175,7 +175,7 @@ section[class] {
 
 /* forms */
 
-form input, form textarea {
+form input[type=text], form textarea {
   padding:0.25em;
   display:block;
   font-size:1.5em;
@@ -234,4 +234,22 @@ footer.hud nav li:first-of-type {
 }
 footer.hud nav ul.inline a {
   padding:0 0.25em;
+}
+
+
+pre.error.console {
+  position: absolute;
+  top:1vh;
+  right:1em;
+  z-index:100;
+  max-width:50vw;
+  max-height:90vh;
+  overflow:auto;
+  padding:1vh 2.5vw 1vh 1vw;
+  color:#333;
+  line-height:1.25em;
+  font-size:1.25em;
+  background-color:rgba(255,255,255,0.9);
+  border:1px solid #eee;
+  box-shadow:0 0 1em rgba(0,0,0,0.1);
 }

@@ -14,11 +14,11 @@ trait resolver {
     return $data->query(self::XPATH)->pick('.')->appendChild($node);
   }
 
-  static public function collect(callable $callback = null)
+  static public function collect(callable $callback = null, $filter = '')
   {
     $name = self::type();
     return Data::instance()->query(self::XPATH)
-                           ->find($name)
+                           ->find($name.$filter)
                            ->map($callback ?: function($item) use($name) {
                              return [$name => new self($item)];
                            });

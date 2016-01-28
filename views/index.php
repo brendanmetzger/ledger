@@ -18,6 +18,10 @@ $app->prepare('session-start', function ($app) {
   $app->session('COLUM');
 });
 
+$app->prepare('clean-up', function ($app) {
+  session_write_close();
+});
+
 
 # main page deal
 $app->prepare('http-request', function ($app, $params) {
@@ -32,10 +36,34 @@ $app->prepare('http-request', function ($app, $params) {
 
   // default controller and action as arguments, in case nothin doin in the request
   $response->setBody($router->delegate('lecture', 'index'));
+
+  if (getenv('MODE') === 'local' && count($app->log()) > 0) {
+    $app->execute('debug', $response);
+  }
+
   echo $response;
 });
 
 
+
+$app->prepare('debug', function ($app, $response) {
+    $app::instance()->log('Peak Memory: ' . round(memory_get_peak_usage() / pow(1024, 2), 4). "Mb");
+    $app::instance()->log('Executed in: ' . round(microtime(true) - $app->benchmark, 4) . "s");
+
+    $output = $response->getBody();
+    if ($output instanceof \bloc\view) {
+      $elem = (new DOM\Element('pre'))->insert($output->dom->documentElement->lastChild);
+      $elem->setAttribute('class', 'error console');
+      foreach ($app->log() as $message) {
+        $elem->appendChild($elem->ownerDocument->createTextNode(print_r($message, true)."\n"));
+      }
+    }
+
+
+  return $output;
+});
+
 #4. Run the app. Nothing happens w/o this. Can call different stuff from the queue.
 $app->execute('session-start');
 $app->execute('http-request', $_REQUEST);
+$app->execute('clean-up');

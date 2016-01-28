@@ -19,6 +19,12 @@ class Records extends \bloc\controller
     return "show all or just one student";
   }
 
+  public function GETindex($path = null)
+  {
+    $view = new View(self::layout);
+    return $view->render($this());
+  }
+
   protected function GETcourses(Admin $instructor, $id = null, $section = null)
   {
     $view = new View(self::layout);
@@ -28,21 +34,37 @@ class Records extends \bloc\controller
     return $view->render($this());
   }
 
-
   protected function GETstudent(Admin $instructor, $id)
   {
-    $this->student = new \models\Student($id);
     $view = new View(self::layout);
     $view->content = "views/layouts/dashboard.html";
+
+    $this->student = new \models\Student($id);
+    $this->participation = \models\Assignment::collect(null, "[@type='participation']");
+
     return $view->render($this());
   }
 
-
-  public function GETindex($path = null)
+  protected function GETevaluate(Admin $instructor, $topic, $index, $sid = null)
   {
+    $view = new View(self::layout);
+    $view->content = "views/layouts/forms/assignment.html";
+    $view->topic = "views/layouts/forms/{$topic}.html";
+
+    $this->student = new \models\Student($sid);
+    $this->topic = $topic;
+    $this->index = $index;
+
+    return $view->render($this());
+  }
+
+  protected function POSTevaluate(Admin $instructor, $topic, $index, $sid = null)
+  {
+    \bloc\application::instance()->log(json_encode($_POST['cost'], JSON_NUMERIC_CHECK));
     $view = new View(self::layout);
     return $view->render($this());
   }
+
 
   protected function GETlist(Admin $instructor, $topic = 'student')
   {

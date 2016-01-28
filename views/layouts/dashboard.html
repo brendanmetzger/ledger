@@ -4,16 +4,56 @@
     .coursework section h3 {
       margin:2em 0 1em;
     }
+    table.chart .horizontal td {
+      text-align:center;
+      padding:1em 0;
+    }
+    table.chart thead th + th {
+      border-left:1px solid #222;
+    }
+    table.chart thead th {
+      border-bottom:2px solid #333;
+      padding:1em;
+    }
+    table.chart tfoot th {
+      text-align:right;
+      padding:1em;
+      border-right:1px solid #222;
+    }
+    table.chart tfoot tr {
+      border-top:2px solid #333;
+    }
   /* ]]> */
   </style>
   <h2>[$student:@name]</h2>
-  <h4><a href="[$student:@url]">Go to Course Site</a></h4>
+  <h4><a href="[$student:@url/]">Go to Course Site</a></h4>
   <section>
-    <h3>Attendance</h3>
+    <h3>Attendance (30%)</h3>
+    <table class="full chart">
+      <colgroup>
+        <col span="1" style="width:12.5%" />
+        <col span="15" style="width:5%"/>
+        <col span="1" style="width:12.5%" />
+      </colgroup>
+      <tbody class="horizontal">
+        <tr>
+          <th>Week</th>
+          <!-- iterate participation -->
+          <td>[$assignment:@index]</td>
+          <th>µ ∕ num</th>
+        </tr>
+        <tr>
+          <th>Score</th>
+          <!-- iterate participation -->
+          <td><a href="[[/records/evaluate/participation/$assignment:@index/$$student:@id]]">grade</a></td>
+          <th>[$student:@id]</th>
+        </tr>
+      </tbody>
+    </table>
   </section>
   <section>
-    <h3>Practice Assignments</h3>
-    <table class="full">
+    <h3>Practice Assignments (40%)</h3>
+    <table class="full chart">
       <colgroup>
         <col span="1" style="width:1em;"/>
       </colgroup>
@@ -26,16 +66,22 @@
           <th>Grade</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="vertical">
         <!-- iterate student:practice -->
         <tr>
           <td>[$assignment:@index]</td>
           <td><a href="[/$student:course/assignment/practice/$assignment:@index]">[$assignment:@title]</a></td>
           <td>Pending</td>
           <td><a href="[$student:@url/practice/$assignment:@index/]">Preview</a></td>
-          <td>pending</td>
+          <td><a href="[/records/score/practice/id]">grade</a></td>
         </tr>
       </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">µ/complete</th>
+          <td class="centered">%</td>
+        </tr>
+      </tfoot>
     </table>
   </section>
   <section>
@@ -44,5 +90,9 @@
       <!-- iterate student:projects -->
       <li>[$assignment:@title]</li>
     </ul>
+  </section>
+
+  <section>
+    <h3>Quizzes</h3>
   </section>
 </article>

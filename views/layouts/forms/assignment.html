@@ -1,0 +1,19 @@
+<article>
+
+  <header>
+    <h2><a href="[/records/student/$student:@id]">[$student:@name]</a></h2>
+    <nav>
+      <ul class="inline">
+        <li></li>
+        <li><a href="[$student:@url/]" class="external">IAM Course Site</a></li>
+      </ul>
+    </nav>
+    <h1>[$assessment:assignment:@title]</h1>
+  </header>
+
+  <form action="[/records/evaluate/$topic/$index/$student:@id]" method="post">
+    <input type="hidden" name="redirect" value="[$redirect]"/>
+    <!-- replace topic -->
+    <button type="submit">Save</button>
+  </form>
+</article>
