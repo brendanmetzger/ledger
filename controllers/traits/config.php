@@ -24,6 +24,7 @@ trait config {
 
   public function authenticate()
   {
+
     if ((isset($_SESSION) && array_key_exists('id', $_SESSION))) {
       $node = \models\Data::ID($_SESSION['id']);
       return \models\Data::FACTORY($node->nodeName, $node);
@@ -48,7 +49,7 @@ trait config {
     ];
 
     $view = new \bloc\View(self::layout);
-    $view->content = "views/form/authenticate.html";
+    $view->content = "views/layouts/forms/authenticate.html";
 
     if ($status == 'instructor') {
       $view->user = \bloc\dom\Document::NODE('<input type="text" value="" name="uid" placeholder="instructor"/>');
@@ -106,7 +107,7 @@ trait config {
 
           // email the user a link.
           $template = new \bloc\View('views/layouts/email.html');
-          $template->content = 'views/form/transaction.html';
+          $template->content = 'views/layouts/forms/transaction.html';
 
           $output = [
             'link' =>  DOMAIN."/records/token/{$user['@id']}/{$token}",
@@ -119,10 +120,10 @@ trait config {
       }
     } catch (\InvalidArgumentException $e) {
       $type = $e->getCode() == 1 ? 'invalid' : 'duplicate';
-      \bloc\router::redirect(sprintf('/%s/login/%s/%s',$this->_controller, base64_encode($redirect), $type));
+      \bloc\router::redirect(sprintf('/%s/login/%s/%s',$this->template, base64_encode($redirect), $type));
     }
     $view = new \bloc\View(self::layout);
-    $view->content = 'views/form/transaction.html';
+    $view->content = 'views/layouts/forms/transaction.html';
     return $view->render([
       'link' => 'http://www.colum.edu/loopmail',
       'title' => 'Email Sent',

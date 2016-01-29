@@ -18,7 +18,9 @@ class Instructor extends \bloc\Model implements \bloc\types\authentication
     ]
   ];
 
-  public $path = 'records/evaluate';
+  public $path = 'records/evaluate',
+         $edit = '✍';
+
 
   public function authenticate($token)
   {

@@ -10,6 +10,8 @@ namespace models;
   {
     use traits\indexed, traits\persist;
 
+    const WEIGHT = 30;
+
     static public $fixture = [
       'discourse' => [
         '@' => ['punctuality' => 0, 'persistance' => 0, 'observation' => 0],
@@ -24,7 +26,11 @@ namespace models;
 
     public function getScore(\DOMElement $context)
     {
-      $sum = $context['@punctuality'] + $context['@persistance'] + $context['@observation'] - 2;
-      return $sum * 100;
+      return $context['@punctuality'] + $context['@persistance'] + $context['@observation'] - 2;
+    }
+
+    public function getPercentage(\DOMElement $context)
+    {
+      return $this->score * 100;
     }
   }

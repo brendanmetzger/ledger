@@ -91,7 +91,14 @@ class Records extends \bloc\controller
       $view->content = "views/layouts/error.html";
       return $view->render($this(['message' => "did not save"]));
     }
+  }
 
+  protected function GETinquiry(Student $student)
+  {
+    $view = new View(self::layout);
+    $view->content = 'views/layouts/forms/inquiry.html';
+    $this->placeholder = null;
+    return $view->render($this());
   }
 
 

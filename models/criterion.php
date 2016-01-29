@@ -8,7 +8,7 @@ namespace models;
 
   class Criterion extends \bloc\Model
   {
-    use traits\resolver, traits\persist;
+    use traits\indexed, traits\persist;
 
     const XPATH = '/model/criteria/';
 

@@ -4,7 +4,7 @@ use \models\Data;
 
 trait principle {
   protected function identify($identity) {
-    return false;
+    return null;
   }
 
   protected function initialize() {

@@ -1,7 +1,8 @@
-<form action="[/$_controller/login]" method="post">
+<form action="[/$template/login]" method="post">
   <style media="screen">
     fieldset.login input {
-      font-size:8em;
+      font-size:5em;
+      padding:0.25em;
     }
   </style>
   <fieldset class="login">
@@ -9,6 +10,6 @@
     <input type="hidden" value="[$redirect]" name="redirect"/>
     <!-- replace user -->
     <input type="password" value="" name="pin" placeholder="identification / oasis" required="required"/>
-    <button type="submit">Authenticate</button>
   </fieldset>
+  <button type="submit">Authenticate</button>
 </form>

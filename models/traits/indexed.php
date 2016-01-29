@@ -4,11 +4,26 @@ use \models\Data;
 
 trait indexed {
   protected function identify($identity) {
-    return data::ID($identity);
+    // indenity should have and index and a type
+    $name = self::type();
+
+    return Data::instance()->query(self::XPATH)
+                           ->find("{$name}{$identity}")
+                           ->pick(0);
   }
 
   protected function initialize() {
-    throw new \RuntimeException("Index too high", 1);
 
+    throw new \RuntimeException("Index type instantion needs creating", 1);
+  }
+
+  static public function collect(callable $callback = null, $filter = '')
+  {
+    $name = self::type();
+    return Data::instance()->query(self::XPATH)
+                           ->find($name.$filter)
+                           ->map($callback ?: function($item) use($name) {
+                             return [$name => new self($item)];
+                           });
   }
 }

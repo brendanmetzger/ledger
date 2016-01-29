@@ -36,15 +36,18 @@ class Course extends \bloc\controller
     return $view->render($this());
   }
 
-  protected function GETcriterion(User $user, $topic, $index = 0)
+  protected function GETcriterion(User $user, $type, $index = 0, $course = null)
   {
     $view = new View(self::layout);
-
+    $course = $course ?: static::ID;
+    $this->criterion = $c = new \models\Criterion("[@index='{$index}'and @type='{$type}' and @course='{$course}']");
     if ($index != 0) {
       $view->content = 'views/layouts/error.html';
       $this->message = "Assignment not ready";
     } else {
-      $view->content = "views/outline/assignments/".static::ID."/$topic/$index.html";
+      $view->content = "views/outline/assignments/".static::ID."/$type/$index.html";
+      $view->context = "views/outline/_/schedule.html";
+      $this->schedule = $user->section->schedule;
     }
 
     return $view->render($this());
@@ -54,6 +57,8 @@ class Course extends \bloc\controller
   {
     $view = new View(self::layout);
     $view->content = 'views/layouts/dashboard.html';
+    $view->context = "views/outline/_/schedule.html";
+    $this->schedule = $student->section->schedule;
     return $view->render($this());
   }
 
