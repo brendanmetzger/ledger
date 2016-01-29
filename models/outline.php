@@ -118,7 +118,7 @@ namespace models;
     public function getAssignments(\DOMElement $context)
     {
       return $context->find('assignment')->map(function($item) {
-        return ['assignment' => new Assignment($item['@ref'])];
+        return ['assignment' => new Criterion($item['@ref'])];
       });
     }
 

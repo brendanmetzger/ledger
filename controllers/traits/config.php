@@ -13,8 +13,7 @@ trait config {
     $this->year        = date('Y');
     $this->title       = "*SWM";
     $this->email       = 'bmetzger@colum.edu';
-    $this->_controller = $request->controller;
-    $this->_action     = $request->action;
+    $this->template    = $request->controller;
 
     if (($user = $this->authenticate()) instanceof \bloc\types\authentication) {
       $type = $user::type();

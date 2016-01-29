@@ -13,9 +13,8 @@ class Instructor extends \bloc\Model implements \bloc\types\authentication
   const XPATH = '/model/';
 
   static public $fixture = [
-    'student' => [
-      '@' => ['id' => null, 'email' => '', 'hash' => ''],
-      'assignment' => [],
+    'instructor' => [
+      '@' => ['id' => null, 'email' => '', 'hash' => '']
     ]
   ];
 

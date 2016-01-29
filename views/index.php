@@ -25,7 +25,6 @@ $app->prepare('clean-up', function ($app) {
 
 # main page deal
 $app->prepare('http-request', function ($app, $params) {
-
   $request  = new Request($params);
   $response = new Response($request);
 
@@ -34,8 +33,17 @@ $app->prepare('http-request', function ($app, $params) {
   // Provide a namespace (also a directory) to load objects that can respond to controller->action
   $router  = new Router('controllers', $request);
 
+  try {
+    $output = $router->delegate('lecture', 'index');
+  } catch (\Exception $e) {
+    \bloc\application::instance()->log($e->getTrace());
+    $view = new View(\controllers\records::layout);
+    $view->content = 'views/layouts/error.html';
+    $output = $view->render(['message' => $e->getMessage()]);
+  }
+
   // default controller and action as arguments, in case nothin doin in the request
-  $response->setBody($router->delegate('lecture', 'index'));
+  $response->setBody($output);
 
   if (getenv('MODE') === 'local' && count($app->log()) > 0) {
     $app->execute('debug', $response);

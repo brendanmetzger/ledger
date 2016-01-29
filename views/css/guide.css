@@ -5,7 +5,7 @@
 a:active,a:link:focus,a:visited:focus {outline:1px dotted #333}
 a:not([href]) {cursor:default;text-decoration: line-through;pointer-events: none;opacity:0.5;text-decoration-style:wavy}
 body,p,ul,ol,li,div,a{margin:0;text-decoration:none;}
-h1,h2,h4,dt {margin:0.65em 0}
+h1,h2,h4,dt {margin:0.5em 0}
 div.column > * {margin:0 0.5em}
 dl,dt,dd {margin:0}
 hr,blockquote,*.flag > * {margin:1em 0;}

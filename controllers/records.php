@@ -4,6 +4,7 @@ namespace controllers;
 use \bloc\view;
 use \models\data;
 use \models\Instructor as Admin;
+use \models\Student as Student;
 
 /**
  * Records Management
@@ -36,57 +37,61 @@ class Records extends \bloc\controller
 
   protected function GETstudent(Admin $instructor, $id)
   {
+    $this->student   = new \models\Student($id);
+
     $view = new View(self::layout);
     $view->content = "views/layouts/dashboard.html";
+    $view->context = "views/layouts/list/section.html";
 
-    $this->student = new \models\Student($id);
-    $this->participation = \models\Assignment::collect(null, "[@type='participation']");
+    $this->section = $this->student->section;
 
     return $view->render($this());
   }
 
+  /**
+   * HTTP Get Evaluation
+   *
+   * @param Admin $instructor automatically passed based on session_id
+   * @param string $topic (participation|practice|project|quiz)
+   * @param int $index assignment number
+   * @param string $sid student id number
+   **/
   protected function GETevaluate(Admin $instructor, $topic, $index, $sid = null)
   {
-    $view = new View(self::layout);
-    $view->content = "views/layouts/forms/assignment.html";
-    $view->topic = "views/layouts/forms/{$topic}.html";
+    $this->student = new Student($sid);
 
-    $this->student = new \models\Student($sid);
     $this->topic = $topic;
     $this->index = $index;
 
-    return $view->render($this());
-  }
-
-  protected function POSTevaluate(Admin $instructor, $topic, $index, $sid = null)
-  {
-    \bloc\application::instance()->log(json_encode($_POST['cost'], JSON_NUMERIC_CHECK));
     $view = new View(self::layout);
-    return $view->render($this());
-  }
 
-
-  protected function GETlist(Admin $instructor, $topic = 'student')
-  {
-    $view = new View(self::layout);
-    $view->content = "views/list/{$topic}.html";
-
-    if ($topic == 'course') {
-      $this->students = \Models\Student::collect()->sort(function($a, $b) {
-        return $a['student']->grades->count() - $b['student']->grades->count();
-      });
-    }
-
-    if ($topic == 'assignment') {
-      $this->assignments = \Models\Assignment::collect();
+    if ($topic == 'practice') {
+      $this->template = 'editor';
+      $this->url = $this->student->context['@url'];
+      $view->context = "views/layouts/forms/critique.html";
+      $view->content = "views/layouts/inspector.html";
+    } else {
+      $this->{$topic} = Data::FACTORY($topic, $this->student->context->getElement($topic, $index));
+      $view->content = "views/layouts/forms/assignment.html";
+      $view->topic = "views/layouts/forms/{$topic}.html";
     }
 
     return $view->render($this());
   }
 
-  protected function GETcreate(Admin $instructor, $type)
+  protected function POSTevaluate(Admin $instructor, $request, $topic, $index, $sid)
   {
-    return "not yet";
+    $student = new Student($sid);
+    $item = Data::FACTORY($topic, $student->context->getElement($topic, $index), $_POST);
+    if ($item->save()) {
+      \bloc\router::redirect("/records/student/{$sid}");
+    } else {
+      \bloc\application::instance()->log($item);
+      $view = new View(self::layout);
+      $view->content = "views/layouts/error.html";
+      return $view->render($this(['message' => "did not save"]));
+    }
+
   }
 
 
@@ -97,32 +102,6 @@ class Records extends \bloc\controller
     return $view->render($this());
   }
 
-  protected function GETassignment(Admin $instructor, $student_id, $assignment_id, $flag = "edit")
-  {
-    $view = new View(self::layout);
-    $view->content = "views/form/assignment.html";
-    $this->assessment = new \models\Assessment([
-      'reference' => new \models\Assignment($assignment_id),
-      'container' => new \models\Student($student_id),
-    ]);
-    $this->message = $flag;
-    $this->redirect = $_SERVER['HTTP_REFERER'];
-    return $view->render($this());
-  }
-
-  protected function POSTassignment(Admin $instructor, $request, $student_id, $assignment_id)
-  {
-    $instance = new \models\Assessment([
-      'reference' => new \models\Assignment($assignment_id),
-      'container' => new \models\Student($student_id),
-    ], $_POST);
-
-    if ($instance && $instance->save()) {
-      \bloc\router::redirect($_POST['redirect'] . '#' . $assignment_id);
-    } else {
-      print_r($instance->errors);
-    }
-  }
 
   public function GETtemplate($id = 'YNUZ')
   {

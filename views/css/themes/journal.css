@@ -1,7 +1,7 @@
 body{
   font:400 0.625em/250% "Avenir Next", "HelveticaNeue-Light","Helvetica Neue",Helvetica;
-  padding:0.25em 0 5em;
-  border-width:1em 0 1em;
+  padding:0.25em 0 0;
+  border-width:1em 0 0;
   box-sizing:border-box;
   background-color: hsl(45, 30%, 97.5%);
   color:rgba(0,0,0,0.85);
@@ -145,7 +145,7 @@ ul.cross li:before {content: '☓';}
 }
 
 
-section[class] {
+article > section[class] {
   margin:10vh 0;
 }
 
@@ -179,9 +179,12 @@ form input[type=text], form textarea {
   padding:0.25em;
   display:block;
   font-size:1.5em;
-  box-sizing:border-box;
-  width:100%;
   margin:0.25em 0;
+}
+
+input, textarea {
+  width:100%;
+  box-sizing:border-box;
 }
 
 form textarea {
@@ -252,4 +255,15 @@ pre.error.console {
   background-color:rgba(255,255,255,0.9);
   border:1px solid #eee;
   box-shadow:0 0 1em rgba(0,0,0,0.1);
+}
+
+
+/* Editor */
+body.editor > nav div {
+  width:20vw;
+}
+body.editor > main {
+  padding:0;
+  margin-left:20vw;
+  margin-top:-1.25em;
 }

@@ -20,9 +20,9 @@ class Course extends \bloc\controller
   protected function GETindex(User $user, $id = '0', $section = '01')
   {
     $view = new View(static::layout);
-    $view->content    = "views/outline/{$id}.html";
-    $view->navigation = "views/outline/_/schedule.html";
-    $view->lecture    = "views/outline/".static::ID."/{$id}.html";
+    $view->content = "views/outline/{$id}.html";
+    $view->context = "views/outline/_/schedule.html";
+    $view->lecture = "views/outline/".static::ID."/{$id}.html";
 
     $this->course = new \Models\Course(Data::ID(static::ID));
     $schedule = $this->course->section($section)->schedule;
@@ -36,7 +36,7 @@ class Course extends \bloc\controller
     return $view->render($this());
   }
 
-  protected function GETassignment(User $user, $topic, $index = 0)
+  protected function GETcriteria(User $user, $topic, $index = 0)
   {
     $view = new View(self::layout);
 
