@@ -18,6 +18,8 @@ class Instructor extends \bloc\Model implements \bloc\types\authentication
     ]
   ];
 
+  public $path = 'records/evaluate';
+
   public function authenticate($token)
   {
     if (! password_verify($token, $this->context->getAttribute('hash'))) {

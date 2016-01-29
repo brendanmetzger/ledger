@@ -67,10 +67,18 @@ namespace models;
     public function getDiscourse(\DOMElement $context, $index = 0)
     {
       $schedule = $this->section->schedule;
-      return Criterion::collect(function ($criterion, $index) use($schedule) {
-        \bloc\application::instance()->log($schedule[$index]);
-        return ['criterion' => $criterion];
+      $reviewed = $this->context->find('discourse');
+      $total = $reviewed->count();
+      \bloc\application::instance()->log($total);
+      $collect = Criterion::collect(function ($criterion, $index) use($schedule, $reviewed) {
+        $map = ['criterion' => $criterion, 'schedule' => $schedule[$index]];
+        if ($node = $reviewed->pick($index)) {
+          $map['discourse'] = new Discourse($node);
+        }
+        return $map;
       }, "[@type='discourse']");
+
+      return $collect;
     }
 
 }

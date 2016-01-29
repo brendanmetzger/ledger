@@ -36,7 +36,7 @@ class Course extends \bloc\controller
     return $view->render($this());
   }
 
-  protected function GETcriteria(User $user, $topic, $index = 0)
+  protected function GETcriterion(User $user, $topic, $index = 0)
   {
     $view = new View(self::layout);
 

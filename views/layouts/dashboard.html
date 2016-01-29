@@ -23,6 +23,12 @@
     table.chart tfoot tr {
       border-top:2px solid #333;
     }
+    td.pending {
+      background-color:rgba(0,0,0,0.125);
+    }
+    td.pending * {
+      display:none;
+    }
   /* ]]> */
   </style>
   <h2>[$student:@name]</h2>
@@ -40,13 +46,16 @@
           <th>Week</th>
           <!-- iterate student:discourse -->
           <td>[$criterion:@index]</td>
-          <th>µ ∕ num</th>
+          <th>µ</th>
         </tr>
         <tr>
           <th>Score</th>
           <!-- iterate student:discourse -->
-          <td><a href="[[/records/evaluate/discourse/$criterion:@index/$$student:@id]]">grade</a></td>
-          <th>[$student:@id]</th>
+          <td class="[$schedule:status]" title="[$discourse]">
+            <strong>[$discourse:score%]</strong>
+            <a href="[[/$$instructor:path/discourse/$criterion:@index/$$student:@id]]">✍</a>
+          </td>
+          <th>%</th>
         </tr>
       </tbody>
     </table>
@@ -73,7 +82,7 @@
           <td><a href="[[/$$student:course/criterion/practice/$criterion:@index]]">[$criterion:@title]</a></td>
           <td>Pending</td>
           <td><a href="[[$$student:@url/practice/$criterion:@index/]]">Preview</a></td>
-          <td><a href="[[/records/evaluate/practice/$criterion:@index/$$student:@id]]">grade</a></td>
+          <td><a href="[[/$$instructor:path/practice/$criterion:@index/$$student:@id]]">grade</a></td>
         </tr>
       </tbody>
       <tfoot>

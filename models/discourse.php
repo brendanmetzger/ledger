@@ -21,4 +21,10 @@ namespace models;
     {
       $context->setAttribute('value', 0);
     }
+
+    public function getScore(\DOMElement $context)
+    {
+      $sum = $context['@punctuality'] + $context['@persistance'] + $context['@observation'] - 2;
+      return $sum * 100;
+    }
   }
