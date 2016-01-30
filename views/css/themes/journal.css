@@ -1,6 +1,6 @@
 body{
   font:400 0.625em/250% "Avenir Next", "HelveticaNeue-Light","Helvetica Neue",Helvetica;
-  padding:0.25em 0 0;
+  padding:0.25em 0 5em;
   border-width:1em 0 0;
   box-sizing:border-box;
   background-color: hsl(45, 30%, 97.5%);

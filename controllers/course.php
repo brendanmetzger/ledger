@@ -46,8 +46,12 @@ class Course extends \bloc\controller
       $this->message = "Assignment not ready";
     } else {
       $view->content = "views/outline/assignments/".static::ID."/$type/$index.html";
-      $view->context = "views/outline/_/schedule.html";
-      $this->schedule = $user->section->schedule;
+
+      if ($user instanceof Student) {
+        $view->context = "views/outline/_/schedule.html";
+        $this->schedule = $user->section->schedule;
+      }
+
     }
 
     return $view->render($this());

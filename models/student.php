@@ -22,8 +22,6 @@ namespace models;
       ]
     ];
 
-    private $accumulator = [];
-
     static public function BLEAR($key)
     {
       return strtr(strtoupper(base_convert((int)$key, 10, 26)), '0123456789', 'QRSTUVWXYZ');
@@ -68,7 +66,7 @@ namespace models;
       $type = 'discourse';
       $schedule = $this->section->schedule;
       $reviewed = $this->context->find($type);
-      $average  = 1 / $reviewed->count();
+      $average  = 1 / ($reviewed->count() ?: 1);
       $accumulator = 0;
 
       $collect = Criterion::collect(function ($criterion, $index) use($type, $schedule, $reviewed, $average, &$accumulator) {
