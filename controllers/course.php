@@ -23,7 +23,6 @@ class Course extends \bloc\controller
     $view->content = "views/outline/{$id}.html";
     $view->context = "views/outline/_/schedule.html";
     $view->lecture = "views/outline/".static::ID."/{$id}.html";
-
     $this->course = new \Models\Course(Data::ID(static::ID));
     $schedule = $this->course->section($section)->schedule;
     $schedule[$id]['selected'] = 'selected';
@@ -41,11 +40,12 @@ class Course extends \bloc\controller
     $view = new View(self::layout);
     $course = $course ?: static::ID;
     $this->criterion = $c = new \models\Criterion("[@index='{$index}'and @type='{$type}' and @course='{$course}']");
-    if ($index != 0) {
+    $path = "views/outline/assignments/".static::ID."/$type/$index.html";
+    if (!file_exists(PATH.$path)) {
       $view->content = 'views/layouts/error.html';
       $this->message = "Assignment not ready";
     } else {
-      $view->content = "views/outline/assignments/".static::ID."/$type/$index.html";
+      $view->content = $path;
 
       if ($user instanceof Student) {
         $view->context = "views/outline/_/schedule.html";

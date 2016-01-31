@@ -96,8 +96,8 @@ a:hover {
 }
 
 
-h1,h2.h1{letter-spacing:-0.075em;font-size:4em;font:800 2em/0.75em 'Avenir Next','HelveticaNeue-Light','Helvetica Neue',Helvetica;}
-h2,h1.h2{font-size:3.25vw;line-height:150%;font-weight:200}
+h1,.h1{letter-spacing:-0.075em;font:400 4em/1em 'Avenir Next','HelveticaNeue-Light','Helvetica Neue',Helvetica;}
+h2,.h2{font-size:3.25vw;line-height:150%;font-weight:200}
 h3,.h3{font-size:2vw;margin:0.5em 0;font-weight:400;}
 .massive{font-weight:200}
 h4 {text-transform:uppercase;}
@@ -266,4 +266,51 @@ body.editor > main {
   padding:0;
   margin-left:20vw;
   margin-top:-1.25em;
+}
+
+dl {
+  margin:0;
+  padding:0;
+}
+
+dt {
+  font-weight:600;
+  margin:0;
+  font-size:1.5em;
+}
+dd {
+  font-size:1.5em;
+  line-height:1.25em;
+  padding:0.25em 0 0.25em 0.75em;
+  margin:0.5em 0.125em;
+  border-left:1px solid #AAA;
+}
+
+.glossary details:nth-child(3n + 2) {
+  clear: left;
+}
+.glossary details {
+  padding:0 2em;
+}
+.glossary summary {
+  color:#6E6E6E;
+  font-size:1.75em;
+  font-weight:400;
+  padding:0.5em 0;
+  border-top:1px solid rgba(0,0,0,0.1);
+}
+
+summary:focus {
+  outline:none;
+}
+
+details[open] {
+  border-left:1px dashed rgba(0,0,0,0.1);
+
+}
+
+.glossary details p {
+  font-size:1.25em;
+  font-family:'Avenir Next', Avenir, Helvetica;
+  line-height:1em;
 }

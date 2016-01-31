@@ -1,60 +1,90 @@
-<article class="topic">
-  <h1>Glossary</h1>
-
-  <h2>Tools</h2>
-  <dl>
-    <dt>Text Editor</dt>
-    <dd>We will all use Atom in this class</dd>
-    <dt>Browser Console</dt>
-  </dl>
-
-  <h2>Javascript</h2>
-  <dl>
-    <dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Primitive_values">Primitive Types</a></dt>
-    <dd>Boolean</dd>
-    <dd>Null</dd>
-    <dd>Undefined</dd>
-    <dd>Number</dd>
-    <dd>String</dd>
-    <dd>Symbol (new)</dd>
-    <dt>Objects &amp; Reference Types</dt>
-  </dl>
-
-  <h2><abbr title="Cascading Stlyle Sheets">CSS</abbr></h2>
-  <dl>
-    <dt>An Exhaustive Reference</dt>
-    <dd>The Mozilla Developer Network is my go to<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">reference</a> for most front-end development needs.</dd>
-    <dt>Selectors</dt>
-    <dd>Descendant</dd>
-    <dd>etc..</dd>
-  </dl>
-
-  <h2>Markup Languages</h2>
-  <p>A striking feature of markup languages is that they are a <a href="https://en.wikipedia.org/wiki/Human-readable_medium">human-readable</a> medium.</p>
-  <dl>
-    <dt><abbr title="Hypertext markup language">html</abbr></dt>
-    <dt><abbr title="Extensible Markup Language">xml</abbr></dt>
-    <dt>Doctype</dt>
-    <dt><abbr title="JavasScript Objcet"></abbr></dt>
-  </dl>
-
-  <h2><a href="https://en.wikipedia.org/wiki/Communications_protocol">Communications Protocols</a></h2>
-  <dl>
-    <dt><abbr title="Hypertext Transfer Protocol">http</abbr></dt>
-    <dt><abbr title="File Transfer Protocol">ftp</abbr></dt>
-
-  </dl>
-
-  <h2>Resources</h2>
-  <dl>
-    <dl>Tools</dl>
-    <dd>Mastering the <a href="http://blog.teamtreehouse.com/mastering-developer-tools-console">developer tools</a> console</dd>
-    <dd><a href="http://git-scm.com/">Git</a> and <a href="https://guides.github.com/">GitHub</a></dd>
-    <dl>Tutorials</dl>
-    <dd><a href="http://learn.shayhowe.com/html-css/">Learn HTML &amp; CSS</a>, a nice, colorful online book-ish type plan.</dd>
-    <dd>A glossy HTML &amp; CSS primer called <a href="http://marksheet.io/">MarkSheet</a>.</dd>
-    <dd><a href="https://www.khanacademy.org/computing/computer-programming/html-css">Khan Academy</a> has an extensive library on many subjects, including web development.</dd>
-  </dl>
-
-
+<article class="topic glossary container">
+  <h1 class="ruled">Glossary</h1>
+  <details class="one-third float left">
+    <summary>Tools and Methadologies</summary>
+    <dl>
+      <dt>Text Editor</dt>
+      <dt>Browsers</dt>
+      <dt>Browser Console</dt>
+      <dt><abbr title="Read Eval Print Loop">REPL</abbr></dt>
+      <dt>Code Conventions</dt>
+      <dt><a href="https://en.wikipedia.org/wiki/Web_server">Web Server</a></dt>
+      <dd>Software that enables a computer to respond to HTTP requests. Popular Web Servers are Apache and Nginx</dd>
+    </dl>
+  </details>
+  <details class="one-third float left">
+    <summary>Javascript</summary>
+    <dl>
+      <dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Primitive_values">Primitive Types</a></dt>
+      <dd>Boolean</dd>
+      <dd>Null</dd>
+      <dd>Undefined</dd>
+      <dd>Number</dd>
+      <dd>String</dd>
+      <dd>Symbol (new)</dd>
+      <dt>Objects &amp; Reference Types</dt>
+    </dl>
+  </details>
+  <details class="one-third float left">
+    <summary>Cascading Style Sheets</summary>
+    <dl>
+      <dt>Reference</dt>
+      <dd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">MDN</a> has it all.</dd>
+    </dl>
+  </details>
+  <details class="one-third float left">
+    <summary>Files, File and Operating Systems</summary>
+    <dl>
+      <dt>Absolute vs. Relative Paths</dt>
+      <dt>Directory</dt>
+      <dt>File Extension</dt>
+      <dt>Document Root (see web server)</dt>
+      <dt>Index page</dt>
+      <dt><abbr title="Portable Operating System Interface">POSIX</abbr></dt>
+      <dt>Zip File</dt>
+      <dd>An archive format that supports lossless compression</dd>
+      <dd>Zip Files can be used to pass an entire directory through <abbr>HTTP</abbr></dd>
+    </dl>
+  </details>
+  <details class="one-third float left">
+    <summary>Markup Languages</summary>
+    <p class="em">A striking feature of markup languages is that they are a <a href="https://en.wikipedia.org/wiki/Human-readable_medium">human-readable</a> medium.</p>
+    <dl>
+      <dt><abbr title="Hypertext markup language">html</abbr></dt>
+      <dt><abbr title="Extensible Markup Language">xml</abbr></dt>
+      <dt>Document Element (Or Root Element)</dt>
+      <dt>Empty vs closed elements</dt>
+      <dt>Doctype</dt>
+    </dl>
+  </details>
+  <details class="one-third float left">
+    <summary>Communications Protocols</summary>
+    <dl>
+      <dt><a href="https://en.wikipedia.org/wiki/Communications_protocol">Network Protocol</a></dt>
+      <dd>A system of rules that allow two or more entities of a communications system to transmit information to one another.</dd>
+      <dt><abbr title="Uniform Resource Locators">URL</abbr>s</dt>
+      <dt><abbr title="Hypertext Transfer Protocol">http</abbr></dt>
+      <dd>The Hypertext Transfer Protocol is a request/response format that exchanges data between client (browser) and server.</dd>
+      <dd>See <strong>Webserver</strong> in Tools and Methodologies</dd>
+      <dt><abbr title="File Transfer Protocol">ftp</abbr></dt>
+    </dl>
+  </details>
+  <details class="one-third float left">
+    <summary>General Web Development Terms</summary>
+    <dl>
+      <dt>Sitemap (xml)</dt>
+    </dl>
+  </details>
+  <details class="one-third float left">
+    <summary>Online Resources</summary>
+    <dl>
+      <dt>Tools</dt>
+      <dd>Mastering the <a href="http://blog.teamtreehouse.com/mastering-developer-tools-console">developer tools</a> console</dd>
+      <dd><a href="http://git-scm.com/">Git</a> and <a href="https://guides.github.com/">GitHub</a></dd>
+      <dt>Tutorials</dt>
+      <dd><a href="http://learn.shayhowe.com/html-css/">Learn HTML &amp; CSS</a>, a nice, colorful online book-ish type plan.</dd>
+      <dd>A glossy HTML &amp; CSS primer called <a href="http://marksheet.io/">MarkSheet</a>.</dd>
+      <dd><a href="https://www.khanacademy.org/computing/computer-programming/html-css">Khan Academy</a> has an extensive library on many subjects, including web development.</dd>
+    </dl>
+  </details>
 </article>

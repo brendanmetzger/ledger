@@ -7,7 +7,6 @@ a:not([href]) {cursor:default;text-decoration: line-through;pointer-events: none
 body,p,ul,ol,li,div,a{margin:0;text-decoration:none;}
 h1,h2,h4,dt {margin:0.5em 0}
 div.column > * {margin:0 0.5em}
-dl,dt,dd {margin:0}
 hr,blockquote,*.flag > * {margin:1em 0;}
 *.negated dt:before {content:'~'}
 

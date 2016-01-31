@@ -31,7 +31,6 @@ class Records extends \bloc\controller
     $view = new View(self::layout);
     $view->content = 'views/layouts/courses.html';
     $this->courses = \Models\Course::collect();
-    $this->todo    = "show single course | show single section";
     return $view->render($this());
   }
 
