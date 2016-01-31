@@ -9,6 +9,7 @@ trait config {
     \bloc\view::addRenderer('before', Render::PARTIAL());
     \bloc\view::addRenderer('after', Render::HTML());
     \bloc\view::addRenderer('after', Render::PREVIEWS());
+    \bloc\view::addRenderer('after', Render::REVIEW());
 
     $this->year        = date('Y');
     $this->title       = "*SWM";
