@@ -6,22 +6,70 @@
   </header>
   <article>
     <h2><abbr title="hypertext markup language">HTML</abbr></h2>
+    <p>It's important to consider that you are now <strong>marking up</strong> a document using a careful hierarchy and structure. This serves two purposes: first to add meaning so that a machine can accurately parse the data, and second, to create nodes that you can find with CSS and apply style and aesthetic.</p>
     <section>
       <h3>Sectioning Blocks</h3>
-      <p>section, article, aside, footer, header, nav, hgroup</p>
+      <dl>
+        <dt>article</dt>
+        <dt>section</dt>
+        <dt>header</dt>
+        <dt>footer</dt>
+        <dt>nav</dt>
+      </dl>
+      <h3>Headings, Paragraphs, etc.</h3>
+      <dl>
+        <dt>h1, h2, h3, h4, h5, h6</dt>
+        <dt>em, i</dt>
+        <dd>adds an italicized face to text. Semantically, em means 'emphasis', where i just means you want a visual distinction (em is usually the way to go)</dd>
+        <dt>strong, b</dt>
+        <dd>adds a bold face to text. Semantically, strong carries more meaning, b is just visual.</dd>
+        <dt>p</dt>
+        <dd>represents paragraphs</dd>
+        <dt>a</dt>
+        <dd>hyperlinks are added via the a tag, and links are facilitated through an href attribute.</dd>
+      </dl>
     </section>
   </article>
   <article>
     <h2><abbr title="Cascading Style Sheets">CSS</abbr>: Descendant Selectors and Typography</h2>
     <h3>Declaring <abbr title="Cascating Stylesheets">CSS</abbr></h3>
     <p>Glancing at an <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Syntax">overview of the syntax</a>, the declaration of a <abbr>CSS</abbr> ruleset resembles a programming data structure to some degree. Curly braces, colons, semicolons and careful use of punctuation operators is the starting point. From the onset, organization and code conventions are not only important, but mandatory for this course.</p>
-    <h3>Element Selectors and Descendants</h3>
-    <h3>Typographic <abbr>CSS</abbr> selectors</h3>
-    <!-- insert views/outline/_/tables/css/typography.html -->
-    <h3>Units</h3>
+    <h3>Units (of measure)</h3>
+    <dl>
+      <dt>px (pixels)</dt>
+      <dt>em</dt>
+      <dd>an em is the width of a letter 'M', it is percentage based, so it is good for responsive design</dd>
+      <dt>%</dt>
+      <dd>Percentages are tough to get the hang of. They generally work well, and I would recommend them for widths.</dd>
+      <dt>vh/vw</dt>
+      <dd>A percentage of the viewport height and viewport width respectively. This is a handy one.</dd>
+    </dl>
+    <h3>Text Properties</h3>
+    <dl>
+      <dt>text-align</dt>
+      <dd>Used to align left, center, right align, as well as justify text. You can only align text in block-level elements.</dd>
+      <dt>text-transform</dt>
+      <dd>Offers transform to upper/lowercase, can capitalize a sentence, etc.</dd>
+      <dt>text-decoration</dt>
+      <dd>Controls underline, line-through, overline, etc.</dd>
+      <dt>text-indent</dt>
+      <dd>set the indentation using a CSS unit.</dd>
+    </dl>
+    <h3>Font Properties</h3>
+    <dl>
+      <dt>font-size</dt>
+      <dd>Changes the size of text in a selected element. Can use any unit.</dd>
+      <dt>font-family</dt>
+      <dd>Changes the typeface of an element. Specify this as a sequences of typefaces.</dd>
+      <dt>font-weight</dt>
+      <dd>Controls weight thin/normal/bold, or in 3 digit numbers like 200, 400, 800 (prefferred)</dd>
+      <dt>font-variant</dt>
+      <dd>Can add small-caps</dd>
+    </dl>
   </article>
   <article>
     <h2>Programming: The briefest introduction.</h2>
+    <p>Computers are essentially very complicated machines that do something very simple, and that is they turn electricity into a trove of circuits that can count very (<strong>very</strong>) fast. The fascinating thing is that there are many ways to count, in fact, an infinite number of ways.</p>
   </article>
   <article>
     <h2>Review &amp; Extra: Text, Editors, and Keyboards</h2>
@@ -30,10 +78,9 @@
     <ul>
       <li>Try to use the mouse less and less</li>
       <li>Learn shortcuts to jump to front and back of lines</li>
-      <li>Learn</li>
+      <li>Saving a document and moving to a browser and refreshing can be a swift mouse-less motion.</li>
     </ul>
   </article>
-
 
   <script type="text/javascript">
     // <![CDATA[
