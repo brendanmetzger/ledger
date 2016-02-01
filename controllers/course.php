@@ -22,7 +22,7 @@ class Course extends \bloc\controller
     $view = new View(static::layout);
     $view->content = "views/outline/{$id}.html";
     $view->context = "views/outline/_/schedule.html";
-    $view->lecture = "views/outline/".static::ID."/{$id}.html";
+    $view->lecture = "views/outline/".strtolower(static::ID)."/{$id}.html";
     $this->course = new \Models\Course(Data::ID(static::ID));
     $schedule = $this->course->section($section)->schedule;
     $schedule[$id]['selected'] = 'selected';
