@@ -1,0 +1,17 @@
+<div>
+  <!-- iterate courses -->
+  <section class="container">
+    <h2>[$course:@title]</h2>
+    <!-- iterate course:sections -->
+    <div>
+      <h4 class="bottom ruled">
+        <a href="[/$section:@course/0/$section:@id]">[§$section:@id]</a>
+        <span>[$section:time $section:@room]</span>
+      </h4>
+      <!-- iterate section:schedule -->
+      <div>
+        <span>[$date]</span>
+      </div>
+    </div>
+  </section>
+</div>

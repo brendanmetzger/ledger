@@ -34,6 +34,14 @@ class Records extends \bloc\controller
     return $view->render($this());
   }
 
+  protected function GETattendance(Admin $instructor)
+  {
+    $view = new View(self::layout);
+    $view->content = 'views/layouts/attendance.html';
+    $this->courses = \Models\Course::collect();
+    return $view->render($this());
+  }
+
   protected function GETstudent(Admin $instructor, $id)
   {
     $this->student   = new \models\Student($id);
@@ -74,7 +82,6 @@ class Records extends \bloc\controller
       $view->content = "views/layouts/forms/assignment.html";
       $view->topic = "views/layouts/forms/{$topic}.html";
     }
-
     return $view->render($this());
   }
 
@@ -100,14 +107,11 @@ class Records extends \bloc\controller
     return $view->render($this());
   }
 
-
-
   public function GEToutline()
   {
     $view = new View(self::layout);
     return $view->render($this());
   }
-
 
   public function GETtemplate($id = 'YNUZ')
   {

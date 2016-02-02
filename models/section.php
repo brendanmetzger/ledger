@@ -46,7 +46,7 @@ namespace models;
       $week     = new \DateInterval('P7D');
       $out      = [];
       $index    = 0;
-      $course    = $context['@course'];
+      $course   = $context['@course'];
       $section  = $context['@id'];
 
       while ($begin < $calendar->semester['end']) {

@@ -39,7 +39,7 @@ trait config {
     \bloc\router::redirect('/');
   }
 
-  public function GETlogin($redirect = '/', $status = "default")
+  public function GETlogin($status = "default")
   {
     \bloc\Application::instance()->getExchange('response')->addHeader("HTTP/1.0 401 Unauthorized");
     $messages = [
@@ -57,8 +57,6 @@ trait config {
     }
 
     $this->status   = $messages[$status];
-    $this->redirect = $redirect;
-
     return $view->render($this());
   }
 
@@ -86,13 +84,12 @@ trait config {
   {
     $pin = $request->post('pin') ?: 0;
     $uid = $request->post('uid') ?: false;
-    $redirect = $request->post('redirect') ?: '/';
     try {
       if ($uid && $pin) {
         // authenticate user based on password
         (new \models\instructor(\models\Data::ID($uid)))->authenticate($pin);
         \bloc\Application::instance()->session('COLUM', ['id'=>  $uid]);
-        \bloc\router::redirect('/');
+        \bloc\router::redirect('/records/courses');
       } else {
         // user must be in database based on oasis id, find them: ;
         $user = \models\Data::ID(\models\Student::BLEAR($pin));
@@ -121,7 +118,7 @@ trait config {
       }
     } catch (\InvalidArgumentException $e) {
       $type = $e->getCode() == 1 ? 'invalid' : 'duplicate';
-      \bloc\router::redirect(sprintf('/%s/login/%s/%s',$this->template, base64_encode($redirect), $type));
+      \bloc\router::redirect(sprintf('/%s/login/%s/%s',$this->template, $type));
     }
     $view = new \bloc\View(self::layout);
     $view->content = 'views/layouts/forms/transaction.html';
