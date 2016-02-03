@@ -194,12 +194,18 @@ form textarea {
 legend {
   padding:0 0.5em;
   font-size:2em;
+  font-weight:400;
+  text-transform:uppercase;
+  color:rgba(0,0,0,0.3);
+
 }
 
 fieldset {
   margin:2em 0;
   padding:2em;
   border-width:1px 0 0;
+  border-color:rgba(0,0,0,0.2);
+
 }
 form button, form input, form textarea {
   border:1px solid rgba(0,0,0,0.1);
@@ -313,4 +319,29 @@ details[open] {
   font-size:1.25em;
   font-family:'Avenir Next', Avenir, Helvetica;
   line-height:1em;
+}
+
+section.sliders label {
+  display:block;
+  padding:0.5em 0;
+  position:relative;
+}
+
+label h4 {
+  float:left;
+  width:50%;
+  box-sizing:border-box;
+  margin:0;
+  text-align:center;
+  padding-right:0.5em;
+  font-weight:400;
+  font-size:1.5em;
+}
+
+
+label input[type='range'] {
+  width:50%;
+  margin:0.25em 0;
+  box-sizing:border-box;
+  float:left;
 }

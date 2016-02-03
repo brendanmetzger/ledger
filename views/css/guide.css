@@ -95,7 +95,7 @@ strong,.strong{font-weight:600}
 
 a.selected:hover{cursor:default;font-style:normal;color:#333;}
 a.selected:after {content:'\2718';color:#333;padding-left:0.5em;}
-div.pad {padding:1em;}
+.pad {padding:1em;}
 .focus {padding:1em 1em 1em 3.5em;/*border-left:2.5em solid #F8F8F8*/}
 .note  em,footer > p q, blockquote em {font-style:normal;}
 .note {font-family:Baskerville;font-style:italic;padding-right:1.25em;margin-top:1em;text-align:right;}

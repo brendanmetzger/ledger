@@ -71,22 +71,23 @@ class Records extends \bloc\controller
     $this->index = $index;
 
     $view = new View(self::layout);
+    $this->{$topic} = Data::FACTORY($topic, $this->student->context->getElement($topic, $index));
 
-    if ($topic == 'practice') {
+    if ($topic == 'practice' || $topic == 'project') {
+      $this->url = $this->student->context['@url'] . "/{$topic}/{$index}";
       $this->template = 'editor';
-      $this->url = $this->student->context['@url'];
       $view->context = "views/layouts/forms/critique.html";
       $view->content = "views/layouts/inspector.html";
     } else {
-      $this->{$topic} = Data::FACTORY($topic, $this->student->context->getElement($topic, $index));
       $view->content = "views/layouts/forms/assignment.html";
-      $view->topic = "views/layouts/forms/{$topic}.html";
     }
+    $view->topic = "views/layouts/forms/{$topic}.html";
     return $view->render($this());
   }
 
   protected function POSTevaluate(Admin $instructor, $request, $topic, $index, $sid)
   {
+    \bloc\application::instance()->log($sid);
     $student = new Student($sid);
     $item = Data::FACTORY($topic, $student->context->getElement($topic, $index), $_POST);
     if ($item->save()) {

@@ -29,19 +29,20 @@
     td.pending * {
       display:none;
     }
-    .tooltip td[title] {
+    .tooltip td:not([title='']) {
       position:relative;
       cursor: help;
     }
-    .tooltip td[title]:hover:before {
+    .tooltip td:not([title='']):hover:before {
       content:attr(title);
       position:absolute;
       display:block;
-      top:-1em;
+      top:-3em;
       left:-50%;
       width:200%;
       background-color:rgba(255,255,255,0.85);
-      padding:0.25em;
+      padding:0.5em;
+      font-weight:400;
       box-shadow:0 0 1em rgba(0,0,0,0.25);
     }
   /* ]]> */
@@ -49,7 +50,7 @@
   <h2>[$student:@name]</h2>
   <h4><a href="[$student:@url/]">IAM Course Site</a></h4>
   <section>
-    <h3>Attendance (30%)</h3>
+    <h3>Participation and Attendance</h3>
     <table class="full chart">
       <colgroup>
         <col span="1" style="width:12.5%" />

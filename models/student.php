@@ -74,7 +74,7 @@ namespace models;
 
         if ($node = $reviewed->pick($index)) {
           $map[$type] = new Discourse($node);
-          $accumulator = ($accumulator + ($map[$type]->score * $average)) * $map[$type]::WEIGHT;
+          $accumulator = ($accumulator + ($map[$type]->score * $average));
         }
 
         return $map;
@@ -82,7 +82,7 @@ namespace models;
 
       return new \bloc\types\dictionary([
         'list' => iterator_to_array($collect, false),
-        'score' => max(0, $accumulator)
+        'score' => max(0, $accumulator * Assessment::$weight[$type])
       ]);
     }
 

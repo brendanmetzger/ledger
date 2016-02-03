@@ -2,17 +2,17 @@
 namespace models;
 
 /**
-  * Participation
+  * Practice Assignments
   *
   */
 
-  class Discourse extends \bloc\Model
+  class Practice extends \bloc\Model
   {
     use traits\indexed, traits\persist;
 
     static public $fixture = [
-      'discourse' => [
-        '@' => ['punctuality' => 0, 'persistance' => 0, 'observation' => 0],
+      'practice' => [
+        '@' => ['effort' => 0, 'organization' => 0, 'punctuality' => 7, 'mission' => 1],
         'CDATA' => '',
       ]
     ];
@@ -24,7 +24,8 @@ namespace models;
 
     public function getScore(\DOMElement $context)
     {
-      return $context['@punctuality'] + $context['@persistance'] + $context['@observation'] - 2;
+      $deductions = (7 / $context['@punctuality']) * $context['@mission'];
+      return ($context['@effort'] + $context['@organization']) * $deductions;
     }
 
     public function getPercentage(\DOMElement $context)

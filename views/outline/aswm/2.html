@@ -1,0 +1,39 @@
+<div>
+  <header>
+    <!-- insert views/outline/_/crumbs.html -->
+    <h1 class="massive">Functions</h1>
+  </header>
+  <article>
+    <h2>Functions, Parameters and Scope</h2>
+    <p>Functions are probably the most profound aspect of JavaScript programming, and from a very technical perspective, they are really <i>Callable Objects</i>. Just like an object, they have properties and values, and just like an object, those values may be of <strong>any type</strong>, including other functions!</p>
+    <h3>Declaring a function</h3>
+    <p>Functions can be declared by <strong>assignment</strong> or by using a <strong>named function</strong>. They have virtually the same outcome aside from a notion of <i>hoisting</i>, which you can forget about for awhile as it has few applicable purposes. Generally, it is recommended to use named functions, but the need for doing so is advanced and obscure, and again, can be glossed over at this stage.</p>
+    <section class="code comparison container">
+      <pre class="prettyprint half float left">
+        <!-- review views/javascript/examples/functions.js declaring functions -->
+      </pre>
+      <aside class="half float left">
+        Function declarations
+      </aside>
+    </section>
+
+  </article>
+  <article>
+    <h2>First-class Functions</h2>
+    <h3>The Chicken or the Egg</h3>
+    <p>As we've seen, a function can be stored in a variable, or stored in a data structure like an array or an object. Moreover, a function can be passed as an argument to another function. A function can even return another function. This is a tenet of any language that implements <a href="https://en.wikipedia.org/wiki/First-class_function">first-class functions.</a>. In fact, while many languages support these features, you can avoid using them altogether, but <strong>this is not the case in JavaScript</strong>.</p>
+    <section class="container">
+      <aside class="note __ m float left">
+        <p>What happens when I <code>call</code> a Chicken functon? What do I get back?</p>
+      </aside>
+      <pre class="prettyprint ______ float left">
+        <!-- review views/javascript/examples/functions.js chicken or the egg -->
+      </pre>
+
+    </section>
+
+  </article>
+  <script type="text/javascript">
+      bloc.embed('/javascript/examples/functions.js');
+  </script>
+</div>
