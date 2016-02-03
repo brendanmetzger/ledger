@@ -62,7 +62,7 @@
           <th>Week</th>
           <!-- iterate student:discourse:list -->
           <td>[$criterion:@index]</td>
-          <th>µ</th>
+          <th>µ (30%)</th>
         </tr>
         <tr class="tooltip">
           <th>Score</th>
@@ -77,7 +77,7 @@
     </table>
   </section>
   <section>
-    <h3>Practice Assignments (40%)</h3>
+    <h3>Practice Assignments</h3>
     <table class="full chart">
       <colgroup>
         <col span="1" style="width:1em;"/>
@@ -86,28 +86,28 @@
         <tr>
           <th>[i]</th>
           <th>Assignment Details</th>
-          <th>Class Notes</th>
           <th>Your page</th>
+          <th>Notes</th>
           <th>Grade</th>
         </tr>
       </thead>
       <tbody class="vertical">
-        <!-- iterate student:practice -->
+        <!-- iterate student:practice:list -->
         <tr>
           <td>[$criterion:@index]</td>
           <td><a href="[[/$$student:course/criterion/practice/$criterion:@index]]">[$criterion:@title]</a></td>
-          <td class="centered">Pending</td>
           <td class="centered"><a href="[[$$student:@url/practice/$criterion:@index/]]">Preview</a></td>
+          <td class="centered">Pending</td>
           <td class="centered">
-            <strong>[$practice:score%]</strong>
+            <strong>[$practice:percentage%]</strong>
             <a href="[[/$$instructor:path/practice/$criterion:@index/$$student:@id]]">[[$$instructor:edit]]</a>
           </td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="4">µ/complete</th>
-          <td class="centered">%</td>
+          <th colspan="4">µ (40% max)</th>
+          <td class="centered"><strong>[$student:practice:score%]</strong></td>
         </tr>
       </tfoot>
     </table>

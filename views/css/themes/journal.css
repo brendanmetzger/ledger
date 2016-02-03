@@ -345,3 +345,11 @@ label input[type='range'] {
   box-sizing:border-box;
   float:left;
 }
+
+ul.inline.buttons li {
+  cursor:pointer;
+  padding:0.5em;
+  margin:0 0.25em;
+  background-color:#555;
+  color:#fff;
+}

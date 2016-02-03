@@ -25,7 +25,6 @@ trait config {
 
   public function authenticate()
   {
-
     if ((isset($_SESSION) && array_key_exists('id', $_SESSION))) {
       $node = \models\Data::ID($_SESSION['id']);
       return \models\Data::FACTORY($node->nodeName, $node);

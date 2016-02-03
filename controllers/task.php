@@ -15,6 +15,13 @@ class Task extends \bloc\controller
   {
   }
 
+  public function GETsource($url, $encode = false)
+  {
+    $url = base64_decode($url);
+    $content = file_get_contents($url);
+    return  $encode ? htmlentities($content) : $content;
+  }
+
   public function authenticate()
   {
     return true;

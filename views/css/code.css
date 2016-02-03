@@ -26,8 +26,8 @@ pre .typ { color: #72b072 } /* type    - lightgreen */
 pre .lit { color: #c76c6c } /* literal - darkred */
 pre .pun { color: #333;padding:0 0.085em; }    /* punctuation */
 pre .pln { color: #333 }    /* plaintext */
-pre .tag { color: #cfbc16; font-weight: bold } /* html/xml tag    - lightyellow */
-pre .atn { color: #bdb76b; font-weight: bold } /* attribute name  - khaki */
+pre .tag { color: #a77abd;  } /* html/xml tag    - lightyellow */
+pre .atn { color: #bdb76b;  } /* attribute name  - khaki */
 pre .atv { color: #ffa0a0 } /* attribute value - pink */
 pre .dec { color: #72b072 } /* decimal         - lightgreen */
 /* Specify class=linenums on a pre to get line numbering */

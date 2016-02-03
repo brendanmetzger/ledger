@@ -1,13 +1,14 @@
-<fieldset>
+<fieldset id="practice">
   <legend>[Practice $index]</legend>
+  <h3 class="percentage">[$practice:percentage%]</h3>
   <section class="sliders">
     <label class="container">
       <h4>Effort</h4>
-      <input type="range" name="practice[@][effort]" min="0" max="0.5" step="0.05" value="[$practice:@effort]"/>
+      <input type="range" name="practice[@][effort]" min="0.25" max="0.5" step="0.01" value="[$practice:@effort]"/>
     </label>
     <label class="container">
       <h4>Organized</h4>
-      <input type="range" name="practice[@][organization]" min="0" max="0.5" step="0.05" value="[$practice:@organization]"/>
+      <input type="range" name="practice[@][organization]" min="0.25" max="0.5" step="0.01" value="[$practice:@organization]"/>
     </label>
     <label class="container">
       <h4>On Time</h4>
@@ -20,4 +21,22 @@
   </section>
   <label for="notes">Notes</label>
   <textarea name="practice[CDATA]" cols="30" rows="10" id="notes">[$practice]</textarea>
+  <script type="text/javascript">
+    // <![CDATA[
+    document.querySelector('#practice').addEventListener('change', function (evt) {
+      var rubric = {
+        effort: function (current, score) {return current + score;},
+        organization: function (current, score) {return current + score;},
+        punctuality: function (current, score) {return current * (score / 7);},
+        mission: function (current, score) {return current * score;}
+      };
+      var score = [].map.call(this.querySelectorAll('input[type="range"]'), function(node) {
+        return [node.name.slice(12, -1), parseFloat(node.value, 10)];
+      }).reduce(function (accumulator, current) {
+        return rubric[current[0]](accumulator, current[1]);
+      }, 0);
+      this.querySelector('.percentage').textContent = Math.max(0, Math.round(score * 100)) + '%';
+    });
+    // ]]>
+  </script>
 </fieldset>

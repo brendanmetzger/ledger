@@ -19,11 +19,34 @@ namespace models;
       'project'   => 20,
     ];
 
-    private $student;
+    private $context, $schedule;
 
     public function __construct(Student $student)
     {
-      $this->student = $student;
+      $this->context  = $student->context;
+      $this->schedule = $student->section->schedule;
+    }
+
+    public function getEvaluation($type, $query)
+    {
+      $reviewed = $this->context->find($type);
+      $average  = 1 / ($reviewed->count() ?: 1);
+      $accumulator = 0;
+
+      $collect = Criterion::collect(function ($criterion, $index) use($type, $reviewed, $average, &$accumulator) {
+        $map = ['criterion' => $criterion, 'schedule' => $this->schedule[$index]];
+
+        if ($node = $reviewed->pick($index)) {
+          $map[$type] = Data::FACTORY($type, $node);
+          $accumulator = ($accumulator + ($map[$type]->score * $average));
+        }
+        return $map;
+      }, $query);
+
+      return new \bloc\types\dictionary([
+        'list' => iterator_to_array($collect, false),
+        'score' => max(0, $accumulator * Assessment::$weight[$type])
+      ]);
     }
 
     // get total.

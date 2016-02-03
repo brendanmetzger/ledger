@@ -51,10 +51,6 @@ namespace models;
       return $context->parentNode['@course'];
     }
 
-    public function getPractice(\DOMElement $context)
-    {
-      return Criterion::collect(null, "[@type='practice' and @course = '{$this->course}']");
-    }
 
     public function getProjects(\DOMElement $context)
     {
@@ -63,27 +59,12 @@ namespace models;
 
     public function getDiscourse(\DOMElement $context)
     {
-      $type = 'discourse';
-      $schedule = $this->section->schedule;
-      $reviewed = $this->context->find($type);
-      $average  = 1 / ($reviewed->count() ?: 1);
-      $accumulator = 0;
+      return (new Assessment($this))->getEvaluation('discourse', "[@type='discourse']");
+    }
 
-      $collect = Criterion::collect(function ($criterion, $index) use($type, $schedule, $reviewed, $average, &$accumulator) {
-        $map = ['criterion' => $criterion, 'schedule' => $schedule[$index]];
-
-        if ($node = $reviewed->pick($index)) {
-          $map[$type] = new Discourse($node);
-          $accumulator = ($accumulator + ($map[$type]->score * $average));
-        }
-
-        return $map;
-      }, "[@type='{$type}']");
-
-      return new \bloc\types\dictionary([
-        'list' => iterator_to_array($collect, false),
-        'score' => max(0, $accumulator * Assessment::$weight[$type])
-      ]);
+    public function getPractice(\DOMElement $context)
+    {
+      return (new Assessment($this))->getEvaluation('practice', "[@type='practice' and @course = '{$this->course}']");
     }
 
 }

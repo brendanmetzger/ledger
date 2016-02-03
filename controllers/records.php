@@ -75,6 +75,7 @@ class Records extends \bloc\controller
 
     if ($topic == 'practice' || $topic == 'project') {
       $this->url = $this->student->context['@url'] . "/{$topic}/{$index}";
+      $this->b64url = base64_encode($this->url);
       $this->template = 'editor';
       $view->context = "views/layouts/forms/critique.html";
       $view->content = "views/layouts/inspector.html";
@@ -87,7 +88,6 @@ class Records extends \bloc\controller
 
   protected function POSTevaluate(Admin $instructor, $request, $topic, $index, $sid)
   {
-    \bloc\application::instance()->log($sid);
     $student = new Student($sid);
     $item = Data::FACTORY($topic, $student->context->getElement($topic, $index), $_POST);
     if ($item->save()) {
