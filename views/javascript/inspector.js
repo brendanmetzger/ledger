@@ -1,0 +1,34 @@
+bloc.init('viewer', function () {
+  document.querySelector('.tabbed nav > ul.buttons').addEventListener('click', function (evt) {
+    if (evt.target.matches('li[data-file]')) {
+
+      var file = evt.target.dataset.file;
+      var current = document.querySelector('.inspector li.active');
+          current.classList.remove('active');
+
+      document.querySelector('.panel.visible').classList.remove('visible');
+      evt.target.classList.add('active');
+
+      var panel = document.querySelector('.inspector .panel[data-file="'+file+'"]');
+
+      if (panel.nodeName === 'PRE') {
+        if (evt.target.dataset.url) {
+          var request = new XMLHttpRequest();
+          request.open('GET', '/task/source/'+evt.target.dataset.url);
+          delete evt.target.dataset.url;
+          request.addEventListener('load', function (evt) {
+            panel.classList.add('prettyprint');
+            panel.textContent = evt.target.responseText;
+            prettyPrint();
+          });
+          request.send()
+        } else if (! panel.classList.contains('prettyprinted')) {
+          panel.classList.add('prettyprint');
+          prettyPrint();
+        }
+      }
+      panel.classList.add('visible');
+
+    }
+  });
+});

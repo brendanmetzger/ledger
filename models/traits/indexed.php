@@ -3,8 +3,11 @@ namespace models\traits;
 use \models\Data;
 
 trait indexed {
-  protected function identify($identity) {
+  protected function identify($identity)
+  {
     // indenity should have and index and a type
+    if (! self::XPATH) return;
+
     $name = self::type();
 
     return Data::instance()->query(self::XPATH)
@@ -12,9 +15,9 @@ trait indexed {
                            ->pick(0);
   }
 
-  protected function initialize() {
-
-    throw new \RuntimeException("Index type instantion needs creating", 1);
+  protected function initialize()
+  {
+    return Data::instance()->storage->createElement(static::type());
   }
 
   static public function collect(callable $callback = null, $filter = '')

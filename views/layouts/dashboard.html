@@ -29,11 +29,11 @@
     td.pending * {
       display:none;
     }
-    .tooltip td:not([title='']) {
+    .tooltip td.transpired:not([title='']) {
       position:relative;
       cursor: help;
     }
-    .tooltip td:not([title='']):hover:before {
+    .tooltip td.transpired:not([title='']):hover:before {
       content:attr(title);
       position:absolute;
       display:block;
@@ -45,6 +45,9 @@
       font-weight:400;
       box-shadow:0 0 1em rgba(0,0,0,0.25);
     }
+    tr.open + tr.open td.transpired a {
+      display:none;
+    }
   /* ]]> */
   </style>
   <h2>[$student:@name]</h2>
@@ -53,25 +56,25 @@
     <h3>Participation and Attendance</h3>
     <table class="full chart">
       <colgroup>
-        <col span="1" style="width:12.5%" />
-        <col span="15" style="width:5%"/>
-        <col span="1" style="width:12.5%" />
+        <col span="1" style="width:7.5%" />
+        <col span="15" style="width:5.5%"/>
+        <col span="1" style="width:7.5%" />
       </colgroup>
       <tbody class="horizontal">
         <tr>
           <th>Week</th>
           <!-- iterate student:discourse:list -->
           <td>[$criterion:@index]</td>
-          <th>µ (30%)</th>
+          <th>µ (30‰)</th>
         </tr>
         <tr class="tooltip">
           <th>Score</th>
           <!-- iterate student:discourse:list -->
           <td class="[$schedule:status]" title="[$discourse]">
-            <strong>[$discourse:percentage%]</strong>
+            <strong>[$discourse:percentage]</strong>
             <a href="[[/$$instructor:path/discourse/$criterion:@index/$$student:@id]]">[[$$instructor:edit]]</a>
           </td>
-          <th>[$student:discourse:score%]</th>
+          <th>[$student:discourse:score]</th>
         </tr>
       </tbody>
     </table>
@@ -93,13 +96,13 @@
       </thead>
       <tbody class="vertical">
         <!-- iterate student:practice:list -->
-        <tr>
+        <tr class="[$practice:status]">
           <td>[$criterion:@index]</td>
           <td><a href="[[/$$student:course/criterion/practice/$criterion:@index]]">[$criterion:@title]</a></td>
           <td class="centered"><a href="[[$$student:@url/practice/$criterion:@index/]]">Preview</a></td>
-          <td class="centered">Pending</td>
-          <td class="centered">
-            <strong>[$practice:percentage%]</strong>
+          <td class="[$schedule:status centered]">notes</td>
+          <td class="[$schedule:status centered]">
+            <strong>[$practice:percentage]</strong>
             <a href="[[/$$instructor:path/practice/$criterion:@index/$$student:@id]]">[[$$instructor:edit]]</a>
           </td>
         </tr>
@@ -107,7 +110,7 @@
       <tfoot>
         <tr>
           <th colspan="4">µ (40% max)</th>
-          <td class="centered"><strong>[$student:practice:score%]</strong></td>
+          <td class="centered"><strong>[$student:practice:score]</strong></td>
         </tr>
       </tfoot>
     </table>

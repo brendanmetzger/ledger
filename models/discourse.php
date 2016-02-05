@@ -10,18 +10,20 @@ namespace models;
   {
     use traits\indexed, traits\persist;
 
+    const XPATH = false;
+
     static public $fixture = [
       'discourse' => [
-        '@' => ['punctuality' => 0, 'persistance' => 0, 'observation' => 0],
-        'CDATA' => '',
+        '@' => ['punctuality' => 0, 'persistance' => 1, 'observation' => 1],
+        'CDATA' => 'pending',
       ]
     ];
 
-    public function setValueAttribute(\DOMElement $context, $value)
+    public function beforeSave()
     {
-      $context->setAttribute('value', 0);
+      $this->context->setAttribute('updated', (new \DateTime())->format('Y-m-d H:i:s'));
     }
-
+    
     public function getScore(\DOMElement $context)
     {
       return $context['@punctuality'] + $context['@persistance'] + $context['@observation'] - 2;
@@ -29,6 +31,6 @@ namespace models;
 
     public function getPercentage(\DOMElement $context)
     {
-      return $this->score * 100;
+      return (string)$context == 'pending' ? 'NA' : ($this->score * 100) . '‰';
     }
   }

@@ -1,6 +1,6 @@
 <fieldset id="practice">
   <legend>[Practice $index]</legend>
-  <h3 class="percentage">[$practice:percentage%]</h3>
+  <h3 class="percentage">[$practice:percentage]</h3>
   <section class="sliders">
     <label class="container">
       <h4>Effort</h4>
@@ -16,7 +16,7 @@
     </label>
     <label class="container">
       <h4>Mission</h4>
-      <input type="range" name="practice[@][mission]" min="0" max="1" step="0.1" value="[$practice:@mission]"/>
+      <input type="range" name="practice[@][mission]" min="0" max="1" step="0.05" value="[$practice:@mission]"/>
     </label>
   </section>
   <label for="notes">Notes</label>

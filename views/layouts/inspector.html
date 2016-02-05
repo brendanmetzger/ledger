@@ -1,6 +1,47 @@
-<div>
-  <iframe src="[$url]" style="width:100%;height:95vh">
+<div class="tabbed inspector">
+  <style media="screen">
+    .inspector nav {
+      background-color:#333;
+      height:5vh;
+      overflow:hidden;
+
+    }
+    .inspector .panel {
+      width:100%;
+      height:90vh;
+      margin:0;
+      box-sizing:border-box;
+      border:1px solid #FFF;
+      display:block;
+    }
+    .inspector .panel:not(.visible) {
+      display:none;
+    }
+    .buttons li {
+      cursor:pointer;
+      padding:0.5em;
+      min-width:10%;
+      margin:0;
+      text-align:center;
+      background-color:#555;
+      color:#fff;
+    }
+    .buttons li.active {
+      background-color:#FEFEFE;
+      color:#777;
+    }
+  </style>
+  <script type="text/javascript">bloc.embed('/javascript/inspector.js');</script>
+  <nav>
+    <ul class="plain inline buttons">
+      <li data-file="preview" class="active">Preview</li>
+      <!--  iterate files -->
+      <li data-url="[$url]" data-file="[$name]">[$name]</li>
+    </ul>
+  </nav>
+  <iframe data-file="preview" src="[$url]" class="panel visible">
     <p>I frame</p>
   </iframe>
-  <pre id="source-code" class="prettyprint">source</pre>  
+  <!--  iterate files -->
+  <pre data-file="[$name]" class="linenums panel">[$content]</pre>
 </div>

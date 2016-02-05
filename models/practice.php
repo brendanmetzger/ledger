@@ -10,12 +10,19 @@ namespace models;
   {
     use traits\indexed, traits\persist;
 
+    const XPATH = false;
+
     static public $fixture = [
       'practice' => [
-        '@' => ['effort' => 0, 'organization' => 0, 'punctuality' => 7, 'mission' => 1],
+        '@' => ['effort' => 0, 'organization' => 0, 'punctuality' => 7, 'mission' => 1, 'created' => 0, 'updated' => 0],
         'CDATA' => '',
       ]
     ];
+
+    public function beforeSave()
+    {
+      $this->context->setAttribute('updated', (new \DateTime())->format('Y-m-d H:i:s'));
+    }
 
     public function setValueAttribute(\DOMElement $context, $value)
     {
@@ -28,8 +35,13 @@ namespace models;
       return ($context['@effort'] + $context['@organization']) * $deductions;
     }
 
+    public function getStatus(\DOMElement $context)
+    {
+      return $context['@updated'] ? 'marked' : 'open';
+    }
+
     public function getPercentage(\DOMElement $context)
     {
-      return $this->score * 100;
+      return $this->status == 'open' ? 'NA' : ($this->score * 100) . '‰';
     }
   }

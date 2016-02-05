@@ -75,9 +75,9 @@ class Records extends \bloc\controller
 
     if ($topic == 'practice' || $topic == 'project') {
       $this->url = $this->student->context['@url'] . "/{$topic}/{$index}";
-      $this->b64url = base64_encode($this->url);
+      $this->files = \models\Assessment::Links($this->url);
       $this->template = 'editor';
-      $view->context = "views/layouts/forms/critique.html";
+      $view->context = "views/layouts/forms/assignment.html";
       $view->content = "views/layouts/inspector.html";
     } else {
       $view->content = "views/layouts/forms/assignment.html";

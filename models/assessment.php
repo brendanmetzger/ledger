@@ -27,25 +27,56 @@ namespace models;
       $this->schedule = $student->section->schedule;
     }
 
-    public function getEvaluation($type, $query)
+    static public function LINKS($url)
     {
-      $reviewed = $this->context->find($type);
+      $content = file_get_contents($url);
+      $doc = new \DOMDocument();
+      $doc->loadHTML($content);
+      // \bloc\application::instance()->log($doc);
+      $xpath = new \DOMXpath($doc);
+      $files = [[
+        'name' => 'index.html',
+        'content' => $content,
+      ]];
+      foreach ($xpath->query("//script[@src and not(contains(@src, 'http'))]") as $file) {
+        $src = $file->getAttribute('src');
+        $files[] = [
+          'url'     => base64_encode($url . '/' .$src),
+          'name'    => substr($src, strrpos($src, '/') + 1),
+          'content' => null,
+        ];
+      }
+      foreach ($xpath->query("//link[not(contains(@href, 'http'))]") as $file) {
+        $src = $file->getAttribute('href');
+        $files[] = [
+          'url'     => base64_encode($url . '/' .$src),
+          'name'    => substr($src, strrpos($src, '/') + 1),
+          'content' => null,
+        ];
+      }
+      return $files;
+    }
+
+    public function getEvaluation($evaluation, $query)
+    {
+      $reviewed = $this->context->find($evaluation);
       $average  = 1 / ($reviewed->count() ?: 1);
       $accumulator = 0;
 
-      $collect = Criterion::collect(function ($criterion, $index) use($type, $reviewed, $average, &$accumulator) {
-        $map = ['criterion' => $criterion, 'schedule' => $this->schedule[$index]];
+      $collect = Criterion::collect(function ($criterion, $index) use($evaluation, $reviewed, $average, &$accumulator) {
+        $map = [
+          $evaluation => Data::FACTORY($evaluation, $reviewed->pick($index)),
+          'criterion' => $criterion,
+          'schedule'  => $this->schedule[$index]
+        ];
 
-        if ($node = $reviewed->pick($index)) {
-          $map[$type] = Data::FACTORY($type, $node);
-          $accumulator = ($accumulator + ($map[$type]->score * $average));
-        }
+        $accumulator = ($accumulator + ($map[$evaluation]->score * $average));
         return $map;
       }, $query);
 
       return new \bloc\types\dictionary([
         'list' => iterator_to_array($collect, false),
-        'score' => max(0, $accumulator * Assessment::$weight[$type])
+        'score' => max(0, ($accumulator * Assessment::$weight[$evaluation]) . '‰')
       ]);
     }
 

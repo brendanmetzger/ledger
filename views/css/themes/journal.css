@@ -1,7 +1,7 @@
 body{
   font:400 0.625em/250% "Avenir Next", "HelveticaNeue-Light","Helvetica Neue",Helvetica;
-  padding:0.25em 0 10em;
-  border-width:1em 0 0;
+  padding:0.25em 0 4em;
+  border-width:1vh 0 0;
   box-sizing:border-box;
   background-color: hsl(45, 30%, 97.5%);
   color:rgba(0,0,0,0.85);
@@ -113,16 +113,16 @@ p + table {
 li{font-size:1.6em;line-height:1.5em;}
 p{font-size:1.75em;line-height:1.5em;font-variant-ligatures: normal;font-family:'Goudy Old Style',Baskerville,Georgia;}
 
-ol, dl.ordered {counter-reset:item -1;list-style:none}
+ol:not(.linenums), dl.ordered {counter-reset:item -1;list-style:none}
 ol {padding:0 0 0 3em;}
 dl.ordered dt {padding-left:2em;}
 dl.ordered dd + dd {
   border-width:1px 0 0;
 }
-ol li, ul.stylized li {
+ol:not(.linenums) li, ul.stylized li {
   padding:0.5em 0;
 }
-ol li:before, dl.ordered dt:before {
+ol:not(.linenums) li:before, dl.ordered dt:before {
   content:'[' counter(item) ']';
   counter-increment:item;
   font-family:Inconsolata;
@@ -202,7 +202,7 @@ legend {
 
 fieldset {
   margin:2em 0;
-  padding:2em;
+  padding:1em;
   border-width:1px 0 0;
   border-color:rgba(0,0,0,0.2);
 
@@ -268,9 +268,13 @@ pre.error.console {
 body.editor > nav div {
   width:20vw;
 }
+body.editor {
+  padding-bottom:0;
+}
 body.editor > main {
   padding:0;
   margin-left:20vw;
+  width:80vw;
   margin-top:-1.25em;
 }
 
@@ -346,10 +350,12 @@ label input[type='range'] {
   float:left;
 }
 
-ul.inline.buttons li {
-  cursor:pointer;
-  padding:0.5em;
-  margin:0 0.25em;
-  background-color:#555;
-  color:#fff;
+
+
+ol.linenums {
+  font-size:0.65em;
+}
+
+nav form {
+  padding:1em;
 }

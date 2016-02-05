@@ -1,8 +1,7 @@
-<section>
-  <h3 class="pad"><a href="[/records/student/$student:@id]">[$student:@name]</a></h3>
-  <form action="[/records/evaluate/$topic/$index/$student:@id]" method="post">
-    <input type="hidden" name="redirect" value="[$redirect]"/>
-    <!-- replace topic -->
-    <button type="submit">Save</button>
-  </form>
-</section>
+<form action="[/records/evaluate/$topic/$index/$student:@id]" method="post">
+  <h3><a href="[/records/student/$student:@id]">[$student:@name]</a></h3>
+  <input type="hidden" name="redirect" value="[$redirect]"/>
+  <input type="hidden" name="index" value="[$index]"/>
+  <!-- replace topic -->
+  <button type="submit">Save</button>
+</form>

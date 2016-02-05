@@ -6,7 +6,7 @@ trait persist {
   public function save()
   {
     if (empty($this->errors) && Data::instance()->storage->validate()) {
-
+      $this->beforeSave();
       return Data::instance()->storage->save();
     } else {
 
