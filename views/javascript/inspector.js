@@ -17,9 +17,11 @@ bloc.init('viewer', function () {
           request.open('GET', '/task/source/'+evt.target.dataset.url);
           delete evt.target.dataset.url;
           request.addEventListener('load', function (evt) {
-            panel.classList.add('prettyprint');
             panel.textContent = evt.target.responseText;
-            prettyPrint();
+            if (!panel.classList.contains('plain-text')) {
+              panel.classList.add('prettyprint');
+              prettyPrint();
+            }
           });
           request.send()
         } else if (! panel.classList.contains('prettyprinted')) {

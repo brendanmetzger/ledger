@@ -7,6 +7,19 @@ body{
   color:rgba(0,0,0,0.85);
 }
 
+.watch, .read {
+  padding-left:1.5em;
+  border:none;
+}
+.read {
+  background: transparent url(/css/media/book.svg) -0.25em 30% no-repeat;
+  background-size: auto 120%;
+}
+.watch {
+  background: transparent url(/css/media/film.svg) 0 50% no-repeat;
+  background-size: auto 120%;
+}
+
 
 body > nav div {
   width:15vw;
@@ -66,7 +79,12 @@ hr, li+li {border-width:1px 0 0;border-color:rgba(0,0,0,0.025);}
 
 mark {
   box-shadow:0.125em 0.125em 0.5em rgba(0,0,0,0.1);
-  background-color:rgba(237, 249, 181, 0.5)
+  background-color:rgba(224, 228, 205, 0.5);
+}
+
+a mark {
+  border:1px solid rgba(0,0,0,0.1);
+  padding:0 0.5em;
 }
 
 body > footer {
@@ -86,13 +104,13 @@ article a {
   text-decoration:none;
   border-bottom:1px dashed rgba(0,0,0,0.25);
 }
-a:hover {
+a:hover, a:hover > * {
   color:hsl(10, 65%, 40%);
 }
 
 .intro {
   font-size:2em;
-  margin:2em 0;
+  margin:2em inherit;
 }
 
 

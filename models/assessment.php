@@ -34,16 +34,26 @@ namespace models;
       $doc->loadHTML($content);
       // \bloc\application::instance()->log($doc);
       $xpath = new \DOMXpath($doc);
-      $files = [[
-        'name' => 'index.html',
-        'content' => $content,
-      ]];
+      $files = [
+        [
+          'name'    => 'index.html',
+          'content' => $content,
+          'type'    => 'lang-html',
+        ],
+        [
+          'name'    => 'README',
+          'content' => null,
+          'type'    => 'plain-text',
+          'url'     => base64_encode($url . '/readme.txt'),
+        ]
+      ];
       foreach ($xpath->query("//script[@src and not(contains(@src, 'http'))]") as $file) {
         $src = $file->getAttribute('src');
         $files[] = [
           'url'     => base64_encode($url . '/' .$src),
           'name'    => substr($src, strrpos($src, '/') + 1),
           'content' => null,
+          'type'    => 'lang-js',
         ];
       }
       foreach ($xpath->query("//link[not(contains(@href, 'http'))]") as $file) {
@@ -52,6 +62,7 @@ namespace models;
           'url'     => base64_encode($url . '/' .$src),
           'name'    => substr($src, strrpos($src, '/') + 1),
           'content' => null,
+          'type'    => 'lang-css'
         ];
       }
       return $files;
