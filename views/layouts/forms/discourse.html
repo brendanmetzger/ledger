@@ -1,26 +1,63 @@
 <fieldset class="discourse container">
+  <style media="screen">
+    /* <![CDATA[ */
+    section.inputs {
+      display:flex;
+      justify-content: space-around;
+    }
+    section.buttons {
+      display:inline-flex;
+      justify-content: space-between;
+      align-items: stretch;
+      flex: 0 0 30%;
+    }
+    section.buttons > button {
+      flex: 1 0 auto;
+    }
+    section.sliders {
+      display:inline-flex;
+      flex-direction: column;
+      flex:1 0 auto;
+    }
+
+    section.sliders > label {
+      flex:1 0 auto;
+      padding:1em;
+      background-color:rgba(255,255,255,0.5);
+    }
+    /*]]>*/
+  </style>
   <legend>[$topic]</legend>
-  <section class="____ float left">
-    <label>
-      <h4>On Time</h4>
-      <input type="range" name="discourse[@][punctuality]" min="0" max="1" step="0.1" value="[$discourse:@punctuality]"/>
-    </label>
-    <label>
-      <h4>Remained in Class</h4>
-      <input type="range" name="discourse[@][persistance]" min="0" max="1" step="0.1" value="[$discourse:@persistance]"/>
-    </label>
-    <label>
-      <h4>Focus/Attention</h4>
-      <input type="range" name="discourse[@][observation]" min="0" max="1" step="0.1" value="[$discourse:@observation]"/>
-    </label>
+
+
+  <section class="inputs">
+    <section class="sliders rag-left">
+      <label>
+        <h4>On Time</h4>
+        <input type="range" name="discourse[@][punctuality]" min="0" max="1" step="0.1" value="[$discourse:@punctuality]"/>
+      </label>
+      <label>
+        <h4>Remained in Class</h4>
+        <input type="range" name="discourse[@][persistance]" min="0" max="1" step="0.1" value="[$discourse:@persistance]"/>
+      </label>
+      <label>
+        <h4>Focus/Attention</h4>
+        <input type="range" name="discourse[@][observation]" min="0" max="1" step="0.1" value="[$discourse:@observation]"/>
+      </label>
+    </section>
+    <section class="buttons">
+      <button type="submit" data-value="1">Present</button>
+      <button type="submit" data-value="0">Absent</button>
+    </section>
   </section>
-  <label class="______ float left">
+  <hr/>
+  <label>
     <h4>Notes</h4>
     <textarea name="discourse[CDATA]" cols="30" rows="10">[$discourse]</textarea>
   </label>
 
-  <button type="submit" data-value="1">Present</button>
-  <button type="submit" data-value="0">Absent</button>
+
+
   <script type="text/javascript">
     function setSliders(evt) {
       // this = button

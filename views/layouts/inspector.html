@@ -32,13 +32,11 @@
     }
   </style>
   <script type="text/javascript">bloc.embed('/javascript/inspector.js');</script>
-  <nav>
-    <ul class="plain inline buttons">
-      <li data-file="preview" class="active">Preview</li>
-      <!--  iterate files -->
-      <li data-url="[$url]" data-file="[$name]">[$name]</li>
-    </ul>
-  </nav>
+  <ul class="plain inline buttons" style="background-color:#444;">
+    <li data-file="preview" class="active">Preview</li>
+    <!--  iterate files -->
+    <li data-url="[$url]" data-file="[$name]">[$name]</li>
+  </ul>
   <iframe data-file="preview" src="[$url]" class="panel visible">
     <p>I frame</p>
   </iframe>

@@ -15,7 +15,7 @@ namespace models;
     static public $fixture = [
       'discourse' => [
         '@' => ['punctuality' => 0, 'persistance' => 1, 'observation' => 1],
-        'CDATA' => 'pending',
+        'CDATA' => '',
       ]
     ];
 
@@ -23,14 +23,19 @@ namespace models;
     {
       $this->context->setAttribute('updated', (new \DateTime())->format('Y-m-d H:i:s'));
     }
-    
+
     public function getScore(\DOMElement $context)
     {
       return $context['@punctuality'] + $context['@persistance'] + $context['@observation'] - 2;
     }
 
+    public function getStatus(\DOMElement $context)
+    {
+      return $context['@updated'] ? 'marked' : 'open';
+    }
+
     public function getPercentage(\DOMElement $context)
     {
-      return (string)$context == 'pending' ? 'NA' : ($this->score * 100) . '‰';
+      return $this->status == 'open' ? 'NA' : ($this->score * 100) . '‰';
     }
   }

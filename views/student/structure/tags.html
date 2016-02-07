@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Example</title>
+    <style media="screen">
+      #singular_unique, a:hover {
+        color:rgb(200,50,125);
+      }
+      .spaced, a:hover {
+        letter-spacing:0.5em;
+      }
+      .condensed {
+        font-family:'Avenir Next Condensed', 'Arial Condensed';
+      }
+      .box {
+        border: 5rem solid rgba(0,0,0,0.5);
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body class="box">
+    <!--  id attributes can only be used once -->
+    <strong id="singular_unique" class="spaced">Bold Text</strong>
+
+    <!-- classes can be reused -->
+    <em class="condensed box">Emphasized Text</em>
+
+    <!-- multiple classes can be applied -->
+    <time class="spaced condensed">January 1, 2000</time>
+
+    <!-- anchors have a hyperlink reference; takes user to new page -->
+    <a href="http://en.wikipedia.org">Wikipedia</a>
+  </body>
+</html>

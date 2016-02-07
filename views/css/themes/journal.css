@@ -8,16 +8,17 @@ body{
 }
 
 .watch, .read {
-  padding-left:1.5em;
   border:none;
 }
 .read {
+  padding-left:1.25em;
   background: transparent url(/css/media/book.svg) -0.25em 30% no-repeat;
   background-size: auto 120%;
 }
 .watch {
   background: transparent url(/css/media/film.svg) 0 50% no-repeat;
   background-size: auto 120%;
+  padding-left:1.5em;
 }
 
 
@@ -32,6 +33,7 @@ body > nav div {
   padding:1.125em 0 0;
   box-shadow:0 0 0.5em rgba(0,0,0,0.25);
 }
+
 
 nav ul.index {
   border-width:1px 0 0;
@@ -128,7 +130,7 @@ p + table {
 }
 
 
-li{font-size:1.6em;line-height:1.5em;}
+li{font-size:1rem;line-height:1.25em;}
 p{font-size:1.75em;line-height:1.5em;font-variant-ligatures: normal;font-family:'Goudy Old Style',Baskerville,Georgia;}
 
 ol:not(.linenums), dl.ordered {counter-reset:item -1;list-style:none}
@@ -138,9 +140,9 @@ dl.ordered dd + dd {
   border-width:1px 0 0;
 }
 ol:not(.linenums) li, ul.stylized li {
-  padding:0.5em 0;
+  padding:0.25em 0;
 }
-ol:not(.linenums) li:before, dl.ordered dt:before {
+ol:not(.linenums) > li:before, dl.ordered dt:before {
   content:'[' counter(item) ']';
   counter-increment:item;
   font-family:Inconsolata;
@@ -343,22 +345,28 @@ details[open] {
   line-height:1em;
 }
 
-section.sliders label {
-  display:block;
-  padding:0.5em 0;
-  position:relative;
-}
+
 
 label h4 {
   float:left;
   width:50%;
   box-sizing:border-box;
   margin:0;
-  text-align:center;
   padding-right:0.5em;
   font-weight:400;
   font-size:1.5em;
 }
+
+aside.note {
+  font-size:0.9em;
+  padding:1em;
+}
+
+aside.note p {
+  margin:1em 0;
+  text-align:right;
+}
+
 
 
 label input[type='range'] {

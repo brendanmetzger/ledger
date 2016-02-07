@@ -1,5 +1,5 @@
 bloc.init('viewer', function () {
-  document.querySelector('.tabbed nav > ul.buttons').addEventListener('click', function (evt) {
+  document.querySelector('.tabbed > ul.buttons').addEventListener('click', function (evt) {
     if (evt.target.matches('li[data-file]')) {
 
       var file = evt.target.dataset.file;

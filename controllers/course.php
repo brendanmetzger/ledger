@@ -79,4 +79,16 @@ class Course extends \bloc\controller
     @unlink($file);
     exit();
   }
+
+  protected function GETpeers(Student $student)
+  {
+    $out = "<pre style='font-family:Courier;'>\n";
+    foreach ($student->section->students as $model) {
+      if (substr($model['student']['@name'], 0, 6) != 'Course') {
+        $out .= $model['student']['@name'] . ' ('. metaphone($model['student']['@name'], 5).') ' . $model['student']['@url'] . "\n";
+      }
+
+    }
+    return $out . "</pre>";
+  }
 }

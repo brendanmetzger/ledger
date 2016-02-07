@@ -32,7 +32,7 @@ namespace models;
     public function getScore(\DOMElement $context)
     {
       $deductions = ($context['@punctuality'] / 7) * $context['@mission'];
-      return ($context['@effort'] + $context['@organization']) * $deductions;
+      return round(($context['@effort'] + $context['@organization']) * $deductions, 2);
     }
 
     public function getStatus(\DOMElement $context)

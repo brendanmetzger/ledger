@@ -80,6 +80,8 @@ class Records extends \bloc\controller
       $view->context = "views/layouts/forms/assignment.html";
       $view->content = "views/layouts/inspector.html";
     } else {
+      $this->section = $this->student->section;
+      $view->context = "views/layouts/list/section.html";
       $view->content = "views/layouts/forms/assignment.html";
     }
     $view->topic = "views/layouts/forms/{$topic}.html";
