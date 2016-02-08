@@ -85,7 +85,7 @@ class Course extends \bloc\controller
     $out = "<pre style='font-family:Courier;'>\n";
     foreach ($student->section->students as $model) {
       if (substr($model['student']['@name'], 0, 6) != 'Course') {
-        $out .= $model['student']['@name'] . ' ('. metaphone($model['student']['@name'], 5).') ' . $model['student']['@url'] . "\n";
+        $out .= $model['student']['@name'] . ' ('. metaphone($model['student']['@name'], 5).') ' . $model['student']['@url'] . "/\n";
       }
 
     }

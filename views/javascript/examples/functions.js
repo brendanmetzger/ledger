@@ -29,7 +29,7 @@ var assignedFunction = function () {
 var Chicken = function () {
   // As soon as a chicken is 'born', it tells you about itself
   console.log("Hello, I'm Chicken.");
-  // A chicken can do ONE thing: once it exists, it can make an egg.
+  // A chicken can do ONE thing: once executed, it gives you an egg.
   return function () {
     console.log("..I produce an Egg.");
     return Egg;
@@ -38,7 +38,7 @@ var Chicken = function () {
 var Egg = function () {
   // As soon as an egg is 'born', it tells you about itself
   console.log("I'm an Egg.");
-  // An egg can do one thing: once it is exists, it can make a Chicken.
+  // An egg can do one thing: once executed, it gives you Chicken.
   return function () {
     console.log("..I produce a Chicken");
     return Chicken;
