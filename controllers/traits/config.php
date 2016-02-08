@@ -52,7 +52,7 @@ trait config {
     $view->content = "views/layouts/forms/authenticate.html";
 
     if ($status == 'instructor') {
-      $view->user = \bloc\dom\Document::NODE('<input type="text" value="" name="uid" placeholder="instructor"/>');
+      $view->user = \bloc\dom\Document::ELEM('<input type="text" value="" name="uid" placeholder="instructor"/>');
     }
 
     $this->status   = $messages[$status];
