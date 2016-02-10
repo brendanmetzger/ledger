@@ -47,6 +47,7 @@ namespace models;
 
     public function getFormatted(\DOMElement $context)
     {
-      return (new \vendor\Parsedown())->text(trim($context));
+      $parsedown = new \vendor\Parsedown;
+      return $parsedown->text(trim($context));
     }
   }
