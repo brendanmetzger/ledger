@@ -56,12 +56,24 @@ class Course extends \bloc\controller
     return $view->render($this());
   }
 
-  protected function GETdashboard(Student $student = null)
+  protected function GETdashboard(Student $student)
   {
     $view = new View(self::layout);
     $view->content = 'views/layouts/dashboard.html';
     $view->context = "views/outline/_/schedule.html";
     $this->schedule = $student->section->schedule;
+    return $view->render($this());
+  }
+
+  protected function GETnotes(Student $student, $topic, $index)
+  {
+    $view = new View(self::layout);
+    $this->evaluation = Data::FACTORY($topic, $student->context->getElement($topic, $index));
+    $this->url        = $student->context['@url'] . "/{$topic}/{$index}";
+    $this->files      = \models\Assessment::Links($this->url);
+    $this->template   = 'editor';
+    $view->context    = "views/layouts/notes.html";
+    $view->content    = "views/layouts/inspector.html";
     return $view->render($this());
   }
 

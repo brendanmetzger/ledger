@@ -44,4 +44,9 @@ namespace models;
     {
       return $this->status == 'open' ? 'NA' : ($this->score * 100) . '‰';
     }
+
+    public function getFormatted(\DOMElement $context)
+    {
+      return (new \vendor\Parsedown())->text(trim($context));
+    }
   }
