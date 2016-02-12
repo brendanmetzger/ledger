@@ -124,7 +124,6 @@ try {
 /* end scopes */
 
 
-
 /* exercises */
 var exercise = {
   triangle: function (size) {

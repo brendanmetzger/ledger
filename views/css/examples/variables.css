@@ -1,0 +1,26 @@
+/* chaining */
+.lined {
+  border-style:solid;
+}
+.lined.top {
+  border-top-width:1em;
+}
+.lined.bottom {
+  border-bottom-width:1em;
+}
+.lined.purple {
+  border-color: rgb(163, 100, 164);
+}
+.text.purple {
+  color: rgb(163, 100, 164);
+}
+.lined.blue {
+  border-color:cornflowerblue;
+}
+.text.blue {
+  color:cornflowerblue;
+}
+.color {
+  font-weight:800;
+}
+/* end chaining */

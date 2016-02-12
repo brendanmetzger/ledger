@@ -1,6 +1,6 @@
 /* --- lovingly devised by Brendan Metzger ---  */
 .container:after, article dl:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
-*{border-color:#333;border-style:solid;border-width:0}
+*{border-color:#333;border-style:solid;border-width:0;}
 
 a:active,a:link:focus,a:visited:focus {outline:1px dotted #333}
 a:not([href]) {cursor:default;text-decoration: line-through;pointer-events: none;opacity:0.5;text-decoration-style:wavy}
@@ -12,10 +12,10 @@ hr,blockquote,*.flag > * {margin:1em 0;}
 
 q:before {content:'“';letter-spacing:0.125em;}
 q:after {content:'”';letter-spacing:0.125em;}
-q q:before {content:'‛';letter-spacing:0.125em;}
+q q:before {content:'‛';letter-spacing:0.125em;padding:0}
 q q:after {content:'’'}
 blockquote{padding:1.425em 0.5em;border-width:0.25em 0;border-style:double;font:italic normal 200 1.25em/2.15em 'Baskerville Old Face',Didot,'Baskerville',Georgia;}
-blockquote q {text-indent:-1em;padding-left:0.75em} blockquote q:before{content:'\275D'} blockquote q:after{padding-left:0.25em;content:'\275E'}
+blockquote q {text-indent:-1em;}
 abbr{cursor:help;}
 i,.i,q {font-style:italic;}
 em, .em {font-style:oblique}

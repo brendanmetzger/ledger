@@ -52,11 +52,12 @@ namespace models;
       while ($begin < $calendar->semester['end']) {
         $key = $index;
         $date = [
-          'section' => $section,
-          'course' => $course,
-          'date' => $begin->format('M d'),
-          'status' => $now > $begin ? 'transpired' : 'pending',
-          'index'  => $index++,
+          'section'  => $section,
+          'course'   => $course,
+          'date'     => $begin->format('M d'),
+          'datetime' => $begin->format(\DateTime::RFC3339),
+          'status'   => $now > $begin ? 'transpired' : 'pending',
+          'index'    => $index++,
         ];
         foreach ($holidays as $idx => $holiday) {
           if ($holiday['start'] <= $begin && $holiday['end'] >= $begin) {

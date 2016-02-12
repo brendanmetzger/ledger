@@ -1,0 +1,84 @@
+<div>
+  <header>
+    <!-- insert views/outline/_/crumbs.html -->
+    <h1 class="massive">Media, Semantics &amp; Control Statements</h1>
+  </header>
+  <section>
+    <h2>Media</h2>
+  </section>
+  <style media="screen" type="text/css">
+    #flow-control {
+      width:100%;
+      height:15em;
+      stroke-width:1;
+      stroke:cornflowerblue;
+      fill:none;
+      stroke-linecap:round;
+    }
+    svg:not(.flip) path:first-of-type {
+      stroke-opacity: 0.15;
+      stroke:#000;
+    }
+    svg.last {
+
+    }
+  </style>
+  <section>
+    <h2>Control Statements</h2>
+    <!--  insert views/css/media/flow.svg -->
+    <h3>With CSS</h3>
+    <p>Careful use of classes can simulate boolean behavior with <abbr>CSS</abbr>, and can be used to great effect—which is why I think <a href="http://www.sitepoint.com/6-current-options-css-preprocessors/"><abbr>css</abbr> preprocessors</a> (programs that write <abbr>css</abbr> for you) are somewhat unnecessary—though I'll save that for another day). Written way back in the <abbr title="World Wide Web Consortium">W3C</abbr> <abbr>css</abbr> 2.0 spec: <q cite="https://www.w3.org/TR/CSS2/selector.html#class-html"><abbr title="Cascading Style Sheets">CSS</abbr> gives so much power to the <q>class</q> attribute, that authors could conceivably design their own <q>document language</q> based on elements with almost no associated presentation.</q> Broken down, the rules that inform how you may apply classes are so powerful that we could introduce meta-level thinking (not you actually would, or should.)</p>
+
+    <section class="comparison container">
+      <div class="_____ float left">
+        <div>Dreamcatcher vegan bitters drinking vinegar post-ironic. Marfa godard trust fund bicycle rights 3 wolf moon. Tilde etsy DIY kombucha four loko. Vinyl offal mustache intelligentsia bitters, single-origin coffee brunch leggings ethical hoodie echo park whatever vice chicharrones tacos.</div>
+      </div>
+      <pre class="prettyprint _____ float left">
+        <!-- review views/css/examples/variables.css chaining -->
+      </pre>
+    </section>
+    <hr class="ruled b t"/>
+    <h3>With Javascript</h3>
+    <p>Boolean Algebra, the namesake of George Boole, a 19th century mathematician who pioneered the system of logical operations, can take complicated sets of logic and break them into a fundamental binary solution that can only be one of two values: <code>true</code> and <code>false</code>. These <strong>Boolean values</strong> have straightforward properties, but as you combine them and use the algebraic systems, they quickly escalate in complexity.</p>
+    <section class="comparison container whitepaper t b">
+      <dl class="half float left">
+        <dt class="h3"><strong>true</strong> values and expressions</dt>
+        <dd><q>true</q> (obviously), in JavaScript, this is written <code>true</code></dd>
+        <dd><q>not false</q>,  <code>!false</code></dd>
+        <dd><q>true <strong>or</strong> false</q>, <code>true || false</code></dd>
+        <dd><q>Five is greater than 2</q>, <code>5 &gt; 2</code></dd>
+        <dd><q>This name is the same</q> <code>'Boabdil' == 'Boabdil'</code></dd>
+        <dd><q>This name is <strong>not</strong> the same</q> <code>'Boabdil' != 'boabdil'</code></dd>
+      </dl>
+      <dl class="half float left">
+        <dt class="h3"><strong>false</strong> values and expressions</dt>
+        <dd><q>false</q> (obviously), in JavaScript, this is written as <code>false</code></dd>
+        <dd><q>not true</q>, <code>!true</code></dd>
+        <dd><q>true <strong>and</strong> false</q>, <code>true &amp;&amp; false</code></dd>
+        <dd><q>Five is less than 2</q>, <code>5 &lt; 2</code></dd>
+        <dd><q>This name doesn't match</q>,   <code>'Boabdil' == 'Boabdil'</code></dd>
+        <dd><q>This name is <strong>doesn't not</strong> match</q> <code>'Boabdil' != 'Boabdil'</code></dd>
+      </dl>
+    </section>
+    <h3>Coercion</h3>
+    <p>While not particularly useful to a beginner programmer, type coercion is often a <em>misunderstood and misused</em> part of programming languages. In JavaScript, you have the following primitive types at your disposal: <code>number</code>, <code>string</code>, <code>boolean</code>, <code>null</code> and <code>undefined</code>. Trying to use any non-boolean type in a logical operation (any operation that uses a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators">logical operator</a>) may produce unexpected results as they are cast to booleans for comparison. Depending on the value they might be considered <mark class="strong">truthy</mark> or <mark class="strong">falsy</mark>. As you begin, try very hard not to rely on coercion until you understand it intuitively. In the meantime, here is a table to start getting familiar:</p>
+      <table class="full">
+        <tbody>
+          <tr>
+            <th>TRUTHY</th>
+            <td>any <strong>non-zero</strong> number</td>
+            <td>any <strong>non-empty</strong> string</td>
+            <td>Explicitly casting empty array <code>Boolean([])</code></td>
+            <td>Explicitly casting empty object <code>Boolean({})</code></td>
+          </tr>
+          <tr>
+            <th>FALSY</th>
+            <td>the number <code>0</code></td>
+            <td>an empty string <code>''</code></td>
+            <td><code>null</code>, <code>undefined</code> and <code>NaN</code> values</td>
+            <td>Empty arrays and objects</td>
+          </tr>
+        </tbody>
+      </table>
+  </section>
+</div>

@@ -35,22 +35,25 @@ class Course extends \bloc\controller
     return $view->render($this());
   }
 
-  protected function GETcriterion(User $user, $type, $index = 0, $course = null)
+  protected function GETcriterion(User $user, $type, $index = 0, $section = '01')
   {
     $view = new View(self::layout);
-    $course = $course ?: static::ID;
-    $this->criterion = $c = new \models\Criterion("[@index='{$index}'and @type='{$type}' and @course='{$course}']");
+    $course = static::ID;
+    $this->criterion = new \models\Criterion("[@index='{$index}'and @type='{$type}' and @course='{$course}']");
+    $this->schedule = (new \Models\Course($course))->section($section)->schedule;
+    $this->timeline = [
+      'assigned' => $this->schedule[$this->criterion['@assigned']],
+      'due'      => $this->schedule[$this->criterion['@due']],
+    ];
+
+
     $path = "views/outline/assignments/".static::ID."/$type/$index.html";
     if (!file_exists(PATH.$path)) {
       $view->content = 'views/layouts/error.html';
       $this->message = "Assignment not ready";
     } else {
       $view->content = $path;
-      if ($user instanceof Student) {
-        $view->context = "views/outline/_/schedule.html";
-        $this->schedule = $user->section->schedule;
-      }
-
+      $view->context = "views/outline/_/schedule.html";
     }
 
     return $view->render($this());
