@@ -57,10 +57,6 @@ ul.index a:not(.selected):hover, ul.index li a.selected {
   background-color:rgba(255,255,255,0.25);
   box-shadow:0 0 1em rgba(255,255,255,0.5);
   color:#333;
-background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
-background: -o-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
-background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
-
 }
 
 
@@ -121,7 +117,7 @@ h3,.h3{font-size:2vw;margin:0.5em 0;font-weight:400;}
 .massive{font-weight:200}
 h4 {text-transform:uppercase;}
 h5 {font-weight:400;font-size:1.8em;margin:0;}
-dfn,h4,.h4{font-size:1.5vw;line-height:1.5em;}
+dfn,h4,.h4{font-size:1.5vw;line-height:1.25em;}
 p + h3{
   margin:1em 0;
 }
@@ -404,4 +400,68 @@ nav form {
 
 .prologue h2, .prologue > h4 {
   font-family:Baskerville;
+}
+
+
+
+
+ul.scores {
+  margin:1px 0;
+}
+ul.scores.discourse li {
+  width:6%;
+}
+
+ul.scores.practice li {
+  width:10.35%;
+}
+ul.scores li {
+  display:block;
+  display:border-box;
+  height:0.125em;
+  color:transparent;
+  padding:0;
+  overflow:hidden;
+  float:left;
+  margin:0;
+  border-left:1px solid rgba(255,255,255,0.5);
+}
+
+.marked[title^="A"] {
+  background-color:rgba(157, 223, 126, 1);
+}
+tr.marked[title^="A"] {
+  background-color:rgba(157, 223, 126, 0.15);
+}
+.marked[title^="B"] {
+  background-color:rgb(217, 216, 111)
+}
+tr.marked[title^="B"] {
+  background-color:rgba(217, 216, 111, 0.1);
+}
+
+.marked[title^="C"] {
+  background-color:rgb(105, 178, 191);
+}
+tr.marked[title^="C"] {
+  background-color:rgba(105, 178, 191, 0.1);
+}
+.marked[title="D"] {
+  background-color:rgb(232, 154, 116);
+}
+tr.marked[title="D"] {
+  background-color:rgba(232, 154, 116, 0.1);
+}
+.marked[title="F"] {
+  background-color:rgba(245, 52, 4, 1);
+}
+tr.marked[title="F"] {
+  background-color:rgba(245, 52, 4, 0.1);
+}
+
+ul.scores li.open {
+  background-color: rgba(0,0,0,0.5);
+}
+ul.scores li.pending.open {
+  background-color:rgba(255,255,255,0.25);
 }

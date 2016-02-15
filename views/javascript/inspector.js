@@ -10,12 +10,12 @@ bloc.init('viewer', function () {
       evt.target.classList.add('active');
 
       var panel = document.querySelector('.inspector .panel[data-file="'+file+'"]');
-
-      if (panel.nodeName === 'PRE') {
+      if (panel.nodeName.toLowerCase() === 'pre') {
         if (evt.target.dataset.url) {
           var request = new XMLHttpRequest();
           request.open('GET', '/task/source/'+evt.target.dataset.url);
           delete evt.target.dataset.url;
+
           request.addEventListener('load', function (evt) {
             panel.textContent = evt.target.responseText;
             if (!panel.classList.contains('plain-text')) {

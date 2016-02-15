@@ -1,6 +1,7 @@
 /* chaining */
 .lined {
   border-style:solid;
+  padding:1em;
 }
 .lined.top {
   border-top-width:1em;
@@ -20,7 +21,7 @@
 .text.blue {
   color:cornflowerblue;
 }
-.color {
-  font-weight:800;
+.text {
+  word-spacing:0.25em;
 }
 /* end chaining */

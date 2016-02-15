@@ -1,6 +1,65 @@
 <div>
   <header>
     <!-- insert views/outline/_/crumbs.html -->
-    <h1 class="massive">Queries, DOM Traversal and event-based programming</h1>
+    <h1 class="massive"><abbr title="Document Object Model">dom</abbr> Traversal, Queries and Events</h1>
+    <section class="documentation">
+      <h2>Reviewing Tree Structures</h2>
+      <p>So JavaScript has something that makes it a bit more complicated than most programming languages, and that is the fact that it has two very robust <abbr title="application programming interface">api</abbr>s—the first being the core language reference, and the second being the <strong>client-side</strong> reference. At the core we have things like types, functions, objects, Date, Math, etc. The client-side of things are where the fun begins: you hove the document object, events, xhr requests, media, web workers, sockets, and a pretty huge list.</p>
+      <h3><code>document</code></h3>
+      <p>There some methods I've left some methods off my list that you may be familiar with: <code>getElementsByClassName</code>, <code>getElementById</code> and <code>getElementsByTagName</code>... I think you should be able to mostly avoid them. The document object itself has over 25 methods, but the three below should get you quite far.</p>
+      <dl class="pad">
+        <dt><span data-type="Element">Element</span> <code>document.createElement(<span class="typ">string</span> <em>name</em>)</code></dt>
+        <dd>Create and return a new empty Element node with the specified tag name.</dd>
+        <dt><span data-type="Element" rel="Element">Element</span> <code>document.querySelector(<span class="typ">string</span> <em>selector</em>)</code></dt>
+        <dd>Returns the first Element in this document that matches the <abbr>CSS</abbr> selector string</dd>
+        <dd>Note, using the selector "#some-id" as a selector effectively replaces <code>document.getElementById</code></dd>
+        <dt><span data-type="NodeList">NodeList</span> <code>document.querySelectorAll(<span class="typ">string</span> <em>selector</em>)</code></dt>
+        <dd>Returns an array-like NodeList of Elements that match the <abbr>CSS</abbr> selector string. The selector may be comma separated.</dd>
+      </dl>
+      <h3><code>Element</code></h3>
+      <dl>
+        <dt><span data-type="DOMTokenList">DOMTokenList</span><code>classList</code></dt>
+        <dd>Implements methods to <code>.add</code>, <code>.remove</code> and <code>.toggle</code> classes to Element nodes</dd>
+        <dt><span data-type="Element" rel="Element">Element</span> <code>document.querySelector(<span class="typ">string</span> <em>selector</em>)</code></dt>
+        <dd>Same as <code>document.querySelector</code></dd>
+        <dt><span data-type="NodeList">NodeList</span> <code>document.querySelectorAll(<span class="typ">string</span> <em>selector</em>)</code></dt>
+        <dd>same as <code>document.querySelectorAll</code></dd>
+        <dt><span data-type="long">long</span><code>childElementCount</code></dt>
+        <dd>Get the number of child elements (as opposed to <em>all elements</em>, such as white-space)</dd>
+        <dt><span data-type="Element">Element</span><code>firstElementChild</code></dt>
+        <dt><span data-type="Element">Element</span><code>dataset</code></dt>
+        <dt><span data-type="Element">Element</span><code>firstElementChild</code></dt>
+        <dt><span data-type="Element">Element</span><code>lastElementChild</code></dt>
+        <dt><span data-type="Element">Element</span><code>nextElementSibling</code></dt>
+        <dt><span data-type="Element">Element</span><code>previousElementSibling</code></dt>
+        <dt><span data-type="String">String</span><code>id</code></dt>
+        <dt><span data-type="String">String</span><code>innerHTML</code></dt>
+      </dl>
+
+
+      <h3><code>Node</code></h3>
+      <p>Elements descend from Node, so if you have an <code>Element</code>, you have all the methods and properties of a <code>Node</code></p>
+      <dl>
+        <dt><span data-type="Node">Node</span><code>appendChild(<span class="typ">Node</span> newChild)</code></dt>
+        <dt><span data-type="Node">Node</span><code>insertBefore(<span class="typ">Node</span> newChild, <span class="typ">Node</span> refChild)</code></dt>
+        <dt><span data-type="Node">Node</span><code>replaceChild(<span class="typ">Node</span> newChild, <span class="typ">Node</span> oldChild)</code></dt>
+        <dt><span data-type="Node">Node</span><code>removeChild(<span class="typ">Node</span> oldChild)</code></dt>
+      </dl>
+      <h3><code>NodeList</code>, <code>HTMLCollection</code></h3>
+      <p>These are array-like objects, they can be put in a loop and requested via index like an array.</p>
+      <dl>
+        <dt><code>length</code></dt>
+        <dt><code>item(<span class="typ">int</span> index)</code></dt>
+      </dl>
+      <h3><code>Event</code></h3>
+      <dl>
+
+      </dl>
+      <h3><code>EventTarget</code></h3>
+      <dl>
+
+      </dl>
+
+    </section>
   </header>
 </div>

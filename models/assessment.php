@@ -19,12 +19,37 @@ namespace models;
       'project'   => 20,
     ];
 
+    public static $rubric = [
+      'A'  => 0.93,
+      'A-' => 0.9,
+      'B+' => 0.87,
+      'B'  => 0.83,
+      'B-' => 0.8,
+      'C+' => 0.77,
+      'C'  => 0.73,
+      'C-' => 0.70,
+      'D'  => 0.60,
+      'F'  => 0,
+    ];
+
+
+
     private $context, $schedule;
 
     public function __construct(Student $student)
     {
       $this->context  = $student->context;
       $this->schedule = $student->section->schedule;
+    }
+
+    static public function LETTER($score)
+    {
+      foreach (self::$rubric as $letter => $threshold) {
+        if ($score > $threshold) {
+          return $letter;
+        }
+      }
+      return 'F';
     }
 
     static public function LINKS($url)

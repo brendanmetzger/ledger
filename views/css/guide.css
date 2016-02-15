@@ -62,7 +62,7 @@ strong,.strong{font-weight:600}
 
 @media only screen and (min-width: 800px){
   .columns.three,
-  .colums.four {-moz-column-count:3;-webkit-column-count:3;column-count:3}
+  .columns.four {-moz-column-count:3;-webkit-column-count:3;column-count:3}
 }
 
 @media only screen and (min-width: 1000px){
@@ -96,7 +96,8 @@ strong,.strong{font-weight:600}
 a.selected:hover{cursor:default;font-style:normal;color:#333;}
 a.selected:after {content:'\2718';color:#333;padding-left:0.5em;}
 .pad {padding:1em;}
-.focus {padding:1em 1em 1em 3.5em;/*border-left:2.5em solid #F8F8F8*/}
+ul.pad {padding:1em 3.5em;}
+.focus {padding:1em 1em 1em 2em;border-left:0.5em solid rgba(0,0,0,0.8);background-color:rgba(255,255,255,0.5)}
 .note  em, footer > p q, blockquote em {font-style:normal;}
 p.note {padding:2.5% 5%;color:rgb(87, 122, 162)}
 aside.note {

@@ -1,4 +1,14 @@
-<ul class="index rag-left">
+<ul class="index">
   <!-- iterate section:students -->
-  <li><a href="[/records/student/$student:@id]">[$student:@name]</a></li>
+  <li>
+    <a href="[/records/student/$student:@id]">[$student:@name]</a>
+    <ul class="plain inline discourse scores container">
+      <!-- iterate student:discourse:list -->
+      <li title="[$discourse:letter]" class="[$schedule:status $discourse:status]">[$discourse:percentage]</li>
+    </ul>
+    <ul class="plain inline practice scores container">
+      <!-- iterate student:practice:list -->
+      <li title="[$practice:letter]" class="[$schedule:status $practice:status]">[$practice:percentage]</li>
+    </ul>
+  </li>
 </ul>

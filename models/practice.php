@@ -50,4 +50,9 @@ namespace models;
       $parsedown = new \vendor\Parsedown;
       return $parsedown->text(trim($context));
     }
+
+    public function getLetter(\DOMElement $context)
+    {
+      return Assessment::LETTER($this->score);
+    }
   }

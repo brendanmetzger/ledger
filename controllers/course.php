@@ -46,7 +46,6 @@ class Course extends \bloc\controller
       'due'      => $this->schedule[$this->criterion['@due']],
     ];
 
-
     $path = "views/outline/assignments/".static::ID."/$type/$index.html";
     if (!file_exists(PATH.$path)) {
       $view->content = 'views/layouts/error.html';
