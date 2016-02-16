@@ -137,7 +137,7 @@
         <dd><q>not true</q>, <code>!true</code></dd>
         <dd><q>true <strong>and</strong> false</q>, <code>true &amp;&amp; false</code></dd>
         <dd><q>Five is less than 2</q>, <code>5 &lt; 2</code></dd>
-        <dd><q>This name doesn't match</q>,   <code>'Boabdil' == 'Boabdil'</code></dd>
+        <dd><q>This name doesn't match</q>,   <code>'Boabdil' == 'boabdil'</code></dd>
         <dd><q>This name is <strong>doesn't not</strong> match</q> <code>'Boabdil' != 'Boabdil'</code></dd>
       </dl>
     </section>
@@ -160,15 +160,13 @@
             <th>TRUTHY</th>
             <td>any <strong>non-zero</strong> number</td>
             <td>any <strong>non-empty</strong> string</td>
-            <td>Explicitly casting empty array <code>Boolean([])</code></td>
-            <td>Explicitly casting empty object <code>Boolean({})</code></td>
+            <td>evaluating arrays and objects, even if empty (never do this!!)</code></td>
           </tr>
           <tr>
             <th>FALSY</th>
             <td>the number <code>0</code></td>
             <td>an empty string <code>''</code></td>
             <td><code>null</code>, <code>undefined</code> and <code>NaN</code> values</td>
-            <td>Empty arrays and objects</td>
           </tr>
         </tbody>
       </table>

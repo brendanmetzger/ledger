@@ -49,7 +49,7 @@ namespace models;
           return $letter;
         }
       }
-      return 'F';
+      return '-';
     }
 
     static public function LINKS($url)

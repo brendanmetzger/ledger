@@ -1,5 +1,5 @@
-var cycle = function (current, limit) {
+var cycle = function (index, limit) {
   return function () {
-    return current >= limit ? current = 0 : ++current;
+    return index++ % limit;
   }
-}
+};
