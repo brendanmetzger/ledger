@@ -112,7 +112,7 @@ namespace models;
 
       return new \bloc\types\dictionary([
         'list' => iterator_to_array($collect, false),
-        'score' => max(0, ($accumulator * Assessment::$weight[$evaluation]) . '‰')
+        'score' => max(0, round($accumulator * Assessment::$weight[$evaluation], 1) . '‰')
       ]);
     }
 
