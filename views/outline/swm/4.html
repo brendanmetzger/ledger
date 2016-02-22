@@ -1,3 +1,120 @@
 <div>
-  <h2>attribute selectors</h2>
+  <header>
+    <!-- insert views/outline/_/crumbs.html -->
+    <h1 class="massive">Data</h1>
+    <p class="intro">More on <abbr>html</abbr> attributes. An introduction to JavaScript Objects and Arrays, and the dot operator. Intro to <abbr>css</abbr> positioning and further study of the box-model.</p>
+  </header>
+
+  <article>
+    <h2>Review</h2>
+    <p>At this point in the semester, I have introduced the topics that I consider requisite and will spend less time revisiting and you'll research and fill in the pieces as we go. We now know about the browser console, keeping it open while we develop. You know that HTML has a structure, and you are aware that careful indentation gives you a visual aid to interpret and see this structure. You are aware that there are semantic tags for to describe content and those tags have meaning.</p>
+    <p>Moving forward, the nature of that structural relationship is going to play a key role in how I talk about the Document Object Model. Parents and children, siblings, ancestors and descendants describe relationships, they inform the ruleset that describes how the interact, they are consequential!</p>
+  </article>
+  <article>
+    <h2>Attributes (are data)</h2>
+    <p><abbr>HTML</abbr> has a way to literally store data in an attribute. Interestingly, it's called a <a href="http://www.w3schools.com/tags/att_global_data.asp">data attribute</a>. Data attributes (well, all attributes) can be seen by the inspecting eyes of <abbr>css</abbr>, which is an introduction to attribute selectors. Likewise, data-attributes can be seen and set in very straight forward ways using object access methods (more on that to come), and this can be quite elegant. </p>
+  </article>
+  <article>
+    <h2>Everything is a box</h2>
+    <p>Depending on your major, your perspective on web design/development from that of your classmates my be quite stark. It is likely that esigners in this class first learned layout from a graphic perspective, attempting to apply design principles to their <abbr>HTML</abbr> and <abbr>css</abbr> work. Programming students may have learned how to apply frameworks and toolkits to solve problems focused on efficiency or best-practices, perhaps using <abbr>html</abbr> and <abbr>css</abbr> as a means to an end. Thus, both groups have an achilles heel; designers try to find a shortcut when it comes to learning the rigor of programming while programmers try to find the shortcut when it comes to the rigors of design. The good news for designers is that programming is very much about design, and the good news for programmers is that good design is very much about technique and attention to detail</p>
+    <section class="container whitepaper tt">
+      <h3>The Box Model</h3>
+      <div class="______ float left outdented">
+        <p>For the experienced design student, layouts, margins and padding were likely learned elsewhere. For the rest, the box-model is might be something you've heard me say a few times and has, until now, been obscure. The good news is that it's a fairly straightforward topic, and as such, you should spend a few hours learning what there is to learn about it. That's right, a few hours, and there you are, done and learned it.</p>
+        <p>Conceptually, it has been around long enough to have many many tutorials and write-ups describing every last detail. As always, I would implore you to invest in literature and seek information that suits your learning style. The box model distills concepts that have been mentioned several times in class: block vs. inline elements, margins vs. padding and now you will be introduced to some of the remaining crucial pieces like dimensions and floats. Consult the list for some links to get you started.</p>
+      </div>
+      <dl class="____ float left">
+        <dt><a class="read" href="https://css-tricks.com/the-css-box-model/">The CSS Box Model</a></dt>
+        <dd>A nice write up that takes you through the mechanics of that glowing box you may have seen when you've inspected an element in the browser console.</dd>
+        <dt><a class="read" href="http://learn.shayhowe.com/html-css/opening-the-box-model/">Opening the Box Model</a></dt>
+        <dd>A link to a tutorial site provided in your syllabus, that will corroborate what you've seen above</dd>
+        <dt><a class="read" href="http://htmldog.com/guides/css/beginner/"><abbr>CSS</abbr> beginner tutorial</a></dt>
+        <dd>If you are still foggy about css, here is a beginner tutorial. Go through the entire thing and believe it or not, it will hit on the box model. See, it's important!</dd>
+        <dt><a class="watch" href="http://www.lynda.com/CSS-tutorials/Displaying-information-through-web/372544/419397-4.html">Displaying Information through the web</a></dt>
+        <dd>If you prefer to watch tutorials, Lynda has an entire video series talking about the box-model.</dd>
+      </dl>
+      <hr class="clear"/>
+      <p class="focus warning">Starting next week, if I mention <em>box-model</em> and think to yourself, <q>huh?</q>, then I may lose my bananas.</p>
+    </section>
+    <hr class="ruled t b"/>
+    <section>
+      <h3>Layout &amp; Floats</h3>
+      <p>Learning layout is obviously quite important to learning how to apply a design. With the proliferation of tablets and mobile devices, the toolset for controlling layout is moving very quickly. I'd advise you to go through this tutorial called <em><a class="read" href="http://learnlayout.com/">Learn CSS Layout</a></em> (it will also be assigned in the homework). Advanced students will note at the end the introduction of <em>flexbox</em> and probably want to investigate those techniques.  I won't be working flexbox into the curriculum; at the moment the spec isn't entirely consistent and I'm admittedly confused about best practices and fallbacks at this point. It's fairly safe to say, however, that this will probably be the way we do layout in the future, so take that to heart.</p>
+      <div class="comparison container">
+        <aside class="______ float left t b ruled top bottom">
+          <p class="note">Watch the carousel below carefully as it attaches new classes. You may see a pattern emerge, but if not, keep at it, this may be one of the <strong>most confusing parts of <abbr>css</abbr> floats.</strong> Specifically, notice the containing element, how it collapses when items are floated. This is by design, but it takes a long time to understand when and precisely why this happens. The links provided explain this in great detail; don't let it slip by you.</p>
+
+          <pre class="prettyprint">
+  &lt;div class="<span data-example="code">bordered</span>"&gt;
+    &lt;p class="first box bordered"&gt;FIRST...&lt;/p&gt;
+    &lt;p class="second box bordered"&gt;SECOND...&lt;/p&gt;
+  &lt;/div&gt;
+          </pre>
+          <div data-example="code" class="bordered">
+            <p class="first box bordered">FIRST...</p>
+            <p class="second box bordered">SECOND...</p>
+          </div>
+        </aside>
+        <pre class="prettyprint ____ float left">
+          <!-- review views/css/examples/variables.css floating -->
+        </pre>
+        <link rel="stylesheet" href="/css/examples/variables.css" title="variable-example"/>
+        <script type="text/javascript">
+        // <![CDATA[
+          bloc.init('class-cycle', function () {
+            var elems = document.querySelectorAll('[data-example="code"]');
+            var sequence = ['bordered first', 'bordered second', 'bordered first second', 'bordered box-container first second', 'bordered'];
+            var current = cycle(0, sequence.length);
+            setInterval(function () {
+              var class_name = sequence[current()];
+              elems.item(0).firstChild.innerText = class_name;
+              elems.item(1).className = class_name;
+            }, 3500);
+
+          });
+        //]]>
+        </script>
+      </div>
+    </section>
+  </article>
+  <article>
+    <h2>JavaScript as data.</h2>
+    <p>The following quote is from <em>How To Design Programs</em> (<a href="http://www.htdp.org">freely available from <abbr title="Massachusetts Institute of Technology">MIT</abbr> Press</a>). While this book goes in in large detail about understanding the connection between mathematics and computing, and though that is not the subject of this course, it hits on a point you may hear me nag about.</p>
+    <blockquote cite="http://www.htdp.org/2003-09-26/Book/curriculum-Z-H-11.html" class="two columns quote">
+      <p>A programming language is in many ways like a spoken language. It has a vocabulary and a grammar. The vocabulary is the collection of those 'basic words' from which we can compose 'sentences' in our language. A sentence in a programming language is an expression or a function; the language's grammar dictates how to form complete sentences from words. Programmers use the terminology <strong>syntax</strong> to refer to the vocabularies and grammars of programming languages.</p>
+      <p>Not all grammatical sentences are meaningful—neither in English nor in a programming language. For example, the English sentence <q>the cat is round</q> is a meaningful sentence, but <q>the brick is a car</q> makes no sense, even though it is completely grammatical. <mark>To determine whether or not a sentence is meaningful, we must study the <strong>meaning</strong>, or <strong>semantics</strong>, of words and sentences.</mark> For spoken languages, we typically explain the meaning of words with sentences that use simpler words; in the case of a foreign language, we sometimes explain a word with simple sentences in the foreign language or we translate words to a known language. For programming languages, there are also several ways to explain the meaning of individual sentences.</p>
+    </blockquote>
+    <p>The takeaway here is that learning syntax, though it might seem like an accomplishment, isn't nearly as profound as it seems like (sorry). Just like learning to write <q>the cat is a brick</q> doesn't make you an author, learning the vocabulary of a language is the starting point, so we must begin to get very comfortable with these concepts.</p>
+    <hr class="ruled t b"/>
+    <section class="container">
+      <img src="/css/media/tackle.png" alt="card catalog" class="float left __" />
+      <h3>Objects</h3>
+      <p class="container">As programs get more complex it becomes important to place data and behavior into structures that help organize and clarify our programs purpose. In JavaScript, objects provide an efficient means to store and utilize program components. You can assign an entire object to a variable with curly brackets simply by writing <code class="strong">var an_object = {};</code>As a data structure, they store a value associated with a property, or <em>key</em>, which follows the same rules as declaring a variable by using the <em>dot operator</em>: <code class="strong">an_object.some_property = "some value";</code>. Not only can we set properties with our dot operator, we locate  keys by requesting them from the object as well: <code class="strong">console.log(an.object.some_property); // outputs "some value"</code>. Object property values can be of <em>any type</em>, including other objects, allowing infinite possibilities for program structure.</p>
+      <p>While objects are very prominent in the JavaScript language and can be configured to profound things, it may aid you to first start thinking of objects as data structures. Once you've mastered setting and accessing object properties, you'll learn that they can actually be programmed to exhibit certain behaviors as well.</p>
+    </section>
+    <section class="container">
+      <img src="/css/media/catalog.png" alt="card catalog" class="float left __" />
+      <h3>Arrays</h3>
+      <p> Arrays are <em>a special type of object</em> which maintain order. Instead of using strings as keys, they use integers, called indices.  Instead of using curly braces to declare them, you use square brackets. To access an item in an array, you use brackets along with the index you are interested in. Indices always start at 0. Beyond that, like an object, you can put anything you like in an array, including other arrays. While this might seem like less useful than an object at first glance,  in programming, order is <em>precisely what you want</em> making the array extremely useful and necessary type of object.</p>
+    </section>
+
+    <section class="container">
+      <h4 class="ruled top t pad">Using Objects and Arrays to talk about data.</h4>
+      <p>In the homework this week, you'll find plenty of information regarding the proper syntax of objects and arrays. Here I'm giving you a jump-start on what a data-structure might look like. I'll ask that you take this much further, so if examining the below structure doesn't add up, let's spend extra time addressing that in the Q/A portion of class.</p>
+      <aside class="float left ____ note">
+        <p>Brackets, both square and curly, are going to become extremely familiar to you by the end of the semester. Looking at the following object, make sure you syntactically see the following structure.</p>
+        <ul>
+          <li>The refrigerator object has several properties containing several types: string, number, boolean, and array.</li>
+          <li><code>refrigerator.ice_maker</code> is a Boolean.</li>
+          <li><code>refrigerator.shelves</code> is an Array containing Objects.</li>
+          <li><code>refrigerator.drawers</code> is an Array containing Objects.</li>
+          <li><code>refrigerator.shelves[1].contents[0]</code> is 'mayonnaise'</li>
+        </ul>
+      </aside>
+      <pre class="prettyprint float left ______">
+        <!-- review views/javascript/examples/objects.js basic object -->
+      </pre>
+    </section>
+
+  </article>
 </div>

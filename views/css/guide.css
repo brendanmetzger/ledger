@@ -1,5 +1,6 @@
 /* --- lovingly devised by Brendan Metzger ---  */
 .container:after, article dl:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.clear {clear:both}
 *{border-color:#333;border-style:solid;border-width:0;}
 
 a:active,a:link:focus,a:visited:focus {outline:1px dotted #333}
@@ -14,7 +15,25 @@ q:before {content:'“';letter-spacing:0.125em;}
 q:after {content:'”';letter-spacing:0.125em;}
 q q:before {content:'‛';letter-spacing:0.125em;padding:0}
 q q:after {content:'’'}
-blockquote{padding:1.425em 0.5em;border-width:0.25em 0;border-style:double;font:italic normal 200 1.25em/2.15em 'Baskerville Old Face',Didot,'Baskerville',Georgia;}
+blockquote {padding:1.425em 0.5em;border-width:3px 0;border-style:double;}
+blockquote.columns {
+  padding:2em 2.5em;
+  margin:2.5em 0;
+  font-size:1em;
+}
+blockquote.quote p:first-of-type:before {
+  content:'❝';
+  padding-right:0.5em;
+  color:rgba(0,0,0,0.5);
+}
+blockquote.quote p:last-of-type:after {
+  content:'❞';
+  padding-left:0.5em;
+  color:rgba(0,0,0,0.5);
+}
+blockquote:not([class]) {
+  font:italic normal 200 1.25em/2.15em 'Baskerville Old Face',Didot,'Baskerville',Georgia;
+}
 blockquote q {text-indent:-1em;}
 abbr{cursor:help;}
 i,.i,q {font-style:italic;}
@@ -134,7 +153,7 @@ aside.note {
 .indented > p, p.indented, p.indented ~ p {text-indent:1em;}
 .dropcap p:first-of-type {text-indent:0}
 .dropcap p:first-of-type:first-letter {text-transform:uppercase;float:left;padding:0 1vw;line-height:6vw;font-size:6vw;margin:0 0.1em -0.75vw 0;}
-h2.outdented,h1.h2.outdented,*.outdented > p + p, p.outdented{text-indent:-0.5em}
+h2.outdented,h1.h2.outdented,*.outdented > p, p.outdented{text-indent:-0.5em}
 div[title='Chicago Flag']{border-width:0.15em 0;margin:1.25em 1em;padding:0.5em 0;}
 div[title='Chicago Flag'] > *{border-width:1em 0;border-color:#AFD3EC;padding:1.4em 0;text-align:center;word-spacing:1em;}
 body.develop div.column, body.develop *.new,*.debug{outline:1px dotted #555;min-height:15em;}

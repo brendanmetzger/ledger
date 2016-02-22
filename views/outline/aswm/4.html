@@ -1,0 +1,41 @@
+<div>
+  <header>
+    <!-- insert views/outline/_/crumbs.html -->
+    <h1 class="massive">Controlling time</h1>
+    <p class="intro">Date objects, intervals and timeouts let you execute code and time code execution. At this point, we'll look at the profile.js file from earlier in the semester, introducing <abbr title="json with padding">JSONP</abbr>. Lastly, we'll go over some useful <abbr>HTML5</abbr> topics like data attributes, localStorage and MediaElements.</p>
+  </header>
+  <style media="screen">
+    .clock {
+      width:33.3%;
+    }
+
+  </style>
+  <article>
+    <h2>Review</h2>
+    <p>Take a moment to answer and research the answer to the following questions.</p>
+    <ul>
+      <li>Given: when adding an event listener, you supply a <em>callback</em> function as the second argument. That callback is executed at some point, and upon execution, the caller sends along one argument. <strong>What is that argument?</strong></li>
+    </ul>
+    <section class="container whitepaper">
+      <h4 class="centered ______" style="letter-spacing:1em;">Code Hunt</h4>
+      <aside class="note ___ float left">
+        <p>I want to balance cramming syntax with growing perspective about the facets of programming that I appreciate, so I've decided to offer up a little bit of a challenge for this week.</p>
+        <p>I've talked about it a little bit, so I'll go over it a bit more: <strong>naming conventions</strong> are consistent use of variables to define what type of objects they hold. Referencing the adjacent code you will see the following conventions at play.</p>
+        <ul class="ruled plain">
+          <li><code>camelCaseStrings</code> store <strong>functions</strong>, <mark>functions are executable</mark></li>
+          <li><code>snake_case_strings</code> represent primitive types and arrays</li>
+          <li><code>FirstWordUppercase</code> means that we have something more special, either a node, or an <mark>object that is to be constructed</mark> (more on that later in the semester)</li>
+        </ul>
+        <p>Together, work through the adjacent code. Parts are simple, others abstruse. I've asked questions throughout the source code;  it's not so important that you understand how the program works, but you should start to understand how <em>parts of the program work.</em>. You've heard me ramble on how JavaScript is functional and too much logic is poison. <strong>Count the number of control statements</strong> used in the program.</p>
+        <a href="/css/media/clock.svg">here is a link to the clock</a>
+        <div class="pad t">
+          <!--  insert views/css/media/clock.svg -->
+        </div>
+      </aside>
+      <pre class="prettyprint _______ float left">
+        <!-- review views/javascript/examples/assigned/function-medley.js function examples -->
+      </pre>
+    </section>
+  </article>
+  <script type="text/javascript">bloc.embed('/javascript/examples/assigned/function-medley.js');</script>
+</div>
