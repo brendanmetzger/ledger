@@ -2,32 +2,67 @@
   <header>
     <!-- insert views/outline/_/crumbs.html -->
     <h1 class="massive">Controlling time</h1>
-    <p class="intro">Date objects, intervals and timeouts let you execute code and time code execution. At this point, we'll look at the profile.js file from earlier in the semester, introducing <abbr title="json with padding">JSONP</abbr>. Lastly, we'll go over some useful <abbr>HTML5</abbr> topics like data attributes, localStorage and MediaElements.</p>
+    <p class="intro">Date objects, intervals and timeouts let you time when code executes. At this point, we'll look at the profile.js file from earlier in the semester, introducing <abbr title="json with padding">JSONP</abbr>. On your own, it will be beneficial to introduce yourself to methods of amending your <abbr>HTML</abbr> with data, and investigate ways to make program state persist by researching topics like data attributes and localStorage.</p>
   </header>
+
   <style media="screen">
     .clock {
       width:33.3%;
     }
 
   </style>
-  <article>
+  <article class="container">
     <h2>Review</h2>
-    <p>Take a moment to answer and research the answer to the following questions.</p>
-    <ul>
+    <p class="__ float left">Take a moment to answer (or research the answer) to the following questions that were introduced last week.</p>
+    <ul class="_______ float left pad">
       <li>Given: when adding an event listener, you supply a <em>callback</em> function as the second argument. That callback is executed at some point, and upon execution, the caller sends along one argument. <strong>What is that argument?</strong></li>
+      <li>What is most often the <strong>firstChild</strong> of any element, and why is this confusing?</li>
     </ul>
+  </article>
+  <article>
+    <h2>Timing Elements</h2>
+    <p>Timing in javascript kind of falls into two camps: the time you can control, and the time you can't. The latter refers to asynchronous aspects of the language which you've been introduced to through event listeners, and you'll quickly be a pro at when it comes to XHR (Ajax) stuff. The former is what we will be concerned about today, and it involves getting your code to wait, repeat itself, and </p>
+    <hr class="ruled"/>
+    <section class="two columns indented">
+      <h3 class="bottom ruled">The <code>Date</code> object</h3>
+      <p>The JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date object</a> has always been a tad clunky in my opinion (at least compared to other languages), but should you need it—and you probably will, there are a few tricks to remember.</p>
+      <p>It must be called as a constructor, so just assigning a date to a variable looks like this: <code>var my_date = <strong>new</strong> Date()</code>. The <em>constructor</em> function takes a variety of arguments, which you can read about in the documentation, but if you carefully write your dates, you can pass a string. Given <code>var timestamp = '2015-10-22 08:10:00';</code> we read that as October 22, 2015, 8:10am... but am or pm?? When you write your dates mind the 24 hour clock so the engine will parse pm correctly.</p>
+      <p>When constructing a date from a string, you can bass the string directly to the constructor <strong>if it is formatted properly</strong>—there are standards committees mandate acceptable formats—those are available in the documentation. Luckily, the example date I've given can be <em>parsed</em> by the constructor, so I can write <code>var my_bday = new Date(timestamp);</code> and now I have a legit Date.</p>
+      <p>A few static <code>Date</code> methods to be aware of: <code>Date.parse(<em>timestring</em>)</code> will return the number of milliseconds since <a href="https://en.wikipedia.org/wiki/Unix_time">January 1, 1970</a>. This is immediately useful, say if you want to calculate the difference between two dates: <code>Date.parse('some date') - Date.parse('some other day');</code>, then you could convert from milliseconds into hours/min, etc, with some arithmetic. Another nice method is <code>Date.now()</code>, which gives you the number of milliseconds at the current moment. Often you see people doing this trick <code>+(new Date)</code> - that's clever and silly unary operation, Date.now() does the same thing, but in an obvious fashion.</p>
+    </section>
+    <hr class="ruled"/>
+    <section class="two columns indented">
+      <h3 class="bottom ruled"><code>setTimeout</code>, <code>setInterval</code></h3>
+      <p><code>setTimeout</code> can be thought of as adding a delay to a piece of your code. Like so many things in JavaScript, it takes a callback function as it's first argument (think about why that needs to be the case), and it takes in integer as the second, which is the number of milliseconds you want to wait before the callback is executed. It returns a timeout id, see <em>clearing window timers</em>.</p>
+      <p>Do note, for a long time <code>setTimeout</code> was used to animate elements. Now, animation is largely handled by <abbr>css</abbr>, but the need still arises for custom animations here and there. In the event that this is you goal, the browser provides a more efficient means of custom animations through <a href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame"><code>requestAnimationFrame</code></a>.</p>
+      <p>A close cousin to a timeout, <code>setInterval</code> takes the same argument pattern but has one significant difference, and that is it keeps firing on the interval. Like it's cousin, it returns a timeout ID that can be canceled when stored in a variable and passed to <code>clearTimeout</code> or <code>clearInterval</code></p>
+    </section>
+    <hr class="ruled"/>
+    <section>
+      <h3>Clearing Window Timers</h3>
+      <p>Timeouts can be canceled anytime using <code>clearTimeout</code> and <code>clearInterval</code>. Obviously, to clear a timeout, it can't have executed yet (otherwise it's moot to clear). Make sure to visit the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers">documenation for window timers</a> for a good briefing.</p>
+    </section>
+  </article>
+  <article>
+    <h2>JSONP</h2>
+    <p><a href="https://en.wikipedia.org/wiki/JSONP">JavaScript Object Notation, with padding</a> is a simple way to get data into your document. It's a simple enough concept, and it's a low-brow and useful approach to getting data into your page when you aren't able to use XHR (Ajax). You have your profile.js you can experiment with. Later in the semester, we'll officially use XHR to embed such data, but for now it will be worth your time experimenting with these methods.</p>
+  </article>
+  <article>
+    <p class="intro t b m">This week I've written up a sample piece of code that goes through many of the topics from the previous weeks and introduces some new ones from this week. Form some groups, open a text editor and quietly pick this apart and try to figure it out what the various pieces do. It is both complicated, but straight forward. It outlines many principles, none of them arbitrary: the way variables are named, the length of the lines, the size of functions, and the indentation and formatting.</p>
     <section class="container whitepaper">
-      <h4 class="centered ______" style="letter-spacing:1em;">Code Hunt</h4>
+      <h4 class="______" style="">Code Hunt</h4>
       <aside class="note ___ float left">
         <p>I want to balance cramming syntax with growing perspective about the facets of programming that I appreciate, so I've decided to offer up a little bit of a challenge for this week.</p>
         <p>I've talked about it a little bit, so I'll go over it a bit more: <strong>naming conventions</strong> are consistent use of variables to define what type of objects they hold. Referencing the adjacent code you will see the following conventions at play.</p>
         <ul class="ruled plain">
           <li><code>camelCaseStrings</code> store <strong>functions</strong>, <mark>functions are executable</mark></li>
-          <li><code>snake_case_strings</code> represent primitive types and arrays</li>
-          <li><code>FirstWordUppercase</code> means that we have something more special, either a node, or an <mark>object that is to be constructed</mark> (more on that later in the semester)</li>
+          <li><code>snake_case_strings</code> represent primitive types, objects and arrays</li>
+          <li><code>FirstWordUppercase</code> means that the <mark>object that is to be constructed</mark>, like the <code>Date</code> object. We'll cover this more later in the semester.</li>
         </ul>
-        <p>Together, work through the adjacent code. Parts are simple, others abstruse. I've asked questions throughout the source code;  it's not so important that you understand how the program works, but you should start to understand how <em>parts of the program work.</em>. You've heard me ramble on how JavaScript is functional and too much logic is poison. <strong>Count the number of control statements</strong> used in the program.</p>
-        <a href="/css/media/clock.svg">here is a link to the clock</a>
+        <p>Together, work through the adjacent code. Parts are simple, others abstruse. I've asked questions throughout the source code;  it's not so important that you understand how the program works, but you should start to understand how <em>parts of the program work.</em>. You've heard me ramble on how JavaScript is functional and too much logic is poison. <strong>Count the number of control statements</strong> used in the program—as you see, it's possible to be very frugal with them.</p>
+        <p>I expect some of the code to be a head scratcher, so write down your questions and curiosities, and we'll go over them in detail in the Q/A portion of class.</p>
+        <p>The clock is a <a href="/css/media/clock.svg">simple <abbr>SVG</abbr> element</a> I made. If svg is unfamiliar, spend some time researching it—it's very handy, and can be used as a vector image, as data and you can interact with it with both JS and <abbr>CSS</abbr>.</p>
+        <p>The implementation of the code is below. Drag the slider to determine how fast the clock ticks.</p>
         <div class="pad t">
           <!--  insert views/css/media/clock.svg -->
         </div>

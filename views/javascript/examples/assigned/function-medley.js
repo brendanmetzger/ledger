@@ -48,7 +48,7 @@ function makeClock(DOMelem, planet, total_hours) {
 
   // moveHand func has acceess to radius, hand, and tally vars. This is called..?
   var moveHand = function (days, hours) {
-    // some light trigonometry (soh cah toa)!
+    // some light trigonometry
     var angle = (hours / total_hours) * (2 * Math.PI);
     hand.setAttribute('x2', Math.cos(angle) * (radius - 5) + radius);
     hand.setAttribute('y2', Math.sin(angle) * (radius - 5) + radius);
@@ -107,10 +107,9 @@ function setup(evt) {
   DOMtimeInput.setAttribute('max', 500);
   DOMtimeInput.setAttribute('value', 10);
   DOMtimeInput.addEventListener('change', function () {
-    clearTimeout(timer); // clear the old timeout, start new one
+    clearInterval(timer); // clear the old timeout, start new one
     timer = setInterval(tickAllClocks, parseInt(this.value, 10));
   });
-
 
   // objects can be iterated. planet will hold the property (key)
   for(var planet in planets) {
