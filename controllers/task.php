@@ -121,6 +121,18 @@ class Task extends \bloc\controller
     }
   }
 
+  public function CLIlines()
+  {
+    $doc     = new Document("data/SP16");
+    $notes = (new \DomXpath($doc))->query("//student/practice");
+
+    foreach ($notes as $note) {
+      $note->nodeValue = base64_encode($note->nodeValue);
+    }
+
+    $this->save($doc);
+  }
+
   private function parseStudentFile($xml)
   {
     $headers = [];

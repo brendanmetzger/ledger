@@ -35,11 +35,11 @@ class Course extends \bloc\controller
     return $view->render($this());
   }
 
-  protected function GETcriterion(User $user, $type, $index = 0, $section = '01')
+  protected function GETcriterion(User $user, $type, $index = 0, $section = '01', $specificity = '*')
   {
     $view = new View(self::layout);
     $course = static::ID;
-    $this->criterion = new \models\Criterion("[@index='{$index}'and @type='{$type}' and @course='{$course}']");
+    $this->criterion = new \models\Criterion("[@index='{$index}'and @type='{$type}' and @course='{$specificity}']");
     $this->schedule = (new \Models\Course($course))->section($section)->schedule;
     $this->timeline = [
       'assigned' => $this->schedule[$this->criterion['@assigned']],
@@ -64,6 +64,7 @@ class Course extends \bloc\controller
     $view->content = 'views/layouts/dashboard.html';
     $view->context = "views/outline/_/schedule.html";
     $this->schedule = $student->section->schedule;
+    $this->review = "Review";
     return $view->render($this());
   }
 

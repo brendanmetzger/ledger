@@ -51,10 +51,14 @@ namespace models;
       return $context->parentNode['@course'];
     }
 
+    public function getQuizzes(\DOMElement $context)
+    {
+      return (new Assessment($this))->getEvaluation('quiz', "[@type='quiz']");
+    }
 
     public function getProjects(\DOMElement $context)
     {
-      return Criterion::collect(null, "[@type='project']");
+      return (new Assessment($this))->getEvaluation('project', "[@type='project']");
     }
 
     public function getDiscourse(\DOMElement $context)
@@ -65,6 +69,14 @@ namespace models;
     public function getPractice(\DOMElement $context)
     {
       return (new Assessment($this))->getEvaluation('practice', "[@type='practice' and @course = '{$this->course}']");
+    }
+
+    public function getGrade(\DOMElement $context)
+    {
+      $score = array_reduce(['quizzes', 'projects', 'discourse', 'practice'], function ($carry, $item) {
+        return $carry + $this->{$item}['score'];
+      }, 0);
+      return new \bloc\types\Dictionary(['score' => $score, 'letter' => Assessment::LETTER($score, 100)]);
     }
 
 }

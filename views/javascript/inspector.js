@@ -21,6 +21,8 @@ bloc.init('viewer', function () {
             if (!panel.classList.contains('plain-text')) {
               panel.classList.add('prettyprint');
               prettyPrint();
+            } else {
+              panel.classList.add('prettyprinted');
             }
           });
           request.send()

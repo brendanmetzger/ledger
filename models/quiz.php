@@ -6,15 +6,15 @@ namespace models;
   *
   */
 
-  class Discourse extends \bloc\Model
+  class Quiz extends \bloc\Model
   {
     use traits\indexed, traits\persist;
 
     const XPATH = false;
 
     static public $fixture = [
-      'discourse' => [
-        '@' => ['punctuality' => 0, 'persistance' => 1, 'observation' => 1],
+      'quiz' => [
+        '@' => ['credit' => 0],
         'CDATA' => '',
       ]
     ];
@@ -26,7 +26,7 @@ namespace models;
 
     public function getScore(\DOMElement $context)
     {
-      return $context['@punctuality'] + $context['@persistance'] + $context['@observation'] - 2;
+      return $context['@credit'];
     }
 
     public function getStatus(\DOMElement $context)

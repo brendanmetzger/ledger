@@ -4,14 +4,13 @@
       background-color:#333;
       height:5vh;
       overflow:hidden;
-
     }
     .inspector .panel {
       width:100%;
       height:90vh;
       margin:0;
       box-sizing:border-box;
-      border:1px solid #FFF;
+      border-top:1px solid #fff;
       display:block;
     }
     .inspector .panel:not(.visible) {
@@ -19,23 +18,29 @@
     }
     .buttons li {
       cursor:pointer;
-      padding:0.5em;
-      min-width:10%;
-      margin:0;
+      padding:0.5em 0;
       text-align:center;
-      background-color:#555;
       color:#fff;
     }
     .buttons li.active {
       background-color:#FEFEFE;
       color:#777;
     }
+    .stretch {
+      box-shadow:0 0.5em 0.5em rgba(0,0,0,0.1);
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .stretch > li {
+      flex:1 0 auto;
+    }
   </style>
   <script type="text/javascript">bloc.embed('/javascript/inspector.js');</script>
-  <ul class="plain inline buttons" style="background-color:#444;">
+  <ul class="plain buttons stretch" style="background-color:#444;">
     <li data-file="preview" class="active">Preview</li>
     <!--  iterate files -->
-    <li data-url="[$url]" data-file="[$name]">[$name]</li>
+    <li data-url="[$url]" data-file="[$name]" class="code">[$name]</li>
   </ul>
   <iframe data-file="preview" src="[$url]" class="panel visible">
     <p>I frame</p>

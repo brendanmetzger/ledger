@@ -29,6 +29,16 @@ namespace models;
       $context->setAttribute('value', 0);
     }
 
+    public function setPractice(\DOMElement $context, $value)
+    {
+      $context->nodeValue = base64_encode($value);
+    }
+
+    public function __toString()
+    {
+      return base64_decode($this->context->nodeValue);
+    }
+
     public function getScore(\DOMElement $context)
     {
       $deductions = ($context['@punctuality'] / 7) * $context['@mission'];
@@ -42,13 +52,13 @@ namespace models;
 
     public function getPercentage(\DOMElement $context)
     {
-      return $this->status == 'open' ? 'NA' : ($this->score * 100) . '‰';
+      return $this->status == 'open' ? 'NA' : ($this->score * 100);
     }
 
     public function getFormatted(\DOMElement $context)
     {
       $parsedown = new \vendor\Parsedown;
-      return $parsedown->text(trim($context));
+      return $parsedown->text(trim((string)$this));
     }
 
     public function getLetter(\DOMElement $context)

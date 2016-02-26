@@ -42,10 +42,10 @@ namespace models;
       $this->schedule = $student->section->schedule;
     }
 
-    static public function LETTER($score)
+    static public function LETTER($score, $multiplier = 1)
     {
       foreach (self::$rubric as $letter => $threshold) {
-        if ($score > $threshold) {
+        if ($score > ($threshold * $multiplier)) {
           return $letter;
         }
       }
@@ -103,16 +103,18 @@ namespace models;
         $map = [
           $evaluation => Data::FACTORY($evaluation, $reviewed->pick($index)),
           'criterion' => $criterion,
-          'schedule'  => $this->schedule[$index]
+          'schedule'  => $this->schedule[$criterion['@assigned'] ?: $index],
+          'due'       => $this->schedule[$criterion['@due'] ?: $index],
         ];
-
         $accumulator = ($accumulator + ($map[$evaluation]->score * $average));
         return $map;
       }, $query);
 
+      $weight = Assessment::$weight[$evaluation];
       return new \bloc\types\dictionary([
-        'list' => iterator_to_array($collect, false),
-        'score' => max(0, round($accumulator * Assessment::$weight[$evaluation], 1) . '‰')
+        'list'   => iterator_to_array($collect, false),
+        'score'  => ($accumulator == 0 ? $weight : max(0, round($accumulator * $weight, 1))),
+        'weight' => $weight,
       ]);
     }
 

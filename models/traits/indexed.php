@@ -9,7 +9,6 @@ trait indexed {
     if (! self::XPATH) return;
 
     $name = self::type();
-
     return Data::instance()->query(self::XPATH)
                            ->find("{$name}{$identity}")
                            ->pick(0);

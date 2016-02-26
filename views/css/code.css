@@ -1,5 +1,9 @@
-pre {
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
+
+code, pre, .code {
   font-family:Inconsolata, 'Courier New', monospace;
+}
+pre {
   font-size:1.5em;
   overflow:auto;
   margin:0.5em 0;

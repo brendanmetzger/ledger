@@ -48,11 +48,26 @@
     tr.open + tr.open td.transpired a {
       display:none;
     }
+    .stretch {
+      display:flex;
+    }
+    .stretch > li {
+      padding:1em;
+      text-align:center;
+      flex:1 0 auto;
+    }
+    h1.banner {
+      text-align:right;
+      font-weight:300;
+      letter-spacing:0.125em;
+      color:#fff;
+      background-color:#333;
+      padding:0.5em 0.25em;
+      margin:0 -2.5vw;
+    }
   /* ]]> */
   </style>
-  <h2>[$student:@name]</h2>
-  <h4><a href="[$student:@url/]">IAM Course Site</a></h4>
-  <!-- replace contact -->
+  <h1 class="banner">[$student:@name]</h1>
   <section>
     <h3>Participation and Attendance</h3>
     <table class="full chart">
@@ -72,10 +87,10 @@
           <th>Score</th>
           <!-- iterate student:discourse:list -->
           <td class="[$schedule:status]" title="[$discourse]">
-            <strong>[$discourse:percentage]</strong>
+            <strong class="percentage">[$discourse:percentage]</strong>
             <a href="[[/$$instructor:path/discourse/$criterion:@index/$$student:@id]]">[[$$instructor:edit]]</a>
           </td>
-          <th>[$student:discourse:score]</th>
+          <th class="percentage">[$student:discourse:score]</th>
         </tr>
       </tbody>
     </table>
@@ -89,6 +104,7 @@
       <thead>
         <tr>
           <th>[i]</th>
+          <th>Due</th>
           <th>Assignment Details</th>
           <th>Your page</th>
           <th>Notes</th>
@@ -99,33 +115,108 @@
         <!-- iterate student:practice:list -->
         <tr class="[$practice:status]" title="[$practice:letter]">
           <td>[$criterion:@index]</td>
-          <td><a href="[[/$$student:course/criterion/practice/$criterion:@index/$$student:section:@id]]">[$criterion:@title]</a></td>
+          <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time></td>
+          <td>
+            <a href="[[/$$student:course/criterion/practice/$criterion:@index/$$student:section:@id/$$student:course]]">[$criterion:@title]</a>
+          </td>
           <td class="centered"><a href="[[$$student:@url/practice/$criterion:@index/]]">Preview</a></td>
-          <td class="[$schedule:status centered]"><a href="[[/$$student:course/notes/practice/$criterion:@index]]">Review</a></td>
           <td class="[$schedule:status centered]">
-            <strong>[$practice:percentage]</strong>
+            <a href="[[/$$student:course/notes/practice/$criterion:@index/]]">[[$$review]]</a>
             <a href="[[/$$instructor:path/practice/$criterion:@index/$$student:@id]]">[[$$instructor:edit]]</a>
+          </td>
+          <td class="[$schedule:status centered]">
+            <strong class="percentage">[$practice:percentage]</strong>
           </td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="4">µ (40% max)</th>
-          <td class="centered"><strong>[$student:practice:score]</strong></td>
+          <th colspan="5">[µ ($student:practice:weight% max)]</th>
+          <td class="centered"><strong class="percentage">[$student:practice:score]</strong></td>
         </tr>
       </tfoot>
     </table>
   </section>
   <section>
     <h3>Projects</h3>
-    <ul>
-      <!-- iterate student:projects -->
-      <li>[$criterion:@title]</li>
-    </ul>
+    <table class="full chart">
+      <colgroup>
+        <col span="1" style="width:1em;"/>
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>Due</th>
+          <th>Assignment Details</th>
+          <th>Your page</th>
+          <th>Notes</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody class="vertical">
+        <!-- iterate student:projects:list -->
+        <tr class="[$project:status]" title="[$project:letter]">
+          <td>[$criterion:@index]</td>
+          <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time></td>
+          <td>
+            <a href="[[/$$student:course/criterion/project/$criterion:@index/$$student:section:@id]]">[$criterion:@title]</a>
+          </td>
+          <td class="centered"><a href="[[$$student:@url/project/$criterion:@index/]]">Preview</a></td>
+          <td class="[$schedule:status centered]">
+            <a href="[[/$$student:course/notes/project/$criterion:@index]]">[[$$review]]</a>
+            <a href="[[/$$instructor:path/project/$criterion:@index/$$student:@id]]">[[$$instructor:edit]]</a>
+          </td>
+          <td class="[$schedule:status centered]">
+            <strong class="percentage">[$project:percentage]</strong>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="5">[µ ($student:projects:weight% max)]</th>
+          <td class="centered"><strong class="percentage">[$student:projects:score]</strong></td>
+        </tr>
+      </tfoot>
+    </table>
   </section>
 
   <section>
     <h3>Quizzes</h3>
-    <p>In progress</p>
+    <table class="full chart">
+      <colgroup>
+        <col span="1" style="width:10%;"/>
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Exam</th>
+          <th>Administered</th>
+          <th>Notes</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody class="vertical">
+        <!-- iterate student:quizzes:list -->
+        <tr class="[$quiz:status]" title="[$quiz:letter]">
+          <td class="centered">[$criterion:@title]</td>
+          <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time></td>
+          <td class="[$schedule:status centered]">[$quiz]</td>
+          <td class="[$schedule:status centered]">
+            <strong class="percentage">[$quiz:percentage]</strong>
+            <a href="[[/$$instructor:path/quiz/$criterion:@index/$$student:@id]]">[[$$instructor:edit]]</a>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="3">[µ ($student:quizzes:weight% max)]</th>
+          <td class="centered"><strong class="percentage">[$student:quizzes:score]</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  </section>
+  <section style="margin-top:5em;border-top-width:1em;">
+    <h2>Cumulative Grade: <strong class="percentage" title="[$student:grade:letter]">[$student:grade:score]</strong></h2>
+    <p class="focus"><strong>Note:</strong> until one of at every type of assignment have been graded, the average score is incalculable. Because of that, I just assume a perfect average, giving the maximum points available, which means after the midterm, based on your other criteria your scores may change significantly.</p>
+
   </section>
 </article>
