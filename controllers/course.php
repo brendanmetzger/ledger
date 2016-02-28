@@ -21,7 +21,7 @@ class Course extends \bloc\controller
   {
     $view = new View(static::layout);
     $view->content = "views/outline/{$id}.html";
-    $view->context = "views/outline/_/schedule.html";
+    $view->context = "views/layouts/list/schedule.html";
     $view->lecture = "views/outline/".strtolower(static::ID)."/{$id}.html";
     $this->course = new \Models\Course(Data::ID(static::ID));
     $schedule = $this->course->section($section)->schedule;
@@ -39,6 +39,7 @@ class Course extends \bloc\controller
   {
     $view = new View(self::layout);
     $course = static::ID;
+    $this->type = $type;
     $this->criterion = new \models\Criterion("[@index='{$index}'and @type='{$type}' and @course='{$specificity}']");
     $this->schedule = (new \Models\Course($course))->section($section)->schedule;
     $this->timeline = [
@@ -52,7 +53,7 @@ class Course extends \bloc\controller
       $this->message = "Assignment not ready";
     } else {
       $view->content = $path;
-      $view->context = "views/outline/_/schedule.html";
+      $view->context = "views/layouts/list/schedule.html";
     }
 
     return $view->render($this());
@@ -62,7 +63,7 @@ class Course extends \bloc\controller
   {
     $view = new View(self::layout);
     $view->content = 'views/layouts/dashboard.html';
-    $view->context = "views/outline/_/schedule.html";
+    $view->context = "views/layouts/list/schedule.html";
     $this->schedule = $student->section->schedule;
     $this->review = "Review";
     return $view->render($this());

@@ -61,9 +61,14 @@
       font-weight:300;
       letter-spacing:0.125em;
       color:#fff;
+      text-shadow:-2px 0 1px #000;
       background-color:#333;
-      padding:0.5em 0.25em;
+      padding:0.5em;
       margin:0 -2.5vw;
+      background:linear-gradient(to bottom, #333, #282828);
+    }
+    th.lighter {
+      font-weight:600;
     }
   /* ]]> */
   </style>
@@ -81,7 +86,7 @@
           <th>Week</th>
           <!-- iterate student:discourse:list -->
           <td>[$criterion:@index]</td>
-          <th>µ (30‰)</th>
+          <th class="lighter"><span>µ × </span><span class="percentage">[$student:discourse:weight]</span></th>
         </tr>
         <tr class="tooltip">
           <th>Score</th>
@@ -131,7 +136,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="5">[µ ($student:practice:weight% max)]</th>
+          <th colspan="5">µ ⋅ <span class="percentage">[$student:practice:weight]</span></th>
           <td class="centered"><strong class="percentage">[$student:practice:score]</strong></td>
         </tr>
       </tfoot>
@@ -173,7 +178,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="5">[µ ($student:projects:weight% max)]</th>
+          <th colspan="5">µ ⋅ <span class="percentage">[$student:projects:weight]</span></th>
           <td class="centered"><strong class="percentage">[$student:projects:score]</strong></td>
         </tr>
       </tfoot>
@@ -208,7 +213,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="3">[µ ($student:quizzes:weight% max)]</th>
+          <th colspan="3">µ ⋅ <span class="percentage">[$student:quizzes:weight]</span></th>
           <td class="centered"><strong class="percentage">[$student:quizzes:score]</strong></td>
         </tr>
       </tfoot>
@@ -216,7 +221,7 @@
   </section>
   <section style="margin-top:5em;border-top-width:1em;">
     <h2>Cumulative Grade: <strong class="percentage" title="[$student:grade:letter]">[$student:grade:score]</strong></h2>
-    <p class="focus"><strong>Note:</strong> until one of at every type of assignment have been graded, the average score is incalculable. Because of that, I just assume a perfect average, giving the maximum points available, which means after the midterm, based on your other criteria your scores may change significantly.</p>
+    <p class="focus"><strong>Note:</strong> until one of every type of assignment have been graded, the average score is based on pending perfect scores; after the midterm, based on your other criteria your scores may change significantly.</p>
 
   </section>
 </article>

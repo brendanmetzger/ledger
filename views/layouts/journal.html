@@ -3,6 +3,8 @@
   <head>
     <title>[$title]</title>
     <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=yes,width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <link rel="stylesheet" href="/css/guide.css"/>
     <link rel="stylesheet" href="/css/themes/journal.css"/>
 
@@ -18,7 +20,7 @@
                 p ? p2.push(ctx) : ctx.onload = this.load.bind(ctx, p1.push(ctx));
           },
           load: function (i, e) {
-            if (!e) return p1.concat(p2).map(append.bind(document.body));
+            if (!e) return p1.concat(p2).map(append.bind(document.head));
             if (e && p1.length === i) for (var k in c) c[k].call(c[k], true);
           },
           init: function (k, f) {
@@ -80,8 +82,10 @@
         }
         return "url(" + canvas.toDataURL("image/png") + ")";
       }
-      document.body.style.backgroundImage = noisyBG(0.1) + ", " + noisyBG(0.1);
-      document.body.style.backgroundPosition = "0 0, 50px -50px, 20px 30px";
+      var out = 'body {background-image:'+noisyBG(0.1) + ', ' + noisyBG(0.1)+';background-position:0 0, 50px -50px, 20px 30px;}';
+      var style = document.head.appendChild(document.createElement('style'));
+      style.setAttribute('type', 'text/css');
+      style.textContent = out;
       window.bloc.load();
       // ]]>
     </script>

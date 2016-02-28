@@ -1,24 +1,21 @@
-<article>
+<article class="paginate">
+  <h1 class="massive">Courses</h1>
   <!-- iterate courses -->
-  <section class="container">
+  <article class="container tt bb pad">
     <h2>[$course:@title]</h2>
     <!-- iterate course:sections -->
-    <div class="_____ float left">
-      <h4 class="bottom ruled"><a href="[/$section:@course/0/$section:@id]">[§$section:@id]</a><span>[$section:time $section:@room]</span></h4>
-      <ul class="plain">
+    <section class="pad">
+      <h4>
+        <a href="[/$section:@course/0/$section:@id]">[§$section:@id]</a>
+        <span>[$section:time]</span>
+        <span>[Rm $section:@room]</span>
+      </h4>
+      <ul class="plain cards">
         <!-- iterate section:students -->
         <li>
           <a href="[/records/student/$student:@id]">[$student:@name]</a>
-          <ul class="plain inline discourse scores container">
-            <!-- iterate student:discourse:list -->
-            <li title="[$discourse:letter]" class="[$schedule:status $discourse:status]">[$discourse:percentage]</li>
-          </ul>
-          <ul class="plain inline practice scores container">
-            <!-- iterate student:practice:list -->
-            <li title="[$practice:letter]" class="[$schedule:status $practice:status]">[$practice:percentage]</li>
-          </ul>
         </li>
       </ul>
-    </div>
-  </section>
+    </section>
+  </article>
 </article>

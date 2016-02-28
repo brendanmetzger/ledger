@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Inconsolata);
+/*@import url(https://fonts.googleapis.com/css?family=Inconsolata);*/
 
 code, pre, .code {
   font-family:Inconsolata, 'Courier New', monospace;
@@ -26,7 +26,8 @@ span[data-type] {
 }
 code {
   background-color:rgba(131, 154, 224, 0.1);
-  padding:0 0.25em;
+  padding:0.25em;
+  white-space:nowrap;
 }
 
 

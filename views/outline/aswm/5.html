@@ -1,0 +1,38 @@
+<div>
+  <header>
+    <!-- insert views/outline/_/crumbs.html -->
+    <h1 class="massive">Working Title</h1>
+    <p class="intro">Introduction to XMLHttpRequest, first-class functions, and iterators (array-like structures like
+classList ,nodeList)</p>
+  </header>
+  <article>
+    <h2>Review</h2>
+  </article>
+  <article>
+    <h2><code>XMLHttpRequest</code></h2>
+    <p class="intro"><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest" title="MDN Usage">The XMLHttpRequest</a> isn't as scary as looks, although it can be frustrating. It's very useful, often necessary and often misunderstood. The thing that's really difficult parts of <em>ajax</em> don't have much tod wo with JavaScript, but with <abbr title="hypertext transfer protocol">http</abbr>. This protocol has loads of rules about headers, policy, request types and lot's of abstruse mechanisms designed to make the internet reliable and functional. All the stuff that is just done for you when you make write <code>&lt;a href="..."&gt;</code> now has to be made explicit, and that requires a tad more understanding.</p>
+    <section>
+      <h3>A note on <abbr title="Extensible Markup Language">xml</abbr></h3>
+      <p>I think <abbr title="Extensible Markup Language">xml</abbr> is important, I think it is powerful and I think it is easy to use. Over the years, many of my colleagues have mocked my unwaivering dedication this format because every year they find a better way to pass data around, be it <abbr title="JavaScript Object Notation">json</abbr>, <abbr title="yet another markup language">yaml</abbr>, <abbr title="coffeescript object notation">cson</abbr> or a hot new data structure yet-to-be (if you don't pick up my sarcasm there, let me be clear, data formats are never hot or new). Here is a <a href="https://developer.mozilla.org/en-US/docs/XML_Introduction">quick introduction to <abbr>xml</abbr></a> if it is completely foreign, otherwise let me highlight some of its key features.</p>
+      <ul>
+        <li><abbr title="Extensible Markup Language">xml</abbr> applies the <em>Document Object Model</em>, verbatim</li>
+        <li><abbr title="Extensible Markup Language">xml</abbr> can store any data-structure and be converted to any other data structure</li>
+        <li><abbr title="Extensible Markup Language">xml</abbr> is human readable and self-describing</li>
+        <li><abbr title="Extensible Markup Language">xml</abbr> is used as the structure for several popular formats: <abbr title="portable document format">pdf</abbr> files, <abbr title="scalable vertor graphics">svg</abbr> images, <abbr>rss</abbr> feeds, <abbr>rdfa</abbr> graphs, and sitemaps.</li>
+        <li><abbr title="Extensible Markup Language">xml</abbr> can be validated with a DocType (which is why the items above use it instead of hot/new stuff)</li>
+      </ul>
+    </section>
+    <section>
+      <h3>Same Origin Policy</h3>
+      https://en.wikipedia.org/wiki/Same-origin_policy
+      <p>If you've ever tried to do some quick ajax work, using jquery or something else, you may have found that it doesn't quite work. Often the advice is to <q>make sure you are running a local web server</q>, but for the time being, that is outside the scope of this course.</p>
+    </section>
+  </article>
+  <article>
+    <h2>Code</h2>
+    <pre class="prettyprint">
+      <!-- review views/javascript/examples/advanced/xhr.js simple request -->
+    </pre>
+  </article>
+  <script type="text/javascript">bloc.embed('/javascript/examples/advanced/xhr.js');</script>
+</div>

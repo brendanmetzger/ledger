@@ -5,7 +5,7 @@
 
 a:active,a:link:focus,a:visited:focus {outline:1px dotted #333}
 a:not([href]) {cursor:default;text-decoration: line-through;pointer-events: none;opacity:0.5;text-decoration-style:wavy}
-body,p,ul,ol,li,div,a{margin:0;text-decoration:none;}
+body,p,ul,ol,li,div,a,figure{margin:0;text-decoration:none;}
 h1,h2,h4,dt {margin:0.5em 0}
 div.column > * {margin:0 0.5em}
 hr,blockquote,*.flag > * {margin:1em 0;}
@@ -71,11 +71,18 @@ strong,.strong{font-weight:600}
 
 .columns      {-moz-column-gap:1.5vw;-webkit-column-gap:2.5vw;}
 
+@media screen and (max-width: 600px) {
+  .float.left {
+    width:100% !important;
+  }
+}
 
 @media only screen and (min-width: 500px){
   .columns.two,
   .columns.three,
   .colums.four{-moz-column-count:2;-webkit-column-count:2;column-count:2}
+  .float.right {float:right}
+  .float.left  {float:left }
 }
 
 
@@ -99,8 +106,8 @@ strong,.strong{font-weight:600}
 }
 
 .float {box-sizing:border-box}
-.float.right {float:right}
-.float.left  {float:left }
+
+
 
 .column.ruled > * {border-right-width:1px}
 
@@ -113,7 +120,7 @@ strong,.strong{font-weight:600}
 .plain {list-style-type:none;padding:0;}
 
 a.selected:hover{cursor:default;font-style:normal;color:#333;}
-a.selected:after {content:'\2718';color:#333;padding-left:0.5em;}
+
 .pad {padding:1em;}
 ul.pad {padding:1em 3.5em;}
 .focus {padding:1em 1em 1em 2em;border-left:0.5em solid rgba(0,0,0,0.8);background-color:rgba(255,255,255,0.5)}
@@ -135,7 +142,7 @@ aside.note {
   padding:1em 10% 1em;
 }
 .caps {text-transform:uppercase;}
-.massive{font-size:10vw;margin:0.25em 0;line-height:0.85em;}
+.massive{font-size:10vw;margin:calc(2vh + 0.5em) 0;line-height:0.85em;}
 .micro, sup,a.external:after{font-size:0.9em;line-height:0;}
 .micro.caps, abbr {text-transform:lowercase;font-variant:small-caps;letter-spacing:0.015em;}
 .centered  {text-align:center}
@@ -147,7 +154,8 @@ aside.note {
 
 *.tuck{margin-left:-0.15em}
 .heart:before {
-  content:'\2767';
+  content:'✦';
+  font-weight:200;
   padding-right:0.5em;
 }
 .indented > p, p.indented, p.indented ~ p {text-indent:1em;}

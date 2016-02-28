@@ -28,32 +28,21 @@ body{
 }
 
 
-body > nav div {
-  width:15vw;
-  position:fixed;
-  top:0;
-  border-width:1px 0 0;
-  bottom:4em;
-  left:0;
-  background-color:hsl(45, 30%, 97.5%);
-  padding:1em 0 0;
-  box-shadow:inset 0 0 0.25em rgba(0,0,0,0.25);
-  overflow:auto;
-}
+
 
 nav ul.index {
   border-width:1px 0 0;
-  padding:1em;
+  padding:0;
   list-style:none;
 }
 
-body > nav li a{display:block;padding:0.25em 0.75em;}
+body > nav li a{display:block;padding: calc(2em - 2vw);}
 body > nav {
   border-width: 1px 0 0;
 }
 
-body > nav li{
-  font-size:1.1vw;
+body > nav li {
+  font-size:calc(1em + 0.5vw);
 }
 
 ul.index li.pending a {
@@ -62,18 +51,12 @@ ul.index li.pending a {
 
 ul.index a:not(.selected):hover, ul.index li a.selected {
   background-color:rgba(255,255,255,0.25);
-  box-shadow:0 0 1em rgba(255,255,255,0.5);
   color:#333;
+  background-color:rgba(0,0,0,0.025);
 }
 
 
-main {
-  width:85vw;
-  min-height:84vh;
-  padding:0 2.5vw;
-  box-sizing:border-box;
-  margin:0 0 0 15vw;
-}
+
 
 
 
@@ -94,6 +77,7 @@ a mark {
 
 body > footer {
   width:100%;
+  box-sizing:border-box;
   position:fixed;
   bottom:0;
   left:0;
@@ -120,12 +104,13 @@ a:hover, a:hover > * {
 
 
 h1,.h1{letter-spacing:-0.075em;font:400 4em/1em 'Avenir Next','HelveticaNeue-Light','Helvetica Neue',Helvetica;}
-h2,.h2{font-size:3.25vw;line-height:150%;font-weight:200}
-h3,.h3{font-size:2vw;margin:0.5em 0;font-weight:400;}
+h2,.h2{font-size:calc(1.5em + 1vw + 1vh);line-height:150%;font-weight:200}
+h2:not(:first-child) {margin-top:1em;}
+h3,.h3{font-size:calc(1em + 1vw + 1vh);margin:0.5em 0;font-weight:400;}
 .massive{font-weight:200}
-h4 {text-transform:uppercase;}
+h4 {text-transform:uppercase;font-weight:600;}
 h5 {font-weight:400;font-size:1.8em;margin:0;}
-dfn,h4,.h4{font-size:1.5vw;line-height:1.25em;}
+dfn,h4,.h4{font-size:calc(1em + 0.75vw + 0.5vh);line-height:125%;}
 p + h3{
   margin:1em 0;
 }
@@ -141,14 +126,15 @@ td time.pending:before {
   color: rgba(0,0,0,0.5);
   padding:0 0.5em 0 0;
 }
+
+time.transpired:before {content:'\2718';color:#333;padding-right:0.25em;color:#555;}
 time.transpired {
-  opacity:0.5;
-  text-decoration:line-through;
+  color:#AAA;
 }
 
 
-li{font-size:1rem;line-height:1.25em;}
-p{font-size:1.85em;line-height:1.5em;font-variant-ligatures: normal;font-family:Baskerville, 'Goudy Old Style',Georgia;max-width:55em}
+li,figcaption{font-size:1rem;line-height:1.25em;}
+p{font-size:1.85em;line-height:1.5em;font-variant-ligatures: normal;font-family:Baskerville, 'Goudy Old Style',Georgia; max-width:55em}
 
 ol:not(.linenums), dl.ordered {counter-reset:item -1;list-style:none}
 ol {padding:0 0 0 3em;}
@@ -185,23 +171,57 @@ ul.cross li:before {content: '☓';}
 
 
 .paginate article {
-  border-top-width:1em;
-  margin:5vh 0;
-  padding:5vh 0;
+  border-top-width:calc(0.5vh + 0.5vw);
+  margin:calc(2.5vh + 2.5vw) 0;
+  padding:1vh 0;
 }
 
 
-@media only screen and (max-width: 600px){
+
+main {
+  padding:0 2.5vw;
+  width:100vw;
+  overflow:hidden;
+  display:block;
+  box-sizing:border-box;
+  min-height:84vh;
+}
+body > nav div {
+  overflow:auto;
+  box-shadow:inset -0.25em 0 1em rgba(0,0,0,0.2);
+  border-width:1px 0 1px;
+}
+body > nav div ul {
+  display: flex;
+  width:100%;
+  height:auto;
+  flex-flow:row;
+}
+
+body > nav div ul li{
+  flex: 1 0 10em;
+}
+
+
+@media only screen and (min-width:600px) {
   main {
-    margin-left:5vw;
+    width:85vw;
+    margin:0 0 0 15vw;
   }
-  body > nav ul:hover {
-    width:20em;
-    box-shadow:0 0 1em rgba(0,0,0,0.1);
+  body > nav div ul {
+    display:block;
   }
-  body > nav ul:hover li {
-    font-size:1.5em;
-    text-align:center;
+  body > nav div {
+    width:15vw;
+    position:fixed;
+    top:0;
+
+    bottom:4em;
+    left:0;
+    background-color:hsl(45, 30%, 97.5%);
+    padding:1em 0 0;
+    box-shadow:inset 0 0 0.25em rgba(0,0,0,0.25);
+    overflow:auto;
   }
 }
 
@@ -265,8 +285,6 @@ form button:hover {
 
 footer.hud {
   border-width:0.5em 0 0;
-  box-sizing:border-box;
-  padding:0.25em 1em;
   border-color:rgba(0,0,0,0.25);
   background-color:rgba(0,0,0,0.85);
   text-transform:lowercase;
@@ -276,6 +294,23 @@ footer.hud {
 ul.bar {
   display: flex;
   justify-content: flex-end;
+}
+
+ul.cards {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+ul.cards li {
+  background-color:rgba(255,255,255,0.5);
+  padding:1em;
+  box-shadow:0 0.125em 0.125em rgba(0,0,0,0.1);
+  box-sizing:border-box;
+  margin:0.25em;
+  min-width:15%;
+  text-align:center;
+  flex: 1 0 auto;
 }
 
 ul.bar li {
@@ -503,4 +538,8 @@ ul.scores li.open {
 }
 ul.scores li.pending.open {
   background-color:rgba(0,0,0,0.05);
+}
+
+figure svg {
+  width:100%;
 }
