@@ -437,7 +437,7 @@ nav form {
 }
 
 .prologue, .epilogue, .whitepaper {
-  padding:2.5em 5em;
+  padding:2.5vmax 5vmin;
   background-color:rgba(255,255,255,0.5)
 }
 
