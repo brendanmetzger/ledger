@@ -7,8 +7,10 @@
       font-family:'Avenir Next Condensed', Helvetica;
       stroke:none;
       fill:#333;
+      font-size:1.5em;
       text-anchor:middle;
       cursor:default;
+      pointer-events: none;
     }
     circle, line {
       stroke:#888;
@@ -21,7 +23,13 @@
     }
     g:hover > circle {
       stroke:#333;
-      fill:rgba(241, 229, 102, 0.5);
+      fill:rgba(241, 102, 127, 0.25);
+    }
+    circle:hover ~ g circle, circle.hover ~ g circle {
+      fill:rgba(83, 177, 245, 0.56);
+    }
+    g[class] circle:hover {
+      fill:rgba(252, 255, 113, 0.25);
     }
     ]]>
    </style>
@@ -81,19 +89,6 @@
       </g>
     </g>
   </g>
-
-
-
-
-
-
-
-
-
-
-
-
-
   <line x1="81.55" y1="189.28" x2="81.55" y2="217.55"/>
   <line x1="106.38" y1="182.03" x2="149.14" y2="224.79"/>
   <line x1="176" y1="76.46" x2="291.21" y2="143.77"/>

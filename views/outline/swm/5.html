@@ -15,44 +15,75 @@
       </ul>
   </article>
   <article>
-    <h2>Mobile First</h2>
-    <p><em>Mobile first</em> design is a concept that is quite important for designers and developers to both understand and apply.</p>
-      <p>Media Queries are pretty simple, useful..</p>
+    <h2>Responsive Design</h2>
+    <h3>Media Queries</h3>
+    <p>Media Queries are pretty simple—if you have the gist of <abbr>CSS</abbr>, the won't give you any trouble. Essentially, imagine you can divide your stiles up by centain criteria; max/min screen sizes, device types, landscape vs. portrait. Say you asked yourself, <q>I want some really big text, but only on a really big screen.</q> </p>
+    <h3>Mobile First</h3>
+    <p><em>Mobile-first</em> design is a concept that pairs well with media-queries and is quite important for designers and developers to understand and apply. Mobile-first basically means that you design something for the smallest screen, and then you scale <strong>up</strong> to accommodate bigger screens and the more space you have available. This can be difficult to do in practice, but in general, it helps to structure your media queries this way—essentially, use <em>min-width</em> in favor of <em>max-width</em>. When considering units, now would be a great time to start finding ways to implement <code>vh</code> and <code>vw</code>, which is your screen's height and width broken down into 1% increments; ie. <code>10vh</code> is 10% of the viewport height.</p>
+    <link rel="stylesheet" href="/css/examples/queries.css" media="screen" charset="utf-8" />
+    <pre class="prettyprint">
+      <!-- review views/css/examples/queries.css media queries  -->
+    </pre>
   </article>
   <article>
-    <h2>The <strong>Document Object Model</strong></h2>
+    <h2>The Document Object Model</h2>
     <p class="intro">In the beginning all the technologies we are using probably seem very independent from one another as you gain experience you will see that they blur together in consistent ways. Let's start with the things we know a little bit about.</p>
-
+    <hr class="ruled"/>
+    <section>
+      <h3>Document (Markup Languages)</h3>
+      <p>Markup languages take text and media and convert them into structured data. We are becoming familiar with <abbr>html</abbr>, but <abbr>html</abbr> is really just the simple-minded cousin of the affluent and worldly <abbr>xml</abbr>, or eXtensible markup language. Boiled down very simply, <abbr>html</abbr> is nothing more than a subset of <abbr>xml</abbr>—that funny looking bit at the top called <code>&lt;!DOCTYPE html&gt;</code> defines which tags we can use and how to use them. You could write your own doctype and use any tags you want; people do this with <abbr>xml</abbr> allowing this very simple set of formatting rules. These formatting rules allow us to write plain-text documents that are the starting point for converting <strong>data into objects</strong>.</p>
+    </section>
+    <section>
+      <h3>Object</h3>
+      <p>The term <strong>object</strong> is a special word in the field of mathematics and computer science, representing various structures that can be described as having some distinct quality. When referring to the <q>the document object model</q> we are talking about the magic that happens after our plain old text—that has been carefully marked-up with <code>/</code> and <code>&lt;</code> and <code>&gt;</code> symbols—has been parsed by an algorithm to <em>mean something</em>, or more appropriately, to be a bunch of objects that are distinct, meaningful things.. <mark>What once was a simple <code>&lt;h1&gt;</code> in text has been turned into an object that we can now communicate with.</mark> <q>Hey, <code>&lt;h1&gt;</code>, I'm going to set your text color to blue. Tell me about your family... who's your parent... any siblings? I'm going to move you somewhere else, oh and when someone clicks on you, let me know, ok?</q>. An object, just like a toaster, has <em>properties</em> that describe what it is and how it works, and it has <em>methods</em> that allow it to perform certain tasks. <strong>Objects have properties and methods</strong> that we can communicate with, and this communication is known as programming.</p>
+    </section>
+    <hr/>
     <section class="container">
       <div class="float left half indented margins">
-        <h3>Tree Structures</h3>
-        <p>The Document Object Model, or <abbr>dom</abbr>, is a <strong>standardized</strong>, cross-platform and language-independent convention for representing and interacting with objects in <abbr>html</abbr>, <abbr>xhtml</abbr> and <abbr>xml</abbr> documents. The objects, or <strong>nodes</strong> of every document are organized in a <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">tree structure</a>. Objects in the <abbr>dom</abbr> tree may be addressed and manipulated with programming languages (wink/nod JavaScript). The public interface of a <abbr>dom</abbr> is specified in its application programming interface (<abbr>API</abbr>).</p>
-        <p>Tree Structures are efficient, but more importantly, they have a feature you can begin to start visualizing. Consider the diagram on the right.</p>
-
+        <h3>Model (Tree Structures)</h3>
+        <p>All together, The Document Object Model, or <abbr>dom</abbr>, is a <strong>standardized</strong>, cross-platform and language-independent convention for representing and interacting with objects in <abbr>html</abbr>, <abbr>xhtml</abbr> and <abbr>xml</abbr> documents. The objects, or <strong>nodes</strong> of every document are organized in a <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">tree structure</a>. Objects in the <abbr>dom</abbr> tree may be styled manipulated with other languages (wink/nod <abbr>CSS</abbr>, JavaScript).</p>
+        <p>You can visualize tree structures because they are represented by a branch of mathematics known as <a href="https://en.wikipedia.org/wiki/Graph_theory">graph theory</a>, which combines the rigor of math with the real-world pleasure of figuring things with your eyeballs. Taking a look at the diagram, given any node as a starting point, <em>you can get to any other node.</em> via a simple set of operations:  <code>firstChild</code>, <code>lastChild</code>, <code>nextSibling</code>, <code>previousSibling</code> and <code>parentNode</code>.</p>
+        <p>Starting from <span class="code">html</span> (our document element), I can get to <span class="code">h2</span> by saying <q>documentElement - lastChild - lastChild - firstChild</q>. From my <span class="code">h2</span> I can get to my <span class="code">h1</span> by saying <q>parentNode - previousSibling - firstChild</q>. The things and methods we can use to parse these documents are very robust and can be confusing at times, but to a large extent, <strong>this concept governs the entire <abbr>api</abbr></strong>!</p>
       </div>
       <figure class="float left half">
         <!-- insert views/css/media/tree.svg -->
-        <figcaption class="centered">A <em>Tree Structure</em>. Hover over a node (circle) to visualize the hierarchy.</figcaption>
+        <figcaption class="centered">A <em>Tree Structure</em>. Hover over a node (circle) to visualize the hierarchy. Ancestry is denoted by red, descendants are in blue.</figcaption>
       </figure>
     </section>
-
-    <section>
-      <h3>Markup Languages</h3>
-      <p>Markup languages take text and media and convert them into structured data. We are becoming familiar with <abbr>html</abbr>, but <abbr>html</abbr> is really just the simple-minded cousin of the affluent and worldly <abbr>xml</abbr>, or eXtensible markup language.</p>
+    <hr class="ruled"/>
+    <section class="whitepaper container">
+      <h4>All together</h4>
+      <div class="half float left pad">
+        <h3>Presentation Environment</h3>
+        <p>Tree structures are efficiently and easily <em>queried</em>. Careful arrangement of nodes, careful use of attributes, and careful use of semantic elements impart a great deal of information about our content. Developers convert this structure into a meaningful presentation using a <a href="https://en.wikipedia.org/wiki/Style_sheet_language">stylesheet language</a>—the one we are becoming familiar with is <abbr title="cascading stylesheets">css</abbr>. The document structure can (and should) be the only spot where we store meaning. The presentation view of our application or website can (and should) be the only place where we manipulate the structure into a pleasing design.</p>
+      </div>
+      <div class="half float left pad">
+        <h3>Programming Environment</h3>
+        <p>Programming languages, quite literally, know how to read, write, and manipulate <strong>everything</strong> regarding structured data. Many programming languages can work with the Document Object Model <abbr>api</abbr>, and the one we are concerning ourselves with is, of course, JavaScript. The following list is copied verbatim from <a href="https://en.wikipedia.org/wiki/Document_Object_Model">the Document Object Model</a> Wikipedia Page</p>
+        <ul>
+          <li>JavaScript can add, change, and remove all the HTML elements and attributes in the page</li>
+          <li>JavaScript can change all the CSS styles in the page</li>
+          <li>JavaScript can react to all existing events in the page</li>
+          <li>JavaScript can create new events in the page</li>
+        </ul>
+      </div>
     </section>
+    <hr/>
+    <section>
+      <h3>References &amp; Practice Material</h3>
+      <p class="intro">Midterms are starting and though you'll have two weeks to complete you need to continue spending time reviewing previous outlines and introducing new material into your repertoire. Post midterm, we will begin actually using JavaScript, so you should have watched and practiced enough to let the nervousness subside and be comfortable dealing with the basics: <code>variables</code>, <code>objects</code>, <code>arrays</code>, <code>conditions</code>, <code>operators</code>, <code>loops</code> and <code>functions</code>.</p>
+      <dl>
+        <dt><a class="watch" href="http://www.lynda.com/JavaScript-tutorials/Simple-comparisons/123563/133790-4.html">Introducing JavaScript, continued..</a></dt>
+        <dd>If not finished yet, continue watching the remaining chapters: 4, 5, and especially 6, which is about functions.</dd>
+        <dt><a class="watch" href="http://www.lynda.com/HTML-tutorials/What-Document-Object-Model-DOM-Video/122462/137616-4.html">What is the Document Object model</a></dt>
+        <dd>It will be beneficial to watch the entirety of chapter one of this series. It glosses over the Document Object model a bit, but it goes much further talking about using the browser's console to inspect structure, as <q>it's always a good idea to spend time time with your tools</q>.</dd>
 
-    <h3>Programming Environment (JavaScript)</h3>
-    <p>The followil list is copied verbatim from <a href="https://en.wikipedia.org/wiki/Document_Object_Model">the Document Object Model</a> Wikipedia Page</p>
-    <ul>
-      <li>JavaScript can add, change, and remove all the HTML elements and attributes in the page</li>
-      <li>JavaScript can change all the CSS styles in the page</li>
-      <li>JavaScript can react to all existing events in the page</li>
-      <li>JavaScript can create new events in the page</li>
-    </ul>
-
-
-
-
+        <dt><a class="read" href="http://learn.shayhowe.com/advanced-html-css/responsive-web-design/">Responsive Web Design</a></dt>
+        <dd>This outline takes you through some of the concepts involved in responsive web design.</dd>
+        <dt><a class="watch" href="http://www.lynda.com/CSS-tutorials/CSS-Selectors/192036-2.html"><abbr>CSS</abbr> selectors</a></dt>
+        <dd>At this point, we have covered all of our <abbr>CSS</abbr> selectors. That means, less and less class time will be spent going over, introducing, and answering those questions. If you're still foggy about your selector options, you may find this series valuable.</dd>
+      </dl>
+    </section>
   </article>
 
 </div>
