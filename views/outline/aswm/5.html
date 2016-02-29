@@ -1,16 +1,16 @@
 <div>
   <header>
     <!-- insert views/outline/_/crumbs.html -->
-    <h1 class="massive">Working Title</h1>
-    <p class="intro">Introduction to XMLHttpRequest, first-class functions, and iterators (array-like structures like
-classList ,nodeList)</p>
+    <h1 class="massive">Ajax</h1>
+    <p class="intro">Introduction to XMLHttpRequest</p>
   </header>
   <article>
     <h2>Review</h2>
+    <p>Last week we talked about intervals and did more functions, of course.</p>
   </article>
   <article>
     <h2><code>XMLHttpRequest</code></h2>
-    <p class="intro"><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest" title="MDN Usage">The XMLHttpRequest</a> isn't as scary as looks, although it can be frustrating. It's very useful, often necessary and often misunderstood. The thing that's really difficult parts of <em>ajax</em> don't have much tod wo with JavaScript, but with <abbr title="hypertext transfer protocol">http</abbr>. This protocol has loads of rules about headers, policy, request types and lot's of abstruse mechanisms designed to make the internet reliable and functional. All the stuff that is just done for you when you make write <code>&lt;a href="..."&gt;</code> now has to be made explicit, and that requires a tad more understanding.</p>
+    <p class="intro"><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest" title="MDN Usage">The XMLHttpRequest</a> isn't as scary as looks, although it can be frustrating. It's very useful, often necessary and often misunderstood. The thing that's really difficult parts of <em>ajax</em> don't have much to do with JavaScript, but with <abbr title="hypertext transfer protocol">http</abbr>. This protocol has loads of rules about headers, policy, request types and lots of abstruse mechanisms designed to make the internet reliable and functional. All the stuff that is just done for you when you make write <code>&lt;a href="..."&gt;</code> now has to be made explicit, and that requires a tad more understanding.</p>
     <section>
       <h3>A note on <abbr title="Extensible Markup Language">xml</abbr></h3>
       <p>I think <abbr title="Extensible Markup Language">xml</abbr> is important, I think it is powerful and I think it is easy to use. Over the years, many of my colleagues have mocked my unwaivering dedication this format because every year they find a better way to pass data around, be it <abbr title="JavaScript Object Notation">json</abbr>, <abbr title="yet another markup language">yaml</abbr>, <abbr title="coffeescript object notation">cson</abbr> or a hot new data structure yet-to-be (if you don't pick up my sarcasm there, let me be clear, data formats are never hot or new). Here is a <a href="https://developer.mozilla.org/en-US/docs/XML_Introduction">quick introduction to <abbr>xml</abbr></a> if it is completely foreign, otherwise let me highlight some of its key features.</p>
@@ -22,17 +22,32 @@ classList ,nodeList)</p>
         <li><abbr title="Extensible Markup Language">xml</abbr> can be validated with a DocType (which is why the items above use it instead of hot/new stuff)</li>
       </ul>
     </section>
-    <section>
+    <section class="margins">
       <h3>Same Origin Policy</h3>
-      https://en.wikipedia.org/wiki/Same-origin_policy
-      <p>If you've ever tried to do some quick ajax work, using jquery or something else, you may have found that it doesn't quite work. Often the advice is to <q>make sure you are running a local web server</q>, but for the time being, that is outside the scope of this course.</p>
+      <p>If you've ever tried to do some quick ajax work, using jquery or something else, you may have found that it doesn't work as planned. The fact of the matter is that to make an XHR request, you must be doing it over HTTP, which means if you haven't set up a server on your own computer (localhost) you will have to develop exclusively on a server, such as <span class="code">iam.colum.edu</span>. This all stems to the <a href="https://en.wikipedia.org/wiki/Same-origin_policy">same origin policy</a>, essentially a set of rules that enforce security and make it impossible to abuse the <abbr>http</abbr> protocol. In addition to only allowing files to be requested over <abbr>http</abbr>, files must match protocols, domains, and ports.</p>
+      <p>Because of this, I'm going to spend a little bit of time explaining the nuance of getting a server going and trying to get a simple request up and running. The bad news, this is surprisingly hard. The good news, once you're past this, <code>XMLHttpRequest</code> is easy and invaluable. With that, let's get started.</p>
+      <ul>
+        <li>open a terminal window</li>
+        <li>go to your code directory <code>cd /path/to/ASWM</code></li>
+        <li>start server: <code>python -m SimpleHTTPServer</code></li>
+        <li>when finished hit <code>ctrl-c</code> to quit your webserver</li>
+      </ul>
+      <p class="focus">Windows users may want to investigate <a href="https://sourceforge.net/projects/wampserver/">installing <abbr>WAMP</abbr></a>, likewise Mac/Linux users would investigate <a href="https://sourceforge.net/projects/mamp/"><abbr>MAMP</abbr></a></p>
     </section>
   </article>
   <article>
     <h2>Code</h2>
-    <pre class="prettyprint">
-      <!-- review views/javascript/examples/advanced/xhr.js simple request -->
-    </pre>
+    <section class="note container">
+      <aside id="example" class="____ note float left">
+        <p>I've built a little function to pass in the request—look through it and gather your thoughts.</p>
+        <p>Looking in the console. you will see the same output in the list below. In this case, I'm just grabbing another template on this site, in this case, the <a href="/topics/glossary.html">glossary page</a>. It is simply a link available on the server, so I can request it using ajax, and the load event will be triggered when the request is complete.</p>
+        <p>You can request any types of files, but in my example, I'm treating my html file xml so I can parse it using the tried and tested <abbr>DOM</abbr> methods.</p>
+        <p>Take a minute to examine the <em>network</em> tab in your Developer Tools console. If this tab is new to you, I suggest adding it as part of your repertoire when beginning to work with, well, advanced networking ideas.</p>
+      </aside>
+      <pre class="prettyprint ______ float left">
+        <!-- review views/javascript/examples/advanced/xhr.js simple request -->
+      </pre>
+    </section>
   </article>
   <script type="text/javascript">bloc.embed('/javascript/examples/advanced/xhr.js');</script>
 </div>

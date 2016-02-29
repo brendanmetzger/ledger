@@ -1,9 +1,26 @@
-/* media queries */
 
-@media screen and (min-aspect-ratio: 3/1) {
-    body {
-        background-color: lightgreen;
-    }
+
+/* media queries */
+.responsive {
+  background-color:tomato;
+  padding:1em 1em 5em;
+  font-size:1.5em;
+  border:1px solid rgba(255,255,255,0.1);
+  transition:all 1s;
+}
+
+@media only screen and (min-aspect-ratio: 2/1) {
+  .responsive {
+    background-color:lightgreen;
+  }
+}
+
+@media only screen and (max-width:1000px) {
+  .responsive {
+    padding:2em;
+    border-width:1em;
+    border-radius:1em;
+  }
 }
 
 /* end media queries */
