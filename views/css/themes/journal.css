@@ -205,7 +205,7 @@ body > nav div ul li{
 
 @media only screen and (min-width:600px) {
   main {
-    width:85vw;
+    width:84vw;
     margin:0 0 0 15vw;
   }
   body > nav div ul {
@@ -529,7 +529,7 @@ tr.marked[title="D"] {
   background-color:rgba(245, 52, 4, 1);
 }
 tr.marked[title="F"] {
-  background-color:rgba(245, 52, 4, 0.5);
+  background-color:rgba(245, 52, 4, 0.1);
 }
 
 ul.scores li.open {
