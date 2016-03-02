@@ -49,7 +49,6 @@ class Records extends \bloc\controller
     $view = new View(self::layout);
     $view->content = "views/layouts/dashboard.html";
     $view->context = "views/layouts/list/section.html";
-    $view->contact = "views/layouts/helpers/contact.html";
 
     $this->section = $this->student->section;
 

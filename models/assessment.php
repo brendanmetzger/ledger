@@ -109,11 +109,11 @@ namespace models;
         $accumulator = ($accumulator + ($map[$evaluation]->score * $average));
         return $map;
       }, $query);
-
       $weight = Assessment::$weight[$evaluation];
+
       return new \bloc\types\dictionary([
         'list'   => iterator_to_array($collect, false),
-        'score'  => ($accumulator == 0 ? $weight : max(0, round($accumulator * $weight, 1))),
+        'score'  => $average === 1 ? $weight : max(0, round($accumulator * $weight, 1)),
         'weight' => $weight,
       ]);
     }
