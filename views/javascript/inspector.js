@@ -10,8 +10,11 @@ bloc.init('viewer', function () {
       evt.target.classList.add('active');
 
       var panel = document.querySelector('.inspector .panel[data-file="'+file+'"]');
+
       if (panel.nodeName.toLowerCase() === 'pre') {
-        if (evt.target.dataset.url) {
+
+        if (!Boolean(panel.textContent)) {
+
           var request = new XMLHttpRequest();
           request.open('GET', '/task/source/'+evt.target.dataset.url);
           delete evt.target.dataset.url;
@@ -27,6 +30,20 @@ bloc.init('viewer', function () {
           });
           request.send()
         } else if (! panel.classList.contains('prettyprinted')) {
+          if (/\.html$/.test(file)) {
+            Validator(evt.target.dataset.url, function (response) {
+              var h3 = document.querySelector('#practice > h3');
+              var details = h3.parentNode.insertBefore(document.createElement('details'), h3);
+              var summary = details.appendChild(document.createElement('summary'));
+              var ol      = details.appendChild(document.createElement('ol'));
+              summary.textContent = response.messages.length +  ' errors';
+              response.messages.forEach(function (obj) {
+                var li = ol.appendChild(document.createElement('li'));
+                li.textContent = 'Line ' + (obj.firstLine ? obj.firstLine + '-' : '') + obj.lastLine + ': ' + obj.message;
+              });
+
+            });
+          }
           panel.classList.add('prettyprint');
           prettyPrint();
         }

@@ -64,6 +64,7 @@ namespace models;
           'name'    => 'index.html',
           'content' => $content,
           'type'    => 'lang-html',
+          'url'     => $url
         ],
         [
           'name'    => 'README',
@@ -120,5 +121,4 @@ namespace models;
 
     // get total.
     // get individual(type)
-
 }

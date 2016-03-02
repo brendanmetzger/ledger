@@ -1,4 +1,4 @@
-<fieldset id="practice">
+<fieldset id="practice" data-url="[$url]">
   <legend>[Practice $index]</legend>
   <h3 class="percentage">[$practice:percentage]</h3>
   <section class="sliders">
@@ -23,6 +23,7 @@
   <textarea name="practice[CDATA]" cols="30" rows="20" id="notes" style="font-size:1.25em;height:50vh;width:calc(100% + 2em);margin:0em -1em;padding:1em;">[$practice]</textarea>
   <script type="text/javascript">
     // <![CDATA[
+    bloc.embed('/javascript/iam.js');
     document.querySelector('#practice').addEventListener('change', function (evt) {
       var rubric = {
         effort: function (current, score) {return current + score;},
@@ -35,7 +36,7 @@
       }).reduce(function (accumulator, current) {
         return rubric[current[0]](accumulator, current[1]);
       }, 0);
-      this.querySelector('.percentage').textContent = Math.max(0, Math.round(score * 100)) + '%';
+      this.querySelector('.percentage').textContent = Math.max(0, Math.round(score * 100));
     });
     // ]]>
   </script>
