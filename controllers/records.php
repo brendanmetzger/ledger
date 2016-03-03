@@ -74,6 +74,9 @@ class Records extends \bloc\controller
     $this->{$topic} = Data::FACTORY($topic, $this->student->context->getElement($topic, $index));
 
     if ($topic == 'practice' || $topic == 'project') {
+      if ($topic == 'project') {
+        $index = ['midterm', 'final'][$index];
+      }
       $this->url = $this->student->context['@url'] . "/{$topic}/{$index}";
       $this->files = \models\Assessment::LINKS($this->url);
       $this->template = 'editor';

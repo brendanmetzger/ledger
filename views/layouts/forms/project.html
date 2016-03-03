@@ -1,0 +1,44 @@
+<fieldset id="project" class="notes" data-url="[$url]">
+  <legend>[$index Project]</legend>
+  <h3 class="centered percentage ruled bottom top">[$project:percentage]</h3>
+  <section class="sliders">
+    <label class="container">
+      <h4>Effort</h4>
+      <input type="range" name="project[@][effort]" min="0.25" max="0.5" step="0.01" value="[$project:@effort]"/>
+    </label>
+    <label class="container">
+      <h4>Organized</h4>
+      <input type="range" name="project[@][organization]" min="0.25" max="0.5" step="0.01" value="[$project:@organization]"/>
+    </label>
+    <label class="container">
+      <h4>Ambition</h4>
+      <input type="range" name="project[@][ambition]" min="0.5" max="1" step="0.05" value="[$project:@ambition]"/>
+    </label>
+    <label class="container">
+      <h4>Mission</h4>
+      <input type="range" name="project[@][mission]" min="0" max="1" step="0.05" value="[$project:@mission]"/>
+    </label>
+  </section>
+  <label for="notes">Notes</label>
+  <textarea name="project[CDATA]" cols="30" rows="20" id="notes" style="font-size:1.25em;height:50vh;width:calc(100% + 2em);margin:0em -1em;padding:1em;">[$project]</textarea>
+  <script type="text/javascript">
+    // <![CDATA[
+    bloc.embed('/javascript/iam.js');
+    document.querySelector('#project').addEventListener('change', function (evt) {
+      var rubric = {
+        effort: function (current, score) {return current + score;},
+        organization: function (current, score) {return current + score;},
+        ambition: function (current, score) {return current * score;},
+        mission: function (current, score) {return current * score;}
+      };
+      var score = [].map.call(this.querySelectorAll('input[type="range"]'), function(node) {
+        return [node.name.slice(11, -1), parseFloat(node.value, 10)];
+      }).reduce(function (accumulator, current) {
+        return rubric[current[0]](accumulator, current[1]);
+      }, 0);
+      console.log(score);
+      this.querySelector('.percentage').textContent = Math.max(0, Math.round(score * 100));
+    });
+    // ]]>
+  </script>
+</fieldset>

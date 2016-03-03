@@ -10,8 +10,14 @@ namespace models;
   {
     static public $fixture = [
       'project' => [
-        '@' => ['effort' => 0, 'organization' => 0, 'punctuality' => 7, 'mission' => 1, 'created' => 0, 'updated' => 0],
+        '@' => ['effort' => 0, 'organization' => 0, 'ambition' => 20, 'mission' => 1, 'created' => 0, 'updated' => 0],
         'CDATA' => '',
       ]
     ];
+
+    public function getScore(\DOMElement $context)
+    {
+      $deductions = $context['@ambition'] * $context['@mission'];
+      return round(($context['@effort'] + $context['@organization']) * $deductions, 2);
+    }
   }

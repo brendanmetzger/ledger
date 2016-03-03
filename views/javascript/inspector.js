@@ -32,11 +32,11 @@ bloc.init('viewer', function () {
         } else if (! panel.classList.contains('prettyprinted')) {
           if (/\.html$/.test(file)) {
             Validator(evt.target.dataset.url, function (response) {
-              var h3 = document.querySelector('#practice > h3');
-              var details = h3.parentNode.insertBefore(document.createElement('details'), h3);
+              var h3 = document.querySelector('.notes h3');
+              var details = h3.parentNode.insertBefore(document.createElement('details'), h3.nextSibling);
               var summary = details.appendChild(document.createElement('summary'));
               var ol      = details.appendChild(document.createElement('ol'));
-              summary.textContent = response.messages.length +  ' errors';
+              summary.innerHTML = response.messages.length +  ' <abbr>HTML</abbr> errors';
               response.messages.forEach(function (obj) {
                 var li = ol.appendChild(document.createElement('li'));
                 li.textContent = 'Line ' + (obj.firstLine ? obj.firstLine + '-' : '') + obj.lastLine + ': ' + obj.message;

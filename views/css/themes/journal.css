@@ -11,7 +11,7 @@ body{
   content: '‰';
   font-size:0.75em;
   padding:0 0 0 0.125em;
-  vertical-align:text-top;
+  vertical-align:baseline;
 }
 .watch, .read {
   border:none;
@@ -56,11 +56,6 @@ ul.index a:not(.selected):hover, ul.index li a.selected {
 }
 
 
-
-
-
-
-
 hr, li+li {border-width:1px 0 0;border-color:rgba(0,0,0,0.025);}
 *.massive{border-width:0 0 1px}
 
@@ -98,7 +93,7 @@ a:hover, a:hover > * {
 }
 
 .intro {
-  font-size:2.25em;
+  font-size:calc(1.25em + 1vmax);
   color:#000;
   max-width:40em;
   margin:1em 0;
@@ -193,9 +188,12 @@ body > nav div {
 }
 body > nav div ul {
   display: flex;
-  width:100%;
+  width:95%;
   height:auto;
   flex-flow:row;
+  padding-left:5% !important;
+  background: transparent url(/css/media/swipe.svg) no-repeat 0 220%;
+  background-size:auto 80%;
 }
 
 body > nav div ul li{
@@ -210,6 +208,7 @@ body > nav div ul li{
   }
   body > nav div ul {
     display:block;
+    background-image:none;
   }
   body > nav div {
     width:15vw;
@@ -541,4 +540,16 @@ ul.scores li.pending.open {
 
 figure svg {
   width:100%;
+}
+
+.notes summary {
+  text-align:center;
+  font-weight:600;
+}
+
+.notes details {
+  padding:1em;
+}
+.notes details ol {
+  font-size:0.75em;
 }
