@@ -49,6 +49,8 @@ bloc.init('manage-links', function () {
       var wiki = evt.target.href.match(/.*wikipedia.*\/(.*)$/)
       if (wiki) {
         Wikipedia(wiki.pop(), Wikipedia.viewer);
+      } else {
+        window.open(evt.target.href);
       }
     }
   });
