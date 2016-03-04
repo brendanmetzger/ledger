@@ -1,7 +1,15 @@
 function Validator(url, callback) {
-  var script = document.createElement('script');
-  var key = 'validator_cb_'+Date.now().toString(36);
+  var url = 'https://validator.nu/?level=error&doc='+encodeURIComponent(url)+'&out=json';
+  JSONP(url, callback)
+}
+
+function Wikipedia(article, callback) {
+  var url = 'https://en.wikipedia.org/w/api.php?action=parse&section=0&prop=text&format=json&page=' + article;
+  JSONP(url, callback)
+}
+
+function JSONP(src, callback) {
+  var key = 'JSONP_cb_'+Date.now().toString(36);
   window[key] = callback;
-  script.src = 'https://validator.nu/?level=error&doc='+encodeURIComponent(url)+'&out=json&callback='+key;
-  document.head.appendChild(script);
+  document.head.appendChild(document.createElement('script')).src = src + '&callback=' + key;
 }

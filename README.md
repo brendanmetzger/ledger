@@ -17,5 +17,6 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] get sessions to last longer, or automatically log out so I don't write a bunch and get an unauthorized error when I try to save
 - [ ] don't release grades until everyone's has been graded. (so I can implement a curve)
 - [ ] send email after grade is marked with my notes and a link to the notes.
-- [ ] make icon for wikipedia links.
-- [ ] Open wikipedia links in a console. Open with API
+- [x] make icon for wikipedia links.
+- [x] Open wikipedia links in a console. Open with API
+- [ ] Make an index in the outlines with anchors to each section.

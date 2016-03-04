@@ -10,3 +10,4 @@
 - make sure students read their feedback notes
 - deduction for boilerplate readme
 - extra points for doing a readme
+- put todolist in readme for each practice assignment.
