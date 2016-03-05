@@ -1,0 +1,29 @@
+/* transitions */
+h2:not(.cutout):before {
+  content: '✃';
+  color:#AAA;
+  font-size:0.5em;
+  vertical-align:sub;
+}
+.cutout, .cutout > span {
+  top: 0;
+  left:0;
+  display:inline-block;
+  position: relative;
+  transition:transform 1s, box-shadow 1s;
+}
+
+.cutout > span {
+  padding:0.15em;
+  background-color:#FBFAF7;
+}
+
+.cutout:hover {
+  box-shadow:inset 0 0 5px rgba(0,0,0,0.25);
+}
+.cutout:hover > span {
+  transform: rotate(-1deg) scale(1.01) translate(0.25em, -0.25em);
+  box-shadow:0.025em 0.025em 0.275em rgba(0,0,0,0.25);
+}
+
+/* end transitions */

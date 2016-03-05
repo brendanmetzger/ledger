@@ -124,7 +124,7 @@ a.selected:hover{cursor:default;font-style:normal;color:#333;}
 .pad {padding:1em;}
 ul.pad {padding:1em 3.5em;}
 .focus {padding:1em 1em 1em 2em;border-left:0.5em solid rgba(0,0,0,0.8);background-color:rgba(255,255,255,0.5)}
-.note  em, footer > p q, blockquote em {font-style:normal;}
+footer > p q, blockquote em {font-style:normal;}
 p.note {padding:2.5% 5%;color:rgb(87, 122, 162)}
 aside.note {
   margin-top:1em;

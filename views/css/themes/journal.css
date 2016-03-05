@@ -76,9 +76,32 @@ hr, li+li {border-width:1px 0 0;border-color:rgba(0,0,0,0.025);}
 *.massive{border-width:0 0 1px}
 
 mark {
-  padding:0 0.25em;
-  box-shadow:0 0 0.25em rgba(0,0,0,0.1);
-  background-color:rgba(247, 236, 141, 0.25)
+  padding:0 0.5em;
+  margin:0 -0.5em;
+  border-radius:0.5em;
+  box-shadow:inset 0 0 0.25em rgba(0,0,0,0.1);
+  background-color:rgba(0, 0, 0, 0.05)
+}
+.divider {
+  position:relative;
+  border-color:#888;
+  border-style:dashed;
+  margin:2.5em 5em 2.5em 0;
+}
+.divider:before, .divider:after {
+  position:absolute;
+  top:-1em;
+  background-color:hsl(45, 30%, 97.5%);
+  padding:0.25em 1em;
+}
+.divider:before {
+  content: attr(data-before) ' ⬆';
+}
+
+.divider:after {
+  right:0;
+
+  content: '⬇ ' attr(data-after) ;
 }
 
 a mark {
@@ -199,15 +222,14 @@ main {
 }
 body > nav div {
   overflow:auto;
+  -webkit-overflow-scrolling: touch;
   box-shadow:inset -0.25em 0 1em rgba(0,0,0,0.2);
   border-width:1px 0 1px;
 }
 body > nav div ul {
   display: flex;
-  width:95%;
   height:auto;
   flex-flow:row;
-  padding-left:5% !important;
   background: transparent url(/css/media/swipe.svg) no-repeat 0 220%;
   background-size:auto 80%;
 }
@@ -468,92 +490,6 @@ nav form {
 }
 
 
-
-
-ul.scores {
-  margin:1px -1em 0;
-  display:flex;
-  position:relative;
-  top:-0.25em;
-  z-index:0;
-}
-
-ul.scores.discourse li {
-  flex:1 0 6%;
-}
-
-ul.scores.practice li {
-  flex:1 0 10.35%;
-}
-ul.scores.project li, ul.scores.quiz li {
-  flex:1 0 50%;
-}
-
-ul.scores li {
-  display:block;
-  display:border-box;
-  height:1px;
-  color:transparent;
-  padding:0;
-  overflow:hidden;
-  margin:0;
-  border-left:1px solid rgba(255,255,255,0.75);
-}
-
-.percentage[title^='A'], .A {
-  color: rgb(106, 194, 136);
-}
-.percentage[title^='B'], .B {
-  color:rgb(216, 218, 129);
-}
-.percentage[title^='C'], .C {
-  color:rgb(134, 149, 231);
-}
-.percentage[title^='D'], .D {
-  color: rgb(150, 109, 149);
-}
-.percentage[title^='F'], .F {
-  color:rgb(218, 75, 122);
-}
-.marked[title^="A"] {
-  background-color:rgba(151, 207, 150, 0.5);
-}
-tr.marked[title^="A"] {
-  background-color:rgba(157, 223, 126, 0.15);
-}
-.marked[title^="B"] {
-  background-color:rgb(217, 216, 111, 0.5)
-}
-tr.marked[title^="B"] {
-  background-color:rgba(217, 216, 111, 0.1);
-}
-
-.marked[title^="C"] {
-  background-color:rgb(105, 178, 191);
-}
-tr.marked[title^="C"] {
-  background-color:rgba(105, 178, 191, 0.1);
-}
-.marked[title="D"] {
-  background-color:rgb(232, 154, 116);
-}
-tr.marked[title="D"] {
-  background-color:rgba(232, 154, 116, 0.1);
-}
-.marked[title="F"] {
-  background-color:rgba(245, 52, 4, 1);
-}
-tr.marked[title="F"] {
-  background-color:rgba(245, 52, 4, 0.1);
-}
-
-ul.scores li.open {
-  background-color: rgba(0,0,0,0.75);
-}
-ul.scores li.pending.open {
-  background-color:rgba(0,0,0,0.05);
-}
-
 figure svg {
   width:100%;
 }
@@ -573,7 +509,7 @@ figure svg {
 .drawer *[role=note] {
   display:none;
 }
-.drawer table.metadata, .drawer table.vertical-navbox, .drawer .error, .mw-editsection {
+.drawer table.metadata, table.navbox, table.vertical-navbox, .drawer .error, .mw-editsection {
   display:none;
 }
 

@@ -1,22 +1,37 @@
 <div>
+  <link rel="stylesheet" href="/css/examples/transitions.css"/>
+  <script type="text/javascript">bloc.embed('/javascript/examples/dom.js');</script>
   <header>
     <!-- insert views/outline/_/crumbs.html -->
     <h1 class="massive">Razzle Dazzle</h1>
     <p class="intro">CSS pseudo elements, CSS Transitions, Intro to DOM programming and manipulation</p>
   </header>
   <article>
-    <h2>Review and <abbr title="Read the *$#!ing Manual">RTFM</abbr></h2>
+    <h2>Review</h2>
+    <p>Last week we went over the media queries and introduced what modeling a document looks like.</p>
   </article>
   <article>
     <h2>Transitions</h2>
-    <blockquote cite="W3C Working Draft">
+    <blockquote cite="W3C Working Draft" class="centered quote">
       <p>CSS Transitions allow property changes in CSS values to occur smoothly over a specified duration</p>
     </blockquote>
     <ul>
       <li>Transitions <em>enhance</em> presentation, they should not provide meaning.</li>
       <li>Transitions <a href="https://en.wikipedia.org/wiki/Fault_tolerance">degrade gracefully</a> by default (or they should)</li>
-      <li></li>
+      <li>Not all properties are animatable (<code>display</code>, for instance); here is the <a href="http://www.w3schools.com/cssref/css_animatable.asp">list of animatable properties</a></li>
     </ul>
+    <section class="container">
+      <aside class="note ____ float left">
+        <p>Transitions are quite easy to implement. Designing with the full power of transitions can be quite masterful.</p>
+        <p>Look at the contrasting <abbr>CSS</abbr> and Javascript as it illustrates a key point about the nature of our programming languages. First, <mark>I haven't changed the structure of my markup one smidge</mark> to accommodate the <abbr>CSS</abbr> or JavaScript I am using. The next is that <abbr>CSS</abbr> is by far most verbose part of any program I write. The last is the JavaScript, when aided by efficient <abbr>CSS</abbr> and <abbr>HTML</abbr>, can be <em>very concise</em>.</p>
+        <p><strong>Please Note:</strong> I wrote the JavaScript in an extra obscure manner not only to illustrate this point, but so that you don't spend too much time trying to implement something similar. You will learn <em>much easier</em> techniques for accomplishing this task using loops, variables and other beginner-friendly methods.</p>
+      </aside>
+      <pre class="prettyprint ______ float left">
+        <!-- review views/css/examples/transitions.css transitions -->
+        <hr class="divider" data-before="CSS" data-after="JavaScript"/>
+        <!-- review views/javascript/examples/dom.js click to cut -->
+      </pre>
+    </section>
     <p class="focus">You'll notice a lot of resources mention <em>vendor-prefixes</em>. At this point, un-prefixed use of the <code>transition</code> property has <a href="http://caniuse.com/#feat=css-transitions">wide support</a>. Any tutorial or literature using a prefix is somewhat outdated. This is why it is so important to <strong>do research and cite multiple resources for information</strong>.</p>
   </article>
   <article>

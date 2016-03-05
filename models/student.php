@@ -76,7 +76,8 @@ namespace models;
       $score = array_reduce(['quizzes', 'projects', 'discourse', 'practice'], function ($carry, $item) {
         return $carry + $this->{$item}['score'];
       }, 0);
-      return new \bloc\types\Dictionary(['score' => $score, 'letter' => Assessment::LETTER($score, 100)]);
+      $apr = $score > 96 ? 'over' : ($score <= 70 ? 'under' : 'meet');
+      return new \bloc\types\Dictionary(['score' => $score, 'letter' => Assessment::LETTER($score, 100), 'apr' => $apr]);
     }
 
 }
