@@ -1,23 +1,19 @@
 /* transitions */
 h2:not(.cutout):before {
   content: '✃';
-  color:#AAA;
-  font-size:0.5em;
-  vertical-align:sub;
+  position:absolute;
+  color:rgb(150, 230, 230);
+  transform: rotate(50deg) scale(0.5) translate(-1.5em, 0.5em);
 }
 .cutout, .cutout > span {
-  top: 0;
-  left:0;
   display:inline-block;
   position: relative;
   transition:transform 1s, box-shadow 1s;
 }
-
 .cutout > span {
   padding:0.15em;
   background-color:#FBFAF7;
 }
-
 .cutout:hover {
   box-shadow:inset 0 0 5px rgba(0,0,0,0.25);
 }

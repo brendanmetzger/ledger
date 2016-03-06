@@ -11,34 +11,53 @@
     <p>Last week we went over the media queries and introduced what modeling a document looks like.</p>
   </article>
   <article>
-    <h2>Transitions</h2>
-    <blockquote cite="W3C Working Draft" class="centered quote">
-      <p>CSS Transitions allow property changes in CSS values to occur smoothly over a specified duration</p>
-    </blockquote>
+    <h2>Transitions and Transforms</h2>
+    <section class="dropcap indented three columns">
+      <p>First, other than the initial 5 letters, transitions and transforms have little to do with one another. The reason they might be good to learn at the same time is that potential confusion could arise if you happened to let google auto-suggest take the reins.</p>
+      <p>From the W3C spec regarding transitions: <q>CSS transitions allow property changes in CSS values to occur smoothly over a specified duration</q> Essentially, transitions are animating from one style to another—which used to be the purview of fairly complicated JavaScript. </p>
+      <p>You'll notice a lot of resources mention <em>vendor-prefixes</em>. At this point, un-prefixed use of the <code>transition</code> property has <a href="http://caniuse.com/#feat=css-transitions">wide support</a>. Any tutorial or literature using a prefix is somewhat outdated. This is why it is so important to <strong>research and cite multiple resources for information</strong>.</p>
+      <p>Transforms, on the other hand, apply methods and vernacular commonly seen in programming, especially in regards to how elements are <em>painted or drawn</em>. From the spec on transforms: <q>CSS transforms allows elements styled with CSS to be transformed in two-dimensional or three-dimensional space. </q></p>
+
+    </section>
+    <hr class="ruled"/>
+    <h3>Keep in Mind</h3>
+    <p>When you learn how to jazz things up it quickly becomes tempting to go a little crazy. Starting out, I say what the hell, go over the top... but I would be remiss if I didn't point out that sometimes effects can get annoying when the pile up or make things difficult to use. In addition to that, I've made a list of a few pointers for the road, if you will.</p>
     <ul>
       <li>Transitions <em>enhance</em> presentation, they should not provide meaning.</li>
-      <li>Transitions <a href="https://en.wikipedia.org/wiki/Fault_tolerance">degrade gracefully</a> by default (or they should)</li>
-      <li>Not all properties are animatable (<code>display</code>, for instance); here is the <a href="http://www.w3schools.com/cssref/css_animatable.asp">list of animatable properties</a></li>
+      <li>Transitions <a href="https://en.wikipedia.org/wiki/Fault_tolerance">degrade gracefully</a> by default (or they should); ie, nobody should be impacted if they go missing.</li>
+      <li>Not all properties are animatable (<code>display</code>, for instance); here is the <a href="http://www.w3schools.com/cssref/css_animatable.asp">list of animatable properties</a>.</li>
+      <li>Transitions are not <em>Animations</em>, which are also possible, but something wholly different.</li>
+      <li>I won't talk further about <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations">keyframe animations</a> in this course—you're welcome to explore them on your own.</li>
     </ul>
+
+    <hr/>
     <section class="container">
       <aside class="note ____ float left">
-        <p>Transitions are quite easy to implement. Designing with the full power of transitions can be quite masterful.</p>
+        <p>Transitions are quite easy to implement. Designing with the full power of transitions can be quite masterful. In the example <abbr>CSS</abbr> I've provided, scan the document for <code>&lt;h2&gt;</code> Elements with a little pair of scissors before the text. Note the <abbr>CSS</abbr> is controlling the scissor with the <code>content</code> property, and thus can be manipulated with <abbr>CSS</abbr> techinques we have available.</p>
         <p>Look at the contrasting <abbr>CSS</abbr> and Javascript as it illustrates a key point about the nature of our programming languages. First, <mark>I haven't changed the structure of my markup one smidge</mark> to accommodate the <abbr>CSS</abbr> or JavaScript I am using. The next is that <abbr>CSS</abbr> is by far most verbose part of any program I write. The last is the JavaScript, when aided by efficient <abbr>CSS</abbr> and <abbr>HTML</abbr>, can be <em>very concise</em>.</p>
         <p><strong>Please Note:</strong> I wrote the JavaScript in an extra obscure manner not only to illustrate this point, but so that you don't spend too much time trying to implement something similar. You will learn <em>much easier</em> techniques for accomplishing this task using loops, variables and other beginner-friendly methods.</p>
+        <hr class="ruled"/>
+        <p><strong>When using transforms</strong>, be aware that you'll only be able to apply transformations to a <a href="https://www.w3.org/TR/css-transforms-1/#transformable-element">transformable elements</a>, that is, <em>an element that applies block-formatting</em> via the box-model. Remember, <mark> any element can be forced into a block formatted element explicitly by setting <code>display</code> property to 'block' or 'inline-block', or implicitly when you have set a <code>float</code> or used an absolute or fixed <code>position</code></mark>.</p>
       </aside>
-      <pre class="prettyprint ______ float left">
+      <pre class="prettyprint ______ float left whitepaper">
         <!-- review views/css/examples/transitions.css transitions -->
         <hr class="divider" data-before="CSS" data-after="JavaScript"/>
         <!-- review views/javascript/examples/dom.js click to cut -->
       </pre>
     </section>
-    <p class="focus">You'll notice a lot of resources mention <em>vendor-prefixes</em>. At this point, un-prefixed use of the <code>transition</code> property has <a href="http://caniuse.com/#feat=css-transitions">wide support</a>. Any tutorial or literature using a prefix is somewhat outdated. This is why it is so important to <strong>do research and cite multiple resources for information</strong>.</p>
   </article>
   <article>
-    <h2>Pseudo-stuff</h2>
-    <ul>
-      <li>:not</li>
-    </ul>
+    <h2>The Last of the Pseudos</h2>
+    <p class="intro">Here, our journey into the world of 'pseudo' stuff ends. That's right, after today, you will have glanced at every possible way to find a piece of HTML markup and apply style to it, as well as the limited ways that CSS can make a tiny bit of content on its own.</p>
+    <p>While you are already familiar with some basic pseudo-classes from earlier in the semester (<code>:hover</code>), now comes the introduction to a more powerful way of selection—one that resembles programming quite a bit.</p>
+    <p><a href="https://css-tricks.com/pseudo-class-selectors/"><abbr>CSS</abbr> tricks</a> Has an intro</p>
+    <p>Now that we're this far along, I'm attaching the <a href="https://www.w3.org/TR/selectors/#selectors">full Selector whitepaper</a></p>
+    <dl>
+      <dt>:not</dt>
+      <dt>:before &amp; :after</dt>
+      <dt>:not</dt>
+      <dt>:nth-of-type</dt>
+    </dl>
   </article>
   <article class="introductory">
     <h2>Intro to <abbr title="Document Object Model">DOM</abbr> Programming</h2>
