@@ -28,4 +28,12 @@ class Lecture extends \bloc\controller
     return $view->render($this());
   }
 
+  public function GETessay($topic = null)
+  {
+    $view = new View(self::layout);
+    // get all topics
+    $view->content =  sprintf("views/prologue/%s.html", $topic);
+    return $view->render($this());
+  }
+
 }

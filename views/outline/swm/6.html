@@ -13,11 +13,10 @@
   <article>
     <h2>Transitions and Transforms</h2>
     <section class="dropcap indented three columns">
-      <p>First, other than the initial 5 letters, transitions and transforms have little to do with one another. The reason they might be good to learn at the same time is that potential confusion could arise if you happened to let google auto-suggest take the reins.</p>
-      <p>From the W3C spec regarding transitions: <q>CSS transitions allow property changes in CSS values to occur smoothly over a specified duration</q> Essentially, transitions are animating from one style to another—which used to be the purview of fairly complicated JavaScript. </p>
-      <p>You'll notice a lot of resources mention <em>vendor-prefixes</em>. At this point, un-prefixed use of the <code>transition</code> property has <a href="http://caniuse.com/#feat=css-transitions">wide support</a>. Any tutorial or literature using a prefix is somewhat outdated. This is why it is so important to <strong>research and cite multiple resources for information</strong>.</p>
+      <p>Other than the initial five letters, transitions and transforms have little to do with one another. The reason they might be good to learn at the same time is that potential confusion could arise if you happened to let google auto-suggest take the reins; <q>How do I... CSS... Trans...</q> could send you down the wrong path.</p>
+      <p>From the W3C spec regarding transitions: <q>CSS transitions allow property changes in CSS values to occur smoothly over a specified duration</q> Essentially, transitions are animating from one style to another—which used to be the purview of fairly complicated JavaScript—but is now very straight forward.</p>
+      <p>When researching transitions, you'll no doubt notice a lot of resources using <em>vendor-prefixes</em>. At this point, un-prefixed use of the <code>transition</code> property has <a href="http://caniuse.com/#feat=css-transitions">wide support</a>, and any tutorial or literature using a prefix is somewhat outdated. This is why it is so important to <strong>research and cite multiple resources for information</strong>.</p>
       <p>Transforms, on the other hand, apply methods and vernacular commonly seen in programming, especially in regards to how elements are <em>painted or drawn</em>. From the spec on transforms: <q>CSS transforms allows elements styled with CSS to be transformed in two-dimensional or three-dimensional space. </q></p>
-
     </section>
     <hr class="ruled"/>
     <h3>Keep in Mind</h3>
@@ -29,8 +28,41 @@
       <li>Transitions are not <em>Animations</em>, which are also possible, but something wholly different.</li>
       <li>I won't talk further about <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations">keyframe animations</a> in this course—you're welcome to explore them on your own.</li>
     </ul>
+  </article>
+  <article>
+    <h2>The Last of the Pseudos</h2>
+    <p class="intro">Here, our journey into the world of ‘pseudo’ stuff ends. That's right, after today, you will have glanced at every possible way to find a piece of HTML markup and apply style to it, as well as the limited ways that CSS can make a tiny bit of content on its own.</p>
+    <p>While you are already familiar with some basic pseudo-classes from earlier in the semester (<code>:hover</code>), now comes the introduction to a more powerful way of selection—one that resembles programming quite a bit.</p>
+    <p><a href="https://css-tricks.com/pseudo-class-selectors/"><abbr>CSS</abbr> tricks</a> Has an intro</p>
+    <p>Now that we're this far along, I'm attaching the <a href="https://www.w3.org/TR/selectors/#selectors">full Selector whitepaper</a></p>
+    <dl>
+      <dt>:not</dt>
+      <dt>:before &amp; :after</dt>
+      <dt>:first-letter and :first-line</dt>
+      <dt>:not</dt>
+      <dt>:nth-of-type</dt>
+    </dl>
+  </article>
+  <article class="introductory">
+    <h2>Intro to <abbr title="Document Object Model">DOM</abbr> Programming</h2>
+    <section class="two columns outdented">
+      <p>I'm going to expose the tiniest bit of JavaScript that should dovetail nicely with the concepts we’re becoming comfortable with. Namely, we know that when we load up a big <abbr>HTML</abbr> file that it it is converted into this very specific <strong>object</strong>, and this object, like any object, has properties that describe it. Some of the properties actually perform tasks, and as such, they are actually a <code>function</code> of the object, often called <em>methods</em>. Get comfortable with the terms <em>property</em> and <em>method</em> when talking about objects.</p>
+      <p>To further analyze this way of thought, picture your oven. It has knobs and burners, it has a color, a manufacturer, and it might have properties indicating its state, like clean or dirty. These are all properties, but let's note the differences between how they describe the oven. The color property does not change, the clean property will flip between two values depending on use. The knobs property are where things get interesting, notice that they make the oven do something. Acting on a knob might change the temperature property, it might kick off a process that causes the state to switch from clean to dirty.</p>
+      <p>As meta as this all seems, it's really quite straightforward. We know we have a <code>document</code>, and that document will tell us things about itself, like when it was last modified: <code>document.lastModified</code> (try typing that in your console and see what happens). Of present concern is the things we can ask the <code>document</code> to do for us, like find elements.</p>
+    </section>
 
-    <hr/>
+    <p>querySelector / querySelectorAll</p>
+    <ol class="whitepaper">
+      <li>Open your console</li>
+      <li>type <code>document.querySelector</code></li>
+      <li>type <code>document.querySelector('h2');</code></li>
+      <li>type <code>document.querySelectorAll('h2');</code></li>
+      <li>type <code>document.querySelectorAll('h2').item(0);</code></li>
+      <li>compare #1 to #4</li>
+    </ol>
+  </article>
+  <article>
+    <h2>All Together</h2>
     <section class="container">
       <aside class="note ____ float left">
         <p>Transitions are quite easy to implement. Designing with the full power of transitions can be quite masterful. In the example <abbr>CSS</abbr> I've provided, scan the document for <code>&lt;h2&gt;</code> Elements with a little pair of scissors before the text. Note the <abbr>CSS</abbr> is controlling the scissor with the <code>content</code> property, and thus can be manipulated with <abbr>CSS</abbr> techinques we have available.</p>
@@ -47,36 +79,19 @@
     </section>
   </article>
   <article>
-    <h2>The Last of the Pseudos</h2>
-    <p class="intro">Here, our journey into the world of 'pseudo' stuff ends. That's right, after today, you will have glanced at every possible way to find a piece of HTML markup and apply style to it, as well as the limited ways that CSS can make a tiny bit of content on its own.</p>
-    <p>While you are already familiar with some basic pseudo-classes from earlier in the semester (<code>:hover</code>), now comes the introduction to a more powerful way of selection—one that resembles programming quite a bit.</p>
-    <p><a href="https://css-tricks.com/pseudo-class-selectors/"><abbr>CSS</abbr> tricks</a> Has an intro</p>
-    <p>Now that we're this far along, I'm attaching the <a href="https://www.w3.org/TR/selectors/#selectors">full Selector whitepaper</a></p>
-    <dl>
-      <dt>:not</dt>
-      <dt>:before &amp; :after</dt>
-      <dt>:not</dt>
-      <dt>:nth-of-type</dt>
-    </dl>
-  </article>
-  <article class="introductory">
-    <h2>Intro to <abbr title="Document Object Model">DOM</abbr> Programming</h2>
-  </article>
-  <article>
     <h2>References and Practice Material</h2>
     <dl>
       <dt>CSS Transisitions and Transforms</dt>
-      <dd>through chapter 3</dd>
-      <dd>http://www.lynda.com/Dreamweaver-tutorials/CSS-Transitions-Transforms/101072-2.html</dd>
-      <dt>Chapter 12, <em>JavaScript and the Browser</em></dt>
-      <dd>http://eloquentjavascript.net/12_browser.html</dd>
-      <dt>Chapter 13, <em>The Document Object Model</em></dt>
-      <dd>http://eloquentjavascript.net/13_dom.html</dd>
-      <dt><a href="http://www.lynda.com/Web-Responsive-Design-tutorials/Responsive-Design-Fundamentals/104969-2.html">Responsive Design Series</a></dt>
-      <dd>An elusive goal, so this content is option at the moment. For those interested in going <em>mobile first</em> or honing skills more suited for tablets, this series will be valuable.</dd>
-      <dt><a class="watch" href="http://www.lynda.com/XML-tutorials/Introduction-DOM/145930/164618-4.html">Introduction to the Document Object Model</a></dt>
-      <dd>This 6 minute Lynda.com video goes a bit more into the weeds, but I'm including it as a reference because it is from an <abbr>xml</abbr> series.</dd>
-      <dd>Though it's about <abbr>xml</abbr>, it wouldn't be a bad idea at all to watch the entirety of chapter 5.</dd>
+      <dd>Here are the <abbr>MDN</abbr> specs for referencing <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">transitions</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform">transforms</a></dd>
+      <dd>An <a class="read" href="http://learn.shayhowe.com/advanced-html-css/transitions-animations/">outline/tutorial</a>, I'd consider worth reading up through the part on animation.</dd>
+
+      <dd>Here is a <a class="watch" href="http://www.lynda.com/Dreamweaver-tutorials/CSS-Transitions-Transforms/101072-2.html">video series</a> on both transitions and transforms, worth watching up through chapter 3</dd>
+
+      <dt>JavaScript and the Document Object Model</dt>
+      <dd><em>Eloquent Javascript</em>, Chapter 12, <a href="http://eloquentjavascript.net/12_browser.html">JavaScript and the Browser</a></dd>
+      <dd><em>Eloquent Javascript</em>, Chapter 13, <a href="http://eloquentjavascript.net/13_dom.html">The Document Object Model</a></dd>
+      <dt>Responsive Design</dt>
+      <dd>An elusive goal, so this content is option at the moment. For those interested in going <em>mobile first</em> or honing skills more suited for tablets, <a href="http://www.lynda.com/Web-Responsive-Design-tutorials/Responsive-Design-Fundamentals/104969-2.html">responsive design series</a> may be valuable.</dd>
     </dl>
   </article>
 </div>

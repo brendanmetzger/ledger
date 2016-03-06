@@ -76,7 +76,7 @@ hr, li+li {border-width:1px 0 0;border-color:rgba(0,0,0,0.025);}
 *.massive{border-width:0 0 1px}
 
 mark {
-  padding:0 0.5em;
+  padding:0.125em 0.5em;
   margin:0 -0.5em;
   border-radius:0.5em;
   box-shadow:inset 0 0 0.25em rgba(0,0,0,0.1);
@@ -168,7 +168,7 @@ time.transpired {
 
 
 li,figcaption{font-size:1rem;line-height:1.25em;}
-p{font-size:1.85em;line-height:1.5em;font-variant-ligatures: normal;font-family:Baskerville, 'Goudy Old Style',Georgia; max-width:55em}
+p,h6{font-size:1.85em;line-height:1.5em;font-weight:400;font-variant-ligatures: normal;font-family:Baskerville, 'Goudy Old Style',Georgia; max-width:55em}
 
 ol:not(.linenums), dl.ordered {counter-reset:item -1;list-style:none}
 ol {padding:0 0 0 3em;}
