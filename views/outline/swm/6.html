@@ -14,7 +14,7 @@
     <h2>Transitions and Transforms</h2>
     <section class="dropcap indented three columns">
       <p>Other than the initial five letters, transitions and transforms have little to do with one another. The reason they might be good to learn at the same time is that potential confusion could arise if you happened to let google auto-suggest take the reins; <q>How do I... CSS... Trans...</q> could send you down the wrong path.</p>
-      <p>From the W3C spec regarding transitions: <q>CSS transitions allow property changes in CSS values to occur smoothly over a specified duration</q> Essentially, transitions are animating from one style to another—which used to be the purview of fairly complicated JavaScript—but is now very straight forward.</p>
+      <p>From the W3C spec regarding transitions: <q>CSS transitions allow property changes in CSS values to occur smoothly over a specified duration</q> Essentially, transitions are animating from one style to another—which used to be the purview of fairly complicated JavaScript and is now, remarkably easy to accomplish.</p>
       <p>When researching transitions, you'll no doubt notice a lot of resources using <em>vendor-prefixes</em>. At this point, un-prefixed use of the <code>transition</code> property has <a href="http://caniuse.com/#feat=css-transitions">wide support</a>, and any tutorial or literature using a prefix is somewhat outdated. This is why it is so important to <strong>research and cite multiple resources for information</strong>.</p>
       <p>Transforms, on the other hand, apply methods and vernacular commonly seen in programming, especially in regards to how elements are <em>painted or drawn</em>. From the spec on transforms: <q>CSS transforms allows elements styled with CSS to be transformed in two-dimensional or three-dimensional space. </q></p>
     </section>
@@ -29,6 +29,40 @@
       <li>I won't talk further about <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations">keyframe animations</a> in this course—you're welcome to explore them on your own.</li>
     </ul>
   </article>
+  <article class="introductory">
+    <h2>Intro to <abbr title="Document Object Model">DOM</abbr> Programming</h2>
+    <section class="two columns outdented">
+      <p>I'm going to expose the tiniest bit of JavaScript that should dovetail nicely with the concepts we’re becoming comfortable with. Namely, we know that when we load up a big <abbr>HTML</abbr> file that it it is converted into this very specific <strong>object</strong>, and this object, like any object, has properties that describe it. Some of the properties actually perform tasks, and as such, they are actually a <code>function</code> of the object, often called <em>methods</em>. Get comfortable with the terms <em>property</em> and <em>method</em> when talking about objects.</p>
+      <p>To further analyze this way of thought, picture your oven. It has knobs and burners, it has a color, a manufacturer, and it might have properties indicating its state, like clean or dirty. These are all properties, but let's note the differences between how they describe the oven. The color property does not change, the clean property will likely change values now and then. The knobs property is interesting; notice that they perform an <em>action</em>. Further, ‘acting’ on a knob might would likely change the temperature property.</p>
+      <p>As meta as this all seems, this abstraction perfectly describes programming. Looking back, we alread know we have a <code>document</code> object that it has properties and properties tell us things about the object, like when it was last modified: type <code>document.lastModified</code> into your browser console and see what happens (in fact, do it several times).</p>
+      <p>Of present concern is the things we can ask the <code>document</code> to do for us, like find elements. One of the most important parnts of a document is the fact that it can help us find other elements using <em>query selectors</em>—yes, the very same selectors you've been learning about for weeks!</p>
+    </section>
+    <hr class="ruled tt bb"/>
+    <p>Arguably the most useful feature of JavaScript is the tight integration to the Document Object Model, and the quickest introduction we can make is by employing our <abbr>CSS</abbr> techniques. The document object itself has many methods for selecting Elements, but perhaps the only you need to remember are the following two methods that belonging to the <code>document</code> object. Remember you can use the ‘.’ to access properties and methods, and the two methods in question are <em>querySelector</em> and <em>querySelectorAll</em>. These two methods can be fed regular <abbr>css</abbr> query selectors as arguments to find <abbr>html</abbr> elements.</p>
+    <section class="instruction container pad">
+      <dl class="______ float left">
+        <dt><h3><code>document.querySelector</code>(<em>query</em>)</h3></dt>
+        <dd>Select and return the first node that matches the query</dd>
+        <dd>ex: <code>document.querySelector('div')</code> selects the first <code>&lt;div&gt;</code> in the document</dd>
+        <dd>ex: <code>document.querySelector('div#test')</code> selects <code>&lt;div id="test"&gt;</code></dd>
+        <dt><h3><code>document.querySelectorAll</code>(<em>query</em>)</h3></dt>
+        <dd>ex: <code>document.querySelectorAll('div')</code> selects <strong>all</strong> <code>&lt;div&gt;</code>'s the document</dd>
+        <dd>ex: <code>document.querySelectorAll('section > p')</code> selects <strong>all</strong> <code>&lt;p&gt;</code>'s that are the first child of a section</dd>
+      </dl>
+      <ol class="____ float left whitepaper">
+        <li>Open your console</li>
+        <li>place your cursor after the <strong>&gt;</strong> prompt</li>
+        <li>If you havent yet, type <code>document</code> and inspect output</li>
+        <li>type <code>document.querySelector</code></li>
+        <li>Output indicates function <em>has not been called</em>!</li>
+        <li>type <code>document.querySelector('h2');</code></li>
+        <li>type <code>document.querySelectorAll('h2');</code></li>
+        <li>type <code>document.querySelectorAll('h2').item(0);</code></li>
+        <li>Compare output of #5 to #7</li>
+      </ol>
+    </section>
+    <p class="focus"><strong>Note</strong>, some people still use things like <code>document.getElementById</code> and <code>document.getElementsByTagName</code>, and you'll surely run into decades of tutorials suggesting you do the same. Be aware, modern methods provide a significant upgrade and I suggest you use the new stuff</p>
+  </article>
   <article>
     <h2>The Last of the Pseudos</h2>
     <p class="intro">Here, our journey into the world of ‘pseudo’ stuff ends. That's right, after today, you will have glanced at every possible way to find a piece of HTML markup and apply style to it, as well as the limited ways that CSS can make a tiny bit of content on its own.</p>
@@ -36,30 +70,25 @@
     <p><a href="https://css-tricks.com/pseudo-class-selectors/"><abbr>CSS</abbr> tricks</a> Has an intro</p>
     <p>Now that we're this far along, I'm attaching the <a href="https://www.w3.org/TR/selectors/#selectors">full Selector whitepaper</a></p>
     <dl>
-      <dt>:not</dt>
+      <dt>:first-of-type</dt>
+      <dd>A pseudo-selector that selects the first element of a particular type within the context</dd>
+      <dd><code>section p:first-of-type</code> selects the first paragraph of a section, ignoring whether or not it is the very first child.</dd>
+      <dt>:nth-of-type()</dt>
+      <dd>Can be used to select any element based on integer, even/odd, and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type">cycle size (advanced)</a>.</dd>
+      <dd><code>li:nth-of-type(odd) {background-color:#EEE;}</code> sets the background-color on the odd items of a list </dd>
+      <dt>:not()</dt>
+      <dd>A powerful technique I find invaluable, this pseudo selector negates a selector.</dd>
+      <dd>ex: <code>p:not(.special) {...}</code>selects all paragraphs that do not have a class of special.</dd>
+      <dd>ex: <code>section p:not(:first-of-type) {...}</code>selects all paragraphs of a section <em>except</em> the first one.</dd>
       <dt>:before &amp; :after</dt>
+      <dd>These <strong>pseudo-elements</strong> are a nice trick to add custom bullets, icons, or bits of boiler plate text to certain elements.</dd>
+      <dd><code>p:after {content: '...'}</code> would add ‘...’ after of every paragraph.</dd>
+      <dd><code>abbr:before {content: attr(title)}</code> would write the title attribute before each abbreviation.</dd>
       <dt>:first-letter and :first-line</dt>
-      <dt>:not</dt>
-      <dt>:nth-of-type</dt>
+      <dd>Another pair of pseudo elements that are somewhat self explanatory.</dd>
+      <dd><code>p:first-letter {font-size:500%;}</code> would make the first letter of every paragraph 500% larger than the adjacent text.</dd>
+      <dd><code>p:first-line {font-weight: 800}</code> would make the first line of text in every paragraph bold.</dd>
     </dl>
-  </article>
-  <article class="introductory">
-    <h2>Intro to <abbr title="Document Object Model">DOM</abbr> Programming</h2>
-    <section class="two columns outdented">
-      <p>I'm going to expose the tiniest bit of JavaScript that should dovetail nicely with the concepts we’re becoming comfortable with. Namely, we know that when we load up a big <abbr>HTML</abbr> file that it it is converted into this very specific <strong>object</strong>, and this object, like any object, has properties that describe it. Some of the properties actually perform tasks, and as such, they are actually a <code>function</code> of the object, often called <em>methods</em>. Get comfortable with the terms <em>property</em> and <em>method</em> when talking about objects.</p>
-      <p>To further analyze this way of thought, picture your oven. It has knobs and burners, it has a color, a manufacturer, and it might have properties indicating its state, like clean or dirty. These are all properties, but let's note the differences between how they describe the oven. The color property does not change, the clean property will flip between two values depending on use. The knobs property are where things get interesting, notice that they make the oven do something. Acting on a knob might change the temperature property, it might kick off a process that causes the state to switch from clean to dirty.</p>
-      <p>As meta as this all seems, it's really quite straightforward. We know we have a <code>document</code>, and that document will tell us things about itself, like when it was last modified: <code>document.lastModified</code> (try typing that in your console and see what happens). Of present concern is the things we can ask the <code>document</code> to do for us, like find elements.</p>
-    </section>
-
-    <p>querySelector / querySelectorAll</p>
-    <ol class="whitepaper">
-      <li>Open your console</li>
-      <li>type <code>document.querySelector</code></li>
-      <li>type <code>document.querySelector('h2');</code></li>
-      <li>type <code>document.querySelectorAll('h2');</code></li>
-      <li>type <code>document.querySelectorAll('h2').item(0);</code></li>
-      <li>compare #1 to #4</li>
-    </ol>
   </article>
   <article>
     <h2>All Together</h2>
@@ -84,9 +113,7 @@
       <dt>CSS Transisitions and Transforms</dt>
       <dd>Here are the <abbr>MDN</abbr> specs for referencing <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">transitions</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform">transforms</a></dd>
       <dd>An <a class="read" href="http://learn.shayhowe.com/advanced-html-css/transitions-animations/">outline/tutorial</a>, I'd consider worth reading up through the part on animation.</dd>
-
       <dd>Here is a <a class="watch" href="http://www.lynda.com/Dreamweaver-tutorials/CSS-Transitions-Transforms/101072-2.html">video series</a> on both transitions and transforms, worth watching up through chapter 3</dd>
-
       <dt>JavaScript and the Document Object Model</dt>
       <dd><em>Eloquent Javascript</em>, Chapter 12, <a href="http://eloquentjavascript.net/12_browser.html">JavaScript and the Browser</a></dd>
       <dd><em>Eloquent Javascript</em>, Chapter 13, <a href="http://eloquentjavascript.net/13_dom.html">The Document Object Model</a></dd>
