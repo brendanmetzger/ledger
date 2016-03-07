@@ -30,10 +30,15 @@
       }(document.createElement('script'),{},[],[],Node.prototype.appendChild));
 
       var mobile = (/mobile/i).test(navigator.userAgent);
+      var WebFontConfig = {
+        google: { families: [ 'Inconsolata:400,700:latin' ] }
+      };
+
 
       // Embed script for site
       bloc.embed('/javascript/bloc.js');
       bloc.embed('/javascript/vendor/prettify.js');
+      bloc.embed('https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js', true);
 
       bloc.init('prettyprint', function () {
         prettyPrint();
