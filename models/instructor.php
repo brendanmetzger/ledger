@@ -19,7 +19,7 @@ class Instructor extends \bloc\Model implements \bloc\types\authentication
   ];
 
   public $path = 'records/evaluate',
-         $edit = '✍';
+         $edit = '✍&#xFE0E;';
 
 
   public function authenticate($token)

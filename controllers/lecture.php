@@ -1,6 +1,7 @@
 <?php
 namespace controllers;
 
+use \models\Instructor as Admin;
 use \bloc\view;
 use \models\data;
 
@@ -33,6 +34,18 @@ class Lecture extends \bloc\controller
     $view = new View(self::layout);
     // get all topics
     $view->content =  sprintf("views/prologue/%s.html", $topic);
+    return $view->render($this());
+  }
+
+  protected function GETquiz(Admin $instructor, $type = '36-1420')
+  {
+
+    $data = new \bloc\dom\Document("data/questions", ['validateOnParse' => false]);
+    $this->questions = $data->find('//question[@level<3]')->map(function ($item) {
+      return ['question' => $item->nodeValue];
+    });
+    $view = new View(self::layout);
+    $view->content = 'views/layouts/quiz.html';
     return $view->render($this());
   }
 

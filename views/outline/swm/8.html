@@ -2,10 +2,36 @@
   <header>
     <!-- insert views/outline/_/crumbs.html -->
     <h1 class="massive">Working Title</h1>
-    <p class="intro">Working with data, HTML input elements, intro to DOM events and first-class functions.</p>
+    <p class="intro">CSS Specificity, Working with data, HTML input elements, intro to DOM events and first-class functions.</p>
   </header>
   <article>
     <h2>Review</h2>
+  </article>
+  <article>
+    <h2>CSS Specificity</h2>
+    <p><a href="https://www.w3.org/TR/selectors/#specificity">Calculating a selector's specificity</a> is not something we often do, but there is a formula.</p>
+    <h4>A selector's specificity is calculated as follows:</h4>
+    <ul>
+      <li>count the number of ID selectors in the selector (= a)</li>
+      <li>count the number of class selectors, attributes selectors, and pseudo-classes in the selector (= b)</li>
+      <li>count the number of type selectors and pseudo-elements in the selector (= c)</li>
+      <li>ignore the universal selector</li>
+    </ul>
+    <p>Selectors inside the negation pseudo-class are counted like any other, but the negation itself does not count as a pseudo-class.</p>
+    <p>Concatenating the three numbers a-b-c (in a number system with a large base) gives the specificity.</p>
+    <h4>Examples:</h4>
+
+    <pre class="prettyprint">
+      *               /* a=0 b=0 c=0 -> specificity =   0 */
+      LI              /* a=0 b=0 c=1 -> specificity =   1 */
+      UL LI           /* a=0 b=0 c=2 -> specificity =   2 */
+      UL OL+LI        /* a=0 b=0 c=3 -> specificity =   3 */
+      H1 + *[REL=up]  /* a=0 b=1 c=1 -> specificity =  11 */
+      UL OL LI.red    /* a=0 b=1 c=3 -> specificity =  13 */
+      LI.red.level    /* a=0 b=2 c=1 -> specificity =  21 */
+      #x34y           /* a=1 b=0 c=0 -> specificity = 100 */
+      #s12:not(FOO)   /* a=1 b=0 c=1 -> specificity = 101 */
+    </pre>
   </article>
   <article>
     <h2>The <code>&lt;input&gt;</code> element</h2>

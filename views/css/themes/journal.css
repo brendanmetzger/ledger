@@ -166,6 +166,9 @@ time.transpired {
   color:#AAA;
 }
 
+article:target h2{
+  font-weight:600;
+}
 
 li,figcaption{font-size:1rem;line-height:1.25em;}
 p,h6{font-size:1.85em;line-height:1.5em;font-weight:400;font-variant-ligatures: normal;font-family:Baskerville, 'Goudy Old Style',Georgia; max-width:55em}
