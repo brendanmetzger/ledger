@@ -8,31 +8,38 @@
   </header>
   <article>
     <h2>Review</h2>
+    <p>Last week we spent the bulk of our time installing a <em>localhost</em> environment in able to utilize Ajax.</p>
   </article>
   <article>
     <h2><abbr>jsonp</abbr> vs <abbr>xhr</abbr></h2>
     <p>The fundamental difference between XHR and JSONP can be nutshelled as thus: XHR content must be requested off of your server. JSONP content can be requested <em>from any server</em>. I remember learning about JSONP long after a had learned the ropes of Ajax, and remember feeling awestruck at how obvious it was.</p>
-    <ol>
-      <li>JavaScript can be embedded with <code>&lt;script src="path.js"&gt;...</code></li>
-      <li>A Javascript file can contain a plain JavasScript Object, like {}</li>
-    </ol>
-    <pre>
-      <!-- review views/javascript/examples/json.js json -->
-    </pre>
-
-    <pre>
-      <!-- review views/javascript/examples/json.js jsonp -->
-    </pre>
-
-    <pre>
-      <!-- review views/javascript/examples/json.js callback -->
-    </pre>
+    <section class="container tt">
+      <ol class="_____ float left whitepaper">
+        <li>JavaScript can be embedded with <code>&lt;script src="path.js"&gt;...</code></li>
+        <li>A JavaScript file could contain a plain JavasScript Object, like <code>var empty = {};</code> or call a function like <code>doThisNow();</code></li>
+        <li>A JavaScript file can call functions that it didn't declare—most likely declared in a different file (think of using a framework).</li>
+        <li>A JavaScript file can come from a different server and host (think of embedding a framework)</li>
+        <li>Combining the concepts, imagine a JavaScript file, coming from a different server, executing a function that it didn't declare, and the first argument of that function is some data.</li>
+      </ol>
+      <pre class="float left _____ prettyprint pad">
+        <!-- review views/javascript/examples/json.js jsonp -->
+      </pre>
+    </section>
   </article>
   <article>
-    <h2>Tricks &amp; Tips</h2>
-    <section>
-      <h3>Mutable Data, return values.</h3>
-      <p>Building a toggle, or a flip/flopper with array reverse.</p>
+    <h2>A Practical Application</h2>
+    <section class="container">
+      <aside class="note ___ float left">
+        <p>JSONP has many applications that you can stumble upon, from news feeds to wikipedia articles. Many API's have this as an option, and though this probably isn't especially enlightning to a beginner, it's so easy that a lot of people forego documentation and just sort of say <q>use <abbr>jsonp</abbr> if you wanna...</q>.</p>
+        <p>I've put together an example of how you could validate your page in a heartbeat. Let's work on a way to see how we might put together a button on a page that will automatically validate a page on a server.</p>
+      </aside>
+      <pre class="prettyprint _______ float left">
+        <!-- review views/javascript/examples/json.js practical jsonp -->
+      </pre>
     </section>
+  </article>
+  <article>
+    <h2>Introduction to <code>new</code></h2>
+    <p>In JavaScript, <em>new</em> is a strange bird. You've seen it in the <code>Date</code> object, and in fact, there are a handful of objects in JavaScript that require this.</p>
   </article>
 </div>
