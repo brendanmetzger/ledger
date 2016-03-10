@@ -5,6 +5,7 @@ body{
   box-sizing:border-box;
   background-color: hsl(45, 30%, 97.5%);
   color:rgba(0,0,0,0.85);
+  overflow-x: hidden;
 }
 
 .percentage:after {
@@ -25,6 +26,12 @@ body{
   background: transparent url(/css/media/film.svg) 0 50% no-repeat;
   background-size: auto 120%;
   padding-left:1.75em;
+}
+
+.warn.focus {
+  margin:5vmin 0;
+  padding:5vmin;
+  box-shadow:0 0 0.5em rgba(0,0,0,0.1);
 }
 
 a[href*='en.wikipedia.org'] {
@@ -258,7 +265,7 @@ body > nav div ul li{
     bottom:4em;
     left:0;
     background-color:hsl(45, 30%, 97.5%);
-    padding:0.5em 0 0;
+    padding:calc(1vh - 2px) 0 0;
     box-shadow:inset 0 0 0.25em rgba(0,0,0,0.25);
     overflow:auto;
   }

@@ -76,6 +76,7 @@ class Records extends \bloc\controller
     if ($topic == 'practice' || $topic == 'project') {
       if ($topic == 'project') {
         $index = ['midterm', 'final'][$index];
+
       }
       $this->url = $this->student->context['@url'] . "/{$topic}/{$index}";
       $this->files = \models\Assessment::LINKS($this->url);

@@ -8,6 +8,8 @@ namespace models;
 
   class Project extends Practice
   {
+    use traits\indexed, traits\persist, traits\evaluation;
+    
     static public $fixture = [
       'project' => [
         '@' => ['effort' => 0, 'organization' => 0, 'ambition' => 20, 'mission' => 1, 'created' => 0, 'updated' => 0],

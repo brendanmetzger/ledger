@@ -33,14 +33,66 @@ namespace models;
     ];
 
 
+    private static $storage;
+    private $student, $section;
 
-    private $context, $schedule;
-
-    public function __construct(Student $student)
+    public function __construct(\bloc\model $model)
     {
-      $this->context  = $student->context;
-      $this->schedule = $student->section->schedule;
+      $this->student = $model;
     }
+
+    private function collective(Section $section, $c)
+    {
+      if (! $storage = self::$storage) {
+        $storage = self::$storage = new \bloc\Maybe([]);
+      }
+
+      $key = $c['@type'].$c['@index'].$section['@id'].$section['@course'];
+
+      return $storage($key)->get(function ($key) use($section, $c) {
+        $scores = [];
+        foreach ($section->students as $item) {
+          $context = $item['student']->context->getElement($c['@type'], $c['@index']);
+          $score = Data::FACTORY($c['@type'], $context)->loadCriterion($c)->score;
+
+          if ($score > 0) {
+            $scores[] = $score;
+          }
+        }
+
+
+        sort($scores);
+        $total = count($scores);
+        $out = [
+          'max'  => 0,
+          'min'  => 0,
+          'med'  => 0,
+          'sum'  => 0,
+          'sd'   => 0,
+          'mean' => 0,
+          'wmean'=> 0,
+          'var'  => 0,
+          'z'    => 0,
+        ];
+
+        if ($total > 1) {
+          $out['min']  = round($scores[0], 2);
+          $out['max']  = round($scores[$total-1], 2);
+          $out['sum']  = array_sum($scores);
+          $out['mean'] = round($out['sum'] / $total, 2);
+          $out['wmean'] = 1 - ($out['max'] - $out['mean']);
+          $out['var']  = array_sum(array_map(function ($item) use($out){
+            return pow($item - $out['mean'], 2);
+          }, $scores)) / ($total - 1);
+
+          $out['sd'] = round(sqrt($out['var']), 2);
+
+        }
+
+        return $out;
+      });
+    }
+
 
     static public function LETTER($score, $multiplier = 1)
     {
@@ -94,31 +146,42 @@ namespace models;
       return $files;
     }
 
-    public function getEvaluation($evaluation, $query)
+
+    public function getEvaluation($evaluation, $course = "*")
     {
-      $reviewed = $this->context->find($evaluation);
-      $average  = 1 / ($reviewed->count() ?: 1);
+      $reviewed = $this->student->context->find($evaluation);
+      $total = $reviewed->count();
+      $average  = 1 / ($total ?: 1);
       $accumulator = 0;
 
       $collect = Criterion::collect(function ($criterion, $index) use($evaluation, $reviewed, $average, &$accumulator) {
         $map = [
-          $evaluation => Data::FACTORY($evaluation, $reviewed->pick($index)),
-          'criterion' => $criterion,
-          'schedule'  => $this->schedule[$criterion['@assigned'] ?: $index],
-          'due'       => $this->schedule[$criterion['@due'] ?: $index],
+          $evaluation => Data::FACTORY($evaluation, $reviewed->pick($index))->loadCriterion($criterion),
+          'schedule'  => $this->student->section->schedule[$criterion['@assigned'] ?: $index],
+          'due'       => $this->student->section->schedule[$criterion['@due'] ?: $index],
         ];
-        $accumulator = ($accumulator + ($map[$evaluation]->score * $average));
-        return $map;
-      }, $query);
-      $weight = Assessment::$weight[$evaluation];
+        $score = $map[$evaluation]->score;
+        
+        if ($evaluation === 'quiz') {
+          $stats = $this->collective($this->student->section, $criterion);
+          if ($score > 0) {
+            $z = ($score - $stats['mean']) / $stats['sd'];
+            $score = round($stats['wmean'] + ($z * $stats['sd']), 2);
+            $stats['standard'] = $score * 100;
+          }
 
+          $map['stats'] = $stats;
+
+        }
+        $accumulator = ($accumulator + ($score * $average));
+        return $map;
+      }, "[@type='{$evaluation}' and @course = '{$course}']");
+
+      $weight = Assessment::$weight[$evaluation];
       return new \bloc\types\dictionary([
         'list'   => iterator_to_array($collect, false),
-        'score'  => $average === 1 && $accumulator == 0 ? $weight : max(0, round($accumulator * $weight, 1)),
+        'score'  => $average === 1 && $total == 0 ? $weight : max(0, round($accumulator * $weight, 1)),
         'weight' => $weight,
       ]);
     }
-
-    // get total.
-    // get individual(type)
 }

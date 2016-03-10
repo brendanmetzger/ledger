@@ -17,8 +17,6 @@
   <article>
     <h2>Responsive Design</h2>
     <h3>Media Queries</h3>
-
-
     <p>Media Queries are pretty simple—if you have the gist of <abbr>CSS</abbr>, the won't give you any trouble. Essentially, imagine you can divide your styles up by certain criteria; max/min screen sizes, device types, landscape vs. portrait, etc. Say you asked yourself, <q>I want some really big text, but only on a really big screen.</q>. <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">Media Queries</a> are where you begin, and once you get your site schematics figured out and media in place they can offer immediate solutions to problems with text size and layout problems. The <a href="http://www.w3schools.com/cssref/css3_pr_mediaquery.asp">W3Schools</a> reference is also a good starting point.</p>
     <h3>New Units</h3>
     <p>When considering units, now would be a great time to start finding ways to implement <code>vh</code> and <code>vw</code>, which is your screen's height and width broken down into 1% increments; ie. <code>10vh</code> is 10% of the viewport height. Here is an intro to <a href="https://css-tricks.com/viewport-sized-typography/">viewport sized typography</a></p>
@@ -50,7 +48,7 @@
     </section>
     <hr/>
     <section class="container">
-      <div class="float left half indented margins">
+      <div class="float left half indented">
         <h3>Model (Tree Structures)</h3>
         <p>All together, The Document Object Model, or <abbr>dom</abbr>, is a <strong>standardized</strong>, cross-platform and language-independent convention for representing and interacting with objects in <abbr>html</abbr>, <abbr>xhtml</abbr> and <abbr>xml</abbr> documents. The objects, or <strong>nodes</strong> of every document are organized in a <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">tree structure</a>. Objects in the <abbr>dom</abbr> tree may be styled manipulated with other languages (wink/nod <abbr>CSS</abbr>, JavaScript).</p>
         <p>You can visualize tree structures because they are represented by a branch of mathematics known as <a href="https://en.wikipedia.org/wiki/Graph_theory">graph theory</a>, which combines the rigor of math with the real-world pleasure of figuring things with your eyeballs. Taking a look at the diagram, given any node as a starting point, <em>you can get to any other node.</em> via a simple set of operations:  <code>firstChild</code>, <code>lastChild</code>, <code>nextSibling</code>, <code>previousSibling</code> and <code>parentNode</code>.</p>

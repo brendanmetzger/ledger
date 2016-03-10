@@ -12,6 +12,8 @@ namespace models;
 
     const XPATH = '/model/courses/section/';
 
+    private $assessment = null;
+
     static public $fixture = [
       'student' => [
         '@' => ['id' => null, 'name' => '', 'email' => '', 'url' => ''],
@@ -21,6 +23,7 @@ namespace models;
         'discourse' => [],
       ]
     ];
+
 
     static public function BLEAR($key)
     {
@@ -38,12 +41,15 @@ namespace models;
       }
     }
 
+    private function assessment()
+    {
+      return $this->assessment ?: $this->assessment = new Assessment($this);
+    }
+
 
     public function getSection(\DOMElement $context)
     {
-      $section = new Section($context->parentNode);
-
-      return $section;
+      return new Section($context->parentNode);
     }
 
     public function getCourse(\DOMElement $context)
@@ -53,22 +59,22 @@ namespace models;
 
     public function getQuizzes(\DOMElement $context)
     {
-      return (new Assessment($this))->getEvaluation('quiz', "[@type='quiz']");
+      return $this->assessment()->getEvaluation('quiz', $this->course);
     }
 
     public function getProjects(\DOMElement $context)
     {
-      return (new Assessment($this))->getEvaluation('project', "[@type='project']");
+      return $this->assessment()->getEvaluation('project');
     }
 
     public function getDiscourse(\DOMElement $context)
     {
-      return (new Assessment($this))->getEvaluation('discourse', "[@type='discourse']");
+      return $this->assessment()->getEvaluation('discourse');
     }
 
     public function getPractice(\DOMElement $context)
     {
-      return (new Assessment($this))->getEvaluation('practice', "[@type='practice' and @course = '{$this->course}']");
+      return $this->assessment()->getEvaluation('practice', $this->course);
     }
 
     public function getGrade(\DOMElement $context)

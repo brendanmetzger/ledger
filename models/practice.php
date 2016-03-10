@@ -8,7 +8,7 @@ namespace models;
 
   class Practice extends \bloc\Model
   {
-    use traits\indexed, traits\persist;
+    use traits\indexed, traits\persist, traits\evaluation;
 
     const XPATH = false;
 
@@ -18,11 +18,6 @@ namespace models;
         'CDATA' => '',
       ]
     ];
-
-    public function beforeSave()
-    {
-      $this->context->setAttribute('updated', (new \DateTime())->format('Y-m-d H:i:s'));
-    }
 
     public function setValueAttribute(\DOMElement $context, $value)
     {
@@ -45,15 +40,6 @@ namespace models;
       return round(($context['@effort'] + $context['@organization']) * $deductions, 2);
     }
 
-    public function getStatus(\DOMElement $context)
-    {
-      return $context['@updated'] ? 'marked' : 'open';
-    }
-
-    public function getPercentage(\DOMElement $context)
-    {
-      return $this->status == 'open' ? 'NA' : ($this->score * 100);
-    }
 
     public function getFormatted(\DOMElement $context)
     {
@@ -61,8 +47,4 @@ namespace models;
       return $parsedown->text(trim((string)$this));
     }
 
-    public function getLetter(\DOMElement $context)
-    {
-      return Assessment::LETTER($this->score);
-    }
   }

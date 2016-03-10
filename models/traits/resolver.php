@@ -4,7 +4,7 @@ use \models\Data;
 
 trait resolver {
   protected function identify($identity) {
-    return data::ID($identity);
+    return Data::ID($identity);
   }
 
   protected function initialize() {

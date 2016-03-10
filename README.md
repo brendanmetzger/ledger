@@ -22,3 +22,4 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Make an index in the outlines with anchors to each section.
 - [ ] Make a 'Panic Protocol' page
 - [ ] Design a Favicion
+- [ ] implement a progress report every 3 weeks
