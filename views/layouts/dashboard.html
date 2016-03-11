@@ -195,7 +195,7 @@
         <tr>
           <th>Exam</th>
           <th>Administered</th>
-          <th>µ/weighted</th>
+          <th>µ / ω</th>
           <th><span title="Standard Deviation">σ</span></th>
           <th>min</th>
           <th>max</th>
@@ -209,16 +209,16 @@
         <tr class="[$quiz:status]">
           <td class="centered">[$quiz:criterion:@title]</td>
           <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time></td>
-          <td class="[$schedule:status centered]">[$stats:mean / $stats:wmean]</td>
-          <td class="[$schedule:status centered]">[$stats:sd]</td>
-          <td class="[$schedule:status centered]">[$stats:min]</td>
-          <td class="[$schedule:status centered]">[$stats:max]</td>
+          <td class="[$schedule:status centered]"><span>[$stats:mean / $stats:wmean]</span></td>
+          <td class="[$schedule:status centered]"><span>[$stats:sd]</span></td>
+          <td class="[$schedule:status centered]"><span>[$stats:min]</span></td>
+          <td class="[$schedule:status centered]"><span>[$stats:max]</span></td>
           <td class="[$schedule:status centered]"><span>[$quiz:@credit / $quiz:criterion:@points]</span></td>
           <td class="[$schedule:status centered]">
             <span class="percentage">[$quiz:percentage]</span>
             <a href="[[/$$instructor:path/quiz/$quiz:criterion:@index/$$student:@id]]">[[$$instructor:edit]]</a>
           </td>
-          <td><strong class="percentage">[$stats:standard]</strong></td>
+          <td class="centered"><strong class="percentage">[$stats:standard]</strong></td>
         </tr>
       </tbody>
       <tfoot>

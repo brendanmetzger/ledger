@@ -54,7 +54,6 @@ namespace models;
         foreach ($section->students as $item) {
           $context = $item['student']->context->getElement($c['@type'], $c['@index']);
           $score = Data::FACTORY($c['@type'], $context)->loadCriterion($c)->score;
-
           if ($score > 0) {
             $scores[] = $score;
           }
@@ -154,15 +153,14 @@ namespace models;
       $average  = 1 / ($total ?: 1);
       $accumulator = 0;
 
-      $collect = Criterion::collect(function ($criterion, $index) use($evaluation, $reviewed, $average, &$accumulator) {
+      $collect = Criterion::collect(function ($criterion, $index) use($evaluation, $total, $reviewed, $average, &$accumulator) {
         $map = [
           $evaluation => Data::FACTORY($evaluation, $reviewed->pick($index))->loadCriterion($criterion),
           'schedule'  => $this->student->section->schedule[$criterion['@assigned'] ?: $index],
           'due'       => $this->student->section->schedule[$criterion['@due'] ?: $index],
         ];
         $score = $map[$evaluation]->score;
-        
-        if ($evaluation === 'quiz') {
+        if ($evaluation === 'quiz' && $total > $criterion['@index']) {
           $stats = $this->collective($this->student->section, $criterion);
           if ($score > 0) {
             $z = ($score - $stats['mean']) / $stats['sd'];
