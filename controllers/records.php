@@ -71,13 +71,10 @@ class Records extends \bloc\controller
     $this->index = $index;
 
     $view = new View(self::layout);
-    $this->{$topic} = Data::FACTORY($topic, $this->student->context->getElement($topic, $index));
+
+    $this->{$topic} = Data::FACTORY($topic, $this->student->evaluation($topic, $index));
 
     if ($topic == 'practice' || $topic == 'project') {
-      if ($topic == 'project') {
-        $index = ['midterm', 'final'][$index];
-
-      }
       $this->url = $this->student->context['@url'] . "/{$topic}/{$index}";
       $this->files = \models\Assessment::LINKS($this->url);
       $this->template = 'editor';
@@ -95,7 +92,7 @@ class Records extends \bloc\controller
   protected function POSTevaluate(Admin $instructor, $request, $topic, $index, $sid)
   {
     $student = new Student($sid);
-    $item = Data::FACTORY($topic, $student->context->getElement($topic, $index), $_POST);
+    $item = Data::FACTORY($topic, $student->evaluation($topic, $index), $_POST);
     if ($item->save()) {
       \bloc\router::redirect("/records/student/{$sid}");
     } else {

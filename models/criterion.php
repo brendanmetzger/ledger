@@ -19,8 +19,11 @@ namespace models;
       ]
     ];
 
-    public function getURL(\DOMElement $context)
+
+    public function getPath(\DOMElement $context)
     {
-      return $context['@case'];
+      $type  = $context['@type'];
+      $index = $type == 'project' ? ['midterm', 'final'][$context['@index']] : $context['@index'];
+      return "{$type}/{$index}";
     }
 }

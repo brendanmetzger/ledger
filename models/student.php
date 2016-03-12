@@ -46,6 +46,14 @@ namespace models;
       return $this->assessment ?: $this->assessment = new Assessment($this);
     }
 
+    public function evaluation($topic, $index)
+    {
+      if ($topic == 'project') {
+        $index = ['midterm' => 0, 'final' => 1][$index];
+      }
+      return $this->context->getElement($topic, $index);
+    }
+
 
     public function getSection(\DOMElement $context)
     {

@@ -6,7 +6,7 @@ trait evaluation {
 
   public function loadCriterion(\DOMElement $criterion)
   {
-    $this->criterion = $criterion;
+    $this->criterion = new \models\Criterion($criterion);
     return $this;
   }
 

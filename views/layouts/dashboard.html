@@ -4,6 +4,10 @@
     .coursework section h3 {
       margin:2em 0 1em;
     }
+    table {
+      caption-side: bottom;
+    }
+
     table.chart .horizontal td {
       text-align:center;
       padding:1em 0;
@@ -166,10 +170,10 @@
           <td>
             <a href="[[/$$student:course/criterion/project/$project:criterion:@index/$$student:section:@id]]">[$project:criterion:@title]</a>
           </td>
-          <td class="centered"><a href="[[$$student:@url/project/$project:criterion:@index/]]">Preview</a></td>
+          <td class="centered"><a href="[[$$student:@url/$project:criterion:path/]]">Preview</a></td>
           <td class="[$schedule:status centered]">
-            <a href="[[/$$student:course/notes/project/$project:criterion:@index]]">[[$$review]]</a>
-            <a href="[[/$$instructor:path/project/$project:criterion:@index/$$student:@id]]">[[$$instructor:edit]]</a>
+            <a href="[[/$$student:course/notes/$project:criterion:path/$$student:@id]]">[[$$review]]</a>
+            <a href="[[/$$instructor:path/$project:criterion:path/$$student:@id]]">[[$$instructor:edit]]</a>
           </td>
           <td class="[$schedule:status centered]">
             <strong class="percentage">[$project:percentage]</strong>
@@ -188,6 +192,26 @@
   <section>
     <h3>Quizzes</h3>
     <table class="full chart">
+      <caption class="rag-right">
+        <details class="whitepaper">
+          <summary>Statistical information</summary>
+          <dl class="neat">
+            <dt>µ (mean)</dt>
+            <dd>Represents the actual mean (average) of all examinations</dd>
+            <dt><em title="weighted mean" style="font-family:Baskerville">x&#x0305;</em> (weighted mean)</dt>
+            <dd>Represents the weighted average, which is calculated using standard deviation and the max score</dd>
+            <dt>σ (Standard Deviation)</dt>
+            <dd>Standard Deviation represents the dispersion of scores, or <q>the mean of the mean</q>. Basically, low standard deviation indicates the scores were very close together, high indicates very diverse range of scores.</dd>
+            <dt>Min/Max</dt>
+            <dd>Represent the highest and lowest scores given (excluding 0)</dd>
+            <dt>Points</dt>
+            <dd>raw points received / available</dd>
+            <dt>Score</dt>
+            <dd>Given score based on weighted mean and standard deviation.</dd>
+          </dl>
+
+        </details>
+      </caption>
       <colgroup>
         <col span="1" style="width:10%;"/>
       </colgroup>
@@ -195,13 +219,14 @@
         <tr>
           <th>Exam</th>
           <th>Administered</th>
-          <th>µ / ω</th>
+          <th>µ</th>
+          <th><em title="weighted mean" style="font-family:Baskerville">x&#x0305;</em></th>
           <th><span title="Standard Deviation">σ</span></th>
           <th>min</th>
           <th>max</th>
           <th>Points</th>
           <th>Raw</th>
-          <th>Weighted*</th>
+          <th>Score</th>
         </tr>
       </thead>
       <tbody class="vertical">
@@ -209,7 +234,8 @@
         <tr class="[$quiz:status]">
           <td class="centered">[$quiz:criterion:@title]</td>
           <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time></td>
-          <td class="[$schedule:status centered]"><span>[$stats:mean / $stats:wmean]</span></td>
+          <td class="[$schedule:status centered]"><span>[$stats:mean]</span></td>
+          <td class="[$schedule:status centered]"><span>[$stats:wmean]</span></td>
           <td class="[$schedule:status centered]"><span>[$stats:sd]</span></td>
           <td class="[$schedule:status centered]"><span>[$stats:min]</span></td>
           <td class="[$schedule:status centered]"><span>[$stats:max]</span></td>
@@ -223,7 +249,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="8">µ ⋅ <span class="percentage">[$student:quizzes:weight]</span></th>
+          <th colspan="9">µ ⋅ <span class="percentage">[$student:quizzes:weight]</span></th>
           <td class="centered"><strong class="percentage">[$student:quizzes:score]</strong></td>
         </tr>
       </tfoot>

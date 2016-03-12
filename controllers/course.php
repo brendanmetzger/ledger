@@ -69,10 +69,11 @@ class Course extends \bloc\controller
     return $view->render($this());
   }
 
+
   protected function GETnotes(Student $student, $topic, $index)
   {
     $view = new View(self::layout);
-    $this->evaluation = Data::FACTORY($topic, $student->context->getElement($topic, $index));
+    $this->evaluation = Data::FACTORY($topic, $student->evaluation($topic, $index));
     $this->url        = $student->context['@url'] . "/{$topic}/{$index}";
     $this->files      = \models\Assessment::Links($this->url);
     $this->template   = 'editor';

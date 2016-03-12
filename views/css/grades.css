@@ -69,7 +69,7 @@ tr.marked[title="D"] {
   background-color:rgba(232, 154, 116, 0.1);
 }
 .marked[title="F"] {
-  background-color:rgba(245, 52, 4, 1);
+  background-color:rgba(245, 52, 4, 0.5);
 }
 tr.marked[title="F"] {
   background-color:rgba(245, 52, 4, 0.1);

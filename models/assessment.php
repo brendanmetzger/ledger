@@ -82,7 +82,7 @@ namespace models;
           $out['wmean'] = 1 - ($out['max'] - $out['mean']);
           $out['var']  = array_sum(array_map(function ($item) use($out){
             return pow($item - $out['mean'], 2);
-          }, $scores)) / ($total - 1);
+          }, $scores)) / $total;
 
           $out['sd'] = round(sqrt($out['var']), 2);
 
