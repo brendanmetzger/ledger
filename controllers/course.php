@@ -24,7 +24,8 @@ class Course extends \bloc\controller
     $view->context = "views/layouts/list/schedule.html";
     $view->lecture = "views/outline/".strtolower(static::ID)."/{$id}.html";
     $this->course = new \Models\Course(Data::ID(static::ID));
-    $schedule = $this->course->section($section)->schedule;
+    $this->section = $this->course->section($section);
+    $schedule = $this->section->schedule;
     $schedule[$id]['selected'] = 'selected';
 
     $this->timestamp = $schedule[$id]['date'];
