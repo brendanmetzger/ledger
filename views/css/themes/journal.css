@@ -178,7 +178,16 @@ article:target h2{
 }
 
 li,figcaption{font-size:1rem;line-height:1.25em;}
-p,h6{font-size:1.85em;line-height:1.5em;font-weight:400;font-variant-ligatures: normal;font-family:Baskerville, 'Goudy Old Style',Georgia; max-width:55em}
+p,h6{
+  font-size:1.85em;
+  line-height:1.5em;
+  font-weight:400;
+  font-variant-ligatures: normal;
+  font-family:Baskerville, 'Goudy Old Style',Georgia;
+  max-width:55em;
+  text-rendering:;
+  font-feature-settings: "liga" 1;
+}
 
 ol:not(.linenums), dl.ordered {counter-reset:item -1;list-style:none}
 ol {padding:0 0 0 3em;}

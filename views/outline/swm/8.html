@@ -1,11 +1,12 @@
 <div>
   <header>
     <!-- insert views/outline/_/crumbs.html -->
-    <h1 class="massive">Working Title</h1>
-    <p class="intro">CSS Specificity, Working with data, HTML input elements, intro to DOM events and first-class functions.</p>
+    <h1 class="massive">To be exact.</h1>
+    <p class="intro">CSS Specificity, Working with data, HTML input elements, intro to DOM events and first-class functions. We'll also look at <a href="#smooth-scrolling">smooth scrolling</a> and begin a case study on the lightbox.</p>
   </header>
   <article>
     <h2>Review</h2>
+
   </article>
   <article>
     <h2>CSS Specificity</h2>
@@ -21,7 +22,7 @@
     <p>Concatenating the three numbers a-b-c (in a number system with a large base) gives the specificity.</p>
     <h4>Examples:</h4>
 
-    <pre class="prettyprint">
+    <pre>
       *               /* a=0 b=0 c=0 -> specificity =   0 */
       LI              /* a=0 b=0 c=1 -> specificity =   1 */
       UL LI           /* a=0 b=0 c=2 -> specificity =   2 */
@@ -40,6 +41,21 @@
       <li>range</li>
       <li>color picker input</li>
     </ul>
+  </article>
+  <article id="smooth-scrolling">
+    <script src="/javascript/smooth-scroll.js" charset="utf-8"> </script>
+    <h2>Smooth Scrolling</h2>
+    https://drafts.csswg.org/cssom-view/#scrolling
+  </article>
+  <article>
+    <h2>Case Study: A Lightbox</h2>
+    <p>Css is needed to create an overlay. I'm going to show you one way, but there are many facets you need to begin to understand.</p>
+    <dl>
+      <dt>What is an overlay in principle</dt>
+      <dd>It's just a block level element, positioned in such a way that it overlays the entire page contents</dd>
+      <dt></dt>
+
+    </dl>
   </article>
   <article>
     <h2>Reference and Practice Material</h2>

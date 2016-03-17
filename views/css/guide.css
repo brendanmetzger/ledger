@@ -2,7 +2,6 @@
 .container:after, article dl:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
 .clear {clear:both}
 *{border-color:#333;border-style:solid;border-width:0;}
-
 a:active,a:link:focus,a:visited:focus {outline:1px dotted #333}
 a:not([href]) {cursor:default;text-decoration: line-through;pointer-events: none;opacity:0.5;text-decoration-style:wavy}
 body,p,ul,ol,li,div,a,figure{margin:0;text-decoration:none;}
