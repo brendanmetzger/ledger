@@ -117,7 +117,8 @@ trait config {
       }
     } catch (\InvalidArgumentException $e) {
       $type = $e->getCode() == 1 ? 'invalid' : 'duplicate';
-      \bloc\router::redirect(sprintf('/%s/login/%s/%s',$this->template, $type));
+      $path = sprintf('/%s/login/%s/',$this->template, $type);
+      \bloc\router::redirect($path);
     }
     $view = new \bloc\View(self::layout);
     $view->content = 'views/layouts/forms/transaction.html';

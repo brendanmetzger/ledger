@@ -6,34 +6,9 @@
   </header>
   <article>
     <h2>Review</h2>
-
+    <p>Last we spoke we went over our midterms. Hopefully you found time over break to refresh a little bit, no doubt bursting with excitement to be back in this windowless room staring at a backlit screen.</p>
   </article>
-  <article>
-    <h2>CSS Specificity</h2>
-    <p><a href="https://www.w3.org/TR/selectors/#specificity">Calculating a selector's specificity</a> is not something we often do, but there is a formula.</p>
-    <h4>A selector's specificity is calculated as follows:</h4>
-    <ul>
-      <li>count the number of ID selectors in the selector (= a)</li>
-      <li>count the number of class selectors, attributes selectors, and pseudo-classes in the selector (= b)</li>
-      <li>count the number of type selectors and pseudo-elements in the selector (= c)</li>
-      <li>ignore the universal selector</li>
-    </ul>
-    <p>Selectors inside the negation pseudo-class are counted like any other, but the negation itself does not count as a pseudo-class.</p>
-    <p>Concatenating the three numbers a-b-c (in a number system with a large base) gives the specificity.</p>
-    <h4>Examples:</h4>
-
-    <pre>
-      *               /* a=0 b=0 c=0 -> specificity =   0 */
-      LI              /* a=0 b=0 c=1 -> specificity =   1 */
-      UL LI           /* a=0 b=0 c=2 -> specificity =   2 */
-      UL OL+LI        /* a=0 b=0 c=3 -> specificity =   3 */
-      H1 + *[REL=up]  /* a=0 b=1 c=1 -> specificity =  11 */
-      UL OL LI.red    /* a=0 b=1 c=3 -> specificity =  13 */
-      LI.red.level    /* a=0 b=2 c=1 -> specificity =  21 */
-      #x34y           /* a=1 b=0 c=0 -> specificity = 100 */
-      #s12:not(FOO)   /* a=1 b=0 c=1 -> specificity = 101 */
-    </pre>
-  </article>
+  <!-- insert views/topics/tables/css-specificity.html -->
   <article>
     <h2>The <code>&lt;input&gt;</code> element</h2>
     <ul>
@@ -45,23 +20,30 @@
   <article id="smooth-scrolling">
     <script src="/javascript/smooth-scroll.js" charset="utf-8"> </script>
     <h2>Smooth Scrolling</h2>
-    https://drafts.csswg.org/cssom-view/#scrolling
+    <p class="indented">I've written a <a href="/javascript/smooth-scroll.js">smooth-scrolling snippet</a> that you can use if you like. This bit of code, like the way of JavaScript-based animation in general, will go the way of the dinosaur soon. Like transitions and keyframe animation, there is already a <a href="https://drafts.csswg.org/cssom-view/#scrolling"><abbr title="cascading stylesheets">CSS</abbr> spec</a> on the books to facilitate a transitioned scroll... the countdown begins.</p>
+    <p>While investigating anchors, you should find some interest in the <code>:target</code> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target">pseudo-class</a>. Note above, text of the <code>&lt;h2&gt;</code> is read because the document has <mark>#smooth-scrolling</mark> in the url—very handy.</p>
   </article>
   <article>
     <h2>Case Study: A Lightbox</h2>
-    <p>Css is needed to create an overlay. I'm going to show you one way, but there are many facets you need to begin to understand.</p>
+    <p>Css is needed to create an overlay. I'm going to show you one way, but there are many facets you need to begin to understand. Before we begin the discussion, I want you to investigate the following topics on your own: css positioning, z-index, overflow, the vh and vw units. Before we begin our work together you will highlight something you learned that you did not know before.</p>
     <dl>
       <dt>What is an overlay in principle</dt>
       <dd>It's just a block level element, positioned in such a way that it overlays the entire page contents</dd>
-      <dt></dt>
-
+      <dd>It can cover the entire page, top to bottom, or just the visible screen <code>100vh and 100vw</code>.</dd>
+      <dd>It will utilize <code>position: absolute</code> and some sort of <code>z-index: (int)</code></dd>
+      <dt>The background can/should be <q>locked</q></dt>
+      <dd>If the overlay fully covers page content, you don't need to worry about scrolling (although it might be annoying)</dd>
+      <dd>If the overlay is only covering the viewport, you will <em>need to disable scrolling</em></dd>
     </dl>
   </article>
   <article>
     <h2>Reference and Practice Material</h2>
+    <p>I gave some reference materials before the midterm to read, a few chapters regarding JavaScript and the DOM. If you have not gone through that material yet, you should catch up as soon as possible.</p>
     <dl>
       <dt><a href="http://www.lynda.com/JavaScript-tutorials/Using-functions-objects/148137/158394-4.html">Functions</a></dt>
       <dd>Chapter 2 of the function series</dd>
+      <dt><a href="http://eloquentjavascript.net/03_functions.html">Chapter 3</a> of Eloquent JavaScript </dt>
+      <dd>This is a more terse, more advanced (yet still intended for beginners) primer on functions. It will cover advanced topics like call stacks, closure and recursion. You don't need to understand them fully, but introduce yourself to these words.</dd>
     </dl>
   </article>
 </div>

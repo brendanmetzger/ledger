@@ -1,6 +1,6 @@
 body{
   font:400 0.625em/250% "Avenir Next", "HelveticaNeue-Light","Helvetica Neue",Helvetica;
-  padding:0.25em 0 4em;
+  padding:0.25em 0 2em;
   border-width:1vh 0 0;
   box-sizing:border-box;
   background-color: hsl(45, 30%, 97.5%);
@@ -173,8 +173,9 @@ time.transpired {
   color:#AAA;
 }
 
-article:target h2{
-  font-weight:600;
+article:target h2 {
+  transition:color 1s 0.5s;
+  color:rgb(210, 96, 96);
 }
 
 li,figcaption{font-size:1rem;line-height:1.25em;}
@@ -185,7 +186,6 @@ p,h6{
   font-variant-ligatures: normal;
   font-family:Baskerville, 'Goudy Old Style',Georgia;
   max-width:55em;
-  text-rendering:;
   font-feature-settings: "liga" 1;
 }
 

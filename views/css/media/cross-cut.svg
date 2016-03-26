@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="55px" height="28px" viewBox="0 0 55.85 28" xml:space="preserve">
+	<style type="text/css">
+	<![CDATA[
+		polygon {fill-opacity:0.4;}
+		polygon:hover {fill-opacity:1}
+		polygon:not(:last-of-type) {stroke:#fff;stroke-width:0.1;}
+	]]>
+	</style>
+	<polygon style="fill:#111;" points="21.02,28.88 28.62,0 38.11,28.88 26.35,28.88 "/>
+	<polygon style="fill:#444;" points="28.62,0 55.88,21.79 55.88,28.88 38.1,28.88 "/>
+	<polygon style="fill:#444;" points="-8.5,14.83 18.5,36.63 -0.81,29.96 "/>
+	<polygon style="fill:#333;" points="24.06,17.63 38.25,23 55.88,16.29 55.88,28.88 0,28.88 0,16.29 7.54,21.83 "/>
+	<polygon style="fill:#555;" points="0,0.62 24.12,20.38 28.56,19.42 31.85,9.75 45.5,20.25 47.75,20.38 50.75,19.25 55.88,0.62
+		55.88,28.88 0,28.88 "/>
+</svg>

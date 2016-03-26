@@ -1,0 +1,146 @@
+<article>
+  <h2>CSS Specificity</h2>
+  <p class="indented"><a href="https://www.w3.org/TR/selectors/#specificity">Calculating a selector's specificity</a> is not something I do often, but there is a formula to be aware of, if anything. Often, the easiest way out of a jam is by using <code>!important</code> in your code. For those unfamiliar, that keyword <a href="https://www.w3.org/TR/CSS2/cascade.html#important-rules">overrides the cascade</a> (first C in <abbr title="Cascading Stylesheets">CSS</abbr>), meaning that the order and specificity you use are thrown out of the window. It is widely frowned upon, but there are <a href="https://css-tricks.com/when-using-important-is-the-right-choice/">a few defenses</a>.</p>
+  <p>In a nutshell, people turn to this trick when the style they want to use is not getting applied as they like. This can be confirmed in your web inspector or developer tools by seeing the property with a line-through or grayed out. While, the easiest way out is to say <code>!important</code>—and you might feel inclined to do that—you may be disappointing you elders by choosing ignorance over enlightenment. Anyway, the formula is below.</p>
+
+  <table class="full definitions">
+    <style media="screen">
+    .definitions caption {
+      margin:0 0 1em;
+    }
+    .definitions tr td:last-of-type {
+      border-right:none;
+      font-weight:600;
+    }
+    .definitions tr td:first-of-type {
+      text-align:right;
+      font-size:2em;
+      padding:0.125em 1em;
+      border-left:none;
+    }
+    .definitions th {
+      padding:1em;
+    }
+    .definitions tr td:not(:first-of-type)  {
+      text-align:center;
+    }
+    .a {
+      color: rgb(225, 95, 185);
+    }
+    .b {
+      color: rgb(45, 205, 140);
+    }
+    .c {
+      color:rgb(15, 100, 190);
+    }
+    span.a:after {
+      content:'100';
+    }
+    span.b:after {
+      content:'10';
+    }
+    span.c:after {
+      content:'1';
+    }
+    td:hover span[class]:after {
+      width:auto;
+    }
+    td span[class]:after {
+      width:0;
+      overflow:hidden;
+      display:inline-block;
+      /*someday: font-variant-position: sub;*/
+      font-size: 0.5em;
+      font-weight:400;
+      padding:0 0.125em;
+
+    }
+    </style>
+    <caption class="rag-right container whitepaper">
+      <h4>Calculating a Selector's specificity</h4>
+      <aside class="half float left">
+        <p>Selectors inside the negation pseudo-class are counted like any other, but the negation itself does not count as a pseudo-class. Concatenating the three numbers a-b-c (in a number system with a large base) gives the specificity: <strong>the higher the number, the greater the specificity</strong>.</p>
+      </aside>
+      <ul class="half float left">
+        <li>count the number of ID selectors (= a)</li>
+        <li>count the number of class selectors, attribute selectors, and pseudo-classes (= b)</li>
+        <li>count the number of type (element) selectors and pseudo-elements (= c)</li>
+        <li>ignore the universal selector (*)</li>
+      </ul>
+    </caption>
+    <thead>
+      <tr>
+        <th>Selector</th>
+        <th class="a _">a</th>
+        <th class="b _">b</th>
+        <th class="c _">c</th>
+        <th class="__">Specificity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>*</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td><span class="c">li</span></td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><span class="c">ul</span> <span class="c">li</span></td>
+        <td>0</td>
+        <td>0</td>
+        <td>2</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td><span class="c">article</span> > <span class="c">ol</span> + <span class="c">li</span></td>
+        <td>0</td>
+        <td>0</td>
+        <td>3</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td><span class="c">h1</span> + *<span class="b">[rel=up]</span></td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+        <td>11</td>
+      </tr>
+      <tr>
+        <td><span class="c">ul</span> > <span class="c">ol</span> > <span class="c">li</span><span class="b">.red</span></td>
+        <td>0</td>
+        <td>1</td>
+        <td>3</td>
+        <td>13</td>
+      </tr>
+      <tr>
+        <td>* <span class="c">li</span><span class="b">.red</span><span class="b">.level</span></td>
+        <td>0</td>
+        <td>2</td>
+        <td>1</td>
+        <td>21</td>
+      </tr>
+      <tr>
+        <td><span class="a">#x34y</span></td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td><span class="a">#s12</span>:not(<span class="c">article</span>)</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>101</td>
+      </tr>
+    </tbody>
+  </table>
+</article>

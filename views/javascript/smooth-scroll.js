@@ -1,3 +1,9 @@
+/*
+ Smooth Scroll Tidbit @contact brendan.metzger@gmail.com
+ Queries document for possible anchors, ensures that there is
+ a corresponding element with the proper ID, attaches event listener
+ to said and animates the scroll of the document to proper position.
+*/
 window.addEventListener('load', function () {
   function tween(timestamp) {
     if (!this.start) this.start = timestamp;
