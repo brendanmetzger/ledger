@@ -2,7 +2,7 @@
   <header>
     <!-- insert views/outline/_/crumbs.html -->
     <h1 class="massive">To be exact.</h1>
-    <p class="intro">CSS Specificity, Working with data, HTML input elements, intro to DOM events and first-class functions. We'll also look at <a href="#smooth-scrolling">smooth scrolling</a> and begin a case study on the lightbox.</p>
+    <p class="intro">CSS Specificity, Working with data, HTML input elements, intro to functions. We'll also look at <a href="#smooth-scrolling">smooth scrolling</a> and begin a case study on the lightbox.</p>
   </header>
   <article>
     <h2>Review</h2>
@@ -24,7 +24,7 @@
     <p>While investigating anchors, you should find some interest in the <code>:target</code> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target">pseudo-class</a>. Note above, text of the <code>&lt;h2&gt;</code> is read because the document has <mark>#smooth-scrolling</mark> in the url—very handy.</p>
   </article>
   <article>
-    <h2>Case Study: A Lightbox</h2>
+    <h2>Case Study: A Lightbox and <abbr title="Cascading Stylesheet">CSS</abbr></h2>
     <p>Css is needed to create an overlay. I'm going to show you one way, but there are many facets you need to begin to understand. Before we begin the discussion, I want you to investigate the following topics on your own: css positioning, z-index, overflow, the vh and vw units. Before we begin our work together you will highlight something you learned that you did not know before.</p>
     <dl>
       <dt>What is an overlay in principle</dt>
@@ -34,14 +34,32 @@
       <dt>The background can/should be <q>locked</q></dt>
       <dd>If the overlay fully covers page content, you don't need to worry about scrolling (although it might be annoying)</dd>
       <dd>If the overlay is only covering the viewport, you will <em>need to disable scrolling</em></dd>
+      <dt>The background itself</dt>
+      <dd>There are many <abbr>CSS</abbr> coloring techniques that support an alpha channel (providing opacity).</dd>
+      <dt>Understanding Hierarchy</dt>
+      <dd>The overlay layer is by definition a child of the body. Controlling it's visibility is something you need to spend some time thinking about, as there are several ways. This week, we'll focus exclusively on usage of classes, and dive in next week with some JavaScript.</dd>
     </dl>
   </article>
   <article>
+    <h2>Functions</h2>
+    <section class="pad indented">
+      <p class="intre">The most important part of the way we write JavaScript is the notion of functions. Before we go down that road, we must understand a little bit about the namesake and the reasoning behind these methods.</p>
+      <p>In the beginning—and not particularly suprising considering the name—computers were primarily concerned with well, computing. Yes, giant calculators! I've tried introducing functions in very gentle ways, comparing them to cheeky things we know in real life; making pancakes and washing dishes, but that doesn't seem to convey the gravity of how important they are nor how to use them correctly. Most often you'll hear functions defined as <dfn>a way make programs reusable, decreasing error and duplication and keeping your code organized</dfn>.</p>
+      <p>While that definition is absolutely true, I'll argue it's only a nice byproduct of a nicely abstracted process, not process itself. In their <a href="https://en.wikipedia.org/wiki/Pure_function">purest form</a>, functions take input, and return output, so let's start with that notion of purity and move on to <q>pancakes and avoiding duplication</q>. In this light, I'm going to attempt the opposite and talk about functions in the most terrifying way possible: <em>mathematics</em>.</p>
+    </section>
+    <aside class="whitepaper centered">
+      <p>We will spend the rest of class taking apart this monster and turning it into a function(s), all homemade, all using techniques <a href="https://en.wikipedia.org/wiki/Taylor_series">outlined in 1715</a>. Brains will melt, but you'll walk away knowing a few things: there is no such thing as magic, small details can lead to big ideas.</p>
+      <img src="https://upload.wikimedia.org/math/7/5/0/75020b6f0a1afdfb5b67e11f520a99e7.png" alt="the cosine power series" class="t pad"/>
+    </aside>
+  </article>
+  <article>
     <h2>Reference and Practice Material</h2>
-    <p>I gave some reference materials before the midterm to read, a few chapters regarding JavaScript and the DOM. If you have not gone through that material yet, you should catch up as soon as possible.</p>
+    <p>I gave some reference materials before the midterm to read, a few chapters regarding JavaScript and the Document Object Model. We'll be going over <strong>Events</strong> If you have not gone through that material yet, you should catch up as soon as possible.</p>
     <dl>
-      <dt><a href="http://www.lynda.com/JavaScript-tutorials/Using-functions-objects/148137/158394-4.html">Functions</a></dt>
-      <dd>Chapter 2 of the function series</dd>
+      <dt></dt>
+      <dt>Functions</dt>
+      <dd>Definitely View <a href="https://www.lynda.com/JavaScript-tutorials/What-functions/148137/158390-4.html">Chapter 1</a> of this Lynda.com series.</dd>
+      <dd>If you are chomping at the bit to get on to advanced topics, I suggest you watch <a href="http://www.lynda.com/JavaScript-tutorials/Using-functions-objects/148137/158394-4.html">Chapter 2</a> as well.</dd>
       <dt><a href="http://eloquentjavascript.net/03_functions.html">Chapter 3</a> of Eloquent JavaScript </dt>
       <dd>This is a more terse, more advanced (yet still intended for beginners) primer on functions. It will cover advanced topics like call stacks, closure and recursion. You don't need to understand them fully, but introduce yourself to these words.</dd>
     </dl>
