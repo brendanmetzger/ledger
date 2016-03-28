@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="191.07px"
+	 height="188.85px" viewBox="0 0 191.07 188.85" style="enable-background:new 0 0 191.07 188.85;" xml:space="preserve">
+<style type="text/css">
+<![CDATA[
+	.machine{fill:none;stroke:#555;}
+	.st3{font-family:'Inconsolata';}
+	.st4{font-size:0.75em;}
+	.st6{fill:#A87BD5;font-size:0.6em;}
+]]>
+</style>
+<g class="machine">
+	<path d="M36.76,43.1L42.53,50v13.49H28.48l0,60.38h96.1v15.25l-5.83,6.89"/>
+	<path d="M58.59,43.1L52.69,50l0,13.49h101.44v60.38h-19.37v15.25l5.83,6.89"/>
+</g>
+<g class="st3">
+	<text transform="matrix(1 0 0 1 50.0359 100.8391)" style="font-size:20">function</text>
+	<text transform="matrix(1 0 0 1 33.2844 24.8391)" class="st4">input</text>
+	<text transform="matrix(1 0 0 1 116.6194 174.0051)" class="st4">output</text>
+	<text transform="matrix(1 0 0 1 120.8665 155.9231)" class="st6 st4">f(x)</text>
+	<text transform="matrix(1 0 0 1 44.1169 43.4226)" class="st6 st4">x</text>
+</g>
+</svg>

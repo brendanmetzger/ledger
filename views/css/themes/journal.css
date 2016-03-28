@@ -536,7 +536,9 @@ figure svg {
 .drawer table.metadata, table.navbox, table.vertical-navbox, .drawer .error, .mw-editsection {
   display:none;
 }
-
+.drawer img {
+  max-width:100%;
+}
 .drawer blockquote p {
   font-size:1.25em;
   font-weight:400;
