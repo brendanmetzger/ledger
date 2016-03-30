@@ -159,7 +159,8 @@
           <th>Assignment Details</th>
           <th>Your page</th>
           <th>Notes</th>
-          <th>Grade</th>
+          <th>Raw</th>
+          <th>Score</th>
         </tr>
       </thead>
       <tbody class="vertical">
@@ -178,11 +179,12 @@
           <td class="[$schedule:status centered]">
             <strong class="percentage">[$project:percentage]</strong>
           </td>
+          <td class="centered"><span class="percentage">[$stats:standard]</span></td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="5">µ ⋅ <span class="percentage">[$student:projects:weight]</span></th>
+          <th colspan="6">µ ⋅ <span class="percentage">[$student:projects:weight]</span></th>
           <td class="centered"><strong class="percentage">[$student:projects:score]</strong></td>
         </tr>
       </tfoot>
@@ -209,7 +211,6 @@
             <dt>Score</dt>
             <dd>Given score based on weighted mean and standard deviation.</dd>
           </dl>
-
         </details>
       </caption>
       <colgroup>

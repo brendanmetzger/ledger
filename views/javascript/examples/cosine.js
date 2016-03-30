@@ -1,4 +1,4 @@
- function deg2rad(deg) {
+function deg2rad(deg) {
   return deg / 180 * 3.141592653589793;
 }
 

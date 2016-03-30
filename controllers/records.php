@@ -92,7 +92,9 @@ class Records extends \bloc\controller
   protected function POSTevaluate(Admin $instructor, $request, $topic, $index, $sid)
   {
     $student = new Student($sid);
+
     $item = Data::FACTORY($topic, $student->evaluation($topic, $index), $_POST);
+
     if ($item->save()) {
       \bloc\router::redirect("/records/student/{$sid}");
     } else {

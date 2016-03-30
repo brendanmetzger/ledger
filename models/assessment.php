@@ -160,7 +160,7 @@ namespace models;
           'due'       => $this->student->section->schedule[$criterion['@due'] ?: $index],
         ];
         $score = $map[$evaluation]->score;
-        if ($evaluation === 'quiz' && $total > $criterion['@index']) {
+        if (($evaluation === 'quiz' || $evaluation === 'project') && $total > $criterion['@index']) {
           $stats = $this->collective($this->student->section, $criterion);
           if ($score > 0) {
             $z = ($score - $stats['mean']) / $stats['sd'];

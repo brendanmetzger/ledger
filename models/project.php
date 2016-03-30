@@ -9,17 +9,36 @@ namespace models;
   class Project extends Practice
   {
     use traits\indexed, traits\persist, traits\evaluation;
-    
+
     static public $fixture = [
       'project' => [
-        '@' => ['effort' => 0, 'organization' => 0, 'ambition' => 20, 'mission' => 1, 'created' => 0, 'updated' => 0],
+        '@' => ['axes' => [0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05]],
         'CDATA' => '',
       ]
     ];
 
+    private $keys = ['Concept', 'Organized', 'Syntax/Errors', 'Explanations', 'Presentation', 'Research', 'Detail', 'Delivery/Time', 'Completion', 'Authorship'];
+
+
+    public function getAxes(\DOMElement $context)
+    {
+      return explode('+', $context['@axes']);
+    }
+
+    public function getInputs(\DOMElement $context)
+    {
+      return (new \bloc\types\Dictionary($this->axes))->map(function ($axis, $idx) {
+        return ['value' => $axis, 'key' => $this->keys[$idx]];
+      });
+    }
+
+    public function setAxesAttribute(\DOMElement $context, $data)
+    {
+      $context->setAttribute('axes', implode($data, '+'));
+    }
+
     public function getScore(\DOMElement $context)
     {
-      $deductions = $context['@ambition'] * $context['@mission'];
-      return round(($context['@effort'] + $context['@organization']) * $deductions, 2);
+      return array_sum($this->axes);
     }
   }
