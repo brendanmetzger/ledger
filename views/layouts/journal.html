@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cc="http://creativecommons.org/ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:math="http://www.w3.org/1998/Math/MathML" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cc="http://creativecommons.org/ns#" xmlns:svg="http://www.w3.org/2000/svg" xml:lang="en" lang="en">
   <head>
     <title>[$title]</title>
     <meta charset="utf-8" />
@@ -24,7 +24,9 @@
             if (e && p1.length === i) for (var k in c) c[k].call(c[k], true);
           },
           init: function (k, f) {
-            if ('call' in f) c[k] = f; return c[k];
+            if (f && 'call' in f) c[k] = f;
+            else c[k] = function() { return this };
+            return c[k];
           }
         };
       }(document.createElement('script'),{},[],[],Node.prototype.appendChild));

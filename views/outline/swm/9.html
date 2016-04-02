@@ -15,7 +15,122 @@
     </ul>
   </article>
   <article>
-    <h2>The First-class Function</h2>
+    <h2>Writing &amp; Using Functions</h2>
+    <p class="intro">You will learn syntax on your own despite what you may think, it's actually very simple, and any notion of being difficult is nothing more than unfamiliarity. Correctly writing programs is not about syntax, it's about abstraction—and yes, I'll admit, that is a bijillion times harder.</p>
+    <section>
+      <section class="three columns indented">
+        <h3>The First-class Function</h3>
+        <p>From a linguistic perspective, <em>functional programming</em> may seem to be nothing more than <q>writing a program with functions</q>, but this is false: <strong>all programs</strong> are written with functions. Functional programming is a style that joins the austerity of mathematics as a means of writing programs. Conversely, in <em>imperative programming</em>, we solve problems sequentially with <em>loops, conditions, function calls, and instances of classes.</em> Functional programs solve problems only <em>with functions</em>, largely out of sequence and in no particular order. We will always focus on imperative style, but the reason I'm bringing up <a href="https://msdn.microsoft.com/en-us/library/bb669144.aspx">the contrast between them</a> is that while we will be using loops, conditions, etc, JavaScript, unlike other languages, requires a bit first-class function writing to do some entry level stuff, and that means we must face these concepts head-on.</p>
+        <p>A <a href="https://en.wikipedia.org/wiki/First-class_function">first-class function</a> is a fundamental part of the language, like our types (number, string, boolean, etc). Compare the two greeting variables in the following example:</p>
+        <pre class="prettyprint" style="break-inside: avoid;">
+// variable assigned to a string
+var english_greeting = "hello";
+// vs. assigned to a function
+var englishGreeting = function() {
+  return 'hello';
+};
+        </pre>
+        <p>This no doubt looks a bit absurd, but the important thing to notice is that both examples produce the same outcome, albeit with a different approach. Just like a number indicatates quantitative property, such as measurement, a variable only becomes a number when assigned to a specific quantity value. A function is fundamentally no different.</p>
+        <p>A function starts as an idea of something to be done until a programmer writes a function definition; once <strong>defined</strong>, it can be <strong>executed</strong> at any time to produce the value desired. The fascinating part about the <em>first-class world</em> is that functions can receive other functions to execute, and likewise, return completely new functions to be executed. Let’s look at an example.</p>
+      </section>
+
+
+      <section class="example container whitepaper tt">
+        <h4 class="clear centered">A loaf of bread</h4>
+        <p class="intro">Before you begin making bread, you absolutely, fundamentally, completely know what a <em>variable</em> is and how to <em>assign</em> a <em>value</em> to it. Further, you understand <em>strings, numbers and booleans</em>. At this point, you have a decent idea of what an <em>object</em> is, and its sub-type, the <em>array</em>. You’re quite familiar with the syntax required: quotes, square and curly brackets, and parentheses. If any of this is a mystery, <strong>rewind and revisit the material.</strong></p>
+        <aside class="note ______ float left">
+          <h5>At the most abstract level, we need <em>an interface</em> that produces a loaf of bread.</h5>
+          <p>We first have to say what producing bread is before we apply it. We send along any expected arguments as parameters during application—in this case, or declaration expects <code>ingredients</code> as an argument, and when applied, we send along an array as a parameter. Do not go further until you understand <strong>declaring vs. applying</strong> functions and <strong>arguments vs. parameters.</strong>.</p>
+        </aside>
+        <pre class="prettyprint">
+          <!-- review views/javascript/examples/bread.js loaf  -->
+        </pre>
+        <hr class="clear ruled t b"/>
+        <aside class="note ______ float left">
+          <h5>But producing bread is probably better described as composite of several actions.</h5>
+          <p>We have ingredients, but they have to be mixed, and after mixed, they have to be baked. Let's assume we have declared functions called <code>mix</code> and <code>bake</code> that can take care of that for us. Note: what is returned when mix and bake are applied? Never fail to consider input vs. output.</p>
+        </aside>
+        <pre class="prettyprint ____ float left">
+          <!-- review views/javascript/examples/bread.js compose  -->
+        </pre>
+        <hr class="clear ruled t b"/>
+        <aside class="note ______ float left">
+          <h5>But producing bread, at least in most situations, involves a person.</h5>
+          <p>The previous function is great, but thinking a bit deeper, it assumes that all bread is made the same way. Any bread fan knows that two different bakers, even using the same ingredients, can make two entirely different loaves. Let's creat a notion of a baker.</p>
+        </aside>
+        <pre class="prettyprint ____ float left">
+          <!-- review views/javascript/examples/bread.js baker  -->
+        </pre>
+
+        <hr class="clear ruled t b"/>
+
+        <aside class="note ______ float left">
+          <h5>First-Class Lesson 1: declared functions can <strong>return</strong> un-applied functions.</h5>
+          <p>A <code>Baker</code> is really a person who bakes, so let’s just consider that one facet of an entire human. Here I declare two simplified people, both capable of <em>baking</em>. They're not baking 100% of the time; remember, they will only bake when called.</p>
+          <p>In our highlighly simplified version, we are just going to assume that when either <code>Sue</code> or <code>Lou</code> is applied, they return a <code>Baker</code>. Do not forget that a Baker is a function itself: <em>look very closely</em> at how they return a <code>Baker</code>: <em>uncalled</em>, the idea of Baker, not someone actually <em>baking.</em>.</p>
+          <p>Do not let this slip past you.</p>
+        </aside>
+        <pre class="prettyprint ____ float left">
+          <!-- review views/javascript/examples/bread.js people  -->
+        </pre>
+
+        <hr class="clear ruled t b"/>
+
+        <aside class="note ______ float left">
+          <h5>First-Class Lesson 2: Functions can have un-applied functions as <strong>parameters</strong>.</h5>
+          <p>There was a notion of this above in the <code>Baker</code> declaration when we specified and used the performAction <strong>argument</strong>—an extremely important concept. Our <code>Baker</code> function wants to be given a task (function) and some material as parameters, it will then apply the task with material on its own. Don’t miss the following point, <code>mix</code> and <code>bake</code> are declared, yet unapplied functions, and you need to be able to understand how they are applied.</p>
+        </aside>
+        <pre class="prettyprint ____ float left">
+          <!-- review views/javascript/examples/bread.js perform  -->
+        </pre>
+
+        <hr class="clear ruled t b"/>
+
+        <aside class="note ______ float left">
+          <h5>All together.</h5>
+          <p>Going way back to our <code>produceBread</code> function, let's sub out all of our functionality with the stuff we now know. Our function definition now expects a Baker as the first argument: Bakers, when called, are given a task and the material to execute that task. Unravel this in your mind to the point where you understand that all of this is possible—you don't have to know how to do it, just that it's possible.</p>
+        </aside>
+        <pre class="prettyprint ____ float left">
+          <!-- review views/javascript/examples/bread.js first class  -->
+        </pre>
+
+        <hr class="clear ruled t b"/>
+
+        <aside class="note ______ float left">
+          <h5>Purely Functional.</h5>
+          <p>This is where I realize tha abstraction may become too much, but as the finale to our example of functional programming, I think it important that you see a functional program (you can use it in your console). The take away, alluded to in the intro, is that carefully considered input/output can eliminate conditions, loops, and variables: thus things can occur out of order and state doesn't matter. This is beautiful, and even if it escapes you, it's important to see the beauty of such methods.</p>
+        </aside>
+        <pre class="prettyprint ____ float left">
+          <!-- review views/javascript/examples/bread.js purity  -->
+        </pre>
+
+        <script type="text/javascript">bloc.embed('/javascript/examples/bread.js');</script>
+
+      </section>
+
+    </section>
+
+    <section>
+
+      <div>
+
+      </div>
+      <h3>Callbacks</h3>
+      <p>What we know mandatorily is that functions are declared and functions are then, later on, applied.</p>
+
+
+
+    </section>
+
+    <section>
+      <blockquote class="quote centered">
+        <p>If a tree falls in a forest and no one is around to hear it, does it make a sound?</p>
+      </blockquote>
+      <h3>Events</h3>
+
+      <p>In this classic thought experiment we are engaged to think about all of the events that can occur without our knowing, and then get metaphysical about whether or not the event ever occured. Clearly, this seemingly simple question has been the substance of deep philosophical thought for centuries, so I think it worth five minutes of our time. So, consider this: <q>if a mouse clicks on a webpage but a program doesn't hear it, does it make a sound?</q>. Say these words as a human being, and think about how we as human know if a tree falls in a forest.</p>
+    </section>
+
   </article>
   <article>
     <h2>Case Study: A Lightbox and JavaScript</h2>

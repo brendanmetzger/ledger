@@ -14,18 +14,11 @@
     // <![CDATA[
     bloc.embed('/javascript/iam.js');
     document.querySelector('#project').addEventListener('change', function (evt) {
-      var rubric = {
-        effort: function (current, score) {return current + score;},
-        organization: function (current, score) {return current + score;},
-        ambition: function (current, score) {return current * score;},
-        mission: function (current, score) {return current * score;}
-      };
       var score = [].map.call(this.querySelectorAll('input[type="range"]'), function(node) {
-        return [node.name.slice(11, -1), parseFloat(node.value, 10)];
+        return parseFloat(node.value, 10);
       }).reduce(function (accumulator, current) {
-        return rubric[current[0]](accumulator, current[1]);
+        return accumulator + current;
       }, 0);
-      console.log(score);
       this.querySelector('.percentage').textContent = Math.max(0, Math.round(score * 100));
     });
     // ]]>
