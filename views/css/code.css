@@ -3,6 +3,15 @@
 code, pre, .code {
   font-family:Inconsolata, 'Courier New', monospace;
 }
+
+code sup {
+  color:#333;
+  font-size:75%;
+  padding:0 0.25em;
+}
+code span.typ {
+  font-style:italic;
+}
 pre {
   font-size:1.5em;
   overflow:auto;

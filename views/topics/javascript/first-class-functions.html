@@ -1,7 +1,7 @@
 <section>
   <section class="three columns indented">
     <h3>The First-class Function</h3>
-    <p>From a linguistic perspective, <em>functional programming</em> may seem to be nothing more than <q>writing a program with functions</q>, but this is false: <strong>all programs</strong> are written with functions. Functional programming is a style that joins the austerity of mathematics as a means of writing programs. Conversely, in <em>imperative programming</em>, we solve problems sequentially with <em>loops, conditions, function calls, and instances of classes.</em> Functional programs solve problems only <em>with functions</em>, largely out of sequence and in no particular order. We will always focus on imperative style, but the reason I'm bringing up <a href="https://msdn.microsoft.com/en-us/library/bb669144.aspx">the contrast between them</a> is that while we will be using loops, conditions, etc, JavaScript, unlike other languages, requires a bit first-class function writing to do some entry level stuff, and that means we must face these concepts head-on.</p>
+    <p>From a linguistic perspective, <em>functional programming</em> may seem to be nothing more than <q>writing a program with functions</q>, but this is false: <strong>all programs</strong> are written with functions. Functional programming is a style that joins the austerity of mathematics as a means of writing programs. Conversely, in <em>imperative programming</em>, we solve problems sequentially with <em>loops, conditions, function calls, and instances of classes.</em> Functional programs solve problems only <em>with functions</em>, largely out of sequence and in no particular order. We will always focus on imperative style, but the reason I’m bringing up <a href="https://msdn.microsoft.com/en-us/library/bb669144.aspx">the contrast between them</a> is that while we will be using loops, conditions, etc, JavaScript, unlike other languages, requires a bit first-class function writing to do some entry level stuff, and that means we must face these concepts head-on.</p>
     <p>A <a href="https://en.wikipedia.org/wiki/First-class_function">first-class function</a> is a fundamental part of the language, like our types (number, string, boolean, etc). Compare the two greeting variables in the following example:</p>
     <pre class="prettyprint" style="break-inside: avoid;">
       <!-- review views/javascript/examples/bread.js functions as values  -->
@@ -56,7 +56,7 @@
     <hr class="clear ruled t b"/>
     <aside class="note ______ float left">
       <h5>All together.</h5>
-      <p>Going way back to our <code>produceBread</code> function, let's sub out all of our functionality with the stuff we now know. Our function definition now expects a Baker as the first argument: Bakers, when called, are given a task and the material to execute that task. Unravel this in your mind to the point where you understand that all of this is possible—you don't have to know how to do it, just that it's possible.</p>
+      <p>Going way back to our <code>produceBread</code> function, let's sub out all of our functionality with the stuff we now know. Our function definition now expects a Baker as the first argument: Bakers, when called, are given a task and the material to execute that task. Unravel this in your mind to the point where you understand that all of this is possible—you don’t have to know how to do it, just that it’s possible.</p>
     </aside>
     <pre class="prettyprint ____ float left">
       <!-- review views/javascript/examples/bread.js first class  -->

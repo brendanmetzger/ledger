@@ -69,8 +69,7 @@ function Lou() {
   return Baker;
 }
 
-// what is activity, what can it do?
-var activity = Sue();
+// Calling Sue/Lou leaves you with what?
 /* end people */
 
 /* purity */

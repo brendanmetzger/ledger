@@ -5,7 +5,7 @@
     <section class="documentation">
       <h2>Reviewing Tree Structures</h2>
       <p>So JavaScript has something that makes it a bit more complicated than most programming languages, and that is the fact that it has two very robust <abbr title="application programming interface">api</abbr>s—the first being the core language reference, and the second being the <strong>client-side</strong> reference. At the core we have things like types, functions, objects, Date, Math, etc. The client-side of things are where the fun begins: you hove the document object, events, xhr requests, media, web workers, sockets, and a pretty huge list.</p>
-      <p>It's important to understand that the <abbr>DOM</abbr> is a robust platform and interface not the fancy word for a bunch of text with a bunch of &lt; and &gt; characters. Today the bulk of our focus will be reformulating our perspective to consider it as a data structure and event model built right. Today we will spend time on some topics that might seem a little trivial, but are good to revisit: Understanding whitespace and reading an <abbr>API</abbr></p>
+      <p>it’s important to understand that the <abbr>DOM</abbr> is a robust platform and interface not the fancy word for a bunch of text with a bunch of &lt; and &gt; characters. Today the bulk of our focus will be reformulating our perspective to consider it as a data structure and event model built right. Today we will spend time on some topics that might seem a little trivial, but are good to revisit: Understanding whitespace and reading an <abbr>API</abbr></p>
       <hr class="ruled"/>
       <h3><code>document</code></h3>
       <p class="pad">There some methods I've left some methods off my list that you may be familiar with: <code>getElementsByClassName</code>, <code>getElementById</code> and <code>getElementsByTagName</code>... I think you should be able to mostly avoid them. The document object itself has over 25 methods, but the three below should get you quite far.</p>
@@ -49,7 +49,7 @@
       <dl>
         <dt><span data-type="Node">Node</span><code>appendChild(<span class="typ">Node</span> <em>newChild</em>)</code></dt>
         <dd>Appends the given node to the end of the element.</dd>
-        <dd>The child appended does not have to be newly created, it can be from somewhere else in the document: as such, it's how you would reorder a list.</dd>
+        <dd>The child appended does not have to be newly created, it can be from somewhere else in the document: as such, it’s how you would reorder a list.</dd>
         <dd>returns the appended node</dd>
         <dt><span data-type="Node">Node</span><code>insertBefore(<span class="typ">Node</span> <em>newChild</em>, <span class="typ">Node</span> refChild)</code></dt>
         <dd>inserts the <em>newChild</em> node into the document tree as a child of the node that this method is applied to.</dd>

@@ -12,7 +12,7 @@
   </article>
   <article class="indented">
     <h2>Attributes (are data)</h2>
-    <p><abbr>HTML</abbr> has a way to literally store data in an attribute. Interestingly, it's called a <a href="http://www.w3schools.com/tags/att_global_data.asp">data attribute</a>. Data attributes (well, all attributes) can be seen by the inspecting eyes of <abbr>css</abbr>, which is an introduction to attribute selectors. Likewise, data-attributes can be seen and set in very straight forward ways using object access methods (more on that to come), and this can be quite elegant. Within your <abbr>html</abbr>, you can simply add <code>&lt;p data-anything="any string value"&gt;</code></p>
+    <p><abbr>HTML</abbr> has a way to literally store data in an attribute. Interestingly, it’s called a <a href="http://www.w3schools.com/tags/att_global_data.asp">data attribute</a>. Data attributes (well, all attributes) can be seen by the inspecting eyes of <abbr>css</abbr>, which is an introduction to attribute selectors. Likewise, data-attributes can be seen and set in very straight forward ways using object access methods (more on that to come), and this can be quite elegant. Within your <abbr>html</abbr>, you can simply add <code>&lt;p data-anything="any string value"&gt;</code></p>
     <p>For some reading material, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">here are the docs</a> on attribute selectors, or for a more visual explanation <a href="https://css-tricks.com/attribute-selectors/">check out this tutorial</a>. Attribute selectors pretty much round out our selection suite, which all together, looks something like this: Element &amp; descendant selectors, classes and IDs, children and sibling combinators, class chaining, and now attribute selectors. Both <abbr>css</abbr> and JavaScript employ these selection techniques.</p>
   </article>
   <article>
@@ -21,7 +21,7 @@
     <section class="container whitepaper tt">
       <h3>The Box Model</h3>
       <div class="______ float left outdented">
-        <p>For the experienced design student, layouts, margins and padding were likely learned elsewhere. For the rest, the box-model might be something you've heard me say a few times and has, until now, been obscure. It's a fairly straightforward topic, and as such, you should spend a few hours learning what there is to learn about it. That's right, a few hours, and there you are, you've learned it.</p>
+        <p>For the experienced design student, layouts, margins and padding were likely learned elsewhere. For the rest, the box-model might be something you've heard me say a few times and has, until now, been obscure. it’s a fairly straightforward topic, and as such, you should spend a few hours learning what there is to learn about it. That's right, a few hours, and there you are, you've learned it.</p>
         <p>Conceptually, it has been around long enough to have many many tutorials and write-ups describing every last detail. As always, I would implore you to invest in literature and seek information that suits your learning style. The box model distills concepts that have been mentioned several times in class: block vs. inline elements, margins vs. padding and now you will be introduced to some of the remaining crucial pieces like dimensions and floats. Consult the list for some links to get you started.</p>
       </div>
       <dl class="____ float left">
@@ -30,20 +30,20 @@
         <dt><a class="read" href="http://learn.shayhowe.com/html-css/opening-the-box-model/">Opening the Box Model</a></dt>
         <dd>A link to a tutorial site provided in your syllabus, that will corroborate what you've seen above</dd>
         <dt><a class="read" href="http://htmldog.com/guides/css/beginner/"><abbr>CSS</abbr> beginner tutorial</a></dt>
-        <dd>If you are still foggy about css, here is a beginner tutorial. Go through the entire thing and believe it or not, it will hit on the box model. See, it's important!</dd>
+        <dd>If you are still foggy about css, here is a beginner tutorial. Go through the entire thing and believe it or not, it will hit on the box model. See, it’s important!</dd>
         <dt><a class="watch" href="http://www.lynda.com/CSS-tutorials/Displaying-information-through-web/372544/419397-4.html">Displaying Information through the web</a></dt>
         <dd>If you prefer to watch tutorials, Lynda has an entire video series talking about the box-model.</dd>
       </dl>
       <hr class="clear"/>
-      <p class="focus warning">Starting next week, if I mention <em>box-model</em> and think to yourself, <q>huh?</q>, then you're pushing you luck.</p>
+      <p class="focus warning">Starting next week, if I mention <em>box-model</em> and think to yourself, <q>huh?</q>, then you’re pushing you luck.</p>
     </section>
     <hr class="ruled t b"/>
     <section>
       <h3>Layout &amp; Floats</h3>
-      <p>Learning layout is obviously quite important to learning how to apply a design. With the proliferation of tablets and mobile devices, the toolset for controlling layout is moving very quickly. I'd advise you to go through this tutorial called <em><a class="read" href="http://learnlayout.com/">Learn CSS Layout</a></em> (it will also be assigned in the homework). Advanced students will note at the end the introduction of <em>flexbox</em> and probably want to investigate those techniques.  I won't be working flexbox into the curriculum; at the moment the spec isn't entirely consistent and I'm admittedly confused about best practices and fallbacks at this point. It's fairly safe to say, however, that this will probably be the way we do layout in the future, so take that to heart.</p>
+      <p>Learning layout is obviously quite important to learning how to apply a design. With the proliferation of tablets and mobile devices, the toolset for controlling layout is moving very quickly. I'd advise you to go through this tutorial called <em><a class="read" href="http://learnlayout.com/">Learn CSS Layout</a></em> (it will also be assigned in the homework). Advanced students will note at the end the introduction of <em>flexbox</em> and probably want to investigate those techniques.  I won't be working flexbox into the curriculum; at the moment the spec isn't entirely consistent and I’m admittedly confused about best practices and fallbacks at this point. it’s fairly safe to say, however, that this will probably be the way we do layout in the future, so take that to heart.</p>
       <div class="comparison container">
         <aside class="______ float left t b ruled top bottom">
-          <p class="note">Watch the carousel below carefully as it attaches new classes. You may see a pattern emerge, but if not, keep at it, this may be one of the <strong>most confusing parts of <abbr>css</abbr> floats.</strong> Specifically, notice the containing element, how it collapses when items are floated. This is by design, but it takes a long time to understand when and precisely why this happens. The links provided explain this in great detail; don't let it slip by you.</p>
+          <p class="note">Watch the carousel below carefully as it attaches new classes. You may see a pattern emerge, but if not, keep at it, this may be one of the <strong>most confusing parts of <abbr>css</abbr> floats.</strong> Specifically, notice the containing element, how it collapses when items are floated. This is by design, but it takes a long time to understand when and precisely why this happens. The links provided explain this in great detail; don’t let it slip by you.</p>
 
           <pre class="prettyprint">
   &lt;div class="<span data-example="code">bordered</span>"&gt;
@@ -101,7 +101,7 @@
 
     <section class="container">
       <h4 class="ruled top t pad">Using Objects and Arrays to talk about data.</h4>
-      <p>In the homework this week, you'll find plenty of information regarding the proper syntax of objects and arrays. Here I'm giving you a jump-start on what a data-structure might look like. I'll ask that you take this much further, so if examining the below structure doesn't add up, let's spend extra time addressing that in the Q/A portion of class.</p>
+      <p>In the homework this week, you'll find plenty of information regarding the proper syntax of objects and arrays. Here I’m giving you a jump-start on what a data-structure might look like. I'll ask that you take this much further, so if examining the below structure doesn't add up, let's spend extra time addressing that in the Q/A portion of class.</p>
       <aside class="float left ____ note">
         <p>Brackets, both square and curly, are going to become extremely familiar to you by the end of the semester. Looking at the following object, make sure you syntactically see the following structure.</p>
         <ul>

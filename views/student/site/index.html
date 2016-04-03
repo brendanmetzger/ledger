@@ -29,12 +29,12 @@
     <script type="text/javascript">
       // <![CDATA[
       // here is an example of a script directly embedded in a html document.
-      // I'm using it to accurately set the copyright date.
+      // I’m using it to accurately set the copyright date.
       // These lines followed by 2 slashes are comments in JavaScript
       // Comments are not rendered by the javascript engine.
       var copyright = document.getElementById('copyright');
       var year = (new Date()).getFullYear();
-      // this is fancy, it's called a regular expression - but we'll learn easier ways
+      // this is fancy, it’s called a regular expression - but we'll learn easier ways
       copyright.innerHTML = copyright.innerHTML.replace(/^(.{1})(.*)/, '$1 '+year+'$2');
       // ]]>
     </script>
