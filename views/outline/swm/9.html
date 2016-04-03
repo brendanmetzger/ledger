@@ -31,7 +31,7 @@
       <div class="three columns indented">
         <h3>Events</h3>
         <p>In this classic thought experiment we are engaged to think about all of the events that can occur without our knowing, and then get metaphysical about whether or not the event ever occured. Clearly, this seemingly simple question has been the substance of deep philosophical thought for centuries, so I think it worth five minutes of our time. So, consider this: <q>if a mouse clicks on a webpage but a program doesn't hear it, does it make a sound?</q>.</p>
-        <p>Now that we know about first-class functions and callbacks, we can actually consider events, and there are <a href="https://developer.mozilla.org/en-US/docs/Web/Events">tons of events</a> that we can take advantage of. There are several ways to capture events, but the best, and preferred way, is through a built-in function of the JavaScript <abbr>DOM</abbr> called <code>addEventListener</code>. Talking about what to when an event occurs always starts with the premise that you must be able to <em>perceive an event</em>, so it should be easy to remember <strong>add • event • listener</strong> as a concept.</p>
+        <p>Now that we know about first-class functions and callbacks, we can actually consider events, and there are <a href="https://developer.mozilla.org/en-US/docs/Web/Events">tons of events</a> that we can take advantage of. There are several ways to capture events, but the best, and preferred way, is through a built-in function of the JavaScript <abbr>DOM</abbr> called <code>addEventListener</code>. Talking about what to when an event occurs always starts with the premise that you must be able to <em>perceive an event</em>, so it should be easy to remember <strong>add • event • listener</strong> as a concept. You have all the objects on a page, how do they know when something happens? <em>You tell them to listen.</em></p>
         <p>There is another way to listen for events by setting attribute on an element (either in <abbr>HTML</abbr> or JavaScript)—you will no doubt see this technique often. While convenient and easy, I rarely (almost never) do this for valid technical reasons, but more importantly, it violates a design principle called <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a>. We have three facets that control interactive applications; semantics and structure (<abbr >HTML</abbr>), view and design (<abbr>CSS</abbr>), and behavior (JavaScript)—best to keep them separate.</p>
         <p>Now considering the process of an event occurring, remember that it is <em>emmitted</em> from a source, be it an <code>Element</code> or the <code>window</code> object, etc., and you must apply a listener directly to that source in order to <q>hear it.</q> It might occur to you that Elements have children and parents; begin the mental process of thinking about what that might mean for how the event <em>propogates</em> or <em>bubbles</em>.</p>
       </div>
@@ -42,15 +42,16 @@
           <p>A function signature specifies the general information about a function like the <em>name</em>, number and type <em>arguments</em> and what it <em>returns</em>. This information can usually be found in the documentation of a language or framework—I doubt anyone flat out reads an entire manual, but <em>knowing how to read it</em> and <em>knowing where to find it</em> is mandatory.</p>
           <h4>Definition</h4>
           <dl>
-            <dt><code><span class="typ">void</span><sup>1</sup> addEventListener(<span class="typ">string</span> event<sup>2</sup>, <span class="typ">function</span> callback<sup>3</sup>, [<span class="typ">boolean</span> capture<sup>4</sup>]);</code></dt>
+            <dt><code><span class="typ">void</span><sup>1</sup> <span style="color:#000;text-decoration:underline;">addEventListener</span>(<span class="typ">string</span> event<sup>2</sup>, <span class="typ">function</span> callback<sup>3</sup>, [<span class="typ">boolean</span> capture<sup>4</sup>]);</code></dt>
+            <dd>The <em>name</em> of the function is underlined in black text</dd>
             <dd><sup>1</sup> The return value of the function - in this case, void indicates that the function <em>returns nothing</em></dd>
             <dd><sup>2</sup> The first argument expects a string, in this case, the type of event ('click', 'scroll', etc.)</dd>
-            <dd><sup>3</sup> The next argument is a callback, simply a function that has yet-to-be called.</dd>
+            <dd><sup>3</sup> The next argument is a callback which must be a type function (yet-to-be called).</dd>
             <dd><sup>4</sup> Capture—this is an obscure point, the fact that it in brackets indicates it is optional.</dd>
+            <dt>The Callback Signature</dt>
+            <dd>Whenever you write a callback, you should define an argument—you can call it whatever you like, I generally name it <em>evt</em></dd>
+            <dd>When an event is emitted, and you’re listener hears it, it will apply your callback method. When applied, it passes along the Event object as a parameter.</dd>
           </dl>
-          <h4>A moment of reflection</h4>
-          <p>Why/how does the dot operator work?</p>
-          <p><dfn>Hint: it has everything to do with accessing object properties, applying functions, and return values.</dfn></p>
         </div>
         <dl class="__ float left">
           <dt><code>Event</code></dt>
@@ -60,6 +61,12 @@
           <dd>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">EventTarget</a> interface is implemented by any object that can receive events and have listeners applied to them</dd>
           <dd>Typical objects are any <abbr>HTML</abbr> <code>Element</code> or <code>window</code> object, but there are hundreds of events that can be applied to many other objects.</dd>
         </dl>
+        <hr class="clear ruled"/>
+        <div class="focus">
+          <h4>A moment of reflection</h4>
+          <p>I've skipped over a lot of necessary, but too-confusing-to-write details that we will discuss together. Start on your own by revisiting this: <strong>Why/how does the dot operator work?</strong></p>
+          <p class="pad"><dfn>Hint: it has everything to do with accessing object properties, applying functions, and return values.</dfn></p>
+        </div>
       </div>
     </section>
   </article>
