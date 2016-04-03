@@ -1,5 +1,14 @@
 var ns = function() {
 
+/* functions as values */
+// variable assigned to a string
+var english_greeting = "hello";
+// vs. assigned to a function
+var englishGreeting = function() {
+  return 'hello';
+};
+/* end functions as values */
+
 /* loaf */
 // DECLARE
 function produceBread(ingredients) {

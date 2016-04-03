@@ -25,7 +25,6 @@ span[data-type] {
   padding:0 0.5em;
 }
 code {
-  padding:0.125em 0.25em;
   font-weight:100;
   color:rgb(230, 100, 150);
   white-space:nowrap;
@@ -44,7 +43,7 @@ pre.plain-text {
 pre.prettyprint {
   display: block;
   padding:0.5em 0.75em;
-  border-color:rgba(0,0,0,0.125);
+  border-color:rgba(0,0,0,0.05);
 }
 
 pre.float {
