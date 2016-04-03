@@ -7,7 +7,7 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] improve way to take attendance
 - [x] crunch notes into 1 line before saving
 - [ ] make a checklist for things to mark off
-  - depricated techniques
+  - deprecated techniques
   - improperly attributed work
   - precision (both syntax and aesthetic)
 - [x] automatically deduct validation errors
@@ -23,3 +23,4 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Make a 'Panic Protocol' page
 - [ ] Design a Favicion
 - [ ] implement a progress report every 3 weeks
+- [ ] request that examples/help be done as a gist/codepen/fiddle

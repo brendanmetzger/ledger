@@ -10,15 +10,15 @@
   </article>
   <article>
     <h2>Writing &amp; Using Functions</h2>
-    <p class="intro">You will learn syntax on your own despite what you may think, it's actually very simple, and any notion of being difficult is nothing more than unfamiliarity. Correctly writing programs is not about syntax, it's about abstraction—and yes, I'll admit, that is a bijillion times harder.</p>
+    <p class="intro">You will learn syntax on your own despite what you may think, it's actually very simple, and any notion of being difficult is simply unfamiliarity. Correctly writing programs is not about syntax, it's about abstraction—and yes, I'll admit, that is a bijillion times harder.</p>
     <!-- insert views/topics/javascript/first-class-functions.html -->
     <section>
       <h3>From First-Class to <strong>Callbacks</strong></h3>
       <p class="intro">If you've ever heard the term <em>callback</em> and thought it sounded lofty, then rejoice, if you’ve been following along, then you already know more than you think.</p>
       <div class="two columns indented">
-        <p>Well known at this point is that functions are first <em>declared</em> and then <em>applied</em>. Sometimes we do the declaring, sometimes the language has defined functions for us, like <code>Math.cos();</code>. Likewise, sometimes we take charge of applying a function directly, sometimes we declare a function and never actually apply it ourselves. A function can be applied immediately, or applied later on by another function if it is passed in an uncalled state.</p>
-        <p>It is the latter method that is officially known as a callback—nothing more than an undeclared function passed as a parameter to another function. You must read and understand the following notion: saying something like <strong>a function passed in an uncalled state</strong> is rather difficult, so it was wrapped into its very own word. That's right, we say <strong>callback</strong> when talking about a previously declared function being passed around in its uncalled state. Commit this to memory—from here on out, when you hear callback, you should know the precise meaning.</p>
-        <p>A function given a callback determines when and how the callback is applied; this is how JavaScript does business. It is powerful and it’s this very concept that allows you to do event-based programming. If you are an interactive designer, this is a way you should start framing design problems/solutions.</p>
+        <p>Well known at this point is that functions are first <em>declared</em> and then <em>applied</em>. Sometimes we do the declaring, sometimes the language has defined functions for us, like <code>Math.cos()</code>. Likewise, sometimes we take charge of applying a function directly, sometimes we declare a function but we don't apply it ourselves; functions can be applied immediately or by another function—pending we send it as a parameter in an uncalled state.</p>
+        <p>It is the latter method that is officially known as a callback; simply a declared function passed as a parameter to another function. You must read and understand the following notion: saying something like <strong>a function declaration passed in an uncalled state</strong> is mouthful of a concept, so it been granted it’s own word as a concept. That's right, we say <strong>callback</strong> when talking about a previously declared function being passed around in its uncalled state. Commit this to memory—from here on out, when you hear callback, you will know the precise meaning.</p>
+        <p>A function given a callback determines when and how the callback is applied; this is how JavaScript does business. It is powerful and it’s this very concept that allows you to do event-based programming. If you are an interactive designer, this is a way you can/should start framing all sornts of design problems/solutions.</p>
       </div>
     </section>
   </article>
@@ -30,7 +30,7 @@
     <section>
       <h3>Events</h3>
       <p>In this classic thought experiment we are engaged to think about all of the events that can occur without our knowing, and then get metaphysical about whether or not the event ever occured. Clearly, this seemingly simple question has been the substance of deep philosophical thought for centuries, so I think it worth five minutes of our time. So, consider this: <q>if a mouse clicks on a webpage but a program doesn't hear it, does it make a sound?</q>.</p>
-      <p>Now that we know about first-class functions and callbacks, we can actually consider events, and there are <a href="https://developer.mozilla.org/en-US/docs/Web/Events">tons of events</a> that we can take advantage of.</p>
+      <p>Now that we know about first-class functions and callbacks, we can actually consider events, and there are <a href="https://developer.mozilla.org/en-US/docs/Web/Events">tons of events</a> that we can take advantage of. There are several ways to capture events, but the best, and preferred way, is through a built-in function of the JavaScript <abbr>DOM</abbr> called <code>addEventListener</code>. Talking about what to when an event occurs always starts with the premise that you must be able to <em>perceive an event</em>, so it should be easy to remember <strong>add • event • listener</strong> as a concept.</p>
       <dl>
         <dt><code>Event</code></dt>
         <dd>You can make <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events">custom events</a> (not very common)</dd>
