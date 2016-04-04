@@ -15,25 +15,25 @@
     <section class="dropcap indented three columns">
       <p>Other than the initial five letters, transitions and transforms have little to do with one another. The reason they might be good to learn at the same time is that potential confusion could arise if you happened to let google auto-suggest take the reins; <q>How do I... CSS... Trans...</q> could send you down the wrong path.</p>
       <p>From the W3C spec regarding transitions: <q>CSS transitions allow property changes in CSS values to occur smoothly over a specified duration</q> Essentially, transitions are animating from one style to another—which used to be the purview of fairly complicated JavaScript and is now, remarkably easy to accomplish.</p>
-      <p>When researching transitions, you'll no doubt notice a lot of resources using <em>vendor-prefixes</em>. At this point, un-prefixed use of the <code>transition</code> property has <a href="http://caniuse.com/#feat=css-transitions">wide support</a>, and any tutorial or literature using a prefix is somewhat outdated. This is why it is so important to <strong>research and cite multiple resources for information</strong>.</p>
+      <p>When researching transitions, you’ll no doubt notice a lot of resources using <em>vendor-prefixes</em>. At this point, un-prefixed use of the <code>transition</code> property has <a href="http://caniuse.com/#feat=css-transitions">wide support</a>, and any tutorial or literature using a prefix is somewhat outdated. This is why it is so important to <strong>research and cite multiple resources for information</strong>.</p>
       <p>Transforms, on the other hand, apply methods and vernacular commonly seen in programming, especially in regards to how elements are <em>painted or drawn</em>. From the spec on transforms: <q>CSS transforms allows elements styled with CSS to be transformed in two-dimensional or three-dimensional space. </q></p>
     </section>
     <hr class="ruled"/>
     <h3>Keep in Mind</h3>
-    <p>When you learn how to jazz things up it quickly becomes tempting to go a little crazy. Starting out, I say what the hell, go over the top... but I would be remiss if I didn't point out that sometimes effects can get annoying when the pile up or make things difficult to use. In addition to that, I've made a list of a few pointers for the road, if you will.</p>
+    <p>When you learn how to jazz things up it quickly becomes tempting to go a little crazy. Starting out, I say what the hell, go over the top... but I would be remiss if I didn’t point out that sometimes effects can get annoying when the pile up or make things difficult to use. In addition to that, I've made a list of a few pointers for the road, if you will.</p>
     <ul>
       <li>Transitions <em>enhance</em> presentation, they should not provide meaning.</li>
       <li>Transitions <a href="https://en.wikipedia.org/wiki/Fault_tolerance">degrade gracefully</a> by default (or they should); ie, nobody should be impacted if they go missing.</li>
       <li>Not all properties are animatable (<code>display</code>, for instance); here is the <a href="http://www.w3schools.com/cssref/css_animatable.asp">list of animatable properties</a>.</li>
       <li>Transitions are not <em>Animations</em>, which are also possible, but something wholly different.</li>
-      <li>I won't talk further about <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations">keyframe animations</a> in this course—you’re welcome to explore them on your own.</li>
+      <li>I won’t talk further about <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations">keyframe animations</a> in this course—you’re welcome to explore them on your own.</li>
     </ul>
   </article>
   <article class="introductory">
     <h2>Intro to <abbr title="Document Object Model">DOM</abbr> Programming</h2>
     <section class="two columns outdented">
       <p>I’m going to expose the tiniest bit of JavaScript that should dovetail nicely with the concepts we’re becoming comfortable with. Namely, we know that when we load up a big <abbr>HTML</abbr> file that it it is converted into this very specific <strong>object</strong>, and this object, like any object, has properties that describe it. Some of the properties actually perform tasks, and as such, they are actually a <code>function</code> of the object, often called <em>methods</em>. Get comfortable with the terms <em>property</em> and <em>method</em> when talking about objects.</p>
-      <p>To further analyze this way of thought, picture your oven. It has knobs and burners, it has a color, a manufacturer, and it might have properties indicating its state, like clean or dirty. These are all properties, but let's note the differences between how they describe the oven. The color property does not change, the clean property will likely change values now and then. The knobs property is interesting; notice that they perform an <em>action</em>. Further, ‘acting’ on a knob might would likely change the temperature property.</p>
+      <p>To further analyze this way of thought, picture your oven. It has knobs and burners, it has a color, a manufacturer, and it might have properties indicating its state, like clean or dirty. These are all properties, but let’s note the differences between how they describe the oven. The color property does not change, the clean property will likely change values now and then. The knobs property is interesting; notice that they perform an <em>action</em>. Further, ‘acting’ on a knob might would likely change the temperature property.</p>
       <p>As meta as this all seems, this abstraction perfectly describes programming. Looking back, we alread know we have a <code>document</code> object that it has properties and properties tell us things about the object, like when it was last modified: type <code>document.lastModified</code> into your browser console and see what happens (in fact, do it several times).</p>
       <p>Of present concern is the things we can ask the <code>document</code> to do for us, like find elements. One of the most important parnts of a document is the fact that it can help us find other elements using <em>query selectors</em>—yes, the very same selectors you've been learning about for weeks!</p>
     </section>
@@ -52,7 +52,7 @@
       <ol class="____ float left whitepaper">
         <li>Open your console so you can query <em>this document</em></li>
         <li>place your cursor after the <strong>&gt;</strong> prompt</li>
-        <li>If you haven't yet, type <code>document</code> and inspect output</li>
+        <li>If you haven’t yet, type <code>document</code> and inspect output</li>
         <li>type <code>document.querySelector</code></li>
         <li>Output indicates function <em>has not been called</em>!</li>
         <li>type <code>document.querySelector('h2');</code></li>
@@ -61,11 +61,11 @@
         <li>Compare output of #5 to #7</li>
       </ol>
     </section>
-    <p class="focus"><strong>Note</strong>, some people still use things like <code>document.getElementById</code> and <code>document.getElementsByTagName</code>, and you'll surely run into decades of tutorials suggesting you do the same. Be aware, modern methods provide a significant upgrade and I suggest you use the new stuff</p>
+    <p class="focus"><strong>Note</strong>, some people still use things like <code>document.getElementById</code> and <code>document.getElementsByTagName</code>, and you’ll surely run into decades of tutorials suggesting you do the same. Be aware, modern methods provide a significant upgrade and I suggest you use the new stuff</p>
   </article>
   <article>
     <h2>The Last of the Pseudos</h2>
-    <p class="intro">Here, our journey into the world of ‘pseudo’ stuff ends. That's right, after today, you will have glanced at every possible way to find a piece of HTML markup and apply style to it, as well as the limited ways that CSS can make a tiny bit of content on its own.</p>
+    <p class="intro">Here, our journey into the world of ‘pseudo’ stuff ends. That’s right, after today, you will have glanced at every possible way to find a piece of HTML markup and apply style to it, as well as the limited ways that CSS can make a tiny bit of content on its own.</p>
     <p>While you are already familiar with some basic pseudo-classes from earlier in the semester (<code>:hover</code>), now comes the introduction to a more powerful way of selection—one that resembles programming quite a bit.</p>
     <p><a href="https://css-tricks.com/pseudo-class-selectors/"><abbr>CSS</abbr> tricks</a> has an intro to selectors and takes you the entire way through some of the finer points. Now that we're this far along, I’m attaching the <a href="https://www.w3.org/TR/selectors/#selectors">full Selector whitepaper</a> for the no-nonsense, down to brass-tacks types.</p>
     <dl class="whitepaper">
@@ -94,10 +94,10 @@
     <section class="container">
       <aside class="note ____ float left">
         <p>Transitions are quite easy to implement. Designing with the full power of transitions can be quite masterful. In the example <abbr>CSS</abbr> I've provided, scan the document for <code>&lt;h2&gt;</code> Elements with a little pair of scissors before the text—click on them. Note in the code, the <abbr>CSS</abbr> is controlling the scissor with the <code>content</code> property, and thus can be manipulated with <abbr>CSS</abbr> techinques we have available.</p>
-        <p>Look at the contrasting <abbr>CSS</abbr> and Javascript as it illustrates a key point about the nature of our programming languages. First, <mark>I haven't changed the structure of my markup one smidge</mark> to accommodate the <abbr>CSS</abbr> or JavaScript I am using. The next is that <abbr>CSS</abbr> is by far most verbose part of any program I write. The last is the JavaScript, when aided by efficient <abbr>CSS</abbr> and <abbr>HTML</abbr>, can be <em>very concise</em>.</p>
+        <p>Look at the contrasting <abbr>CSS</abbr> and Javascript as it illustrates a key point about the nature of our programming languages. First, <mark>I haven’t changed the structure of my markup one smidge</mark> to accommodate the <abbr>CSS</abbr> or JavaScript I am using. The next is that <abbr>CSS</abbr> is by far most verbose part of any program I write. The last is the JavaScript, when aided by efficient <abbr>CSS</abbr> and <abbr>HTML</abbr>, can be <em>very concise</em>.</p>
         <p><strong>Please Note:</strong> I wrote the JavaScript in an extra obscure manner not only to illustrate this point, but so that you don’t spend too much time trying to implement something similar. You will learn <em>much easier</em> techniques for accomplishing this task using loops, variables and other beginner-friendly methods.</p>
         <hr class="ruled"/>
-        <p><strong>When using transforms</strong>, be aware that you'll only be able to apply transformations to a <a href="https://www.w3.org/TR/css-transforms-1/#transformable-element">transformable elements</a>, that is, <em>an element that applies block-formatting</em> via the box-model. Remember, <mark> any element can be forced into a block formatted element explicitly by setting <code>display</code> property to 'block' or 'inline-block', or implicitly when you have set a <code>float</code> or used an absolute or fixed <code>position</code></mark>.</p>
+        <p><strong>When using transforms</strong>, be aware that you’ll only be able to apply transformations to a <a href="https://www.w3.org/TR/css-transforms-1/#transformable-element">transformable elements</a>, that is, <em>an element that applies block-formatting</em> via the box-model. Remember, <mark> any element can be forced into a block formatted element explicitly by setting <code>display</code> property to 'block' or 'inline-block', or implicitly when you have set a <code>float</code> or used an absolute or fixed <code>position</code></mark>.</p>
       </aside>
       <pre class="prettyprint ______ float left whitepaper">
         <!-- review views/css/examples/transitions.css transitions -->

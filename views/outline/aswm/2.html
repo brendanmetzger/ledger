@@ -11,7 +11,7 @@
     <h2>Functions, Parameters and Scope</h2>
     <p>Functions are probably the most profound aspect of JavaScript programming, and from a very technical perspective, they are really <i>Callable Objects</i>. Just like an object, they have properties and values, and just like an object, those values may be of <strong>any type</strong>, including other functions! Perhaps this sounds like nonsense now, but thus begins the introduction to JavaScript functions.</p>
     <h3>Declaring a function</h3>
-    <p>I’m going to assume that for the most part we know what functions and why we make them, so instead, we'll jump straight to mechanics. Functions can be declared by <strong>assignment</strong> or by using a <strong>named function</strong>. They have virtually the same outcome aside from a notion of <i>hoisting</i>, which you can forget about for awhile as it has few applicable purposes worth mentioning.</p>
+    <p>I’m going to assume that for the most part we know what functions and why we make them, so instead, we’ll jump straight to mechanics. Functions can be declared by <strong>assignment</strong> or by using a <strong>named function</strong>. They have virtually the same outcome aside from a notion of <i>hoisting</i>, which you can forget about for awhile as it has few applicable purposes worth mentioning.</p>
     <section class="container">
       <aside class="note m ___ float left">
         <p>Regarding the first two examples, functions can be declared as above, or assigned as below. There is some advocacy for the former; declaring functions in this manner has some advantages with scope and hoisting. If that sounds daunting, don’t worry, it’s quite obscure and not worth getting into at this point. I advise you learn and use both as you see fit.</p>
@@ -24,7 +24,7 @@
   </article>
   <article>
     <h2>I/O: Arguments and Return Values</h2>
-    <p class="indented">In all of the functions examples so far, we haven't expected any input or returned any output. While this is sometimes useful, most of the time our function declarations will be more useful with the addition of passing <strong>arguments</strong>, and <strong>returning</strong> some type of output.</p>
+    <p class="indented">In all of the functions examples so far, we haven’t expected any input or returned any output. While this is sometimes useful, most of the time our function declarations will be more useful with the addition of passing <strong>arguments</strong>, and <strong>returning</strong> some type of output.</p>
     <p>Arguments, also known as parameters, are declared at <strong>compile-time</strong> and passed in at <strong>call time</strong> in terms of values. A <code>return</code> statement is placed at the end of a function, and it gives you something back. Just like some of the first mathematics we learned like <code>cos x</code>, a function takes some input and gives us some output. Unlike mathematics, functions in JavaScript don’t necessarily need input, and don’t necessarily provide output.</p>
 
     <section class="container">
@@ -50,7 +50,7 @@
     <p>As we've seen, a function can be stored in a variable, or stored in a data structure like an array or an object. Moreover, a function can be passed as an argument to another function. A function can even return another function. This is a tenet of any language that implements <a href="https://en.wikipedia.org/wiki/First-class_function">first-class functions.</a>. In fact, while many languages support these features, you can avoid using them altogether, but <strong>this is not the case in JavaScript</strong>.</p>
     <section class="container">
       <aside class="note __ m float left">
-        <p>Let's look at a function returning a function. What happens when I <code>call</code> a Chicken functon? What do I get back? How about an Egg?</p>
+        <p>Let’s look at a function returning a function. What happens when I <code>call</code> a Chicken functon? What do I get back? How about an Egg?</p>
         <p>This is a confusing example, but play with it in the console for awhile until you get the hang of it. The premise, though simple, is probably a new concept: whenever you call a function, you will <strong>always</strong> get back another function. That means, you can keep calling over and over, ad infinitum.</p>
       </aside>
       <pre class="prettyprint ______ float left">
@@ -61,7 +61,7 @@
     <p>It may seem like just an interesting feature of the language, but it’s important to grasp conceptually why first-class functions are quite necessary to <a href="https://en.wikipedia.org/wiki/Event-driven_programming">event-driven programming</a>. When we have program that is going to respond to clicks, keystrokes, and any other input, our application has to have something prepared. Unlike imperative types of programming (like procedural), the program has an event loop that must have <em>some function</em> it can execute when needed. This makes sense: functions are callable bits of program; they lie waiting for something to poke them and say <q>go ahead, do what you do</q>. These are referred to as <strong>callbacks</strong>, and a ten-dollar word that you will learn to love about such programming is the nature of asynchronous code that can execute at unknown times.</p>
     <section class="container">
       <aside class="note __ m float left">
-        <p>Looking at the code on the right, there isn't a another way to program it without using first-class functions and their accompanying features. In this case, we are listening for two <strong>events</strong>, there are three (anonymous) <strong>callback functions</strong> and two <strong> closures</strong>—make sure you can spot them all.</p>
+        <p>Looking at the code on the right, there isn’t a another way to program it without using first-class functions and their accompanying features. In this case, we are listening for two <strong>events</strong>, there are three (anonymous) <strong>callback functions</strong> and two <strong> closures</strong>—make sure you can spot them all.</p>
         <button type="button" data-color="cornflowerblue" class="trigger">Execute Code</button>
       </aside>
       <pre class="prettyprint _______ float left">
@@ -71,7 +71,7 @@
   </article>
   <article>
     <h2>Scope, Closure</h2>
-    <p>The code above may have led to some confusion when I talked about spotting the closures. <a href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">Closure</a> is one of these things that takes awhile to <a href="https://en.wikipedia.org/wiki/Grok">grok</a> but once you do, it isn't nearly as profound as it seems.</p>
+    <p>The code above may have led to some confusion when I talked about spotting the closures. <a href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">Closure</a> is one of these things that takes awhile to <a href="https://en.wikipedia.org/wiki/Grok">grok</a> but once you do, it isn’t nearly as profound as it seems.</p>
     <ol class="m t">
       <li>Any programming language will have rules that define scope.</li>
       <li>Scope is simply where variables are declared and what parts of a program can access them.</li>
@@ -95,6 +95,6 @@
   </script>
   <article>
     <h2>Review</h2>
-    <p>All of the code examples above as well as last week's exercises <a class="read" href="/javascript/examples/functions.js">can be viewed here</a>. Jumping to exercises, you'll see my solutions. Beginning programmers exhibit similar struggles around topics of program flow (especially logic) so I want to introduce my own personal mantra: while you code, <strong>imagine conditions (though quite necessary) as poisonous, and every time you nest a condition, you’re doubling the potency of the poison</strong>. Maybe that seems crazy now, but as you continue to advance, no matter the language, there are facilities that allow you to <mark>avoid writing all but the most trivial conditions</mark>. In functional programming these are fancy things like Functors and Monads. In Object Orientation, these are principles of polymorphism and usage of <a href="https://en.wikipedia.org/wiki/Design_Patterns">Design Patterns</a>. For beginners, this is looking at logic as a puzzle and trying to whittle down a complex task to the <mark>fewest conditions possible</mark>.</p>
+    <p>All of the code examples above as well as last week’s exercises <a class="read" href="/javascript/examples/functions.js">can be viewed here</a>. Jumping to exercises, you’ll see my solutions. Beginning programmers exhibit similar struggles around topics of program flow (especially logic) so I want to introduce my own personal mantra: while you code, <strong>imagine conditions (though quite necessary) as poisonous, and every time you nest a condition, you’re doubling the potency of the poison</strong>. Maybe that seems crazy now, but as you continue to advance, no matter the language, there are facilities that allow you to <mark>avoid writing all but the most trivial conditions</mark>. In functional programming these are fancy things like Functors and Monads. In Object Orientation, these are principles of polymorphism and usage of <a href="https://en.wikipedia.org/wiki/Design_Patterns">Design Patterns</a>. For beginners, this is looking at logic as a puzzle and trying to whittle down a complex task to the <mark>fewest conditions possible</mark>.</p>
   </article>
 </div>

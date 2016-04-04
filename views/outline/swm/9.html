@@ -10,14 +10,14 @@
   </article>
   <article>
     <h2>Writing &amp; Using Functions</h2>
-    <p class="intro">You will learn syntax on your own despite what you may think, it’s actually very simple, and any notion of being difficult is simply unfamiliarity. Correctly writing programs is not about syntax, it’s about abstraction—and yes, I'll admit, that is a bijillion times harder.</p>
+    <p class="intro">You will learn syntax on your own despite what you may think, it’s actually very simple, and any notion of being difficult is simply unfamiliarity. Correctly writing programs is not about syntax, it’s about abstraction—and yes, I’ll admit, that is a bijillion times harder.</p>
     <!-- insert views/topics/javascript/first-class-functions.html -->
     <section>
       <h3>From First-Class to <strong>Callbacks</strong></h3>
       <p class="intro">If you've ever heard the term <em>callback</em> and thought it sounded lofty, then rejoice, if you’ve been following along, then you already know more than you think.</p>
       <div class="two columns indented">
         <p>Well known at this point is that functions are first <em>declared</em> and then <em>applied</em>. Sometimes we do the declaring, sometimes the language has defined functions for us, like <code>Math.cos()</code>. Likewise, sometimes we take charge of applying a function directly, sometimes we declare a function but we don’t apply it ourselves; functions can be applied immediately or by another function—pending we send it as a parameter in an uncalled state.</p>
-        <p>It is the latter method that is officially known as a callback; simply a declared function passed as a parameter to another function. You must read and understand the following notion: saying something like <strong>a function declaration passed in an uncalled state</strong> is mouthful of a concept, so it been granted it’s own word as a concept. That's right, we say <strong>callback</strong> when talking about a previously declared function being passed around in its uncalled state. Commit this to memory—from here on out, when you hear callback, you will know the precise meaning.</p>
+        <p>It is the latter method that is officially known as a callback; simply a declared function passed as a parameter to another function. You must read and understand the following notion: saying something like <strong>a function declaration passed in an uncalled state</strong> is mouthful of a concept, so it been granted it’s own word as a concept. That’s right, we say <strong>callback</strong> when talking about a previously declared function being passed around in its uncalled state. Commit this to memory—from here on out, when you hear callback, you will know the precise meaning.</p>
         <p>A function given a callback determines when and how the callback is applied; this is how JavaScript does business. It is powerful and it’s this very concept that allows you to do event-based programming. If you are an interactive designer, this is a way you can/should start framing all sornts of design problems/solutions.</p>
       </div>
     </section>
@@ -30,7 +30,7 @@
     <section>
       <div class="three columns indented">
         <h3>Events</h3>
-        <p>In this classic thought experiment we are engaged to think about all of the events that can occur without our knowing, and then get metaphysical about whether or not the event ever occured. Clearly, this seemingly simple question has been the substance of deep philosophical thought for centuries, so I think it worth five minutes of our time. So, consider this: <q>if a mouse clicks on a webpage but a program doesn't hear it, does it make a sound?</q>.</p>
+        <p>In this classic thought experiment we are engaged to think about all of the events that can occur without our knowing, and then get metaphysical about whether or not the event ever occured. Clearly, this seemingly simple question has been the substance of deep philosophical thought for centuries, so I think it worth five minutes of our time. So, consider this: <q>if a mouse clicks on a webpage but a program doesn’t hear it, does it make a sound?</q>.</p>
         <p>Now that we know about first-class functions and callbacks, we can actually consider events, and there are <a href="https://developer.mozilla.org/en-US/docs/Web/Events">tons of events</a> that we can take advantage of. There are several ways to capture events, but the best, and preferred way, is through a built-in function of the JavaScript <abbr>DOM</abbr> called <code>addEventListener</code>. Talking about what to when an event occurs always starts with the premise that you must be able to <em>perceive an event</em>, so it should be easy to remember <strong>add • event • listener</strong> as a concept. You have all the objects on a page, how do they know when something happens? <em>You tell them to listen.</em></p>
         <p>There is another way to listen for events by setting attribute on an element (either in <abbr>HTML</abbr> or JavaScript)—you will no doubt see this technique often. While convenient and easy, I rarely (almost never) do this for valid technical reasons, but more importantly, it violates a design principle called <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a>. We have three facets that control interactive applications; semantics and structure (<abbr >HTML</abbr>), view and design (<abbr>CSS</abbr>), and behavior (JavaScript)—best to keep them separate.</p>
         <p>Now considering the process of an event occurring, remember that it is <em>emmitted</em> from a source, be it an <code>Element</code> or the <code>window</code> object, etc., and you must apply a listener directly to that source in order to <q>hear it.</q> It might occur to you that Elements have children and parents; begin the mental process of thinking about what that might mean for how the event <em>propogates</em> or <em>bubbles</em>.</p>
@@ -47,10 +47,10 @@
             <dd><sup>1</sup> The return value of the function - in this case, void indicates that the function <em>returns nothing</em></dd>
             <dd><sup>2</sup> The first argument expects a string, in this case, the type of event ('click', 'scroll', etc.)</dd>
             <dd><sup>3</sup> The next argument is a callback which must be a type function (yet-to-be called).</dd>
-            <dd><sup>4</sup> Capture—this is an obscure point, the fact that it in brackets indicates it is optional.</dd>
+            <dd><sup>4</sup> Regards if event captures or bubbles (advanced). Brackets indicate optional, defaults to false.</dd>
             <dt>The Callback Signature</dt>
-            <dd>Whenever you write a callback, you should define an argument—you can call it whatever you like, I generally name it <em>evt</em></dd>
-            <dd>When an event is emitted, and you’re listener hears it, it will apply your callback method. When applied, it passes along the Event object as a parameter.</dd>
+            <dd>Whenever you write a callback, you should specify an argument to hold the event object—you can call it whatever you like—I generally name it <em>evt</em></dd>
+            <dd>When an event is emitted, and the listener hears it, it will apply your callback method. When applied, it passes along the Event object as a parameter.</dd>
           </dl>
         </div>
         <dl class="__ float left">
@@ -64,7 +64,7 @@
         <hr class="clear ruled"/>
         <div class="focus">
           <h4>A moment of reflection</h4>
-          <p>I've skipped over a lot of necessary, but too-confusing-to-write details that we will discuss together. Start on your own by revisiting this: <strong>Why/how does the dot operator work?</strong></p>
+          <p>I've skipped over a lot of necessary-but-confusing details that we will discuss together. Start on your own by revisiting this: <strong>Why/how does the dot operator work?</strong></p>
           <p class="pad"><dfn>Hint: it has everything to do with accessing object properties, applying functions, and return values.</dfn></p>
         </div>
       </div>
@@ -73,16 +73,18 @@
   <article>
     <h2>Case Study: A Lightbox and JavaScript</h2>
     <p>Recalling our case study from last week, an introduction to all of the important <abbr>CSS</abbr> css for making an overlay possible was given. Surprisingly, this is the harder half of the equation in terms of steps needed to solve the problem. As we understand that process, the remaining JavaScript is quite simple, and really only requires we understand our previously outlined material. Really, our case study continues thinking about several questions.</p>
-    <ol>
+    <ol class="t whitepaper">
       <li>When does a overlay need to be opened?</li>
       <li>Is it triggered by multiple elements?</li>
       <li>If triggered by multiple events, how should we assign a listener?</li>
+      <li>How might we pay attention to if an overlay is open already, and what do we do with that information?</li>
       <li>How do we close the lightbox?</li>
     </ol>
   </article>
   <article>
     <h2>Reference and Practice Material</h2>
-    <p class="intro">Cognition and knowledge retention are difficult tasks. The new material this week has been events, but it’s no mistake that I keep revisiting functions. JavaScript, the more you know it, it becomes profoundly simple (or insanely complex, depending on how you view simplicity). I want you to revisit the material, and the outlines I write regularly. Go further than I ask, because it only benefits you greatly. This weeks practice work is will be made much easier by material tucked away in the resources below: it’s completely up to you to find it.</p>
+    <p class="intro">Cognition and knowledge retention are difficult tasks. The new material this week has been events, but it’s no mistake that I keep revisiting functions, I will tell you every week until the end of the semester, they are the heart &amp; soul of the language, and the design pattern you must learn.</p>
+    <p>Somthing interesting about JavaScript; the more you know it, the more profoundly simple (or insanely complex, depending on how you view simplicity) it becomes. I want you to revisit the material and the outlines I write regularly. Go further than I ask, because it will benefit you greatly. This week’s practice work is will be made much easier by material tucked away in the resources below: it’s completely up to you to find it.</p>
     <dl class="tt">
       <dt>Working with Events and Event Listeners</dt>
       <dd><a class="watch" href="http://www.lynda.com/JavaScript-tutorials/Introduction-JavaScript-event-handling/81266/87543-4.html?srchtrk=index%3a1%0alinktypeid%3a2%0aq%3ajavascript%0apage%3a1%0as%3arelevance%0asa%3atrue%0aproducttypeid%3a2">Chapter 6</a> of this Lynda.com series covers events.</dd>

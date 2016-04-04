@@ -22,7 +22,7 @@
     <hr class="clear ruled t b"/>
     <aside class="note ______ float left">
       <h5>But producing bread is probably better described as composite of several actions.</h5>
-      <p>We have ingredients, but they have to be mixed, and after mixed, they have to be baked. Let's assume we have declared functions called <code>mix</code> and <code>bake</code> that can take care of that for us. Note: what is returned when mix and bake are applied? Never fail to consider input vs. output.</p>
+      <p>We have ingredients, but they have to be mixed, and after mixed, they have to be baked. Let’s assume we have declared functions called <code>mix</code> and <code>bake</code> that can take care of that for us. Note: what is returned when mix and bake are applied? Never fail to consider input vs. output.</p>
     </aside>
     <pre class="prettyprint ____ float left">
       <!-- review views/javascript/examples/bread.js compose  -->
@@ -30,7 +30,7 @@
     <hr class="clear ruled t b"/>
     <aside class="note ______ float left">
       <h5>But producing bread, at least in most situations, involves a person.</h5>
-      <p>The previous function is great, but thinking a bit deeper, it assumes that all bread is made the same way. Any bread fan knows that two different bakers, even using the same ingredients, can make two entirely different loaves. Let's create a notion of a baker.</p>
+      <p>The previous function is great, but thinking a bit deeper, it assumes that all bread is made the same way. Any bread fan knows that two different bakers, even using the same ingredients, can make two entirely different loaves. Let’s create a notion of a baker.</p>
     </aside>
     <pre class="prettyprint ____ float left">
       <!-- review views/javascript/examples/bread.js baker  -->
@@ -56,7 +56,7 @@
     <hr class="clear ruled t b"/>
     <aside class="note ______ float left">
       <h5>All together.</h5>
-      <p>Going way back to our <code>produceBread</code> function, let's sub out all of our functionality with the stuff we now know. Our function definition now expects a Baker as the first argument: Bakers, when called, are given a task and the material to execute that task. Unravel this in your mind to the point where you understand that all of this is possible—you don’t have to know how to do it, just that it’s possible.</p>
+      <p>Going way back to our <code>produceBread</code> function, let’s sub out all of our functionality with the stuff we now know. Our function definition now expects a Baker as the first argument: Bakers, when called, are given a task and the material to execute that task. Unravel this in your mind to the point where you understand that all of this is possible—you don’t have to know how to do it, just that it’s possible.</p>
     </aside>
     <pre class="prettyprint ____ float left">
       <!-- review views/javascript/examples/bread.js first class  -->
@@ -64,7 +64,7 @@
     <hr class="clear ruled t b"/>
     <aside class="note ______ float left">
       <h5>Purely Functional.</h5>
-      <p>This last part is just for fun—definitely in the deep end, but as the finale to our example of functional programming, I think it is important that you see a working functional program [you can test in the console]. The take away, alluded to in the intro, is that carefully considered input/output can eliminate conditions, loops, and variables: thus things can occur out of order and state doesn't matter. This is beautiful, and even if it escapes you, a little bit of this eloquence will save you years of toil as a program designer.</p>
+      <p>This last part is just for fun—definitely in the deep end, but as the finale to our example of functional programming, I think it is important that you see a working functional program [you can test in the console]. The take away, alluded to in the intro, is that carefully considered input/output can eliminate conditions, loops, and variables: thus things can occur out of order and state doesn’t matter. This is beautiful, and even if it escapes you, a little bit of this eloquence will save you years of toil as a program designer.</p>
     </aside>
     <pre class="prettyprint ____ float left">
       <!-- review views/javascript/examples/bread.js purity  -->

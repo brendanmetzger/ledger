@@ -17,9 +17,9 @@
   <article>
     <h2>Responsive Design</h2>
     <h3>Media Queries</h3>
-    <p>Media Queries are pretty simple—if you have the gist of <abbr>CSS</abbr>, the won't give you any trouble. Essentially, imagine you can divide your styles up by certain criteria; max/min screen sizes, device types, landscape vs. portrait, etc. Say you asked yourself, <q>I want some really big text, but only on a really big screen.</q>. <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">Media Queries</a> are where you begin, and once you get your site schematics figured out and media in place they can offer immediate solutions to problems with text size and layout problems. The <a href="http://www.w3schools.com/cssref/css3_pr_mediaquery.asp">W3Schools</a> reference is also a good starting point.</p>
+    <p>Media Queries are pretty simple—if you have the gist of <abbr>CSS</abbr>, the won’t give you any trouble. Essentially, imagine you can divide your styles up by certain criteria; max/min screen sizes, device types, landscape vs. portrait, etc. Say you asked yourself, <q>I want some really big text, but only on a really big screen.</q>. <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">Media Queries</a> are where you begin, and once you get your site schematics figured out and media in place they can offer immediate solutions to problems with text size and layout problems. The <a href="http://www.w3schools.com/cssref/css3_pr_mediaquery.asp">W3Schools</a> reference is also a good starting point.</p>
     <h3>New Units</h3>
-    <p>When considering units, now would be a great time to start finding ways to implement <code>vh</code> and <code>vw</code>, which is your screen's height and width broken down into 1% increments; ie. <code>10vh</code> is 10% of the viewport height. Here is an intro to <a href="https://css-tricks.com/viewport-sized-typography/">viewport sized typography</a></p>
+    <p>When considering units, now would be a great time to start finding ways to implement <code>vh</code> and <code>vw</code>, which is your screen’s height and width broken down into 1% increments; ie. <code>10vh</code> is 10% of the viewport height. Here is an intro to <a href="https://css-tricks.com/viewport-sized-typography/">viewport sized typography</a></p>
     <h3>Mobile First</h3>
     <p><em>Mobile-first</em> design is a concept that pairs well with media-queries and is quite important for designers and developers to understand and apply. Mobile-first basically means that you design something for the smallest screen, and then you scale <strong>up</strong> to accommodate bigger screens and the more space you have available. This can be difficult to do in practice, but in general, it helps to structure your media queries this way—essentially, use <em>min-width</em> in favor of <em>max-width</em>.</p>
     <section class="container whitepaper tt">
@@ -36,7 +36,7 @@
   </article>
   <article>
     <h2>The Document Object Model</h2>
-    <p class="intro">In the beginning all the technologies we are using probably seem very independent from one another as you gain experience you will see that they blur together in consistent ways. Let's start with the things we know a little bit about.</p>
+    <p class="intro">In the beginning all the technologies we are using probably seem very independent from one another as you gain experience you will see that they blur together in consistent ways. Let’s start with the things we know a little bit about.</p>
     <hr class="ruled"/>
     <section>
       <h3>Document (Markup Languages)</h3>
@@ -44,7 +44,7 @@
     </section>
     <section>
       <h3>Object</h3>
-      <p>The term <strong>object</strong> is a special word in the field of mathematics and computer science, representing various structures that can be described as having some distinct quality. When referring to the <q>the document object model</q> we are talking about the magic that happens after our plain old text—that has been carefully marked-up with <code>/</code> and <code>&lt;</code> and <code>&gt;</code> symbols—has been parsed by an algorithm to <em>mean something</em>, as a bunch of objects that are distinct, meaningful things. <mark>What once was a simple <code>&lt;h1&gt;</code> in text has been turned into an object that we can now communicate with.</mark> <q>Hey, <code>&lt;h1&gt;</code>, I’m going to set your text color to blue. Tell me about your family... who's your parent... any siblings? I’m going to move you somewhere else, oh and when someone clicks on you, let me know, ok?</q>. An object, just like a toaster, has <em>properties</em> that describe what it is and how it works, and it has <em>methods</em> that allow it to perform certain tasks. <strong>Objects have properties and methods</strong> that we can communicate with, and this communication is known as programming.</p>
+      <p>The term <strong>object</strong> is a special word in the field of mathematics and computer science, representing various structures that can be described as having some distinct quality. When referring to the <q>the document object model</q> we are talking about the magic that happens after our plain old text—that has been carefully marked-up with <code>/</code> and <code>&lt;</code> and <code>&gt;</code> symbols—has been parsed by an algorithm to <em>mean something</em>, as a bunch of objects that are distinct, meaningful things. <mark>What once was a simple <code>&lt;h1&gt;</code> in text has been turned into an object that we can now communicate with.</mark> <q>Hey, <code>&lt;h1&gt;</code>, I’m going to set your text color to blue. Tell me about your family... who’s your parent... any siblings? I’m going to move you somewhere else, oh and when someone clicks on you, let me know, ok?</q>. An object, just like a toaster, has <em>properties</em> that describe what it is and how it works, and it has <em>methods</em> that allow it to perform certain tasks. <strong>Objects have properties and methods</strong> that we can communicate with, and this communication is known as programming.</p>
     </section>
     <hr/>
     <section class="container">
@@ -76,17 +76,17 @@
           <li>JavaScript can create new events in the page</li>
         </ul>
       </div>
-      <p class="focus clear"><strong>Ponder</strong>: by this point you may be wondering, <q>why would I need anything besides <abbr>css</abbr>?</q>. The first thing you may notice is that you can't add/remove content very robustly nor track events beyond 'hover'. More applicable to the <abbr>dom</abbr>, however, is an inability to work your way backwards up the tree (parentNode, previousSibling). Why might this be? Hint, think about what something like <em>node - previousSibling - nextSibling</em> is saying.</p>
+      <p class="focus clear"><strong>Ponder</strong>: by this point you may be wondering, <q>why would I need anything besides <abbr>css</abbr>?</q>. The first thing you may notice is that you can’t add/remove content very robustly nor track events beyond 'hover'. More applicable to the <abbr>dom</abbr>, however, is an inability to work your way backwards up the tree (parentNode, previousSibling). Why might this be? Hint, think about what something like <em>node - previousSibling - nextSibling</em> is saying.</p>
     </section>
     <hr/>
     <section>
       <h3>References &amp; Practice Material</h3>
-      <p class="intro">Midterms are starting and though you'll have two weeks to complete you need to continue spending time reviewing previous outlines and introducing new material into your repertoire. Post midterm, we will begin actually using JavaScript, so you should have watched and practiced enough to let the nervousness subside and be comfortable dealing with the basics: <code>variables</code>, <code>objects</code>, <code>arrays</code>, <code>conditions</code>, <code>operators</code>, <code>loops</code> and <code>functions</code>.</p>
+      <p class="intro">Midterms are starting and though you’ll have two weeks to complete you need to continue spending time reviewing previous outlines and introducing new material into your repertoire. Post midterm, we will begin actually using JavaScript, so you should have watched and practiced enough to let the nervousness subside and be comfortable dealing with the basics: <code>variables</code>, <code>objects</code>, <code>arrays</code>, <code>conditions</code>, <code>operators</code>, <code>loops</code> and <code>functions</code>.</p>
       <dl>
         <dt><a class="watch" href="http://www.lynda.com/JavaScript-tutorials/Simple-comparisons/123563/133790-4.html">Introducing JavaScript, continued..</a></dt>
         <dd>If not finished yet, continue watching the remaining chapters: 4, 5, and especially 6, which is about functions.</dd>
         <dt><a class="watch" href="http://www.lynda.com/HTML-tutorials/What-Document-Object-Model-DOM-Video/122462/137616-4.html">What is the Document Object model</a></dt>
-        <dd>It will be beneficial to watch the entirety of chapter one of this series. It glosses over the Document Object model a bit, but it goes much further talking about using the browser's console to inspect structure, as <q>it’s always a good idea to spend time time with your tools</q>.</dd>
+        <dd>It will be beneficial to watch the entirety of chapter one of this series. It glosses over the Document Object model a bit, but it goes much further talking about using the browser’s console to inspect structure, as <q>it’s always a good idea to spend time time with your tools</q>.</dd>
         <dt><a class="read" href="http://learn.shayhowe.com/advanced-html-css/responsive-web-design/">Responsive Web Design</a></dt>
         <dd>This outline takes you through some of the concepts involved in responsive web design.</dd>
         <dt><a class="watch" href="http://www.lynda.com/CSS-tutorials/CSS-Selectors/192036-2.html"><abbr>CSS</abbr> selectors</a></dt>
