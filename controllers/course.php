@@ -42,7 +42,8 @@ class Course extends \bloc\controller
     $course = static::ID;
     $this->type = $type;
     $this->criterion = new \models\Criterion("[@index='{$index}'and @type='{$type}' and @course='{$specificity}']");
-    $this->schedule = (new \Models\Course($course))->section($section)->schedule;
+    $this->section = (new \Models\Course($course))->section($section);
+    $this->schedule = $this->section->schedule;
     $this->timeline = [
       'assigned' => $this->schedule[$this->criterion['@assigned']],
       'due'      => $this->schedule[$this->criterion['@due']],
