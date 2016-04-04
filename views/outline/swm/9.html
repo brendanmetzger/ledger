@@ -80,6 +80,7 @@
       <li>How might we pay attention to if an overlay is open already, and what do we do with that information?</li>
       <li>How do we close the lightbox?</li>
     </ol>
+    <p class="focus">Much of the time you see <code>&lt;div onclick="..."</code> is because it is easier, and you don't have to concern yourself with page load, and this is something to start concerning yourself with. If you try to access the <code>document</code> object in your script file before everything has loaded, things don’t work quite right. But when does the page load? <q>When</q> questions are best answered through events, which are surveyed with listeners. Without further adieu: consider <code>window.addEventListener('load', callback)</code> and why it might be so crucial.</p>
   </article>
   <article>
     <h2>Reference and Practice Material</h2>
