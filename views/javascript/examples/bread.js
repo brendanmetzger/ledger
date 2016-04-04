@@ -20,7 +20,7 @@ var loaf = produceBread(['flour', 'water', 'yeast']);
 
 
 /* compose */
-function produceBread(ingredents) {
+function produceBread(ingredients) {
   var dough = mix(ingredients);
   var bread = bake(dough);
   return bread;
