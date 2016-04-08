@@ -146,7 +146,7 @@ a:hover, a:hover > * {
 }
 
 
-h1,.h1{letter-spacing:-0.065em;font:400 4em/1em 'Avenir Next','HelveticaNeue-Light','Helvetica Neue',Helvetica;}
+h1,.h1{letter-spacing:-0.125vmin;font:400 4em/1em 'Avenir Next','HelveticaNeue-Light','Helvetica Neue',Helvetica;}
 h2,.h2{font-size:calc(1.5em + 1vw + 1vh);line-height:150%;font-weight:200}
 h2:not(:first-child) {margin-top:1em;}
 h3,.h3{font-size:calc(1em + 2vmin);margin:0.5em 0;font-weight:400;}
