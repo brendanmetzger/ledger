@@ -35,7 +35,7 @@ blockquote:not([class]) {
 }
 blockquote q {text-indent:-1em;}
 abbr[title]{cursor:help;}
-i,.i,q {font-style:italic;}
+i,.i,q:not([class]) {font-style:italic;}
 em, .em {font-style:oblique}
 
 strong,.strong{font-weight:600}

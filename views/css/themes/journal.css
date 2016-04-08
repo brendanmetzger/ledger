@@ -59,7 +59,7 @@ nav ul.index {
   list-style:none;
 }
 
-body > nav li a{display:block;padding: calc(2em - 2vw);}
+body > nav li a{display:block;padding: calc(2.25em - 2vw);}
 body > nav {
   border-width: 1px 0 0;
 }

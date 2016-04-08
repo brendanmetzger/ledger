@@ -1,0 +1,22 @@
+/* english default */
+q:before {
+  content:'“';
+  padding-right:0.075em;
+}
+q:after {
+  content:'”';
+  padding-left:0.15em;
+}
+/* end english default */
+
+q[lang='fr']:before,
+q[lang='de']:after {
+  content:'«';
+}
+q[lang='fr']:after,
+q[lang='de']:before {
+  content:'»';
+}
+q[lang='pl']:before {
+  content: "„";
+}
