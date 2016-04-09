@@ -1,13 +1,51 @@
-// Global scope is what you have by default.
-console.log("call track();");
+/* global */
+var jerry = 'A Comedian';
 
-var instructions = ["call track(); again", "type tracker = 3; and run track()` again.", "type previous or next"];
-var index = 0;
-
-function track (which) {
-  var messages = {
-    old: "You ran: " + instructions[index],
-    now: "Now this: " + instructions[index++] + "... but before you do, what do you expect."
-  }
-  return which ? messages[which] : messages;
+function who() {
+  alert(jerry);
 }
+
+who();
+/* end global */
+
+
+/* local */
+var truck = "F-350";
+
+function drive() {
+  var truck = 'Silverado';
+  alert(truck);
+}
+
+drive();
+/* end local */
+
+/* arguments */
+var coffee = 'Intellegentsia';
+
+function brew(coffee) {
+  alert(coffee)
+}
+
+brew('Peets');
+/* end arguments */
+
+
+/* nested */
+var booty = "Gold Ingot";
+
+function sailTo(name) {
+  alert("Arrived at: " + name);
+
+  function xMarksTheSpot(paces) {
+    alert("Paces: " + paces);
+    alert("Collect: " + booty);
+  }
+
+  xMarksTheSpot(10);
+  alert(paces); // paces undefined in current scope
+}
+
+sailTo('Atlantis');
+alert(name); // name undefined in global scope
+/* end nested */
