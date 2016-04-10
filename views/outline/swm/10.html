@@ -42,7 +42,6 @@
     <p class="intro">We have been discussing functions with more confidence every week. We know about declaring them, applying them, passing them undeclared to other functions <em>as callbacks</em>. You should be thinking about functions as nothing more than another type of variable; let’s revisit what variables are and what values they hold.</p>
     <p>Lest we forget, there are a handful of <em>types</em> that can represent a <em>value</em> in JavaScript. First are <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">primitive types</a>, such as <strong>Number</strong>, <strong>String</strong>, <strong>Boolean</strong>, <strong>Null</strong> and <strong>Undefined</strong>. Then, there are <em>object-types</em>: objects are combinations of primitive types as well as other objects, and we can make an <em>object literal</em> in a fashion such as <code>var obj = {};</code>. The <strong>Array</strong> is a special case of object as is the <strong>Function</strong>—in JavaScript, a function is really just a <em>callable object</em>.</p>
     <p>Some minutia notwithstanding, <strong>there are roughly 6 things you can make in JavaScript</strong>—devising interesting combinations of them; this can loosely be called <q>programming</q></p>
-
     <dl  class="review t b">
       <h4>— Review the following and jot down the answers (there are 8 questions)</h4>
       <dt><code>Math.pow</code></dt>
@@ -52,7 +51,6 @@
       <dt><code>var expression = Math.pow(7, 2) - 7;</code></dt>
       <dd>What is happening here? What is the value? What is the <em>type</em> of the value?</dd>
     </dl>
-
   </article>
   <article>
     <h2>Namespaces and Scope</h2>
@@ -60,6 +58,30 @@
       <h3>Context-based style</h3>
       <p>Given two classes with the same name, can you conceive of a way to have them behave differently? In the beginning of our lightbox case-study, I discussed the method of using a parent element to control the visibility of a child element by adding a class to the parent.</p>
       <h4>A silly example</h4>
+      <div class="comparison container whitepaper t b">
+        <h4>Night/Day</h4>
+        <p>Silly, yes, but note how attitude has two intirely different meanings depending on the class of a parent element. A useful feature; <em>you should employ such tactics frequently</em>.</p>
+        <hr class="ruled t b"/>
+        <link rel="stylesheet" href="/css/examples/namespace.css" media="screen" charset="utf-8"/>
+        <div class="half float left">
+          <pre class="prettyprint">
+            <!-- review views/css/examples/namespace.css night  -->
+          </pre>
+          <h5 class="pad code">&lt;div class="night"&gt;<br/>  &lt;p class="attitude"&gt;...</h5>
+          <div class="night">
+            <p class="attitude">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+        </div>
+        <div class="half float left">
+          <pre class="prettyprint">
+            <!-- review views/css/examples/namespace.css day -->
+          </pre>
+          <h5 class="pad code">&lt;div class="day"&gt;<br/>  &lt;p class="attitude"&gt;...</h5>
+          <div class="day">
+            <p class="attitude">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+        </div>
+      </div>
       <h4>A practical example</h4>
       <p>Remembering the first ‘W’ in <abbr title="world wide web">www</abbr> stands for world, let's recall that in the root element of our <abbr>html</abbr> document there is an attribute named <code>lang</code>. In that attribute, we specify the two character <a href="http://www.w3schools.com/tags/ref_language_codes.asp">language code</a> of our document—typically <code>lang="en"</code> for english.</p>
       <p>Obviously there is a lot of <a href="https://en.wikipedia.org/wiki/Internationalization_and_localization">internationalization</a> that must occur to adapt applications different languages and regions, but let's start with some simple (and interesting) typographic principles. In Spanish, a question is prefixed with an inverted question mark, in Greek, a question phrase is terminated with a semi-colon. In many languages, different punctuation marks are expressed differently, many countries use <a href="https://en.wikipedia.org/wiki/Guillemet">Guillemets</a>, some subscripted apostrophes and many a combination thereof in reversed order. With that, let us begin a useful investigation of the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">quote</a> element.</p>
@@ -129,6 +151,38 @@
   </article>
   <article>
     <h2>Case Study: A Lightbox &amp; its Companions</h2>
+  </article>
+  <article id="mouse-example">
+    <h2>Case Study: Mouse Trail</h2>
+    <p class="intro">I have made a few <q>mouse-trails</q> that illustrate some interesting techniques. In the simplest of cases, they are really quite simple tricks.</p>
+    <p>Picture a stack of 60 cards, which is really just a list, or in our parlance, an <code>array</code>. Now picture a ticking clock with 60 seconds: every second that ticks by, you pay attention to the card in the stack that corresponds to the second hand, ie. 30  seconds in, we are focusing on card 30. With that as a visual, consider the following instructions.</p>
+    <ol class="whitepaper t b">
+      <li>Declare an array to hold a list of elements.</li>
+      <li>Make a loop, and for each iteration, append an Element to your html document and to the previously mentioned array.</li>
+      <li>Declare some css to set the style of the Elements (notably absolute positioning)</li>
+      <li>Set up an event listener to track mousemoves; first parameter is 'mousemove', second parameter is a <em>callback</em> function.</li>
+      <li>Set a variable to keep count of our cycle—make sure the variable is outside of your callback; this is a scope issue.</li>
+      <li>Whenever your callback fires, update your counter variable by one</li>
+      <li>Take count % total length to know you which element to update (this is <a href="https://en.wikipedia.org/wiki/Modular_arithmetic">modular arithmatic</a>)</li>
+      <li>count % total will give you an integer, use that integer to grab an element of the list of elements (<code>array[int]</code>)</li>
+      <li>your callback should have an event object: use some of the properties it provides to find where the mouse was when the event fired</li>
+      <li>using your element from number 7 set the <code>left</code> property to the x coordinate, and the <code>top</code> property to the y property.</li>
+    </ol>
+    <style media="screen">
+      .mouse-trail {padding:0;list-style-type:none;}
+      .mouse-trail li {
+        position:absolute;
+        width:5px;
+        height:5px;
+        background-color:rgba(0,0,0,0.25);
+      }
+    </style>
+    <script type="text/javascript">
+      bloc.embed('/javascript/examples/assigned/mouse-trail.js');
+      bloc.init('mouse', function () {
+        createTrail(25, document.querySelector('#mouse-example'));
+      });
+    </script>
   </article>
   <article>
     <dl>

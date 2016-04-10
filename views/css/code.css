@@ -2,6 +2,7 @@
 
 code, pre, .code {
   font-family:Inconsolata, 'Courier New', monospace;
+  white-space:pre;
 }
 
 code sup {
