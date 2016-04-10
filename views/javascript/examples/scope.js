@@ -47,5 +47,5 @@ function sailTo(name) {
 }
 
 sailTo('Atlantis');
-alert(name); // name undefined in global scope
+alert(name); // name is undefined in global scope
 /* end nested */

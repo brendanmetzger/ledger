@@ -1,22 +1,95 @@
 <div>
   <header>
     <!-- insert views/outline/_/crumbs.html -->
-    <h1 class="massive">Working Title</h1>
-    <p class="intro">Description</p>
+    <h1 class="massive">Regarding <code>this</code></h1>
+    <p class="intro"><q>Object Oriented</q> programming in JS is a bit odd, so we shall conside the special pseudo-variable <code>this</code> as well as continued ideas of scope and closure through function binding.</p>
   </header>
   <article>
-    <h2>Advanced topics: “OO” programming in JS and prototypal inheritance. Continued research of
-scope/closure through function binding.</h2>
+    <h2><code>this</code> is confusing</h2>
+    <blockquote class="quote" cite="Simpson, Kyle (2014-07-11). You Don't Know JS: this &amp; Object Prototypes (p. 1). O'Reilly Media.">
+      <p>One of the most confused mechanisms in JavaScript is the this keyword. It’s a special identifier keyword that’s automatically defined in the scope of every function, but what exactly it refers to bedevils even seasoned JavaScript developers.</p>
+      <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&amp;%20object%20prototypes/ch1.md">Kyle Simpson <em>You Don’t Know JS</em></a>
+    </blockquote>
+    <div class="two columns indented">
+      <p>For those who have studied an object oriented language, they usually include some reference to the <em>instance</em> of the object, in many languages it is a special pseudo-variable called <code>this</code> or <code>self</code>. In such languages, once you declare a class, <code>this</code> always lives inside of the class, and its meaning is (somewhat) obvious.</p>
+      <p>Similarly, JavaScript employs <code>this</code>, but it is a different beast. Loosely speaking, it is a special variable that is always around, and it essentially a reference to the object responsible for calling or applying the function*. Open your console and type <code>this</code> and you will see when window object returned: the window object is the <em>global scope</em>.</p>
+      <p>I want to dwell on the point that <code>this</code> is a <em>special variable</em>. Normal variables are ruled and regulated by scope, and as authors, we are largely in control of that—if we declare a variable within a function, it has <em>function scope</em>. If we declare a variable in the outermost part of or script, it will have <em>global scope</em>. Perhaps the best piece of advice I can offer is the following: the value of <code>this</code> has nothing to do with where the function was declared as it is not a reference to the function itself, nor is it a direct reference to the function’s scope, which is why it is <em>special</em>. The following point is the trickiest of all to understand: <code>this</code>, unlike a variable declaration, is a bound reference to the <em>call site</em>. While extraordinarily difficult to master, it’s a terrific concept, and while it may elude you for some time, it is worth a closer look.</p>
+    </div>
+    <p class="focus tt bb"><strong>*</strong> It may have never occurred to prior that you that <strong>some object is responsible for calling every function</strong>. We casually use <code>alert('hey')</code>, but really, it is an implied use of <code>window.alert('hey')</code>, the global scope (window) is calling a method defined in its scope. Likewise, <code>Math.random()</code> is really <code>window.Math.random()</code>.</p>
+    <div class="whitepaper container t">
+      <h4>Binding</h4>
+      <p class="intro">The call-site is a tricky beast and takes time to become confident understanding how it works. I’ve read dozens of JavaScript books, and not once, ever, has it been explained in a way that I’ve found particularly intuitive.</p>
+      <p>I will shortly add my name to the list of authors who have failed, but I want to preface with one remark: <strong><code>this</code> may be something that can only be <a href="http://www.merriam-webster.com/dictionary/grok">grokked</a>, not simply read about and learned</strong>. It takes a pretty intense understanding of both the nature of the language and the problems you are attempting to solve—a high hurdle indeed. Rather than explaining a lot about <em>why</em> it works the way it does and instead just show a few examples.</p>
+      <hr class="ruled t b"/>
+      <aside class="note ______ float left">
+        <h5>Default Binding</h5>
+        <p>Variables declared in the global scope, are synonymous with global-object properties of the same name. The <code>window</code> object is our global object. Examining the code, the default binding for <code>this</code> is the window object. We declared a variable in the global scope called <code>taco</code> and assigned an object literal. In the function you see <code>taco</code> three ways: these tacos are not copies of each other, they <em>are each other</em>. <strong>Note:</strong> in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">strict mode</a> default binding does not happen, which is fine, because you shouldn't really count on it to do anything useful anyway.</p>
+      </aside>
+      <pre class="prettyprint ____ float left">
+        <!-- review views/javascript/examples/binding.js binding default -->
+      </pre>
+      <hr class="clear ruled t b"/>
+      <aside class="note ______ float left">
+        <h5>Implicit Binding</h5>
+        <p>Here is a function called <code>logger</code> defined in the global scope. Also within the global scope is an object called <code>wrap</code>. Wrap has a property called <code>log</code>, which is merely a reference to the previously declared function. Notice that <code>logger</code>, can be called now from tho global scope, or as a property of <code>wrap</code>. Type each version in the console to see how <code>this</code> becomes a reference to the <em>call-site</em>.</p>
+      </aside>
+      <pre class="prettyprint ____ float left">
+        <!-- review views/javascript/examples/binding.js binding implicit -->
+      </pre>
+      <hr class="clear ruled t b"/>
+      <aside class="note ______ float left">
+        <h5>Explicit Binding</h5>
+        <p>Charming as the last example is, I can barely think of good reasons to do this purposefully. Not because it isn't useful, but because binding is tricky, and <em>implicitly</em> doing something tricky might not be as valuable as <em>explicitly</em> doing something tricky.</p>
+        <p>We know you can call a function with the <code>()</code> operator, but you can also call functions using two methds, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call"><code>call</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply"><code>apply</code></a>. The first parameter supplied to both these functions is the object you want to become <code>this</code> within the function itself.</p>
+      </aside>
+      <pre class="prettyprint ____ float left">
+        <!-- review views/javascript/examples/binding.js binding explicit -->
+      </pre>
+      <hr class="clear ruled t b"/>
+      <aside class="note ______ float left">
+        <h5><code>new</code> Binding</h5>
+        <p>Using the <code>new</code> keyword in class-oriented languages implies the use of a special method called a <em>constructor</em>. We can forego the essay and sum up with a plain statement mentioning that this way of thinking will never amount to much in JavaScript. Functions are objects at the onset, so you should not think of new as an adjective like <q>I am <span class="underline">instantiating</span> a new Puppet object</q> but rather a verb; <q>I am <span class="underline">newing</span> a Puppet object</q>. The goal of such an operation is to manipulate what <code>this</code> means within the function as well as the return value.</p>
+      </aside>
+      <pre class="prettyprint ____ float left">
+        <!-- review views/javascript/examples/binding.js binding new -->
+      </pre>
+      <hr class="clear ruled t b"/>
+      <aside class="note ______ float left">
+        <h5>Just  Binding</h5>
+        <p>Perhaps my favorite part of JavaScript is the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind"><code>bind</code></a> method itself. This method, when called on a function, returns a <em>new function</em> that has <code>this</code> explicitly set to the value of the first parameter. Unlike <code>call</code> and <code>apply</code>, this function is <em>not executed</em>, so you can pass it as a callback, especially to things like <code>addEventListener</code> or <code>setTimeout</code>. <strong>If you are able to confidently utilize this function, epiphanies will happen daily</strong>. This method is also how we can <em>partially-apply</em> functions, also known as <q>currying</q></p>
+        <p>We will investigate doing some clever things with this function, but be sure to understand that <code>bind</code> manipulates the behavior of a function <em>before it is called</em>.</p>
+      </aside>
+      <pre class="prettyprint ____ float left">
+        <!-- review views/javascript/examples/binding.js hard binding -->
+      </pre>
+    </div>
   </article>
   <article>
-    Page 230 eloquent JavaScript
-    http://eloquentjavascript.net/13_dom.html
+    <h2>Refactoring Good Code</h2>
+    <p>I was reading <a href="http://eloquentjavascript.net/13_dom.html">Chapter 13</a> of <em>Eloquent JavaScript</em> and just to go down an inconsequential road, I thought it would be interesting to rewrite some code using function binding and partial application. We'll start with a critique of the program and talk about decisions one could make when constucting a program of their own.</p>
+    <div class="whitepaper container t b">
+      <aside class="note float left ______">
+        <h4>spinning cat</h4>
+        <p>Below is a todo list of some techniques I’d like to explore. Some of this borders on nonsensical, but they are interesting concepts to observe.</p>
+        <ol>
+          <li>Turn cat into a constructable object</li>
+          <li>Use <code>bind</code> to partially apply a function that sets style</li>
+          <li>use <code>bind</code> to get the animation to happen after clicking</li>
+          <li>eliminate declared variables and use arguments</li>
+        </ol>
+      </aside>
+      <pre class="prettyprint ____ float left">
+        <!-- review views/javascript/examples/binding.js eloquent cat -->
+      </pre>
+    </div>
+    <h4>My cheatsheet</h4>
     <pre class="prettyprint">
       <!-- review views/javascript/examples/binding.js currying -->
     </pre>
+
   </article>
   <script type="text/javascript">
     bloc.embed('/javascript/examples/binding.js');
   </script>
-  <img src="/css/media/cat.svg" alt="a cat image" style="position:relative;width:5vmin;"/>
+  <div style="padding:100px;"><img src="/css/media/cat.svg" alt="a cat image" style="position:relative;width:5vmin;"/></div>
 </div>
