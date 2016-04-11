@@ -110,7 +110,7 @@
       <p>If I declare a function, it is not much different than declaring a variable. I pick out a name, and that name, gives me a way to assign and store some <em>value</em> for later use: strings, numbers, booleans, nulls, undefined, and objects (which include arrays and functins). Where that variable declaration happens and how we gain access to it falls under the canopy of <strong>variable scope</strong></p>
 
       <div class="whitepaper container t">
-        <h4 class="clear centered">Thinkin’ Scope</h4>
+        <h4 class="clear centered">All Sorts of Scope</h4>
         <aside class="note ______ float left">
           <h5>Variables must be declared somewhere.</h5>
           <p>When you write some code a compilation process takes looks at all of your declarations and converts them to program code. The outermost layer is called <em>the global scope</em>. At right, we have declared two things and added them to the global scope, what are they?</p>
@@ -145,25 +145,19 @@
         </pre>
       </div>
     </section>
-    <section>
-
-    </section>
-  </article>
-  <article>
-    <h2>Case Study: A Lightbox &amp; its Companions</h2>
   </article>
   <article id="mouse-example">
     <h2>Case Study: Mouse Trail</h2>
     <p class="intro">I have made a few <q>mouse-trails</q> that illustrate some interesting techniques. In the simplest of cases, they are really quite simple tricks.</p>
     <p>Picture a stack of 60 cards, which is really just a list, or in our parlance, an <code>array</code>. Now picture a ticking clock with 60 seconds: every second that ticks by, you pay attention to the card in the stack that corresponds to the second hand, ie. 30  seconds in, we are focusing on card 30. With that as a visual, consider the following instructions.</p>
     <ol class="whitepaper t b">
-      <li>Declare an array to hold a list of elements.</li>
+      <li>Declare an array to hold a list of Elements.</li>
       <li>Make a loop, and for each iteration, append an Element to your html document and to the previously mentioned array.</li>
       <li>Declare some css to set the style of the Elements (notably absolute positioning)</li>
-      <li>Set up an event listener to track mousemoves; first parameter is 'mousemove', second parameter is a <em>callback</em> function.</li>
+      <li>Set up an event listener to track mouse movement; first parameter is 'mousemove', second parameter is a <em>callback</em> function.</li>
       <li>Set a variable to keep count of our cycle—make sure the variable is outside of your callback; this is a scope issue.</li>
       <li>Whenever your callback fires, update your counter variable by one</li>
-      <li>Take count % total length to know you which element to update (this is <a href="https://en.wikipedia.org/wiki/Modular_arithmetic">modular arithmatic</a>)</li>
+      <li>Take count % total length to know you which element to update (this is <a href="https://en.wikipedia.org/wiki/Modular_arithmetic">modular arithmetic</a>)</li>
       <li>count % total will give you an integer, use that integer to grab an element of the list of elements (<code>array[int]</code>)</li>
       <li>your callback should have an event object: use some of the properties it provides to find where the mouse was when the event fired</li>
       <li>using your element from number 7 set the <code>left</code> property to the x coordinate, and the <code>top</code> property to the y property.</li>
@@ -180,11 +174,20 @@
     <script type="text/javascript">
       bloc.embed('/javascript/examples/assigned/mouse-trail.js');
       bloc.init('mouse', function () {
-        createTrail(25, document.querySelector('#mouse-example'));
+        document.querySelector('#mouse-example').addEventListener('click', function (evt) {
+          createTrail(25, this);
+        });
+
       });
     </script>
   </article>
   <article>
+    <h2>Case Study: A Lightbox &amp; Media</h2>
+    <p class="intro">Previously we have outlined the <abbr>CSS</abbr> necessary to create an overlay. We have gone over the basics of assigning our overlay to be triggered by event listeners on multiple elements as well as adding a close button.</p>
+    <p>One of the main reasons for a lightbox is to minimize background distraction and focus on something else—typically an image. Time permitting, we will spend some time investigating how to put together some stuff.</p>
+  </article>
+  <article>
+    <h2>Reference and Practice Material</h2>
     <dl>
       <dt>Enhancing the <abbr>DOM</abbr></dt>
       <dd>Chapter 3, <a href="https://www.lynda.com/HTML-tutorials/Changing-HTML-attributes/122462/137630-4.html?">modifying <abbr>DOM</abbr> attributes and content</a></dd>

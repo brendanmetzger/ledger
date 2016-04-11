@@ -22,6 +22,11 @@ class Task extends \bloc\controller
     return  $encode ? htmlentities($content) : $content;
   }
 
+  public function GETauth($api = 'TBD')
+  {
+    echo "<app>{$api} - {$_GET['code']}</app>";
+  }
+
   public function authenticate()
   {
     return true;
