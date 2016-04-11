@@ -25,6 +25,7 @@ class Task extends \bloc\controller
   public function GETauth($api = 'TBD')
   {
     echo "<app>{$api} - {$_GET['code']}</app>";
+    // https://api.instagram.com/v1/users/self/?access_token=ACCESS-TOKEN
   }
 
   public function authenticate()
