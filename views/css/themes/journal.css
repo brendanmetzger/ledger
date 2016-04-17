@@ -292,7 +292,6 @@ form input[type=text], form textarea {
 }
 
 input, textarea {
-  width:100%;
   box-sizing:border-box;
 }
 
@@ -410,7 +409,6 @@ dl {
 }
 
 dt {
-  font-weight:600;
   margin:0;
   font-size:1.5em;
 }

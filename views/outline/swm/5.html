@@ -22,6 +22,7 @@
     <p>When considering units, now would be a great time to start finding ways to implement <code>vh</code> and <code>vw</code>, which is your screen’s height and width broken down into 1% increments; ie. <code>10vh</code> is 10% of the viewport height. Here is an intro to <a href="https://css-tricks.com/viewport-sized-typography/">viewport sized typography</a></p>
     <h3>Mobile First</h3>
     <p><em>Mobile-first</em> design is a concept that pairs well with media-queries and is quite important for designers and developers to understand and apply. Mobile-first basically means that you design something for the smallest screen, and then you scale <strong>up</strong> to accommodate bigger screens and the more space you have available. This can be difficult to do in practice, but in general, it helps to structure your media queries this way—essentially, use <em>min-width</em> in favor of <em>max-width</em>.</p>
+    <p class="focus t b h3">Be sure to investigate mobile-appropriate <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag">meta tags</a> to make sure your <abbr>css</abbr> is applied correctly.</p>
     <section class="container whitepaper tt">
       <link rel="stylesheet" href="/css/examples/queries.css" media="screen" charset="utf-8" />
       <div class="float left ______">

@@ -1,5 +1,5 @@
 function Validator(url, callback) {
-  var url = 'https://validator.nu/?level=error&doc='+encodeURIComponent(url)+'&out=json';
+  var url = 'https://validator.w3.org/nu/?level=error&doc='+encodeURIComponent(url)+'&out=json';
   JSONP(url, callback)
 }
 

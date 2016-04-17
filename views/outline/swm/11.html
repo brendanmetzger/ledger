@@ -1,22 +1,51 @@
 <div>
   <header>
     <!-- insert views/outline/_/crumbs.html -->
-    <h1 class="massive">Working Title</h1>
+    <h1 class="massive">In/Out</h1>
     <p class="intro">Learning about forms, input and  data. Introduction to timing with intervals and
 timeouts and dates</p>
   </header>
   <article>
     <h2>Review</h2>
+    <p>Last week we learned about scope and made a mouse trail.</p>
   </article>
   <article>
     <h2>Data &amp; The <code>&lt;input&gt;</code> element</h2>
-    <p>I planned on talking about this in this course, but I’m going to make this stuff self directed.</p>
-    https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms
-    <ul>
-      <li>text</li>
-      <li>range</li>
-      <li>color picker input</li>
-    </ul>
+    <div class="three columns indented">
+      <p>In this course, we will mostly be concerned with the basic use of forms to provide input and a point of interaction. It is worth briefly mentioning that they are actually quite complex, and necessarily so: the provide the interface to send huge amounts of information to a back-end server for storage, processing, payment and many other activities. For this reason, they have hundreds of attributes concerning data protection, validation, and accessibility. As such, they can be a bit overwhelming, so for a first pass, the introduction will be brief and any further interest can be self-directed. The Mozilla Developer Network has a <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms">nice guide</a> for creating forms if you are interested.</p>
+      <p>Of fundamental concern to us as <em>interactive</em> designers and developers is a notion of input/output. We are quite familiar with the mouse/trackpad as an input device: x/y movement coordinates, clicking, selection and scrolling are executed through such devices. Considering the keyboard, we have the full range of a keystroke (down, up, and press) which can be executed on any key, and along with meta keys (option, command, control).</p>
+    </div>
+
+    <h4>Inputs</h4>
+    <p>Input is largely controlled via the <code>input</code> Element. The input is an <a href="https://developer.mozilla.org/en-US/docs/Glossary/empty_element">empty element</a>, and depending on the <code>type</code> attribute, it well exhibit a different function. For instance, <code>&lt;input type="text"...</code> is your basic text input field, where <code>&lt;input type="checkbox"...</code> would be a checkbox. You can make <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">many types of input</a>, below is a quick overview of some interesting ones.</p>
+    <dl class="whitepaper tt bb">
+      <dt><pre class="prettyprint">&lt;input type="text" value="<span class="text input">content</span>"/&gt;</pre></dt>
+      <dd><input type="text" value="content" class="example" oninput="document.querySelector('.text.input').textContent = this.value;"/></dd>
+      <dd>The text input is your go-to for basic input. The value attribute holds whatever is typed into the box</dd>
+
+
+      <dt><pre class="prettyprint checkbox">&lt;label&gt;&lt;input type="checkbox" value="mmm-hmmm"/&gt;check?&lt;/label&gt;</pre></dt>
+      <dd><label><input type="checkbox" checked="checked" value="is checked" onclick="document.querySelector('pre.checkbox').classList.toggle('strike')"/>check?</label></dd>
+      <dd>The checkbox is interesting: you set the value, and the value only is sent if the box is checked.</dd>
+      <dd>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label">Label Element</a> provides additional functionality.</dd>
+
+
+      <dt><pre class="prettyprint">&lt;input type="range" min="0" max="10" step="5" value="<span class="range input">50</span>"/&gt;</pre></dt>
+      <dd><input type="range" min="5" max="100" step="5" value="50" oninput="document.querySelector('.range.input').textContent = this.value"/></dd>
+
+      <dt><pre class="prettyprint">&lt;input type="color" value="<span class="color input">EE33AA</span>"/&gt;</pre></dt>
+      <dd><input type="color" value="#EE33AA" oninput="document.querySelector('.color.input').textContent = this.value;"/></dd>
+
+      <dt><pre class="prettyprint">&lt;select value="<span class="color input">nothin</span>"&gt;
+  &lt;option value="nothin"&gt;default&lt;\option&gt;
+  &lt;option value="better"&gt;another optiont&lt;\option&gt;
+  &lt;option value="medium"&gt;choose this&lt;\option&gt;
+&lt;\select&gt;</pre></dt>
+    </dl>
+
+    <h4>And More!</h4>
+    <p>That is an extremely terse list; there are textareas, radio buttons, and many more types of input to do <strong>exactly what you intend</strong>. Knowing the inputs available and how to use them is an important part of programming.</p>
+
   </article>
   <article>
     <dl>

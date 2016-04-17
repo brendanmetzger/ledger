@@ -24,3 +24,6 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Design a Favicion
 - [ ] implement a progress report every 3 weeks
 - [ ] request that examples/help be done as a gist/codepen/fiddle
+- [ ] Take screenshots of assignments (xvfb-run --server-args="-screen 0, 1440x900x24" cutycapt --url=http://url --out=img.png)
+- [ ] Make Screencast for workflow
+- [ ] Make tutorial for node/js localhost server
