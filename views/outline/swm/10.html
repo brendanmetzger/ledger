@@ -1,37 +1,5 @@
 <div>
-  <script type="text/javascript">
-    WebFontConfig.google.families.push('Architects+Daughter::latin');
-    WebFontConfig.google.families.push('Special+Elite::latin');
-  </script>
-  <style media="screen">
-    .review {
-      color:#fff;
-      background-color:rgba(0,0,0,0.75);
-      padding:1.5em;
-      font-family: 'Architects Daughter', Chalkboard, "Comic Sans MS", cursive;
-      font-size:1.5em;
-      box-shadow:inset 0 0 5em rgba(0,0,0,0.125);
-    }
-    .review code {
-      font-family:'Special Elite';
-      color:rgb(108, 221, 173);
-      letter-spacing:0.125em;
-      font-weight:400;
-    }
-    .review dt {
-      margin:0.75em 0;
-      font-size:1.75em;
-    }
-    .review dd {
-      border:none;
-    }
-    .review a {
-      color:rgb(186, 203, 241);
-      text-shadow:none;
-      background-image:none;
-      padding:0;
-    }
-  </style>
+  <link rel="stylesheet" href="/css/review.css" media="screen" charset="utf-8"/>
   <header>
     <!-- insert views/outline/_/crumbs.html -->
     <h1 class="massive">Artiface</h1>
@@ -42,8 +10,8 @@
     <p class="intro">We have been discussing functions with more confidence every week. We know about declaring them, applying them, passing them undeclared to other functions <em>as callbacks</em>. You should be thinking about functions as nothing more than another type of variable; let’s revisit what variables are and what values they hold.</p>
     <p>Lest we forget, there are a handful of <em>types</em> that can represent a <em>value</em> in JavaScript. First are <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">primitive types</a>, such as <strong>Number</strong>, <strong>String</strong>, <strong>Boolean</strong>, <strong>Null</strong> and <strong>Undefined</strong>. Then, there are <em>object-types</em>: objects are combinations of primitive types as well as other objects, and we can make an <em>object literal</em> in a fashion such as <code>var obj = {};</code>. The <strong>Array</strong> is a special case of object as is the <strong>Function</strong>—in JavaScript, a function is really just a <em>callable object</em>.</p>
     <p>Some minutia notwithstanding, <strong>there are roughly 6 things you can make in JavaScript</strong>—devising interesting combinations of them; this can loosely be called <q>programming</q></p>
-    <dl  class="review t b">
-      <h4>— Review the following and jot down the answers (there are 8 questions)</h4>
+    <h4 class="tt">Review the following and jot down the answers (there are 8 questions)</h4>
+    <dl  class="review b">
       <dt><code>Math.pow</code></dt>
       <dd>What is Math, and what is pow? Where is it declared? (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow">hint</a>); Has it been applied?</dd>
       <dt><code>var ultimate_answer = 42;</code></dt>
@@ -180,11 +148,6 @@
 
       });
     </script>
-  </article>
-  <article>
-    <h2>Case Study: A Lightbox &amp; Media</h2>
-    <p class="intro">Previously we have outlined the <abbr>CSS</abbr> necessary to create an overlay. We have gone over the basics of assigning our overlay to be triggered by event listeners on multiple elements as well as adding a close button.</p>
-    <p>One of the main reasons for a lightbox is to minimize background distraction and focus on something else—typically an image. Time permitting, we will spend some time investigating how to put together some stuff.</p>
   </article>
   <article>
     <h2>Reference and Practice Material</h2>

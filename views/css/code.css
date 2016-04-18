@@ -55,7 +55,9 @@ pre.prettyprint {
   padding:0.5em 0.75em;
   border-color:rgba(0,0,0,0.05);
 }
-
+dt pre.prettyprint {
+  margin:1em 0 0.5em;
+}
 pre.float {
   border-width:0 0 0 1px;
 }

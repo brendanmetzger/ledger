@@ -1,3 +1,10 @@
+String.prototype.format = function() {
+  var args = typeof arguments[0] === 'object' ? arguments[0] : arguments;
+  return this.replace(/{((?:\d+)|(?:[a-z]+))}/g, function(match, key) {
+    return typeof args[key] != 'undefined' ? args[key] : match;
+  });
+};
+
 var cycle = function (index, limit) {
   return function () {
     return index++ % limit;

@@ -1,13 +1,21 @@
 <div>
+  <link rel="stylesheet" href="/css/review.css" media="screen" charset="utf-8"/>
   <header>
     <!-- insert views/outline/_/crumbs.html -->
     <h1 class="massive">In/Out</h1>
-    <p class="intro">Learning about forms, input and  data. Introduction to timing with intervals and
-timeouts and dates</p>
+    <p class="intro">Learning about forms, input and  data.</p>
   </header>
   <article>
     <h2>Review</h2>
-    <p>Last week we learned about scope and made a mouse trail.</p>
+    <p>Last week we learned about scope and made a mouse trail. Here are some thinking activities to get warmed up.</p>
+    <dl class="review t">
+      <dt>Consider the method <code>appendChild</code></dt>
+      <dd>What object does it belong to? What does it want as a parameter? What does it return?</dd>
+      <dt>Consider <code>createElement</code></dt>
+      <dd>What is it a method of? What parameter do you supply? What does it return?</dd>
+      <dt>Consider <code>addEventListener</code></dt>
+      <dd>What is it a method of? What parameters do you supply? Tell me about the second parameter.</dd>
+    </dl>
   </article>
   <article>
     <h2>Data &amp; The <code>&lt;input&gt;</code> element</h2>
@@ -15,42 +23,74 @@ timeouts and dates</p>
       <p>In this course, we will mostly be concerned with the basic use of forms to provide input and a point of interaction. It is worth briefly mentioning that they are actually quite complex, and necessarily so: the provide the interface to send huge amounts of information to a back-end server for storage, processing, payment and many other activities. For this reason, they have hundreds of attributes concerning data protection, validation, and accessibility. As such, they can be a bit overwhelming, so for a first pass, the introduction will be brief and any further interest can be self-directed. The Mozilla Developer Network has a <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms">nice guide</a> for creating forms if you are interested.</p>
       <p>Of fundamental concern to us as <em>interactive</em> designers and developers is a notion of input/output. We are quite familiar with the mouse/trackpad as an input device: x/y movement coordinates, clicking, selection and scrolling are executed through such devices. Considering the keyboard, we have the full range of a keystroke (down, up, and press) which can be executed on any key, and along with meta keys (option, command, control).</p>
     </div>
-
+    <hr class="ruled t b"/>
     <h4>Inputs</h4>
     <p>Input is largely controlled via the <code>input</code> Element. The input is an <a href="https://developer.mozilla.org/en-US/docs/Glossary/empty_element">empty element</a>, and depending on the <code>type</code> attribute, it well exhibit a different function. For instance, <code>&lt;input type="text"...</code> is your basic text input field, where <code>&lt;input type="checkbox"...</code> would be a checkbox. You can make <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">many types of input</a>, below is a quick overview of some interesting ones.</p>
     <dl class="whitepaper tt bb">
       <dt><pre class="prettyprint">&lt;input type="text" value="<span class="text input">content</span>"/&gt;</pre></dt>
       <dd><input type="text" value="content" class="example" oninput="document.querySelector('.text.input').textContent = this.value;"/></dd>
       <dd>The text input is your go-to for basic input. The value attribute holds whatever is typed into the box</dd>
-
-
       <dt><pre class="prettyprint checkbox">&lt;label&gt;&lt;input type="checkbox" value="mmm-hmmm"/&gt;check?&lt;/label&gt;</pre></dt>
       <dd><label><input type="checkbox" checked="checked" value="is checked" onclick="document.querySelector('pre.checkbox').classList.toggle('strike')"/>check?</label></dd>
       <dd>The checkbox is interesting: you set the value, and the value only is sent if the box is checked.</dd>
       <dd>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label">Label Element</a> provides additional functionality.</dd>
-
-
       <dt><pre class="prettyprint">&lt;input type="range" min="0" max="10" step="5" value="<span class="range input">50</span>"/&gt;</pre></dt>
       <dd><input type="range" min="5" max="100" step="5" value="50" oninput="document.querySelector('.range.input').textContent = this.value"/></dd>
-
       <dt><pre class="prettyprint">&lt;input type="color" value="<span class="color input">EE33AA</span>"/&gt;</pre></dt>
       <dd><input type="color" value="#EE33AA" oninput="document.querySelector('.color.input').textContent = this.value;"/></dd>
-
-      <dt><pre class="prettyprint">&lt;select value="<span class="color input">nothin</span>"&gt;
-  &lt;option value="nothin"&gt;default&lt;\option&gt;
-  &lt;option value="better"&gt;another optiont&lt;\option&gt;
-  &lt;option value="medium"&gt;choose this&lt;\option&gt;
-&lt;\select&gt;</pre></dt>
+      <dt><pre class="prettyprint select"><![CDATA[<select value="test">
+  <option value="nothing">default</option>
+  <option value="better">another option</option>
+  <option value="medium">choose this</option>
+</select>]]></pre></dt>
+      <dd>
+        <select oninput="alert('you chose: ' + this.value);">
+          <option value="nothing">default</option>
+          <option value="better">another option</option>
+          <option value="medium">choose this</option>
+        </select>
+      </dd>
     </dl>
-
     <h4>And More!</h4>
-    <p>That is an extremely terse list; there are textareas, radio buttons, and many more types of input to do <strong>exactly what you intend</strong>. Knowing the inputs available and how to use them is an important part of programming.</p>
-
+    <p>That is an extremely terse list; there are textareas, radio buttons, and many more types of input to do <strong>exactly what you intend</strong>. Knowing the inputs available and how to use them is an important part of interactive design and programming. Be sure to know about the <a href="http://www.w3schools.com/tags/ref_eventattributes.asp">form events</a> available—in my examples above I am using the <code>oninput</code> events. You should understand what <code>blur</code> and <code>focus</code> mean, as well as using the form values.</p>
+    <p class="focus t"><strong>Note:</strong> many used <code>onkeyup</code> (or down/press) listeners to do the turkish keyboard. Can you think of a way to use <code>oninput</code> and the <code>value</code> property to do something similar?</p>
   </article>
   <article>
+    <h2>Case Study: Lightbox and <abbr title="JavaScript Object Notation">JSON</abbr></h2>
+    <p class="intro">Plainly spoken from <a href="http://www.json.org">json.org</a>, <q cite="http://www.json.org">JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language</q>.</p>
+    <p>This is a great thing to get a taste of; imagine you can create and add data to a project without having to author the data, or write the <abbr>HTML</abbr> over and over. Many feeds and services all over the internet can be gathered and applied in this manner. Here I have used a concept called <abbr title="Javascript Object Notation With Padding">JSONP</abbr> to gather images from some subreddits and display them for a lightbox.</p>
+    <link rel="stylesheet" href="/css/gallery.css" media="screen" title="no title" charset="utf-8"/>
+    <div class="whitepaper container tt bb">
+      <section class="reddit gallery ______ float left">
+        <h3 class="rag-left whitepaper">Click To Load Gallery</h3>
+      </section>
+      <aside class="____ float left">
+        <pre class="prettyprint">
+          <!-- review views/javascript/examples/json.js Load Reddit-->
+          <hr class="divider" data-after="CSS" data-before="JavaScript"/>
+          <!-- review views/css/gallery.css gallery-->
+        </pre>
+      </aside>
+    </div>
+    <script type="text/javascript">
+      bloc.embed('/javascript/examples/json.js');
+      var galleries = ['architecture', 'cableporn', 'designporn', 'awww', 'DesirePath', ];
+      function loadGal() {
+        var gal = galleries[Math.floor(Math.random() * galleries.length)];
+        document.head.appendChild(document.createElement('script')).src = 'https://www.reddit.com/r/{0}/top.json?sort=top&amp;t=week&amp;jsonp=loadRedditGallery'.format(gal);
+        this.innerHTML = "r/{0}".format(gal);
+        this.removeEventListener('click', loadGal);
+      }
+      document.querySelector('section.gallery > h3').addEventListener('click', loadGal);
+    </script>
+  </article>
+  <article>
+    <h2>Reference and Practice Material</h2>
     <dl>
       <dt>Working with JSON</dt>
-      <dd>Chapter 1 of this Lynda.com video series. <a href="http://www.lynda.com/JavaScript-tutorials/Debugging-JavaScript-objects-your-browser/114901/125766-4.html?srchtrk=index%3a1%0alinktypeid%3a2%0aq%3ajavascript%0apage%3a1%0as%3arelevance%0asa%3atrue%0aproducttypeid%3a2"></a></dd>
+      <dd>This Lynda.com series is all about <abbr>JSON</abbr>. The <a href="http://www.lynda.com/JavaScript-tutorials/What-JSON/114901/125761-4.html">first chapter</a> is a decent intro and also talks about some important tools that can help you use and debug JavaScript and JavaScript Objects.</dd>
+      <dd><a href="https://www.lynda.com/JavaScript-tutorials/Modifying-Array-objects-JavaScript/114901/125767-4.html">Chapter 2</a> talks about looping through and modifying objects—if you are unclear on how and why loops are so important, this will be worth your time.</dd>
+      <dd><strong>Hint:</strong> If you are curious how to make a bigger final project, you might want to watch more videos and get a feel for <abbr title="Javascript object notation with padding">JSONP</abbr>, watch chapter 3 (we will not be using AJAX in this course).</dd>
       <dt>Forms</dt>
       <dd><a href="https://www.lynda.com/CSS-tutorials/Design-Web-Styling-Form-Elements/424047-2.html">Styling Forms</a></dd>
     </dl>

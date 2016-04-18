@@ -291,8 +291,10 @@ form input[type=text], form textarea {
   margin:0.25em 0;
 }
 
-input, textarea {
+input[type=text], textarea, select {
   box-sizing:border-box;
+  border:1px solid rgba(0,0,0,0.25);
+  padding:0.5em;
 }
 
 form textarea {
@@ -409,15 +411,16 @@ dl {
 }
 
 dt {
-  margin:0;
+  margin:1em 0 0.25em;
   font-size:1.5em;
 }
 dd {
   font-size:1.5em;
   line-height:1.25em;
-  padding:0.25em 0 0.25em 0.75em;
-  margin:0.5em 0.125em;
-  border-left:1px solid #AAA;
+  padding:0.75em;
+  margin:0.25em 0.5em;
+  border-left:0.25em solid rgba(0,0,0,0.05);
+  background-color:rgba(0,0,0,0.025);
 }
 
 .glossary details:nth-child(3n + 2) {

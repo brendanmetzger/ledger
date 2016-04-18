@@ -1,0 +1,81 @@
+body.presenting {
+  overflow: hidden;
+}
+
+body.presenting .overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+.overlay {
+  transition:opacity 1s;
+  visibility:hidden;
+  opacity:0;
+  height:100vh;
+  width:100vw;
+  overflow:auto;
+  position:absolute;
+  top:0;
+  left:0;
+  background-color:rgba(0,0,0,0.75);
+  box-shadow: inset 0 0 30vmax rgba(0,0,0,0.75);
+}
+
+.overlay figure {
+  display:block;
+  width:80vw;
+  height:80vh;
+  margin:5vh auto;
+  text-align:center;
+  color:#fff;
+}
+
+.overlay figure img {
+  max-width:80%;
+  max-height:80%;
+  padding:5vw;
+  background-color:#fff;
+  border:1px solid rgba(0,0,0,0.25);
+}
+
+/* gallery */
+.gallery {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  align-items:center;
+}
+.gallery > figure.loading {
+  opacity:0;
+}
+.gallery > figure {
+  overflow:hidden;
+  opacity:1;
+  transition:all 0.75s 0.25s;
+  cursor: pointer;
+  position:relative;
+  height: 14vh;
+  padding: 0.5vh;
+  background-color: rgba(0,0,0,0.05);
+  margin: 0.25vh
+}
+.gallery > figure figcaption {
+  position:absolute;
+  top:0;
+  left:0;
+  opacity:0;
+  transition:opacity 0.5s;
+  font-size:1.25em;
+  word-break:break-all;
+  height:90%;
+  width:90%;
+  padding:5%;
+  background-color:rgba(255,255,255,0.75);
+}
+.gallery > figure:hover figcaption {
+  opacity:1;
+}
+.gallery > figure img {
+  height:100%;
+}
+/* end gallery */

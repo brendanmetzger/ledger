@@ -11,7 +11,7 @@ var some_data = {"message": "here's my number"};
 
 
 // Calling an function with same data
-callMeMaybe({"message": "here's my number"});
+// callMeMaybe({"message": "here's my number"});
 
 /* end jsonp */
 
@@ -48,3 +48,50 @@ function processResults(json) {
 }
 
 /* end practical jsonp */
+
+/* Load Reddit*/
+function loadRedditGallery(json) {
+  var loaded = function () {
+    this.parentNode.classList.remove('loading');
+  };
+  var figure = document.createElement('figure');
+      figure.className = 'loading';
+  var image  = figure.appendChild(document.createElement('img'));
+  var title  = figure.appendChild(document.createElement('figcaption'));
+  var viewer = document.querySelector('.reddit.gallery');
+  json.data.children.forEach(function (item) {
+    console.log(item);
+    if (item.data.preview) {
+      var fig = viewer.appendChild(figure.cloneNode(true));
+      fig.firstChild.src = item.data.preview.images[0].source.url;
+      fig.firstChild.addEventListener('load', loaded)
+      fig.lastChild.innerHTML = item.data.title;
+      fig.addEventListener('click', showFullImage);
+    }
+  });
+}
+
+function showFullImage(evt) {
+  var overlay = getOverlayElement();
+  var figure = overlay.appendChild(this.cloneNode(true));
+}
+
+/* End Load Reddit*/
+
+function getOverlayElement() {
+  var div = document.querySelector('.overlay');
+  if (div == null) {
+    div = document.body.appendChild(document.createElement('div'));
+    div.className = 'overlay';
+    div.addEventListener('click', function (evt) {
+      this.innerHTML = '';
+      document.body.classList.remove('presenting');
+    });
+  }
+  setTimeout(function () {
+    document.body.classList.add('presenting');
+  }, 10);
+
+  div.style.top = document.body.scrollTop + 'px';
+  return div;
+}
