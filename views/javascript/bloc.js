@@ -16,11 +16,13 @@ var cycle = function (index, limit) {
 /* Quick way to create an SVG element with and a prototypal method
  * for creating children elements. (c) brendan.metzger@gmail.com
  */
-var SVG = function (node, options) {
-  options['xmlns:xlink'] = 'http://www.w3.org/1999/xlink';
-  options.xmlns = 'http://www.w3.org/2000/svg';
-  options.version = 1.1;
-  this.element = this.createElement('svg', options, node);
+var SVG = function (node, width, height) {
+  this.element = this.createElement('svg', {
+    'xmlns:xlink': 'http://www.w3.org/1999/xlink',
+    'xmlns': 'http://www.w3.org/2000/svg',
+    'version': 1.1,
+    'viewBox': '0 0 ' + width + ' ' + height
+  }, node);
 };
 
 SVG.prototype.createElement = function(name, opt, parent) {
