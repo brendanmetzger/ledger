@@ -23,6 +23,7 @@ var SVG = function (node, width, height) {
     'version': 1.1,
     'viewBox': '0 0 ' + width + ' ' + height
   }, node);
+  this.point = this.element.createSVGPoint();
 };
 
 SVG.prototype.createElement = function(name, opt, parent) {
@@ -30,6 +31,12 @@ SVG.prototype.createElement = function(name, opt, parent) {
   for (var key in opt) node.setAttribute(key, opt[key]);
   return parent === null ? node : (parent || this.element).appendChild(node);
 };
+
+// Get point in global SVG space
+SVG.prototype.cursorPoint = function(evt){
+  this.point.x = evt.clientX; this.point.y = evt.clientY;
+  return this.point.matrixTransform(this.element.getScreenCTM().inverse());
+}
 
 /* end SVG */
 
