@@ -45,7 +45,23 @@
         <!-- review views/javascript/examples/draw.js simple drawing-->
       </pre>
     </section>
-
+  </article>
+  <article>
+    <h2>Regular Expressions</h2>
+    <blockquote cite="https://en.wikipedia.org/wiki/Regular_expression">
+      <p>In theoretical computer science and formal language theory, a regular expression is a sequence of characters that define a search pattern, mainly for use in pattern matching with strings, or string matching, i.e. <q>find and replace</q>-like operations. The concept arose in the 1950s, when the American mathematician Stephen Kleene formalized the description of a regular language, and came into common use with the Unix text processing utilities ed, an editor, and grep, a filter.</p>
+    </blockquote>
+    <p>While regular expressions are truly mind-boggling at times, if you plan on making your living by typing abstract symbols into a computer, then you might as well introduce yourself sooner than later. They are a component of many programming languages, and they syntax and conventions are very consistent. Truly understanding what regular expressions may take years, but you will earn those years back with the amount of time they eventually save you. I will show an example today, but leave the exploration up to you if you find it something meaningful you want to pursue. Here is a <a href="http://regexone.com/">tutorial</a>, and here is the <abbr>MDN</abbr> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">documentation</a> concerning JavaScript’s implementation.</p>
+    <section class="container whitepaper t">
+      <aside class="______ float left note">
+        <h5>Lamenting keyboard events</h5>
+        <p>Something you see in a lot of tutorials is mapping the keyup/down events with their charcode. I've never found this delightful or particularly useful in the real world. Imagine you want to prevent a user from typing the Q key, you might go about it by doing something like the following.</p>
+        <p>Now what if you want to prevent the X key as well? What about all vowels? Now that this problem is presenting itself, can you think of a better way?</p>
+      </aside>
+      <pre class="prettyprint ____ float left">
+        <!-- review views/javascript/examples/regex.js keyboard-->
+      </pre>
+    </section>
   </article>
   <script type="text/javascript">bloc.embed('/javascript/examples/draw.js');</script>
 </div>
