@@ -11,6 +11,26 @@ var cycle = function (index, limit) {
   }
 };
 
+/* SVG */
+
+/* Quick way to create an SVG element with and a prototypal method
+ * for creating children elements. (c) brendan.metzger@gmail.com
+ */
+var SVG = function (node, options) {
+  options['xmlns:xlink'] = 'http://www.w3.org/1999/xlink';
+  options.xmlns = 'http://www.w3.org/2000/svg';
+  options.version = 1.1;
+  this.element = this.createElement('svg', options, node);
+};
+
+SVG.prototype.createElement = function(name, opt, parent) {
+  var node = document.createElementNS('http://www.w3.org/2000/svg', name);
+  for (var key in opt) node.setAttribute(key, opt[key]);
+  return parent === null ? node : (parent || this.element).appendChild(node);
+};
+
+/* end SVG */
+
 function JSONP(src, callback) {
   var key = 'JSONP_cb_'+Date.now().toString(36);
   window[key] = callback;
