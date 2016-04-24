@@ -4,6 +4,9 @@ code, pre, .code {
   font-family:Inconsolata, 'Courier New', monospace;
   white-space:pre;
 }
+.notate {
+  position:relative;
+}
 
 code sup {
   color:#333;
