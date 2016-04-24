@@ -14,25 +14,32 @@ timeouts, 3rd party Libraries (API’s).</p>
 
   <article>
     <h2>Intervals and Timeouts</h2>
-    <p>Window Timers are a mechanism in JavaScript that allow you to delay or repeat the application of bits of code. Conceptually, it shouldn't bend the mind too much to learn that these efforts require the use of <em>callbacks</em>, that is, functions passed to another function, with the other function determining <em>when to apply the callback</em>. We know all about these from Event Listeners, it’s the very same principle.</p>
-
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout">Window Timers</a> are a mechanism in JavaScript that allow you to delay or repeat the application of bits of code. Conceptually, it shouldn't bend the mind too much to learn that these efforts require the use of <em>callbacks</em>, that is, functions passed to another function, with the other function determining <em>when to apply the callback</em>. We know all about these from Event Listeners, it’s the very same principle.</p>
     <section class="whitepaper container t b">
-      <aside class="______ note float left">
+      <aside class="_____ note float left">
         <h5>Setting a timeout.</h5>
         <p>The button below has an event listener applied, and that listener will set the timeout you see to the right. When clicked, the button will set two timeouts. The first will display an alert message in 1 second, the second will reset the html to a the initial state before the click.</p>
-        <p><strong>Note:</strong> at this point, you should have noted that timeouts are set in milliseconds, so 1000 milliseconds is equal to 1 second.</p>
+        <p><strong>Note:</strong> timeouts are set in milliseconds, so 1000 milliseconds is equal to 1 second.</p>
         <button type="button" onclick="timers.basic(this)">I am slow..</button>
       </aside>
-      <pre class="prettyprint ____ float left">
+      <pre class="prettyprint _____ float left">
         <!-- review views/javascript/examples/timing.js basic timeout -->
       </pre>
       <hr class="clear ruled t b"/>
-      <aside class="______ note float left">
+      <aside class="_____ note float left">
         <h5>Setting an interval.</h5>
-        <p>The most obvious analogy one can draw to an interval is a clock. So obvious in fact, that we get lost in the nature of what an <em>intervals</em> explain concepts in mathematics, music, and cartesian space. That is, they give means to understand phenomena that occurs on a continuum through finite analysis. This can take a lifetime to understand the beauty exhibit. Any explanation of color, time and distance cannot avoid such analysis.</p>
-        <p id="color" class="notate">The script adjacent employs an interval combined with a transition in css. Recall our modulus operator can explain an interval. The <abbr title="Cascading Stylesheet">CSS</abbr> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">hsl color</a> property describes color value along a <a href="https://en.wikipedia.org/wiki/HSL_and_HSV">cylindrical coordinate</a>. Circles, loops, timers, color: <strong>they can all be merged conceptually.</strong></p>
+        <p>The most obvious analogy one can draw to an interval is a clock. So obvious in fact, that we get lost in the nature of what an <em>intervals</em> explain concepts in mathematics, music, and cartesian space. They give means to understand phenomena that occurs on a continuum through finite analysis, and any explanation of color, time and distance cannot avoid such analysis.</p>
+        <p id="color" class="notate">The script adjacent employs an interval combined with a transition in css. Recall our modulus operator can explain an interval. The <abbr title="Cascading Stylesheet">CSS</abbr> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">hsl color</a> property describes color value along a <a href="https://en.wikipedia.org/wiki/HSL_and_HSV">cylindrical coordinate</a>. Circles, loops, timers, color: <strong>they can all be merged conceptually as intervals.</strong></p>
       </aside>
-      <pre class="prettyprint ____ float left">
+      <pre class="prettyprint _____ float left">
+        <!-- review views/javascript/examples/timing.js basic interval -->
+      </pre>
+      <hr class="clear ruled t b"/>
+      <aside class="_____ note float left">
+        <h5>Clearing timeouts and intervals.</h5>
+        <p>When applying a <code>setTimeout</code> or <code>setInterval</code>, you must be concerned with one other facet, and that is how to stop them. </p>
+      </aside>
+      <pre class="prettyprint _____ float left">
         <!-- review views/javascript/examples/timing.js basic interval -->
       </pre>
     </section>
@@ -45,5 +52,10 @@ timeouts, 3rd party Libraries (API’s).</p>
   </article>
 
   <!-- bubble-capture.html -->
-  <article>Event Minutia</article>
+  <article>
+    <h2>Bubbling and Delegation</h2>
+    <p class="intro">Now that we are well along in our semester, some of you may find it useful to understand event bubbling and more importantly, a concept known as <strong>event delegation</strong>. Even if not immediatly relevant, event delegation is a great introduction to the concept of <a href="https://en.wikipedia.org/wiki/Design_pattern">design patterns</a>.</p>
+    <p>Paraphrased, a design pattern is <q>the reusable form of a solution to a design problem.</q> Often in design, and very relevantly, in programming, you are faced with new challenges that all start with a familiar set of premises. One such premise is you have a visual matrix, or grid of elements that you would like to interact with.</p>
+    <p>http://javascript.info/tutorial/event-delegation</p>
+  </article>
 </div>
