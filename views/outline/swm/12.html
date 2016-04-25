@@ -3,10 +3,8 @@
     <!-- insert views/outline/_/crumbs.html -->
     <h1 class="massive">Routine</h1>
     <p class="intro">Event Minutia, Introduction to timing with intervals and
-timeouts, 3rd party Libraries (API’s).</p>
+timeouts, Tarking 3rd party Libraries (API’s).</p>
   </header>
-
-
   <article>
     <h2>Review</h2>
     <p>Last week we looked at input elements, finished our lightbox case-study and covered <abbr title="JavaScript Object Notation with Padding">JSONp</abbr> as a means to embedding data on your page.</p>
@@ -14,7 +12,7 @@ timeouts, 3rd party Libraries (API’s).</p>
 
   <article>
     <h2>Intervals and Timeouts</h2>
-    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout">Window Timers</a> are a mechanism in JavaScript that allow you to delay or repeat the application of bits of code. Conceptually, it shouldn't bend the mind too much to learn that these efforts require the use of <em>callbacks</em>, that is, functions passed to another function, with the other function determining <em>when to apply the callback</em>. We know all about these from Event Listeners, it’s the very same principle.</p>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout">Window Timers</a> are a mechanism in JavaScript that allow you to delay or repeat the application of bits of code. Conceptually, it shouldn't bend the mind too much to learn that these efforts require the use of <em>callbacks</em>, that is, functions passed to another function, with the other function determining <em>when to apply the callback</em>. We understand the motivation behind this from our experience with <strong>Event Listeners</strong>; they employ the same principles of <a href="https://en.wikipedia.org/wiki/Asynchrony_(computer_programming)">asynchrony</a>.</p>
     <section class="whitepaper container t b">
       <aside class="_____ note float left">
         <h5>Setting a timeout.</h5>
@@ -37,16 +35,21 @@ timeouts, 3rd party Libraries (API’s).</p>
       <hr class="clear ruled t b"/>
       <aside class="_____ note float left">
         <h5>Clearing timeouts and intervals.</h5>
-        <p>When applying a <code>setTimeout</code> or <code>setInterval</code>, you must be concerned with one other facet, and that is how to stop them. </p>
+        <p>When applying a <code>setTimeout</code> or <code>setInterval</code>, you must be concerned with one other facet, and that is how to stop them. Using the <em>focus</em> and <em>blur</em> events of the <code>textarea</code> below you can see a simple typewrite effect in action. When calling setTimeout, it will return an integer representing the timeou ID. You can pass that id to a function called <code>clearTimeout</code> and it will cancel your callback from executing.</p>
+        <textarea name="limerick" class="code" style="width:100%;height:10em;font-size:2em;line-height:1.25;border:1px solid rgba(0,0,0,0.1)" spellcheck="false">
+          <!-- preview views/_draft/limerick.txt 1..100 -->
+        </textarea>
+        <p>You may notice some new stuff: I introduce some string functions that let you slice apart a string, as well as a cryptic looking <em>regular expression</em> that I use to give an extra pause whenever the last word typed is capitalized or a non-word character. Simple tricks like this can be used to give programs <q>human</q> feel.</p>
       </aside>
       <pre class="prettyprint _____ float left">
-        <!-- review views/javascript/examples/timing.js basic interval -->
+        <!-- review views/javascript/examples/timing.js clearing timers -->
       </pre>
     </section>
     <script type="text/javascript">
       bloc.embed('/javascript/examples/timing.js');
       bloc.init('intervals', function() {
         timers.interval();
+        timers.typewriter();
       });
     </script>
   </article>
@@ -55,7 +58,7 @@ timeouts, 3rd party Libraries (API’s).</p>
   <article>
     <h2>Bubbling and Delegation</h2>
     <p class="intro">Now that we are well along in our semester, some of you may find it useful to understand event bubbling and more importantly, a concept known as <strong>event delegation</strong>. Even if not immediatly relevant, event delegation is a great introduction to the concept of <a href="https://en.wikipedia.org/wiki/Design_pattern">design patterns</a>.</p>
-    <p>Paraphrased, a design pattern is <q>the reusable form of a solution to a design problem.</q> Often in design, and very relevantly, in programming, you are faced with new challenges that all start with a familiar set of premises. One such premise is you have a visual matrix, or grid of elements that you would like to interact with.</p>
-    <p>http://javascript.info/tutorial/event-delegation</p>
+    <p>Paraphrased, a design pattern is <q>the reusable form of a solution to a design problem.</q> Often when engaged with large-scale design and programming projects, you can break big challenges into smaller, familiar sets of premises. One such premise in interactive design is the presentation visual matrix, or grid of elements that you would like to interact with, such as a gallery or sequencing/matching game.</p>
+    <p>Here is <a href="http://javascript.info/tutorial/event-delegation">a tutorial on event delegation</a>.</p>
   </article>
 </div>

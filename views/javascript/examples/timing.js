@@ -17,6 +17,27 @@ setTimeout(function () {
 },
 typewriter: function () {
 /* clearing timers */
+var elem = document.querySelector('textarea[name="limerick"]');
+var tID  = 0;
+var size = 0;
+
+// store a version of the value, set to blank
+elem.dataset.text = elem.value;
+elem.value = '';
+
+function tap() {
+  if (size > elem.dataset.text.length) size = 0;
+  elem.value = elem.dataset.text.substring(0, size++);
+  var delay = /[A-Z\W]$/.test(elem.value) ? 2 : Math.random();
+  tID = setTimeout(tap, 150 * delay);
+}
+
+function stop() {
+  clearTimeout(tID);
+}
+
+elem.addEventListener('focus', tap);
+elem.addEventListener('blur', stop)
 
 /* end clearing timers */
 },

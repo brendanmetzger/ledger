@@ -1,11 +1,19 @@
 /*@import url(https://fonts.googleapis.com/css?family=Inconsolata);*/
 
-code, pre, .code {
+code, pre, .code, .notate:after {
   font-family:Inconsolata, 'Courier New', monospace;
   white-space:pre;
 }
-.notate {
-  position:relative;
+
+.notate:after {
+  background-color:rgba(255,255,255,0.75);
+  padding:1em;
+  font-size:0.75em;
+  word-break:break-all;
+  content: attr(style);
+  display:block;
+  margin:1em 0 0;
+  white-space:pre-line;
 }
 
 code sup {

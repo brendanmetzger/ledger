@@ -1,0 +1,7 @@
+A programming genius called Sewter
+Built a limerick-writing computer.
+The metre was fine
+and the rhymes quite divine
+But for some reason the damn thing always
+got the last line wrong.
+		D Gutteridge, Chesterfield
