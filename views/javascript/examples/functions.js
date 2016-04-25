@@ -124,6 +124,39 @@ try {
 /* end scopes */
 
 
+/* pure vs impure */
+
+// a pure function
+function square(x) {
+  return x * x;
+}
+
+// an impure function
+var a;
+function multiply(x) {
+  return x * a;
+}
+
+
+/* end pure vs impure */
+
+/* recursion */
+
+function factorial(n) {
+  return n === 0 ? 1 : n * factorial(n - 1);
+};
+
+/* end recursion */
+
+/* map reduce */
+function even(n) {
+  return n % 2 === 0;
+}
+[1,2,3,4,5].map(square).filter(even);
+// returns [4,16]
+
+/* end map reduce */
+
 /* exercises */
 var exercise = {
   triangle: function (size) {

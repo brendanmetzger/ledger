@@ -1,0 +1,50 @@
+<article>
+  <h2>Bubbling and Delegation</h2>
+  <p class="intro">Now that we are well along in our semester, some of you may find it useful to understand event bubbling and more importantly, a concept known as <strong>event delegation</strong>. Even if not immediatly relevant, event delegation is a great introduction to the concept of <a href="https://en.wikipedia.org/wiki/Design_pattern">design patterns</a>.</p>
+  <p>Paraphrased, a design pattern is <q>the reusable form of a solution to a design problem.</q> Often when engaged with large-scale design and programming projects, you can break big challenges into smaller, familiar sets of premises. One such premise in interactive design is the presentation visual matrix, or grid of elements that you would like to interact with, such as a gallery or sequencing/matching game.</p>
+  <div class="dropcap indented three columns tt bb">
+    <h4 class="t">Bubbling vs. Capturing</h4>
+    <p>If you have been keeping up with the documentation on Event Listeners, you will have undoubtetly run across the notion of event <q>bubbling</q>. By now, because I have been an agressive proponent of <code>addEventListener</code> over all other techniques, I can begin to explain the concept. As we know, elements are children of other elements, and <em>any</em> element can have an event listener applied (or many event listeners for that matter). At some point, it becomes a concern where a parent element and a child element both have an event listener applied, and we need to know which will fire first—programming is anything but arbitrary. When an event is <em>bubbled</em>, it applies to the innermost element first, ending at the outermost element last, and <em>capturing</em> is the reverse of this. In practice, you rarely ever specify capturing, as by default, events are set to bubble. As long as that is understood, one can begin to do interesting things.</p>
+    <p><em>Event delegation</em> is one such thing you can do with the event bubble. Going back to our gallery/gameboard example, if we were careful about our structure, we group all of our images in a containing element. From here, we can assign <strong>one listener</strong> on the parent node, and executing that event anywhere on that element, it will tell us which child element was the <em>target</em> of the interaction (via bubbling). Understand, the event will bubble up to the <code>parentNode</code> eventually, but it will tell us about the elements on the way there. Important to think about because we know that you can (and should) add new element nodes via JavaScript, if you add them to a parent container that has a delegated event listener set up, you don't have to add new listeners to every new element as created—both convenient, and self-optimizing. For the curious, here is <a href="http://javascript.info/tutorial/event-delegation">a tutorial on event delegation</a>.</p>
+  </div>
+  <section class="whitepaper container">
+    <aside class="_____ float left note">
+      <h5>Automatic Event Listener Registration</h5>
+      <p>The div below has an event listener assigned. Clicking on any element will duplicate itself, and assign the <code>textContent</code> of its clone to its own value doubled. Largely, this is only to illustrate the point that every element can respond to events, event immediately after creation.</p>
+      <p>Click on the white '2' element, and any subsequent elements to get a gist of what is happening.</p>
+      <hr class="ruled t b"/>
+      <div class="delegate"><span>2</span></div>
+    </aside>
+    <pre class="prettyprint _____ float left">
+      <!-- review views/javascript/examples/bubbling.js event delegation -->
+    </pre>
+    <script type="text/javascript">
+      bloc.embed('/javascript/examples/bubbling.js');
+      bloc.init('bubbler', function() {
+        delegateClicks();
+      });
+    </script>
+    <style media="screen">
+      div.delegate {
+        background-color: rgba(0,0,0,0.05);
+        border:1px solid rgba(0,0,0,0.1);
+        padding:1em;
+        display:flex;
+        flex-wrap:wrap;
+      }
+      div.delegate span:hover {
+        border-color:rgba(0,0,0,0.25);
+      }
+      div.delegate span {
+        transition:border-color 0.5s;
+        border:2px solid rgba(0,0,0,0.05);
+        cursor:pointer;
+        text-align:center;
+        flex: 1 0 10%;
+        margin:1%;
+        padding:1em;
+        background-color:rgb(168, 235, 240);
+      }
+    </style>
+  </section>
+</article>
