@@ -2,25 +2,45 @@
   <header>
     <!-- insert views/outline/_/crumbs.html -->
     <h1 class="massive">Working Title</h1>
-    <p class="intro">More <abbr title="Application Programming Interface">API</abbr>s: Saving program state with <code>localStorage</code> DOM manipulation, drawing, programming, and other areas. Closure.</p>
+    <p class="intro">More <abbr title="Application Programming Interface">API</abbr>s:  DOM manipulation, drawing, programming, and other areas.</p>
   </header>
+  <article>
+    <h2>Review</h2>
+  </article>
   <article>
     <h2>Frameworks</h2>
     <p>Using frameworks falls into some distinct patterns—I realize this may be insulting, but it’s really quite accurate.</p>
-    <ol>
+    <ol class="tt bb">
       <li>You don’t have time</li>
       <li>You don’t know how</li>
       <li>Probably Both</li>
     </ol>
-    <p>The truth is that there is no shame in this, oftent we are just too proud to admit we don’t know everything (oddly, we have no trouble admiting we don’t have the time [though that’s often less true]). There are always problems that are difficult to solve and others have already solved in some fashion. Given plenty of experience and time, frameworks are nothing more than convenient; but without those two factors, they are quite necessary.</p>
-    <p>There was a point in JavaScript development where different browsers implemented the <abbr title="document object model">DOM</abbr> differently—it was so ugly that you had either had to spend all your time fixing bugs or use a framework that did it for you. One such framework called jQuery, and it still lives on, despite arguments springing up that it it unnecessary. And this is a caveat I'd mention; when a framework prevents you from expanding your perspective, it is an awkward tool. Like a crutch that alleviates an ailment, it won't provide an advantage over someone who can function without one.</p>
-    <p>This is an important point I make: we should use frameworks often, and enjoy using them, but take to heart, in a best case world, you write your own code. Take a humble moment every now and then to remember that and let it push your design and your curiosity forward.</p>
+    <div class="three columns">
+      <p>The truth is that there is no shame in this, often we are just too proud to admit we don’t know everything (oddly, we have no trouble admitting we don’t have the time [though that’s often less true]). There are always problems that are difficult to solve and others with the time have gone to great length to solve already. Given plenty of experience and time, frameworks are nothing more than convenient; but without those two factors, they can be necessary.</p>
+      <p>There was a point in JavaScript development where different browsers implemented the <abbr title="document object model">DOM</abbr> differently—it was so ugly that you had either had to spend all your time fixing bugs or use a framework that fixed the bugs for you to give a consistent <abbr>api</abbr>. Long ago, in non-<abbr title="internet explorer">IE</abbr> to bind an event listener you would use our familiar <code>addEventListener</code>, but in Internet Explorer, you would use <code>addEvent</code>. The spec agreed it should be <code>addEventListener</code>, but marketshare allowed some bigger players to do whatever they wanted.</p>
+      <p>So frameworks ironed this out for us—we didn't have to write <a href="https://en.wikipedia.org/wiki/Spaghetti_code">spaghetti code</a> to grapple with inconsistencies. One such framework, say jQuery, might give us a new method called <code>on</code> that did all the event lister stuff for us,and more—it was a windfall at the time. Today, much of this is a non-issue, we can write nice clean, cross-browser code, but jQuery lives on because it has become very familiar.</p>
+      <p>And this is a caveat I'd mention now; when a framework prevents you from expanding your perspective, it is an awkward tool. Like a crutch that alleviates an ailment, it won't provide an advantage over someone who can function without one. I was an early proponent and enthusiast of any tool that makes us better, mind, there is a large gulf between <q>better</q> and <q>adequate</q> when it comes to proficiency.</p>
+      <p>This is an important point I make: we should use frameworks often, and enjoy using them, but take to heart, in a best case world, you write your own code. Take a humble moment every now and then to remember that and let it push your design and your curiosity forward.</p>
+    </div>
+    <h3 class="tt">A review</h3>
+    <p>The <a href="https://en.wikipedia.org/wiki/List_of_JavaScript_libraries">list of JS frameworks</a> is long; I will boil down some interesting ones that I think have lasting value and indicate why.</p>
+    <dl>
+      <dt><a href="http://vanilla-js.com/">Vanilla JS</a></dt>
+      <dd>A joke site used to talk about the state of the current language and that modern techniques available are actually more terse and straightforward, and efficient than the most popular frameworks.</dd>
+      <dt><a href="http://jquery.com/">jQuery</a></dt>
+      <dd>Everybody knows about this... with jQuery you go shopping for every plugin and interface widget ever made: light-boxes, carousels, parallax effects, oh my!</dd>
+      <dt><a href="http://facebook.github.io/react/">React</a></dt>
+      <dd>Lots of people are talking about this. That's all I can say, as I will shamefully admit, I can’t help but find it incredibly intimidating and generally, <a href="https://twitter.com/thomasfuchs/status/708675139253174273">overdoing it</a>.</dd>
+      <dt><a href="http://snapsvg.io/">Snap <abbr>SVG</abbr></a></dt>
+      <dd>A vector drawing framework (formerly called Raphaël). Scalable vector graphics are fun, but I daresay, a bit intimidating. This is a good toe-dip into that pool.</dd>
+      <dt><a href="https://d3js.org/">D3</a></dt>
+      <dd>A data-visualization library. Absolutely adored by data journalists, map geeks and statistics nerds.</dd>
+      <dt><a href="http://ramdajs.com/0.21.0/">Ramda</a></dt>
+      <dd>Just because... This is a <em>functional</em> library, that allows you to program in an entirely new style. It's part genius, bewildering, sometimes ridiculous and entirely fascinating.</dd>
+    </dl>
     <!--
     a potential svg project/processing
     https://www.khanacademy.org/computer-programming/how-to-read-documentation/1239335119
     -->
-  </article>
-  <article>
-    <h2>Review</h2>
   </article>
 </div>
