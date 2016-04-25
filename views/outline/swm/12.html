@@ -3,7 +3,7 @@
     <!-- insert views/outline/_/crumbs.html -->
     <h1 class="massive">Routine</h1>
     <p class="intro">Event Minutia, Introduction to timing with intervals and
-timeouts, Tarking 3rd party Libraries (API’s).</p>
+timeouts, Intro to 3rd party Libraries (API’s).</p>
   </header>
   <article>
     <h2>Review</h2>
@@ -59,6 +59,12 @@ timeouts, Tarking 3rd party Libraries (API’s).</p>
     <h2>Bubbling and Delegation</h2>
     <p class="intro">Now that we are well along in our semester, some of you may find it useful to understand event bubbling and more importantly, a concept known as <strong>event delegation</strong>. Even if not immediatly relevant, event delegation is a great introduction to the concept of <a href="https://en.wikipedia.org/wiki/Design_pattern">design patterns</a>.</p>
     <p>Paraphrased, a design pattern is <q>the reusable form of a solution to a design problem.</q> Often when engaged with large-scale design and programming projects, you can break big challenges into smaller, familiar sets of premises. One such premise in interactive design is the presentation visual matrix, or grid of elements that you would like to interact with, such as a gallery or sequencing/matching game.</p>
+
+    <div class="dropcap indented three columns tt bb">
+      <h4 class="t">Bubbling vs. Capturing</h4>
+      <p>If you have been keeping up with the documentation on Event Listeners, you will have undoubtetly run across the notion of event <q>bubbling</q>. By now, because I have been an agressive proponent of <code>addEventListener</code> over all other techniques, I can begin to explain the concept. As we know, elements are children of other elements, and <em>any</em> element can have an event listener applied (or many event listeners for that matter). At some point, it becomes a concern where a parent element and a child element both have an event listener applied, and we need to know which will fire first—programming is anything but arbitrary. When an event is <em>bubbled</em>, it applies to the innermost element first, ending at the outermost element last, and <em>capturing</em> is the reverse of this. In practice, you rarely never specify capturing, as by default, events bubble. As long as that is understood, one can begin to do interesting things.</p>
+      <p><em>Event delegation</em> is one such thing you can do with the event bubble. Going back to our gallery example, if we were careful about our structure, we should probably have put our images in a container.</p>
+    </div>
     <p>Here is <a href="http://javascript.info/tutorial/event-delegation">a tutorial on event delegation</a>.</p>
   </article>
 </div>
