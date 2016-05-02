@@ -37,18 +37,4 @@ class Lecture extends \bloc\controller
     return $view->render($this());
   }
 
-  protected function GETquiz(Admin $instructor, $type = '36-1420')
-  {
-    $operator = $type == '36-1420' ? '<' : '>=';
-    $data = new \bloc\dom\Document("data/questions", ['validateOnParse' => false]);
-    $questions = iterator_to_array($data->find("//question[@level {$operator} 3 and @priority = 1]")->map(function ($item) {
-      return ['question' => $item];
-    }));
-    shuffle($questions);
-    $this->questions = $questions;
-    $view = new View(self::layout);
-    $view->content = 'views/layouts/quiz.html';
-    return $view->render($this());
-  }
-
 }
