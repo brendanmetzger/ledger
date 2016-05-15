@@ -130,7 +130,7 @@ class Task extends \bloc\controller
   public function CLIlines()
   {
     $doc     = new Document("data/SP16");
-    $notes = (new \DomXpath($doc))->query("//student/practice");
+    $notes = (new \DomXpath($doc))->query("//student/project");
 
     foreach ($notes as $note) {
       $note->nodeValue = base64_encode($note->nodeValue);
@@ -195,6 +195,7 @@ class Task extends \bloc\controller
 
     $this->save($doc);
   }
+
 
   public function CLIassignment()
   {

@@ -162,12 +162,11 @@ namespace models;
         $score = $map[$evaluation]->score;
         if (($evaluation === 'quiz' || $evaluation === 'project') && $total > $criterion['@index']) {
           $stats = $this->collective($this->student->section, $criterion);
-          if ($score > 0) {
+          if ($score > 0 && $stats['sd'] > 0) {
             $z = ($score - $stats['mean']) / $stats['sd'];
             $score = round($stats['wmean'] + ($z * $stats['sd']), 2);
-            $stats['standard'] = $score * 100;
           }
-
+          $stats['standard'] = $score * 100;
           $map['stats'] = $stats;
 
         }

@@ -25,6 +25,16 @@ namespace models;
       return explode('+', $context['@axes']);
     }
 
+    public function setProject(\DOMElement $context, $value)
+    {
+      $context->nodeValue = base64_encode($value);
+    }
+
+    public function __toString()
+    {
+      return base64_decode($this->context->nodeValue);
+    }
+
     public function getInputs(\DOMElement $context)
     {
       return (new \bloc\types\Dictionary($this->axes))->map(function ($axis, $idx) {

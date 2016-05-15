@@ -149,6 +149,16 @@
   <section>
     <h3>Projects</h3>
     <table class="full chart">
+      <caption class="rag-right">
+        <details class="whitepaper">
+          <summary>Grading Procedure</summary>
+          <p class="pad">All projects are evaluated starting from <q>average</q> and then curved. That is, most students scores will hover around 50% and then curved to give a letter grade. To fairly assess effort, talent, aesthetic and concept between a diverse group of interests I look for things you did +/- better than average on a variety of axes ranging from aesthetic to presentation to research.</p>
+          <ul>
+            <!-- iterate student:projects:inputs -->
+            <li>[$key]</li>
+          </ul>
+        </details>
+      </caption>
       <colgroup>
         <col span="1" style="width:1em;"/>
       </colgroup>
@@ -165,7 +175,7 @@
       </thead>
       <tbody class="vertical">
         <!-- iterate student:projects:list -->
-        <tr class="[$project:status]" title="[$project:letter]">
+        <tr class="[$project:status]">
           <td>[$project:criterion:@index]</td>
           <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time></td>
           <td>
