@@ -7,11 +7,15 @@
  *
  */
 
+try {
+  var connect = require('connect');
+  var serveStatic = require('serve-static');
+  connect().use(serveStatic(__dirname)).listen(8080, function(){
+      console.log('Server running on 8080...');
+  });
 
-var Connect = require('connect');
-var Server  = require('serve-static');
-var port    = 8000;
-
-Connect().use(Server(__dirname)).listen(port);
-
-console.log('Go to browser and type localhost:'+port+'/ in the address bar'); 
+} catch (e) {
+  if (e.code === 'MODULE_NOT_FOUND') {
+    console.error('You need to install some modules. Type "npm install connect serve-static"');
+  }
+}

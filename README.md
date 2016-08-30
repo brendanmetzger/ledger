@@ -4,7 +4,7 @@ A way to Organize my teaching materials, my students, and my assignments.
 ## todo
 - [ ] add date to emails
 - [x] student preview for practice notes
-- [ ] improve way to take attendance
+- [ ] improve way to take attendance (attendance is registered by a quick quiz)
 - [x] crunch notes into 1 line before saving
 - [ ] make a checklist for things to mark off
   - deprecated techniques
@@ -26,4 +26,6 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] request that examples/help be done as a gist/codepen/fiddle
 - [ ] Take screenshots of assignments (xvfb-run --server-args="-screen 0, 1440x900x24" cutycapt --url=http://url --out=img.png)
 - [ ] Make Screencast for workflow
-- [ ] Make tutorial for node/js localhost server
+- [ ] Make tutorial for node/js localhost server, php, python.
+- [ ] Do several studies on algorithmic art.
+- [ ] Implement web-socket interface that reacts to people in course
