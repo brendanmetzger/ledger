@@ -5,7 +5,7 @@ use \bloc\view\Renderer as Render;
 trait config {
   public function __construct($request)
   {
-    \models\Data::$DB = 'SP16';
+    \models\Data::$DB = 'FA16';
     \bloc\view::addRenderer('before', Render::PARTIAL());
     \bloc\view::addRenderer('after', Render::HTML());
     \bloc\view::addRenderer('after', Render::PREVIEWS());
@@ -71,7 +71,7 @@ trait config {
     }
   }
 
-  public function GETError($message, $code)
+  public function GETError($message, $code = 404)
   {
     $this->message = parent::GETerror($message, $code);
     $view = new \bloc\View(self::layout);

@@ -89,6 +89,7 @@ namespace models;
               }
 
               $text = (string)$view->render([
+				'id' => $name,
                 'student' => $student,
                 'title' => $title,
                 'datapath' => substr($path, 1, -6),
