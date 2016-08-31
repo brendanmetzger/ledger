@@ -1,7 +1,7 @@
 /*@import url(https://fonts.googleapis.com/css?family=Inconsolata);*/
 
-code, pre, .code, .notate:after {
-  font-family:Inconsolata, 'Courier New', monospace;
+code, pre, .code, .notate:after, code *, .code *{
+  font-family:'OCR A Tribute W01 Light','UniversNW01-430TwRegula', 'Courier New', monospace;
   white-space:pre;
 }
 

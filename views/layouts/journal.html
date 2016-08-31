@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="/css/themes/journal.css"/>
     <link rel="stylesheet" href="/css/grades.css"/>
     <link rel="stylesheet" href="/css/code.css"/>
+    <link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/458eb080-e11e-4976-9309-44ecbcfd039a.css"/>
+    <style>
+    h1,h2,h3 {
+      font-family:'Elephant W00';
+    }
+    body, p {
+      font-family:'NewsGothicBTW01-Light';
+    }
+    h1.massive {
+      font-family:'Dr Carbfred W01 Regular';padding:1vmax 0 0 0.5em;
+    }
+    </style>
     <script type="text/javascript">
       // <![CDATA[
       // Autoload scripts
@@ -32,15 +44,11 @@
       }(document.createElement('script'),{},[],[],Node.prototype.appendChild));
 
       var mobile = (/mobile/i).test(navigator.userAgent);
-      var WebFontConfig = {
-        google: { families: [ 'Inconsolata:400,700:latin' ] }
-      };
 
 
       // Embed script for site
       bloc.embed('/javascript/bloc.js');
       bloc.embed('/javascript/vendor/prettify.js');
-      bloc.embed('https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js', true);
       bloc.init('prettyprint', function () {
         prettyPrint();
       });

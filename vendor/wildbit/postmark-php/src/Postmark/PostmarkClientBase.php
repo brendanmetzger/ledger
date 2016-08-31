@@ -26,7 +26,7 @@ abstract class PostmarkClientBase {
 	public static $BASE_URL = "https://api.postmarkapp.com";
 
 	/**
-	* VERIFY_SSL is defaulted to "true". 
+	* VERIFY_SSL is defaulted to "true".
 	*
 	* In some PHP configurations, SSL/TLS certificates cannot be verified.
 	* Rather than disabling SSL/TLS entirely in these circumstances, you may
@@ -35,7 +35,7 @@ abstract class PostmarkClientBase {
 	* but the risk is that if your connection has been compromised, your application could
 	* be subject to a Man-in-the-middle attack. However, this is still a better outcome
 	* than using no encryption at all.
-	* 
+	*
 	* If possible, you should try to resolve your PHP install's certificate issues as outline here:
 	* https://github.com/wildbit/postmark-php/wiki/SSL%20Errors%20on%20Windows
 	*/
@@ -67,7 +67,7 @@ abstract class PostmarkClientBase {
 		$client = new \GuzzleHttp\Client([
 			'exceptions' => false,
 			'timeout' => $this->timeout,
-        ]);
+    ]);
 
 		$url = PostmarkClientBase::$BASE_URL . $path;
 

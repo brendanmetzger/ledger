@@ -41,11 +41,11 @@
     <p>Arguably the most useful feature of JavaScript is the tight integration to the Document Object Model, and the quickest introduction we can make is by employing our <abbr>CSS</abbr> techniques. The <code>document</code> object itself has many methods for selecting Elements, but there are really only two you need to remember. The two methods in question are <em>querySelector</em> and <em>querySelectorAll</em>, and you access them by using the ‘.’ operator on the <code>document</code>. These two methods can be fed regular <abbr>css</abbr> query selectors as arguments and will return the appropriate <abbr>html</abbr> element(s).</p>
     <section class="instruction container pad">
       <dl class="______ float left">
-        <dt><h3><code>document.querySelector</code>(<em>query</em>)</h3></dt>
+        <dt><h3><code>document.querySelector(<em>query</em>)</code></h3></dt>
         <dd>Select and return the first node that matches the query</dd>
         <dd>ex: <code>document.querySelector('div')</code> selects the first <code>&lt;div&gt;</code> in the document</dd>
         <dd>ex: <code>document.querySelector('div#test')</code> selects <code>&lt;div id="test"&gt;</code></dd>
-        <dt><h3><code>document.querySelectorAll</code>(<em>query</em>)</h3></dt>
+        <dt><h3><code>document.querySelectorAll(<em>query</em>)</code></h3></dt>
         <dd>ex: <code>document.querySelectorAll('div')</code> selects <strong>all</strong> <code>&lt;div&gt;</code>'s the document</dd>
         <dd>ex: <code>document.querySelectorAll('section > p')</code> selects <strong>all</strong> <code>&lt;p&gt;</code>'s that are the immediate children of a section</dd>
       </dl>

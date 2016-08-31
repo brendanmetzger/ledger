@@ -14,9 +14,9 @@ namespace models;
 
     static public $weight = [
       'discourse' => 30,
-      'practice'  => 40,
+      'practice'  => 35,
       'quiz'      => 10,
-      'project'   => 20,
+      'project'   => 25,
     ];
 
     public static $rubric = [
