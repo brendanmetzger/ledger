@@ -69,7 +69,7 @@ class Task extends \bloc\controller
 
   public function CLItemplate()
   {
-    \models\data::$DB = 'SP16';
+    \models\data::$DB = 'FA16';
     // should return a zip file
     $student = new \models\student(\models\data::ID('YNUZ'));
     $outline = \models\outline::BUILD($student, $student->course . '.zip');
@@ -84,14 +84,14 @@ class Task extends \bloc\controller
 
   public function CLIimport($semester, $course, $section = '01')
   {
-    $path  = "data/classlists/{$semester}-{$course}-{$section}";
+    $path  =  "data/classlists/{$semester}-{$course}-{$section}";
     $imports = $this->parseStudentFile(new \DomXpath(new Document($path)));
     foreach ($imports as $import) {
-      $this->CLIenroll($semester, $course, $section, $import['id'], $import['name'], $import['email']);
+      $this->CLIenroll($semester, $course, $section, $import['id'], $import['name'], $import['email'], $import['cl'], $import['major']);
     }
   }
 
-  public function CLIenroll($semester, $course, $section, $id = null, $name = null, $email = null)
+  public function CLIenroll($semester, $course, $section, $id = null, $name = null, $email = null, $year = null, $major = null)
   {
     $doc     = new Document("data/{$semester}");
     $section = (new \DomXpath($doc))->query("//courses/section[@id='{$section}' and @course='{$course}']");
@@ -116,11 +116,23 @@ class Task extends \bloc\controller
       $email = trim(fgets(STDIN));
     }
 
+
+    if ($year === null) {
+      echo "\nEmail: ";
+      $year = trim(fgets(STDIN));
+    }
+
+    if ($major === null) {
+      echo "\nEmail: ";
+      $major = trim(fgets(STDIN));
+    }
     $student->setAttribute('name', $name);
     $student->setAttribute('email', $email);
     $key  = substr($email, 0, strpos($email, '@'));
     $student->setAttribute('url', "http://iam.colum.edu/students/{$key}/{$course}");
     $student->setAttribute('id', \models\Student::BLEAR($id));
+    $student->setAttribute('year', $year);
+    $student->setAttribute('major', $major);
     echo $student->write() . "\nCreate Account (Y/n): ";
     if (strtoupper(trim(fgets(STDIN))) === 'Y') {
       return $this->save($doc);
@@ -141,6 +153,7 @@ class Task extends \bloc\controller
 
   private function parseStudentFile($xml)
   {
+
     $headers = [];
     foreach ($xml->query("//tr[@class='glbfieldname']/td") as $index => $header) {
       $key = strtolower(trim($header->nodeValue));
@@ -165,8 +178,12 @@ class Task extends \bloc\controller
       },
       'grad' => function ($node) {
         return $node->nodeValue ?: 'N';
+      },
+      'major' => function($node) {
+        return $node->nodeValue;
       }
     ];
+
     $students = [];
     foreach ($xml->query("//tr[@class='glbdatadark']") as $row) {
       $fields = $row->childNodes;

@@ -33,6 +33,11 @@ body{
   padding:5vmin;
   box-shadow:0 0 0.5em rgba(0,0,0,0.1);
 }
+u, .important {
+  line-height:0;
+  border-bottom:3px double #ddd;
+  color:#eb5011;
+}
 
 a[href*='en.wikipedia.org'] {
   background: transparent url(/css/media/wikipedia.svg) no-repeat;
@@ -134,7 +139,8 @@ article a {
   text-decoration:none;
   border-bottom:1px dashed rgba(0,0,0,0.25);
 }
-a:hover, a:hover > * {
+a:hover, a:hover > *, summary:hover {
+  cursor:pointer;
   color:hsl(10, 65%, 40%);
 }
 
@@ -149,11 +155,25 @@ a:hover, a:hover > * {
 h1,.h1{letter-spacing:-0.125vmin;font:400 4em/1em 'Avenir Next','HelveticaNeue-Light','Helvetica Neue',Helvetica;}
 h2,.h2{font-size:calc(1.5em + 1vw + 1vh);line-height:150%;font-weight:200}
 h2:not(:first-child) {margin-top:1em;}
-h3,.h3{font-size:calc(1em + 2vmin);margin:0.5em 0;font-weight:400;}
+h3,.h3, summary{font-size:calc(1em + 2vmin);margin:0.5em 0;font-weight:400;}
+summary h3 {display:inline;font-size:100%;}
 .massive{font-weight:200}
 h4 {text-transform:uppercase;font-weight:600;}
-h5, summary {font-weight:400;font-size:1.8em;margin:0;}
+h5 {font-weight:400;font-size:1.8em;margin:0;}
 h4,.h4{font-size:calc(1em + 0.75vmin);line-height:125%;}
+
+summary::-webkit-details-marker {
+  display: none
+}
+summary:before {
+  content: "+";
+  display:inline-block;
+  transition:transform 0.25s;
+}
+details[open] summary:before {
+
+  transform:rotate(45deg);
+}
 
 p + table {
   margin:5em 0;
@@ -494,17 +514,20 @@ nav form {
 }
 
 .prologue, .epilogue, .whitepaper {
-  padding:2.5vmax 5vmin;
+  padding:1.5vmax 2.5vmin;
   background-color:rgba(255,255,255,0.5);
-  transition:background-color 0.25s;
+  transition:background-color 0.25s, padding 0.125s;
 }
+
+
 
 details.whitepaper:not([open]) {
   background-color:transparent;
+  padding: 1.5vmax;
 }
 
-.prologue > h4, .epilogue > h4 {
 
+.prologue > h4, .epilogue > h4 {
   margin:2em 0;
   font-weight:200;
   letter-spacing:0.5em;
@@ -587,7 +610,9 @@ div.thumbinner img {
 }
 .neat dt {
   flex: 1 0 20%;
-
+  align-self:center;
+  text-align:right;
+  padding:1em;
 }
 .neat dd {
   flex: 1 0 80%;

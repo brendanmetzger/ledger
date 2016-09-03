@@ -5,7 +5,7 @@
       margin:2em 0 1em;
     }
     table {
-      caption-side: bottom;
+      caption-side: top;
     }
 
     table.chart .horizontal td {
@@ -60,14 +60,17 @@
       text-align:center;
       flex:1 0 auto;
     }
-    h1.banner {
-      text-align:right;
+    .banner h1 {
       font-weight:300;
+    }
+    .banner {
+      text-align:right;
+
       letter-spacing:0.125em;
       color:#fff;
       text-shadow:-2px 0 1px #000;
       background-color:#333;
-      padding:0.5em;
+      padding:1vw 2.5vw;
       margin:0 -2.5vw;
       background:linear-gradient(to bottom, #333, #282828);
     }
@@ -76,10 +79,15 @@
     }
   /* ]]> */
   </style>
-  <h1 class="banner">[$student:@name]</h1>
-  <section>
-    <h3>Participation and Attendance</h3>
+  <header class="banner">
+    <h1>[$student:@name]</h1>
+    <h4>[$student:@major $student:@year]</h4>
+  </header>
+  <section class="b">
     <table class="full chart">
+      <caption class="rag-right">
+        <!-- insert views/policy/participation-and-attendance.html -->
+      </caption>
       <colgroup>
         <col span="1" style="width:7.5%" />
         <col span="15" style="width:5.5%"/>
@@ -105,8 +113,10 @@
     </table>
   </section>
   <section>
-    <h3>Practice</h3>
     <table class="full chart">
+      <caption class="rag-right">
+        <!-- insert views/policy/research-studies.html -->
+      </caption>
       <colgroup>
         <col span="1" style="width:1em;"/>
       </colgroup>
@@ -147,13 +157,9 @@
     </table>
   </section>
   <section>
-    <h3>Projects</h3>
     <table class="full chart">
       <caption class="rag-right">
-        <details class="whitepaper" open="open">
-          <summary>Grading Procedure</summary>
-          <p class="pad">All projects are evaluated based on a range from 1 or <q>perfection</q> to 0 or <q>no submission</q>. I've designed the criterion to ensure that perfection—and this is important to me—is essentially impossible (and not a relevant goal in my opinion). Thus, your score will fall between <code>[0,1]</code> and is <a href="https://en.wikipedia.org/wiki/Grading_on_a_curve">curved</a> to give a percentage and corresponding letter. To fairly assess all projects,  I scored your work on a variety of criterion; effort, aesthetic, presentation, research, concept, etc. Given a diverse group of students and interests, this insures that any above average effort you made was rewarded and likewise, simple expectations (did you present, source code organized, you had a concept, etc) would affect your average negatively.</p>
-        </details>
+        <!-- insert views/policy/project.html -->
       </caption>
       <colgroup>
         <col span="1" style="width:1em;"/>
@@ -198,26 +204,10 @@
   </section>
 
   <section>
-    <h3>Quizzes</h3>
+
     <table class="full chart">
       <caption class="rag-right">
-        <details class="whitepaper">
-          <summary>Statistical information</summary>
-          <dl class="neat">
-            <dt>µ (mean)</dt>
-            <dd>Represents the actual mean (average) of all examinations</dd>
-            <dt><em title="weighted mean" style="font-family:Baskerville">x&#x0305;</em> (weighted mean)</dt>
-            <dd>Represents the weighted average, which is calculated using standard deviation and the max score</dd>
-            <dt>σ (Standard Deviation)</dt>
-            <dd>Standard Deviation represents the dispersion of scores, or <q>the mean of the mean</q>. Basically, low standard deviation indicates the scores were very close together, high indicates very diverse range of scores.</dd>
-            <dt>Min/Max</dt>
-            <dd>Represent the highest and lowest scores given (excluding 0)</dd>
-            <dt>Points</dt>
-            <dd>raw points received / available</dd>
-            <dt>Score</dt>
-            <dd>Given score based on weighted mean and standard deviation.</dd>
-          </dl>
-        </details>
+        <!-- insert views/policy/quizzes.html -->
       </caption>
       <colgroup>
         <col span="1" style="width:10%;"/>
@@ -226,14 +216,14 @@
         <tr>
           <th>Exam</th>
           <th>Administered</th>
-          <th>µ</th>
-          <th><em title="weighted mean" style="font-family:Baskerville">x&#x0305;</em></th>
-          <th><span title="Standard Deviation">σ</span></th>
-          <th>min</th>
-          <th>max</th>
-          <th>Points</th>
-          <th>Raw</th>
-          <th>Score</th>
+          <th title="Represents the actual mean (average) of all examinations">µ</th>
+          <th title="The weighted mean, or weighted average, is calculated using standard deviation and the max score"><em style="font-family:Baskerville">x&#x0305;</em></th>
+          <th title="Standard Deviation represents the dispersion of scores, or 'the average of the average'. Basically, low standard deviation indicates the scores were very close together, high indicates very diverse range of scores.">σ</th>
+          <th title="lowest score given">min</th>
+          <th title="highest score given">max</th>
+          <th title="raw points received / points available">Points</th>
+          <th title="raw score">Raw</th>
+          <th title="given score based on weighted mean and standard deviation">Score</th>
         </tr>
       </thead>
       <tbody class="vertical">
