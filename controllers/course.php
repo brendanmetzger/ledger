@@ -40,16 +40,17 @@ class Course extends \bloc\controller
   protected function GETcriterion(User $user, $type, $index = 0, $section = '01', $specificity = '*')
   {
     $view = new View(self::layout);
-    $course = static::ID;
+    $this->course = static::ID;
     $this->type = $type;
     $this->criterion = new \models\Criterion("[@index='{$index}'and @type='{$type}' and @course='{$specificity}']");
-    $this->section = (new \Models\Course($course))->section($section);
+    $this->section = (new \Models\Course($this->course))->section($section);
     $this->schedule = $this->section->schedule;
+
+
     $this->timeline = [
       'assigned' => $this->schedule[$this->criterion['@assigned']],
       'due'      => $this->schedule[$this->criterion['@due']],
     ];
-
     $path = "views/outline/assignments/".static::ID."/$type/$index.html";
     if (!file_exists(PATH.$path)) {
       $view->content = 'views/layouts/error.html';

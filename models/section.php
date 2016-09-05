@@ -50,6 +50,8 @@ namespace models;
       $section  = $context['@id'];
 
       while ($begin < $calendar->semester['end']) {
+        $interval = $now->diff($begin);
+
         $key = $index;
         $date = [
           'section'  => $section,
@@ -58,6 +60,7 @@ namespace models;
           'datetime' => $begin->format(\DateTime::RFC3339),
           'status'   => $now > $begin ? 'transpired' : 'pending',
           'index'    => $index++,
+          'ticker'   => $interval->format('%r') === '-' ? $interval->format('%a days ago') : $interval->format('%a days'),
         ];
         foreach ($holidays as $idx => $holiday) {
           if ($holiday['start'] <= $begin && $holiday['end'] >= $begin) {

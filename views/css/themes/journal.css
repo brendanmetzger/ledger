@@ -520,11 +520,17 @@ nav form {
 }
 
 .prologue, .epilogue, .whitepaper {
-  padding:1.5vmax 2.5vmin;
+  padding:1.5vmax 5vmax;
+
   background-color:rgba(255,255,255,0.5);
   transition:background-color 0.25s, padding 0.125s;
 }
 
+.prologue, .epilogue {
+  padding:2.5vw;
+  box-shadow:0 0 1em rgba(0,0,0,0.1);
+  margin:20vmin -2.5vw 0;
+}
 
 
 details.whitepaper:not([open]) {
@@ -627,4 +633,5 @@ div.thumbinner img {
 .discuss:after {
   content: '🤔';
   padding:0 0.5em;
+  vertical-align: baseline;
 }
