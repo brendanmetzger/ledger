@@ -35,8 +35,9 @@ body{
 }
 u, .important {
   line-height:0;
-  border-bottom:3px double #ddd;
+  border-bottom:1px dotted #bbb;
   color:#eb5011;
+  text-decoration:none;
 }
 
 a[href*='en.wikipedia.org'] {
@@ -159,7 +160,7 @@ h3,.h3, summary{font-size:calc(1em + 2vmin);margin:0.5em 0;font-weight:400;}
 summary h3 {display:inline;font-size:100%;}
 .massive{font-weight:200}
 h4 {text-transform:uppercase;font-weight:600;}
-h5 {font-weight:400;font-size:1.8em;margin:0;}
+h5, .h5 {font-weight:400;font-size:1.8em;margin:0;display:block;}
 h4,.h4{font-size:calc(1em + 0.75vmin);line-height:125%;}
 
 summary::-webkit-details-marker {
@@ -482,6 +483,11 @@ label h4 {
   padding-right:0.5em;
   font-weight:400;
   font-size:1.5em;
+}
+
+label > input + * {
+  margin:0.25em 0 0 0.25em;
+  display:inline-block;
 }
 
 aside.note {

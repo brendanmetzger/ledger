@@ -1,9 +1,9 @@
 /* Examples of two distinct formatting styles */
-.special {
+.style_a {
     font-size: 10px;
 }
 
-.special
+.style-b
 {
   font-size:1.5em;
 }
