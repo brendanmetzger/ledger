@@ -623,3 +623,8 @@ div.thumbinner img {
 .neat dd {
   flex: 1 0 80%;
 }
+
+.discuss:after {
+  content: '🤔';
+  padding:0 0.5em;
+}

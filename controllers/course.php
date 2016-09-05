@@ -29,6 +29,7 @@ class Course extends \bloc\controller
     $schedule[$id]['selected'] = 'selected';
 
     $this->timestamp = $schedule[$id]['date'];
+    $this->datetime =  $schedule[$id]['datetime'];
     $this->schedule = $schedule;
 
     $this->index  = $id;
