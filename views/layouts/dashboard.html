@@ -138,7 +138,7 @@
         <!-- iterate student:practice:list -->
         <tr class="[$practice:status]" title="[$practice:letter]">
           <td>[$practice:criterion:@index]</td>
-          <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <em class="ticker">[or $due:ticker]</em></td>
+          <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <em class="ticker">[$due:ticker]</em></td>
           <td>
             <a href="[[/$$student:course/criterion/practice/$practice:criterion:@index/$$student:section:@id/$$student:course]]">[$practice:criterion:@title]</a>
           </td>
@@ -183,7 +183,7 @@
         <!-- iterate student:projects:list -->
         <tr class="[$project:status]">
           <td>[$project:criterion:@index]</td>
-          <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <em class="ticker">[or $due:ticker]</em></td>
+          <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <em class="ticker">[$due:ticker]</em></td>
           <td>
             <a href="[[/$$student:course/criterion/project/$project:criterion:@index/$$student:section:@id]]">[$project:criterion:@title]</a>
           </td>
@@ -234,7 +234,7 @@
         <!-- iterate student:quizzes:list -->
         <tr class="[$quiz:status]">
           <td class="centered">[$quiz:criterion:@title]</td>
-          <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <em class="ticker">[or $due:ticker]</em></td>
+          <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <em class="ticker">[$due:ticker]</em></td>
           <td class="[$schedule:status centered]"><span>[$stats:mean]</span></td>
           <td class="[$schedule:status centered]"><span>[$stats:wmean]</span></td>
           <td class="[$schedule:status centered]"><span>[$stats:sd]</span></td>
