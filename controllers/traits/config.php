@@ -13,6 +13,8 @@ trait config {
 
     $this->year        = date('Y');
     $this->title       = "*SWM";
+    //TODO: this should be done automatically
+    $this->semester    = "FA16";
     $this->email       = 'bmetzger@colum.edu';
     $this->template    = $request->controller;
 
