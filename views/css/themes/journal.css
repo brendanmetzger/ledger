@@ -525,8 +525,7 @@ nav form {
 }
 
 .prologue, .epilogue, .whitepaper {
-  padding:1.5vmax 5vmax;
-
+  padding:2.5vmax 5vmax;
   background-color:rgba(255,255,255,0.5);
   transition:background-color 0.25s, padding 0.125s;
 }
@@ -537,10 +536,11 @@ nav form {
   margin:20vmin -2.5vw 0;
 }
 
-
+details.whitepaper {
+  padding: 1vmin 1.5vmax;
+}
 details.whitepaper:not([open]) {
   background-color:transparent;
-  padding: 1.5vmax;
 }
 
 
