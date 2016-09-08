@@ -1,35 +1,13 @@
 <div id="[$course:@id]">
   <header>
     <!-- insert views/outline/_/crumbs.html -->
-    <h1 class="massive">Up &amp; Running</h1>
-    <p class="intro">The goal of every interval is to add a little bit to our repertoire, building on fundamentals week by week. After an introduction to filesystems and networks, once on a server, a website’s raison d'être is to broadcast information, and that information must be marked up for a machine to parse and organize. Before focusing purely on style and aesthetic, it is important to understand the algorithm of how to begin structuring a page.</p>
+    <h1 class="massive">A Node is but a Node</h1>
+    <p class="intro">The goal of every interval is to add a little bit to our repertoire, building on fundamentals week by week. After an introduction to filesystems and networks, once on a server, a website’s raison d'être is to broadcast information, and that information must be marked up for a machine to parse and organize. Before focusing purely on style and aesthetic, it is important to understand the algorithm of how to begin structuring a document.</p>
   </header>
-  <article>
-    <h2><abbr title="hypertext markup language">HTML</abbr></h2>
-    <p>it’s important to consider that you are now <strong>marking up</strong> a document using a careful hierarchy and structure. This serves two purposes: first to add meaning so that a machine can accurately parse the data, and second, to create nodes that you can find with CSS and apply style and aesthetic.</p>
-    <section>
-      <h3>Sectioning Blocks</h3>
-      <dl>
-        <dt><code>&lt;article&gt;</code></dt>
-        <dd>The HTML &lt;article&gt; element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable (e.g., in syndication). This could be a forum post, a magazine or newspaper article, a blog entry, <mark>an object, or any other independent item of content</mark>. Each &lt;article&gt; should be identified, typically by including a heading (&lt;h1&gt;-&lt;h6&gt; element) as a child of the &lt;article&gt; element.</dd>
-        <dt><code>&lt;section&gt;</code></dt>
-        <dt><code>&lt;header&gt;</code></dt>
-        <dt><code>&lt;footer&gt;</code></dt>
-        <dt><code>&lt;nav&gt;</code></dt>
-      </dl>
-      <h3>Headings, Paragraphs, etc.</h3>
-      <dl>
-        <dt><code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>,<code>&lt;h5&gt;</code>, <code>&lt;h6&gt;</code></dt>
-        <dt>em, i</dt>
-        <dd>adds an italicized face to text. Semantically, em means 'emphasis', where i just means you want a visual distinction (em is usually the way to go)</dd>
-        <dt>strong, b</dt>
-        <dd>adds a bold face to text. Semantically, strong carries more meaning, b is just visual.</dd>
-        <dt>p</dt>
-        <dd>represents paragraphs</dd>
-        <dt>a</dt>
-        <dd>hyperlinks are added via the a tag, and links are facilitated through an href attribute.</dd>
-      </dl>
-    </section>
+  <article class="indented three columns">
+    <h2>Nodes and <abbr title="hypertext markup language">HTML</abbr></h2>
+    <p>Your template files is full of <a href="https://en.wikipedia.org/wiki/Boilerplate_(text)">boilerplate</a> that might seem like a formality, but it’s important to start understanding that <strong>marking up a document</strong> using a hierarchy of nodes is about explicity structure and meaning—not about style in the least. This serves two purposes: first to ensure a machine can parse the data, and second, to create objects that you can manipulate. We can change the <strong>look and feel</strong> of these objects through the use of a stylesheet language, and we can change the <strong>behavior</strong> of these objects through the use of a programming language. The nodes (<abbr title="Hypertext Markup Language">html</abbr>) give structure and proper structure allows for powerful design and behavior modification. Perhaps unfortunately due to it's easiness to learn and write, sloppy and incorrect markup is quite easy to get away with so you should be extra careful to understand it conceptually so you can take advantage of the powerful tools it will provide as we learn more about controlling look/feel and behavior of applictions.</p>
+    <p>The first clue that gives credence to the importance of <abbr title="Hypertext Markup Language">HTML</abbr> documents is this boilerplate—something that many developers, at best, neglect, and at worst, never truly learn. Every <abbr title="Hypertext Markup Language">html</abbr> file will be saved with a .html extension and will contain the following elements: <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code>. No other files we author requires such boilerplate; obviously it's there for a reason or we'd skip it! With that, we are going to look at markup from a very high level, and investigate the concept of what a <q>node</q> is, and then apply that concept to authoring documents.</p>
   </article>
   <article>
     <h2>Typography</h2>
@@ -74,13 +52,40 @@
     </dl>
   </article>
   <article>
+    <h2>Outlining</h2>
+    <section>
+      <h3>Sectioning Blocks</h3>
+      <dl>
+        <dt><code>&lt;article&gt;</code></dt>
+        <dd>The HTML &lt;article&gt; element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable (e.g., in syndication). This could be a forum post, a magazine or newspaper article, a blog entry, <mark>an object, or any other independent item of content</mark>. Each &lt;article&gt; should be identified, typically by including a heading (&lt;h1&gt;-&lt;h6&gt; element) as a child of the &lt;article&gt; element.</dd>
+        <dt><code>&lt;section&gt;</code></dt>
+        <dt><code>&lt;header&gt;</code></dt>
+        <dt><code>&lt;footer&gt;</code></dt>
+        <dt><code>&lt;nav&gt;</code></dt>
+      </dl>
+      <h3>Headings, Paragraphs, etc.</h3>
+      <dl>
+        <dt><code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>,<code>&lt;h5&gt;</code>, <code>&lt;h6&gt;</code></dt>
+        <dt>em, i</dt>
+        <dd>adds an italicized face to text. Semantically, em means 'emphasis', where i just means you want a visual distinction (em is usually the way to go)</dd>
+        <dt>strong, b</dt>
+        <dd>adds a bold face to text. Semantically, strong carries more meaning, b is just visual.</dd>
+        <dt>p</dt>
+        <dd>represents paragraphs</dd>
+        <dt>a</dt>
+        <dd>hyperlinks are added via the a tag, and links are facilitated through an href attribute.</dd>
+      </dl>
+    </section>
+
+  </article>
+  <article>
     <h2>Javascript &amp; Programming: The briefest introduction.</h2>
     <p>Computers are essentially very complicated machines that do something very simple, and that is they turn electricity into a trove of circuits that can count very (<strong>very</strong>) fast. The fascinating thing is that there are many ways to count, in fact, an infinite number of ways.</p>
 
   </article>
   <article>
     <h2>Review &amp; Extra: Text, Editors, and Keyboards</h2>
-    <p>In this class we are going to use <a href="https://en.wikipedia.org/wiki/Text_editor">Text Editors</a>; for those unfamiliar, we’ll get farther by starting with what a text editor is not. Dreamweaver, Word, Pages, or anything that gives you an option to write anything other than monospaced, non-italicized, single-weight text is <em>not a text editor</em>. Text editors write plain text—text with the sole purpose of representing sequences of characters that make up the necessary syntax of a markup language, stylesheet language, or programming language.</p>
+    <p>For this material we always to use text-editors, and let us remember what a text editor is not: Dreamweaver, Word, Pages, or anything that gives you an option to write anything other than monospaced, non-italicized, single-weight text is <em>should be avoided</em>. Text editors write plain text—text with the sole purpose of representing sequences of characters that make up the necessary syntax of a markup language, stylesheet language, or programming language.</p>
     <h3>Keys to successful text editing</h3>
     <ul>
       <li>Try to use the mouse less and less</li>

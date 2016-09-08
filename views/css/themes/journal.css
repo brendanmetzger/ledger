@@ -250,6 +250,13 @@ ul.cross li:before {content: '☓';}
   padding:1vh 0;
 }
 
+.paginate article:before {
+  content: ' ';
+  background-color:red;
+  display:block;
+  margin-left:-2.5vw;
+}
+
 
 
 main {
@@ -643,5 +650,5 @@ div.thumbinner img {
 
 
 video {
-  max-width:100%;
+  max-width:100%;247
 }
