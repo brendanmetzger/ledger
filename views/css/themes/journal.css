@@ -640,3 +640,8 @@ div.thumbinner img {
   padding:0 0.5em;
   vertical-align: baseline;
 }
+
+
+video {
+  max-width:100%;
+}

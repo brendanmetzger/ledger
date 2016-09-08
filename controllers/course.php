@@ -19,6 +19,7 @@ class Course extends \bloc\controller
 
   protected function GETindex(User $user, $id = '0', $section = '01')
   {
+
     $view = new View(static::layout);
     $view->content = "views/outline/{$id}.html";
     $view->context = "views/layouts/list/schedule.html";
@@ -33,6 +34,8 @@ class Course extends \bloc\controller
     $this->schedule = $schedule;
 
     $this->index  = $id;
+
+
 
     return $view->render($this());
   }
