@@ -650,5 +650,22 @@ div.thumbinner img {
 
 
 video {
-  max-width:100%;247
+  max-width:100%;
+}
+
+.playlist {
+  list-style-type:none;
+  padding:0;
+}
+.playlist li:hover {
+  color:#888;
+  cursor:pointer;
+}
+.playlist li:before {
+  content: '▸ ('  attr(data-timestamp) ') '
+}
+
+.playlist li:after {
+  font-size:0.9em;
+  ;
 }

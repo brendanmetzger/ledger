@@ -11,6 +11,12 @@ var cycle = function (index, limit) {
   }
 };
 
+var timecode2Seconds = function (timecode) {
+  return timecode.split(':').reverse().reduce(function (accumulator, current, idx) {
+    return accumulator + parseInt(current, 10) * Math.pow(60, idx);
+  }, 0);
+}
+
 /* SVG */
 
 /* Quick way to create an SVG element with and a prototypal method

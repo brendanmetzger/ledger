@@ -26,4 +26,15 @@
   <video src="http://iam.colum.edu/brendan.metzger/vids/FA-36-1420-02-0.mp4" controls="controls" preload="metadata" style="margin:1em 0;box-shadow:0 0 0.25em 0.25em rgba(0,0,0,0.1)">
     <p>Lecture From Sept 6</p>
   </video>
+  <ul class="playlist">
+    <li data-timestamp="23:43">Connecting to File Transfer Clients</li>
+  </ul>
+  <script type="text/javascript">
+    addEventListener('load', function (evt) {
+      var video = document.querySelector('video');
+      video.nextElementSibling.addEventListener('click', function (evt) {
+        video.currentTime = timecode2Seconds(evt.target.dataset.timestamp);
+      })
+    });
+  </script>
 </article>

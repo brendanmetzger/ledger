@@ -6,11 +6,83 @@
   </header>
   <article class="indented three columns">
     <h2>Nodes and <abbr title="hypertext markup language">HTML</abbr></h2>
-    <p>Your template files is full of <a href="https://en.wikipedia.org/wiki/Boilerplate_(text)">boilerplate</a> that might seem like a formality, but it’s important to start understanding that <strong>marking up a document</strong> using a hierarchy of nodes is about explicity structure and meaning—not about style in the least. This serves two purposes: first to ensure a machine can parse the data, and second, to create objects that you can manipulate. We can change the <strong>look and feel</strong> of these objects through the use of a stylesheet language, and we can change the <strong>behavior</strong> of these objects through the use of a programming language. The nodes (<abbr title="Hypertext Markup Language">html</abbr>) give structure and proper structure allows for powerful design and behavior modification. Perhaps unfortunately due to it's easiness to learn and write, sloppy and incorrect markup is quite easy to get away with so you should be extra careful to understand it conceptually so you can take advantage of the powerful tools it will provide as we learn more about controlling look/feel and behavior of applictions.</p>
+    <p>Your template files is full of <a href="https://en.wikipedia.org/wiki/Boilerplate_(text)">boilerplate</a> that might seem like a formality, but it’s important to start understanding that <strong>marking up a document</strong> using a hierarchy of nodes is about explicity structure and meaning—not about style in the least. This serves two purposes: first to ensure a machine can parse the data, and second, to create objects that you can manipulate. We can change the <strong>look and feel</strong> of these objects through the use of a stylesheet language, and we can change the <strong>behavior</strong> of these objects through the use of a programming language. The nodes (<abbr title="Hypertext Markup Language">html</abbr>) give structure and proper structure allows for powerful design and behavior modification. Perhaps unfortunately due to it's easiness to learn and write, sloppy and incorrect markup is quite easy to get away with so you should be extra careful to understand it conceptually so you can take advantage of the powerful tools it will provide as we learn more about controlling look/feel and behavior of applications.</p>
     <p>The first clue that gives credence to the importance of <abbr title="Hypertext Markup Language">HTML</abbr> documents is this boilerplate—something that many developers, at best, neglect, and at worst, never truly learn. Every <abbr title="Hypertext Markup Language">html</abbr> file will be saved with a .html extension and will contain the following elements: <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code>. No other files we author requires such boilerplate; obviously it's there for a reason or we'd skip it! With that, we are going to look at markup from a very high level, and investigate the concept of what a <q>node</q> is, and then apply that concept to authoring documents.</p>
   </article>
   <article>
-    <h2>Typography</h2>
+    <h2>Anatomy of the cascading stylesheet language</h2>
+    <p>There are essentially two things that make a stylesheet work, the first is the <strong>selector</strong>, and once the selector has found its target, you can begin modify the targets <strong>properties</strong>. Become familiar with those two terms, I will say <strong>selector</strong> and <strong>property</strong> with some frequency. Selector means <q>find this node</q> and properties means <q>adjust the way this thing looks</q>.</p>
+    <h3 class="tt">Selectors</h3>
+    <p>Selectors are the handles that target specific <abbr title="Hypertext markup language">HTML</abbr> Element Nodes. Specific means anything from one element such as <code>#special { ...props</code> to literally every element, with something like <code>* { ...props</code>. Selectors can be concatenated with a comma to apply one set of property settings to several selectors—concatenating the previous examples would look like so: <code>#special, * { ...props</code>. Selectors are a heady topic, and one that we will be spending easily the next five weeks on.</p>
+    <h3>Properties</h3>
+    <p>Properties are simply the things we can adjust—these are truly the styles in stylesheet.</p>
+  </article>
+  <article>
+    <style>
+    .examples > div {
+      background-color:#fff;
+      border:1px solid #eee;
+      display:block;
+      font-size:16px;
+      padding:1.75em;
+      margin:0.5em 0;
+      position:relative;
+    }
+    .examples input {
+      display:block;
+      position:absolute;
+      right:0.5em;
+      top:0.25em;
+    }
+
+    [data-banner]:before {
+      content: attr(data-banner);
+      position:absolute;
+      font-size:0.75em;
+      text-transform:uppercase;
+      top:-0.75em;
+      left:-0.75em;
+      background-color:#444;
+      color:#fff;
+      padding:0.125em 0.5em;
+      transform: rotate(-12deg)
+    }
+    </style>
+    <h2>Typographic Properties</h2>
+    <section class="container">
+      <dl class="______ float left">
+        <dt><code>font-size</code> property</dt>
+        <dd>Font-size sets the size of the text. Other properties can be based off of this size; when you declare a font-size for a particular element, that size will govern how all other properties are set when using a unit such as <code>em</code></dd>
+        <dt>font-family</dt>
+        <dd>Changes the typeface of an element. Specify this as a sequences of typefaces.</dd>
+        <dt>font-weight</dt>
+        <dd>Controls weight thin/normal/bold, or in 3 digit numbers like 200, 400, 800 (preferred, especially for full typefaces with more than three weights)</dd>
+        <dt><code>line-height</code> property (leading)</dt>
+        <dd>Usage is <code>line-height: (num)<em>unit</em>;</code></dd>
+        <dd>Unlike print typography dominated by baselines, web typography is dominated by this unit. Mostly, you will use to control <q>leading</q>, or the space between lines. </dd>
+        <dd><code>line-height</code> need not be a fixed number, it can also be a unit-less ratio such as <code>1.5</code> which would represent 1.5 times the value of whatever the <code>font-size</code> is—handy!</dd>
+        <dt><code>letter-spacing</code> property (tracking)</dt>
+        <dt><code>text-align</code></dt>
+        <dd>Used to align left, center, right align, as well as justify text. You can only align text in block-level elements.</dd>
+        <dt><code>text-transform</code></dt>
+        <dd>Offers transform to upper/lowercase, can capitalize a sentence, etc.</dd>
+        <dt><code>text-decoration</code></dt>
+        <dd>Controls underline, line-through, overline, etc.</dd>
+        <dt><code>text-indent</code></dt>
+        <dd>set the indentation using a CSS unit.</dd>
+      </dl>
+      <div class="____ float left examples">
+        <h4>Examples</h4>
+        <div style="font-size:16px;line-height:1.5">
+          <input type="range" min="10" max="30" step="2" value="16" oninput="this.parentNode.style.fontSize = this.nextElementSibling.querySelector('span').innerHTML = this.value + 'px'"/>I have specified the size in pixels or <code>font-size: <span>16px</span>;</code>. This is for the sake of example—I <strong>always</strong> use a relative unit for setting text size, such as <code>em</code>/<code>rem</code>, or the viewport units such as <code>vw</code> or <code>vh</code></div>
+        <div style="line-height:1.35" data-banner="preferred">
+          <input type="range" min="0" max="3" step="0.125" value="1.35" oninput="this.parentNode.style.lineHeight = this.nextElementSibling.querySelector('span').innerHTML = this.value"/>This is a bit of text with a line-height of 1.35, or <code>line-height: <span>1.35</span>;</code>. Unit-less values are useful for some advanced reasons, but essentially, the ensure proportionality based on the text size.</div>
+        <div style="line-height:1em">This is a bit of text with a line-height of 1em, or <code><samp>selector</samp> { line-height: 1em; }</code>. Notice that 1em is essentially at a point where the <a href="https://en.wikipedia.org/wiki/Descender">descenders</a> of the previous line are nearly touching the <a href="https://en.wikipedia.org/wiki/Ascender_(typography)">ascenders</a> of the lines below.</div>
+        <div>
+          <input type="range" min="-0.2" max="0.5" step="0.075" value="0" oninput="this.parentNode.style.letterSpacing = this.nextElementSibling.querySelector('span').innerHTML = this.value + 'em'"/>
+          Adjust the slider to see the letter spacing <code>letter-spacing: <span>0</span>;</code>. I prefer <code>em</code>s for all typographic work, but some leave delicate operations like this to <code>px</code>.</div>
+      </div>
+    </section>
     <p><a href="https://ia.net/know-how/the-web-is-all-about-typography-period">Web Design is 95% typography.</a></p>
   </article>
   <article>
@@ -27,28 +99,6 @@
       <dd>Percentages are tough to get the hang of. They generally work well, and I would recommend them for widths.</dd>
       <dt>vh, vw, vmax, vmin</dt>
       <dd>A percentage of the viewport height and viewport width respectively. This is a handy one.</dd>
-    </dl>
-    <h3>Text Properties</h3>
-    <dl>
-      <dt>text-align</dt>
-      <dd>Used to align left, center, right align, as well as justify text. You can only align text in block-level elements.</dd>
-      <dt>text-transform</dt>
-      <dd>Offers transform to upper/lowercase, can capitalize a sentence, etc.</dd>
-      <dt>text-decoration</dt>
-      <dd>Controls underline, line-through, overline, etc.</dd>
-      <dt>text-indent</dt>
-      <dd>set the indentation using a CSS unit.</dd>
-    </dl>
-    <h3>Font Properties</h3>
-    <dl>
-      <dt>font-size</dt>
-      <dd>Changes the size of text in a selected element. Can use any unit.</dd>
-      <dt>font-family</dt>
-      <dd>Changes the typeface of an element. Specify this as a sequences of typefaces.</dd>
-      <dt>font-weight</dt>
-      <dd>Controls weight thin/normal/bold, or in 3 digit numbers like 200, 400, 800 (prefferred)</dd>
-      <dt>font-variant</dt>
-      <dd>Can add small-caps</dd>
     </dl>
   </article>
   <article>
