@@ -217,7 +217,7 @@ dl.ordered dd + dd {
   border-width:1px 0 0;
 }
 ol:not(.linenums) li, ul.stylized li {
-  padding:0.25em 0;
+  padding:0.5em 0;
 }
 ol:not(.linenums) > li:before, dl.ordered dt:before {
   content:'[' counter(item) ']';

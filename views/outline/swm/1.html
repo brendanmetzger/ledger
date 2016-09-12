@@ -1,13 +1,56 @@
 <div id="[$course:@id]">
   <header>
     <!-- insert views/outline/_/crumbs.html -->
-    <h1 class="massive">A Node is but a Node</h1>
+    <h1 class="massive">Nodes &amp; Nodes</h1>
     <p class="intro">The goal of every interval is to add a little bit to our repertoire, building on fundamentals week by week. After an introduction to filesystems and networks, once on a server, a website’s raison d'être is to broadcast information, and that information must be marked up for a machine to parse and organize. Before focusing purely on style and aesthetic, it is important to understand the algorithm of how to begin structuring a document.</p>
   </header>
+  <article>
+    <h2>Review: Tools</h2>
+    <p>Last week we were introduced to some tools used for web development. I will use <a href="http://atom.io">Atom</a> in this course. You learned about a few protocols, namely hypetext transfer protocol for using a browser to got files from <a href="https://en.wikipedia.org/wiki/Web_server">web servers</a> as well as the file transfer protocol for getting files <em>to and from</em> computers—typically a personal computer and a computer acting as a web server.</p>
+    <section class="whitepaper t">
+      <h3>Keys to successful web-development</h3>
+      <ul class="stylized star">
+        <li>Learn about your text editor—watch a tutorial video—they have lots of helpful features.</li>
+        <li>Try to use the mouse less and less every week</li>
+        <li>Learn shortcuts for common tasks (saving files, refreshing browsers, switching between tabs, opening/closing files, etc.)</li>
+        <li>Always have your browser console open when you are developing projects</li>
+      </ul>
+    </section>
+  </article>
   <article class="indented three columns">
-    <h2>Nodes and <abbr title="hypertext markup language">HTML</abbr></h2>
+    <h2>Nodes into <abbr title="hypertext markup language">HTML</abbr></h2>
     <p>Your template files is full of <a href="https://en.wikipedia.org/wiki/Boilerplate_(text)">boilerplate</a> that might seem like a formality, but it’s important to start understanding that <strong>marking up a document</strong> using a hierarchy of nodes is about explicity structure and meaning—not about style in the least. This serves two purposes: first to ensure a machine can parse the data, and second, to create objects that you can manipulate. We can change the <strong>look and feel</strong> of these objects through the use of a stylesheet language, and we can change the <strong>behavior</strong> of these objects through the use of a programming language. The nodes (<abbr title="Hypertext Markup Language">html</abbr>) give structure and proper structure allows for powerful design and behavior modification. Perhaps unfortunately due to it's easiness to learn and write, sloppy and incorrect markup is quite easy to get away with so you should be extra careful to understand it conceptually so you can take advantage of the powerful tools it will provide as we learn more about controlling look/feel and behavior of applications.</p>
     <p>The first clue that gives credence to the importance of <abbr title="Hypertext Markup Language">HTML</abbr> documents is this boilerplate—something that many developers, at best, neglect, and at worst, never truly learn. Every <abbr title="Hypertext Markup Language">html</abbr> file will be saved with a .html extension and will contain the following elements: <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code>. No other files we author requires such boilerplate; obviously it's there for a reason or we'd skip it! With that, we are going to look at markup from a very high level, and investigate the concept of what a <q>node</q> is, and then apply that concept to authoring documents.</p>
+  </article>
+  <article>
+    <h2>A Primer on Sectioning and Outlining</h2>
+    <p>Looking at information and developing a hierarchy is an important part of creating documents.</p>
+    <p>I gleaned some stuff from wikipedia and put together a <a href="/student/structure/outline.txt" class="download">plain text outline</a> that we can look at to begin understanding how a well sectioned document is appealing in many ways.</p>
+    <section>
+      <h3>Sectioning Blocks</h3>
+      <p></p>
+      <dl>
+        <dt><code>&lt;article&gt;</code></dt>
+        <dd>The HTML &lt;article&gt; element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable (e.g., in syndication). This could be a forum post, a magazine or newspaper article, a blog entry, <mark>an object, or any other independent item of content</mark>. Each &lt;article&gt; should be identified, typically by including a heading (&lt;h1&gt;-&lt;h6&gt; element) as a child of the &lt;article&gt; element.</dd>
+        <dt> (<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article">documentation</a>)</dt>
+        <dt><code>&lt;header&gt;</code> (<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header">documentation</a>)</dt>
+        <dt><code>&lt;footer&gt;</code></dt>
+        <dt><code>&lt;nav&gt;</code></dt>
+      </dl>
+      <h3>Headings, Paragraphs, etc.</h3>
+      <dl>
+        <dt><code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>,<code>&lt;h5&gt;</code>, <code>&lt;h6&gt;</code></dt>
+        <dt>em, i</dt>
+        <dd>adds an italicized face to text. Semantically, em means 'emphasis', where i just means you want a visual distinction (em is usually the way to go)</dd>
+        <dt>strong, b</dt>
+        <dd>adds a bold face to text. Semantically, strong carries more meaning, b is just visual.</dd>
+        <dt>p</dt>
+        <dd>represents paragraphs</dd>
+        <dt>a</dt>
+        <dd>hyperlinks are added via the a tag, and links are facilitated through an href attribute.</dd>
+      </dl>
+    </section>
+
   </article>
   <article>
     <h2>Anatomy of the cascading stylesheet language</h2>
@@ -16,6 +59,8 @@
     <p>Selectors are the handles that target specific <abbr title="Hypertext markup language">HTML</abbr> Element Nodes. Specific means anything from one element such as <code>#special { ...props</code> to literally every element, with something like <code>* { ...props</code>. Selectors can be concatenated with a comma to apply one set of property settings to several selectors—concatenating the previous examples would look like so: <code>#special, * { ...props</code>. Selectors are a heady topic, and one that we will be spending easily the next five weeks on.</p>
     <h3>Properties</h3>
     <p>Properties are simply the things we can adjust—these are truly the styles in stylesheet.</p>
+    <h3>Syntax</h3>
+    <p>Stylesheet languages, like Markup Languages, are quite forgiving, which we'll never use to our advantage. A typo in these languages isn't treated as a big deal, but I see it as one.</p>
   </article>
   <article>
     <style>
@@ -49,6 +94,7 @@
     }
     </style>
     <h2>Typographic Properties</h2>
+    <p>It has been written that <a href="https://ia.net/know-how/the-web-is-all-about-typography-period">Web Design is 95% typography</a> and giving some weight to that claim is the amount of leverage you have for controlling the typographic experience.</p>
     <section class="container">
       <dl class="______ float left">
         <dt><code>font-size</code> property</dt>
@@ -83,7 +129,6 @@
           Adjust the slider to see the letter spacing <code>letter-spacing: <span>0</span>;</code>. I prefer <code>em</code>s for all typographic work, but some leave delicate operations like this to <code>px</code>.</div>
       </div>
     </section>
-    <p><a href="https://ia.net/know-how/the-web-is-all-about-typography-period">Web Design is 95% typography.</a></p>
   </article>
   <article>
     <h2><abbr title="Cascading Style Sheets">CSS</abbr>: Descendant Selectors and Typography</h2>
@@ -102,47 +147,13 @@
     </dl>
   </article>
   <article>
-    <h2>Outlining</h2>
-    <section>
-      <h3>Sectioning Blocks</h3>
-      <dl>
-        <dt><code>&lt;article&gt;</code></dt>
-        <dd>The HTML &lt;article&gt; element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable (e.g., in syndication). This could be a forum post, a magazine or newspaper article, a blog entry, <mark>an object, or any other independent item of content</mark>. Each &lt;article&gt; should be identified, typically by including a heading (&lt;h1&gt;-&lt;h6&gt; element) as a child of the &lt;article&gt; element.</dd>
-        <dt><code>&lt;section&gt;</code></dt>
-        <dt><code>&lt;header&gt;</code></dt>
-        <dt><code>&lt;footer&gt;</code></dt>
-        <dt><code>&lt;nav&gt;</code></dt>
-      </dl>
-      <h3>Headings, Paragraphs, etc.</h3>
-      <dl>
-        <dt><code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>,<code>&lt;h5&gt;</code>, <code>&lt;h6&gt;</code></dt>
-        <dt>em, i</dt>
-        <dd>adds an italicized face to text. Semantically, em means 'emphasis', where i just means you want a visual distinction (em is usually the way to go)</dd>
-        <dt>strong, b</dt>
-        <dd>adds a bold face to text. Semantically, strong carries more meaning, b is just visual.</dd>
-        <dt>p</dt>
-        <dd>represents paragraphs</dd>
-        <dt>a</dt>
-        <dd>hyperlinks are added via the a tag, and links are facilitated through an href attribute.</dd>
-      </dl>
-    </section>
-
-  </article>
-  <article>
     <h2>Javascript &amp; Programming: The briefest introduction.</h2>
-    <p>Computers are essentially very complicated machines that do something very simple, and that is they turn electricity into a trove of circuits that can count very (<strong>very</strong>) fast. The fascinating thing is that there are many ways to count, in fact, an infinite number of ways.</p>
+    <p class="intro discuss">As humans, have you ever wondered <strong>why do we count to 10?</strong>. Is there a better way?</p>
+    <p>The fascinating thing is that there are many ways to count, in fact, an infinite number of ways, and ancient peoples had different methods, usually best suited to their needs and commerce. It wasn't until the 20<sup>th</sup> century after decades and decades of understanding the principles of <a href="https://en.wikipedia.org/wiki/Boolean_algebra">boolean algebra</a> that people began realizing a machine could be able to count for us. Modern computers are essentially very complicated clocks; they turn electricity into a trove of circuits that at the most basic level tick billions of times a second and thus, can count pretty fast.</p>
+
 
   </article>
-  <article>
-    <h2>Review &amp; Extra: Text, Editors, and Keyboards</h2>
-    <p>For this material we always to use text-editors, and let us remember what a text editor is not: Dreamweaver, Word, Pages, or anything that gives you an option to write anything other than monospaced, non-italicized, single-weight text is <em>should be avoided</em>. Text editors write plain text—text with the sole purpose of representing sequences of characters that make up the necessary syntax of a markup language, stylesheet language, or programming language.</p>
-    <h3>Keys to successful text editing</h3>
-    <ul>
-      <li>Try to use the mouse less and less</li>
-      <li>Learn shortcuts to jump to front and back of lines</li>
-      <li>Saving a document and moving to a browser and refreshing can be a swift mouse-less motion.</li>
-    </ul>
-  </article>
+
   <article>
     <h2>References and Practice Materials</h2>
     <dl>
@@ -150,6 +161,8 @@
       <dd>This course, while having no pre-requisites, will move at a good clip. If you are rusty, new, or want to be really prepared, I highly (highly) suggest you spend a good chunk of time going over <a href="http://marksheet.io/introduction.html">how the web works</a>, <a href="http://marksheet.io/html-basics.html">HTML basics</a>, and <a href="http://marksheet.io/html-content.html">HTML content</a>.</dd>
       <dt>HTML Elements</dt>
       <dd>The Mozilla Developer Network has a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">comprehensive list</a> of elements—no need to memorize, <strong>absolutely spend some time reviewing this list</strong>.</dd>
+      <dt>Sectioning and Outlining</dt>
+      <dd>Many developers suffer from a syndrome known as divitis, which is an overuse of <code>&lt;span&gt;</code> and <code>&lt;div&gt;</code> elements. While <a href="https://en.wikipedia.org/wiki/Span_and_div">span and div are handy</a>, and do fulfill a role, consientious web developers engage in semantic markup, starting with using proper <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML_sections_and_outlines">sections and outlines</a>.</dd>
       <dt>Javascript and the Browser</dt>
       <dd>Though it’s <a href="http://eloquentjavascript.net/12_browser.html">Chapter 12</a> of a JavaScript Programming book, I think it serves as a perfect starting point for the level of thinking we need to engage in, and that is the notion of networks, servers, clients and protocols.</dd>
     </dl>

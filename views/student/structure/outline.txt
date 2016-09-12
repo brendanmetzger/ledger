@@ -1,0 +1,89 @@
+Counting
+-------
+
+- Base 60
+Sexagesimal is a numeral system with sixty as its base. It originated with the ancient Sumerians in the 3rd millennium BC, was passed down to the ancient Babylonians, and is still used—in a modified form—for measuring time, angles, and geographic coordinates.
+
+The number 60, a superior highly composite number, has twelve factors, namely {1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60}, of which 2, 3, and 5 are prime numbers. With so many factors, many fractions involving sexagesimal numbers are simplified. For example, one hour can be divided evenly into sections of 30 minutes, 20 minutes, 15 minutes, 12 minutes, 10 minutes, 6 minutes, 5 minutes, 4 minutes, 3 minutes, 2 minutes, and 1 minute. 60 is the smallest number that is divisible by every number from 1 to 6; that is, it is the lowest common multiple of 1, 2, 3, 4, 5, and 6.
+
+Unlike most other numeral systems, sexagesimal is not used so much in modern times as a means for general computations, or in logic, but rather, it is used in measuring angles, geographic coordinates, and time.
+
+One hour of time is divided into 60 minutes, and one minute is divided into 60 seconds. Thus, a measurement of time such as "3:23:17" (three hours, 23 minutes, and 17 seconds) can be interpreted as a sexagesimal number, meaning 3×602 + 23×601 + 17×600. As with the ancient Babylonian sexagesimal system, however, each of the three sexagesimal digits in this number (3, 23, and 17) is written using the decimal system.
+
+Similarly, the practical unit of angular measure is the degree, of which there are 360 (six sixties) in a circle. There are 60 minutes of arc in a degree, and 60 arcseconds in a minute.
+
+
+- Base 2
+In mathematics and digital electronics, a binary number is a number expressed in the binary numeral system or base-2 numeral system which represents numeric values using two different symbols: typically 0 (zero) and 1 (one). The base-2 system is a positional notation with a radix of 2. Because of its straightforward implementation in digital electronic circuitry using logic gates, the binary system is used internally by almost all modern computers and computer-based devices. Each digit is referred to as a bit.
+
+- Base 16
+In mathematics and computing, hexadecimal (also base 16, or hex) is a positional numeral system with a radix, or base, of 16. It uses sixteen distinct symbols, most often the symbols 0–9 to represent values zero to nine, and A, B, C, D, E, F (or alternatively a, b, c, d, e, f) to represent values ten to fifteen. Hexadecimal numerals are widely used by computer system designers and programmers. Several different notations are used to represent hexadecimal constants in computing languages; the prefix "0x" is widespread due to its use in Unix and C (and related operating systems and languages). Alternatively, some authors denote hexadecimal values using a suffix or subscript. For example, one could write 0x2AF3 or 2AF316, depending on the choice of notation.
+
+- Base 10
+
+The decimal numeral system (also called base 10 or occasionally denary) has ten as its base. It is the numerical base most widely used by modern civilizations.[1][2]
+
+Decimal notation often refers to a base 10 positional notation such as the Hindu-Arabic numeral system or rod calculus;[3] however, it can also be used more generally to refer to non-positional systems such as Roman or Chinese numerals which are also based on powers of ten.
+
+A decimal number, or just decimal, refers to any number written in decimal notation, although it is more commonly used to refer to numbers that have a fractional part separated from the integer part with a decimal separator (e.g. 11.25).
+
+Citations and footnotes:
+https://en.wikipedia.org/wiki/Sexagesimal
+https://en.wikipedia.org/wiki/Binary_number
+https://en.wikipedia.org/wiki/Hexadecimal
+https://en.wikipedia.org/wiki/Decimal
+
+
+George Boole
+------------
+
+George Boole was an English mathematician, educator, philosopher and logician. He worked in the fields of differential equations and algebraic logic, and is best known as the author of The Laws of Thought (1854) which contains Boolean algebra. Boolean logic is credited with laying the foundations for the information age.
+
+- Boolean Algebra
+In mathematics and mathematical logic, Boolean algebra is the branch of algebra in which the values of the variables are the truth values true and false, usually denoted 1 and 0 respectively. Instead of elementary algebra where the values of the variables are numbers, and the main operations are addition and multiplication, the main operations of Boolean algebra are the conjunction and, denoted ∧, the disjunction or, denoted ∨, and the negation not, denoted ¬. It is thus a formalism for describing logical relations in the same way that ordinary algebra describes numeric relations.
+
+- Boolean circuit
+In computational complexity theory and circuit complexity, a Boolean circuit is a mathematical model for digital logic circuits. A formal language can be decided by a family of Boolean circuits, one circuit for each possible input length. Boolean circuits are also used as a formal model for combinational logic in digital electronics.
+
+Boolean circuits are defined in terms of the logic gates they contain. For example, a circuit might contain binary AND and OR gates and unary NOT gates, or be entirely described by binary NAND gates. Each gate corresponds to some Boolean function that takes a fixed number of bits as input and outputs a single bit.
+
+Boolean circuits provide a model for many digital components used in computer engineering, including multiplexers, adders, and arithmetic logic units.
+
+- Claude Shannon
+
+Claude Elwood Shannon was an American mathematician, electrical engineer, and cryptographer known as "the father of information theory".
+
+Shannon is famous for having founded information theory with a landmark paper that he published in 1948. He is perhaps equally well known for founding both digital computer and digital circuit design theory in 1937, when, as a 21-year-old master’s degree student at the Massachusetts Institute of Technology (MIT), he wrote his thesis demonstrating that electrical applications of Boolean algebra could construct any logical, numerical relationship. Shannon contributed to the field of cryptanalysis for national defense during World War II, including his basic work on codebreaking and secure telecommunications.
+
+
+Citations and footnotes:
+https://en.wikipedia.org/wiki/Boolean_algebra
+https://en.wikipedia.org/wiki/George_Boole
+https://en.wikipedia.org/wiki/Boolean_circuit
+https://en.wikipedia.org/wiki/Claude_Shannon
+
+Tech Terms
+-----------
+
+A programming paradigm is a fundamental style of computer programming, serving as a way of building the structure and elements of computer programs. Capabilities and styles of various programming languages are defined by their supported programming paradigms; some programming languages are designed to follow only one paradigm, while others support multiple paradigms.
+
+Programming paradigms that are often distinguished include imperative, declarative, functional, object-oriented, procedural, logic and symbolic programming.[1][2][3] With different paradigms, programs can be seen and built in different ways; for example, in object-oriented programming, a program is a collection of objects interacting in explicitly defined ways, while in declarative programming the computer is told only what the problem is, not how to actually solve it.
+
+- Algorithm
+In mathematics and computer science, an algorithm is a self-contained step-by-step set of operations to be performed. Algorithms exist that perform calculation, data processing, and automated reasoning.
+
+The words 'algorithm' and 'algorism' come from the name al-Khwārizmī. Al-Khwārizmī was a Persian mathematician, astronomer, geographer, and scholar.
+
+An algorithm is an effective method that can be expressed within a finite amount of space and time[1] and in a well-defined formal language[2] for calculating a function.[3] Starting from an initial state and initial input (perhaps empty),[4] the instructions describe a computation that, when executed, proceeds through a finite[5] number of well-defined successive states, eventually producing "output"[6] and terminating at a final ending state. The transition from one state to the next is not necessarily deterministic; some algorithms, known as randomized algorithms, incorporate random input.[7]
+
+The concept of algorithm has existed for centuries, however a partial formalization of what would become the modern algorithm began with attempts to solve the Entscheidungsproblem (the "decision problem") posed by David Hilbert in 1928. Subsequent formalizations were framed as attempts to define "effective calculability"[8] or "effective method";[9] those formalizations included the Gödel–Herbrand–Kleene recursive functions of 1930, 1934 and 1935, Alonzo Church’s lambda calculus of 1936, Emil Post’s "Formulation 1" of 1936, and Alan Turing’s Turing machines of 1936–7 and 1939. Giving a formal definition of algorithms, corresponding to the intuitive notion, remains a challenging problem.
+
+- Javascript
+JavaScript is a high-level, dynamic, untyped, and interpreted programming language.[6] It has been standardized in the ECMAScript language specification. Alongside HTML and CSS, it is one of the three essential technologies of World Wide Web content production; the majority of websites employ it and it is supported by all modern web browsers without plug-ins.[6] JavaScript is prototype-based with first-class functions, making it a multi-paradigm language, supporting object-oriented,[8] imperative, and functional programming styles.[6] It has an API for working with text, arrays, dates and regular expressions, but does not include any I/O, such as networking, storage, or graphics facilities, relying for these upon the host environment in which it is embedded.
+
+Despite some naming, syntactic, and standard library similarities, JavaScript and Java are otherwise unrelated and have very different semantics. The syntax of JavaScript is actually derived from C, while the semantics and design are influenced by the Self and Scheme programming languages.
+
+Citations and footnotes:
+https://en.wikipedia.org/wiki/Programming_paradigm
+https://en.wikipedia.org/wiki/JavaScript
+https://en.wikipedia.org/wiki/Algorithm

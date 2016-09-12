@@ -118,12 +118,12 @@ class Task extends \bloc\controller
 
 
     if ($year === null) {
-      echo "\nEmail: ";
+      echo "\nYear: ";
       $year = trim(fgets(STDIN));
     }
 
     if ($major === null) {
-      echo "\nEmail: ";
+      echo "\nMajor: ";
       $major = trim(fgets(STDIN));
     }
     $student->setAttribute('name', $name);
