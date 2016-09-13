@@ -1,4 +1,9 @@
-Counting
+A sloppy theory on how the internet happened
+compiled for Scripting for Web and Mobile class
+======
+
+counting
+  counting is a very old human endeavor
 -------
 
 - Base 60
@@ -34,9 +39,12 @@ https://en.wikipedia.org/wiki/Hexadecimal
 https://en.wikipedia.org/wiki/Decimal
 
 
-George Boole
+
+the path to the computer
+  a few people and ideas that set the stage for computers and the internet as we know it
 ------------
 
+- George Boole
 George Boole was an English mathematician, educator, philosopher and logician. He worked in the fields of differential equations and algebraic logic, and is best known as the author of The Laws of Thought (1854) which contains Boolean algebra. Boolean logic is credited with laying the foundations for the information age.
 
 - Boolean Algebra
@@ -62,9 +70,13 @@ https://en.wikipedia.org/wiki/George_Boole
 https://en.wikipedia.org/wiki/Boolean_circuit
 https://en.wikipedia.org/wiki/Claude_Shannon
 
-Tech Terms
+
+
+tech terminology
+  some common words found in the field of programming
 -----------
 
+- Programming Paradigm
 A programming paradigm is a fundamental style of computer programming, serving as a way of building the structure and elements of computer programs. Capabilities and styles of various programming languages are defined by their supported programming paradigms; some programming languages are designed to follow only one paradigm, while others support multiple paradigms.
 
 Programming paradigms that are often distinguished include imperative, declarative, functional, object-oriented, procedural, logic and symbolic programming.[1][2][3] With different paradigms, programs can be seen and built in different ways; for example, in object-oriented programming, a program is a collection of objects interacting in explicitly defined ways, while in declarative programming the computer is told only what the problem is, not how to actually solve it.
