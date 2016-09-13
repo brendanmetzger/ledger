@@ -247,7 +247,7 @@ ul.cross li:before {content: '☓';}
 .paginate article {
   border-top-width:calc(1vmin);
   margin:calc(5vmax) 0;
-  padding:1vh 0;
+  padding:2vmax 0;
 }
 
 .paginate article:before {
