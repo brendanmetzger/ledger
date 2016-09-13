@@ -217,7 +217,7 @@ dl.ordered dd + dd {
   border-width:1px 0 0;
 }
 ol:not(.linenums) li, ul.stylized li {
-  padding:0.5em 0;
+  padding:0.25em 0;
 }
 ol:not(.linenums) > li:before, dl.ordered dt:before {
   content:'[' counter(item) ']';
@@ -668,4 +668,33 @@ video {
 .playlist li:after {
   font-size:0.9em;
   ;
+}
+
+.examples > div {
+  background-color:#fff;
+  border:1px solid #eee;
+  display:block;
+  font-size:16px;
+  padding:1.75em;
+  margin:0.5em 0;
+  position:relative;
+}
+.examples input {
+  display:block;
+  position:absolute;
+  right:0.5em;
+  top:0.25em;
+}
+
+[data-banner]:before {
+  content: attr(data-banner);
+  position:absolute;
+  font-size:0.75em;
+  text-transform:uppercase;
+  top:-0.75em;
+  left:-0.75em;
+  background-color:#444;
+  color:#fff;
+  padding:0.125em 0.5em;
+  transform: rotate(-12deg)
 }

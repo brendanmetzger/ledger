@@ -1,11 +1,11 @@
 <div id="[$course:@id]">
   <header>
     <!-- insert views/outline/_/crumbs.html -->
-    <h1 class="massive">Nodes &amp; Nodes</h1>
-    <p class="intro">The goal of every interval is to add a little bit to our repertoire, building on fundamentals week by week. After an introduction to filesystems and networks, once on a server, a website’s raison d'être is to broadcast information, and that information must be marked up for a machine to parse and organize. Before focusing purely on style and aesthetic, it is important to understand the algorithm of how to begin structuring a document.</p>
+    <h1 class="massive">All about Nodes</h1>
+    <p class="intro">The goal of every interval is to add a little bit to our repertoire, building on fundamentals week by week. After an introduction to filesystems and networks, once on a server, a website’s raison d'être is to broadcast information, and that information must be marked up for a machine to parse and organize. Before focusing purely on style and aesthetic, it is important to understand how and why we structure documents the way we do.</p>
   </header>
   <article>
-    <h2>Review: Tools</h2>
+    <h2>Questions &amp; Review</h2>
     <p>Last week we were introduced to some tools used for web development. I will use <a href="http://atom.io">Atom</a> in this course. You learned about a few protocols, namely hypetext transfer protocol for using a browser to got files from <a href="https://en.wikipedia.org/wiki/Web_server">web servers</a> as well as the file transfer protocol for getting files <em>to and from</em> computers—typically a personal computer and a computer acting as a web server.</p>
     <section class="whitepaper t">
       <h3>Keys to successful web-development</h3>
@@ -21,36 +21,12 @@
     <h2>Nodes into <abbr title="hypertext markup language">HTML</abbr></h2>
     <p>Your template files is full of <a href="https://en.wikipedia.org/wiki/Boilerplate_(text)">boilerplate</a> that might seem like a formality, but it’s important to start understanding that <strong>marking up a document</strong> using a hierarchy of nodes is about explicity structure and meaning—not about style in the least. This serves two purposes: first to ensure a machine can parse the data, and second, to create objects that you can manipulate. We can change the <strong>look and feel</strong> of these objects through the use of a stylesheet language, and we can change the <strong>behavior</strong> of these objects through the use of a programming language. The nodes (<abbr title="Hypertext Markup Language">html</abbr>) give structure and proper structure allows for powerful design and behavior modification. Perhaps unfortunately due to it's easiness to learn and write, sloppy and incorrect markup is quite easy to get away with so you should be extra careful to understand it conceptually so you can take advantage of the powerful tools it will provide as we learn more about controlling look/feel and behavior of applications.</p>
     <p>The first clue that gives credence to the importance of <abbr title="Hypertext Markup Language">HTML</abbr> documents is this boilerplate—something that many developers, at best, neglect, and at worst, never truly learn. Every <abbr title="Hypertext Markup Language">html</abbr> file will be saved with a .html extension and will contain the following elements: <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code>. No other files we author requires such boilerplate; obviously it's there for a reason or we'd skip it! With that, we are going to look at markup from a very high level, and investigate the concept of what a <q>node</q> is, and then apply that concept to authoring documents.</p>
+    <p>Our first step away from thinking about markup as an aribtrary series of symbols and letters and start try very hard to think of <strong><abbr title="hypertext markup language">HTML</abbr> elements as actual objects</strong>.</p>
   </article>
-  <article>
-    <h2>A Primer on Sectioning and Outlining</h2>
-    <p>Looking at information and developing a hierarchy is an important part of creating documents.</p>
-    <p>I gleaned some stuff from wikipedia and put together a <a href="/student/structure/outline.txt" class="download">plain text outline</a> that we can look at to begin understanding how a well sectioned document is appealing in many ways.</p>
-    <section>
-      <h3>Sectioning Blocks</h3>
-      <p></p>
-      <dl>
-        <dt><code>&lt;article&gt;</code></dt>
-        <dd>The HTML &lt;article&gt; element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable (e.g., in syndication). This could be a forum post, a magazine or newspaper article, a blog entry, <mark>an object, or any other independent item of content</mark>. Each &lt;article&gt; should be identified, typically by including a heading (&lt;h1&gt;-&lt;h6&gt; element) as a child of the &lt;article&gt; element.</dd>
-        <dt> (<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article">documentation</a>)</dt>
-        <dt><code>&lt;header&gt;</code> (<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header">documentation</a>)</dt>
-        <dt><code>&lt;footer&gt;</code></dt>
-        <dt><code>&lt;nav&gt;</code></dt>
-      </dl>
-      <h3>Headings, Paragraphs, etc.</h3>
-      <dl>
-        <dt><code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>,<code>&lt;h5&gt;</code>, <code>&lt;h6&gt;</code></dt>
-        <dt>em, i</dt>
-        <dd>adds an italicized face to text. Semantically, em means 'emphasis', where i just means you want a visual distinction (em is usually the way to go)</dd>
-        <dt>strong, b</dt>
-        <dd>adds a bold face to text. Semantically, strong carries more meaning, b is just visual.</dd>
-        <dt>p</dt>
-        <dd>represents paragraphs</dd>
-        <dt>a</dt>
-        <dd>hyperlinks are added via the a tag, and links are facilitated through an href attribute.</dd>
-      </dl>
-    </section>
-
+  <article class="margins">
+    <h2>In Class: <em>A Primer on Sectioning and Outlining</em></h2>
+    <p>In the <a href="#reference">reference</a> area below I provide many links for tutorials on how to learn familiarize yourself with learning <abbr title="hypertext markup language">HTML</abbr> syntax and elements. I am going to leave it up to you to be disciplined and gain knowledge in this area. Beyond the links I am providing below, there are numerous online resources like <a href="https://www.codecademy.com/learn/web">codecademy</a>, <a href="https://www.khanacademy.org/computing/computer-programming/html-css">Khan Academy</a> and just about every technical subject ever at <a href="http://lynda.com">Lynda.com</a>. I suggest buying books, such as this <a href="http://www.htmlandcssbook.com/">beautiful specimen</a> (and not that expensive—check amazon). I am not going to re-hash what's widely available and done incredibly well. But...</p>
+    <p>Learning markup languages and appreciating them is what I hope to impart on you. Let's start with what we know about nodes and unpack the notion that to markup is actually an analogue for this way of thinking. I gleaned some stuff from wikipedia and put together a <a href="/student/structure/outline.txt" class="download">plain text outline</a> that we can look at to begin understanding how a well sectioned document is appealing in many ways, and a decent way of structuring information.</p>
   </article>
   <article>
     <h2>Anatomy of the cascading stylesheet language</h2>
@@ -58,103 +34,83 @@
     <h3 class="tt">Selectors</h3>
     <p>Selectors are the handles that target specific <abbr title="Hypertext markup language">HTML</abbr> Element Nodes. Specific means anything from one element such as <code>#special { ...props</code> to literally every element, with something like <code>* { ...props</code>. Selectors can be concatenated with a comma to apply one set of property settings to several selectors—concatenating the previous examples would look like so: <code>#special, * { ...props</code>. Selectors are a heady topic, and one that we will be spending easily the next five weeks on.</p>
     <h3>Properties</h3>
-    <p>Properties are simply the things we can adjust—these are truly the styles in stylesheet.</p>
+    <p>Properties are simply the things we can adjust—these are truly the styles in stylesheet. For starters, here is an <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">exhaustive reference</a>. Notice that once you have targeted an element with a selector, you can control many many properties that affect its presentation and even a few that affect behavior.</p>
     <h3>Syntax</h3>
-    <p>Stylesheet languages, like Markup Languages, are quite forgiving, which we'll never use to our advantage. A typo in these languages isn't treated as a big deal, but I see it as one.</p>
+    <p>Stylesheet languages, like Markup Languages, are quite forgiving, which is actually a bigger headache than if they were less-so. A typo in these languages are typically ignored which leads to a misunderstanding, so try your best to be organized, and as always, have the console open (every year tools get better at helping point out your mistakes). Glancing at an <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Syntax">overview of the syntax</a>, the declaration of a <abbr>CSS</abbr> ruleset resembles a programming data structure to some degree. Curly braces, colons, semicolons and careful use of punctuation operators is the starting point. From the onset, organization and code conventions are not only important, but mandatory for this course.</p>
   </article>
-  <article>
-    <style>
-    .examples > div {
-      background-color:#fff;
-      border:1px solid #eee;
-      display:block;
-      font-size:16px;
-      padding:1.75em;
-      margin:0.5em 0;
-      position:relative;
-    }
-    .examples input {
-      display:block;
-      position:absolute;
-      right:0.5em;
-      top:0.25em;
-    }
-
-    [data-banner]:before {
-      content: attr(data-banner);
-      position:absolute;
-      font-size:0.75em;
-      text-transform:uppercase;
-      top:-0.75em;
-      left:-0.75em;
-      background-color:#444;
-      color:#fff;
-      padding:0.125em 0.5em;
-      transform: rotate(-12deg)
-    }
-    </style>
-    <h2>Typographic Properties</h2>
+  <article class="margins">
+    <h2>Introductory Properties: <em>Typography</em></h2>
     <p>It has been written that <a href="https://ia.net/know-how/the-web-is-all-about-typography-period">Web Design is 95% typography</a> and giving some weight to that claim is the amount of leverage you have for controlling the typographic experience.</p>
+    <p>Though we will do a more thorough investigation later, it would be a good idea to familiarize yourself with <a href="https://www.w3.org/Style/Examples/007/units.en.html"><abbr>CSS</abbr> units</a>—you really only need to get comfortable with a handful of them and understanding how they work..</p>
+    <hr class="ruled"/>
     <section class="container">
       <dl class="______ float left">
         <dt><code>font-size</code> property</dt>
         <dd>Font-size sets the size of the text. Other properties can be based off of this size; when you declare a font-size for a particular element, that size will govern how all other properties are set when using a unit such as <code>em</code></dd>
-        <dt>font-family</dt>
-        <dd>Changes the typeface of an element. Specify this as a sequences of typefaces.</dd>
-        <dt>font-weight</dt>
+        <dt><code>font-family</code> property</dt>
+        <dd>Changes the typeface of an element.</dd>
+        <dd>You can embed fonts, or use system fonts. If using system fonts, separate the fonts with a comma to have defaults in place if the user does not have the specified font.</dd>
+        <dd>When specifying a font with multiple words, make sure to surround the name in double or single quotes.</dd>
+        <dt><code>font-weight</code> property</dt>
         <dd>Controls weight thin/normal/bold, or in 3 digit numbers like 200, 400, 800 (preferred, especially for full typefaces with more than three weights)</dd>
+        <dd>Mind that if you are bolding text, it is advisable to use the <code>&lt;strong&gt;</code> or <code>&lt;b&gt;</code> tags to lend semantic meaning</dd>
+        <dt><code>font-style</code> property</dt>
+        <dd>Can make italicized and oblique text (if your typeface has such nuances).</dd>
+        <dd>Mind that if you are italicizing text, it is advisable to use the <code>&lt;em&gt;</code> or <code>&lt;i&gt;</code> tags to lend semantic meaning.</dd>
         <dt><code>line-height</code> property (leading)</dt>
         <dd>Usage is <code>line-height: (num)<em>unit</em>;</code></dd>
         <dd>Unlike print typography dominated by baselines, web typography is dominated by this unit. Mostly, you will use to control <q>leading</q>, or the space between lines. </dd>
         <dd><code>line-height</code> need not be a fixed number, it can also be a unit-less ratio such as <code>1.5</code> which would represent 1.5 times the value of whatever the <code>font-size</code> is—handy!</dd>
         <dt><code>letter-spacing</code> property (tracking)</dt>
-        <dt><code>text-align</code></dt>
-        <dd>Used to align left, center, right align, as well as justify text. You can only align text in block-level elements.</dd>
-        <dt><code>text-transform</code></dt>
-        <dd>Offers transform to upper/lowercase, can capitalize a sentence, etc.</dd>
-        <dt><code>text-decoration</code></dt>
+        <dd>Adjusts the space between letters, can be positive or negative—mind, this is a different concept from kerning.</dd>
+        <dt><code>text-align</code> property</dt>
+        <dd>Used to align left, center, right align, as well as justify text. You can only align text in <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements">block-level elements</a>.</dd>
+        <dt><code>text-transform</code> property</dt>
+        <dd class="discuss">Offers transform to upper/lowercase, can capitalize a sentence.</dd>
+        <dt><code>text-decoration</code> property</dt>
         <dd>Controls underline, line-through, overline, etc.</dd>
-        <dt><code>text-indent</code></dt>
+        <dt><code>text-indent</code> property</dt>
         <dd>set the indentation using a CSS unit.</dd>
+        <dd>You can set a negative number for a hanging indent.</dd>
+        <dt>Dregs</dt>
+        <dd><code>word-spacing</code> like letter spacing, but for words.</dd>
+        <dd><code>font-variant</code> controls advanced typographic features such as small-caps and ligatures (when available)</dd>
+        <dd><code>font-kerning</code> controls the usage of kerning information (when available)</dd>
+        <dd><code>text-shadow</code> can create a drop shadow for text, or an embossed effect that was very popular in 2009</dd>
+        <dd>Many more features, such as columns, how to deal with white space, word breaks, etc.</dd>
       </dl>
       <div class="____ float left examples">
         <h4>Examples</h4>
         <div style="font-size:16px;line-height:1.5">
           <input type="range" min="10" max="30" step="2" value="16" oninput="this.parentNode.style.fontSize = this.nextElementSibling.querySelector('span').innerHTML = this.value + 'px'"/>I have specified the size in pixels or <code>font-size: <span>16px</span>;</code>. This is for the sake of example—I <strong>always</strong> use a relative unit for setting text size, such as <code>em</code>/<code>rem</code>, or the viewport units such as <code>vw</code> or <code>vh</code></div>
+        <div>This is <code>&lt;strong&gt;</code><strong>strong text</strong><code>&lt;/strong&gt;</code> which exhibits the <code>font-weight</code> property and this is <code>&lt;em&gt;</code><em>em text</em><code>&lt;/em&gt;</code> which exhibits the <code>font-style</code> property</div>
         <div style="line-height:1.35" data-banner="preferred">
           <input type="range" min="0" max="3" step="0.125" value="1.35" oninput="this.parentNode.style.lineHeight = this.nextElementSibling.querySelector('span').innerHTML = this.value"/>This is a bit of text with a line-height of 1.35, or <code>line-height: <span>1.35</span>;</code>. Unit-less values are useful for some advanced reasons, but essentially, the ensure proportionality based on the text size.</div>
         <div style="line-height:1em">This is a bit of text with a line-height of 1em, or <code><samp>selector</samp> { line-height: 1em; }</code>. Notice that 1em is essentially at a point where the <a href="https://en.wikipedia.org/wiki/Descender">descenders</a> of the previous line are nearly touching the <a href="https://en.wikipedia.org/wiki/Ascender_(typography)">ascenders</a> of the lines below.</div>
         <div>
           <input type="range" min="-0.2" max="0.5" step="0.075" value="0" oninput="this.parentNode.style.letterSpacing = this.nextElementSibling.querySelector('span').innerHTML = this.value + 'em'"/>
           Adjust the slider to see the letter spacing <code>letter-spacing: <span>0</span>;</code>. I prefer <code>em</code>s for all typographic work, but some leave delicate operations like this to <code>px</code>.</div>
+        <div style="text-align:left"><code>text-align: left;</code> it's in my left pocket | move to the left side: left-hand, sinistral; Nautical port, larboard; Heraldry sinister.</div>
+        <div style="text-align:right"><code>text-align: right;</code> my right hand: dextral. Nautical starboard</div>
+        <div style="text-align:center"><code>text-align: center;</code> middle, nucleus, heart, core, hub; middle point, midpoint, halfway point, mean, median.</div>
+        <div style="text-align:justify"><code>text-align: justify;</code> will adjust (a line of type or piece of text) so that the print fills a space evenly or forms a straight edge at one or both margins.</div>
+        <div style="text-indent:10em"><input type="range" min="-1" max="10" step="0.5" value="10" oninput="this.parentNode.style.textIndent = this.nextElementSibling.querySelector('span').innerHTML = this.value + 'em'"/>Take a look here and notice that this text has a property of <code>text-indent: <span>10em</span>;</code>. The first line of the paragraph will be affected by this setting..</div>
       </div>
     </section>
   </article>
+
   <article>
-    <h2><abbr title="Cascading Style Sheets">CSS</abbr>: Descendant Selectors and Typography</h2>
-    <h3>Declaring <abbr title="Cascating Stylesheets">CSS</abbr></h3>
-    <p>Glancing at an <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Syntax">overview of the syntax</a>, the declaration of a <abbr>CSS</abbr> ruleset resembles a programming data structure to some degree. Curly braces, colons, semicolons and careful use of punctuation operators is the starting point. From the onset, organization and code conventions are not only important, but mandatory for this course.</p>
-    <h3>Units (of measure)</h3>
-    <p>There are several <a href="https://www.w3.org/Style/Examples/007/units.en.html"><abbr>CSS</abbr> units</a>, but you really only need to get comfortable with a handful of them.</p>
-    <dl>
-      <dt>px (pixels)</dt>
-      <dt>em</dt>
-      <dd>an em is the width of a letter 'M', it is percentage based, so it is good for responsive design</dd>
-      <dt>%</dt>
-      <dd>Percentages are tough to get the hang of. They generally work well, and I would recommend them for widths.</dd>
-      <dt>vh, vw, vmax, vmin</dt>
-      <dd>A percentage of the viewport height and viewport width respectively. This is a handy one.</dd>
-    </dl>
-  </article>
-  <article>
-    <h2>Javascript &amp; Programming: The briefest introduction.</h2>
+    <h2>Programming (baby) step #1: <em>computability</em></h2>
     <p class="intro discuss">As humans, have you ever wondered <strong>why do we count to 10?</strong>. Is there a better way?</p>
     <p>The fascinating thing is that there are many ways to count, in fact, an infinite number of ways, and ancient peoples had different methods, usually best suited to their needs and commerce. It wasn't until the 20<sup>th</sup> century after decades and decades of understanding the principles of <a href="https://en.wikipedia.org/wiki/Boolean_algebra">boolean algebra</a> that people began realizing a machine could be able to count for us. Modern computers are essentially very complicated clocks; they turn electricity into a trove of circuits that at the most basic level tick billions of times a second and thus, can count pretty fast.</p>
-
-
+    <ul>
+      <li>Clocks are an homage</li>
+      <li>Counting is colorful</li>
+      <li>Numbers can be redundant</li>
+    </ul>
   </article>
 
-  <article>
+  <article id="reference">
     <h2>References and Practice Materials</h2>
     <dl>
       <dt>A Web Development Primer</dt>
