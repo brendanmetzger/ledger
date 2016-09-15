@@ -29,3 +29,4 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Make tutorial for node/js localhost server, php, python.
 - [ ] Do several studies on algorithmic art.
 - [ ] Implement web-socket interface that reacts to people in course
+- [ ] Show who is in attendance
