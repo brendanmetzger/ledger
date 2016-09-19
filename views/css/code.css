@@ -8,7 +8,6 @@ code, pre, .code, .notate:after, code *, .code *{
 
 samp {
   color:#ccc;
-  text-decoration:underline;
 }
 
 .notate:after {

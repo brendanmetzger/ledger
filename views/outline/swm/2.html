@@ -22,27 +22,62 @@
     <h2>Demo: <em>a résumé</em></h2>
     <p>Something that is suitable for classes and ids.</p>
   </article>
-
+  <article class="margins">
+    <h2>Attributes</h2>
+    <p>So far our <abbr title="hypertext markup language">HTML</abbr> has been pretty basic so far in that we have not investigated <a href="https://en.wikipedia.org/wiki/HTML_attribute">attributes</a> unless they were mandatory (like the <code>href</code> in anchors.  An attribute is always written on the opening tag of an Element and is defined by a keyword followed by an = sign and a quoted string of text. W use them to start describing unique characteristics that might apply to a specific node and features it has. For instance, in the case of an <code>&lt;a&gt;</code> Element, the <code>href</code> attribute (known as the hypertext reference) determines where the anchor should take the user when they engage it.</p>
+    <p><em>Attributes are now an essential part of our vocabulary</em> as we will be learning and using new ones throughout the semester. Some attributes apply to only specific Elemnets, while others are universal, in that we can apply them to any element. Let's jump into our priliminary investigation with a universal attribute called <code>style</code>.</p>
+  </article>
   <article>
     <h2>Units</h2>
     <p>The most notable CSS units are involved in <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">determining length</a> and then the next most prominent would probably be <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">determining color</a></p>
     <p>Consider the box below. <strong>Make sure to resize your window, and change the aspect ratio to understand vmax and vmin better.</strong></p>
     <h3>Looking at length units</h3>
     <div class="example">
-      <p data-unit="em">This paragraph is <span></span> wide</p>
-      <p data-unit="vw">This paragraph is <span></span> wide</p>
-      <p data-unit="em">This paragraph is <span></span> wide</p>
-      <p data-unit="em">This paragraph is <span></span> wide</p>
+      <input type="range" min="25" max="75" step="1" value="25"/>
+      <samp data-unit="px">This paragraph is <code>?</code> wide</samp>
+      <samp data-unit="em">This paragraph is <code>?</code> wide</samp>
+      <samp data-unit="vw">This paragraph is <code>?</code> wide</samp>
+      <samp data-unit="vh">This paragraph is <code>?</code> wide</samp>
+      <samp data-unit="%">This paragraph is <code>?</code> wide</samp>
     </div>
+    <style media="screen">
+      div.example {
+        border:1px solid rgba(0,0,0,0.2);
+        padding:2em;
+      }
+      div.example samp {
+        font-size:1.5em;
+        background-color:#333;
+        color:#f8f8f8;
+        margin:0.5em;
+        padding:1em;
+        line-height:1;
+        display:block;
+      }
+    </style>
+    <script type="text/javascript">
+      addEventListener('load', function () {
+        var lis = document.querySelectorAll('div.example samp');
+        var inp = document.querySelector('div.example input');
+        inp.addEventListener('input', function (evt) {
+          [].forEach.call(lis, function (li) {
+            li.firstElementChild.textContent = li.style.width = this.value + li.dataset.unit;
 
+          }, this);
+
+        });
+        var click = document.createEvent('MouseEvents');
+        click.initEvent('input', true, true);
+        inp.dispatchEvent(click);
+      });
+    </script>
     <h3>Looking at color units</h3>
     <p>I recommend that if you are new to color, you start by using and understanding how hex colors are specified. Hex stands for hexadecimal, and essentially it is just the red, green and blue system converted to the condensed hexadecimal number system. Once you understand this in principle, I think it is useful to use rgb values for the fact that you can specify an alpha channel—or an opacity of the color. From there, you can use an entirely different color scheme like hsl, or hue, saturation, luminosity. I won't dwell on this system yet, but it can be much easier to use HSL when we begin programming in the future.</p>
-  
   </article>
   <article class="indented">
     <h2>Selectors: <em>Classes, IDs, and pseudo classes</em></h2>
     <p class="intro">Now that we have some familiarity <abbr title="hypertext markup language">HTML</abbr> structure and how to take advantage of Element types and decendancy using <abbr title="cascading stylesheets">CSS</abbr>, we can take our first step towards naming things as we would prefer.</p>
-    <p>. Classes and IDs are added as <a href="https://en.wikipedia.org/wiki/HTML_attribute">attributes</a> to HTML Elements. Attributes are keywords followed by an = sign and a quoted string of text.</p>
+    <p>Classes and IDs are added as attributes of an Element Node</p>
     <p>Adding classes to elements is the most powerful way to style a document. Adding IDs is less important for styling and more important for targeting a unique (that means only one) element—which is especially useful in JavaScript and XML. <a href="http://www.w3schools.com/css/css_pseudo_classes.asp">Pseudo-classes</a> are ways to style transient states, such as a user hovering over an element with <code>:hover</code>, or an element’s position in the hierarchy with <code>:first-child</code> They are called pseudo because you don’t add them, the browser kind of adds them for you when necessary.</p>
     <p>With <strong>well structured HTML</strong>, you need fewer elements to accomplish an elegant design through CSS—as opposed to sloppy HTML that mandates too many classes/ids and other selectors, and the less you write, the easier it is to maintain code. Some general rules of thumb that I think works great: if your CSS class doesn’t seem like it could apply to more than one element, you should rethink your approach. If your ID seems like it could apply to several things, you should rethink your approach. Lastly, I think you should steer clear of ID selectors for CSS, only use them to add meaning, uniqueness, and specificity to your markup.</p>
     <section class="comparison container">
@@ -59,7 +94,16 @@
       <h2>Programming (baby) step #1: <em>An example of computability</em></h2>
       <p>I mentioned in the last outline that counting is a part of human history, and likewise, is the essential function of a computer. Allow me to cook up an example. Before I do any actual counting let's take a tour of the console and talk about writing programs for a moment.</p>
       https://gist.github.com/brendanmetzger/dbbf341f08c06f37f4739ad620af1289
-
+  </article>
+  <article>
+    <h2>References and Practice Materials</h2>
+    <dl>
+      <dt>Navagation and styling links</dt>
+      <dd>Depending on your proficiency, you may need to watch quite a few of these, or, you can jump to any specific areas if you think it will suit your needs better.</dd>
+      <dd><a class="watch" href="http://www.lynda.com/CSS-tutorials/CSS-Styling-Navigation/90367-2.html">Styling Navigation</a></dd>
+      <dt>Naming things</dt>
+      <dd><a class="watch" href="http://www.lynda.com/HTML-tutorials/Using-class-ID-attributes/182177/370839-4.html">Classes and IDs</a></dd>
+    </dl>
   </article>
   <!-- insert views/topics/perspective/naming-conventions.html  -->
 </div>
