@@ -1,26 +1,26 @@
 <div>
   <header>
     <!-- insert views/outline/_/crumbs.html -->
-    <h1 class="massive">Accuracy</h1>
-    <p class="m intro">Without further delay, I think it’s important to briefly introduce our next HTML and CSS topic, release you to some self-guided exploration, and start our introduction to world of programming.</p>
+    <h1 class="massive">Taxonomy</h1>
+    <p class="m intro">Introducing our next <abbr title="Hypertext Markup Language">HTML</abbr> and <abbr title="Cascading Stylesheet">CSS</abbr> topic where we actually begin to name things ourselves and start our first introduction to seeing an actual simple programming in JavaScript.</p>
   </header>
   <article>
     <h2>Review/Questions</h2>
     <p>Last Week we went over structure and outlining and introduced type and descendant selectors in <abbr title="Cascading Stylesheets">CSS</abbr>. We are becoming comfortable the web development workflow and tools.</p>
   </article>
   <article>
+      <h2>Programming (baby) step #1: <em>An example of computability</em></h2>
+      <p>I mentioned in the last outline that counting is a part of human history, and likewise, is the essential function of a computer. Allow me to cook up an example. Before I do any actual counting let's take a tour of the console and talk about writing programs for a moment.</p>
+      <p><a href="https://gist.github.com/brendanmetzger/dbbf341f08c06f37f4739ad620af1289">A gist</a></p>
+  </article>
+  <article>
     <h2>Editing Calisthenics</h2>
     <p>We now are familiar with using command+arrow keys to jump around our editor. We know that holding shift down while doing this will select text. We are aware of indentation guides and invisible characters. If you are not aware of any of this stuff yet, or need a refresher: re-watch the lectures or ask me at any point if you need to clarify—this is the convenient stuff that will make your life easier!</p>
-      <p>This week we are going to look at some of the things we can do with a text editor to optimize your workflow like adding packages and modifying snippits to work to our preferences. Though I use <a href="http://atom.io">Atom</a> in class, the important take away is all reputable program source code editors have packages, snippits, macros or some other system for doing pesky work for you.</p>
-    <ul class="stylized star tt">
-      <li>Picking Colors</li>
-      <li>Installing packages.</li>
-      <li>Changing snippits (<em>advanced stuff, but I want you to be aware of it</em>)</li>
-    </ul>
+      <p>Over the last few weeks you've spent some time writing markup and indenting and organizing. Taking it a step further, let's investigate ways we can <strong>indent a bunch of lines at once</strong>, and then let's talk about <strong>commenting</strong>.</p>
   </article>
   <article>
     <h2>Demo: <em>a résumé</em></h2>
-    <p>Something that is suitable for classes and ids.</p>
+    <p>Something that is suitable for classes and ids would be a resume—think the templates given when you start up a word processing program: same content, different style. By using methods of taxonomy, we'll demonstrate the power of clever naming and organization. First, I've started a <a href="/student/structure/resume.html">résumé</a> for you. Let's practice together implementing more structure around the elements we know.</p>
   </article>
   <article class="margins">
     <h2>Attributes</h2>
@@ -28,9 +28,8 @@
     <p><em>Attributes are now an essential part of our vocabulary</em> as we will be learning and using new ones throughout the semester. Some attributes apply to only specific Elemnets, while others are universal, in that we can apply them to any element. Let's jump into our priliminary investigation with a universal attribute called <code>style</code>.</p>
   </article>
   <article>
-    <h2>Units</h2>
-    <p>The most notable CSS units are involved in <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">determining length</a> and then the next most prominent would probably be <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">determining color</a></p>
-    <p>Consider the box below. <strong>Make sure to resize your window, and change the aspect ratio to understand vmax and vmin better.</strong></p>
+    <h2><abbr title="Cascading Stylesheet">CSS</abbr> Units: <em>length</em></h2>
+    <p>The most notable CSS units are involved in <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">determining length</a>. Consider the sample boxes below each have their <code>width</code> property set to the same number with a different unit. Make sure to resize your window to understand how some units are affected by the size of your browser (vw/vh) or the size of their containing element (%) or the size of the font (em). Pixels are static and not affected proportionally, but be aware that modern screens have different pixel sizes, so scaling and approximation will occur and designing with pixels is becoming unfavorable especially where mobile and responsive design are concerned.</p>
     <h3>Looking at length units</h3>
     <div class="example">
       <input type="range" min="25" max="75" step="1" value="25"/>
@@ -71,30 +70,31 @@
         inp.dispatchEvent(click);
       });
     </script>
-    <h3>Looking at color units</h3>
-    <p>I recommend that if you are new to color, you start by using and understanding how hex colors are specified. Hex stands for hexadecimal, and essentially it is just the red, green and blue system converted to the condensed hexadecimal number system. Once you understand this in principle, I think it is useful to use rgb values for the fact that you can specify an alpha channel—or an opacity of the color. From there, you can use an entirely different color scheme like hsl, or hue, saturation, luminosity. I won't dwell on this system yet, but it can be much easier to use HSL when we begin programming in the future.</p>
   </article>
   <article class="indented">
     <h2>Selectors: <em>Classes, IDs, and pseudo classes</em></h2>
     <p class="intro">Now that we have some familiarity <abbr title="hypertext markup language">HTML</abbr> structure and how to take advantage of Element types and decendancy using <abbr title="cascading stylesheets">CSS</abbr>, we can take our first step towards naming things as we would prefer.</p>
-    <p>Classes and IDs are added as attributes of an Element Node</p>
-    <p>Adding classes to elements is the most powerful way to style a document. Adding IDs is less important for styling and more important for targeting a unique (that means only one) element—which is especially useful in JavaScript and XML. <a href="http://www.w3schools.com/css/css_pseudo_classes.asp">Pseudo-classes</a> are ways to style transient states, such as a user hovering over an element with <code>:hover</code>, or an element’s position in the hierarchy with <code>:first-child</code> They are called pseudo because you don’t add them, the browser kind of adds them for you when necessary.</p>
-    <p>With <strong>well structured HTML</strong>, you need fewer elements to accomplish an elegant design through CSS—as opposed to sloppy HTML that mandates too many classes/ids and other selectors, and the less you write, the easier it is to maintain code. Some general rules of thumb that I think works great: if your CSS class doesn’t seem like it could apply to more than one element, you should rethink your approach. If your ID seems like it could apply to several things, you should rethink your approach. Lastly, I think you should steer clear of ID selectors for CSS, only use them to add meaning, uniqueness, and specificity to your markup.</p>
-    <section class="comparison container">
-      <pre class="prettyprint half float left lang-css">
-        <!-- preview views/student/structure/tags.html 5..17 -->
-      </pre>
-      <pre class="prettyprint half float left lang-html">
-        <!-- preview views/student/structure/tags.html 20..32 -->
-      </pre>
-    </section>
-    <p>You can <a href="/student/structure/tags.html">open this file</a> to see what is happening. And don’t forget to inspect and view source!</p>
+    <p>Classes and IDs are added as attributes of an Element Node. Adding classes to elements is the most powerful ways to style a document if you are clever and/or careful. Adding IDs is less important for styling and more important for targeting a unique (that means only one) element—which is especially useful in JavaScript and XML.<a href="http://www.w3schools.com/css/css_pseudo_classes.asp">Pseudo-classes</a> are ways to style transient states, such as a user hovering over an element with <code>:hover</code>, or an element’s position in the hierarchy with <code>:first-child</code> They are called pseudo because you don’t add them, the browser kind of adds them for you when necessary.</p>
+    <p>With <strong>well structured HTML</strong>, you need fewer elements to accomplish an elegant design through <abbr title="cascading stylesheet">CSS</abbr>—as opposed to sloppy <abbr title="HTML">HTML</abbr> that mandates many classes/ids and other selectors. For the professional developer, the less written, the easier it is to maintain code. To write less code, I believe in this general rule of thumb: if your CSS class doesn’t seem like it could apply to more than one element, rethink your approach. If your ID seems like it could apply to several things, you should rethink your approach. Lastly, when using ID selectors, only use them to add meaning, uniqueness, and specificity to your markup, and only use them to add style as a last resort or if you are feeling extremely lazy.</p>
+    <h4 class="t">Usage of classes</h4>
+    <p>You may add a class attribute to any Element Node like <code>&lt;elem class="name"&gt;</code>. Do note, you can add multilpe classes to an Element Node by specifying multiple names in the class attribute separated by whitespace, ie. <code>&lt;elem class="name1 name2 name3 ..."&gt;</code>.</p>
+    <p>To target a named class in a stylesheet, you simply use a period prefixed to the class name, such as <code>.name { ...properties }</code>. If you want to specify that a rule only applies to an Element of a certain type, you can specify that by using the type selector in addition to the class selector, ie. <code>elem.classname { ...properties }</code>.</p>
+    <h4 class="t">Usage of ID's</h4>
+    <p>ID's are very similar to classes except in a few significant ways. You add an ID attribute the same as a class, ie. <code>&lt;elem id="name"&gt;</code>. The two exceptions: an ID can <strong>never</strong> be used more than once in a document <span class="discuss">(why?)</span> and given that notion, you cannot add more than one ID to an element. If those points seem odd or meaningless to you, my beginner advice is avoid them until the meaning becomes necessary (which I find to be extremely rare by-the-way).</p>
+    <p>To target an ID in your stylsheet, it's just like css except you use an octothorpe (<a href="https://en.wiktionary.org/wiki/octothorpe">pound sign</a>) instead of a period, ie. <code>#name { ...properties }</code>.</p>
   </article>
   <article>
-      <h2>Programming (baby) step #1: <em>An example of computability</em></h2>
-      <p>I mentioned in the last outline that counting is a part of human history, and likewise, is the essential function of a computer. Allow me to cook up an example. Before I do any actual counting let's take a tour of the console and talk about writing programs for a moment.</p>
-      https://gist.github.com/brendanmetzger/dbbf341f08c06f37f4739ad620af1289
+    <h2>In Class Work</h2>
+    <p>Use some time to play with the résumé  provided, and make sure you are able to do the implement and understand:</p>
+    <ul class="stylized star t">
+      <li>add multilpe classes to one element</li>
+      <li>use a type selector with a class</li>
+      <li>use decendancy witha class and type</li>
+      <li>use decendancy with multiple classes</li>
+      <li>use types, classes, and decendancy (oh my)</li>
+    </ul>
   </article>
+  <!-- insert views/topics/perspective/naming-conventions.html  -->
   <article>
     <h2>References and Practice Materials</h2>
     <dl>
@@ -104,6 +104,18 @@
       <dt>Naming things</dt>
       <dd><a class="watch" href="http://www.lynda.com/HTML-tutorials/Using-class-ID-attributes/182177/370839-4.html">Classes and IDs</a></dd>
     </dl>
+    <hr class="t b ruled"/>
+    <h3>Learning about Programming</h3>
+    <p>Lynda.com has a great introduction to programming (general programming), but coincidentally beneficial to us, it uses JavaScript as the example language to illustrate the process and requirements. It’s highly relevant, and pretty friendly for beginners.</p>
+    <p>Starting here, I want you to carefully watch <a href="http://www.lynda.com/Developer-Programming-Foundations-tutorials/What-programming/83603/90430-4.html">chapters 1–4</a> over the coming weeks. It is only about an hour and a half and it is slow and careful and will make the rest of the semester more enjoyable. In the videos that follow, you will see the speaker use some files, namely a <code>container.html</code> file and a <code>script.js</code> and he uses default text editor—stuff you already know all about!</p>
+    <p>I hope this goes without saying, but the material I post down here <strong>is mandatory to review</strong>. By the time I get around to lecturing around JavaScript, you will need to have familiarized yourself with these concepts otherwise we'd need about 5 more classes for me to give a proper introduction.</p>
+    <ul class="cross stylized t">
+      <li>In your notes directory follow along with the videos—it never hurts.</li>
+      <li>Use comments to keep notes within your code and separate chapters and exercises.</li>
+      <li>The author makes extensive use of the <code>alert</code> function. I highly suggest you swap out <code>console.log</code> and get familiar with what it is doing (plus, all those dialogs are annoying and don’t keep a visual record of output).</li>
+      <li>If you have questions, jot 'em.</li>
+      <li>Every little bit of code should be organized, become serious about nitpicking yourself and you'll do wonderfully.</li>
+    </ul>
   </article>
-  <!-- insert views/topics/perspective/naming-conventions.html  -->
+
 </div>

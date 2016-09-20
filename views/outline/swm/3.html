@@ -81,6 +81,20 @@
       &lt;/video&gt;
     </pre>
   </article>
+  <article>
+    <h2><abbr title="Cascading Stylesheet">CSS</abbr> Units: <em>color</em></h2>
+    <p>While we understand length and size units (px, em, vw, wh, %) another important value to understand how to set is <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">color</a>.</p>
+    <p>I recommend that if you are new to color, you start by using and understanding how hex colors are specified. Hex stands for hexadecimal, and essentially it is just the red, green and blue system converted to the condensed hexadecimal number system. Once you understand this in principle, I think it is useful to use rgb values for the fact that you can specify an alpha channel—or an opacity of the color. From there, you can use an entirely different color scheme like hsl, or hue, saturation, luminosity. I won't dwell on this system yet, but it can be much easier to use HSL when we begin programming in the future.</p>
+  </article>
+  <article>
+    <h2>Editing Calisthenics</h2>
+    <p>This week we are going to look at some of the things we can do with a text editor to optimize your workflow like adding packages and modifying snippits to work to our preferences. Though I use <a href="http://atom.io">Atom</a> in class, the important take away is all reputable program source code editors have packages, snippits, macros or some other system for doing pesky work for you.</p>
+    <ul class="stylized star tt">
+      <li>Picking Colors</li>
+      <li>Installing packages.</li>
+      <li>Changing snippits (<em>advanced stuff, but I want you to be aware of it</em>)</li>
+    </ul>
+  </article>
   <article class="two columns indented">
     <h2 class="centered"><abbr>css</abbr> combinators</h2>
     <p>We are familiar with descendant selectors, something like <code>article section</code> will allow us to style all any section so long as it has an article as an <mark>ancestor</mark>. Much of the time, this can be more than we want, but luckily we can limit the reach of the descendant chain with the use of a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Child_selectors">Child Selector</a>. By simply changing our previous selector to <code>article &gt; section</code> we only select sections that are direct children of an article. If you’re not familiar with the difference between children and descendants yet, hit the books.</p>
@@ -91,7 +105,6 @@
     <!--  insert views/css/media/flow.svg -->
     <h3>With CSS</h3>
     <p>Careful use of classes can simulate boolean behavior with <abbr>CSS</abbr>, and can be used to great effect—which is why I think <a href="http://www.sitepoint.com/6-current-options-css-preprocessors/"><abbr>css</abbr> preprocessors</a> (programs that write <abbr>css</abbr> for you) are somewhat unnecessary. Written way back in the <abbr title="World Wide Web Consortium">W3C</abbr> <abbr>css</abbr> 2.0 spec: <q cite="https://www.w3.org/TR/CSS2/selector.html#class-html"><abbr title="Cascading Style Sheets">CSS</abbr> gives so much power to the <q>class</q> attribute, that authors could conceivably design their own <q>document language</q> based on elements with almost no associated presentation.</q> Broken down, the rules that inform how you may apply classes are so powerful that we could introduce meta-level thinking (not you actually would, or should.)</p>
-
     <section class="comparison container">
       <aside class="______ float left t b ruled top bottom">
         <p class="note">Looking at the sample carousel through the styles below. Notice how the styles specify chained classes—this effectively allows you to use combinations of classes to dictate style.</p>

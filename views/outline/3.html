@@ -1,18 +1,19 @@
 <article class="paginate">
   <!-- replace lecture nextSibling-->
   <!-- insert views/outline/_/template.html -->
-  <article>
-    <h1 class="caps">End notes</h1>
-    <p>Now that our structure is becoming familiar, I’m going to increase expectations. If you pay attention in class and asking questions in class, at my desk, via email or in your readme, then I will grant leniency and patience, but if you are finding that you have poor practice habits, now is the time to correct them. Programming is more than learning syntax—it’s seeing patterns, creatively solving problems and organizing information. <strong>These outlines stop about 97% short of the things I wish I could show you: please take that to heart</strong>.</p>
-    <h4 class="massive marquee">Everyone has something they <span style="color:rgb(66, 177, 102)">are good at</span> <span style="color:rgb(214, 78, 95);">can improve at</span></h4>
-  </article>
   <style media="screen">
-    h4.flip *:first-of-type, h4:not(.flip) *:last-of-type { display:none;}
+    h3 span {
+      transition:opacity 1s;
+    }
+    h3.flip *:first-of-type, h3:not(.flip) *:last-of-type { opacity:0.0;}
   </style>
-  <script type="text/javascript">
-    setInterval(DOMTokenList.prototype.toggle.bind(document.querySelector('h4.marquee').classList, 'flip'), 1500);
-  </script>
-  <footer>
-    <!-- insert views/topics/glossary.html -->
+  <footer class="epilogue">
+    <h4 class="caps centered">End notes</h4>
+    <p>Now that our structure is becoming familiar, you and I should have higher expectations for what we are going to attempt to learn. If you are finding that you have poor practice habits, now is the chance to change that before it is too late. Programming is more than learning syntax—it’s seeing patterns, creatively solving problems and organizing information. You will never get there unless the rote stuff becomes familar and accessible.</p>
+    <h3 class="massive marquee caps">Everyone has something they <span style="color:rgb(66, 177, 102)">are good at</span> <span style="position:relative;top:-0.85em;display:inline-block;color:rgb(214, 78, 95);">can improve at</span></h3>
   </footer>
+  <script type="text/javascript">
+    setInterval(DOMTokenList.prototype.toggle.bind(document.querySelector('h3.marquee').classList, 'flip'), 2500);
+  </script>
+
 </article>
