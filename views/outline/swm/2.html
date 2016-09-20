@@ -8,19 +8,15 @@
     <h2>Review/Questions</h2>
     <p>Last Week we went over structure and outlining and introduced type and descendant selectors in <abbr title="Cascading Stylesheets">CSS</abbr>. We are becoming comfortable the web development workflow and tools.</p>
   </article>
-  <article>
+  <article class="margins">
       <h2>Programming (baby) step #1: <em>An example of computability</em></h2>
-      <p>I mentioned in the last outline that counting is a part of human history, and likewise, is the essential function of a computer. Allow me to cook up an example. Before I do any actual counting let's take a tour of the console and talk about writing programs for a moment.</p>
-      <p><a href="https://gist.github.com/brendanmetzger/dbbf341f08c06f37f4739ad620af1289">A gist</a></p>
+      <p>I mentioned in the last outline that counting is a part of human history, and likewise, is the essential function of a computer. I provided some links and claimed that computers can be composed of essentially simple circuits made of relays (electrically controlled switches) and flip-flops (circuits that can remember their last state).</p>
+      <p>First, let's take a look at a this <a href="https://www.youtube.com/watch?v=gI8luQnyM9A">square root calculator</a>. If interest/time permits, I'll go over <a href="https://gist.github.com/brendanmetzger/dbbf341f08c06f37f4739ad620af1289">this gist</a> I wrote of a tiny program that can count in any number of ways.</p>
   </article>
   <article>
     <h2>Editing Calisthenics</h2>
     <p>We now are familiar with using command+arrow keys to jump around our editor. We know that holding shift down while doing this will select text. We are aware of indentation guides and invisible characters. If you are not aware of any of this stuff yet, or need a refresher: re-watch the lectures or ask me at any point if you need to clarify—this is the convenient stuff that will make your life easier!</p>
       <p>Over the last few weeks you've spent some time writing markup and indenting and organizing. Taking it a step further, let's investigate ways we can <strong>indent a bunch of lines at once</strong>, and then let's talk about <strong>commenting</strong>.</p>
-  </article>
-  <article>
-    <h2>Demo: <em>a résumé</em></h2>
-    <p>Something that is suitable for classes and ids would be a resume—think the templates given when you start up a word processing program: same content, different style. By using methods of taxonomy, we'll demonstrate the power of clever naming and organization. First, I've started a <a href="/student/structure/resume.html">résumé</a> for you. Let's practice together implementing more structure around the elements we know.</p>
   </article>
   <article class="margins">
     <h2>Attributes</h2>
@@ -28,7 +24,11 @@
     <p><em>Attributes are now an essential part of our vocabulary</em> as we will be learning and using new ones throughout the semester. Some attributes apply to only specific Elemnets, while others are universal, in that we can apply them to any element. Let's jump into our priliminary investigation with a universal attribute called <code>style</code>.</p>
   </article>
   <article>
-    <h2><abbr title="Cascading Stylesheet">CSS</abbr> Units: <em>length</em></h2>
+    <h2>Demo: <em>a résumé</em></h2>
+    <p>Something that is suitable for today's material would be a résumé. Like the templates offered when you start up a word processing program, today we are going to investigate ways to show the same content, with different styles using one stylesheet. By using methods of taxonomy, we'll demonstrate the power of clever naming and organization. First, I've started a <a href="/student/structure/resume.html">résumé</a> for you. Let's practice together implementing more structure around the elements we know.</p>
+  </article>
+  <article>
+    <h2><abbr title="Cascading Stylesheet">CSS</abbr> Units: <em>length and size</em></h2>
     <p>The most notable CSS units are involved in <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">determining length</a>. Consider the sample boxes below each have their <code>width</code> property set to the same number with a different unit. Make sure to resize your window to understand how some units are affected by the size of your browser (vw/vh) or the size of their containing element (%) or the size of the font (em). Pixels are static and not affected proportionally, but be aware that modern screens have different pixel sizes, so scaling and approximation will occur and designing with pixels is becoming unfavorable especially where mobile and responsive design are concerned.</p>
     <h3>Looking at length units</h3>
     <div class="example">
