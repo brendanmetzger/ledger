@@ -19,6 +19,10 @@ namespace models;
       ]
     ];
 
+    public function getTitle(\DOMElement $context)
+    {
+      return $context['@title'];
+    }
 
     public function getPath(\DOMElement $context)
     {

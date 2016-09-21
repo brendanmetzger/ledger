@@ -28,35 +28,35 @@
       <h4>Semantic structure is algorithmic</h4>
       <p>If not obvious by now, structuring a tree structure correctly means that a machine can make assumptions and parse a document efficiently. The obvious machine that comes to mind is a search engine.</p>
       <h4 class="ruled top">Semantic structure is data</h4>
-      <p>Sloppy or improper use of an <abbr>html</abbr> <code>Element</code> will beget redundant and inconsistent <abbr>css</abbr> application. Further, imprecise, arbitrary use of <abbr >html</abbr> is an <strong>imprecise, arbitrary dataset</strong>. Now, I suppose it is quite evident at this point (or will be soon) that JavaScript is a programming language. What may not be clear to a novice, is that programs are almost completely useless <em>without a dataset</em>. An imprecise arbitrary dataset is essentially nonsense, so for those of us who want to be programmers I want some extra thought put in to what this means.</p>
+      <p>Sloppy or improper use of an <abbr>html</abbr> <code>Element</code> will beget redundant and inconsistent <abbr>css</abbr> application. Further, imprecise, arbitrary use of <abbr >html</abbr> is an <strong>imprecise, arbitrary dataset</strong>. Now, I suppose it is quite evident at this point (or will be soon) that JavaScript is a programming language. What may not be clear to a novice, is that programs are almost completely useless <em>without structured data</em>.</p>
       <h4 class="ruled top">Semantic structure is thoughtful</h4>
-      <p>Something we think about far too little, especially on the path to becoming designers is this fact: one-fifth of our society has a disability. Whether a user is born with or has acquired a paralytic disorder, or a vision or cognitive impairment, or has some other technological barrier, nobody should be banned from participation because of corner-cutting. Far too often the design community forgets this, and it is nothing short of arrogant. Well-structured documents help assistive technologies parse and deliver content as intended.</p>
+      <p>Something we think about far too little, especially on the path to becoming designers is this fact: one-fifth of our society has a disability. Whether a user is born with or has acquired a paralytic disorder, or a vision or cognitive impairment, or has some other technological barrier, nobody should be barred from participation. Far too often the design community forgets this, sometimes out of arrogance, sometimes out of laziness. Well-structured documents help assistive technologies parse and deliver content as intended.</p>
     </section>
-    <section class="container">
-      <h2>Elements</h2>
+    <section class="container tt">
+      <h3>Elements</h3>
       <p class="_______ float left pad">A quick reminder, <strong><code>div</code> and <code>span</code></strong> have no inherent meaning. Many—professionals even—overuse them as a crutch. Remember, you’re first goal is to add semantic value to your markup and to generate good data. If there is a better substitute for the tag you are using, use it. I will never penalize for using the wrong tag, but I will begin penalizing for usage of div/span when there is a better alternative. If you haven’t made a habit of searching for or reviewing the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Elements available</a>, then you should start.</p>
       <section class="___ float left ruled top bottom">
         <!-- insert views/outline/_/tables/elements.html -->
         <script type="text/javascript">
           // <![CDATA[
-          bloc.init('tag-scroller', function () {
-            var counter = (function functionName(list) {
-              var current = cycle(0, list.length - 1);
-              return function () {
-                var item = list.item(current());
-                var container = item.parentNode;
-                container.scrollTop = (item.offsetTop - container.offsetTop);
-              };
-            }(document.querySelectorAll('dl.documentation dt')));
-            var to = setInterval(counter, 250);
-            var doc = document.querySelector('dl.documentation');
-            doc.addEventListener('mouseover', function () {
-              clearInterval(to);
-            });
-            doc.addEventListener('mouseout', function () {
-              to = setInterval(counter, 250);
-            });
-          });
+          // bloc.init('tag-scroller', function () {
+          //   var counter = (function functionName(list) {
+          //     var current = cycle(0, list.length - 1);
+          //     return function () {
+          //       var item = list.item(current());
+          //       var container = item.parentNode;
+          //       container.scrollTop = (item.offsetTop - container.offsetTop);
+          //     };
+          //   }(document.querySelectorAll('dl.documentation dt')));
+          //   var to = setInterval(counter, 250);
+          //   var doc = document.querySelector('dl.documentation');
+          //   doc.addEventListener('mouseover', function () {
+          //     clearInterval(to);
+          //   });
+          //   doc.addEventListener('mouseout', function () {
+          //     to = setInterval(counter, 250);
+          //   });
+          // });
           // ]]>
         </script>
       </section>
@@ -104,7 +104,8 @@
     <h2>Control Statements</h2>
     <!--  insert views/css/media/flow.svg -->
     <h3>With CSS</h3>
-    <p>Careful use of classes can simulate boolean behavior with <abbr>CSS</abbr>, and can be used to great effect—which is why I think <a href="http://www.sitepoint.com/6-current-options-css-preprocessors/"><abbr>css</abbr> preprocessors</a> (programs that write <abbr>css</abbr> for you) are somewhat unnecessary. Written way back in the <abbr title="World Wide Web Consortium">W3C</abbr> <abbr>css</abbr> 2.0 spec: <q cite="https://www.w3.org/TR/CSS2/selector.html#class-html"><abbr title="Cascading Style Sheets">CSS</abbr> gives so much power to the <q>class</q> attribute, that authors could conceivably design their own <q>document language</q> based on elements with almost no associated presentation.</q> Broken down, the rules that inform how you may apply classes are so powerful that we could introduce meta-level thinking (not you actually would, or should.)</p>
+    <p>Last week, we saw that adding a type selector directly adjacent to a class selector, ie. <code>h3.special { ... }</code> says something like <q>only apply the class named special if the element is an h3</q>. Fixate for a moment on the word <b>if</b> and note that it implies there is a condition of true or false happening.</p>
+    <p>This, along with other careful use of classes can simulate boolean behavior with <abbr>CSS</abbr>, and can be used to great effect—which is why I think <a href="http://www.sitepoint.com/6-current-options-css-preprocessors/"><abbr>css</abbr> preprocessors</a> (programs that write <abbr>css</abbr> for you) are somewhat unnecessary. Written way back in the <abbr title="World Wide Web Consortium">W3C</abbr> <abbr>css</abbr> 2.0 spec: <q cite="https://www.w3.org/TR/CSS2/selector.html#class-html"><abbr title="Cascading Style Sheets">CSS</abbr> gives so much power to the <q>class</q> attribute, that authors could conceivably design their own <q>document language</q> based on elements with almost no associated presentation.</q> Broken down, the rules that inform how you may apply classes are so powerful that we could introduce meta-level thinking (not you actually would, or should.)</p>
     <section class="comparison container">
       <aside class="______ float left t b ruled top bottom">
         <p class="note">Looking at the sample carousel through the styles below. Notice how the styles specify chained classes—this effectively allows you to use combinations of classes to dictate style.</p>
@@ -117,17 +118,17 @@
       <link rel="stylesheet" href="/css/examples/variables.css" title="variable-example"/>
       <script type="text/javascript">
       // <![CDATA[
-        bloc.init('class-cycle', function () {
-          var elems = document.querySelectorAll('[data-example="code"]');
-          var sequence = ['text', 'lined', 'text', 'lined top', 'lined top purple', 'lined bottom blue', 'lined top bottom', 'text purple', 'text lined top bottom blue'];
-          var current = cycle(0, sequence.length);
-          setInterval(function () {
-            var class_name = sequence[current()];
-            elems.item(0).innerText = class_name;
-            elems.item(1).className = class_name;
-          }, 2500);
-
-        });
+        // bloc.init('class-cycle', function () {
+        //   var elems = document.querySelectorAll('[data-example="code"]');
+        //   var sequence = ['text', 'lined', 'text', 'lined top', 'lined top purple', 'lined bottom blue', 'lined top bottom', 'text purple', 'text lined top bottom blue'];
+        //   var current = cycle(0, sequence.length);
+        //   setInterval(function () {
+        //     var class_name = sequence[current()];
+        //     elems.item(0).innerText = class_name;
+        //     elems.item(1).className = class_name;
+        //   }, 2500);
+        //
+        // });
       //]]>
       </script>
     </section>

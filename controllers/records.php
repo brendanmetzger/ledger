@@ -69,6 +69,21 @@ class Records extends \bloc\controller
     return $view->render($this());
   }
 
+
+  protected function GETAssignment(Admin $instructor, $type = null, $index = null)
+  {
+    $view = new View(self::layout);
+    if ($type && $index) {
+      $view->content = "views/layouts/assignment.html";
+    } else {
+      $this->practice = \models\Criterion::collect(null, "[@type='practice' and @course='SWM']");
+      $this->project = \models\Criterion::collect(null, "[@type='project' and @course='SWM']");
+      $view->content = "views/layouts/assignments.html";
+
+    }
+    return $view->render($this());
+  }
+
   /**
    * HTTP Get Evaluation
    *
