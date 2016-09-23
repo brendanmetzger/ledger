@@ -139,7 +139,7 @@ p.note {padding:2.5% 5%;color:rgb(87, 122, 162)}
 .caps {text-transform:uppercase;}
 .underline {text-decoration:underline}
 .massive{font-size:8.5vw;margin:calc(2vh + 0.5em) 0;line-height:0.85em;}
-.micro, sup,a.external:after{font-size:0.75em;line-height:0;}
+.micro, .legal, sup ,a.external:after{font-size:1.5em;line-height:1.75;max-width:100%;}
 .micro.caps, abbr {text-transform:lowercase;font-variant:small-caps;letter-spacing:0.015em;}
 .centered  {text-align:center}
 .justified {text-align:justify}

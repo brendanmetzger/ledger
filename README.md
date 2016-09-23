@@ -13,7 +13,8 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [x] automatically deduct validation errors
 - [ ] compute unique tags used
 - [ ] consider #lines of css & uniqueness.
-- [ ] validate css (https://jigsaw.w3.org/css-validator/validator?uri=CSSFILE&output=soap12)
+- [ ] validate css (https://jigsaw.w3.org/css-validator/validator?uri=CSSFILE&output=soap12&warning=0&profile=css3)
+https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.w3.org%2F&warning=0&profile=css3
 - [ ] get sessions to last longer, or automatically log out so I don't write a bunch and get an unauthorized error when I try to save
 - [ ] don't release grades until everyone's has been graded. (so I can implement a curve)
 - [ ] send email after grade is marked with my notes and a link to the notes.
@@ -31,3 +32,4 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Implement web-socket interface that reacts to people in course
 - [ ] Show who is in attendance
 - [ ] Allow users to change their first name.
+- [ ] Prioritize grading based on time spent
