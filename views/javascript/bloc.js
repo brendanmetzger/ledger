@@ -46,10 +46,16 @@ SVG.prototype.cursorPoint = function(evt){
 
 /* end SVG */
 
-function JSONP(src, callback) {
-  var key = 'JSONP_cb_'+Date.now().toString(36);
-  window[key] = callback;
-  document.head.appendChild(document.createElement('script')).src = src + '&callback=' + key;
+function JSONP(src, callback, listener) {
+  var script = document.createElement('script');
+  if (! callback && listener) {
+    script.onload = listener;
+  } else {
+    var key = 'JSONP_cb_'+Date.now().toString(36);
+    window[key] = callback;
+    script.src = src + '&callback=' + key
+  }
+  document.head.appendChild(script);
 }
 
 
@@ -60,6 +66,11 @@ function Validator(url, callback) {
 
 function Wikipedia(article, callback) {
   var url = 'https://en.wikipedia.org/w/api.php?action=parse&prop=text&format=json&page=' + article;
+  JSONP(url, callback)
+}
+
+function cssValidator(stylesheet, callback) {
+  var url = "https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3&uri=" + stylesheet
   JSONP(url, callback)
 }
 

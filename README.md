@@ -33,3 +33,5 @@ https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.w3.org%2F&war
 - [ ] Show who is in attendance
 - [ ] Allow users to change their first name.
 - [ ] Prioritize grading based on time spent
+
+https://jigsaw.w3.org/css-validator/validator?uri=http://52.35.59.206/css/guide.css&output=xml&warning=0&profile=css3

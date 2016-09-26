@@ -10,9 +10,45 @@
       height:90vh;
       margin:0;
       box-sizing:border-box;
-      border-top:1px solid #fff;
       display:block;
     }
+    .panel details {
+      position:absolute;
+      width:100%;
+      background-color: rgba(10,10,10,0.8);
+      color:#f8f8f8;
+      padding:1em;
+      box-shadow: inset 0px 1px 5em 0px rgba(0,0,0,0.5);
+    }
+    .panel ul.plain {
+      padding: 1em 0 0;
+    }
+    .panel ul li[data-line] {
+      border-top:1px solid rgba(255,255,255,0.1);
+      font-size:1.25em;
+      padding:0.5em;
+      line-height:1;
+    }
+    .panel summary {
+      margin:0;
+      font-size:1.5em;
+    }
+
+    li.error {
+      background-color: rgba(255,0,0,0.1);
+      box-shadow: 0 0 1em 0.5em rgba(255,0,0,0.1);
+    }
+
+    .inspector .panel iframe {
+      height:90vh;
+      width:100%;
+    }
+    .inspector .panel pre {
+      height:calc(90vh - 4em);
+      width:100%;
+      padding-top:4em;
+    }
+
     .inspector .panel:not(.visible) {
       display:none;
     }
@@ -35,16 +71,41 @@
     .stretch > li {
       flex:1 0 auto;
     }
+    li[data-errors]:after {
+      content: attr(data-errors);
+      background-color: rgb(218, 75, 122);
+      color:#fff;
+      vertical-align: super;
+      padding: 0.35em 0.35em 0;
+      line-height: 1;
+      border-radius: 20%;
+      font-size: 0.65em;
+      margin-left: 0.25em;
+    }
+    li[data-errors='0']:after {
+      background-color:rgb(78, 210, 131);
+    }
   </style>
   <script type="text/javascript">bloc.embed('/javascript/inspector.js');</script>
   <ul class="plain buttons stretch" style="background-color:#444;">
     <li data-file="preview" class="active">Preview</li>
     <!--  iterate files -->
-    <li data-url="[$url]" data-file="[$name]" class="code">[$name]</li>
+    <li data-url="[$url]" data-file="[$name]" class="code" data-errors="[$report:count]">[$name]</li>
   </ul>
-  <iframe data-file="preview" src="[$url]" class="panel visible">
-    <p>I frame</p>
-  </iframe>
+  <section class="panel visible">
+    <iframe data-file="preview" src="[$url]">
+      <p>I frame</p>
+    </iframe>
+  </section>
   <!--  iterate files -->
-  <pre data-file="[$name]" class="[linenums panel $type]">[$content]</pre>
+  <section class="panel">
+    <details class="console">
+      <summary>Console Messages</summary>
+      <ul class="plain">
+        <!-- iterate report:errors -->
+        <li data-line="[$line]">[Line $line: $message]</li>
+      </ul>
+    </details>
+    <pre data-file="[$name]" class="[linenums $type]">[$content]</pre>
+  </section>
 </div>

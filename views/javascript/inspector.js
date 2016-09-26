@@ -6,13 +6,12 @@ bloc.init('viewer', function () {
       var current = document.querySelector('.inspector li.active');
           current.classList.remove('active');
 
-      document.querySelector('.panel.visible').classList.remove('visible');
+      document.querySelector('.visible').classList.remove('visible');
       evt.target.classList.add('active');
 
-      var panel = document.querySelector('.inspector .panel[data-file="'+file+'"]');
-
+      var panel = document.querySelector('.inspector .panel > *[data-file="'+file+'"]');
+      console.log(panel);
       if (panel.nodeName.toLowerCase() === 'pre') {
-
         if (!Boolean(panel.textContent)) {
 
           var request = new XMLHttpRequest();
@@ -30,26 +29,23 @@ bloc.init('viewer', function () {
           });
           request.send()
         } else if (! panel.classList.contains('prettyprinted')) {
-          if (/\.html$/.test(file)) {
-            Validator(evt.target.dataset.url, function (response) {
-              var h3 = document.querySelector('.notes h3');
-              var details = h3.parentNode.insertBefore(document.createElement('details'), h3.nextSibling);
-              var summary = details.appendChild(document.createElement('summary'));
-              var ol      = details.appendChild(document.createElement('ol'));
-              summary.innerHTML = response.messages.length +  ' <abbr>HTML</abbr> errors';
-              response.messages.forEach(function (obj) {
-                var li = ol.appendChild(document.createElement('li'));
-                li.textContent = 'Line ' + (obj.firstLine ? obj.firstLine + '-' : '') + obj.lastLine + ': ' + obj.message;
-              });
 
-            });
-          }
           panel.classList.add('prettyprint');
           prettyPrint();
         }
+        setTimeout(function () {
+          [].forEach.call(panel.parentNode.querySelectorAll('li[data-line]'), function (li) {
+            var idx = parseInt(li.dataset.line, 10) - 1;
+            li.parentNode.parentNode.nextElementSibling.querySelector('ol').children[idx].classList.add('error');
+          });
+        }, 1000);
       }
-      panel.classList.add('visible');
+      panel.parentNode.classList.add('visible');
+
 
     }
   });
+
+
+
 });

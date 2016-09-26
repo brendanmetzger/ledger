@@ -109,12 +109,25 @@ namespace models;
       $doc->loadHTML($content);
       // \bloc\application::instance()->log($doc);
       $xpath = new \DOMXpath($doc);
+
+
+      $handle = curl_init("https://validator.nu/?level=error&doc={$url}&out=json");
+      curl_setopt_array($handle, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_USERAGENT => $_SERVER['HTTP_USER_AGENT'],
+      ]);
+      $report = json_decode(curl_exec($handle));
+      $number_of_errors = count($report->messages);
       $files = [
         [
           'name'    => 'index.html',
           'content' => $content,
           'type'    => 'lang-html',
-          'url'     => $url
+          'url'     => $url,
+          'report'  => ['count' => count($report->messages), 'errors' => (new \bloc\types\Dictionary($report->messages))->map(function ($item) {
+            return ['line' => $item->lastLine, 'message' => $item->message];
+          })],
+
         ],
         [
           'name'    => 'README',
@@ -132,13 +145,25 @@ namespace models;
           'type'    => 'lang-js',
         ];
       }
-      foreach ($xpath->query("//link[not(contains(@href, 'http'))]") as $file) {
+      foreach ($xpath->query("//link[not(contains(@href, 'http')) and contains(@href, '.css')]") as $file) {
         $src = $file->getAttribute('href');
+        $uri = $url . '/' .$src;
+        $code = substr(get_headers($uri)[0], 9, 3);
+        if ($code < 400) {
+          $report = json_decode( file_get_contents("https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3&uri=". $uri));
+          $count = $report->cssvalidation->result->errorcount;
+        } else {
+          $report = 'not-found';
+          $count = "fix";
+        }
         $files[] = [
-          'url'     => base64_encode($url . '/' .$src),
+          'url'     => base64_encode($uri),
           'name'    => substr($src, strrpos($src, '/') + 1),
           'content' => null,
-          'type'    => 'lang-css'
+          'type'    => 'lang-css',
+          'report'  =>  ['count' => $count, 'errors' => (new \bloc\types\Dictionary($report->cssvalidation->errors ?? []))->map(function ($item) {
+            return ['line' => $item->line , 'message' => $item->message];
+          })],
         ];
       }
       return $files;

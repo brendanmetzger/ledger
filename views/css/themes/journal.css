@@ -87,6 +87,7 @@ ul.index a:not(.selected):hover, ul.index li a.selected {
 
 hr, li+li {border-width:1px 0 0;border-color:rgba(0,0,0,0.025);}
 *.massive{border-width:0 0 1px}
+h1.massive, .script {font-family:'Dr Carbfred W01 Regular';padding:1vmax 0 0 0.5em;}
 
 mark {
   padding:0.125em 0.5em;
@@ -142,7 +143,7 @@ article a {
 }
 a:hover, a:hover > *, summary:hover {
   cursor:pointer;
-  color:hsl(10, 65%, 40%);
+  color:#888;
 }
 
 .intro {
@@ -168,11 +169,11 @@ summary::-webkit-details-marker {
 }
 summary:before {
   content: "+";
+  padding:0 0.25em;
   display:inline-block;
   transition:transform 0.25s;
 }
 details[open] summary:before {
-
   transform:rotate(45deg);
 }
 
