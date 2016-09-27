@@ -26,7 +26,7 @@
     <section class="t b">
       <section class="t b">
         <h3>Display: <em>block, inline, and inline-block</em></h3>
-        <p></p>
+        <p>We'll briefly cover the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display property</a>, in particular the common three listed, as well as the behavior from the default stylesheets. I'll also cover formatting, indentation, and some ways to keep things straightened out.</p>
       </section>
       <section class="container t b">
         <h3>Use all your Elements</h3>
@@ -88,36 +88,41 @@
       &lt;/video&gt;
     </pre>
   </article>
-  <article>
+  <article class="margins">
     <h2><abbr title="Cascading Stylesheet">CSS</abbr> Units: <em>color</em></h2>
     <p>While we understand length and size units (px, em, vw, wh, %) another important value to understand how to set is <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">color</a>.</p>
     <p>I recommend that if you are new to color, you start by using and understanding how hex colors are specified. Hex stands for hexadecimal, and essentially it is just the red, green and blue system converted to the condensed hexadecimal number system. Once you understand this in principle, I think it is useful to use rgb values for the fact that you can specify an alpha channel—or an opacity of the color. From there, you can use an entirely different color scheme like hsl, or hue, saturation, luminosity. I won't dwell on this system yet, but it can be much easier to use HSL when we begin programming in the future.</p>
     <h3 class="tt">Colorful Displays</h3>
     <p>In our displays, we use a three channel color system, each channel can hold 8 bits. That is, the red channel has 8 bits, the green channel has 8 bits, and the blue channel has 8 bits. 8 bits are quite important, and to a large extent, understanding 8 bits in a few different ways is all we need to get the gist of color.</p>
-    <div class="container">
-      <div class="one-third float left">
-
+    <p>Before we analyze a few methods, let's look at what 8 bits actually looks like a few different ways. In binary, it is an 8 digit number: <code>00000000</code>. Remember, a bit is a binary digit, which is a 0 or 1. We can count in binary, so essentially, each channel can count up to <code>11111111</code>. That same number, converted to decimal is <code>255</code>. That number in hex is, interestingly, <code>FF</code>.</p>
+    <p>Use the table below to start exploring colors and how they work.</p>
+    <div class="container t ruled top">
+      <div class="one-third float left note">
         <h3>Hexadecimal</h3>
         <p><a href="https://en.wikipedia.org/wiki/Hexadecimal">Hexadecimal</a>, or base 16 is yet another method of counting, one in which we have 16 distinct digits instead of our familiar 0–9, and they are <em>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F</em>.</p>
-        <p>Recall the 8 bits—here is what they look like in binary: <code>00000000</code>. Remember, a bit is a binary digit, which is a 0 or 1. We can count in binary, so essentially, each channel can count up to <code>11111111</code>. That Number, converted to decimal is <code>255</code>. That number in hex is, interestingly, <code>FF</code></p>
+        <p>To specify a color, you concatenate three hex values in order from red to green to blue. 0 is black (no value), FF is is the highest value, ie., white is <code>#FFFFFF</code></p>
       </div>
-      <div class="one-third float left">
+      <div class="one-third float left note">
         <h3><abbr title="red green blue">rgb</abbr> and <abbr title="red green blue alpha">rgba</abbr></h3>
+        <p>Red Green Blue is the long form of the hex system, but works in almost the same way. Instead of using hex, you use decimal. 0 is still black, but this time 255 is the upper limit, ie., white is <code>rgb(255, 255, 255)</code></p>
+        <p>A very advantageous use of the rgb system is that you can add an alpha channel, or opacity. <code>rgba(255, 255, 255, 0.5)</code> would specify white at 50% opacity. <strong>This is handy.</strong></p>
       </div>
-      <div class="one-third float left">
+      <div class="one-third float left note">
         <h3><abbr title="hue saturation lightness">hsl</abbr> and <abbr title="hue saturation lightness alpha">hsla</abbr></h3>
-        <p>This is the new kid on the block, and has some interesting applications with JavaScript. I don't use it as much for my regular color assignments, but that could be mostly out of habit.</p>
+        <p>This is the new kid on the block, and has some interesting applications with JavaScript. I don't use it as much for my regular color assignments, but that could be mostly out of habit. <abbr>HSL</abbr> can be easier to work with from memory, as the saturation and lighness components are just components of the hue. Like rgb, you may specify an alpha channel.</p>
+
+        <p></p>
       </div>
     </div>
     <table class="full example tt" id="color-table">
       <thead>
         <tr>
-          <th>Channel</th>
-          <th>Shade</th>
+          <th style="width:5%;">Channel</th>
+          <th style="width:5%;" class="___">Shade</th>
           <th>Adjust</th>
-          <th class="centered">Binary</th>
-          <th>Decimal</th>
-          <th>Hexadecimal</th>
+          <th class="centered __">Binary</th>
+          <th class="centered __">Decimal</th>
+          <th class="centered __">Hexadecimal</th>
         </tr>
       </thead>
       <tbody>
@@ -153,15 +158,14 @@
         </tr>
       </tbody>
       <tfoot>
-
-        <tr style="border-bottom:1px solid #AAA;">
-          <th colspan="3" class="rag-left ruled right">Hexadecimal</th>
-          <td colspan="1" class="centered h3 code">#000000</td>
+        <tr>
           <td rowspan="2" colspan="2"><input type="color" style="width:100%;"/></td>
+          <th colspan="2" class="rag-left ruled caps" style="border-bottom:1px solid #AAA;">Hexadecimal</th>
+          <td colspan="2" class="centered h3 code composite">#<span style="color:#e74d4d;">00</span><span style="color:#49d949;">00</span><span style="color:#5151e8;">00</span></td>
         </tr>
         <tr>
-          <th colspan="3" class="rag-left">Red, Green, Blue</th>
-          <td colspan="1" class="centered h3 code">rgb(0,0,0);</td>
+          <th colspan="2" class="rag-left caps">Red, Green, Blue</th>
+          <td colspan="2" class="centered h3 code composite">rgb(<span style="color:#e74d4d;">0</span>, <span style="color:#49d949">0</span>, <span style="color:#5151e8">0</span>);</td>
         </tr>
       </tfoot>
     </table>
@@ -183,15 +187,20 @@
     </style>
     <script type="text/javascript">
       var inputs = [];
+      var composites = document.querySelectorAll('#color-table td.composite');
+      var composite = document.querySelector('#color-table tfoot input');
       [].forEach.call(document.querySelectorAll('#color-table input[type="range"]'), function (input, idx) {
-
         inputs.push(input);
+
         function updateColor() {
           var rgb = [];
-          inputs.forEach(function(input) {
-
+          inputs.forEach(function(input, idx) {
+            composites[0].children[idx].innerHTML = decHex(input.value);
+            composites[1].children[idx].innerHTML = input.value;
           });
+          composite.value = composites[0].textContent;
         }
+
         input.addEventListener('input', function (evt) {
           var rgb = ['00','00','00'];
           var bin = this.parentNode.nextElementSibling;
@@ -241,17 +250,17 @@
       <link rel="stylesheet" href="/css/examples/variables.css" title="variable-example"/>
       <script type="text/javascript">
       // <![CDATA[
-        // bloc.init('class-cycle', function () {
-        //   var elems = document.querySelectorAll('[data-example="code"]');
-        //   var sequence = ['text', 'lined', 'text', 'lined top', 'lined top purple', 'lined bottom blue', 'lined top bottom', 'text purple', 'text lined top bottom blue'];
-        //   var current = cycle(0, sequence.length);
-        //   setInterval(function () {
-        //     var class_name = sequence[current()];
-        //     elems.item(0).innerText = class_name;
-        //     elems.item(1).className = class_name;
-        //   }, 2500);
-        //
-        // });
+        bloc.init('class-cycle', function () {
+          var elems = document.querySelectorAll('[data-example="code"]');
+          var sequence = ['text', 'lined', 'text', 'lined top', 'lined top purple', 'lined bottom blue', 'lined top bottom', 'text purple', 'text lined top bottom blue'];
+          var current = cycle(0, sequence.length);
+          setInterval(function () {
+            var class_name = sequence[current()];
+            elems.item(0).innerText = class_name;
+            elems.item(1).className = class_name;
+          }, 2500);
+
+        });
       //]]>
       </script>
     </section>

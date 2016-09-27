@@ -124,7 +124,7 @@ a.selected:hover{cursor:default;font-style:normal;color:#333;}
 ul.pad {padding:1em 3.5em;}
 .focus {padding:1em 1em 1em 2em;border-left:0.5em solid rgba(0,0,0,0.8);background-color:rgba(255,255,255,0.5)}
 footer > p q, blockquote em {font-style:normal;}
-p.note {padding:2.5% 5%;color:rgb(87, 122, 162)}
+p.note, .note p {padding:2.5% 5%;color:rgb(87, 122, 162)}
 .ruled:not(h4),hr,ul.ruled li+li, div[title='Chicago Flag'],*.massive,*.side.note, h3,p.heading{border-style:dotted;border-color:#E5E5E5;}
 .invert {color:#FFF !important;background:#333 !important;padding:0 0.25em;}
 .new:after{content:"";display:block;height:0;clear:both;visibility:hidden}
