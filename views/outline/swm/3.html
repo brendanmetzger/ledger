@@ -232,7 +232,7 @@
     <p>We are familiar with descendant selectors, something like <code>article section</code> will allow us to style all any section so long as it has an article as an <mark>ancestor</mark>. Much of the time, this can be more than we want, but luckily we can limit the reach of the descendant chain with the use of a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Child_selectors">Child Selector</a>. By simply changing our previous selector to <code>article &gt; section</code> we only select sections that are direct children of an article. If you’re not familiar with the difference between children and descendants yet, hit the books.</p>
     <p>While not as immediately useful, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_selectors">adjacent sibling selectors</a> can be utilized to apply classes based on if elements are directly next to each other. An example would be adding a top border all but the first element of a list with <code>li + li { border-top: 1px solid #000; }</code>. If say, you wanted all the paragraphs following the first one to have an indent, but couldn’t be sure that it would be only p tags, you could switch to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/General_sibling_selectors">general sibling selectors</a> and use a selector like <code> p ~ p { text-indent: 1em; }</code>.</p>
   </article>
-  <article>
+  <article class="margins">
     <h2>Control Statements</h2>
     <!--  insert views/css/media/flow.svg -->
     <h3>With CSS</h3>
@@ -316,5 +316,23 @@
           </tr>
         </tbody>
       </table>
+  </article>
+  <article>
+    <h2>References and Practice Material</h2>
+    <p>You have at this time been exposed to a great deal of documentation regarding Hypertext Markup Language and Cascading Stylesheets. You have links to tutorials and other great resources in past outlines—I urge you to continue referencing those. To start making strides towards the substance of this course (scripting), I'm listing the next four chapters of the video series I assigned last week. <strong>I urge you to answer my forward thinking questions in your readme</strong>.</p>
+    <dl>
+        <dt><a href="http://www.lynda.com/Developer-Programming-Foundations-tutorials/Breaking-your-code-apart/83603/90452-4.html">Chapter 5 / Modular Code</a></dt>
+        <dd>This chapter introduces functions, <q cite="http://eloquentjavascript.net">the bread and butter of JavaScript programming</q> (that means they are indispensable)</dd>
+        <dd><strong>Forward thinking:</strong> Why are functions so important to JavaScript?</dd>
+        <dt><a href="http://www.lynda.com/Developer-Programming-Foundations-tutorials/Introduction-iteration/83603/90458-4.html">Chapter 6 / Iteration</a></dt>
+        <dd>Iteration, or Enumeration, is a fairly straight-forward concept, but take note of the examples the speaker gives.</dd>
+        <dd><strong>Forward thinking</strong>: We think of loops things that just count; list things besides numbers that you'd would want to iterate?</dd>
+        <dt><a href="http://www.lynda.com/Developer-Programming-Foundations-tutorials/Cleaning-up-string-concatenation/83603/90462-4.html">Chapter 7 / More Strings</a></dt>
+        <dd>This chapter introduces ideas about how you operate on strings. A mistake beginning programmers often make is to think of a string as nothing more than a sentence. Believe it or  not, simple algorithms are often employed to weed out job applicants by asking to solve simple string problems.</dd>
+        <dd><strong>Forward thinking:</strong> Why is it called a string?</dd>
+        <dt><a href="http://www.lynda.com/Developer-Programming-Foundations-tutorials/Working-arrays/83603/90466-4.html">Chapter 8 / Collections</a></dt>
+        <dd>This chapter introduces an <code>array</code>, which will be your first (obvious) taste of a data-structure.</dd>
+        <dd><strong>Forward thinking:</strong> You are familiar with some array-like things you've worked on already. What are they?</dd>
+      </dl>
   </article>
 </div>
