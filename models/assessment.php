@@ -125,7 +125,7 @@ namespace models;
           'type'    => 'lang-html',
           'url'     => $url,
           'report'  => ['count' => count($report->messages), 'errors' => (new \bloc\types\Dictionary($report->messages))->map(function ($item) {
-            return ['line' => $item->lastLine, 'message' => $item->message];
+            return ['line' => $item->lastLine ?? 1, 'message' => $item->message];
           })],
 
         ],

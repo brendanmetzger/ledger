@@ -10,7 +10,7 @@ bloc.init('viewer', function () {
       evt.target.classList.add('active');
 
       var panel = document.querySelector('.inspector .panel > *[data-file="'+file+'"]');
-      console.log(panel);
+
       if (panel.nodeName.toLowerCase() === 'pre') {
         if (!Boolean(panel.textContent)) {
 

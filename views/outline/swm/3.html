@@ -19,47 +19,54 @@
   </style>
   <article>
     <h2>Review</h2>
-    <p>Last week we went over classes and ID's, naming conventions and began an introduction to programming.</p>
+    <p>Last week we went over classes and ID's, naming conventions and you began an introduction to programming. Because they are so important, we are going to open up the resumé from last week and cover classes and ids some more, as well as go over the concept of a jump-nav</p>
   </article>
   <article>
-    <h2>Semantic <abbr title="Hypertext Markup Language">html</abbr></h2>
-    <p class="intro pad">There are many important reasons to write your markup semantically, and while one reason may have more personal importance to you than another together they make a pretty compelling case as to why this is <strong>requisite</strong>, not just a good idea. <q cite="http://www.webdesignerdepot.com/2010/03/fight-div-itis-and-class-itis-with-the-960-grid-system/">Clear, lean code offers many advantages. It’s easy to fix, quick to download and causes fewer problems across different types of browsers. Relevant tags help screen readers, search engines and mobile devices interpret meaning in addition to layout.</q></p>
-    <section class="two columns whitepaper">
-      <h4>Semantic structure is algorithmic</h4>
-      <p>If not obvious by now, structuring a tree structure correctly means that a machine can make assumptions and parse a document efficiently. The obvious machine that comes to mind is a search engine.</p>
-      <h4 class="ruled top">Semantic structure is data</h4>
-      <p>Sloppy or improper use of an <abbr>html</abbr> <code>Element</code> will beget redundant and inconsistent <abbr>css</abbr> application. Further, imprecise, arbitrary use of <abbr >html</abbr> is an <strong>imprecise, arbitrary dataset</strong>. Now, I suppose it is quite evident at this point (or will be soon) that JavaScript is a programming language. What may not be clear to a novice, is that programs are almost completely useless <em>without structured data</em>.</p>
-      <h4 class="ruled top">Semantic structure is thoughtful</h4>
-      <p>Something we think about far too little, especially on the path to becoming designers is this fact: one-fifth of our society has a disability. Whether a user is born with or has acquired a paralytic disorder, or a vision or cognitive impairment, or has some other technological barrier, nobody should be barred from participation. Far too often the design community forgets this, sometimes out of arrogance, sometimes out of laziness. Well-structured documents help assistive technologies parse and deliver content as intended.</p>
-    </section>
-    <section class="container tt">
-      <h3>Elements</h3>
-      <p class="_______ float left pad">A quick reminder, <strong><code>div</code> and <code>span</code></strong> have no inherent meaning. Many—professionals even—overuse them as a crutch. Remember, you’re first goal is to add semantic value to your markup and to generate good data. If there is a better substitute for the tag you are using, use it. I will never penalize for using the wrong tag, but I will begin penalizing for usage of div/span when there is a better alternative. If you haven’t made a habit of searching for or reviewing the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Elements available</a>, then you should start.</p>
-      <section class="___ float left ruled top bottom">
-        <!-- insert views/outline/_/tables/elements.html -->
-        <script type="text/javascript">
-          // <![CDATA[
-          // bloc.init('tag-scroller', function () {
-          //   var counter = (function functionName(list) {
-          //     var current = cycle(0, list.length - 1);
-          //     return function () {
-          //       var item = list.item(current());
-          //       var container = item.parentNode;
-          //       container.scrollTop = (item.offsetTop - container.offsetTop);
-          //     };
-          //   }(document.querySelectorAll('dl.documentation dt')));
-          //   var to = setInterval(counter, 250);
-          //   var doc = document.querySelector('dl.documentation');
-          //   doc.addEventListener('mouseover', function () {
-          //     clearInterval(to);
-          //   });
-          //   doc.addEventListener('mouseout', function () {
-          //     to = setInterval(counter, 250);
-          //   });
-          // });
-          // ]]>
-        </script>
+    <h2>The last big ideas of <abbr title="Hypertext Markup Language">html</abbr></h2>
+    <section class="t b">
+      <section class="t b">
+        <h3>Display: <em>block, inline, and inline-block</em></h3>
+        <p></p>
       </section>
+      <section class="container t b">
+        <h3>Use all your Elements</h3>
+        <p class="_______ float left pad">A quick reminder, <strong><code>div</code> and <code>span</code></strong>, while very important and useful to design, have no inherent meaning. Many—professionals even—overuse them unnecessarily. Remember, you’re first goal is to add semantic value to your markup and to generate good data. If there is a better substitute for the tag you are using, use it, ie <code>&lt;div class="address"&gt;</code> is not a better option than <code>&lt;address&gt;</code>. Make a habit of searching for and reviewing the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Elements available</a> whenever you are writing markup.</p>
+        <section class="___ float left ruled top bottom">
+          <!-- insert views/outline/_/tables/elements.html -->
+          <script type="text/javascript">
+            // <![CDATA[
+            // bloc.init('tag-scroller', function () {
+            //   var counter = (function functionName(list) {
+            //     var current = cycle(0, list.length - 1);
+            //     return function () {
+            //       var item = list.item(current());
+            //       var container = item.parentNode;
+            //       container.scrollTop = (item.offsetTop - container.offsetTop);
+            //     };
+            //   }(document.querySelectorAll('dl.documentation dt')));
+            //   var to = setInterval(counter, 250);
+            //   var doc = document.querySelector('dl.documentation');
+            //   doc.addEventListener('mouseover', function () {
+            //     clearInterval(to);
+            //   });
+            //   doc.addEventListener('mouseout', function () {
+            //     to = setInterval(counter, 250);
+            //   });
+            // });
+            // ]]>
+          </script>
+        </section>
+      </section>
+      <h3>Semantic <abbr title="Hypertext Markup Language">html</abbr></h3>
+      <p class="pad">There are many important reasons to write your markup semantically, and while one reason may have more personal importance to you than another together they make a pretty compelling case as to why this is <strong>requisite</strong>, not just a good idea. <q cite="http://www.webdesignerdepot.com/2010/03/fight-div-itis-and-class-itis-with-the-960-grid-system/">Clear, lean code offers many advantages. It’s easy to fix, quick to download and causes fewer problems across different types of browsers. Relevant tags help screen readers, search engines and mobile devices interpret meaning in addition to layout.</q></p>
+      <div class="two columns t whitepaper">
+        <h4>Semantic structure is algorithmic</h4>
+        <p>If not obvious by now, structuring a tree structure correctly means that a machine can make assumptions and parse a document efficiently. The obvious machine that comes to mind is a search engine.</p>
+        <h4 class="tt">Semantic structure is data</h4>
+        <p>Sloppy or improper use of an <abbr>html</abbr> <code>Element</code> will beget redundant and inconsistent <abbr>css</abbr> application. Further, imprecise, arbitrary use of <abbr >html</abbr> is an <strong>imprecise, arbitrary dataset</strong>. Now, I suppose it is quite evident at this point (or will be soon) that JavaScript is a programming language. What may not be clear to a novice, is that programs are almost completely useless <em>without structured data</em>.</p>
+        <h4 class="tt">Semantic structure is thoughtful</h4>
+        <p>Something we think about far too little, especially on the path to becoming designers is this fact: one-fifth of our society has a disability. Whether a user is born with or has acquired a paralytic disorder, or a vision or cognitive impairment, or has some other technological barrier, nobody should be barred from participation. Far too often the design community forgets this, sometimes out of arrogance, sometimes out of laziness. Well-structured documents help assistive technologies parse and deliver content as intended.</p>
+      </div>
     </section>
   </article>
   <article>
@@ -85,6 +92,122 @@
     <h2><abbr title="Cascading Stylesheet">CSS</abbr> Units: <em>color</em></h2>
     <p>While we understand length and size units (px, em, vw, wh, %) another important value to understand how to set is <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">color</a>.</p>
     <p>I recommend that if you are new to color, you start by using and understanding how hex colors are specified. Hex stands for hexadecimal, and essentially it is just the red, green and blue system converted to the condensed hexadecimal number system. Once you understand this in principle, I think it is useful to use rgb values for the fact that you can specify an alpha channel—or an opacity of the color. From there, you can use an entirely different color scheme like hsl, or hue, saturation, luminosity. I won't dwell on this system yet, but it can be much easier to use HSL when we begin programming in the future.</p>
+    <h3 class="tt">Colorful Displays</h3>
+    <p>In our displays, we use a three channel color system, each channel can hold 8 bits. That is, the red channel has 8 bits, the green channel has 8 bits, and the blue channel has 8 bits. 8 bits are quite important, and to a large extent, understanding 8 bits in a few different ways is all we need to get the gist of color.</p>
+    <div class="container">
+      <div class="one-third float left">
+
+        <h3>Hexadecimal</h3>
+        <p><a href="https://en.wikipedia.org/wiki/Hexadecimal">Hexadecimal</a>, or base 16 is yet another method of counting, one in which we have 16 distinct digits instead of our familiar 0–9, and they are <em>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F</em>.</p>
+        <p>Recall the 8 bits—here is what they look like in binary: <code>00000000</code>. Remember, a bit is a binary digit, which is a 0 or 1. We can count in binary, so essentially, each channel can count up to <code>11111111</code>. That Number, converted to decimal is <code>255</code>. That number in hex is, interestingly, <code>FF</code></p>
+      </div>
+      <div class="one-third float left">
+        <h3><abbr title="red green blue">rgb</abbr> and <abbr title="red green blue alpha">rgba</abbr></h3>
+      </div>
+      <div class="one-third float left">
+        <h3><abbr title="hue saturation lightness">hsl</abbr> and <abbr title="hue saturation lightness alpha">hsla</abbr></h3>
+        <p>This is the new kid on the block, and has some interesting applications with JavaScript. I don't use it as much for my regular color assignments, but that could be mostly out of habit.</p>
+      </div>
+    </div>
+    <table class="full example tt" id="color-table">
+      <thead>
+        <tr>
+          <th>Channel</th>
+          <th>Shade</th>
+          <th>Adjust</th>
+          <th class="centered">Binary</th>
+          <th>Decimal</th>
+          <th>Hexadecimal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Red</td>
+          <td><input type="color" readonly="readonly" value="#000000"/></td>
+          <td>
+            <input type="range" min="0" max="255" value="0"/>
+          </td>
+          <td class="centered">00000000</td>
+          <td class="centered">0</td>
+          <td class="centered">00</td>
+        </tr>
+        <tr>
+          <td>Green</td>
+          <td><input type="color" readonly="readonly" value="#000000"/></td>
+          <td>
+            <input type="range" min="0" max="255" value="0"/>
+          </td>
+          <td class="centered">00000000</td>
+          <td class="centered">0</td>
+          <td class="centered">00</td>
+        </tr>
+        <tr>
+          <td>Blue</td>
+          <td><input type="color" readonly="readonly" value="#000000"/></td>
+          <td>
+            <input type="range" min="0" max="255" value="0"/>
+          </td>
+          <td class="centered">00000000</td>
+          <td class="centered">0</td>
+          <td class="centered">00</td>
+        </tr>
+      </tbody>
+      <tfoot>
+
+        <tr style="border-bottom:1px solid #AAA;">
+          <th colspan="3" class="rag-left ruled right">Hexadecimal</th>
+          <td colspan="1" class="centered h3 code">#000000</td>
+          <td rowspan="2" colspan="2"><input type="color" style="width:100%;"/></td>
+        </tr>
+        <tr>
+          <th colspan="3" class="rag-left">Red, Green, Blue</th>
+          <td colspan="1" class="centered h3 code">rgb(0,0,0);</td>
+        </tr>
+      </tfoot>
+    </table>
+    <style>
+    thead th + th {
+      border-left:1px solid #222;
+    }
+    thead th {
+      border-bottom:2px solid #333;
+      padding:1em;
+    }
+    tfoot td {
+      padding:0.5em;
+    }
+    td input {
+      width:100%;
+      height:100%;
+    }
+    </style>
+    <script type="text/javascript">
+      var inputs = [];
+      [].forEach.call(document.querySelectorAll('#color-table input[type="range"]'), function (input, idx) {
+
+        inputs.push(input);
+        function updateColor() {
+          var rgb = [];
+          inputs.forEach(function(input) {
+
+          });
+        }
+        input.addEventListener('input', function (evt) {
+          var rgb = ['00','00','00'];
+          var bin = this.parentNode.nextElementSibling;
+          var dec = bin.nextElementSibling;
+          var hex = dec.nextElementSibling;
+          rgb[idx] = decHex(this.value);
+          this.parentNode.previousElementSibling.firstElementChild.value = "#"+rgb.join('');
+          bin.textContent = decBin(this.value);
+          dec.textContent = this.value;
+          hex.textContent = rgb[idx];
+          updateColor();
+        });
+      });
+    </script>
+
+
   </article>
   <article>
     <h2>Editing Calisthenics</h2>

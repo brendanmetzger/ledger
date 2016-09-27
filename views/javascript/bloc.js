@@ -59,6 +59,15 @@ function JSONP(src, callback, listener) {
 }
 
 
+function decHex(decimal, pad = '00') {
+  return (pad + parseInt(decimal, 10).toString(16).toUpperCase()).slice(-pad.length)
+}
+
+function decBin(decimal, pad = '00000000') {
+  return (pad + parseInt(decimal, 10).toString(2)).slice(-pad.length);
+}
+
+
 function Validator(url, callback) {
   var url = 'https://validator.nu/?level=error&doc='+encodeURIComponent(url)+'&out=json';
   JSONP(url, callback)
