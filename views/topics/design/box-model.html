@@ -1,0 +1,121 @@
+<article id="box-model">
+  <h2>Everything is a box</h2>
+  <p>Depending on your major, your perspective on web design/development from that of your classmates my be quite stark. It is likely that designers in this class first learned layout from a graphic perspective, attempting to apply design principles to their <abbr>HTML</abbr> and <abbr>css</abbr> work. Students with a programming background may have learned to apply 3<sup>rd</sup> party frameworks to solve problems consistently or efficiently, perhaps using <abbr>html</abbr> and <abbr>css</abbr> as a means to an end. Thus, both groups have an achilles heel; when looking for a shortcut, designers avoid the rigor of programming while programmers avoid the rigor of design. The good news for designers is that programming is very much about design, and the good news for programmers is that good design is very much about precision and optimization.</p>
+  <section>
+    <h3>Positioning</h3>
+    <p class="intro">Picture yourself in your current space. How would you describe where you are sitting?</p>
+    <div class="cartesian example ___">
+
+    </div>
+    <style>
+      svg {
+        position:fixed;
+        top:0;
+        left:0;
+        z-index:-1;
+      }
+      text {
+        stroke: #333;
+        font-size:1em;
+      }
+      line {
+        stroke-width:1;
+        shape-rendering: crispEdges;
+        stroke:rgba(255,0,0,0.25);
+      }
+    </style>
+    <script type="text/javascript">
+      bloc.embed('/topics/design/cartesian.js');
+      bloc.init('cartesian-space', function() {
+        var dims = [, window.innerHeight],
+            axis = {x: null, y: null},
+            preview = new SVG(document.querySelector('#box-model div.cartesian.example'), window.innerWidth, window.innerHeight),
+            emratio = 1 / parseInt(getComputedStyle(document.body).fontSize, 10)
+
+        // draw axes
+        axis.x = preview.createElement('line', {
+          x1: 0,
+          y1: preview.height / 2,
+          x2: preview.width,
+          y2: preview.height / 2
+        });
+        axis.y = preview.createElement('line', {
+          x1: preview.width / 2 ,
+          y1: 0,
+          x2: preview.width / 2,
+          y2: preview.height
+        });
+
+        var text = preview.createElement('text', {
+          x: preview.width / 2,
+          y: preview.height / 2,
+        });
+        text.textContent = "{top: 0; right: 0; bottom: 0; left: 0;}"
+        text.setAttribute('class', 'code');
+        document.body.addEventListener('mousemove', function(evt) {
+          axis.x.setAttribute('y1', evt.clientY);
+          axis.x.setAttribute('y2', evt.clientY);
+          axis.y.setAttribute('x1', evt.clientX);
+          axis.y.setAttribute('x2', evt.clientX);
+          text.setAttribute('x', evt.clientX);
+          text.setAttribute('y', evt.clientY);
+        });
+
+      });
+    </script>
+  </section>
+
+  <section class="container whitepaper tt">
+    <h3>The Box Model</h3>
+    <div class="______ float left outdented">
+      <p>For the experienced design student, layouts, margins and padding were likely learned elsewhere. For the rest, the box-model might be something you've heard me say a few times and has, until now, been obscure. it’s a fairly straightforward topic, and as such, you should spend a few hours learning what there is to learn about it. That’s right, a few hours, and there you are, you've learned it.</p>
+      <p>Conceptually, it has been around long enough to have many many tutorials and write-ups describing every last detail. As always, I would implore you to invest in literature and seek information that suits your learning style. The box model distills concepts that have been mentioned several times in class: block vs. inline elements, margins vs. padding and now you will be introduced to some of the remaining crucial pieces like dimensions and floats. Consult the list for some links to get you started.</p>
+    </div>
+    <div class="____ float left" style="background-color:rgb(241, 200, 171)">
+      <div style="margin:5%;padding:5%;background-color:rgb(150, 214, 197);border: 3px solid #b5a8a8;">
+        <div style="background-color:rgb(157, 155, 245)">Content</div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h3>Layout &amp; Floats</h3>
+    <p>Learning layout is obviously quite important to learning how to apply a design. With the proliferation of tablets and mobile devices, the toolset for controlling layout is moving very quickly. I'd advise you to go through this tutorial called <em><a class="read" href="http://learnlayout.com/">Learn CSS Layout</a></em> (it will also be assigned in the homework). Advanced students will note at the end the introduction of <em>flexbox</em> and probably want to investigate those techniques.  I won’t be working flexbox into the curriculum; at the moment the spec isn’t entirely consistent and I’m admittedly confused about best practices and fallbacks at this point. it’s fairly safe to say, however, that this will probably be the way we do layout in the future, so take that to heart.</p>
+    <div class="comparison container">
+      <aside class="______ float left t b ruled top bottom">
+        <p class="note">Watch the carousel below carefully as it attaches new classes. You may see a pattern emerge, but if not, keep at it, this may be one of the <strong>most confusing parts of <abbr>css</abbr> floats.</strong> Specifically, notice the containing element, how it collapses when items are floated. This is by design, but it takes a long time to understand when and precisely why this happens. The links provided explain this in great detail; don’t let it slip by you.</p>
+
+        <pre class="prettyprint">
+&lt;div class="<span data-example="code">bordered</span>"&gt;
+  &lt;p class="first box bordered"&gt;FIRST...&lt;/p&gt;
+  &lt;p class="second box bordered"&gt;SECOND...&lt;/p&gt;
+&lt;/div&gt;
+        </pre>
+        <div data-example="code" class="bordered">
+          <p class="first box bordered">FIRST...</p>
+          <p class="second box bordered">SECOND...</p>
+        </div>
+      </aside>
+      <pre class="prettyprint ____ float left whitepaper">
+        <!-- review views/css/examples/variables.css floating -->
+      </pre>
+      <link rel="stylesheet" href="/css/examples/variables.css" title="variable-example"/>
+      <script type="text/javascript">
+      // <![CDATA[
+        bloc.init('class-cycle', function () {
+          var elems = document.querySelectorAll('[data-example="code"]');
+          var sequence = ['bordered first', 'bordered second', 'bordered first second', 'bordered box-container first second', 'bordered'];
+          var current = cycle(0, sequence.length);
+          setInterval(function () {
+            var class_name = sequence[current()];
+            elems.item(0).firstChild.innerText = class_name;
+            elems.item(1).className = class_name;
+          }, 3500);
+
+        });
+      //]]>
+      </script>
+    </div>
+
+
+  </section>
+</article>

@@ -23,6 +23,8 @@ var timecode2Seconds = function (timecode) {
  * for creating children elements. (c) brendan.metzger@gmail.com
  */
 var SVG = function (node, width, height) {
+  this.width = width;
+  this.height = height;
   this.element = this.createElement('svg', {
     'xmlns:xlink': 'http://www.w3.org/1999/xlink',
     'xmlns': 'http://www.w3.org/2000/svg',

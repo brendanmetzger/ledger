@@ -21,11 +21,11 @@ class Lecture extends \bloc\controller
     return $view->render($this());
   }
 
-  public function GETtopic($topic = null, $lesson = null)
+  public function GETtopic($subject, $topic)
   {
     $view = new View(self::layout);
     // get all topics
-    $view->content =  sprintf("views/topics/%s.html", $topic ? "{$topic}/{$lesson}" : 'glossary' );
+    $view->content =  sprintf("views/topics/%s/%s.html", $subject, $topic);
     return $view->render($this());
   }
 
