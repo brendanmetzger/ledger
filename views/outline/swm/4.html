@@ -1,7 +1,7 @@
 <div>
   <header>
     <!-- insert views/outline/_/crumbs.html -->
-    <h1 class="massive">Data</h1>
+    <h1 class="massive">Containers</h1>
     <p class="intro">More on <abbr>html</abbr> attributes. An introduction to JavaScript Objects and Arrays, and the dot operator. Intro to <abbr>css</abbr> positioning and further study of the box-model.</p>
   </header>
 
@@ -10,33 +10,34 @@
     <p>Last week we covered class combinators and color, went over block vs inline vs. inline block once again and as well as introduced a bit of boolean logic.</p>
     <p>At this point in the semester, I have introduced the topics that I consider requisite and will spend less time revisiting and you’ll research and fill in the pieces as we go. We now know about the browser console, keeping it open while we develop. You know that HTML has a structure, and you are aware that careful indentation gives you a visual aid to interpret and see this structure. You are aware that there are semantic tags for to describe content and those tags have meaning.</p>
   </article>
-  <!-- insert views/topics/design/box-model.html -->
-  <article>
-    <h2>JavaScript as data.</h2>
+  <article class="margins">
+    <h2>Intro to JavaScript by means of Data Storage</h2>
     <p>The following quote is from <em>How To Design Programs</em> (<a href="http://www.htdp.org">freely available from <abbr title="Massachusetts Institute of Technology">MIT</abbr> Press</a>). While this book goes in in large detail about understanding the connection between mathematics and computing, and though that is not the subject of this course, it hits on a point you may hear me nag about.</p>
     <blockquote cite="http://www.htdp.org/2003-09-26/Book/curriculum-Z-H-11.html" class="two columns quote">
       <p>A programming language is in many ways like a spoken language. It has a vocabulary and a grammar. The vocabulary is the collection of those 'basic words' from which we can compose 'sentences' in our language. A sentence in a programming language is an expression or a function; the language’s grammar dictates how to form complete sentences from words. Programmers use the terminology <strong>syntax</strong> to refer to the vocabularies and grammars of programming languages.</p>
       <p>Not all grammatical sentences are meaningful—neither in English nor in a programming language. For example, the English sentence <q>the cat is round</q> is a meaningful sentence, but <q>the brick is a car</q> makes no sense, even though it is completely grammatical. <mark>To determine whether or not a sentence is meaningful, we must study the <strong>meaning</strong>, or <strong>semantics</strong>, of words and sentences.</mark> For spoken languages, we typically explain the meaning of words with sentences that use simpler words; in the case of a foreign language, we sometimes explain a word with simple sentences in the foreign language or we translate words to a known language. For programming languages, there are also several ways to explain the meaning of individual sentences.</p>
     </blockquote>
     <p>The takeaway here is that learning syntax, though it might seem like an accomplishment, isn’t nearly as profound as it seems like (sorry). Just like learning to write <q>the cat is a brick</q> doesn’t make you an author, learning the vocabulary of a language is the starting point, so we must begin to get very comfortable with these concepts and using this new syntax to <em>design</em> outcomes.</p>
+    <p>To begin learning JavaScript, below I’ve listed two data storage mechanisms utilized in the language. Just like <abbr>HTML</abbr> is a structure mechanism for data that we design with css, JavaScript employs methods to structure data so it can be retrieved and manipulated.</p>
     <hr class="ruled t b"/>
-    <section class="container">
+    <section class="container margins">
       <img src="/css/media/tackle.png" alt="card catalog" class="float left __" />
       <h3>Objects</h3>
-      <p class="container">As programs get more complex it becomes important to place data and behavior into structures that help organize and clarify our programs purpose. In JavaScript, objects provide an efficient means to store and utilize program components. You can assign an entire object to a variable with curly brackets simply by writing <code>var an_object = {};</code>As a data structure, they store a value associated with a property, or <em>key</em>, which follows the same rules as declaring a variable by using the <em>dot operator</em>: <code>an_object.some_property = "some value";</code>. Not only can we set properties with our dot operator, we locate  keys by requesting them from the object as well, the following prints a specific value in the console: <code>console.log(an_object.some_property);</code>. Object property values can be of <em>any type</em>, including other objects, allowing infinite possibilities for program structure.</p>
-      <p>While objects are very prominent in the JavaScript language and can be configured to profound things, it may aid you to first start thinking of objects as data structures. Once you've mastered setting and accessing object properties, you’ll learn that they can actually be programmed to exhibit certain behaviors as well.</p>
+      <p class="container">As programs get more complex it becomes important to place data and behavior into structures that help organize and clarify our programs purpose. In JavaScript, objects provide an efficient means to store and utilize program components. They store a value associated with a property (often called a <em>key</em>). The structure is similar to the way we declare <abbr>CSS</abbr> properties with colon except in two very important ways: first, the value can be anything, including other objects (in stylesheets, the value is always a style definition) and second, the <code>property: value</code> is not terminated by a semi-colon. In fact, you do not need to terminate the line with anything unless you are declaring another property, in which case, you use a comma between them.</p>
+      <p>While objects are very prominent in the JavaScript (essentially everything), it may aid you to first start thinking of objects as data structures so you can practice your ability to navigate them. Once you've mastered setting and accessing object properties, you’ll learn that they can actually be programmed to exhibit certain behaviors as well. You can assign an object to a named variable like <code>var example = {property: 'value'};</code> and access that property with <code>console.log(example.property);</code> using the <em>dot operator</em>.</p>
     </section>
-    <section class="container">
-      <img src="/css/media/catalog.png" alt="card catalog" class="float left __" />
+    <section class="container margins tt">
+      <img src="/css/media/catalog.png" alt="card catalog" class="float right __" />
       <h3>Arrays</h3>
-      <p> Arrays are <em>a special type of object</em> which maintain order. Instead of using strings as keys, they use integers, called indices.  Instead of using curly braces to declare them, you use square brackets. To access an item in an array, you use brackets along with the index you are interested in. Indices always start at 0. Beyond that, like an object, you can put anything you like in an array, including other arrays. While this might seem like less useful than an object at first glance,  in programming, order is <em>precisely what you want</em> making the array extremely useful and necessary type of object. An array is declared <code>var an_array = ['item one'];</code>, and it is accessed <code>console.log(an_array[0]);</code></p>
+      <p> Arrays are <em>a special type of object</em> which maintain order. Instead of using strings as keys, they use integers, called indices.  Instead of using curly braces to declare them, you use square brackets. To access an item in an array, you use brackets along with the index you are interested in. Indices always start at 0. Beyond that, like an object, you can put anything you like in an array, including other arrays. While this might seem like less useful than an object at first glance,  in programming, order is <em>precisely what you want</em> making the array extremely useful and necessary type of object. An array is declared <code>var example = ['value'];</code>, and it is accessed <code>console.log(example[0]);</code> using the bracket operator.</p>
     </section>
 
-    <section class="container">
+    <section class="container t">
       <h4 class="ruled top t pad">Using Objects and Arrays to talk about data.</h4>
-      <p>In the homework this week, you’ll find plenty of information regarding the proper syntax of objects and arrays. Here I’m giving you a jump-start on what a data-structure might look like. I’ll ask that you take this much further, so if examining the below structure doesn’t add up, let’s spend extra time addressing that in the Q/A portion of class.</p>
       <aside class="float left ____ note">
-        <p>Brackets, both square and curly, are going to become extremely familiar to you by the end of the semester. Looking at the following object, make sure you syntactically see the following structure.</p>
+        <p>Brackets, both square and curly, are going to become extremely familiar to you by the end of the semester. Objects use curly brackets, arrays use square brackets—make sure you syntactically see the following structure.</p>
+        <p>In my adjacent object definition, I have assigned an object to variable called refrigerator. That object has things called <strong>properties</strong>, and those properties have <strong>values</strong>. A value can be of any <strong>type</strong>—a number, string, boolean, even another object or array. Programmers in other languages really appreciate the JavaScript syntax for describing objects, because it is expressive, powerful and quite legible once you get the hang of it. As a reminder, we have been talking about objects since the very beginning with the <strong>Document Object</strong>; the concept centers around humans and machines exchanging structured data.</p>
+        <p>Also my harping on structure should be clear at this point. Note that the indentation, the opening and closing of braces and brackets helps clarify the hierarchy.</p>
         <ul>
           <li>The refrigerator object has several properties containing several types: string, number, boolean, and array.</li>
           <li><code>refrigerator.ice_maker</code> is a Boolean.</li>
@@ -50,27 +51,30 @@
       </pre>
     </section>
   </article>
-  <article class="indented">
-    <h2>Attributes (are data)</h2>
-    <p><abbr>HTML</abbr> has a way to literally store data in an attribute. Interestingly, it’s called a <a href="http://www.w3schools.com/tags/att_global_data.asp">data attribute</a>. Data attributes (well, all attributes) can be seen by the inspecting eyes of <abbr>css</abbr>, which is an introduction to attribute selectors. Likewise, data-attributes can be seen and set in very straight forward ways using object access methods (more on that to come), and this can be quite elegant. Within your <abbr>html</abbr>, you can simply add <code>&lt;p data-anything="any string value"&gt;</code></p>
+  <article>
+    <h2>More on Attributes</h2>
+    <p><abbr>HTML</abbr> has a way to store data in an attribute. Interestingly, it’s called a <a href="http://www.w3schools.com/tags/att_global_data.asp">data attribute</a>. Data attributes (well, all attributes) can be seen by the inspecting eyes of <abbr>css</abbr>, which is an introduction to attribute selectors. Likewise, data-attributes can be seen and set in very straight forward ways using object access methods (more on that to come), and this can be quite elegant. Within your <abbr>html</abbr>, you can simply add <code>&lt;p data-anything="any string value"&gt;</code></p>
+    <h4 class="t">Targeting Attributes in a Stylesheet</h4>
     <p>For some reading material, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">here are the docs</a> on attribute selectors, or for a more visual explanation <a href="https://css-tricks.com/attribute-selectors/">check out this tutorial</a>. Attribute selectors pretty much round out our selection suite, which all together, looks something like this: Element &amp; descendant selectors, classes and IDs, children and sibling combinators, class chaining, and now attribute selectors. Both <abbr>css</abbr> and JavaScript employ these selection techniques.</p>
   </article>
+  <!-- insert views/topics/design/box-model.html -->
   <article id="reference">
     <h2>References and Practice Materials</h2>
     <p class="intro">Here is the list of <a href="http://iam.colum.edu/brendan.metzger/vids/">previous lectures</a> that are available to watch.</p>
     <dl>
+      <dt>Revisit</dt>
+      <dd><abbr title="Cascading Style Sheets">CSS</abbr> needs to start looking familiar at this point—especially regarding the syntax. If you are still foggy, here is <a href="http://htmldog.com/guides/css/beginner/">a beginner tutorial</a>. Go through the entire thing and believe it or not, it will hit on the box model.</dd>
       <dt>The <abbr>CSS</abbr> Box Model</dt>
       <dd>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model">Introduction to the <abbr>CSS</abbr> box model</a> provided by the Mozilla Developer Network</dd>
-      <dd>A nice write up that takes you through the mechanics of that glowing box you may have seen when you've inspected an element in the browser console.</dd>
       <dd>It's hard not to wind up on a website called CSS tricks, but they have a <a  href="https://css-tricks.com/the-css-box-model/">box model write up as well</a></dd>
-      dd
-      <dt><a class="read" href="http://learn.shayhowe.com/html-css/opening-the-box-model/">Opening the Box Model</a></dt>
-      <dd>A link to a tutorial site provided in your syllabus, that will corroborate what you've seen above</dd>
-      <dt><a class="read" href="http://htmldog.com/guides/css/beginner/"><abbr>CSS</abbr> beginner tutorial</a></dt>
-      <dd>If you are still foggy about css, here is a beginner tutorial. Go through the entire thing and believe it or not, it will hit on the box model. See, it’s important!</dd>
-      <dt><a class="watch" href="http://www.lynda.com/CSS-tutorials/Displaying-information-through-web/372544/419397-4.html">Displaying Information through the web</a></dt>
-      <dd>If you prefer to watch tutorials, Lynda has an entire video series talking about the box-model.</dd>
-
+      <dd>Yet another well designed writeup on the box-model from <a href="http://adamschwartz.co/magic-of-css/chapters/1-the-box/">the magic of CSS</a>.</dd>
+      <dd>The overflow property is one you ought to understand when it comes to controlling the behavior of things that are too big for their container. We will hit on this in the coming weeks, but here is a <a href="https://css-tricks.com/the-css-overflow-property/">good article</a> to get you started.</dd>
+      <dd>The more concise version of the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow">overflow property</a></dd>
+      <dt>Tutorials</dt>
+      <dd>I mentioned above this tutorial called <a href="http://learnlayout.com/">learn layout</a>; you should note something called <q>vendor prefixes</q> used on the <code>border-box</code>; these are <a class="discuss" href="http://caniuse.com/#feat=css3-boxsizing">unnecessary</a></dd>
+      <dd>If you prefer to watch, Lynda has a series called <a href="http://www.lynda.com/CSS-tutorials/Displaying-information-through-web/372544/419397-4.html">displaying Information through the web</a>.</dd>
+      <dt>JavaScript</dt>
+      <dd>The last two outlines have the intro to programming videos: last week to have those under your belt before we begin covering that material in depth.</dd>
     </dl>
   </article>
 </div>

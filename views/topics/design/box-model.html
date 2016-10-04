@@ -19,8 +19,8 @@
   </section>
   <section class="tt">
     <h3>Positioning</h3>
-    <p>You have probably noticed by now the crosshairs following you around this page. In the console, you will notice that the position of the crosshair is logged upon every move. Study the log and note that our browser viewport is governed by the <a href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system">Cartesian coordinate system</a>. To pinpoint something in space, you start with the origin, and in they layout/box-model world, the origin is typically the <code>top</code> and <code>left</code> of the box or viewport, but you can also use <code>bottom</code> and <code>right</code>. Now that we understand units, and have a gist of the box model, we can talk about the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position</a> property. The big ones we will concern ourselves with are <code>static</code> (the default), <code>relative</code>, <code>absolute</code> and <code>fixed</code>.</p>
-    <p>Setting the position should not be confused with setting the margin, padding, and border, and is best utilized to make dramatic, finite changes. For some perspective, in a large application, I will use margin and padding on almost every element, while I may only set the position of an element a handful of times.</p>
+    <p>You have probably noticed by now the crosshairs following you around this page. In the console, you will notice that the position of the crosshair is logged upon every move. Study the log and note that our browser viewport is governed by the <a href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system">Cartesian coordinate system</a>. To pinpoint something in space, you start with the origin, which in the browser world, is the <code>top</code> and <code>left</code> of the viewport ( but you can also use <code>bottom</code> and <code>right</code> to position elements). Now that we understand units, and have a gist of the box model, we can talk about the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position</a> property. The big ones we will concern ourselves with are <code>static</code> (the default), <code>relative</code>, <code>absolute</code> and <code>fixed</code>.</p>
+    <p>Setting the position should not be confused with setting the margin, padding, and border, and is best utilized to <sub>(1)</sub> move something to a specific point in space and <sub>(2)</sub> pull an object out of the flow of the document (perhaps to overlap elements), often both in combination, such as a light box overlay for viewing media. <sup>*</sup> Setting the position to <code>absolute</code> or <code>fixed</code> pulls the element out of the <em>document flow</em>, see my note in the float example below.</p>
     <style>
       svg {
         position:fixed;
@@ -81,20 +81,24 @@
 
   <section class="tt">
     <h3>Layout &amp; Floats</h3>
-    <p>Learning layout is obviously quite important to learning how to apply a design. With the proliferation of tablets and mobile devices, the toolset for controlling layout is moving very quickly. I'd advise you to go through this tutorial called <em><a class="read" href="http://learnlayout.com/">Learn CSS Layout</a></em> (it will also be assigned in the homework). Advanced students will note at the end the introduction of <em>flexbox</em> and probably want to investigate those techniques.  I won’t be working flexbox into the curriculum; at the moment the spec isn’t entirely consistent and I’m admittedly confused about best practices and fallbacks at this point. it’s fairly safe to say, however, that this will probably be the way we do layout in the future, so take that to heart.</p>
+    <p>Learning layout is obviously quite important to learning how to apply a design. With the proliferation of tablets and mobile devices, the toolset for controlling layout is moving very quickly. I'd advise you to go through this tutorial called <em><a href="http://learnlayout.com/">Learn CSS Layout</a></em>. Those who have done their research will note at the end the introduction of <em>flexbox</em> and probably want to investigate those techniques. Flexbox is tremendous, although a tad complicated so that will be covered in the <abbr title="scripting for web and mobile 2">SWM2</abbr> curriculum.</p>
     <div class="comparison container">
       <aside class="______ float left t b ruled top bottom">
-        <p class="note">Watch the carousel below carefully as it attaches new classes. You may see a pattern emerge, but if not, keep at it, this may be one of the <strong>most confusing parts of <abbr>css</abbr> floats.</strong> Specifically, notice the containing element, how it collapses when items are floated. This is by design, but it takes a long time to understand when and precisely why this happens. The links provided explain this in great detail; don’t let it slip by you.</p>
-
+        <div class="note">
+          <p>Watch the carousel below carefully as it attaches new classes. You may see a pattern emerge, but if not, keep at it, this may be one of the <strong>most confusing parts of <abbr>css</abbr> floats.</strong> Specifically, notice the containing element, how it collapses when items are floated. This is by design, but it takes a long time to understand when and precisely why this happens.</p>
+          <p>Whenever you you apply a <code>float</code> property to an element, that element is removed from the normal flow. This also happens when you apply <code>absolute</code> or <code>fixed</code> positioning. Essentially this means the the parent containing the element no longer knows about the size and shape of the floated content. Imagine a basket of tennis balls in the bottom of an empty swimming pool. Fill the pool with water, the nature of the relationship between the tennis balls and the basket changes significantly—notably the basket doesn't do anything. We can get around this by implementing a clearfix (covered in <a href="http://learnlayout.com/clearfix.html">the tutorial</a>).</p>
+        </div>
         <pre class="prettyprint">
 &lt;div class="<span data-example="code">bordered</span>"&gt;
   &lt;p class="first box bordered"&gt;FIRST...&lt;/p&gt;
   &lt;p class="second box bordered"&gt;SECOND...&lt;/p&gt;
 &lt;/div&gt;
         </pre>
-        <div data-example="code" class="bordered">
-          <p class="first box bordered">FIRST...</p>
-          <p class="second box bordered">SECOND...</p>
+        <div style="min-height:20em;">
+          <div data-example="code" class="bordered">
+            <p class="first box bordered">FIRST...</p>
+            <p class="second box bordered">SECOND...</p>
+          </div>
         </div>
       </aside>
       <pre class="prettyprint ____ float left whitepaper">
@@ -105,13 +109,13 @@
       // <![CDATA[
         bloc.init('class-cycle', function () {
           var elems = document.querySelectorAll('[data-example="code"]');
-          var sequence = ['bordered first', 'bordered second', 'bordered first second', 'bordered box-container first second', 'bordered'];
+          var sequence = ['bordered first', 'bordered second', 'bordered first second', 'bordered first second box-container', 'bordered'];
           var current = cycle(0, sequence.length);
           setInterval(function () {
             var class_name = sequence[current()];
             elems.item(0).firstChild.innerText = class_name;
             elems.item(1).className = class_name;
-          }, 3500);
+          }, 5000);
 
         });
       //]]>

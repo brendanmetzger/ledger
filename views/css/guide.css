@@ -1,5 +1,5 @@
 /* --- lovingly devised by Brendan Metzger ---  */
-.container:after, article dl:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.container, article dl {overflow:auto}
 .clear {clear:both}
 *{border-color:#333;border-style:solid;border-width:0;}
 a:active,a:link:focus,a:visited:focus {outline:1px dotted #333}

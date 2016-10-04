@@ -29,39 +29,36 @@
 
 /* floating */
 
+/* Used to add a generic border and padding
+   to multiple elements */
 .bordered {
   border:1px solid rgba(0,0,0,0.5);
   background-color:rgba(255,255,255,0.75);
   padding:1em;
 }
 
+/* ensure that our measurement system
+   takes into account border and padding */
 .box {
-  color:#444;
-  font-size:3em;
-  text-align:center;
+  font-size:2em;
   box-sizing:border-box;
 }
 
+/* note the chained styles*/
 .first.box  { border-color: pink; }
 .second.box { border-color:cornflowerblue; }
 
+/* parent element controls if child floats */
 .first > .first.box, .second > .second.box {
   float:left;
   width:50%;
   box-shadow: 0 0 0.25em  rgba(0,0,0,0.125);
   border-left-width:1em;
 }
-/* this is the best 'clearfix', in my opinion */
-.box-container:after {
-  display:block;
-  content:" ";
-  height:0;
-  visibility:hidden;
-  font-size:0;
-  clear:both;
+
+/* use of a 'clearfix' */
+.box-container {
+  overflow: auto;
 }
 
-.box-container p[class].box {
-  box-shadow:none;
-}
 /* end floating */
