@@ -5,15 +5,10 @@
     <p class="intro">More on <abbr>html</abbr> attributes. An introduction to JavaScript Objects and Arrays, and the dot operator. Intro to <abbr>css</abbr> positioning and further study of the box-model.</p>
   </header>
 
-  <article>
+  <article class="margins indented">
     <h2>Review</h2>
+    <p>Last week we covered class combinators and color, went over block vs inline vs. inline block once again and as well as introduced a bit of boolean logic.</p>
     <p>At this point in the semester, I have introduced the topics that I consider requisite and will spend less time revisiting and you’ll research and fill in the pieces as we go. We now know about the browser console, keeping it open while we develop. You know that HTML has a structure, and you are aware that careful indentation gives you a visual aid to interpret and see this structure. You are aware that there are semantic tags for to describe content and those tags have meaning.</p>
-    <p>Moving forward, the nature of that structural relationship is going to play a key role in how I talk about the Document Object Model. Parents and children, siblings, ancestors and descendants describe relationships, they inform the ruleset that describes how the interact, they are consequential!</p>
-  </article>
-  <article class="indented">
-    <h2>Attributes (are data)</h2>
-    <p><abbr>HTML</abbr> has a way to literally store data in an attribute. Interestingly, it’s called a <a href="http://www.w3schools.com/tags/att_global_data.asp">data attribute</a>. Data attributes (well, all attributes) can be seen by the inspecting eyes of <abbr>css</abbr>, which is an introduction to attribute selectors. Likewise, data-attributes can be seen and set in very straight forward ways using object access methods (more on that to come), and this can be quite elegant. Within your <abbr>html</abbr>, you can simply add <code>&lt;p data-anything="any string value"&gt;</code></p>
-    <p>For some reading material, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">here are the docs</a> on attribute selectors, or for a more visual explanation <a href="https://css-tricks.com/attribute-selectors/">check out this tutorial</a>. Attribute selectors pretty much round out our selection suite, which all together, looks something like this: Element &amp; descendant selectors, classes and IDs, children and sibling combinators, class chaining, and now attribute selectors. Both <abbr>css</abbr> and JavaScript employ these selection techniques.</p>
   </article>
   <!-- insert views/topics/design/box-model.html -->
   <article>
@@ -55,12 +50,20 @@
       </pre>
     </section>
   </article>
+  <article class="indented">
+    <h2>Attributes (are data)</h2>
+    <p><abbr>HTML</abbr> has a way to literally store data in an attribute. Interestingly, it’s called a <a href="http://www.w3schools.com/tags/att_global_data.asp">data attribute</a>. Data attributes (well, all attributes) can be seen by the inspecting eyes of <abbr>css</abbr>, which is an introduction to attribute selectors. Likewise, data-attributes can be seen and set in very straight forward ways using object access methods (more on that to come), and this can be quite elegant. Within your <abbr>html</abbr>, you can simply add <code>&lt;p data-anything="any string value"&gt;</code></p>
+    <p>For some reading material, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">here are the docs</a> on attribute selectors, or for a more visual explanation <a href="https://css-tricks.com/attribute-selectors/">check out this tutorial</a>. Attribute selectors pretty much round out our selection suite, which all together, looks something like this: Element &amp; descendant selectors, classes and IDs, children and sibling combinators, class chaining, and now attribute selectors. Both <abbr>css</abbr> and JavaScript employ these selection techniques.</p>
+  </article>
   <article id="reference">
     <h2>References and Practice Materials</h2>
     <p class="intro">Here is the list of <a href="http://iam.colum.edu/brendan.metzger/vids/">previous lectures</a> that are available to watch.</p>
     <dl>
-      <dt><a class="read" href="https://css-tricks.com/the-css-box-model/">The CSS Box Model</a></dt>
+      <dt>The <abbr>CSS</abbr> Box Model</dt>
+      <dd>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model">Introduction to the <abbr>CSS</abbr> box model</a> provided by the Mozilla Developer Network</dd>
       <dd>A nice write up that takes you through the mechanics of that glowing box you may have seen when you've inspected an element in the browser console.</dd>
+      <dd>It's hard not to wind up on a website called CSS tricks, but they have a <a  href="https://css-tricks.com/the-css-box-model/">box model write up as well</a></dd>
+      dd
       <dt><a class="read" href="http://learn.shayhowe.com/html-css/opening-the-box-model/">Opening the Box Model</a></dt>
       <dd>A link to a tutorial site provided in your syllabus, that will corroborate what you've seen above</dd>
       <dt><a class="read" href="http://htmldog.com/guides/css/beginner/"><abbr>CSS</abbr> beginner tutorial</a></dt>

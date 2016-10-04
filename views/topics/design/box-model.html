@@ -1,12 +1,26 @@
 <article id="box-model">
   <h2>Everything is a box</h2>
   <p>Depending on your major, your perspective on web design/development from that of your classmates my be quite stark. It is likely that designers in this class first learned layout from a graphic perspective, attempting to apply design principles to their <abbr>HTML</abbr> and <abbr>css</abbr> work. Students with a programming background may have learned to apply 3<sup>rd</sup> party frameworks to solve problems consistently or efficiently, perhaps using <abbr>html</abbr> and <abbr>css</abbr> as a means to an end. Thus, both groups have an achilles heel; when looking for a shortcut, designers avoid the rigor of programming while programmers avoid the rigor of design. The good news for designers is that programming is very much about design, and the good news for programmers is that good design is very much about precision and optimization.</p>
-  <section>
-    <h3>Positioning</h3>
-    <p class="intro">Picture yourself in your current space. How would you describe where you are sitting?</p>
-    <div class="cartesian example ___">
-
+  <section class="container whitepaper tt">
+    <h4>The Box Model</h4>
+    <div class="______ float left outdented justified note">
+      <p>Conceptually, it has been around long enough to have many many tutorials and write-ups describing every last detail. The nutshell is adjacent: the area in <span style="background-color:rgb(244, 255, 115)">yellow is the margin</span>, <span style="background-color:rgb(150, 214, 197)">green is the padding</span>, <span style="background-color:#ccc"> gray is the border</span> and <span style="background-color:rgb(162, 162, 250)">blue is the content</span>. Within these constraints you organize the position and layout of content. <strong>Understand that you can set the top, right, bottom, and left margin, padding and border independently</strong>.</p>
+      <p>A decade ago the box-model was implemented differently in different browsers (and it was a nightmare). Perhaps the bitterness of the past leaves me confident to conclude that with only one set of straightforward rules, it you should spend a few hours learning what there is to learn about it. That’s right, <strong>a few hours</strong>, and there you are, you've learned it!</p>
     </div>
+    <div class="____ float left t" style="background-color:rgb(244, 255, 115);">
+      <div style="margin:10%;padding:10%;background-color:rgb(150, 214, 197);border: 3px solid #888;">
+        <div style="background-color:rgb(162, 162, 250);min-height:15em;line-height:20;color:#fff;text-align:center">Content</div>
+      </div>
+    </div>
+  </section>
+  <section class="tt">
+    <h3>Box-Sizing</h3>
+    <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing">box-sizing</a> property Box sizing is a newer feature, and I'll briefly say that while the box model can be computed in two ways–either <code>content-box</code> (default) or <code>border-box</code>, it’s generally recommended to set everything to <code>border-box</code> once you know the difference. You can set a property to all elements with a <strong class="discuss">universal selector.</strong></p>
+  </section>
+  <section class="tt">
+    <h3>Positioning</h3>
+    <p>You have probably noticed by now the crosshairs following you around this page. In the console, you will notice that the position of the crosshair is logged upon every move. Study the log and note that our browser viewport is governed by the <a href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system">Cartesian coordinate system</a>. To pinpoint something in space, you start with the origin, and in they layout/box-model world, the origin is typically the <code>top</code> and <code>left</code> of the box or viewport, but you can also use <code>bottom</code> and <code>right</code>. Now that we understand units, and have a gist of the box model, we can talk about the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position</a> property. The big ones we will concern ourselves with are <code>static</code> (the default), <code>relative</code>, <code>absolute</code> and <code>fixed</code>.</p>
+    <p>Setting the position should not be confused with setting the margin, padding, and border, and is best utilized to make dramatic, finite changes. For some perspective, in a large application, I will use margin and padding on almost every element, while I may only set the position of an element a handful of times.</p>
     <style>
       svg {
         position:fixed;
@@ -17,19 +31,20 @@
       text {
         stroke: #333;
         font-size:1em;
+        text-anchor: middle;
       }
       line {
         stroke-width:1;
         shape-rendering: crispEdges;
-        stroke:rgba(255,0,0,0.25);
+        stroke:rgba(0,0,0,0.25);
+        stroke-dashArray: 10 10;
       }
     </style>
     <script type="text/javascript">
-      bloc.embed('/topics/design/cartesian.js');
       bloc.init('cartesian-space', function() {
-        var dims = [, window.innerHeight],
+        var dims = [window.innerWidth, window.innerHeight],
             axis = {x: null, y: null},
-            preview = new SVG(document.querySelector('#box-model div.cartesian.example'), window.innerWidth, window.innerHeight),
+            preview = new SVG(document.querySelector('#box-model'), window.innerWidth, window.innerHeight),
             emratio = 1 / parseInt(getComputedStyle(document.body).fontSize, 10)
 
         // draw axes
@@ -45,39 +60,26 @@
           x2: preview.width / 2,
           y2: preview.height
         });
-
-        var text = preview.createElement('text', {
-          x: preview.width / 2,
-          y: preview.height / 2,
-        });
-        text.textContent = "{top: 0; right: 0; bottom: 0; left: 0;}"
-        text.setAttribute('class', 'code');
         document.body.addEventListener('mousemove', function(evt) {
           axis.x.setAttribute('y1', evt.clientY);
           axis.x.setAttribute('y2', evt.clientY);
           axis.y.setAttribute('x1', evt.clientX);
           axis.y.setAttribute('x2', evt.clientX);
-          text.setAttribute('x', evt.clientX);
-          text.setAttribute('y', evt.clientY);
+          var coords = [
+            evt.clientY + window.scrollY,
+            dims[0]-evt.clientX,
+            document.body.scrollHeight - (evt.clientY + window.scrollY),
+            evt.clientX + window.scrollX
+          ];
+          console.log(`top: ${coords[0]}px, ${coords[0]*emratio}em,\nright: ${coords[1]}px, ${coords[1]*emratio}em\nbottom: ${coords[2]}px, ${coords[2]*emratio}em\nleft: ${coords[3]}px, ${coords[3]*emratio}em`);
         });
 
       });
     </script>
   </section>
 
-  <section class="container whitepaper tt">
-    <h3>The Box Model</h3>
-    <div class="______ float left outdented">
-      <p>For the experienced design student, layouts, margins and padding were likely learned elsewhere. For the rest, the box-model might be something you've heard me say a few times and has, until now, been obscure. it’s a fairly straightforward topic, and as such, you should spend a few hours learning what there is to learn about it. That’s right, a few hours, and there you are, you've learned it.</p>
-      <p>Conceptually, it has been around long enough to have many many tutorials and write-ups describing every last detail. As always, I would implore you to invest in literature and seek information that suits your learning style. The box model distills concepts that have been mentioned several times in class: block vs. inline elements, margins vs. padding and now you will be introduced to some of the remaining crucial pieces like dimensions and floats. Consult the list for some links to get you started.</p>
-    </div>
-    <div class="____ float left" style="background-color:rgb(241, 200, 171)">
-      <div style="margin:5%;padding:5%;background-color:rgb(150, 214, 197);border: 3px solid #b5a8a8;">
-        <div style="background-color:rgb(157, 155, 245)">Content</div>
-      </div>
-    </div>
-  </section>
-  <section>
+
+  <section class="tt">
     <h3>Layout &amp; Floats</h3>
     <p>Learning layout is obviously quite important to learning how to apply a design. With the proliferation of tablets and mobile devices, the toolset for controlling layout is moving very quickly. I'd advise you to go through this tutorial called <em><a class="read" href="http://learnlayout.com/">Learn CSS Layout</a></em> (it will also be assigned in the homework). Advanced students will note at the end the introduction of <em>flexbox</em> and probably want to investigate those techniques.  I won’t be working flexbox into the curriculum; at the moment the spec isn’t entirely consistent and I’m admittedly confused about best practices and fallbacks at this point. it’s fairly safe to say, however, that this will probably be the way we do layout in the future, so take that to heart.</p>
     <div class="comparison container">

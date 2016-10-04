@@ -1,3 +1,17 @@
+Event.prototype.theta = function () {
+  var rect  = this.target.getBoundingClientRect();
+
+  if (this.type.substring(0, 5) == 'touch') {
+    var x = (this.touches[0].clientX - rect.left) - (rect.width / 2);
+    var y = (rect.height / 2) - (this.touches[0].clientY - rect.top);
+  } else {
+    var x = (this.offsetX || this.layerX) - (rect.width / 2);
+    var y = (rect.height / 2) - (this.offsetY || this.layerY);
+  }
+  var theta = Math.atan2(x, y) * (180 / Math.PI);
+  return theta < 0 ? 360 + theta : theta;
+};
+
 String.prototype.format = function() {
   var args = typeof arguments[0] === 'object' ? arguments[0] : arguments;
   return this.replace(/{((?:\d+)|(?:[a-z]+))}/g, function(match, key) {
@@ -39,6 +53,7 @@ SVG.prototype.createElement = function(name, opt, parent) {
   for (var key in opt) node.setAttribute(key, opt[key]);
   return parent === null ? node : (parent || this.element).appendChild(node);
 };
+
 
 // Get point in global SVG space
 SVG.prototype.cursorPoint = function(evt){

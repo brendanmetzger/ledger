@@ -1,59 +1,74 @@
 <article>
   <!-- insert views/outline/assignments/header.html -->
-  <h2>Calico</h2>
-    <section>
-      <p><strong>Employ</strong>, units, box model, </p>
+  <section>
+    <div class="______ float left pad margins">
+      <p>Employ units, box model (margins and padding), and generally get an understanding the nuances of <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Background_and_Borders">backgrounds and borders</a>—this is all material we have covered in the last several weeks. Consider the adjacent list, and make sure you employ <strong>all of properties I have listed at least once</strong> when creating your CSS files.</p>
+      <p>It would be a good time to start considering your project for the semester. I would suggest the work on this study should go towards outlining that plan—how far you want to go is up to you. I'll meet with everyone individually to discuss that the week before this study is due. Here is an adobe tool for <a href="https://color.adobe.com/create/color-wheel/">creating a color scheme</a> to help generate some inspiration.</p>
+      <p class="discuss">I want you to employ more complicated <abbr>CSS</abbr> patterns, namely using multiple classes, using descendant selectors and using combinators (&gt;, +, ~). Use a descendant selector at least 3 levels deep.</p>
+    </div>
+    <div class="____ float left whitepaper">
+      <h3>Color</h3>
       <ul>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">color</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-color">background-color</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow">box-shadow</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border">border</a></li>
+        <li><a href="">border-radius</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns">columns</a> (optional)</li>
       </ul>
-      <div class="container">
-        <div class="half float left pad">
-          <h4 class="ruled bottom">A: Markup</h4>
-          <p>So we have some content to work with next week, make a quick gallery. It will be beneficial to get a head start on styling it, but I’ll leave that up to you. You could use portfolio work, use your instagram stuff, or just find a bunch of great cat gifs.</p>
-          <hr/>
-          <ul class="pad">
-            <li>Create a gallery - at least nine (9) images.</li>
-            <li>Either have the rights to your images, or figure out a way to credit the owner properly</li>
-            <li>Name the images in an organized way</li>
-            <li>Gallery should have a lower resolution thumbnail and a higher resolution version. (again, pay attention to names/organization)</li>
-            <li>Every image should have an alt attribute and a use the title attribute.</li>
-          </ul>
-        </div>
-        <div class="half float left pad">
-          <h4 class="ruled bottom">B: Research/Ongoing</h4>
-          <p>I want you to start looking things up that will be able to build into something bigger. it’s important to realize, there are <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">hundreds of <abbr>css</abbr> properties</a> that allow you to style your content. Pick 5 to 10 and write up definitions. The only rule is that you need to understand what they do and use them at some point throughout the semester. I highly suggest you look at <code>display</code> properties and <code>positioning</code> properties. An example of a definition list is below.</p>
-          <pre class="prettyprint">
-            <!-- preview views/student/structure/list.html 8..12 -->
-          </pre>
-        </div>
+      <h3 class="tt">Backgrounds<sup>*</sup></h3>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-image">background-image</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position">background-position</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-size">background-size</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat">background-repeat</a></li>
+      </ul>
+      <p class="note"><sup>*</sup> It's worth knowing the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background">shorthand background properties</a>.</p>
+    </div>
+    <div class="container">
+      <div class="half float left pad">
+        <h4 class="ruled bottom">A: Markup</h4>
+        <p>So we have some content to work with next week, make a quick gallery. It will be beneficial to get a head start on styling it, but I’ll leave that up to you. You could use portfolio work, use your instagram stuff, or just find a bunch of great cat gifs.</p>
+        <hr/>
+        <ul class="pad">
+          <li>Create a gallery - at least nine (9) images.</li>
+          <li>Either have the rights to your images, or figure out a way to credit the owner properly</li>
+          <li>Name the images in an organized way</li>
+          <li>Gallery should have a lower resolution thumbnail and a higher resolution version. (again, pay attention to names/organization)</li>
+          <li>Every image should have an alt attribute and a use the title attribute.</li>
+        </ul>
       </div>
-      <p class="focus">You should be planning the structure of your site a little more aggressively at this point. Remember login to your dashboard and see the preview and your work exhibited Remember if you can see it in the <code>practice/3</code> preview, I can see it.</p>
-    </section>
-    <hr class="ruled"/>
-    <section class="container">
-      <h3>JavaScript Practice</h3>
-      <aside class="___ m float left note">
-        <p>Like last week, you can go through the next suite of videos to introduce yourself to programming. Please refer to last weeks practice assignment if you need clarification on what is expected or where to show your practice work.</p>
-        <p>In each chapter listed I've asked a question prefaced with <strong>forward thinking</strong>. In your readme, provide an answer to these questions as best you can—there are no wrong answers. If you literally can’t think of anything, tell me where you are getting stuck.</p>
-      </aside>
-      <dl class="______ float left pad">
-        <dt><a href="http://www.lynda.com/Developer-Programming-Foundations-tutorials/Breaking-your-code-apart/83603/90452-4.html">Chapter 5 / Modular Code</a></dt>
-        <dd>This chapter introduces functions, <q cite="http://eloquentjavascript.net">the bread and butter of JavaScript programming</q> (that means they are indispensable)</dd>
-        <dd><strong>Forward thinking:</strong> Why are functions so important to JavaScript?</dd>
-        <dt><a href="http://www.lynda.com/Developer-Programming-Foundations-tutorials/Introduction-iteration/83603/90458-4.html">Chapter 6 / Iteration</a></dt>
-        <dd>Iteration, or Enumeration, is a fairly straight-forward concept, but take note of the examples the speaker gives.</dd>
-        <dd><strong>Forward thinking</strong>: We think of loops things that just count; list things besides numbers that you'd would want to iterate?</dd>
-        <dt><a href="http://www.lynda.com/Developer-Programming-Foundations-tutorials/Cleaning-up-string-concatenation/83603/90462-4.html">Chapter 7 / More Strings</a></dt>
-        <dd>This chapter introduces ideas about how you operate on strings. A mistake beginning programmers often make is to think of a string as nothing more than a sentence. Believe it or  not, simple algorithms are often employed to weed out job applicants by asking to solve simple string problems.</dd>
-        <dd><strong>Forward thinking:</strong></dd>
-        <dt><a href="http://www.lynda.com/Developer-Programming-Foundations-tutorials/Working-arrays/83603/90466-4.html">Chapter 8 / Collections</a></dt>
-        <dd>This chapter introduces an <code>array</code>, which will be your first (obvious) taste of a data-structure.</dd>
-        <dd><strong>Forward thinking:</strong> You are familiar with some array-like things you've worked on already. What are they?</dd>
-      </dl>
-    </section>
+      <div class="half float left pad">
+        <h4 class="ruled bottom">B: Research/Ongoing</h4>
+        <p>I want you to start looking things up that will be able to build into something bigger. it’s important to realize, there are <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">hundreds of <abbr>css</abbr> properties</a> that allow you to style your content. Pick 5 to 10 and write up definitions. The only rule is that you need to understand what they do and use them at some point throughout the semester. I highly suggest you look at <code>display</code> properties and <code>positioning</code> properties. An example of a definition list is below.</p>
+        <pre class="prettyprint">
+          <!-- preview views/student/structure/list.html 8..12 -->
+        </pre>
+      </div>
+    </div>
+    <p class="focus">You should be planning the structure of your site a little more aggressively at this point. Remember login to your dashboard and see the preview and your work exhibited Remember if you can see it in the <code>practice/3</code> preview, I can see it.</p>
+  </section>
+  <hr class="ruled"/>
+  <section class="container">
+    <h3>JavaScript Practice</h3>
+    <aside class="___ m float left note">
+      <p>Like last week, you can go through the next suite of videos to introduce yourself to programming. Please refer to last weeks practice assignment if you need clarification on what is expected or where to show your practice work.</p>
+      <p>In each chapter listed I've asked a question prefaced with <strong>forward thinking</strong>. In your readme, provide an answer to these questions as best you can—there are no wrong answers. If you literally can’t think of anything, tell me where you are getting stuck.</p>
+    </aside>
+    <dl class="______ float left pad">
+      <dt><a href="http://www.lynda.com/Developer-Programming-Foundations-tutorials/Breaking-your-code-apart/83603/90452-4.html">Chapter 5 / Modular Code</a></dt>
+      <dd>This chapter introduces functions, <q cite="http://eloquentjavascript.net">the bread and butter of JavaScript programming</q> (that means they are indispensable)</dd>
+      <dd><strong>Forward thinking:</strong> Why are functions so important to JavaScript?</dd>
+      <dt><a href="http://www.lynda.com/Developer-Programming-Foundations-tutorials/Introduction-iteration/83603/90458-4.html">Chapter 6 / Iteration</a></dt>
+      <dd>Iteration, or Enumeration, is a fairly straight-forward concept, but take note of the examples the speaker gives.</dd>
+      <dd><strong>Forward thinking</strong>: We think of loops things that just count; list things besides numbers that you'd would want to iterate?</dd>
+      <dt><a href="http://www.lynda.com/Developer-Programming-Foundations-tutorials/Cleaning-up-string-concatenation/83603/90462-4.html">Chapter 7 / More Strings</a></dt>
+      <dd>This chapter introduces ideas about how you operate on strings. A mistake beginning programmers often make is to think of a string as nothing more than a sentence. Believe it or  not, simple algorithms are often employed to weed out job applicants by asking to solve simple string problems.</dd>
+      <dd><strong>Forward thinking:</strong></dd>
+      <dt><a href="http://www.lynda.com/Developer-Programming-Foundations-tutorials/Working-arrays/83603/90466-4.html">Chapter 8 / Collections</a></dt>
+      <dd>This chapter introduces an <code>array</code>, which will be your first (obvious) taste of a data-structure.</dd>
+      <dd><strong>Forward thinking:</strong> You are familiar with some array-like things you've worked on already. What are they?</dd>
+    </dl>
+  </section>
   <!-- insert views/outline/assignments/footer.html -->
 </article>
