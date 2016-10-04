@@ -51,14 +51,14 @@ namespace models;
 
       while ($begin < $calendar->semester['end']) {
         $interval = $now->diff($begin);
-
+        \bloc\application::instance()->log();
         $key = $index;
         $date = [
           'section'  => $section,
           'course'   => $course,
           'date'     => $begin->format('M d'),
           'datetime' => $begin->format(\DateTime::RFC3339),
-          'status'   => $now > $begin ? 'transpired' : 'pending',
+          'status'   => $now->format('U') > $begin->format('U') - 1000 ? 'transpired' : 'pending',
           'index'    => $index++,
           'ticker'   => $interval->format('%r') === '-' ? $interval->format('%a days ago') : $interval->format('%a days'),
         ];
