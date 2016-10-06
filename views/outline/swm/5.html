@@ -6,17 +6,18 @@
   </header>
   <article>
     <h2>Review</h2>
-    <p>Last week you spent time learning about the box model and some of the quirks involved. More importantly, you spent some time learning about objects, which we will investigate further today.</p>
+    <p>Last week you spent time learning about the box model and some of the quirks involved. JavaScript types, including arrays and objects were introduced.</p>
     <ul>
         <li>What is a 'clearfix' used for? Show/describe an example of when it is needed.</li>
         <li>What happens when you don’t declare the <code>var</code> keyword?</li>
-        <li>What is an object reference and what odd behavior does it exhibit?</li>
         <li>What is the essential difference between an object and an array when it comes to storing values?</li>
+        <li>Warm up by <a href="/student/structure/refactor/css-0.txt">refactoring this <abbr title="cascading stylesheet">CSS</abbr></a></li>
       </ul>
   </article>
   <article>
     <h2>Pseudo Classes</h2>
-    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">Pseudo Classes</a></p>
+    <p>A class is added to an element to apply a style. In theory, a developer could create a perfect stylesheet with well defined classes, and then apply those classes to <abbr>HTML</abbr> later on. The notion I'm pointing at is that a class can only be applied to html <em>once that markup exists</em>, but the classes can exist long beforehand. Focusing on existence leads us to consider new types of possibilities for classes we could write, but don't need to, because our motives fit a common pattern.</p>
+    <p>Consider something like we want the first paragraph of every article to be 150% larger than the following paragraphs. We could make a class for that, or, we might ponder the fact that <em>if there is at least one paragraph</em> in an article, then <em>some</em> paragraph must be the first. Does this present us with an opportunity? The answer is yes, indeed there is an opportunity, and they are called <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">pseudo classes</a></p>
     <ul>
     	<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:link" title="The :link CSS pseudo-class lets you select links inside elements. This will select any link which has not yet been visited, even those already styled using selector with other link-related pseudo-classes like :hover, :active or :visited. In order to appropriately style links, you need to put the :link rule before the other ones, as defined by the LVHA-order: :link — :visited — :hover — :active. The :focus pseudo-class is usually placed right before or right after :hover, depending on the expected effect."><code>:link</code></a></li>
     	<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:visited" title="The :visited CSS pseudo-class lets you select only links that have been visited. This style may be overridden by any other link-related pseudo-classes, that is :link, :hover, and :active, appearing in subsequent rules. In order to style appropriately links, you need to put the :visited rule after the :link rule but before the other ones, defined in the LVHA-order: :link — :visited — :hover — :active."><code>:visited</code></a></li>
