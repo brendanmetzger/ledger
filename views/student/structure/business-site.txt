@@ -1,0 +1,47 @@
+<header>
+  <nav>
+    <ul class="plain container">
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+  </nav>
+  <h1>[Cornworm &amp; Co.]</h1>
+</header>
+<main>
+  <section id="philosophy">
+    <h2>Philosophy</h2>
+    <p>Our business is to continue to seamlessly enhance world-class intellectual capital to allow us to continue to collaboratively leverage others' ethical sources.</p>
+  </section>
+  <section id="process">
+    <h2>Process</h2>
+    <p>We will strive to collaboratively fashion thoughtful tools and cleanly leverage existing meterials to produces careful media. Our challenge is to revolutionize collaboration thorough careful research. The customer can count to simplify process while maintaining 100%  satisfaction.</p>
+  </section>
+  <section id="clients">
+    <h2>Clients</h2>
+    <ul>
+      <li>twimblio®<//i>
+      <li>TomTom™</li>
+      <li>fitz®</li>
+      <li>SoundFURY™</li>
+    </ul>
+  </section>
+  <section id="reviews">
+    <h2>Reviews</h2>
+    <blockquote>
+      <p>Powerful research backed by results. I'm satisfied.</p>
+      <h6>Shoshanna, New England</h6>
+    </blockquote>
+    <blockquote>
+      <p>Before finding [Cornworm &amp; Co.], I was essentually a cave dweller.</p>
+      <h6>Bill, New England</h6>
+    </blockquote>
+  </section>
+</main>
+<footer>
+  <address>context</address>
+  <p>copyright business</p>
+  <!-- content generated with the help of http://cmorse.org/missiongen/ -->
+  <!-- company names generated with the help of http://montanaflynn.me/lab/startup-name-generator/ -->
+</footer>

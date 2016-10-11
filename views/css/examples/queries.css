@@ -8,13 +8,13 @@
   transition:all 1s;
 }
 
-@media only screen and (min-aspect-ratio: 2/1) {
+@media (min-aspect-ratio: 2/1) {
   .responsive {
     background-color:lightgreen;
   }
 }
 
-@media only screen and (min-width:1200px) {
+@media (min-width:1200px) {
   .responsive {
     padding:1em 1em 5em;
     border-width:1px;

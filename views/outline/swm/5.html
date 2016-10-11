@@ -8,17 +8,22 @@
     <h2>Review</h2>
     <p>Last week you spent time learning about the box model and some of the quirks involved. JavaScript types, including arrays and objects were introduced.</p>
     <ul>
-        <li>What is a 'clearfix' used for? Show/describe an example of when it is needed.</li>
-        <li>What happens when you don’t declare the <code>var</code> keyword?</li>
-        <li>What is the essential difference between an object and an array when it comes to storing values?</li>
-        <li>Warm up by <a href="/student/structure/refactor/css-0.txt">refactoring this <abbr title="cascading stylesheet">CSS</abbr></a></li>
-      </ul>
+      <li>What is a 'clearfix' used for? Show/describe an example of when it is needed.</li>
+      <li>What is the <code>var</code> keyword used for?</li>
+      <li>What is the essential difference between an object and an array when it comes to storing values?</li>
+      <li>Warm up: <a href="http://codepen.io/brendanmetzger/pen/RGyNva?editors=1100#0">refactor this <abbr>html</abbr></a></li>
+      <li>Warm up: <a href="http://codepen.io/brendanmetzger/pen/zKjGBg/?editors=1100#0">refactor this to remove <code>&lt;br/&gt;</code> tag</a></li>
+    </ul>
   </article>
-  <article>
-    <h2>Pseudo Classes</h2>
-    <p>A class is added to an element to apply a style. In theory, a developer could create a perfect stylesheet with well defined classes, and then apply those classes to <abbr>HTML</abbr> later on. The notion I'm pointing at is that a class can only be applied to html <em>once that markup exists</em>, but the classes can exist long beforehand. Focusing on existence leads us to consider new types of possibilities for classes we could write, but don't need to, because our motives fit a common pattern.</p>
-    <p>Consider something like we want the first paragraph of every article to be 150% larger than the following paragraphs. We could make a class for that, or, we might ponder the fact that <em>if there is at least one paragraph</em> in an article, then <em>some</em> paragraph must be the first. Does this present us with an opportunity? The answer is yes, indeed there is an opportunity, and they are called <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">pseudo classes</a></p>
-    <ul>
+  <article class="container">
+    <section class="________ margins float left">
+      <h2>Pseudo Classes</h2>
+      <p>A class is added to an element to apply a style. In theory, a developer could create a perfect stylesheet with well defined classes, and then apply those classes to <abbr>HTML</abbr> later on, as necessary. With practice, you often write a stylesheet to set a baseline for yourself that fits a pattern of your development techniques, such as reseting the font size and margin of certain elements before you write any markup whatsoever. It is wise to consider what sort of classes you should always have on hand (like <code>.container</code> I mentioned in our intro to floats) that facilitate certain patterns you are sure to encounter on every project. On that note, let us consider some patterns.</p>
+      <p><a href="http://codepen.io/brendanmetzger/pen/GjdJdy?editors=1100#0">For example</a>, say we are developing a typographic <a href="https://en.wikipedia.org/wiki/Style_guide">style guide</a>, and we would like the first paragraph of every article to be 150% larger than the following paragraphs. Even though our style guide is only conceptual at this point, we know that we should be thinking about how to deal with first paragraphs. We could make a class for that—say <code>.enlarge</code> that we apply to a <code>&lt;p&gt;</code> and that would work well for most purposes.</p>
+      <p>While that is a decent solution, and the generic nature of <code>.enlarge</code> is admirable, we didn't really address our problem as well as we could, and we are reliant on actually writing <abbr>html</abbr> to apply that class. At this point, we may notice the <a href="https://en.wikipedia.org/wiki/Existential_quantification">existential state</a> that <em>if there is at least one paragraph</em> in an article, then <em>some</em> paragraph must be the first. Does this present us with an opportunity? The answer is yes, indeed there is an opportunity, and they are called <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">pseudo classes</a>.</p>
+      <p>The adjacent list notes many of the pseudo classes available. Some like <code>:hover</code> are hopefully quite familiar. Some like <code>:focus</code> and <code>:enabled</code> are only for form elements, which is more advanced fodder. My advice is to become friendly with the ordering pseudos, which are those containing <strong>first</strong>, <strong>last</strong> and <strong>nth</strong>.</p>
+    </section>
+    <ul class="__ float left plain stylized tt">
     	<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:link" title="The :link CSS pseudo-class lets you select links inside elements. This will select any link which has not yet been visited, even those already styled using selector with other link-related pseudo-classes like :hover, :active or :visited. In order to appropriately style links, you need to put the :link rule before the other ones, as defined by the LVHA-order: :link — :visited — :hover — :active. The :focus pseudo-class is usually placed right before or right after :hover, depending on the expected effect."><code>:link</code></a></li>
     	<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:visited" title="The :visited CSS pseudo-class lets you select only links that have been visited. This style may be overridden by any other link-related pseudo-classes, that is :link, :hover, and :active, appearing in subsequent rules. In order to style appropriately links, you need to put the :visited rule after the :link rule but before the other ones, defined in the LVHA-order: :link — :visited — :hover — :active."><code>:visited</code></a></li>
     	<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:active" title="The :active CSS pseudo-class matches when an element is being activated by the user. It allows the page to give a feedback that the activation has been detected by the browser. When interacting with a mouse, this is typically the time between the user presses the mouse button and releases it. The :active pseudo-class is also typically matched when using the keyboard tab key. It is frequently used on &lt;a&gt; and &lt;button&gt; HTML elements, but may not be limited to just those."><code>:active</code></a></li>
@@ -38,19 +43,32 @@
     	<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:disabled" title="The :disabled CSS pseudo-class represents any disabled element. An element is disabled if it can't be activated (e.g. selected, clicked on or accept text input) or accept focus. The element also has an enabled state, in which it can be activated or accept focus."><code>:disabled</code></a></li>
     </ul>
   </article>
+  <!-- insert views/topics/design/document-object-model.html -->
   <article>
     <h2>Responsive Design</h2>
-    <h3>Media Queries</h3>
-    <p>Media Queries are pretty simple—if you have the gist of <abbr>CSS</abbr>, the won’t give you any trouble. Essentially, imagine you can divide your styles up by certain criteria; max/min screen sizes, device types, landscape vs. portrait, etc. Say you asked yourself, <q>I want some really big text, but only on a really big screen.</q>. <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">Media Queries</a> are where you begin, and once you get your site schematics figured out and media in place they can offer immediate solutions to problems with text size and layout problems. The <a href="http://www.w3schools.com/cssref/css3_pr_mediaquery.asp">W3Schools</a> reference is also a good starting point.</p>
-    <h3>New Units</h3>
-    <p>When considering units, now would be a great time to start finding ways to implement <code>vh</code> and <code>vw</code>, which is your screen’s height and width broken down into 1% increments; ie. <code>10vh</code> is 10% of the viewport height. Here is an intro to <a href="https://css-tricks.com/viewport-sized-typography/">viewport sized typography</a></p>
-    <h3>Mobile First</h3>
-    <p><em>Mobile-first</em> design is a concept that pairs well with media-queries and is quite important for designers and developers to understand and apply. Mobile-first basically means that you design something for the smallest screen, and then you scale <strong>up</strong> to accommodate bigger screens and the more space you have available. This can be difficult to do in practice, but in general, it helps to structure your media queries this way—essentially, use <em>min-width</em> in favor of <em>max-width</em>.</p>
-    <p class="focus t b h3">Be sure to investigate mobile-appropriate <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag">meta tags</a> to make sure your <abbr>css</abbr> is applied correctly.</p>
-    <section class="container whitepaper tt">
+    <p class="intro">Responsive web design is a technique used to modify layout, typography and other design considerations in response to the size and type of device used by the viewer. It can be elusive and frustrating, so some philosophy is necessary.</p>
+    <section class="margins">
+      <h3 class="tt">Mobile First</h3>
+      <p><img src="/css/media/smartphone.svg" alt="Smartphone Graphic" class="float left" style="height:4em;margin-right:0.75em;"/><em>Mobile-first</em> design is an important concept I suggest you practice. Essentially, it means that you design something for the smallest screen you are supporting, and then you <strong>scale up</strong> to accommodate bigger screens and the more space you have available. The fact of the matter is that your mobile-first design is always very simple: it is only one column, type is generally designed to be read about 2 feet from a user’s face and interactive elements need to accommodate a fingertip.</p>
+      <p>While this seems like an obviously good choice, in practice, few designers (or clients) are patient enough for this process, for a couple of reasons. Often the mobile design is done after the desktop because then a client can approve and adjust the look and feel. In addition, most designers don't work in an interactive design medium (like a text-editor/browser) so they are not very aware of how responsive design even works.</p>
+      <p>From experience, these caveats delay a project significantly and it's painful and awkward to go from full-scale design to small, but relatively easy to go small to big. In other words, put on your skinny jeans before your holiday meal, not after. So if you want to get the knack of mobile development, <strong>always start mobile first</strong>.</p>
+    </section>
+    <section>
+      <h3 class="tt">Media Queries</h3>
+      <p>Media Queries are pretty simple—if you have the gist of <abbr>CSS</abbr>, the won’t give you any trouble. Essentially, imagine you can divide your styles up by certain criteria: <q>if the screen is too small, load this stylesheet</q>, and likewise, you can target device types, landscape vs. portrait, etc. Say you asked yourself, <q>I want some really big text, but only on a really big screen.</q>. <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">Media Queries</a> are where you begin, and once you get your site schematics figured out and media in place they can offer immediate solutions to problems with text size and layout problems. The <a href="http://www.w3schools.com/cssref/css3_pr_mediaquery.asp">W3Schools</a> reference is also a good starting point.</p>
+    </section>
+    <section class="tt whitepaper margins">
+      <h4>Notes:</h4>
+      <p>There is one more technical item you should be aware of. Be sure to investigate mobile-appropriate <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag">meta tags</a> to make sure your <abbr>css</abbr> is applied correctly. Remember, <code>meta</code> tags are used as instructions—they are invisible to users, but machines use that information to make other decisions.</p>
+      <p><strong>Responsive design is a lot of philosophy and a little bit of technique</strong>. You've seen me employ all of the techniques you will ever need at this point: relative and viewport units, and now, media queries. From here, it becomes mostly strategy and having a good plan when you design, which we will work together on, but realistically takes years to appreciate.</p>
+
+    </section>
+    <section class="container tt ruled top">
+      <h3 class="tt">Media Query Examples</h3>
+      <p>As developer/designers I want to take every opportunity to point out to you that <strong>interactive design is based on context</strong>. Learn to design by approaching problems with <q>if... then...</q> in mind.</p>
       <link rel="stylesheet" href="/css/examples/queries.css" media="screen" charset="utf-8" />
       <div class="float left ______">
-        <p class="note">Try adjusting your screen size and ratio. The media query is set up to acknowledge a thin aspect-ratio—screen two times wider than it is tall—which will cause the background color to turn green. Any screen less than 1200px wide will adjust styles as well.</p>
+        <p class="note">Try adjusting your screen size and ratio. The media query is set up to monitor aspect-ratio—specifically if your screen is at least two times wider than it is tall. Such a scenario will cause the background color of the box to turn green. Likewise, any screen less than 1200px wide will adjust styles as well.</p>
         <p class="pad centered"><code>&lt;p class="responsive"&gt;Change....&lt;p&gt;</code></p>
         <p class="responsive code" style="color:#fff;width:75%;margin:3em auto 0;">Sensitive to window size<br/>and aspect ratio.</p>
       </div>
@@ -60,63 +78,18 @@
     </section>
   </article>
   <article>
-    <h2>The Document Object Model</h2>
-    <p class="intro">In the beginning all the technologies we are using probably seem very independent from one another as you gain experience you will see that they blur together in consistent ways. Let’s start with the things we know a little bit about.</p>
-      <p>The nature of the structural relationship of <abbr>HTML</abbr> is going to play a key role in how I talk about the Document Object Model. Parents and children, siblings, ancestors and descendants describe relationships, they inform the ruleset that describes how the interact, they are consequential! Note, I have been using those terms since the very start of the semester.</p>
-    <hr class="ruled"/>
-    <section>
-      <h3>Document (Markup Languages)</h3>
-      <p>Markup languages take text and media and convert them into structured data. We are becoming familiar with <abbr>html</abbr>, but <abbr>html</abbr> is really just the simple-minded cousin of the affluent and worldly <abbr>xml</abbr>, or eXtensible markup language. Boiled down very simply, <abbr>html</abbr> is nothing more than a subset of <abbr>xml</abbr>—that funny looking bit at the top called <code>&lt;!DOCTYPE html&gt;</code> defines which tags we can use and how to use them. You could write your own doctype and use any tags you want; people do this with <abbr>xml</abbr> allowing this very simple set of formatting rules. These formatting rules allow us to write plain-text documents that are the starting point for converting <strong>data into objects</strong>.</p>
-    </section>
-    <section>
-      <h3>Object</h3>
-      <p>The term <strong>object</strong> is a special word in the field of mathematics and computer science, representing various structures that can be described as having some distinct quality. When referring to the <q>the document object model</q> we are talking about the magic that happens after our plain old text—that has been carefully marked-up with <code>/</code> and <code>&lt;</code> and <code>&gt;</code> symbols—has been parsed by an algorithm to <em>mean something</em>, as a bunch of objects that are distinct, meaningful things. <mark>What once was a simple <code>&lt;h1&gt;</code> in text has been turned into an object that we can now communicate with.</mark> <q>Hey, <code>&lt;h1&gt;</code>, I’m going to set your text color to blue. Tell me about your family... who’s your parent... any siblings? I’m going to move you somewhere else, oh and when someone clicks on you, let me know, ok?</q>. An object, just like a toaster, has <em>properties</em> that describe what it is and how it works, and it has <em>methods</em> that allow it to perform certain tasks. <strong>Objects have properties and methods</strong> that we can communicate with, and this communication is known as programming.</p>
-    </section>
-    <hr/>
-    <section class="container">
-      <div class="float left half indented">
-        <h3>Model (Tree Structures)</h3>
-        <p>All together, The Document Object Model, or <abbr>dom</abbr>, is a <strong>standardized</strong>, cross-platform and language-independent convention for representing and interacting with objects in <abbr>html</abbr>, <abbr>xhtml</abbr> and <abbr>xml</abbr> documents. The objects, or <strong>nodes</strong> of every document are organized in a <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">tree structure</a>. Objects in the <abbr>dom</abbr> tree may be styled manipulated with other languages (wink/nod <abbr>CSS</abbr>, JavaScript).</p>
-        <p>You can visualize tree structures because they are represented by a branch of mathematics known as <a href="https://en.wikipedia.org/wiki/Graph_theory">graph theory</a>, which combines the rigor of math with the real-world pleasure of figuring things with your eyeballs. Taking a look at the diagram, given any node as a starting point, <em>you can get to any other node.</em> via a simple set of operations:  <code>firstChild</code>, <code>lastChild</code>, <code>nextSibling</code>, <code>previousSibling</code> and <code>parentNode</code>.</p>
-        <p>Starting from <span class="code">html</span> (our document element), I can get to <span class="code">h2</span> by saying <q>documentElement - lastChild - lastChild - firstChild</q>. From my <span class="code">h2</span> I can get to my <span class="code">h1</span> by saying <q>parentNode - previousSibling - firstChild</q>. The things and methods we can use to parse these documents are very robust and can be confusing at times, but to a large extent, <strong>this concept governs the entire <abbr>api</abbr></strong>!</p>
-      </div>
-      <figure class="float left half">
-        <!-- insert views/css/media/tree.svg -->
-        <figcaption class="centered">A <em>Tree Structure</em>. Hover over a node (circle) to visualize the hierarchy. Ancestry is denoted by red, descendants are in blue.</figcaption>
-      </figure>
-    </section>
-    <hr class="ruled"/>
-    <section class="whitepaper container">
-      <h4>All together</h4>
-      <div class="half float left pad">
-        <h3>Presentation Environment</h3>
-        <p>Tree structures are efficiently and easily <em>queried</em>. Careful arrangement of nodes, careful use of attributes, and careful use of semantic elements impart a great deal of information about our content. Developers convert this structure into a meaningful presentation using a <a href="https://en.wikipedia.org/wiki/Style_sheet_language">stylesheet language</a>—the one we are becoming familiar with is <abbr title="cascading stylesheets">css</abbr>. The document structure can (and should) be the only spot where we store meaning. The presentation view of our application or website can (and should) be the only place where we manipulate the structure into a pleasing design.</p>
-      </div>
-      <div class="half float left pad">
-        <h3>Programming Environment</h3>
-        <p>Programming languages, quite literally, know how to read, write, and manipulate <strong>everything</strong> regarding structured data. Many programming languages can work with the Document Object Model <abbr>api</abbr>, and the one concern ourselves with is, of course, JavaScript. The following list is copied verbatim from <a href="https://en.wikipedia.org/wiki/Document_Object_Model">the Document Object Model</a> Wikipedia Page</p>
-        <ul>
-          <li>JavaScript can add, change, and remove all the HTML elements and attributes in the page</li>
-          <li>JavaScript can change all the CSS styles in the page</li>
-          <li>JavaScript can react to all existing events in the page</li>
-          <li>JavaScript can create new events in the page</li>
-        </ul>
-      </div>
-      <p class="focus clear"><strong>Ponder</strong>: by this point you may be wondering, <q>why would I need anything besides <abbr>css</abbr>?</q>. The first thing you may notice is that you can’t add/remove content very robustly nor track events beyond 'hover'. More applicable to the <abbr>dom</abbr>, however, is an inability to work your way backwards up the tree (parentNode, previousSibling). Why might this be? Hint, think about what something like <em>node - previousSibling - nextSibling</em> is saying.</p>
-    </section>
-  </article>
-  <article>
     <h2>References and Practice Material</h2>
     <p class="intro">Midterms are starting and though you’ll have two weeks to complete you need to continue spending time reviewing previous outlines and introducing new material into your repertoire. Post midterm, we will begin actually using JavaScript, so you should have watched and practiced enough to let the nervousness subside and be comfortable dealing with the basics: <code>variables</code>, <code>objects</code>, <code>arrays</code>, <code>conditions</code>, <code>operators</code>, <code>loops</code> and <code>functions</code>.</p>
     <dl>
-      <dt><a class="watch" href="http://www.lynda.com/JavaScript-tutorials/Simple-comparisons/123563/133790-4.html">Introducing JavaScript, continued..</a></dt>
-      <dd>If not finished yet, continue watching the remaining chapters: 4, 5, and especially 6, which is about functions.</dd>
-      <dt><a class="watch" href="http://www.lynda.com/HTML-tutorials/What-Document-Object-Model-DOM-Video/122462/137616-4.html">What is the Document Object model</a></dt>
-      <dd>It will be beneficial to watch the entirety of chapter one of this series. It glosses over the Document Object model a bit, but it goes much further talking about using the browser’s console to inspect structure, as <q>it’s always a good idea to spend time time with your tools</q>.</dd>
-      <dt><a class="read" href="http://learn.shayhowe.com/advanced-html-css/responsive-web-design/">Responsive Web Design</a></dt>
-      <dd>This outline takes you through some of the concepts involved in responsive web design.</dd>
-      <dt><a class="watch" href="http://www.lynda.com/CSS-tutorials/CSS-Selectors/192036-2.html"><abbr>CSS</abbr> selectors</a></dt>
-      <dd>At this point, we have covered all of our <abbr>CSS</abbr> selectors. That means, less and less class time will be spent going over, introducing, and answering those questions. If you’re still foggy about your selector options, you may find this series valuable.</dd>
+      <dt>JavaScript</dt>
+      <dd>I like to read—I think it is also helpful to use syntax to learn syntax. Read<a href="http://eloquentjavascript.net/01_values.html">Values, Types, and Operators</a> and <a href="http://eloquentjavascript.net/02_program_structure.html">program structure</a> from <em>Eloquent JavasScript</em> (book available if you like tangible things). <strong>For sure read this stuff.</strong></dd>
+      <dd>Here is another <a href="https://www.lynda.com/JavaScript-tutorials/Syntax-Learning-read-write/123563/133770-4.html">Lynda Series</a> that talks more specifically about JavaScript and covers the fundamentals.</dd>
+      <dt>The Document Object Model (<abbr title="Document Object Model">DOM</abbr>)</dt>
+      <dd>It will be beneficial to watch the entirety of <a class="watch" href="http://www.lynda.com/HTML-tutorials/What-Document-Object-Model-DOM-Video/122462/137616-4.html">chapter one</a> of this series. It glosses over the Document Object model a bit, but it goes much further talking about using the browser’s console to inspect structure, <strong>which I think many of you may be interested in</strong>.</dd>
+      <dd>Read <a href="http://eloquentjavascript.net/13_dom.html">The Document Object Model</a> from <i>Eloquent Javascript</i>—gloss over any parts containing functions—we will cover them in the weeks to come. <strong>Read this too!</strong></dd>
+      <dt><abbr>CSS</abbr></dt>
+      <dd>At this point, we have covered all of our <abbr>CSS</abbr> selectors. That means, less and less class time will be spent going over, introducing, and answering those questions. If you’re still foggy about your selector options, you may find this <a class="watch" href="http://www.lynda.com/CSS-tutorials/CSS-Selectors/192036-2.html">Lynda series</a> valuable.</dd>
+      <dd>If you have time you can read a bit of theory about <a href="http://alistapart.com/article/responsive-web-design">responsive design</a> from <i>A List Apart</i>.</dd>
     </dl>
   </article>
 </div>

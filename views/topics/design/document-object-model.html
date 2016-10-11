@@ -1,0 +1,45 @@
+<article id="the-document-object-model">
+  <h2>The Document Object Model</h2>
+  <p class="intro">In the beginning all the technologies we are using probably seem very independent from one another as you gain experience you will see that they blur together in consistent ways. Let’s start with the things we know a little bit about.</p>
+    <p>The nature of the structural relationship of <abbr>HTML</abbr> is going to play a key role in how I talk about the Document Object Model. Parents and children, siblings, ancestors and descendants describe relationships, they inform the ruleset that describes how the interact, they are consequential! Note, I have been using those terms since the very start of the semester.</p>
+  <hr class="ruled t b"/>
+  <section>
+    <h3>Document (Markup Languages)</h3>
+    <p>Markup languages take text and media and convert them into structured data. We are becoming familiar with <abbr>html</abbr>, but <abbr>html</abbr> is really just the simple-minded cousin of the affluent and worldly <abbr>xml</abbr>, or eXtensible markup language. Boiled down very simply, <abbr>html</abbr> is nothing more than a subset of <abbr>xml</abbr>—that funny looking bit at the top called <code>&lt;!DOCTYPE html&gt;</code> defines which tags we can use and how to use them (you could write your own doctype and use any tags if you wanted). These formatting rules allow us to write plain-text documents that can be accurately convert markup into <b>objects</b>.</p>
+  </section>
+  <section>
+    <h3>Object</h3>
+    <p>The term <strong>object</strong> is a special word in the field of mathematics and computer science, representing various structures that can be described as having distinct qualities. When referring to the <b>the document object model</b> we are talking about the magic that happens after our plain old text—that has been carefully marked-up with <code>/</code> and <code>&lt;</code> and <code>&gt;</code> symbols—has been parsed by an algorithm that converts it into a system of objects that are distinct, meaningful things that can be understood by a machine—most notably so these things can be programmed against. <mark>What once was a simple <code>&lt;h1&gt;</code> in text has been turned into an object that we can now communicate with.</mark> <q>Hey, h1, I’m going to set your text color to blue. Tell me about your family... who’s your parent... any siblings? I’m going to move you somewhere else, oh and when someone clicks on you, let me know, ok?</q>. An object, just like a toaster, has <em>properties</em> that describe what it is and how it works, and it has <em>methods</em> that allow it to perform certain tasks. <strong>Objects have properties and methods</strong> that we can communicate with, and this conversation could be called programming.</p>
+  </section>
+  <hr/>
+  <section class="container">
+    <div class="float left half indented pad">
+      <h3>Model (Tree Structures)</h3>
+      <p>All together, The Document Object Model, or <abbr>dom</abbr>, is a standardized, cross-platform, language-independent convention for representing and interacting with objects in <abbr>html</abbr>, <abbr>xhtml</abbr> and <abbr>xml</abbr> documents. The objects, or <strong>nodes</strong> of every document are organized in a <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">tree structure</a>. Objects in the <abbr>dom</abbr> tree may be styled manipulated with other languages, such as Cascading Stylesheets and JavaScript.</p>
+      <p>You can visualize tree structures because they are represented by a branch of mathematics known as <a href="https://en.wikipedia.org/wiki/Graph_theory">graph theory</a>, which combines the rigor of math with the real-world pleasure of figuring things with your eyeballs. Taking a look at the diagram, given any node as a starting point, <em>you can get to any other node.</em> via a simple set of operations:  <code>firstChild</code>, <code>lastChild</code>, <code>nextSibling</code>, <code>previousSibling</code> and <code>parentNode</code>.</p>
+      <p>Starting from <span class="code">html</span> (our document element), I can get to <span class="code">h2</span> by saying <q>documentElement - lastChild - lastChild - firstChild</q>. From my <span class="code">h2</span> I can get to my <span class="code">h1</span> by saying <q>parentNode - previousSibling - firstChild</q>. The things and methods we can use to parse these documents are very robust and can be confusing at times, but to a large extent, <strong>this concept governs the entire <abbr>api</abbr></strong>!</p>
+    </div>
+    <figure class="float left half pad">
+      <!-- insert views/css/media/tree.svg -->
+      <figcaption class="centered">A <em>Tree Structure</em>. Hover over a node (circle) to visualize the hierarchy. Ancestry is denoted by red, descendants are in blue.</figcaption>
+    </figure>
+  </section>
+  <hr class="ruled"/>
+  <section class="whitepaper container">
+    <h4>All together</h4>
+    <div class="half float left pad">
+      <h3>Presentation Environment</h3>
+      <p>Tree structures are efficiently and easily <em>queried</em>. Careful arrangement of nodes, careful use of attributes, and careful use of semantic elements impart a great deal of information about our content. Developers convert this structure into a meaningful presentation using a <a href="https://en.wikipedia.org/wiki/Style_sheet_language">stylesheet language</a>—the one we are becoming familiar with is <abbr title="cascading stylesheets">css</abbr>. The document structure can (and should) be the only spot where we store meaning. The presentation view of our application or website can (and should) be the only place where we manipulate the structure into a pleasing design.</p>
+    </div>
+    <div class="half float left pad">
+      <h3>Programming Environment</h3>
+      <p>Programming languages, quite literally, know how to read, write, and manipulate <strong>everything</strong> regarding structured data. Many programming languages can work with the Document Object Model <abbr>api</abbr>, and the one concern ourselves with is, of course, JavaScript. The following list is copied verbatim from <a href="https://en.wikipedia.org/wiki/Document_Object_Model">the Document Object Model</a> Wikipedia Page</p>
+      <ul class="stylized star t">
+        <li>JavaScript can <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete"><abbr title="create read update and delete">crud</abbr></a> every single <abbr>html</abbr> element or attribute in a document</li>
+        <li>JavaScript can change any and all the CSS styles in the page</li>
+        <li>JavaScript can react to any and all events that occur, either incidentally or by user interaction</li>
+      </ul>
+    </div>
+  </section>
+    <p class="focus clear discuss tt">By this point you may have noted some shortcomings of stylesheets. The first might have been that you can’t add/remove elements or content very robustly or track events beyond 'hover'. You may also notice that we only have <em>descendant selectors</em>, but an inability to work our way backwards up the tree (parentNode, previousSibling). Why might this be?</p>
+</article>
