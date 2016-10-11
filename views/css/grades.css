@@ -50,7 +50,7 @@ tr.marked[title^="A"] {
   background-color:rgba(157, 223, 126, 0.15);
 }
 .marked[title^="B"] {
-  background-color:rgb(217, 216, 111, 0.5)
+  background-color:rgba(217, 216, 111, 0.5)
 }
 tr.marked[title^="B"] {
   background-color:rgba(217, 216, 111, 0.1);
