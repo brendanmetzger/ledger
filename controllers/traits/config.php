@@ -17,6 +17,7 @@ trait config {
     $this->semester    = "FA16";
     $this->email       = 'bmetzger@colum.edu';
     $this->template    = $request->controller;
+    $this->redirect    = $request->redirect;
 
     if (($user = $this->authenticate()) instanceof \bloc\types\authentication) {
       $type = $user::type();
@@ -34,7 +35,7 @@ trait config {
     return null;
   }
 
-  public function GETlogout()
+  public function GETlogout($user)
   {
     session_destroy();
     \bloc\router::redirect('/');
