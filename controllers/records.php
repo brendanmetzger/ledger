@@ -70,17 +70,22 @@ class Records extends \bloc\controller
   }
 
 
-  protected function GETAssignment(Admin $instructor, $type = null, $index = null)
+  protected function GETbook(Admin $instructor, $course, $section, $type = '', $index = '')
   {
     $view = new View(self::layout);
     if ($type && $index) {
       $view->content = "views/layouts/assignment.html";
     } else {
-      $this->practice = \models\Criterion::collect(null, "[@type='practice' and @course='SWM']");
-      $this->project = \models\Criterion::collect(null, "[@type='project' and @course='SWM']");
+
+      $this->course = new \models\Course($course);
+      $this->courses = \Models\Course::collect();
+      $this->section = $this->course->section($section);
+      $this->records = \models\Assessment::GRADEBOOK($this->section);
+      $view->context = "views/layouts/list/courses.html";
       $view->content = "views/layouts/assignments.html";
 
     }
+
     return $view->render($this());
   }
 
@@ -101,7 +106,7 @@ class Records extends \bloc\controller
 
     $view = new View(self::layout);
 
-    $this->{$topic} = Data::FACTORY($topic, $this->student->evaluation($topic, $index));
+    $this->{$topic} = $this->item =  Data::FACTORY($topic, $this->student->evaluation($topic, $index));
 
     if ($topic == 'practice' || $topic == 'project') {
       $this->url = $this->student->context['@url'] . "/{$topic}/{$index}";

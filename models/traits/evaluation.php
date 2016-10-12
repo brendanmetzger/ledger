@@ -10,11 +10,6 @@ trait evaluation {
     return $this;
   }
 
-  public function afterCreate()
-  {
-    $this->context->setAttribute('created', (new \DateTime())->format('Y-m-d H:i:s'));
-  }
-
   public function beforeSave()
   {
     $this->context->setAttribute('updated', (new \DateTime())->format('Y-m-d H:i:s'));

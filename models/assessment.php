@@ -92,6 +92,41 @@ namespace models;
       });
     }
 
+    static public function GRADEBOOK($section)
+    {
+
+      $students = $section->students;
+      $book = [
+        'practice' => [],
+        'discourse' => [],
+        'project'   => [],
+        'quiz'   => [],
+      ];
+
+
+      foreach ($book as $key => &$record) {
+
+        foreach ($section->assignments($key) as $item) {
+          $records = [];
+          foreach ($students as $student) {
+
+            $records[] = [
+              'assessment' => $student['student']->{$key}->list[$item['@index']],
+              'student'    => $student['student'],
+            ];
+          }
+
+          $record[] = [
+            'criterion' => $item,
+            'title' => $item['@title'],
+            'records' => $records,
+          ];
+        }
+
+      }
+      return new \bloc\types\Dictionary($book);
+    }
+
     static public function LETTER($score, $multiplier = 1)
     {
       foreach (self::$rubric as $letter => $threshold) {

@@ -3,6 +3,7 @@ namespace models\traits;
 use \models\Data;
 
 trait resolver {
+  
   protected function identify($identity) {
     return Data::ID($identity);
   }

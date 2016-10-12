@@ -55,7 +55,6 @@ tr.marked[title^="A"] {
 tr.marked[title^="B"] {
   background-color:rgba(217, 216, 111, 0.1);
 }
-
 .marked[title^="C"] {
   background-color:rgb(105, 178, 191);
 }
@@ -73,6 +72,13 @@ tr.marked[title="D"] {
 }
 tr.marked[title="F"] {
   background-color:rgba(245, 52, 4, 0.1);
+}
+.transpired.marked[title="-"] a {
+  color:rgba(215, 125, 150, 1);
+}
+.transpired.marked[title="-"] {
+  background-color:rgba(215, 125, 150, 0.5);
+
 }
 
 ul.scores li.open {

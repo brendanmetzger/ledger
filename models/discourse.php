@@ -45,6 +45,11 @@ namespace models;
       return $this->status == 'open' ? 'NA' : ($this->score * 100);
     }
 
+    public function getFlag(\DOMElement $context)
+    {
+      return $this->score > 0 ? '☓' : '–';
+    }
+
     public function getLetter(\DOMElement $context)
     {
       return Assessment::LETTER($this->score);

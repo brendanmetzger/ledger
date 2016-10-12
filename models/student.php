@@ -54,6 +54,10 @@ namespace models;
       return $this->context->getElement($topic, $index);
     }
 
+    public function getShortname(\DOMElement $context)
+    {
+      return explode(' ', $context['@name'])[0];
+    }
 
     public function getSection(\DOMElement $context)
     {
@@ -67,10 +71,20 @@ namespace models;
 
     public function getQuizzes(\DOMElement $context)
     {
+      return $this->getQuiz($context);
+    }
+
+    public function getQuiz(\DOMElement $context)
+    {
       return $this->assessment()->getEvaluation('quiz', $this->course);
     }
 
     public function getProjects(\DOMElement $context)
+    {
+      return $this->getProject($context);
+    }
+
+    public function getProject(\DOMElement $context)
     {
       return $this->assessment()->getEvaluation('project');
     }

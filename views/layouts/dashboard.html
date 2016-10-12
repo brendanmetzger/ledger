@@ -1,87 +1,5 @@
 <article class="coursework">
-  <style media="screen">
-  /* <![CDATA[ */
-    .coursework section h3 {
-      margin:2em 0 1em;
-    }
-    table {
-      caption-side: top;
-    }
-    table.chart .horizontal td {
-      text-align:center;
-      padding:1em 0;
-    }
-    table.chart thead th + th {
-      border-left:1px solid #222;
-    }
-    table.chart thead th {
-      border-bottom:2px solid #333;
-      padding:1em;
-    }
-    table.chart tfoot th {
-      text-align:right;
-      padding:1em;
-      border-right:1px solid #222;
-    }
-    table.chart tfoot tr {
-      border-top:2px solid #333;
-    }
-    td.pending {
-      background-color:rgba(0,0,0,0.125);
-    }
-    td.pending * {
-      display:none;
-    }
-    .ticker {
-      color:#888;
-      padding:0 0.5em;
-    }
-    .tooltip td.transpired:not([title='']) {
-      position:relative;
-      cursor: help;
-    }
-    .tooltip td.transpired:not([title='']):hover:before {
-      content:attr(title);
-      position:absolute;
-      display:block;
-      top:-250%;
-      left:-50%;
-      width:200%;
-      background-color:rgba(255,255,255,0.95);
-      padding:0.5em;
-      font-weight:400;
-      box-shadow:0 0 1em rgba(0,0,0,0.25);
-    }
-    tr.open + tr.open td.transpired a {
-      display:none;
-    }
-    .stretch {
-      display:flex;
-    }
-    .stretch > li {
-      padding:1em;
-      text-align:center;
-      flex:1 0 auto;
-    }
-    .banner h1 {
-      font-weight:300;
-    }
-    .banner {
-      text-align:right;
-
-      letter-spacing:0.125em;
-      color:#fff;
-      text-shadow:-2px 0 1px #000;
-      background-color:#333;
-      padding:1vw 2.5vw;
-      margin:0 -2.5vw;
-      background:linear-gradient(to bottom, #333, #282828);
-    }
-    th.lighter {
-      font-weight:600;
-    }
-  /* ]]> */
-  </style>
+  <link rel="stylesheet" href="/css/table.css"/>
   <header class="banner">
     <h1>[$student:@name]</h1>
     <h4>[$student:@major $student:@year]</h4>
@@ -138,7 +56,7 @@
         <tr class="[$practice:status]" title="[$practice:letter]">
           <td>[$practice:criterion:@index]</td>
           <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <em class="ticker">[$due:ticker]</em></td>
-          <td>
+          <td class="centered">
             <a href="[[/$$student:course/criterion/practice/$practice:criterion:@index/$$student:section:@id/$$student:course]]">[$practice:criterion:@title]</a>
           </td>
           <td class="centered"><a href="[[$$student:@url/practice/$practice:criterion:@index/]]">Preview</a></td>
@@ -233,7 +151,7 @@
         <!-- iterate student:quizzes:list -->
         <tr class="[$quiz:status]">
           <td class="centered">[$quiz:criterion:@title]</td>
-          <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <em class="ticker">[$due:ticker]</em></td>
+          <td class="centered __"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <em class="ticker">[$due:ticker]</em></td>
           <td class="[$schedule:status centered]"><span>[$stats:mean]</span></td>
           <td class="[$schedule:status centered]"><span>[$stats:wmean]</span></td>
           <td class="[$schedule:status centered]"><span>[$stats:sd]</span></td>
@@ -255,7 +173,7 @@
       </tfoot>
     </table>
   </section>
-  <section style="margin-top:5em;border-top-width:1em;">
+  <section style="margin:5em 0;padding:2em;border-top-width:1em;">
     <h2>Cumulative Grade: <strong class="percentage" title="[$student:grade:letter]">[$student:grade:score]</strong></h2>
     <p class="focus"><strong>Note:</strong> until one of every type of assignment have been graded, the average score is based on pending perfect scores; after the midterm, based on your other criteria your scores may change significantly. Where marked, I have curved grades using <a href="https://en.wikipedia.org/wiki/Standard_score">standard score</a>.</p>
 

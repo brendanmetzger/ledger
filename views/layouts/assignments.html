@@ -1,13 +1,96 @@
-<article>
-  <h2>Assignments</h2>
-  <ol>
-    <li>list courses</li>
-    <li>list assignments in each course</li>
-    <li>show if assignment is to be graded</li>
-    <li>show how many grades pending</li>
-  </ol>
-  <ul>
-    <!-- iterate practice -->
-    <li><a href="[/records/assignment/$criterion:path]">[$criterion:title]</a></li>
-  </ul>
+<article class="gradebook">
+  <style>[a.edit:before{content:'$instructor:edit'}]</style>
+  <link rel="stylesheet" href="/css/table.css"/>
+  <h1 class="tt">[$course:@title §$section:@id]</h1>
+  <table class="full chart tt bb">
+    <caption>
+      <h2 class="rag-right">Attendance</h2>
+    </caption>
+    <thead>
+      <tr>
+        <th>Week</th>
+        <!-- iterate section:students -->
+        <th><a href="[/records/student/$student:@id]">[$student:shortname]</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- iterate records:discourse -->
+      <tr class="[$criterion:status]">
+        <th>[$criterion:@index]</th>
+        <!-- iterate records -->
+        <td class="[centered marked $assessment:schedule:status]" title="[$assessment:discourse:letter]">
+          <a class="edit" href="[[/records/evaluate/discourse/$$criterion:@index/$student:@id]]">[$assessment:discourse:flag]</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="full chart tt bb">
+    <caption>
+      <h2 class="rag-right">Practice</h2>
+    </caption>
+    <thead>
+      <tr>
+        <th>Assignment</th>
+        <!-- iterate section:students -->
+        <th><a href="[/records/student/$student:@id]">[$student:shortname]</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- iterate records:practice -->
+      <tr class="[$criterion:status]">
+        <th>[$title]</th>
+        <!-- iterate records -->
+        <td class="[centered marked $assessment:schedule:status]" title="[$assessment:practice:letter]">
+          <a class="percentage edit" href="[[/records/evaluate/practice/$$criterion:@index/$student:@id]]">[$assessment:practice:percentage]</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="full chart tt bb">
+    <caption>
+      <h2 class="rag-right">Quizzes</h2>
+    </caption>
+    <thead>
+      <tr>
+        <th>Assignment</th>
+        <!-- iterate section:students -->
+        <th><a href="[/records/student/$student:@id]">[$student:shortname]</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- iterate records:quiz -->
+      <tr class="[$criterion:status]">
+        <th>[$title]</th>
+        <!-- iterate records -->
+        <td class="[centered marked $assessment:schedule:status]" title="[$assessment:quiz:letter]">
+          <a class="percentage edit" href="[[/records/evaluate/quiz/$$criterion:@index/$student:@id]]">[$assessment:quiz:percentage]</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="full chart tt bb">
+    <caption>
+      <h2 class="rag-right">Projects</h2>
+    </caption>
+    <thead>
+      <tr>
+        <th>Assignment</th>
+        <!-- iterate section:students -->
+        <th><a href="[/records/student/$student:@id]">[$student:shortname]</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- iterate records:project -->
+      <tr class="[$criterion:status]">
+        <th>[$title]</th>
+        <!-- iterate records -->
+        <td class="[centered marked $assessment:schedule:status]" title="[$assessment:project:letter]">
+          <a class="percentage edit" href="[[/records/evaluate/project/$$criterion:@index/$student:@id]]">[$assessment:project:percentage]</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <footer class="tt bb">
+    <h3><a href="/records/courses">Back to courses</a></h3>
+  </footer>
 </article>

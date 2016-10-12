@@ -49,6 +49,6 @@ namespace models;
 
     public function getScore(\DOMElement $context)
     {
-      return array_sum($this->axes);
+      return $this->status == 'open' ? null : array_sum($this->axes);
     }
   }

@@ -10,7 +10,7 @@ A way to Organize my teaching materials, my students, and my assignments.
   - deprecated techniques
   - improperly attributed work
   - precision (both syntax and aesthetic)
-- [x] automatically deduct validation errors
+- [x] automatically show validation errors
 - [ ] compute unique tags used
 - [ ] consider #lines of css & uniqueness.
 - [ ] validate css (https://jigsaw.w3.org/css-validator/validator?uri=CSSFILE&output=soap12&warning=0&profile=css3)
@@ -33,5 +33,6 @@ https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.w3.org%2F&war
 - [ ] Show who is in attendance
 - [ ] Allow users to change their first name.
 - [ ] Prioritize grading based on time spent
+- [ ] Add a flag that indicates absent, which is not necessarily the points awarded.
 
 https://jigsaw.w3.org/css-validator/validator?uri=http://52.35.59.206/css/guide.css&output=xml&warning=0&profile=css3
