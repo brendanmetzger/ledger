@@ -115,4 +115,16 @@ class Course extends \bloc\controller
     }
     return $out . "</pre>";
   }
+
+  public function GETprogress()
+  {
+    // this is a javascript file
+    $track = [
+      'page' => parse_url($_SERVER['HTTP_REFERER']),
+      'time' => $_SERVER['REQUEST_TIME'],
+      'addr' => $_SERVER['REMOTE_ADDR'],
+     ];
+    $data = json_encode($track);
+    return "console.log({$data})";
+  }
 }

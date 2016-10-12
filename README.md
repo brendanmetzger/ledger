@@ -25,7 +25,7 @@ https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.w3.org%2F&war
 - [ ] Design a Favicion
 - [ ] implement a progress report every 3 weeks
 - [ ] request that examples/help be done as a gist/codepen/fiddle
-- [ ] Take screenshots of assignments (xvfb-run --server-args="-screen 0, 1440x900x24" cutycapt --url=http://url --out=img.png)
+- [ ] Take screenshots of assignments (http://www.page2images.com/)
 - [ ] Make Screencast for workflow
 - [ ] Make tutorial for node/js localhost server, php, python.
 - [ ] Do several studies on algorithmic art.
