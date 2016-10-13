@@ -40,6 +40,29 @@ namespace models;
       return round(($context['@effort'] + $context['@organization']) * $deductions, 2);
     }
 
+    public function getURL(\DOMElement $context)
+    {
+      if ($this->criterion === null) {
+        throw new \RuntimeException("you must use load crition", 1);
+      }
+      $id = (string)$this->criterion->context['@id'];
+      return  "{$this->student->context['@url']}/practice/{$this->criterion->context['@index']}/";
+    }
+    public function getMarkup(\DOMElement $context)
+    {
+      $content = file_get_contents($this->url);
+      $doc = new \DOMDocument();
+      $doc->loadHTML($content);
+      $xpath = new \DOMXpath($doc);
+      $meta = $xpath->query("//meta[@name='hours']");
+      return $meta->length > 0 ? $meta->item(0)->getAttribute('content') : 'NA';
+    }
+
+    public function getHours(\DOMElement $context)
+    {
+      return $this->markup;
+    }
+
 
     public function getFormatted(\DOMElement $context)
     {

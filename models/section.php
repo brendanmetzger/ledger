@@ -64,7 +64,6 @@ namespace models;
 
       while ($begin < $calendar->semester['end']) {
         $interval = $now->diff($begin);
-        \bloc\application::instance()->log();
         $key = $index;
         $date = [
           'section'  => $section,

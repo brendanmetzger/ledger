@@ -48,13 +48,6 @@ class Records extends \bloc\controller
     return $view->render($this());
   }
 
-  protected function GETattendance(Admin $instructor)
-  {
-    $view = new View(self::layout);
-    $view->content = 'views/layouts/attendance.html';
-    $this->courses = \Models\Course::collect();
-    return $view->render($this());
-  }
 
   protected function GETstudent(Admin $instructor, $id)
   {
@@ -70,22 +63,34 @@ class Records extends \bloc\controller
   }
 
 
-  protected function GETbook(Admin $instructor, $course, $section, $type = '', $index = '')
+  protected function GETbook(Admin $instructor, $course, $section, $type = null, $index = null)
   {
     $view = new View(self::layout);
-    if ($type && $index) {
-      $view->content = "views/layouts/assignment.html";
-    } else {
 
-      $this->course = new \models\Course($course);
-      $this->courses = \Models\Course::collect();
-      $this->section = $this->course->section($section);
-      $this->records = \models\Assessment::GRADEBOOK($this->section);
-      $view->context = "views/layouts/list/courses.html";
+
+    $this->course = new \models\Course($course);
+    $this->courses = \Models\Course::collect();
+    $this->section = $this->course->section($section);
+    $this->records = $this->section;
+
+    if ($type === $index) {
       $view->content = "views/layouts/assignments.html";
-
+      $this->records = \models\Assessment::GRADEBOOK($this->section);
+    } else if ($type === 'practice'){
+      $this->assignment = $a = $this->records['practice'][$index];
+      $criteria = $this->section->assignments($type)->pick($index);
+      $this->submissions = $this->section->students->map(function ($item) use($type, $index, $criteria) {
+        $student = new \models\student($item);
+        return [
+          'student'    => $student,
+          'evaluation' => $student->evaluation($type, $index, $criteria),
+        ];
+      });
+      $view->content = "views/layouts/assignment.html";
+      $view->details = "views/outline/assignments/{$this->course['@id']}/{$type}/{$index}.html";
     }
 
+    $view->context = "views/layouts/list/courses.html";
     return $view->render($this());
   }
 

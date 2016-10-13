@@ -142,6 +142,7 @@ p.note, .note p {padding:2.5% 5%;color:rgb(87, 122, 162)}
 .micro, .legal, sup ,a.external:after{font-size:1.5em;line-height:1.75;max-width:100%;}
 sup {line-height:0;font-size:1em;padding:0 0.125em;font-family:Baskerville;}
 .micro.caps, abbr {text-transform:lowercase;font-variant:small-caps;letter-spacing:0.015em;}
+.spaced {letter-spacing:0.125em;}
 .centered  {text-align:center}
 .justified {text-align:justify}
 .rag-left  {text-indent:0;text-align:right}

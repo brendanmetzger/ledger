@@ -2,11 +2,18 @@
 namespace models\traits;
 
 trait evaluation {
-  protected $criterion = null;
+  protected $criterion = null,
+            $student   = null;
 
   public function loadCriterion(\DOMElement $criterion)
   {
     $this->criterion = new \models\Criterion($criterion);
+    return $this;
+  }
+
+  public function loadStudent(\models\Student $student)
+  {
+    $this->student = $student;
     return $this;
   }
 
@@ -29,4 +36,10 @@ trait evaluation {
   {
     return \models\Assessment::LETTER($this->score);
   }
+
+  public function getFlag(\DOMElement $context)
+  {
+    return ($this->score <= 0 && $this->status == 'marked') ? '⚐' : '✗';
+  }
+
 }

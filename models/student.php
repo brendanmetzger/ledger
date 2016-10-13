@@ -46,12 +46,20 @@ namespace models;
       return $this->assessment ?: $this->assessment = new Assessment($this);
     }
 
-    public function evaluation($topic, $index)
+    public function evaluation($topic, $index, $criteria = null)
     {
       if ($topic == 'project') {
         $index = ['midterm' => 0, 'final' => 1][$index];
       }
-      return $this->context->getElement($topic, $index);
+      // get the Element
+      $element = $this->context->getElement($topic, $index);
+
+      // load the criterion & student if specified
+      if ($criteria) {
+        return Data::FACTORY($topic, $element)->loadCriterion($criteria)->loadStudent($this);
+      }
+
+      return $element;
     }
 
     public function getShortname(\DOMElement $context)

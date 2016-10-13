@@ -106,7 +106,7 @@ namespace models;
 
       foreach ($book as $key => &$record) {
 
-        foreach ($section->assignments($key) as $item) {
+        foreach ($section->assignments($key) as $index => $item) {
           $records = [];
           foreach ($students as $student) {
 
@@ -115,9 +115,9 @@ namespace models;
               'student'    => $student['student'],
             ];
           }
-
           $record[] = [
             'criterion' => $item,
+            'due' => $student['student']->section->schedule[$item['@assigned'] ?? $index],
             'title' => $item['@title'],
             'records' => $records,
           ];
@@ -142,7 +142,6 @@ namespace models;
       $content = file_get_contents($url);
       $doc = new \DOMDocument();
       $doc->loadHTML($content);
-      // \bloc\application::instance()->log($doc);
       $xpath = new \DOMXpath($doc);
 
 
@@ -211,8 +210,8 @@ namespace models;
       $total = $reviewed->count();
       $average  = 1 / ($total ?: 1);
       $accumulator = 0;
-
-      $collect = Criterion::collect(function ($criterion, $index) use($evaluation, $total, $reviewed, $average, &$accumulator) {
+      $flags = ["⚐" => 0, "✗" => 0];
+      $collect = Criterion::collect(function ($criterion, $index) use($evaluation, $total, $reviewed, $average, &$accumulator, &$flags) {
         $map = [
           $evaluation => Data::FACTORY($evaluation, $reviewed->pick($index))->loadCriterion($criterion),
           'schedule'  => $this->student->section->schedule[$criterion['@assigned'] ?: $index],
@@ -226,8 +225,7 @@ namespace models;
             $score = round($stats['wmean'] + ($z * $stats['sd']), 2);
           }
           $stats['standard'] = $score * 100;
-          $map['stats'] = $stats;
-
+          $map['stats']      = $stats;
         }
         $accumulator = ($accumulator + ($score * $average));
         return $map;

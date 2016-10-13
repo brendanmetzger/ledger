@@ -1,6 +1,36 @@
 <article>
-  <ol>
-    <li>List all students for a given assigment in a given course</li>
-    <li>List whether or not it has been graded</li>
-  </ol>
+  <link rel="stylesheet" href="/css/table.css"/>
+  <header class="banner">
+    <h1>[$assignment:title]</h1>
+    <h4><time datetime="[$assignment:due:datetime]">[Due $assignment:due:date]</time></h4>
+  </header>
+  <table class="full chart tt bb">
+    <caption>
+      <details class="whitepaper rag-right">
+        <summary>Practice Outline Instructions</summary>
+        <!-- replace details -->
+      </details>
+    </caption>
+    <thead>
+      <tr class="rotate">
+        <th>&#160;</th>
+        <th>score</th>
+        <th>time spent</th>
+        <th>html errors</th>
+        <th>css errors</th>
+        <th>preview</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- iterate submissions -->
+      <tr>
+        <th>[$student:@name]</th>
+        <td class="percentage">[$evaluation:percentage]</td>
+        <td>[$evaluation:hours]</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+    </tbody>
+  </table>
 </article>

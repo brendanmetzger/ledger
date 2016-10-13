@@ -59,7 +59,8 @@ class Course extends \bloc\controller
       $view->content = 'views/layouts/error.html';
       $this->message = "Assignment not ready";
     } else {
-      $view->content = $path;
+      $view->content = 'views/outline/assignments/template.html';
+      $view->overview = $path;
       $view->context = "views/layouts/list/schedule.html";
     }
 

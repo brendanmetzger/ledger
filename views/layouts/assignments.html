@@ -1,13 +1,16 @@
 <article class="gradebook">
   <style>[a.edit:before{content:'$instructor:edit'}]</style>
   <link rel="stylesheet" href="/css/table.css"/>
-  <h1 class="tt">[$course:@title §$section:@id]</h1>
+  <header class="banner">
+    <h1 class="tt">[$course:@title §$section:@id]</h1>
+    <h4><time>[$section:time]</time> <span>[Room $section:@room]</span></h4>
+  </header>
   <table class="full chart tt bb">
     <caption>
-      <h2 class="rag-right">Attendance</h2>
+      <h3 class="rag-left pad b caps spaced">Attendance</h3>
     </caption>
     <thead>
-      <tr>
+      <tr class="rotate">
         <th>Week</th>
         <!-- iterate section:students -->
         <th><a href="[/records/student/$student:@id]">[$student:shortname]</a></th>
@@ -16,7 +19,7 @@
     <tbody>
       <!-- iterate records:discourse -->
       <tr class="[$criterion:status]">
-        <th>[$criterion:@index]</th>
+        <th class="_"><time datetime="[$due:datetime]">[$due:date]</time></th>
         <!-- iterate records -->
         <td class="[centered marked $assessment:schedule:status]" title="[$assessment:discourse:letter]">
           <a class="edit" href="[[/records/evaluate/discourse/$$criterion:@index/$student:@id]]">[$assessment:discourse:flag]</a>
@@ -26,10 +29,10 @@
   </table>
   <table class="full chart tt bb">
     <caption>
-      <h2 class="rag-right">Practice</h2>
+      <h3 class="rag-left pad b caps spaced">Practice</h3>
     </caption>
     <thead>
-      <tr>
+      <tr class="rotate">
         <th>Assignment</th>
         <!-- iterate section:students -->
         <th><a href="[/records/student/$student:@id]">[$student:shortname]</a></th>
@@ -38,7 +41,7 @@
     <tbody>
       <!-- iterate records:practice -->
       <tr class="[$criterion:status]">
-        <th>[$title]</th>
+        <th><a href="[[/records/book/$$section:@course/$$section:@id/practice/$criterion:@index]]">[$title]</a></th>
         <!-- iterate records -->
         <td class="[centered marked $assessment:schedule:status]" title="[$assessment:practice:letter]">
           <a class="percentage edit" href="[[/records/evaluate/practice/$$criterion:@index/$student:@id]]">[$assessment:practice:percentage]</a>
@@ -48,10 +51,10 @@
   </table>
   <table class="full chart tt bb">
     <caption>
-      <h2 class="rag-right">Quizzes</h2>
+      <h3 class="rag-left pad b caps spaced">Quizzes</h3>
     </caption>
     <thead>
-      <tr>
+      <tr class="rotate">
         <th>Assignment</th>
         <!-- iterate section:students -->
         <th><a href="[/records/student/$student:@id]">[$student:shortname]</a></th>
@@ -70,10 +73,10 @@
   </table>
   <table class="full chart tt bb">
     <caption>
-      <h2 class="rag-right">Projects</h2>
+      <h3 class="rag-left pad b caps spaced">Projects</h3>
     </caption>
     <thead>
-      <tr>
+      <tr class="rotate">
         <th>Assignment</th>
         <!-- iterate section:students -->
         <th><a href="[/records/student/$student:@id]">[$student:shortname]</a></th>
