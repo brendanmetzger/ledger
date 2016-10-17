@@ -41,6 +41,11 @@ namespace models;
       }
     }
 
+    public function getRecords(\DOMElement $context)
+    {
+      return new \bloc\DOM\Document("data/student/{$context['@id']}");
+    }
+
     private function assessment()
     {
       return $this->assessment ?: $this->assessment = new Assessment($this);

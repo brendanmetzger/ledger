@@ -151,6 +151,25 @@ class Task extends \bloc\controller
     $this->save($doc);
   }
 
+  public function CLImake(string $semester,  $path = 'data/student/')
+  {
+    echo "Will create a directory for each student in {$path}";
+
+    $doc = new Document("data/{$semester}");
+    $students = (new \DomXpath($doc))->query("//student[@id]");
+
+    foreach ($students as $student) {
+
+      $student_directory_path = PATH.$path.$student->getAttribute('id').'.xml';
+      echo "Creating file: {$student_directory_path}\n";
+      file_put_contents($student_directory_path, '<records/>');
+    }
+
+
+    // gather list of students
+    // make a path
+  }
+
   private function parseStudentFile($xml)
   {
 

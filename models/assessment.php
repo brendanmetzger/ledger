@@ -137,27 +137,20 @@ namespace models;
       return '-';
     }
 
-    static public function LINKS($url)
+    static public function LINKS($assessment)
     {
-      $content = file_get_contents($url);
-      $doc = new \DOMDocument();
-      $doc->loadHTML($content);
+      $doc = $assessment->markup;
+
       $xpath = new \DOMXpath($doc);
 
-
-      $handle = curl_init("https://validator.nu/?level=error&doc={$url}&out=json");
-      curl_setopt_array($handle, [
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_USERAGENT => $_SERVER['HTTP_USER_AGENT'],
-      ]);
-      $report = json_decode(curl_exec($handle));
+      $report = $assessment->validate;
       $number_of_errors = count($report->messages);
       $files = [
         [
           'name'    => 'index.html',
-          'content' => $content,
+          'content' => $assessment->plain,
           'type'    => 'lang-html',
-          'url'     => $url,
+          'url'     => $assessment->url,
           'report'  => ['count' => count($report->messages), 'errors' => (new \bloc\types\Dictionary($report->messages))->map(function ($item) {
             return ['line' => $item->lastLine ?? 1, 'message' => $item->message];
           })],
@@ -167,21 +160,24 @@ namespace models;
           'name'    => 'README',
           'content' => null,
           'type'    => 'plain-text',
-          'url'     => base64_encode($url . '/readme.txt'),
+          'url'     => base64_encode($assessment->url . '/readme.txt'),
         ]
       ];
+
+
       foreach ($xpath->query("//script[@src and not(contains(@src, 'http'))]") as $file) {
         $src = $file->getAttribute('src');
         $files[] = [
-          'url'     => base64_encode($url . '/' .$src),
+          'url'     => base64_encode($assessment->url . '/' .$src),
           'name'    => substr($src, strrpos($src, '/') + 1),
           'content' => null,
           'type'    => 'lang-js',
         ];
       }
+
       foreach ($xpath->query("//link[not(contains(@href, 'http')) and contains(@href, '.css')]") as $file) {
         $src = $file->getAttribute('href');
-        $uri = $url . '/' .$src;
+        $uri = $assessment->url . '/' .$src;
         $code = substr(get_headers($uri)[0], 9, 3);
         if ($code < 400) {
           $report = json_decode( file_get_contents("https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3&uri=". $uri));
@@ -229,7 +225,7 @@ namespace models;
         }
         $accumulator = ($accumulator + ($score * $average));
         return $map;
-      }, "[@type='{$evaluation}' and @course = '{$course}']");
+      }, "[@type='{$evaluation}' and (@course = '{$course}' or @course = '*')]");
 
       $weight = Assessment::$weight[$evaluation];
       return new \bloc\types\dictionary([

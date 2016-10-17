@@ -13,13 +13,14 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [x] automatically show validation errors
 - [ ] compute unique tags used
 - [ ] consider #lines of css & uniqueness.
-- [ ] validate css (https://jigsaw.w3.org/css-validator/validator?uri=CSSFILE&output=soap12&warning=0&profile=css3)
+- [x] validate css (https://jigsaw.w3.org/css-validator/validator?uri=CSSFILE&output=soap12&warning=0&profile=css3)
 https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.w3.org%2F&warning=0&profile=css3
 - [ ] get sessions to last longer, or automatically log out so I don't write a bunch and get an unauthorized error when I try to save
 - [ ] don't release grades until everyone's has been graded. (so I can implement a curve)
 - [ ] send email after grade is marked with my notes and a link to the notes.
 - [x] make icon for wikipedia links.
 - [x] Open wikipedia links in a console. Open with API
+- [ ] Make fixed close button and lock <body> when mouse is scrolling wikipedia content
 - [ ] Make an index in the outlines with anchors to each section.
 - [ ] Make a 'Panic Protocol' page
 - [ ] Design a Favicion
@@ -32,7 +33,8 @@ https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.w3.org%2F&war
 - [ ] Implement web-socket interface that reacts to people in course
 - [ ] Show who is in attendance
 - [ ] Allow users to change their first name.
-- [ ] Prioritize grading based on time spent
-- [ ] Add a flag that indicates absent, which is not necessarily the points awarded.
+- [x] Prioritize grading based on time spent
+- [x] Add a flag that indicates absent, which is not necessarily the points awarded.
+- [ ] Cover <table>s and <form>s in ASWM
 
 https://jigsaw.w3.org/css-validator/validator?uri=http://52.35.59.206/css/guide.css&output=xml&warning=0&profile=css3

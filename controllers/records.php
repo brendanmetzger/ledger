@@ -105,7 +105,6 @@ class Records extends \bloc\controller
   protected function GETevaluate(Admin $instructor, $topic, $index, $sid = null)
   {
     $this->student = new Student($sid);
-
     $this->topic = $topic;
     $this->index = $index;
 
@@ -114,8 +113,9 @@ class Records extends \bloc\controller
     $this->{$topic} = $this->item =  Data::FACTORY($topic, $this->student->evaluation($topic, $index));
 
     if ($topic == 'practice' || $topic == 'project') {
+      $criterion = \models\Criterion::Collect(null, "[@type='{$topic}' and (@course = '{$this->student->course}' or @course = '*')]")->pick($index);
       $this->url = $this->student->context['@url'] . "/{$topic}/{$index}";
-      $this->files = \models\Assessment::LINKS($this->url);
+      $this->files = \models\Assessment::LINKS($this->student->evaluation($topic, $index, $criterion));
       $this->template = 'editor';
       $view->context = "views/layouts/forms/assignment.html";
       $view->content = "views/layouts/inspector.html";

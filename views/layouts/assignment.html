@@ -5,6 +5,21 @@
     <h4><time datetime="[$assignment:due:datetime]">[Due $assignment:due:date]</time></h4>
   </header>
   <table class="full chart tt bb">
+    <style>
+    table.chart thead th.integer {
+      width:1em;
+    }
+    td summary {
+      font-size:1.75em;
+    }
+    tbody td:not(.text) {
+      vertical-align:middle;
+      text-align:center;
+    }
+    td.text {
+      width:65%;
+    }
+    </style>
     <caption>
       <details class="whitepaper rag-right">
         <summary>Practice Outline Instructions</summary>
@@ -14,10 +29,11 @@
     <thead>
       <tr class="rotate">
         <th>&#160;</th>
-        <th>score</th>
-        <th>time spent</th>
-        <th>html errors</th>
-        <th>css errors</th>
+        <th class="integer">score</th>
+        <th class="integer">hours</th>
+        <th class="bug integer">html</th>
+        <th class="bug integer">css</th>
+        <th>readme</th>
         <th>preview</th>
       </tr>
     </thead>
@@ -29,6 +45,12 @@
         <td>[$evaluation:hours]</td>
         <td>-</td>
         <td>-</td>
+        <td class="text">
+          <details>
+            <summary>[$evaluation:readme:summary]</summary>
+            <p>[$evaluation:readme:content]</p>
+          </details>
+        </td>
         <td>-</td>
       </tr>
     </tbody>

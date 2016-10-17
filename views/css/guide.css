@@ -198,7 +198,7 @@ tbody td {
   padding:1em;
   vertical-align:top;
 }
-th, td {
+th, td:not(.text) {
   font-size:1.35em;
   line-height:125%;
 }
