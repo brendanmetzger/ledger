@@ -40,5 +40,7 @@ https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.w3.org%2F&war
 - [ ] Do quiz online.
 - [ ] In the beginning of an outline, say what is due, what was due, etc.
 - [ ] Make an infographic/visualization of the semester to come
+- [ ] Add courses/sections to instructor footer
+- [ ] show course progress (perhaps as a favicon)
 
 https://jigsaw.w3.org/css-validator/validator?uri=http://52.35.59.206/css/guide.css&output=xml&warning=0&profile=css3

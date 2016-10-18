@@ -83,7 +83,8 @@ class Course extends \bloc\controller
     $view = new View(self::layout);
     $this->evaluation = Data::FACTORY($topic, $student->evaluation($topic, $index));
     $this->url        = $student->context['@url'] . "/{$topic}/{$index}";
-    $this->files      = \models\Assessment::Links($this->url);
+    $criterion = \models\Criterion::Collect(null, "[@type='{$topic}' and (@course = '{$this->student->course}' or @course = '*')]")->pick($index);
+    $this->files      = \models\Assessment::Links($student->evaluation($topic, $index, $criterion));
     $this->template   = 'editor';
     $view->context    = "views/layouts/notes.html";
     $view->content    = "views/layouts/inspector.html";
@@ -128,7 +129,7 @@ class Course extends \bloc\controller
     $data = json_encode($track);
     return "console.log({$data})";
   }
-  
+
   public function GETrubric($type = 'project')
   {
     $view = new View(self::layout);
