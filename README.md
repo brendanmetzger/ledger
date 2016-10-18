@@ -31,10 +31,14 @@ https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.w3.org%2F&war
 - [ ] Make tutorial for node/js localhost server, php, python.
 - [ ] Do several studies on algorithmic art.
 - [ ] Implement web-socket interface that reacts to people in course
-- [ ] Show who is in attendance
+- [ ] Show who is in attendance in toolbar (header or footer I suppose)
+- [ ] Get a diff algorithim to determine how much the code changes between last recorded version.
 - [ ] Allow users to change their first name.
 - [x] Prioritize grading based on time spent
 - [x] Add a flag that indicates absent, which is not necessarily the points awarded.
 - [ ] Cover <table>s and <form>s in ASWM
+- [ ] Do quiz online.
+- [ ] In the beginning of an outline, say what is due, what was due, etc.
+- [ ] Make an infographic/visualization of the semester to come
 
 https://jigsaw.w3.org/css-validator/validator?uri=http://52.35.59.206/css/guide.css&output=xml&warning=0&profile=css3

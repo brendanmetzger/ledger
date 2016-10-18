@@ -128,4 +128,15 @@ class Course extends \bloc\controller
     $data = json_encode($track);
     return "console.log({$data})";
   }
+  
+  public function GETrubric($type = 'project')
+  {
+    $view = new View(self::layout);
+    $view->content = 'views/layouts/forms/project.html';
+    $this->project =  ['percentage' => 50, 'inputs' => (new \bloc\types\Dictionary(\models\project::$metrics))->map(function ($item) {
+      return ['key' => $item, 'value' => rand(0,100)/1000];
+    })];
+
+    return $view->render($this());
+  }
 }

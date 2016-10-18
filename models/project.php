@@ -17,7 +17,7 @@ namespace models;
       ]
     ];
 
-    private $keys = ['Concept', 'Organized', 'Syntax/Errors', 'Explanations', 'Presentation', 'Research', 'Detail', 'Delivery/Time', 'Completion', 'Authorship'];
+    static public $metrics = ['Concept', 'Organized', 'Syntax/Errors', 'Explanations', 'Presentation', 'Research', 'Detail', 'Delivery/Time', 'Completion', 'Authorship'];
 
 
     public function getAxes(\DOMElement $context)
@@ -38,7 +38,7 @@ namespace models;
     public function getInputs(\DOMElement $context)
     {
       return (new \bloc\types\Dictionary($this->axes))->map(function ($axis, $idx) {
-        return ['value' => $axis, 'key' => $this->keys[$idx]];
+        return ['value' => $axis, 'key' => self::$metrics[$idx]];
       });
     }
 

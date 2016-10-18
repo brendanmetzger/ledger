@@ -159,7 +159,7 @@ h3,.h3, summary{font-size:calc(1em + 2vmin);margin:0.5em 0;font-weight:400;line-
 summary h3 {display:inline;font-size:100%;}
 .massive{font-weight:200}
 h4 {text-transform:uppercase;font-weight:600;}
-h5, .h5 {font-weight:400;font-size:1.8em;margin:0;display:block;}
+h5, .h5 {font-weight:400;font-size:1.8em;margin:0;display:block;line-height:1.125}
 h4,.h4{font-size:calc(1em + 0.75vmin);line-height:125%;}
 
 summary::-webkit-details-marker {
@@ -219,11 +219,11 @@ ol:not(.linenums) li, ul.stylized li {
   padding:0.25em 0;
 }
 ol:not(.linenums) > li:before, dl.ordered dt:before {
-  content:'[' counter(item) ']';
-  counter-increment:item;
-  font-family:Inconsolata;
-  margin-left:-2em;
-  padding-right:0.75em;
+  content: '[' counter(item) ']';
+  counter-increment: item;
+  font-family: Inconsolata;
+  padding-right: 0.5em;
+  margin-left: -2.25em;
 }
 
 ul{list-style-type:square}

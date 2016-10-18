@@ -17,7 +17,7 @@ window.addEventListener('load', function () {
       duration: 1000
     }, performance.now());
   };
-  [].filter.call(document.querySelectorAll('a[href*="#"]'), function (elem) {
+  [].filter.call(document.querySelectorAll('a:not([href^="http"])[href*="#"]'), function (elem) {
     return Boolean(document.querySelector(elem.hash));
   }).forEach(function (elem) {
     elem.addEventListener('click', goTo.bind(document.querySelector(elem.hash)), false);

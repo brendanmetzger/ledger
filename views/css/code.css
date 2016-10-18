@@ -4,6 +4,7 @@ code, pre, .code, .notate:after, code *, .code *{
   font-family:'OCR A Tribute W01 Light','UniversNW01-430TwRegula', 'Courier New', monospace;
   white-space:pre;
   letter-spacing:0;
+  font-style:normal;
 }
 
 samp {

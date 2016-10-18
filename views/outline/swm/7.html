@@ -2,7 +2,7 @@
   <header>
     <!-- insert views/outline/_/crumbs.html -->
     <h1 class="massive">Midterm Evaluations</h1>
-    <p class="intro">Quiz recap, midterm critique and discussion, semester review, survey and next steps</p>
+    <p class="intro">Quiz recap, midterm critique and discussion, some advanced <abbr>CSS</abbr> techniques, survey and next steps.</p>
   </header>
   <article>
     <h2>Review Topics</h2>
@@ -11,5 +11,39 @@
       <li>Chrome Canary</li>
       <li>Quiz Discussion</li>
     </ol>
+  </article>
+  <!-- insert views/outline/critique.html -->
+  <article>
+    <h2><abbr title="Cascading Stylesheets">CSS</abbr> Functions &amp; the Last of the Pseudos</h2>
+    <p class="intro">Our journey into the world of ‘pseudo’ stuff will also get us even closer to programming. We took a giant step forward with our first round of pseudos learning to apply styles depending on order and pattern through pseudo classes like <code>:nth-child</code>, and now we shall investigate the limited ways that <abbr>css</abbr> can make a tiny bit of content on its own.</p>
+    <p>I say the new round of pseudo stuff takes us closer to programming because now we are really looking at </p>
+    <dl class="whitepaper t b">
+      <dt>:root</dt>
+      <dd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:root">:root</a></dd>
+      <dt>css variables</dt>
+      <dd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables">css variables</a></dd>
+      <dt>the <code>calc</code> function</dt>
+      <dd>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc">calc</a> function</dd>
+      <dt>:not()</dt>
+      <dd>A powerful technique I find invaluable, this pseudo selector negates any selector inside the argument.</dd>
+      <dd>ex: <code>p:not(.special) {...}</code>selects all paragraphs that do not have a class of special.</dd>
+      <dd>ex: <code>section p:not(:first-of-type) {...}</code>selects all paragraphs of a section <em>except</em> the first one.</dd>
+      <dt>The <code>attr</code> function</dt>
+      <dd>This is a pretty nifty function. </dd>
+      <dt>:before &amp; :after</dt>
+      <dd>These <strong>pseudo-elements</strong> are a nice trick to add custom bullets, icons, or bits of boiler plate text to certain elements.</dd>
+      <dd><code>p:after {content: '...'}</code> would add ‘...’ after of every paragraph.</dd>
+      <dd><code>abbr:before {content: attr(title)}</code> would write the title attribute before each abbreviation.</dd>
+      <dt>:first-letter and :first-line</dt>
+      <dd>Another pair of pseudo elements that are somewhat self explanatory.</dd>
+      <dd><code>p:first-letter {font-size:500%;}</code> would make the first letter of every paragraph 500% larger than the adjacent text.</dd>
+      <dd><code>p:first-line {font-weight: 800}</code> would make the first line of text in every paragraph bold.</dd>
+    </dl>
+    <p><a href="https://css-tricks.com/pseudo-class-selectors/"><abbr>CSS</abbr> tricks</a> has an intro to selectors and takes you the entire way through some of the finer points. Now that we're this far along, I’m attaching the <a href="https://www.w3.org/TR/selectors/#selectors">full Selector whitepaper</a> for the no-nonsense, down to brass-tacks types because at this point, you should be a whiz at selecting elements.</p>
+  </article>
+  <article>
+    <h2>Survey &amp; Next Steps</h2>
+    <p>I hope throughout the course of working on a midterm you have identified some weak spots and areas that you need to focus on. When faced with a blank canvas, it becomes incredibly easy to let frustrations get the better of us. I understand this all too well, but hopefully this exercise reinforces that there is a lot of little pieces that fit together in order to make a successful project something that came from your own mind and ingenuity.</p>
+    <p>In your spare moments over break, find time to revisit material that has piqued your curiosity or left you a little confused. Over the second half of the semester we will be making a transition from <em>research</em> to <em>application</em>.</p>
   </article>
 </div>

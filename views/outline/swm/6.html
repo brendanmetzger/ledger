@@ -4,7 +4,7 @@
   <header>
     <!-- insert views/outline/_/crumbs.html -->
     <h1 class="massive">Razzle Dazzle</h1>
-    <p class="intro">CSS pseudo elements, CSS Transitions, Intro to DOM programming and manipulation</p>
+    <p class="intro"><abbr title="Hypertext Markup Language">html</abbr> Attributes, CSS Transitions, Intro to DOM programming and manipulation</p>
   </header>
   <article id="review">
     <h2>Review</h2>
@@ -18,7 +18,7 @@
       <p>When researching transitions, you’ll no doubt notice a lot of resources using <em>vendor-prefixes</em>. At this point, un-prefixed use of the <code>transition</code> property has <a href="http://caniuse.com/#feat=css-transitions">wide support</a>, and any tutorial or literature using a prefix is somewhat outdated. This is why it is so important to <strong>research and cite multiple resources for information</strong>.</p>
       <p>Transforms, on the other hand, apply methods and vernacular commonly seen in programming, especially in regards to how elements are <em>painted or drawn</em>. From the spec on transforms: <q>CSS transforms allows elements styled with CSS to be transformed in two-dimensional or three-dimensional space. </q></p>
     </section>
-    <hr class="ruled"/>
+    <hr class="ruled t b"/>
     <h3>Keep in Mind</h3>
     <p>When you learn how to jazz things up it quickly becomes tempting to go a little crazy. Starting out, I say what the hell, go over the top... but I would be remiss if I didn’t point out that sometimes effects can get annoying when they pile up or make things difficult to use. In addition to that, I've made a list of a few pointers for the road, if you will.</p>
     <ul class="stylized star t">
@@ -29,25 +29,35 @@
       <li>I won’t talk further about <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations">keyframe animations</a> in this course—you’re welcome to explore them on your own.</li>
     </ul>
   </article>
+  <article class="margins">
+    <h2>More on Attributes</h2>
+    <h4>Selectors</h4>
+    <p>Attribute <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">selectors</a> offer us yet another dimension of targeting Elements. I have made an <a href="http://codepen.io/brendanmetzger/pen/kkArJm">example here</a>, but essentially you use square brackets to inspect the presence, or even the value of a specified attribute. It will be important to understand the new syntax presented, as it is a good introduction to the style of syntax we use to execute programs.</p>
+    <p>For some reading material, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">here are the docs</a> on attribute selectors, or for a more visual explanation <a href="https://css-tricks.com/attribute-selectors/">check out this tutorial</a>. Attribute selectors pretty much round out our selection suite, which all together, looks something like this: Element &amp; descendant selectors, classes and IDs, children and sibling combinators, class chaining, and now attribute selectors. Both <abbr>css</abbr> and JavaScript employ these selection techniques.</p>
+    <hr class="ruled" />
+    <h4>Data</h4>
+    <p><abbr>HTML</abbr> has a way to store data in an attribute. Interestingly, it’s called a <a href="http://www.w3schools.com/tags/att_global_data.asp">data attribute</a>. Data attributes (well, all attributes) can be seen by the inspecting eyes of <abbr>css</abbr>, which is an introduction to attribute selectors. Likewise, data-attributes can be seen and set in very straight forward ways using object access methods (more on that to come), and this can be quite elegant. Within your <abbr>html</abbr>, you can simply add <code>&lt;p data-foo="bar"&gt;</code> where <strong>foo</strong> is the name of your custom attribute and <strong>bar</strong> is the value.</p>
+    <p>The important takeaway here is twofold. You can make up an attribute to store data for later (hint, JavaScript), but you can also target that attribute with the a <abbr>css</abbr> selector.</p>
+  </article>
   <article class="introductory">
     <h2>Intro to <abbr title="Document Object Model">DOM</abbr> Programming</h2>
     <section class="two columns outdented">
       <p>I’m going to expose the tiniest bit of JavaScript that should dovetail nicely with the concepts we’re becoming comfortable with. Namely, we know that when we load up a big <abbr>HTML</abbr> file that it it is converted into this very specific <strong>object</strong>, and this object, like any object, has properties that describe it. Some of the properties actually perform tasks, and as such, they are actually a <code>function</code> of the object, often called <em>methods</em>. Get comfortable with the terms <em>property</em> and <em>method</em> when talking about objects.</p>
-      <p>To further analyze this way of thought, picture your oven. It has knobs and burners, it has a color, a manufacturer, and it might have properties indicating its state, like clean or dirty. These are all properties, but let’s note the differences between how they describe the oven. The color property does not change, the clean property will likely change values now and then. The knobs property is interesting; notice that they perform an <em>action</em>. Further, ‘acting’ on a knob might would likely change the temperature property.</p>
-      <p>As meta as this all seems, this abstraction perfectly describes programming. Looking back, we alread know we have a <code>document</code> object that it has properties and properties tell us things about the object, like when it was last modified: type <code>document.lastModified</code> into your browser console and see what happens (in fact, do it several times).</p>
+      <p>To further analyze this way of thought, picture your oven. It has knobs and burners, it has a <i>color</i>, a <i>manufacturer</i>, and it might have properties indicating its state, like <i>‘is clean’</i>. These are all properties, but let’s note the differences between how they describe the oven. The <i>color</i> property is static, that is it will not change, while the <i>‘is clean’</i> property may change as the result of other actions. The knobs property is interesting; notice that they perform an <em>action</em>—turning knob is expected to cause a change the <i>temperature</i> property.</p>
+      <p>As meta as this all seems, this abstraction is important, and perfectly describes programming. Looking back, we already know we have a <code>document</code> object that it has properties and properties tell us things about the object, like when it was last modified: type <code>document.lastModified</code> into your browser console and see what happens (in fact, do it several times).</p>
       <p>Of present concern is the things we can ask the <code>document</code> to do for us, like find elements. One of the most important parnts of a document is the fact that it can help us find other elements using <em>query selectors</em>—yes, the very same selectors you've been learning about for weeks!</p>
     </section>
-    <hr class="ruled tt bb"/>
-    <p>Arguably the most useful feature of JavaScript is the tight integration to the Document Object Model, and the quickest introduction we can make is by employing our <abbr>CSS</abbr> techniques. The <code>document</code> object itself has many methods for selecting Elements, but there are really only two you need to remember. The two methods in question are <em>querySelector</em> and <em>querySelectorAll</em>, and you access them by using the ‘.’ operator on the <code>document</code>. These two methods can be fed regular <abbr>css</abbr> query selectors as arguments and will return the appropriate <abbr>html</abbr> element(s).</p>
+    <hr class="ruled t b"/>
+    <p>Arguably the most useful feature of JavaScript is the tight integration to the Document Object Model, and the quickest introduction we can make is by employing our <abbr>CSS</abbr> selector knowledge. The <code>document</code> object itself has many methods for selecting Elements, but there are really only two you need to remember. The two methods in question are <em>querySelector</em> and <em>querySelectorAll</em>, and you access them by using the ‘.’ operator on the <code>document</code>. These two methods can be fed regular <abbr>css</abbr> query selectors as arguments and will return the appropriate <abbr>html</abbr> element(s).</p>
     <section class="instruction container pad">
       <dl class="______ float left">
-        <dt><h3><code>document.querySelector(<em>query</em>)</code></h3></dt>
+        <dt class="h5 pad"><code>document.querySelector(<em>query</em>)</code></dt>
         <dd>Select and return the first node that matches the query</dd>
         <dd>ex: <code>document.querySelector('div')</code> selects the first <code>&lt;div&gt;</code> in the document</dd>
-        <dd>ex: <code>document.querySelector('div#test')</code> selects <code>&lt;div id="test"&gt;</code></dd>
-        <dt><h3><code>document.querySelectorAll(<em>query</em>)</code></h3></dt>
+        <dd>ex: <code>document.querySelector('div#test')</code> selects a <code>&lt;div id="test"&gt;</code> element.</dd>
+        <dt class="h5 pad"><code>document.querySelectorAll(<em>query</em>)</code></dt>
         <dd>ex: <code>document.querySelectorAll('div')</code> selects <strong>all</strong> <code>&lt;div&gt;</code>'s the document</dd>
-        <dd>ex: <code>document.querySelectorAll('section > p')</code> selects <strong>all</strong> <code>&lt;p&gt;</code>'s that are the immediate children of a section</dd>
+        <dd>ex: <code>document.querySelectorAll('section > p')</code> selects <strong>all</strong> <code>&lt;p&gt;</code>'s that are the immediate children of a section.</dd>
       </dl>
       <ol class="____ float left whitepaper">
         <li>Open your console so you can query <em>this document</em></li>
@@ -64,37 +74,12 @@
     <p class="focus"><strong>Note</strong>, some people still use things like <code>document.getElementById</code> and <code>document.getElementsByTagName</code>, and you’ll surely run into decades of tutorials suggesting you do the same. Be aware, modern methods provide a significant upgrade and I suggest you use the new stuff</p>
   </article>
   <article>
-    <h2>The Last of the Pseudos</h2>
-    <p class="intro">Here, our journey into the world of ‘pseudo’ stuff ends. That’s right, after today, you will have glanced at every possible way to find a piece of HTML markup and apply style to it, as well as the limited ways that CSS can make a tiny bit of content on its own.</p>
-    <p>While you are already familiar with some basic pseudo-classes from earlier in the semester (<code>:hover</code>), now comes the introduction to a more powerful way of selection—one that resembles programming quite a bit.</p>
-    <p><a href="https://css-tricks.com/pseudo-class-selectors/"><abbr>CSS</abbr> tricks</a> has an intro to selectors and takes you the entire way through some of the finer points. Now that we're this far along, I’m attaching the <a href="https://www.w3.org/TR/selectors/#selectors">full Selector whitepaper</a> for the no-nonsense, down to brass-tacks types.</p>
-    <dl class="whitepaper">
-      <dt>:first-of-type</dt>
-      <dd>A pseudo-selector that selects the first element of a particular type within the context</dd>
-      <dd><code>section p:first-of-type</code> selects the first paragraph of a section, ignoring whether or not it is the very first child.</dd>
-      <dt>:nth-of-type()</dt>
-      <dd>Can be used to select any element based on integer, even/odd, and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type">cycle size (advanced)</a>.</dd>
-      <dd><code>li:nth-of-type(odd) {background-color:#EEE;}</code> sets the background-color on the odd items of a list </dd>
-      <dt>:not()</dt>
-      <dd>A powerful technique I find invaluable, this pseudo selector negates a selector.</dd>
-      <dd>ex: <code>p:not(.special) {...}</code>selects all paragraphs that do not have a class of special.</dd>
-      <dd>ex: <code>section p:not(:first-of-type) {...}</code>selects all paragraphs of a section <em>except</em> the first one.</dd>
-      <dt>:before &amp; :after</dt>
-      <dd>These <strong>pseudo-elements</strong> are a nice trick to add custom bullets, icons, or bits of boiler plate text to certain elements.</dd>
-      <dd><code>p:after {content: '...'}</code> would add ‘...’ after of every paragraph.</dd>
-      <dd><code>abbr:before {content: attr(title)}</code> would write the title attribute before each abbreviation.</dd>
-      <dt>:first-letter and :first-line</dt>
-      <dd>Another pair of pseudo elements that are somewhat self explanatory.</dd>
-      <dd><code>p:first-letter {font-size:500%;}</code> would make the first letter of every paragraph 500% larger than the adjacent text.</dd>
-      <dd><code>p:first-line {font-weight: 800}</code> would make the first line of text in every paragraph bold.</dd>
-    </dl>
-  </article>
-  <article>
-    <h2>All Together</h2>
-    <section class="container">
+    <h2>Complicating things...</h2>
+    <p>I've put together the following example not in the spirit of knowing it fully as an exercise, but as an anecdote to what interactive programming really entails; a lot of stylesheet manipulation, a a little bit of JavaScript and very thoughtful structure of content and data.</p>
+    <section class="container t ruled top">
       <aside class="note ____ float left">
-        <p>Transitions are quite easy to implement. Designing with the full power of transitions can be quite masterful. In the example <abbr>CSS</abbr> I've provided, scan the document for <code>&lt;h2&gt;</code> Elements with a little pair of scissors before the text—click on them. Note in the code, the <abbr>CSS</abbr> is controlling the scissor with the <code>content</code> property, and thus can be manipulated with <abbr>CSS</abbr> techinques we have available.</p>
-        <p>Look at the contrasting <abbr>CSS</abbr> and Javascript as it illustrates a key point about the nature of our programming languages. First, <mark>I haven’t changed the structure of my markup one smidge</mark> to accommodate the <abbr>CSS</abbr> or JavaScript I am using. The next is that <abbr>CSS</abbr> is by far most verbose part of any program I write. The last is the JavaScript, when aided by efficient <abbr>CSS</abbr> and <abbr>HTML</abbr>, can be <em>very concise</em>.</p>
+        <p>Transitions are simple enough to implement, but designing with the full power of transitions can be quite masterful. In the example <abbr>CSS</abbr> I've provided, scan the document for <code>&lt;h2&gt;</code> Elements with a little pair of scissors before the text—click on them. Note in the code, the <abbr>CSS</abbr> is controlling the scissor with the <code>content</code> property, and thus can be manipulated with <abbr>CSS</abbr> techinques we have available.</p>
+        <p>Look at the contrasting <abbr>CSS</abbr> and Javascript as it illustrates a key point about the nature of our programming languages. First, <mark>I haven’t changed the structure of my markup</mark> to accommodate the <abbr>CSS</abbr> or JavaScript I need to pull off a trick—that structure is solid. The next is that <abbr>CSS</abbr> is by far most verbose part of any program I write. The last is the JavaScript, when aided by efficient <abbr>CSS</abbr> and <abbr>HTML</abbr>, is typically concise.</p>
         <p><strong>Please Note:</strong> I wrote the JavaScript in an extra obscure manner not only to illustrate this point, but so that you don’t spend too much time trying to implement something similar. You will learn <em>much easier</em> techniques for accomplishing this task using loops, variables and other beginner-friendly methods.</p>
         <hr class="ruled"/>
         <p><strong>When using transforms</strong>, be aware that you’ll only be able to apply transformations to a <a href="https://www.w3.org/TR/css-transforms-1/#transformable-element">transformable elements</a>, that is, <em>an element that applies block-formatting</em> via the box-model. Remember, <mark> any element can be forced into a block formatted element explicitly by setting <code>display</code> property to 'block' or 'inline-block', or implicitly when you have set a <code>float</code> or used an absolute or fixed <code>position</code></mark>.</p>

@@ -34,12 +34,14 @@ class Records extends \bloc\controller
     return $view->render($this());
   }
 
-  protected function GETquiz(Admin $instructor, $type = '36-1420')
+  protected function GETquiz(Admin $instructor, $course = 'SWM')
   {
-    $operator = $type == '36-1420' ? '<' : '>=';
+    $this->course = new \Models\Course(\models\Data::ID($course));
+
+    $operator = $course == 'SWM' ? '<' : '>=';
     $data = new \bloc\dom\Document("data/questions", ['validateOnParse' => false]);
-    $questions = iterator_to_array($data->find("//question[@level {$operator} 6 and @priority = 1]")->map(function ($item) {
-      return ['question' => $item];
+    $questions = iterator_to_array($data->find("//question[@level {$operator} 3 and @priority = 1]")->map(function ($item) {
+      return ['question' => $item, 'answer' => null];
     }));
     // shuffle($questions);
     $this->questions = $questions;

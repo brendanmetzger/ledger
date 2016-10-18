@@ -1,7 +1,24 @@
 <article>
-  <h1>Quiz</h1>
+  <h2>[$course:@title Quiz]</h2>
+  <h4>Name:</h4>
+  <hr class="ruled" />
+  <style media="print" type="text/css">
+  body {border:none;margin:0;}
+  h2 {font-size:2em;}
+  body > nav, body > footer { display:none}
+  ol ul li { padding: 0.5em 0 !important;border-color: #EEE;}
+  </style>
   <ol>
     <!-- iterate questions -->
-    <li>[$question]</li>
+    <li>
+      <dfn>[$question]</dfn>
+      <!-- <textarea name="answer" class="full" rows="8" style="margin-top:0.5em;height:5em;">[$answer]</textarea> -->
+      <ul class="plain">
+        <li>[$answer]</li>
+        <li>[$answer]</li>
+        <li>[$answer]</li>
+        <li>[$answer]</li>
+      </ul>
+    </li>
   </ol>
 </article>
