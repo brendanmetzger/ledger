@@ -273,21 +273,31 @@ class Task extends \bloc\controller
 
   public function POSTscreenshot($request, $id)
   {
-    file_put_contents(PATH."data/screenshots/{$id}.txt", print_r($_POST, true));
+    $result = json_decode($_POST['result']);
+
+    file_put_contents(PATH."data/screenshots/{$id}.jpg", file_get_contents($result->image_url));
   }
 
   public function CLIscreenshot()
   {
     echo "starting...\n";
+    // stdClass Object
+    // (
+    //     [status] => finished
+    //     [image_url] => http://api.page2images.com/ccimages/45/79/fjKozeQaQHZl674I.jpg
+    //     [duration] => 1
+    //     [left_calls] => 2997
+    //     [ori_url] => http://brendanmetzger.com
+    // )
 
     $para = [
-      'p2i_url'         => 'http://brendanmetzger.com',
+      'p2i_url'         => 'http://iam.colum.edu/students/Susan.Copithorne/SWM/practice/2/index.html',
       'p2i_screen'      => '1024x768',
       "p2i_device"      => 6,
       'p2i_fullpage'    => 1,
       'p2i_imageformat' => 'jpg',
       'p2i_key'         => '7c6891c828ebbe46',
-      'p2i_size'        => '100x0',
+      'p2i_size'        => '1024x0',
       'p2i_callback'    => 'http://52.35.59.206/task/screenshot/XQQPY/',
     ];
 
@@ -303,7 +313,11 @@ class Task extends \bloc\controller
     $data = curl_exec($ch);
     curl_close($ch);
 
-    print_r(json_decode($data));
+    if ($data) {
+      // this means the image was decoded already
+      print_r(json_decode($data));
+    }
+
 
     echo "finished!\n";
   }
