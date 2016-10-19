@@ -271,11 +271,16 @@ class Task extends \bloc\controller
     $this->save($doc);
   }
 
+  public function GETscreenshot()
+  {
+    $url = "http://api.page2images.com/ccimages/79/78/WtcdwoCGtixL5OF7.jpg";
+    file_put_contents(PATH."data/screenshots/testing.jpg", file_get_contents($url));
+  }
+
   public function POSTscreenshot($request, $id)
   {
     $result = json_decode($_POST['result']);
-    file_put_contents(PATH."data/screenshots/{$id}.txt", print_r($result, true));
-    file_put_contents(PATH."data/screenshots/{$id}.jpg", file_get_contents($result->image_url));
+    file_put_contents(PATH."data/screenshots/{$id}.jpg", file_get_contents(urldecode($result->image_url)));
   }
 
   public function CLIscreenshot()
@@ -291,7 +296,7 @@ class Task extends \bloc\controller
     // )
 
     $para = [
-      'p2i_url'         => 'http://iam.colum.edu/students/Susan.Copithorne/SWM/practice/2/index.html',
+      'p2i_url'         => 'http://iam.colum.edu/students/FaithKatrina.Ringor/SWM/practice/1/index.html',
       'p2i_screen'      => '1024x768',
       "p2i_device"      => 6,
       'p2i_fullpage'    => 1,
