@@ -274,7 +274,7 @@ class Task extends \bloc\controller
   public function POSTscreenshot($request, $id)
   {
     $result = json_decode($_POST['result']);
-
+    file_put_contents(PATH."data/screenshots/{$id}.txt", print_r($result, true));
     file_put_contents(PATH."data/screenshots/{$id}.jpg", file_get_contents($result->image_url));
   }
 
