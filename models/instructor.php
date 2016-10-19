@@ -29,4 +29,9 @@ class Instructor extends \bloc\Model implements \bloc\types\authentication
     }
     return $this;
   }
+
+  public function GETsections(\DOMElement $context)
+  {
+    return \models\Section::collect(null, "[@instructor='{$_SESSION['id']}']");
+  }
 }

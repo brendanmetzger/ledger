@@ -270,4 +270,41 @@ class Task extends \bloc\controller
 
     $this->save($doc);
   }
+
+  public function POSTscreenshot($request, $id)
+  {
+    file_put_contents(PATH."data/screenshots/{$id}.txt", print_r($_POST, true));
+  }
+
+  public function CLIscreenshot()
+  {
+    echo "starting...\n";
+
+    $para = [
+      'p2i_url'         => 'http://brendanmetzger.com',
+      'p2i_screen'      => '1024x768',
+      "p2i_device"      => 6,
+      'p2i_fullpage'    => 1,
+      'p2i_imageformat' => 'jpg',
+      'p2i_key'         => '7c6891c828ebbe46',
+      'p2i_size'        => '100x0',
+      'p2i_callback'    => 'http://52.35.59.206/task/screenshot/XQQPY/',
+    ];
+
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "http://api.page2images.com/restfullink");
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($para));
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+    $data = curl_exec($ch);
+    curl_close($ch);
+
+    print_r(json_decode($data));
+
+    echo "finished!\n";
+  }
 }

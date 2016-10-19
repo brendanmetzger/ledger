@@ -207,13 +207,16 @@ namespace models;
       $average  = 1 / ($total ?: 1);
       $accumulator = 0;
       $flags = ["⚐" => 0, "✗" => 0];
+
       $collect = Criterion::collect(function ($criterion, $index) use($evaluation, $total, $reviewed, $average, &$accumulator, &$flags) {
         $map = [
           $evaluation => Data::FACTORY($evaluation, $reviewed->pick($index))->loadCriterion($criterion),
           'schedule'  => $this->student->section->schedule[$criterion['@assigned'] ?: $index],
           'due'       => $this->student->section->schedule[$criterion['@due'] ?: $index],
         ];
+
         $score = $map[$evaluation]->score;
+
         if (($evaluation === 'quiz' || $evaluation === 'project') && $total > $criterion['@index']) {
           $stats = $this->collective($this->student->section, $criterion);
           if ($score > 0 && $stats['sd'] > 0) {
@@ -221,10 +224,12 @@ namespace models;
             $score = round($stats['wmean'] + ($z * $stats['sd']), 2);
           }
           $stats['standard'] = $score * 100;
-          $map['stats']      = $stats;
+          $map['stats'] = $map[$evaluation]->stats = $stats;
         }
         $accumulator = ($accumulator + ($score * $average));
+
         return $map;
+
       }, "[@type='{$evaluation}' and (@course = '{$course}' or @course = '*')]");
 
       $weight = Assessment::$weight[$evaluation];

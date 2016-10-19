@@ -12,6 +12,8 @@ namespace models;
 
     const XPATH = false;
 
+    public $stats = null;
+
     static public $fixture = [
       'quiz' => [
         '@' => ['credit' => 0],
@@ -21,6 +23,11 @@ namespace models;
 
     public function getScore(\DOMElement $context)
     {
-      return $context['@credit'] / $this->criterion['@points'];
+      return round($context['@credit'] / $this->criterion['@points'], 2);
+    }
+
+    public function getLetter(\DOMElement $context)
+    {
+      return \models\Assessment::LETTER($this->stats['standard'] / 100);
     }
   }

@@ -26,14 +26,6 @@ class Records extends \bloc\controller
     return $view->render($this());
   }
 
-  protected function GETcourses(Admin $instructor, $id = null, $section = null)
-  {
-    $view = new View(self::layout);
-    $view->content = 'views/layouts/courses.html';
-    $this->courses = \Models\Course::collect();
-    return $view->render($this());
-  }
-
   protected function GETquiz(Admin $instructor, $course = 'SWM')
   {
     $this->course = new \Models\Course(\models\Data::ID($course));
