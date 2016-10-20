@@ -46,8 +46,8 @@
       </label>
     </section>
     <section class="buttons">
-      <button type="submit" data-value="1">Present</button>
-      <button type="submit" data-value="0">Absent</button>
+      <button type="submit" data-value="1" onclick="Array.from(document.querySelectorAll('.discourse input')).forEach(input => input.value = 1)">Present</button>
+      <button type="submit" data-value="0" onclick="Array.from(document.querySelectorAll('.discourse input')).forEach(input => input.value = 0)">Absent</button>
     </section>
   </section>
   <hr/>
@@ -55,20 +55,4 @@
     <h4>Notes</h4>
     <textarea name="discourse[CDATA]" cols="30" rows="10">[$discourse]</textarea>
   </label>
-
-
-
-  <script type="text/javascript">
-    function setSliders(evt) {
-      // this = button
-      [].forEach.call(document.querySelectorAll('.discourse input'), function (input) {
-        input.value = this.dataset.value;
-        console.log(this);
-      }, this)
-    }
-
-    [].forEach.call(document.querySelectorAll('.discourse button'), function (button) {
-      button.addEventListener('click', setSliders.bind(button), false);
-    });
-  </script>
 </fieldset>

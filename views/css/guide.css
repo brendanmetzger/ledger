@@ -233,3 +233,24 @@ table.text td {
   vertical-align:middle;
   border:none;
 }
+
+body.overlay {
+  overflow:hidden;
+}
+
+body.overlay > div:last-of-type {
+  opacity: 1;
+  z-index:5;
+}
+
+body > div:last-of-type {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left:0;
+  background-color: rgba(255,255,255,0.9);
+  transition: opacity 0.75s;
+  opacity:0;
+  z-index:0;
+}

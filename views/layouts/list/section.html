@@ -2,21 +2,5 @@
   <!-- iterate section:students -->
   <li class="[$student:grade:apr]">
     <a href="[/records/student/$student:@id]">[$student:@name]</a>
-    <ul class="plain inline discourse scores">
-      <!-- iterate student:discourse:list -->
-      <li title="[$discourse:letter]" class="[$schedule:status $discourse:status]">[$discourse:percentage]</li>
-    </ul>
-    <ul class="plain inline practice scores">
-      <!-- iterate student:practice:list -->
-      <li title="[$practice:letter]" class="[$schedule:status $practice:status]">[$practice:percentage]</li>
-    </ul>
-    <ul class="plain inline project scores">
-      <!-- iterate student:projects:list -->
-      <li title="[$project:letter]" class="[$schedule:status $project:status]">[$project:percentage]</li>
-    </ul>
-    <ul class="plain inline quiz scores">
-      <!-- iterate student:quizzes:list -->
-      <li title="[$quiz:letter]" class="[$schedule:status $quiz:status]">[$quiz:percentage]</li>
-    </ul>
   </li>
 </ul>

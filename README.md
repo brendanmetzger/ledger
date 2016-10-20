@@ -13,8 +13,7 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [x] automatically show validation errors
 - [ ] compute unique tags used
 - [ ] consider #lines of css & uniqueness.
-- [x] validate css (https://jigsaw.w3.org/css-validator/validator?uri=CSSFILE&output=soap12&warning=0&profile=css3)
-https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.w3.org%2F&warning=0&profile=css3
+- [x] validate css
 - [ ] get sessions to last longer, or automatically log out so I don't write a bunch and get an unauthorized error when I try to save
 - [ ] don't release grades until everyone's has been graded. (so I can implement a curve)
 - [ ] send email after grade is marked with my notes and a link to the notes.
@@ -41,6 +40,4 @@ https://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.w3.org%2F&war
 - [ ] In the beginning of an outline, say what is due, what was due, etc.
 - [ ] Make an infographic/visualization of the semester to come
 - [ ] Add courses/sections to instructor footer
-- [ ] show course progress (perhaps as a favicon)
-
-https://jigsaw.w3.org/css-validator/validator?uri=http://52.35.59.206/css/guide.css&output=xml&warning=0&profile=css3
+- [ ] show course progress (perhaps as a favicon) in terms of semester and individual classes

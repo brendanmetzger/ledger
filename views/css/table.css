@@ -16,6 +16,7 @@ table {
 }
 td a, th a {
   border: none;
+  transition: opacity 0.75s;
   color:rgba(0,0,0,0.5);
 }
 table.chart .horizontal td {

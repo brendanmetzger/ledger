@@ -22,7 +22,7 @@
         <th class="_"><time datetime="[$due:datetime]">[$due:date]</time></th>
         <!-- iterate records -->
         <td class="[centered marked $assessment:schedule:status]" title="[$assessment:discourse:letter]">
-          <a class="edit" href="[[/records/evaluate/discourse/$$criterion:@index/$student:@id]]">[$assessment:discourse:flag]</a>
+          <a class="quick edit" href="[[/records/evaluate/discourse/$$criterion:@index/$student:@id]]">[$assessment:discourse:flag]</a>
         </td>
       </tr>
     </tbody>
@@ -43,7 +43,7 @@
       <tr class="[$criterion:status]">
         <th><a href="[[/records/book/$$section:@course/$$section:@id/practice/$criterion:@index]]">[$title]</a></th>
         <!-- iterate records -->
-        <td class="[centered marked $assessment:schedule:status]" title="[$assessment:practice:letter]">
+        <td class="[centered marked $assessment:schedule:status]"  style="[--hue: $assessment:practice:percentage; --value: $assessment:practice:percentage%;]" title="[$assessment:practice:letter]">
           <a class="percentage edit" href="[[/records/evaluate/practice/$$criterion:@index/$student:@id]]">[$assessment:practice:percentage]</a>
         </td>
       </tr>
@@ -55,7 +55,7 @@
     </caption>
     <thead>
       <tr class="rotate">
-        <th>Assignment</th>
+        <th>Exam</th>
         <!-- iterate section:students -->
         <th><a href="[/records/student/$student:@id]">[$student:shortname]</a></th>
       </tr>
@@ -65,12 +65,49 @@
       <tr class="[$criterion:status]">
         <th>[$title]</th>
         <!-- iterate records -->
-        <td class="[centered marked $assessment:schedule:status]" title="[$assessment:quiz:letter]">
-          <a class="percentage edit" href="[[/records/evaluate/quiz/$$criterion:@index/$student:@id]]">[$assessment:stats:standard]</a>
+        <td class="[centered marked $assessment:schedule:status]" style="[--hue: $assessment:stats:standard; --value: $assessment:stats:standard%;]" title="[$assessment:quiz:letter]">
+          <a class="percentage quick edit" href="[[/records/evaluate/quiz/$$criterion:@index/$student:@id]]">[$assessment:quiz:weighted]</a>
         </td>
       </tr>
     </tbody>
   </table>
+  <script type="text/javascript">
+  bloc.init('ajax', function() {
+    document.querySelector('article.gradebook').addEventListener('click', function (evt) {
+      var clicked = evt.target;
+      if (clicked.matches("td a.quick")) {
+        clicked.style.opacity = 0;
+        evt.preventDefault();
+        var request = new XMLHttpRequest();
+        var overlay = document.body.appendChild(document.createElement('div'));
+        request.open('GET', clicked.href);
+        request.addEventListener('load', function (evt) {
+          document.body.classList.add('overlay');
+          var form = overlay.appendChild(evt.target.responseXML.querySelector('form[action^="/records/evaluate"]'));
+          Array.from(form.querySelectorAll('script')).map(script => script.text).forEach(eval);
+          form.addEventListener('submit', function (evt) {
+            evt.preventDefault();
+            var request = new XMLHttpRequest();
+            request.open('POST', this.action);
+            request.addEventListener('load', function (evt) {
+              var node = evt.target.responseXML.querySelector(`a[href="${clicked.pathname}"]`);
+              node.style.opacity = 0;
+              var replace = node.parentNode.parentNode.parentNode;
+              var original = clicked.parentNode.parentNode.parentNode;
+              original.parentNode.replaceChild(replace, original);
+              setTimeout(Object.assign.bind(null, node.style, {opacity: 1}),10);
+              setTimeout(HTMLElement.prototype.removeChild.bind(overlay.parentNode, overlay), 750);
+
+            });
+            document.body.classList.remove('overlay');
+            request.send(new FormData(this));
+          });
+        });
+        request.send();
+      }
+    });
+  });
+  </script>
   <table class="full chart tt bb">
     <caption>
       <h3 class="rag-left pad b caps spaced">Projects</h3>

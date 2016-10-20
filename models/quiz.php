@@ -26,6 +26,12 @@ namespace models;
       return round($context['@credit'] / $this->criterion['@points'], 2);
     }
 
+    public function getWeighted(\DOMElement $context)
+    {
+      return $this->status == 'open' ? 'NA' : $this->stats['standard'];
+    }
+
+
     public function getLetter(\DOMElement $context)
     {
       return \models\Assessment::LETTER($this->stats['standard'] / 100);

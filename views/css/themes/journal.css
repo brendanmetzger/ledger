@@ -85,7 +85,7 @@ ul.index a:not(.selected):hover, ul.index li a.selected {
 }
 
 
-hr, li+li {border-width:1px 0 0;border-color:rgba(0,0,0,0.025);}
+hr, li {border-width:1px 0 0;border-color:rgba(0,0,0,0.025);}
 *.massive{border-width:0 0 1px}
 h1.massive, .script {font-family:'Dr Carbfred W01 Regular';padding:1vmax 0 0 0.5em;}
 
@@ -161,7 +161,9 @@ summary h3 {display:inline;font-size:100%;}
 h4 {text-transform:uppercase;font-weight:600;}
 h5, .h5 {font-weight:400;font-size:1.8em;margin:0;display:block;line-height:1.125}
 h4,.h4{font-size:calc(1em + 0.75vmin);line-height:125%;}
-
+.h1, .h2, .h3, .h4, .h5 {
+  display: block;
+}
 summary::-webkit-details-marker {
   display: none
 }
@@ -696,4 +698,13 @@ video {
   color:#fff;
   padding:0.125em 0.5em;
   transform: rotate(-12deg)
+}
+
+
+body > div:last-of-type form {
+  margin: 10% auto;
+  width:65%;
+  padding: 2em;
+  background-color: #fff;
+  box-shadow: 0 0 0.5em rgba(0,0,0,0.1);
 }

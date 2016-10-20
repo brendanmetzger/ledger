@@ -130,7 +130,7 @@ namespace models;
     static public function LETTER($score, $multiplier = 1)
     {
       foreach (self::$rubric as $letter => $threshold) {
-        if ($score > ($threshold * $multiplier)) {
+        if ($score >= ($threshold * $multiplier)) {
           return $letter;
         }
       }

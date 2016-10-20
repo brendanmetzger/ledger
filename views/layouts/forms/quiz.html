@@ -1,5 +1,8 @@
 <fieldset class="container">
   <legend>[$topic]</legend>
-  <label for="credit" class="h4">Score</label>
+  <label for="credit" class="h4 t b">Score</label>
   <input id="credit" style="font-size:3em;width:4em;" type="number" name="quiz[@][credit]" value="[$quiz:@credit]" />
+  <script type="text/javascript">
+    document.querySelector('#credit').select();
+  </script>
 </fieldset>

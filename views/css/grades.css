@@ -28,6 +28,10 @@ ul.scores li {
   border-left:1px solid rgba(255,255,255,0.75);
 }
 
+td[style] {
+  background-color: hsla(calc(var(--hue) * 1.25), 75% , calc(var(--value) / 2.5 + 50%), 0.35);
+}
+
 .percentage[title^='A'], .A {
   color: rgb(106, 194, 136);
 }
@@ -43,33 +47,22 @@ ul.scores li {
 .percentage[title^='F'], .F {
   color:rgb(218, 75, 122);
 }
-.marked[title^="A"] {
-  background-color:rgba(151, 207, 150, 0.5);
-}
+
 tr.marked[title^="A"] {
   background-color:rgba(157, 223, 126, 0.15);
 }
-.marked[title^="B"] {
-  background-color:rgba(217, 216, 111, 0.5)
-}
+
 tr.marked[title^="B"] {
   background-color:rgba(217, 216, 111, 0.1);
-}
-.marked[title^="C"] {
-  background-color:rgb(105, 178, 191);
 }
 tr.marked[title^="C"] {
   background-color:rgba(105, 178, 191, 0.1);
 }
-.marked[title="D"] {
-  background-color:rgb(232, 154, 116);
-}
+
 tr.marked[title="D"] {
   background-color:rgba(232, 154, 116, 0.1);
 }
-.marked[title="F"] {
-  background-color:rgba(245, 52, 4, 0.5);
-}
+
 tr.marked[title="F"] {
   background-color:rgba(245, 52, 4, 0.1);
 }
@@ -77,8 +70,7 @@ tr.marked[title="F"] {
   color:rgba(215, 125, 150, 1);
 }
 .transpired.marked[title="-"] {
-  background-color:rgba(215, 125, 150, 0.5);
-
+  background-color:rgba(215, 125, 150, 0.25);
 }
 
 ul.scores li.open {
