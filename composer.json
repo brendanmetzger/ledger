@@ -1,5 +1,7 @@
 {
+    "license": "proprietary",
     "require": {
-        "wildbit/postmark-php": "^2.1"
+        "wildbit/postmark-php": "^2.1",
+        "kzykhys/ciconia": "~1.0.0"
     }
 }

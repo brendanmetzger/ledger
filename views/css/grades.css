@@ -28,7 +28,7 @@ ul.scores li {
   border-left:1px solid rgba(255,255,255,0.75);
 }
 
-td[style] {
+td[style], col[style] {
   background-color: hsla(calc(var(--hue) * 1.25), 75% , calc(var(--value) / 2.5 + 50%), 0.35);
 }
 

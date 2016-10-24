@@ -56,8 +56,8 @@ namespace models;
       $filename = substr($this->url, -1) === '/' ? 'index.html' : pathinfo(parse_url($this->url)['path'])['basename'];
 
 
-      $file = $doc->pick("/records/file[@index='{$idx}' and @name='{$filename}']");
-      if ($file instanceof \bloc\dom\element) {
+      $file = $doc->last("/records/file[@index='{$idx}' and @name='{$filename}']");
+      if ($file instanceof \bloc\dom\element && (new \DateTime($file->getAttribute('created')))->diff(new \DateTime())->format('%a') < 1) {
         $content = base64_decode($file->getAttribute('content'));
       } else {
 
@@ -94,9 +94,12 @@ namespace models;
     {
       $doc = $this->student->records;
       $idx = $this->criterion->context['@index'];
-      $file = $doc->pick("/records/file[@index='{$idx}' and @name='readme.txt']");
+      $file = $doc->last("/records/file[@index='{$idx}' and @name='readme.txt']");
 
       if ($file instanceof \bloc\dom\element) {
+        if ((new \DateTime($file->getAttribute('created')))->diff(new \DateTime())->format('%a') < 1) {
+          $file->setAttribute('content', base64_encode(file_get_contents($this->url.'readme.txt')));
+        }
         $content = base64_decode($file->getAttribute('content'));
       } else {
         $content = file_get_contents($this->url.'readme.txt');
@@ -111,20 +114,47 @@ namespace models;
       return new \bloc\types\dictionary(['summary' => substr($content, 0, 50).'...', 'content' => nl2br(trim($content))]);
     }
 
-    public function getLinkedFiles(\DOMElement $context)
+    public function linkedFile($name)
     {
-      $xpath = new \DOMXpath($this->markup);
-      $links = $xpath->query("//meta[@name='hours']");
+      $doc = $this->student->records;
+
+      $url = $this->url . $name;
+      $filename = pathinfo(parse_url($url)['path'])['basename'];
+      $idx = substr($filename, 0, 6) == 'global' ? '*' : $this->criterion->context['@index'];
+
+      $file = $doc->last("/records/file[@index='{$idx}' and @name='{$filename}']");
+
+      if ($file instanceof \bloc\dom\element && (new \DateTime($file->getAttribute('created')))->diff(new \DateTime())->format('%a') < 1) {
+        $content = base64_decode($file->getAttribute('content'));
+      } else {
+        $content = file_get_contents($url);
+        $file = $doc->documentElement->appendChild($doc->createElement('file'));
+        $file->setAttribute('index', $idx);
+        $file->setAttribute('name', $filename);
+        $file->setAttribute('content', base64_encode($content));
+        $file->setAttribute('created', (new \DateTime())->format('Y-m-d H:i:s'));
+
+        $cssvalidator = "https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3&uri=";
+        $code = substr(get_headers($url)[0], 9, 3);
+        $report = base64_encode(($code < 400) ? file_get_contents($cssvalidator . $url) : 'NA');
+
+        $file->setAttribute('errors', $report);
+        $doc->save();
+      }
+
+      return $file;
     }
 
     public function getValidate(\DOMelement $context)
     {
       $doc = $this->student->records;
+
       $markup = $this->markup;
+
       $idx = $this->criterion->context['@index'];
       $filename = substr($this->url, -1) === '/' ? 'index.html' : pathinfo(parse_url($this->url)['path'])['basename'];
 
-      $file = $doc->pick("/records/file[@index='{$idx}']");
+      $file = $doc->last("/records/file[@index='{$idx}' and @name='{$filename}']");
       if ($errors = $file->getAttribute('errors')) {
 
         $content = base64_decode($errors);
@@ -142,14 +172,19 @@ namespace models;
         $doc->save();
       }
 
+      if (empty($content)) {
+        \bloc\application::instance()->log(curl_error($handle));
+      }
       return  json_decode($content);
 
     }
 
     public function getFormatted(\DOMElement $context)
     {
-      $parsedown = new \vendor\Parsedown;
-      return $parsedown->text(trim((string)$this));
+      $ciconia = new \Ciconia\Ciconia();
+      // $html = $ciconia->render('Markdown is **awesome**');
+      // $parsedown = new \vendor\Parsedown;
+      return $ciconia->render(trim((string)$this));
     }
 
   }

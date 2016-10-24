@@ -176,19 +176,28 @@ namespace models;
       }
 
       foreach ($xpath->query("//link[not(contains(@href, 'http')) and contains(@href, '.css')]") as $file) {
+
         $src = $file->getAttribute('href');
+        $file = $assessment->linkedFile($src);
+
         $uri = $assessment->url . '/' .$src;
         $code = substr(get_headers($uri)[0], 9, 3);
-        if ($code < 400) {
-          $report = json_decode( file_get_contents("https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3&uri=". $uri));
-          $count = $report->cssvalidation->result->errorcount;
+
+        if ($errors = base64_decode($file->getAttribute('errors'))) {
+          if ($errors == 'NA') {
+              $report = 'not-found';
+              $count = "fix";
+          } else {
+            $report = json_decode($errors);
+            $count = $report->cssvalidation->result->errorcount;
+          }
         } else {
-          $report = 'not-found';
-          $count = "fix";
+          $count = "NA";
         }
+
         $files[] = [
           'url'     => base64_encode($uri),
-          'name'    => substr($src, strrpos($src, '/') + 1),
+          'name'    => $file->getAttribute('name'),
           'content' => null,
           'type'    => 'lang-css',
           'report'  =>  ['count' => $count, 'errors' => (new \bloc\types\Dictionary($report->cssvalidation->errors ?? []))->map(function ($item) {

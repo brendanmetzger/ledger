@@ -1,10 +1,46 @@
 <article class="gradebook">
-  <style>[a.edit:before{content:'$instructor:edit'}]</style>
-  <link rel="stylesheet" href="/css/table.css"/>
+  <style>
+    [a.edit:before {
+      content: '$instructor:edit'
+    }
+
+    ]
+  </style>
+  <link rel="stylesheet" href="/css/table.css" />
   <header class="banner">
     <h1 class="tt">[$course:@title §$section:@id]</h1>
     <h4><time>[$section:time]</time> <span>[Room $section:@room]</span></h4>
   </header>
+  <table class="full chart tt bb">
+    <caption>
+      <h3 class="rag-left pad b caps spaced">Overview</h3>
+    </caption>
+    <thead>
+      <tr class="rotate">
+        <th>index</th>
+        <!-- iterate section:students -->
+        <th><a href="[/records/student/$student:@id]">[$student:shortname]</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Grade</th>
+        <!-- iterate section:students -->
+        <td style="[--hue: $student:grade:score; --value: $student:grade:score%;]" class="centered">[$student:grade:letter]</td>
+      </tr>
+      <tr>
+        <th>Score</th>
+        <!-- iterate section:students -->
+        <td class="centered percentage">[$student:grade:score]</td>
+      </tr>
+      <tr>
+        <th>absences</th>
+        <!-- iterate section:students -->
+        <td class="centered">todo</td>
+      </tr>
+    </tbody>
+  </table>
+
   <table class="full chart tt bb">
     <caption>
       <h3 class="rag-left pad b caps spaced">Attendance</h3>
@@ -43,7 +79,7 @@
       <tr class="[$criterion:status]">
         <th><a href="[[/records/book/$$section:@course/$$section:@id/practice/$criterion:@index]]">[$title]</a></th>
         <!-- iterate records -->
-        <td class="[centered marked $assessment:schedule:status]"  style="[--hue: $assessment:practice:percentage; --value: $assessment:practice:percentage%;]" title="[$assessment:practice:letter]">
+        <td class="[centered marked $assessment:schedule:status]" style="[--hue: $assessment:practice:percentage; --value: $assessment:practice:percentage%;]" title="[$assessment:practice:letter]">
           <a class="percentage edit" href="[[/records/evaluate/practice/$$criterion:@index/$student:@id]]">[$assessment:practice:percentage]</a>
         </td>
       </tr>
@@ -72,41 +108,42 @@
     </tbody>
   </table>
   <script type="text/javascript">
-  bloc.init('ajax', function() {
-    document.querySelector('article.gradebook').addEventListener('click', function (evt) {
-      var clicked = evt.target;
-      if (clicked.matches("td a.quick")) {
-        clicked.style.opacity = 0;
-        evt.preventDefault();
-        var request = new XMLHttpRequest();
-        var overlay = document.body.appendChild(document.createElement('div'));
-        request.open('GET', clicked.href);
-        request.addEventListener('load', function (evt) {
-          document.body.classList.add('overlay');
-          var form = overlay.appendChild(evt.target.responseXML.querySelector('form[action^="/records/evaluate"]'));
-          Array.from(form.querySelectorAll('script')).map(script => script.text).forEach(eval);
-          form.addEventListener('submit', function (evt) {
-            evt.preventDefault();
-            var request = new XMLHttpRequest();
-            request.open('POST', this.action);
-            request.addEventListener('load', function (evt) {
-              var node = evt.target.responseXML.querySelector(`a[href="${clicked.pathname}"]`);
-              node.style.opacity = 0;
-              var replace = node.parentNode.parentNode.parentNode;
-              var original = clicked.parentNode.parentNode.parentNode;
-              original.parentNode.replaceChild(replace, original);
-              setTimeout(Object.assign.bind(null, node.style, {opacity: 1}),10);
-              setTimeout(HTMLElement.prototype.removeChild.bind(overlay.parentNode, overlay), 750);
-
+    bloc.init('ajax', function() {
+      document.querySelector('article.gradebook').addEventListener('click', function(evt) {
+        var clicked = evt.target;
+        if (clicked.matches("td a.quick")) {
+          clicked.style.opacity = 0;
+          evt.preventDefault();
+          var request = new XMLHttpRequest();
+          var DOMoverlay = document.body.appendChild(document.createElement('div'));
+          request.open('GET', clicked.href);
+          request.addEventListener('load', function(evt) {
+            document.body.classList.add('overlay');
+            var form = DOMoverlay.appendChild(evt.target.responseXML.querySelector('form[action^="/records/evaluate"]'));
+            Array.from(form.querySelectorAll('script')).map(script => script.text).forEach(eval);
+            form.addEventListener('submit', function(evt) {
+              evt.preventDefault();
+              var request = new XMLHttpRequest();
+              request.open('POST', this.action);
+              request.addEventListener('load', function(evt) {
+                var node = evt.target.responseXML.querySelector(`a[href="${clicked.pathname}"]`);
+                node.style.opacity = 0;
+                var replace = node.parentNode.parentNode.parentNode;
+                var original = clicked.parentNode.parentNode.parentNode;
+                original.parentNode.replaceChild(replace, original);
+                setTimeout(Object.assign.bind(null, node.style, {
+                  opacity: 1
+                }), 10);
+                setTimeout(HTMLElement.prototype.removeChild.bind(DOMoverlay.parentNode, DOMoverlay), 750);
+              });
+              document.body.classList.remove('overlay');
+              request.send(new FormData(this));
             });
-            document.body.classList.remove('overlay');
-            request.send(new FormData(this));
           });
-        });
-        request.send();
-      }
+          request.send();
+        }
+      });
     });
-  });
   </script>
   <table class="full chart tt bb">
     <caption>

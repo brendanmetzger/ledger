@@ -41,3 +41,4 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Make an infographic/visualization of the semester to come
 - [ ] Add courses/sections to instructor footer
 - [ ] show course progress (perhaps as a favicon) in terms of semester and individual classes
+- [ ] Write essay explaining how to approach effort in that I'm the client, students are design/development firm (sending broken links bad)

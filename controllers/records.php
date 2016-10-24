@@ -71,8 +71,8 @@ class Records extends \bloc\controller
       $view->content = "views/layouts/assignments.html";
       $this->records = \models\Assessment::GRADEBOOK($this->section);
     } else if ($type === 'practice'){
-      $this->assignment = $a = $this->records['practice'][$index];
       $criteria = $this->section->assignments($type)->pick($index);
+      $this->assignment = new \models\Criterion($criteria);
       $this->submissions = $this->section->students->map(function ($item) use($type, $index, $criteria) {
         $student = new \models\student($item);
         return [

@@ -1,24 +1,27 @@
 <article>
-  <link rel="stylesheet" href="/css/table.css"/>
+  <link rel="stylesheet" href="/css/table.css" />
   <header class="banner">
-    <h1>[$assignment:title]</h1>
+    <h1>[$assignment:@title]</h1>
     <h4><time datetime="[$assignment:due:datetime]">[Due $assignment:due:date]</time></h4>
   </header>
   <table class="full chart tt bb">
     <style>
-    table.chart thead th.integer {
-      width:1em;
-    }
-    td summary {
-      font-size:1.75em;
-    }
-    tbody td:not(.text) {
-      vertical-align:middle;
-      text-align:center;
-    }
-    td.text {
-      width:65%;
-    }
+      table.chart thead th.integer {
+        width: 1em;
+      }
+
+      td summary {
+        font-size: 1.75em;
+      }
+
+      tbody td:not(.text) {
+        vertical-align: middle;
+        text-align: center;
+      }
+
+      td.text {
+        width: 65%;
+      }
     </style>
     <caption>
       <details class="whitepaper rag-right">
@@ -41,7 +44,7 @@
       <!-- iterate submissions -->
       <tr>
         <th>[$student:@name]</th>
-        <td class="percentage">[$evaluation:percentage]</td>
+        <td class="percentage"><a href="[[/records/evaluate/practice/$$assignment:@index/$student:@id]]">[$evaluation:percentage]</a></td>
         <td>[$evaluation:hours]</td>
         <td>-</td>
         <td>-</td>
