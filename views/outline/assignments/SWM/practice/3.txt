@@ -1,0 +1,17 @@
+# Strategy
+I have nothing to review yet.
+
+
+# TODO
+- [ ] Collected 9 images: have a lower resolution thumbnail size and a higher resolution full size image
+- [ ] Named the images in an organized way and put in a directory or separate directories for different sizes
+- [ ] Created a gallery in HTML
+- [ ] Floated the images in a 3 ✕ 3 grid
+- [ ] Your global stylsheet has a `.container` class
+- [ ] Your global stylesheet has a universal selector with a `box-sizing` set to `border-box`
+- [ ] Clicking on any image will link to the high resolution version
+- [ ] You know what `.container` class and `box-sizing` do
+- [ ] Your code is organized either by your hand or with a plugin
+
+# Questions and Outcome
+None.

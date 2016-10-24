@@ -42,8 +42,8 @@
     </thead>
     <tbody>
       <!-- iterate submissions -->
-      <tr>
-        <th>[$student:@name]</th>
+      <tr class="[$evaluation:status]" title="[$evaluation:letter]">
+        <th><a href="[/records/student/$student:@id]">[$student:@name]</a></th>
         <td class="percentage"><a href="[[/records/evaluate/practice/$$assignment:@index/$student:@id]]">[$evaluation:percentage]</a></td>
         <td>[$evaluation:hours]</td>
         <td>-</td>
