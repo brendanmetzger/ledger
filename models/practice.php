@@ -181,9 +181,9 @@ namespace models;
 
     public function getFormatted(\DOMElement $context)
     {
-      $ciconia = new \Ciconia\Ciconia();
+      // $ciconia = new \Ciconia\Ciconia();
       // $html = $ciconia->render('Markdown is **awesome**');
-      // $parsedown = new \vendor\Parsedown;
+      $parsedown = new \vendor\Parsedown;
       return $ciconia->render(trim((string)$this));
     }
 
