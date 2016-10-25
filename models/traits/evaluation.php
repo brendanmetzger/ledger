@@ -39,7 +39,10 @@ trait evaluation {
 
   public function getFlag(\DOMElement $context)
   {
-    return ($this->score <= 0 && $this->status == 'marked') ? '⚐' : '✗';
+    if ($this->status == 'open') {
+      return 'NA';
+    }
+    return ($this->status == 'marked' && $this->score) <= 0 ? '⚐' : '✗';
   }
 
 }
