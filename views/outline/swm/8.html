@@ -10,7 +10,8 @@
   </article>
   <!-- insert views/topics/tables/css-specificity.html -->
   <article id="smooth-scrolling">
-    <script src="/javascript/smooth-scroll.js" charset="utf-8"> </script>
+    <script src="/javascript/smooth-scroll.js" charset="utf-8">
+    </script>
     <h2>Smooth Scrolling</h2>
     <p class="indented">I've written a <a href="/javascript/smooth-scroll.js">smooth-scrolling snippet</a> that you can use if you like. This bit of code, like the way of JavaScript-based animation in general, will go the way of the dinosaur soon. Like transitions and keyframe animation, there is already a <a href="https://drafts.csswg.org/cssom-view/#scrolling"><abbr title="cascading stylesheets">CSS</abbr> spec</a> on the books to facilitate a transitioned scroll... the countdown begins.</p>
     <p>While investigating anchors, you should find some interest in the <code>:target</code> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target">pseudo-class</a>. Note above, text of the <code>&lt;h2&gt;</code> will be red if the document has #smooth-scrolling at the end of the url—very handy.</p>
@@ -34,7 +35,7 @@
       <dd>Here’s an important tip: you can you JavaScript to read/write styles directly on a <abbr>dom</abbr> element to control visibility, you should strongly consider using classes to do this. If you want to hide an element, where should the class be applied?</dd>
     </dl>
   </article>
-  <article>
+  <article id="functions" data-classification="function javascript intermediate fundamental">
     <h2>Functions</h2>
     <p class="intro">The most important part of the way we write JavaScript is the notion of functions. Before we go down that road, we must understand a little bit about the namesake and the reasoning behind these methods. Functions are necessary, they are fascinating and they can even be beautiful.</p>
     <section class="container">
@@ -44,13 +45,13 @@
       </div>
       <figure class="____ float left">
         <figcaption class="pad">A function can be thought of as a machine that takes something as input and returns output. Given the same input, it will always return the same output.</figcaption>
-        <img src="/css/media/function-machine.svg" alt="function diagram" style="width:50%;margin:0 25%;"/>
+        <img src="/css/media/function-machine.svg" alt="function diagram" style="width:50%;margin:0 25%;" />
       </figure>
     </section>
     <aside class="whitepaper centered tt">
       <p>We will spend the rest of class taking apart and thinking about a <strong>cosine</strong>, why it is a function, and what that means. We’ll make our own cosine function, all homemade, using a <a href="https://en.wikipedia.org/wiki/Taylor_series">300 year old technique</a>. I expect this to be challenging, but you’ll walk away knowing a few things: there is no such thing as magic and small details can lead to big ideas.</p>
       <p>While looking at the formula below, the first mystery we’ll see is that the cosine function (denoted <em>cos(x)</em>) is really a composition of two other mathematical functions and repeatable process (a loop). Make sure you are able to spot those three elements (<a href="https://en.wikipedia.org/wiki/Exponential_function">hint</a>, <a href="https://en.wikipedia.org/wiki/Factorial">hint</a>).</p>
-      <img src="https://upload.wikimedia.org/math/7/5/0/75020b6f0a1afdfb5b67e11f520a99e7.png" alt="the cosine power series" class="t pad"/>
+      <img src="https://upload.wikimedia.org/math/7/5/0/75020b6f0a1afdfb5b67e11f520a99e7.png" alt="the cosine power series" class="t pad" />
     </aside>
   </article>
   <article>

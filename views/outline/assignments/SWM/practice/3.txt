@@ -1,17 +1,20 @@
-# Strategy
-I have nothing to review yet.
+# Media
 
+## Goal
+(your words here)
 
-# TODO
-- [ ] Collected 9 images: have a lower resolution thumbnail size and a higher resolution full size image
+## TODO
+- [ ] Collected 9 (or more) images: have a lower resolution thumbnail size and a higher resolution full size image
 - [ ] Named the images in an organized way and put in a directory or separate directories for different sizes
 - [ ] Created a gallery in HTML
-- [ ] Floated the images in a 3 ✕ 3 grid
-- [ ] Your global stylsheet has a `.container` class
-- [ ] Your global stylesheet has a universal selector with a `box-sizing` set to `border-box`
+- [ ] Floated the images in a 3 ✕ 3 grid (or other dimension if using more than 9 images)
+- [ ] Your global stylsheet has a `.container` class and a universal selector with `box-sizing` set to `border-box`
 - [ ] Clicking on any image will link to the high resolution version
-- [ ] You know what `.container` class and `box-sizing` do
-- [ ] Your code is organized either by your hand or with a plugin
+- [ ] Use a CSS transition
+- [ ] Your code is structurally organized either by your hand or with a plugin
+- [ ] FILL IN WITH YOUR OWN TODO (or accept 10% deduction)
+- [ ] FILL IN WITH YOUR OWN TODO (or accept 10% deduction)
 
-# Questions and Outcome
-None.
+
+## Questions and Outcome
+(your words here)
