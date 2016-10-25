@@ -1,6 +1,8 @@
 <div>
-  <link rel="stylesheet" href="/css/examples/transitions.css"/>
-  <script type="text/javascript">bloc.embed('/javascript/examples/dom.js');</script>
+  <link rel="stylesheet" href="/css/examples/transitions.css" />
+  <script type="text/javascript">
+    bloc.embed('/javascript/examples/dom.js');
+  </script>
   <header>
     <!-- insert views/outline/_/crumbs.html -->
     <h1 class="massive">Razzle Dazzle</h1>
@@ -18,7 +20,7 @@
       <p>When researching transitions, you’ll no doubt notice a lot of resources using <em>vendor-prefixes</em>. At this point, un-prefixed use of the <code>transition</code> property has <a href="http://caniuse.com/#feat=css-transitions">wide support</a>, and any tutorial or literature using a prefix is somewhat outdated. This is why it is so important to <strong>research and cite multiple resources for information</strong>.</p>
       <p>Transforms, on the other hand, apply methods and vernacular commonly seen in programming, especially in regards to how elements are <em>painted or drawn</em>. From the spec on transforms: <q>CSS transforms allows elements styled with CSS to be transformed in two-dimensional or three-dimensional space. </q></p>
     </section>
-    <hr class="ruled t b"/>
+    <hr class="ruled t b" />
     <h3>Keep in Mind</h3>
     <p>When you learn how to jazz things up it quickly becomes tempting to go a little crazy. Starting out, I say what the hell, go over the top... but I would be remiss if I didn’t point out that sometimes effects can get annoying when they pile up or make things difficult to use. In addition to that, I've made a list of a few pointers for the road, if you will.</p>
     <ul class="stylized star t">
@@ -47,7 +49,7 @@
       <p>As meta as this all seems, this abstraction is important, and perfectly describes programming. Looking back, we already know we have a <code>document</code> object that it has properties and properties tell us things about the object, like when it was last modified: type <code>document.lastModified</code> into your browser console and see what happens (in fact, do it several times).</p>
       <p>Of present concern is the things we can ask the <code>document</code> to do for us, like find elements. One of the most important parnts of a document is the fact that it can help us find other elements using <em>query selectors</em>—yes, the very same selectors you've been learning about for weeks!</p>
     </section>
-    <hr class="ruled t b"/>
+    <hr class="ruled t b" />
     <p>Arguably the most useful feature of JavaScript is the tight integration to the Document Object Model, and the quickest introduction we can make is by employing our <abbr>CSS</abbr> selector knowledge. The <code>document</code> object itself has many methods for selecting Elements, but there are really only two you need to remember. The two methods in question are <em>querySelector</em> and <em>querySelectorAll</em>, and you access them by using the ‘.’ operator on the <code>document</code>. These two methods can be fed regular <abbr>css</abbr> query selectors as arguments and will return the appropriate <abbr>html</abbr> element(s).</p>
     <section class="instruction container pad">
       <dl class="______ float left">
@@ -87,7 +89,7 @@
         <p>Transitions are simple enough to implement, but designing with the full power of transitions can be quite masterful. In the example <abbr>CSS</abbr> I've provided, scan the document for <code>&lt;h2&gt;</code> Elements with a little pair of scissors before the text—click on them. Note in the code, the <abbr>CSS</abbr> is controlling the scissor icon with a pseudo element, and thus can be manipulated with <abbr>CSS</abbr> techniques we have available.</p>
         <p>Look at the contrasting <abbr>CSS</abbr> and Javascript as it illustrates a key point about the nature of our programming languages. First, <mark>I haven’t changed any of my markup</mark> to accommodate the <abbr>CSS</abbr> or JavaScript I need to pull off this trick. The next is that <abbr>CSS</abbr> is by far most verbose part of any program I write and I've utilized complicated selectors to my advantage. The last bit is the JavaScript, which, when aided by efficient <abbr>CSS</abbr> and <abbr>HTML</abbr>, is typically concise.</p>
         <p><strong>Please Note:</strong> The JavaScript is obscure and I use some techniques I wouldn't expect out of an advanced class, but this is only to illustrate this point. Try to get the gist first, and worry about the details later. You will learn easier techniques for accomplishing similar tasks.</p>
-        <hr class="ruled"/>
+        <hr class="ruled" />
         <p><strong>When using transforms</strong>, be aware that you’ll only be able to apply transformations to a <a href="https://www.w3.org/TR/css-transforms-1/#transformable-element">transformable elements</a>, that is, <em>an element that applies block-formatting</em> via the box-model. Remember, <mark> any element can be forced into a block formatted element explicitly by setting <code>display</code> property to 'block' or 'inline-block', or implicitly when you have set a <code>float</code> or used an absolute or fixed <code>position</code></mark>.</p>
       </aside>
       <pre class="prettyprint ______ float left whitepaper">
@@ -99,6 +101,7 @@
   </article>
   <article>
     <h2>References and Practice Material</h2>
+    <p class="intro">Here is the list of <a href="http://iam.colum.edu/brendan.metzger/vids/">previous lectures</a> that are available to watch.</p>
     <dl>
       <dt>CSS Transisitions and Transforms</dt>
       <dd>Here are the <abbr>MDN</abbr> specs for referencing <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">transitions</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform">transforms</a></dd>
