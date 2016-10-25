@@ -42,7 +42,7 @@ trait evaluation {
     if ($this->status == 'open') {
       return 'NA';
     }
-    return ($this->status == 'marked' && $this->score) <= 0 ? '⚐' : '✗';
+    return ($this->status == 'marked' && $this->score <= 0) ? '⚐' : '✗';
   }
 
 }
