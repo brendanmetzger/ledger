@@ -47,36 +47,47 @@
     <h2>Introductory Properties: <em>Typography</em></h2>
     <p>It has been written that <a href="https://ia.net/know-how/the-web-is-all-about-typography-period">Web Design is 95% typography</a> and giving some weight to that claim is the amount of leverage you have for controlling the typographic experience.</p>
     <p>Though we will do a more thorough investigation later, it would be a good idea to familiarize yourself with <a href="https://www.w3.org/Style/Examples/007/units.en.html"><abbr>CSS</abbr> units</a>—you really only need to get comfortable with a handful of them and understanding how they work..</p>
-    <hr class="ruled"/>
+    <hr class="ruled" />
     <section class="container">
+
       <dl class="______ float left">
         <dt><code>font-size</code> property</dt>
         <dd>Font-size sets the size of the text. Other properties can be based off of this size; when you declare a font-size for a particular element, that size will govern how all other properties are set when using a unit such as <code>em</code></dd>
+
         <dt><code>font-family</code> property</dt>
         <dd>Changes the typeface of an element.</dd>
         <dd>You can embed fonts, or use system fonts. If using system fonts, separate the fonts with a comma to have defaults in place if the user does not have the specified font.</dd>
         <dd>When specifying a font with multiple words, make sure to surround the name in double or single quotes.</dd>
+
         <dt><code>font-weight</code> property</dt>
         <dd>Controls weight thin/normal/bold, or in 3 digit numbers like 200, 400, 800 (preferred, especially for full typefaces with more than three weights)</dd>
         <dd>Mind that if you are bolding text, it is advisable to use the <code>&lt;strong&gt;</code> or <code>&lt;b&gt;</code> tags to lend semantic meaning</dd>
+
         <dt><code>font-style</code> property</dt>
         <dd>Can make italicized and oblique text (if your typeface has such nuances).</dd>
         <dd>Mind that if you are italicizing text, it is advisable to use the <code>&lt;em&gt;</code> or <code>&lt;i&gt;</code> tags to lend semantic meaning.</dd>
+
         <dt><code>line-height</code> property (leading)</dt>
         <dd>Usage is <code>line-height: (num)<em>unit</em>;</code></dd>
         <dd>Unlike print typography dominated by baselines, web typography is dominated by this unit. Mostly, you will use to control <q>leading</q>, or the space between lines. </dd>
         <dd><code>line-height</code> need not be a fixed number, it can also be a unit-less ratio such as <code>1.5</code> which would represent 1.5 times the value of whatever the <code>font-size</code> is—handy!</dd>
+
         <dt><code>letter-spacing</code> property (tracking)</dt>
         <dd>Adjusts the space between letters, can be positive or negative—mind, this is a different concept from kerning.</dd>
+
         <dt><code>text-align</code> property</dt>
         <dd>Used to align left, center, right align, as well as justify text. You can only align text in <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements">block-level elements</a>.</dd>
+
         <dt><code>text-transform</code> property</dt>
         <dd class="discuss">Offers transform to upper/lowercase, can capitalize a sentence.</dd>
+
         <dt><code>text-decoration</code> property</dt>
         <dd>Controls underline, line-through, overline, etc.</dd>
+
         <dt><code>text-indent</code> property</dt>
         <dd>set the indentation using a CSS unit.</dd>
         <dd>You can set a negative number for a hanging indent.</dd>
+
         <dt>Dregs</dt>
         <dd><code>word-spacing</code> like letter spacing, but for words.</dd>
         <dd><code>font-variant</code> controls advanced typographic features such as small-caps and ligatures (when available)</dd>
@@ -87,19 +98,18 @@
       <div class="____ float left examples">
         <h4>Examples</h4>
         <div style="font-size:16px;line-height:1.5">
-          <input type="range" min="10" max="30" step="2" value="16" oninput="this.parentNode.style.fontSize = this.nextElementSibling.querySelector('span').innerHTML = this.value + 'px'"/>I have specified the size in pixels or <code>font-size: <span>16px</span>;</code>. This is for the sake of example—I <strong>always</strong> use a relative unit for setting text size, such as <code>em</code>/<code>rem</code>, or the viewport units such as <code>vw</code> or <code>vh</code></div>
+          <input type="range" min="10" max="30" step="2" value="16" oninput="this.parentNode.style.fontSize = this.nextElementSibling.querySelector('span').innerHTML = this.value + 'px'" />I have specified the size in pixels or <code>font-size: <span>16px</span>;</code>. This is for the sake of example—I <strong>always</strong> use a relative unit for setting text size, such as <code>em</code>/<code>rem</code>, or the viewport units such as <code>vw</code> or <code>vh</code></div>
         <div>This is <code>&lt;strong&gt;</code><strong>strong text</strong><code>&lt;/strong&gt;</code> which exhibits the <code>font-weight</code> property and this is <code>&lt;em&gt;</code><em>em text</em><code>&lt;/em&gt;</code> which exhibits the <code>font-style</code> property</div>
-        <div style="line-height:1.35" data-banner="preferred">
-          <input type="range" min="0" max="3" step="0.125" value="1.35" oninput="this.parentNode.style.lineHeight = this.nextElementSibling.querySelector('span').innerHTML = this.value"/>This is a bit of text with a line-height of 1.35, or <code>line-height: <span>1.35</span>;</code>. Unit-less values are useful for some advanced reasons, but essentially, the ensure proportionality based on the text size.</div>
+        <div style="line-height:1.5" data-banner="preferred">
+          <input type="range" min="0" max="3" step="0.125" value="1.5" oninput="this.parentNode.style.lineHeight = this.nextElementSibling.querySelector('span').innerHTML = parseFloat(this.value, 10).toFixed(1);" />This is a bit of text with a line-height of 1.5, or <code>line-height: <span>1.5</span>;</code>. Unit-less values are useful for some advanced reasons, but essentially, the ensure proportionality based on the text size.</div>
         <div style="line-height:1em">This is a bit of text with a line-height of 1em, or <code><samp>selector</samp> { line-height: 1em; }</code>. Notice that 1em is essentially at a point where the <a href="https://en.wikipedia.org/wiki/Descender">descenders</a> of the previous line are nearly touching the <a href="https://en.wikipedia.org/wiki/Ascender_(typography)">ascenders</a> of the lines below.</div>
         <div>
-          <input type="range" min="-0.2" max="0.5" step="0.075" value="0" oninput="this.parentNode.style.letterSpacing = this.nextElementSibling.querySelector('span').innerHTML = this.value + 'em'"/>
-          Adjust the slider to see the letter spacing <code>letter-spacing: <span>0</span>;</code>. I prefer <code>em</code>s for all typographic work, but some leave delicate operations like this to <code>px</code>.</div>
+          <input type="range" min="-0.2" max="0.5" step="0.075" value="0" oninput="this.parentNode.style.letterSpacing = this.nextElementSibling.querySelector('span').innerHTML = this.value + 'em'" /> Adjust the slider to see the letter spacing <code>letter-spacing: <span>0</span>;</code>. I prefer <code>em</code>s for all typographic work, but some leave delicate operations like this to <code>px</code>.</div>
         <div style="text-align:left"><code>text-align: left;</code> it's in my left pocket | move to the left side: left-hand, sinistral; Nautical port, larboard; Heraldry sinister.</div>
         <div style="text-align:right"><code>text-align: right;</code> my right hand: dextral. Nautical starboard</div>
         <div style="text-align:center"><code>text-align: center;</code> middle, nucleus, heart, core, hub; middle point, midpoint, halfway point, mean, median.</div>
         <div style="text-align:justify"><code>text-align: justify;</code> will adjust (a line of type or piece of text) so that the print fills a space evenly or forms a straight edge at one or both margins.</div>
-        <div style="text-indent:10em"><input type="range" min="-1" max="10" step="0.5" value="10" oninput="this.parentNode.style.textIndent = this.nextElementSibling.querySelector('span').innerHTML = this.value + 'em'"/>Take a look here and notice that this text has a property of <code>text-indent: <span>10em</span>;</code>. The first line of the paragraph will be affected by this setting..</div>
+        <div style="text-indent:10em"><input type="range" min="-1" max="10" step="0.5" value="10" oninput="this.parentNode.style.textIndent = this.nextElementSibling.querySelector('span').innerHTML = this.value + 'em'" />Take a look here and notice that this text has a property of <code>text-indent: <span>10em</span>;</code>. The first line of the paragraph will be affected by this setting..</div>
       </div>
     </section>
   </article>
@@ -120,14 +130,19 @@
   <article id="reference">
     <h2>References and Practice Materials</h2>
     <p class="intro">Here is the list of <a href="http://iam.colum.edu/brendan.metzger/vids/">previous lectures</a> that are available to watch.</p>
+
     <dl>
       <dt>A Web Development Primer</dt>
+
       <dd>This course, while having no pre-requisites, will move at a good clip. If you are rusty, new, or want to be really prepared, I highly (highly) suggest you spend a good chunk of time going over <a href="http://marksheet.io/introduction.html">how the web works</a>, <a href="http://marksheet.io/html-basics.html">HTML basics</a>, and <a href="http://marksheet.io/html-content.html">HTML content</a>.</dd>
       <dt>HTML Elements</dt>
+
       <dd>The Mozilla Developer Network has a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">comprehensive list</a> of elements—no need to memorize, <strong>absolutely spend some time reviewing this list</strong>.</dd>
       <dt>Sectioning and Outlining</dt>
+
       <dd>Many developers suffer from a syndrome known as divitis, which is an overuse of <code>&lt;span&gt;</code> and <code>&lt;div&gt;</code> elements. While <a href="https://en.wikipedia.org/wiki/Span_and_div">span and div are handy</a>, and do fulfill a role, conscientious web developers engage in semantic markup, starting with using proper <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML_sections_and_outlines">sections and outlines</a>.</dd>
       <dt>Javascript and the Browser</dt>
+
       <dd>Though it’s <a href="http://eloquentjavascript.net/12_browser.html">Chapter 12</a> of a JavaScript Programming book, I think it serves as a perfect starting point for the level of thinking we need to engage in, and that is the notion of networks, servers, clients and protocols.</dd>
     </dl>
   </article>

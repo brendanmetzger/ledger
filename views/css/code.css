@@ -1,103 +1,168 @@
-/*@import url(https://fonts.googleapis.com/css?family=Inconsolata);*/
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
 
-code, pre, .code, .notate:after, code *, .code *{
-  font-family:'OCR A Tribute W01 Light','UniversNW01-430TwRegula', 'Courier New', monospace;
-  white-space:pre;
-  letter-spacing:0;
-  font-style:normal;
+.code,
+.code *,
+.notate:after,
+code,
+code *,
+pre {
+  font-family: Inconsolata, 'Courier New', monospace;
+  white-space: pre;
+  letter-spacing: 0;
+  font-style: normal;
 }
 
 samp {
-  color:#ccc;
+  color: #ccc;
 }
 
 .notate:after {
-  background-color:rgba(255,255,255,0.75);
-  padding:1em;
-  font-size:0.75em;
-  word-break:break-all;
+  background-color: rgba(255,255,255,0.75);
+  padding: 1em;
+  font-size: 0.75em;
+  word-break: break-all;
   content: attr(style);
-  display:block;
-  margin:1em 0 0;
-  white-space:pre-line;
+  display: block;
+  margin: 1em 0 0;
+  white-space: pre-line;
 }
 
 code sup {
-  color:#333;
-  font-size:75%;
-  padding:0 0.25em;
+  color: #333;
+  font-size: 75%;
+  padding: 0 0.25em;
 }
+
 code span.typ {
-  font-style:italic;
+  font-style: italic;
 }
+
 pre {
-  font-size:1.5em;
-  overflow:auto;
-  margin:0;
-  line-height:1.5em;
+  font-size: 1.5em;
+  overflow: auto;
+  margin: 0;
+  line-height: 1.5em;
 }
 
 code.block {
-  display:block;
-  font-size:1.5em;
+  display: block;
+  font-size: 1.5em;
 }
 
 .documentation dt {
-  font-weight:400;
-}
-.documentation dl code {
-  font-size:125%;
-}
-span[data-type] {
-  padding:0 0.5em;
-}
-code {
-  font-weight:100;
-  color:rgb(230, 100, 150);
-  white-space:nowrap;
+  font-weight: 400;
 }
 
+.documentation dl code {
+  font-size: 125%;
+}
+
+span[data-type] {
+  padding: 0 0.5em;
+}
+
+code {
+  font-weight: 100;
+  color: rgb(230, 100, 150);
+  white-space: nowrap;
+}
 
 pre.plain-text {
-  white-space:pre-line;
-  padding:2em;
-}
-.soft-wrap pre {
-  white-space:pre-wrap;
+  white-space: pre-line;
+  padding: 2em;
 }
 
+.soft-wrap pre {
+  white-space: pre-wrap;
+}
 /* desert scheme ported from vim to google prettify */
 pre.prettyprint {
   display: block;
-  padding:0.5em 0.75em;
-  border-color:rgba(0,0,0,0.05);
+  padding: 0.5em 0.75em;
+  border-color: rgba(0,0,0,0.05);
 }
+
 dt pre.prettyprint {
-  margin:1em 0 0.5em;
+  margin: 1em 0 0.5em;
 }
+
 pre.float {
-  border-width:0 0 0 1px;
+  border-width: 0 0 0 1px;
 }
 
 pre.whitepaper {
-  border:none;
-  box-shadow:-0.075em 0.075em 0.25em 0.075em rgba(0,0,0,0.05);
+  border: none;
+  box-shadow: -0.075em 0.075em 0.25em 0.075em rgba(0,0,0,0.05);
 }
 
-pre .nocode { background-color: none; color: #000 }
-pre .str { color: #ffa0a0 } /* string  - pink */
-pre .kwd, *[data-type] { color: #db2964; }
-pre .com { color: rgba(39, 164, 214, 0.8) } /* comment - skyblue */
-.typ { color: #72b072 } /* type    - lightgreen */
-pre .lit { color: #c76c6c } /* literal - darkred */
-pre .pun { color: #333;padding:0 0.085em; }    /* punctuation */
-pre .pln { color: #333 }    /* plaintext */
-pre .tag { color: #a77abd } /* html/xml tag    - lightyellow */
-pre .atn { color: #bdb76b } /* attribute name  - khaki */
-pre .atv { color: #ffa0a0 } /* attribute value - pink */
-pre .dec { color: #72b072 } /* decimal         - lightgreen */
-/* Specify class=linenums on a pre to get line numbering */
-ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE;} /* IE indents via margin-left */
+pre .nocode {
+  background-color: none;
+  color: #000;
+}
 
+pre .str {
+  color: #ffa0a0;
+}
+/* string  - pink */
+*[data-type],
+pre .kwd {
+  color: #db2964;
+}
+
+pre .com {
+  color: rgba(39, 164, 214, 0.8);
+}
+/* comment - skyblue */
+.typ {
+  color: #72b072;
+}
+/* type    - lightgreen */
+pre .lit {
+  color: #c76c6c;
+}
+/* literal - darkred */
+pre .pun {
+  color: #333;
+  padding: 0 0.085em;
+}
+/* punctuation */
+pre .pln {
+  color: #333;
+}
+/* plaintext */
+pre .tag {
+  color: #a77abd;
+}
+/* html/xml tag    - lightyellow */
+pre .atn {
+  color: #bdb76b;
+}
+/* attribute name  - khaki */
+pre .atv {
+  color: #ffa0a0;
+}
+/* attribute value - pink */
+pre .dec {
+  color: #72b072;
+}
+/* decimal         - lightgreen */
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #AEAEAE;
+}
+/* IE indents via margin-left */
 /* Alternate shading for lines */
-li.L1,li.L3,li.L5,li.L7,li.L9 { }
+li.L1,
+li.L3,
+li.L5,
+li.L7,
+li.L9 {}
+margin-left */
+/* Alternate shading for lines */
+li.L1,
+li.L3,
+li.L5,
+li.L7,
+li.L9 {}
