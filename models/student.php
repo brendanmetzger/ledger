@@ -53,12 +53,8 @@ namespace models;
 
     public function evaluation($topic, $index, $criteria = null)
     {
-      if ($topic == 'project') {
-        $index = ['midterm' => 0, 'final' => 1][$index];
-      }
       // get the Element
       $element = $this->context->getElement($topic, $index);
-
       // load the criterion & student if specified
       if ($criteria) {
         return Data::FACTORY($topic, $element)->loadCriterion($criteria)->loadStudent($this);

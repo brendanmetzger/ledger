@@ -8,7 +8,7 @@ namespace models;
 
   class Project extends Practice
   {
-    use traits\indexed, traits\persist, traits\evaluation;
+    use traits\indexed, traits\persist, traits\evaluation, traits\report;
 
     static public $fixture = [
       'project' => [
@@ -23,6 +23,11 @@ namespace models;
     public function getAxes(\DOMElement $context)
     {
       return explode('+', $context['@axes']);
+    }
+
+    public function getIndex(\DOMelement $context)
+    {
+      return ['midterm', 'final'][$this->criterion->context['@index']];
     }
 
     public function setProject(\DOMElement $context, $value)

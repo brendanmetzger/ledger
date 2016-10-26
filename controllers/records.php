@@ -70,7 +70,10 @@ class Records extends \bloc\controller
     if ($type === $index) {
       $view->content = "views/layouts/assignments.html";
       $this->records = \models\Assessment::GRADEBOOK($this->section);
-    } else if ($type === 'practice'){
+    } else if ($type === 'practice' || $type == 'project'){
+      if ($type == 'project' && is_string($index)) {
+        $index = ['midterm' => 0, 'final' => 1][$index];
+      }
       $criteria = $this->section->assignments($type)->pick($index);
       $this->assignment = new \models\Criterion($criteria);
       $this->submissions = $this->section->students->map(function ($item) use($type, $index, $criteria) {
@@ -104,21 +107,30 @@ class Records extends \bloc\controller
 
     $view = new View(self::layout);
 
-    $this->{$topic} = $this->item =  Data::FACTORY($topic, $this->student->evaluation($topic, $index));
+
 
     if ($topic == 'practice' || $topic == 'project') {
+      $this->url = $this->student->context['@url'] . "/{$topic}/{$index}";
+
+
+      if ($topic == 'project' && ! is_int($index)) {
+        $index = ['midterm' => 0, 'final' => 1][$index];
+      }
+
+      $this->{$topic} = $this->item =  Data::FACTORY($topic, $this->student->evaluation($topic, $index));
 
       $criterion = \models\Criterion::Collect(null, "[@type='{$topic}' and (@course = '{$this->student->course}' or @course = '*')]")->pick($index);
-      $this->url = $this->student->context['@url'] . "/{$topic}/{$index}";
-      if (is_int($index)) {
-        $this->files = \models\Assessment::LINKS($this->student->evaluation($topic, $index, $criterion));
-      }
+
+      $this->files = \models\Assessment::LINKS($this->student->evaluation($topic, $index, $criterion));
+
+
 
 
       $this->template = 'editor';
       $view->context = "views/layouts/forms/assignment.html";
       $view->content = "views/layouts/inspector.html";
     } else {
+      $this->{$topic} = $this->item =  Data::FACTORY($topic, $this->student->evaluation($topic, $index));
       $this->section = $this->student->section;
       $view->context = "views/layouts/list/section.html";
       $view->content = "views/layouts/forms/assignment.html";

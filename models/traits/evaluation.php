@@ -17,6 +17,11 @@ trait evaluation {
     return $this;
   }
 
+  public function getIndex(\DOMelement $context)
+    {
+      return $this->criterion->context['@index'];
+    }
+
   public function beforeSave()
   {
     $this->context->setAttribute('updated', (new \DateTime())->format('Y-m-d H:i:s'));

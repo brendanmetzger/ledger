@@ -159,10 +159,10 @@
     <tbody>
       <!-- iterate records:project -->
       <tr class="[$criterion:status]">
-        <th>[$title]</th>
+        <th><a href="[[/records/book/$$section:@course/$$section:@id/project/$criterion:@index]]">[$title]</a></th>
         <!-- iterate records -->
         <td class="[centered marked $assessment:schedule:status]" title="[$assessment:project:letter]">
-          <a class="percentage edit" href="[[/records/evaluate/project/$$criterion:@index/$student:@id]]">[$assessment:project:percentage]</a>
+          <a class="percentage edit" href="[[/records/evaluate/project/$$criterion:@index/$student:@id]]">[$assessment:project:weighted]</a>
         </td>
       </tr>
     </tbody>
