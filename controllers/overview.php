@@ -2,14 +2,15 @@
 namespace controllers;
 
 use \models\Instructor as Admin;
+use \models\Student;
 use \bloc\view;
 use \models\data;
 
 /**
- * Lecture
+ * Overview
  */
 
-class Lecture extends \bloc\controller
+class Overview extends \bloc\controller
 {
   use traits\config;
 
@@ -18,6 +19,13 @@ class Lecture extends \bloc\controller
   public function GETindex()
   {
     $view = new View(self::layout);
+    return $view->render($this());
+  }
+
+  protected function GETinstructor(Admin $instructor)
+  {
+    $view = new View(self::layout);
+    $view->content = 'views/layouts/instructor.html';
     return $view->render($this());
   }
 

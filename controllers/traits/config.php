@@ -3,6 +3,7 @@ namespace controllers\traits;
 use \bloc\view\Renderer as Render;
 
 trait config {
+
   public function __construct($request)
   {
     \models\Data::$DB = 'FA16';
@@ -12,7 +13,9 @@ trait config {
     \bloc\view::addRenderer('after', Render::REVIEW());
 
     $this->year        = date('Y');
-    $this->title       = "*SWM";
+
+    $this->title       = ucwords($request->controller . ' - ' . $request->action);
+
     //TODO: this should be done automatically
     $this->semester    = "FA16";
     $this->email       = 'bmetzger@colum.edu';
@@ -91,7 +94,7 @@ trait config {
         // authenticate user based on password
         (new \models\instructor(\models\Data::ID($uid)))->authenticate($pin);
         \bloc\Application::instance()->session('COLUM', ['id'=>  $uid]);
-        \bloc\router::redirect('/records/courses');
+        \bloc\router::redirect('/overview/instructor');
       } else {
         // user must be in database based on oasis id, find them: ;
         $user = \models\Data::ID(\models\Student::BLEAR($pin));

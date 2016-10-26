@@ -34,7 +34,7 @@ $app->prepare('http-request', function ($app, $params) {
   $router  = new Router('controllers', $request);
 
   try {
-    $output = $router->delegate('lecture', 'index');
+    $output = $router->delegate('overview', 'index');
   } catch (\Exception $e) {
     \bloc\application::instance()->log($e->getTrace());
     $view = new View(\controllers\records::layout);
