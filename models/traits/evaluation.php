@@ -50,4 +50,8 @@ trait evaluation {
     return ($this->status == 'marked' && $this->score <= 0) ? '⚐' : '✗';
   }
 
+  public function getWeighted(\DOMElement $context)
+  {
+    return $this->percentage;
+  }
 }

@@ -27,7 +27,7 @@ namespace models;
     public function getPath(\DOMElement $context)
     {
       $type  = $context['@type'];
-      $index = $type == 'project' ? ['midterm', 'final'][$context['@index']] : $context['@index'];
+      $index = $context['@index'];
       return "{$type}/{$index}";
     }
 }

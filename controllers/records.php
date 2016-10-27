@@ -71,7 +71,7 @@ class Records extends \bloc\controller
       $view->content = "views/layouts/assignments.html";
       $this->records = \models\Assessment::GRADEBOOK($this->section);
     } else if ($type === 'practice' || $type == 'project'){
-      if ($type == 'project' && is_string($index)) {
+      if ($type == 'project' && $index != 0 && $index != 1) {
         $index = ['midterm' => 0, 'final' => 1][$index];
       }
       $criteria = $this->section->assignments($type)->pick($index);
@@ -111,11 +111,12 @@ class Records extends \bloc\controller
 
     if ($topic == 'practice' || $topic == 'project') {
       $this->url = $this->student->context['@url'] . "/{$topic}/{$index}";
-
-
-      if ($topic == 'project' && ! is_int($index)) {
-        $index = ['midterm' => 0, 'final' => 1][$index];
+      if ($topic == 'project') {
+        $path = ['midterm','final'][$index];
+        $this->url = $this->student->context['@url'] . "/{$topic}/{$path}";
       }
+
+
 
       $this->{$topic} = $this->item =  Data::FACTORY($topic, $this->student->evaluation($topic, $index));
 

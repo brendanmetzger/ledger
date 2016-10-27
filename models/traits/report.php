@@ -70,7 +70,9 @@ trait report {
       // errors should be a serialized php thing.
       $doc->save();
     }
-    return new \bloc\types\dictionary(['summary' => sprintf('<em>%s...</em>', substr($content, 0, 50)), 'content' => nl2br(trim($content))]);
+    $parsedown = new \vendor\Parsedown;
+    $markup = $parsedown->text($content);
+    return new \bloc\types\dictionary(['summary' => strlen($content) == 2250 ? ' - ' : sprintf('<em>%s...</em>', substr(strip_tags($markup), 0, 50)), 'content' => nl2br(trim($content)), 'markup' => $markup]);
   }
 
   public function linkedFile($name)
