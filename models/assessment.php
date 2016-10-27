@@ -211,7 +211,7 @@ namespace models;
 
     public function getEvaluation($evaluation, $course = "*")
     {
-      $reviewed = $this->student->context->find($evaluation);
+      $reviewed = $this->student->context->find("{$evaluation}[@updated]");
       $total = $reviewed->count();
       $average  = 1 / ($total ?: 1);
       $accumulator = 0;
@@ -223,6 +223,8 @@ namespace models;
           'schedule'  => $this->student->section->schedule[$criterion['@assigned'] ?: $index],
           'due'       => $this->student->section->schedule[$criterion['@due'] ?: $index],
         ];
+
+
 
         $score = $map[$evaluation]->score;
 
@@ -242,6 +244,7 @@ namespace models;
       }, "[@type='{$evaluation}' and (@course = '{$course}' or @course = '*')]");
 
       $weight = Assessment::$weight[$evaluation];
+
       return new \bloc\types\dictionary([
         'list'   => iterator_to_array($collect, false),
         'score'  => $average === 1 && $total == 0 ? $weight : max(0, round($accumulator * $weight, 1)),

@@ -56,4 +56,9 @@ namespace models;
     {
       return $this->status == 'open' ? null : array_sum($this->axes);
     }
+
+    public function getWeighted(\DOMElement $context)
+    {
+      return $this->status == 'open' ? 'NA' : $this->stats['standard'];
+    }
   }

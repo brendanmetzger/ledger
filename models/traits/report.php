@@ -53,16 +53,12 @@ trait report {
     return $meta->length > 0 ? (float)$meta->item(0)->getAttribute('content') : 'NA';
   }
 
-  public function getReadme(\DOMElement $context)
+  public function getREADME(\DOMElement $context)
   {
     $doc = $this->student->records;
     $idx = $this->index;
     $file = $doc->last("/records/file[@index='{$idx}' and @name='readme.txt']");
-
-    if ($file instanceof \bloc\dom\element) {
-      if ((new \DateTime($file->getAttribute('created')))->diff(new \DateTime())->format('%a') < 1) {
-        $file->setAttribute('content', base64_encode(file_get_contents($this->url.'readme.txt')));
-      }
+    if ($file instanceof \bloc\dom\element && (new \DateTime($file->getAttribute('created')))->diff(new \DateTime())->format('%a') < 1) {
       $content = base64_decode($file->getAttribute('content'));
     } else {
       $content = file_get_contents($this->url.'readme.txt');
@@ -74,7 +70,7 @@ trait report {
       // errors should be a serialized php thing.
       $doc->save();
     }
-    return new \bloc\types\dictionary(['summary' => substr($content, 0, 50).'...', 'content' => nl2br(trim($content))]);
+    return new \bloc\types\dictionary(['summary' => sprintf('<em>%s...</em>', substr($content, 0, 50)), 'content' => nl2br(trim($content))]);
   }
 
   public function linkedFile($name)
