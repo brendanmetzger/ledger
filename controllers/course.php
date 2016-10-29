@@ -82,7 +82,10 @@ class Course extends \bloc\controller
   {
     $view = new View(self::layout);
     $this->evaluation = Data::FACTORY($topic, $student->evaluation($topic, $index));
-    $this->url        = $student->context['@url'] . "/{$topic}/{$index}";
+    if ($topic == 'project') {
+      $path = ['midterm','final'][$index];
+      $this->url = $this->student->context['@url'] . "/{$topic}/{$path}";
+    }
     $criterion = \models\Criterion::Collect(null, "[@type='{$topic}' and (@course = '{$this->student->course}' or @course = '*')]")->pick($index);
     $this->files      = \models\Assessment::Links($student->evaluation($topic, $index, $criterion));
     $this->template   = 'editor';
