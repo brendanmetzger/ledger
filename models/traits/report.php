@@ -15,7 +15,7 @@ trait report {
   public function getPlain(\DOMElement $context)
   {
     $doc = $this->student->records;
-    $idx = $this->criterion->context['@index'];
+    $idx = $idx = $this->index;
     $filename = substr($this->url, -1) === '/' ? 'index.html' : pathinfo(parse_url($this->url)['path'])['basename'];
 
 
@@ -81,7 +81,7 @@ trait report {
 
     $url = $this->url . $name;
     $filename = pathinfo(parse_url($url)['path'])['basename'];
-    $idx = substr($filename, 0, 6) == 'global' ? '*' : $this->criterion->context['@index'];
+    $idx = substr($filename, 0, 6) == 'global' ? '*' : $this->index;
 
     $file = $doc->last("/records/file[@index='{$idx}' and @name='{$filename}']");
 
@@ -112,7 +112,7 @@ trait report {
 
     $markup = $this->markup;
 
-    $idx = $this->criterion->context['@index'];
+    $idx = $this->index;;
     $filename = substr($this->url, -1) === '/' ? 'index.html' : pathinfo(parse_url($this->url)['path'])['basename'];
 
     $file = $doc->last("/records/file[@index='{$idx}' and @name='{$filename}']");
