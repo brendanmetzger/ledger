@@ -1,0 +1,19 @@
+<article id="lightbox-case-study-markup" data-classification="css intermediate example">
+  <h2>Case Study: A Lightbox and <abbr title="Cascading Stylesheet">CSS</abbr></h2>
+  <p>Css is needed to create an overlay. I’m going to show you one way, but there are many facets you need to begin to understand. Before we begin the discussion, I want you to investigate the following topics on your own: css positioning, z-index, overflow, the vh and vw units. Before we begin our work together I may ask you to highlight and share something you learned.</p>
+  <dl>
+    <dt>What is an overlay in principle</dt>
+    <dd>it’s just a block level element, positioned in such a way that it overlays the entire page contents</dd>
+    <dd>It can cover the entire page, top to bottom, or just the visible screen <code>100vh and 100vw</code>.</dd>
+    <dd>It will utilize <code>position: absolute</code> and some sort of <code>z-index: (int)</code></dd>
+    <dt>The background can/should be <q>locked</q></dt>
+    <dd>If the overlay fully covers page content, you don’t need to worry about scrolling (although it might be annoying)</dd>
+    <dd>If the overlay is only covering the viewport, you will <em>need to disable scrolling</em></dd>
+    <dt>The background itself</dt>
+    <dd>There are many <abbr>CSS</abbr> coloring techniques that support an alpha channel (providing opacity).</dd>
+    <dt>Understanding Hierarchy, Show/Hide</dt>
+    <dd>The overlay layer is by definition a child of the body. It must exist but only be visible when needed.</dd>
+    <dd>Controlling it’s visibility is something you need to spend some time thinking about, and there are several css properties to consider: <code>opacity</code>, <code>display</code>, <code>visibility</code>, <code>height</code> and <code>width</code></dd>
+    <dd>Here’s an important tip: you can you JavaScript to read/write styles directly on a <abbr>dom</abbr> element to control visibility, you should strongly consider using classes to do this. If you want to hide an element, where should the class be applied?</dd>
+  </dl>
+</article>

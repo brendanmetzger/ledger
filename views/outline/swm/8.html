@@ -16,25 +16,6 @@
     <p class="indented">I've written a <a href="/javascript/smooth-scroll.js">smooth-scrolling snippet</a> that you can use if you like. This bit of code, like the way of JavaScript-based animation in general, will go the way of the dinosaur soon. Like transitions and keyframe animation, there is already a <a href="https://drafts.csswg.org/cssom-view/#scrolling"><abbr title="cascading stylesheets">CSS</abbr> spec</a> on the books to facilitate a transitioned scroll... the countdown begins.</p>
     <p>While investigating anchors, you should find some interest in the <code>:target</code> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target">pseudo-class</a>. Note above, text of the <code>&lt;h2&gt;</code> will be red if the document has #smooth-scrolling at the end of the url—very handy.</p>
   </article>
-  <article>
-    <h2>Case Study: A Lightbox and <abbr title="Cascading Stylesheet">CSS</abbr></h2>
-    <p>Css is needed to create an overlay. I’m going to show you one way, but there are many facets you need to begin to understand. Before we begin the discussion, I want you to investigate the following topics on your own: css positioning, z-index, overflow, the vh and vw units. Before we begin our work together I may ask you to highlight and share something you learned.</p>
-    <dl>
-      <dt>What is an overlay in principle</dt>
-      <dd>it’s just a block level element, positioned in such a way that it overlays the entire page contents</dd>
-      <dd>It can cover the entire page, top to bottom, or just the visible screen <code>100vh and 100vw</code>.</dd>
-      <dd>It will utilize <code>position: absolute</code> and some sort of <code>z-index: (int)</code></dd>
-      <dt>The background can/should be <q>locked</q></dt>
-      <dd>If the overlay fully covers page content, you don’t need to worry about scrolling (although it might be annoying)</dd>
-      <dd>If the overlay is only covering the viewport, you will <em>need to disable scrolling</em></dd>
-      <dt>The background itself</dt>
-      <dd>There are many <abbr>CSS</abbr> coloring techniques that support an alpha channel (providing opacity).</dd>
-      <dt>Understanding Hierarchy, Show/Hide</dt>
-      <dd>The overlay layer is by definition a child of the body. It must exist but only be visible when needed.</dd>
-      <dd>Controlling it’s visibility is something you need to spend some time thinking about, and there are several css properties to consider: <code>opacity</code>, <code>display</code>, <code>visibility</code>, <code>height</code> and <code>width</code></dd>
-      <dd>Here’s an important tip: you can you JavaScript to read/write styles directly on a <abbr>dom</abbr> element to control visibility, you should strongly consider using classes to do this. If you want to hide an element, where should the class be applied?</dd>
-    </dl>
-  </article>
   <article id="functions" data-classification="function javascript intermediate fundamental">
     <h2>Functions</h2>
     <p class="intro">The most important part of the way we write JavaScript is the notion of functions. Before we go down that road, we must understand a little bit about the namesake and the reasoning behind these methods. Functions are necessary, they are fascinating and they can even be beautiful.</p>
@@ -54,6 +35,12 @@
       <img src="https://upload.wikimedia.org/math/7/5/0/75020b6f0a1afdfb5b67e11f520a99e7.png" alt="the cosine power series" class="t pad" />
     </aside>
   </article>
+  <article>
+    <h2>Learning JavaScript through Time Management</h2>
+    <p>I've spent a bit of time putting together <a href="http://codepen.io/brendanmetzger/full/XjvbaP/">this example</a> to help showcase interactivity and time management.</p>
+
+  </article>
+  <!-- insert views/studies/lightbox/markup.html -->
   <article>
     <h2>Reference and Practice Material</h2>
     <p>I gave some reference materials before the midterm to read, a few chapters regarding JavaScript and the Document Object Model. We’ll be going over <strong>Events</strong> next week. If you have not gone through that material yet, you should catch up as soon as possible.</p>
