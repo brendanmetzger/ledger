@@ -29,15 +29,24 @@
         <img src="/css/media/function-machine.svg" alt="function diagram" style="width:50%;margin:0 25%;" />
       </figure>
     </section>
-    <aside class="whitepaper centered tt">
-      <p>We will spend the rest of class taking apart and thinking about a <strong>cosine</strong>, why it is a function, and what that means. We’ll make our own cosine function, all homemade, using a <a href="https://en.wikipedia.org/wiki/Taylor_series">300 year old technique</a>. I expect this to be challenging, but you’ll walk away knowing a few things: there is no such thing as magic and small details can lead to big ideas.</p>
-      <p>While looking at the formula below, the first mystery we’ll see is that the cosine function (denoted <em>cos(x)</em>) is really a composition of two other mathematical functions and repeatable process (a loop). Make sure you are able to spot those three elements (<a href="https://en.wikipedia.org/wiki/Exponential_function">hint</a>, <a href="https://en.wikipedia.org/wiki/Factorial">hint</a>).</p>
-      <img src="https://upload.wikimedia.org/math/7/5/0/75020b6f0a1afdfb5b67e11f520a99e7.png" alt="the cosine power series" class="t pad" />
-    </aside>
+    <section class="example container whitepaper tt">
+      <aside class="tt ______ float left margins">
+        <p>Let’s consider the <strong>cosine</strong>. Why is it a function, and what does that mean? Yes, it's a button on a calculator, but we can make our own cosine function using a <a href="https://en.wikipedia.org/wiki/Taylor_series">300 year old technique</a> (which is likely what most calculator buttons are implementing as well). Understanding the following code will allow you to walk away knowing a few things: there is no such thing as magic and small details can lead to big ideas.</p>
+        <p>While looking at the formula below, the first mystery we’ll see is that the cosine function (denoted <em>cos(x)</em>) is really a composition of two other mathematical functions and repeatable process (a loop). Make sure you are able to spot these three elements: <a href="https://en.wikipedia.org/wiki/Exponential_function">the exponential function</a>, <a href="https://en.wikipedia.org/wiki/Factorial">and the factorial function</a>. Then, there are a few tricks like getting a number to flip from positive to negative, and all of a sudden you shave the time it takes to manually compute a cosine from about 15 minutes in 1715 to as fast as your fingers can move today.</p>
+        <img src="https://upload.wikimedia.org/math/7/5/0/75020b6f0a1afdfb5b67e11f520a99e7.png" alt="the cosine power series" class="t pad" />
+      </aside>
+      <pre class="prettyprint ____ float left">
+        <!-- review views/javascript/examples/cosine.js taylor-->
+      </pre>
+      <script type="text/javascript">
+        bloc.embed('/javascript/examples/cosine.js');
+      </script>
+    </section>
   </article>
   <article>
-    <h2>Learning JavaScript through Time Management</h2>
-    <p>I've spent a bit of time putting together <a href="http://codepen.io/brendanmetzger/full/XjvbaP/">this example</a> to help showcase interactivity and time management.</p>
+    <h2>Case Study: JavaScript functions</h2>
+    <p class="intro">One of the best uses of JavaScript is to disseminate information through interactivity. The following case study we will work on a few weeks at a time use functions and programming to make our jobs a little easier.</p>
+    <p>I've spent a bit of time putting together <a href="http://codepen.io/brendanmetzger/full/XjvbaP/">this example</a> to help showcase interactivity and time management. It will be worth studying now so that we can refactor in the coming weeks and slowly learn the ropes when it comes to pragmatically thinking about ways to use interactivity to both solve problems and provide interesting design solutions.</p>
 
   </article>
   <!-- insert views/studies/lightbox/markup.html -->

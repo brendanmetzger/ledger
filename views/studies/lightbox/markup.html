@@ -5,15 +5,16 @@
     <dt>What is an overlay in principle</dt>
     <dd>it’s just a block level element, positioned in such a way that it overlays the entire page contents</dd>
     <dd>It can cover the entire page, top to bottom, or just the visible screen <code>100vh and 100vw</code>.</dd>
-    <dd>It will utilize <code>position: absolute</code> and some sort of <code>z-index: (int)</code></dd>
+    <dd>It will utilize the
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position"> <code>position</code>: (absolute|fixed|relative)</a> properties and use of the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/z-index"><code>z-index: (int)</code></a> property</dd>
     <dt>The background can/should be <q>locked</q></dt>
     <dd>If the overlay fully covers page content, you don’t need to worry about scrolling (although it might be annoying)</dd>
-    <dd>If the overlay is only covering the viewport, you will <em>need to disable scrolling</em></dd>
+    <dd>If the overlay is only covering the viewport, you will <em>need to disable scrolling</em> using the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow"><code>overflow</code></a> property</dd>
     <dt>The background itself</dt>
-    <dd>There are many <abbr>CSS</abbr> coloring techniques that support an alpha channel (providing opacity).</dd>
-    <dt>Understanding Hierarchy, Show/Hide</dt>
-    <dd>The overlay layer is by definition a child of the body. It must exist but only be visible when needed.</dd>
-    <dd>Controlling it’s visibility is something you need to spend some time thinking about, and there are several css properties to consider: <code>opacity</code>, <code>display</code>, <code>visibility</code>, <code>height</code> and <code>width</code></dd>
-    <dd>Here’s an important tip: you can you JavaScript to read/write styles directly on a <abbr>dom</abbr> element to control visibility, you should strongly consider using classes to do this. If you want to hide an element, where should the class be applied?</dd>
+    <dd>There are many <abbr>CSS</abbr> coloring techniques that support an alpha channel, namely <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgba()"><code>rgba</code> and <code>hsla</code></a>.</dd>
+    <dt>Utilize Hierarchy to implement show/hide scenarios</dt>
+    <dd>The overlay layer must be a child of the <code>&lt;body&gt;</code>, and while you need to create an element to hold the overlay content, it must only be visible when needed.</dd>
+    <dd>Controlling it’s visibility is something you need to spend some time thinking about, and there are several <abbr title="cascading stylesheet">css</abbr> properties to consider: <code>opacity</code>, <code>display</code>, <code>visibility</code>, <code>height</code> and <code>width</code></dd>
+    <dd>Here is an important tip: you can you JavaScript to read/write styles directly on a <abbr title="document object model">dom</abbr> element to control visibility, but you should strongly consider using classes to do this. If you want to hide an element, there are dozens of ways to do this, and you should really consider all of your css tricks: notable descendant selectors and class selectors.</dd>
   </dl>
 </article>
