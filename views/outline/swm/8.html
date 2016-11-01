@@ -59,11 +59,11 @@
       <dd><label><input type="checkbox" checked="checked" value="is checked" onclick="document.querySelector('pre.checkbox').classList.toggle('strike')"/>check?</label></dd>
       <dd>The checkbox is interesting: you set the value, and the value only is sent if the box is checked.</dd>
       <dd>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label">Label Element</a> provides additional functionality.</dd>
-      <dt><pre class="prettyprint">&lt;input type="range" min="0" max="10" step="5" value="<span class="range input">50</span>"/&gt;</pre></dt>
+      <dt><pre class="prettyprint">&lt;input type="range" min="0" max="100" step="5" value="<span class="range input">50</span>"/&gt;</pre></dt>
       <dd><input type="range" min="5" max="100" step="5" value="50" oninput="document.querySelector('.range.input').textContent = this.value" /></dd>
       <dt><pre class="prettyprint">&lt;input type="color" value="<span class="color input">EE33AA</span>"/&gt;</pre></dt>
       <dd><input type="color" value="#EE33AA" oninput="document.querySelector('.color.input').textContent = this.value;" /></dd>
-      <dt><pre class="prettyprint select"><![CDATA[<select value="test">
+      <dt><pre class="prettyprint select"><![CDATA[<select>
   <option value="nothing">default</option>
   <option value="better">another option</option>
   <option value="medium">choose this</option>
