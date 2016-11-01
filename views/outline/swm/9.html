@@ -32,7 +32,7 @@
         <h3>Events</h3>
         <p>In this classic thought experiment we are engaged to think about all of the events that can occur without our knowing, and then get metaphysical about whether or not the event ever occured. Clearly, this seemingly simple question has been the substance of deep philosophical thought for centuries, so I think it worth five minutes of our time. So, consider this: <q>if a mouse clicks on a webpage but a program doesn’t hear it, does it make a sound?</q>.</p>
         <p>Now that we know about first-class functions and callbacks, we can actually consider events, and there are <a href="https://developer.mozilla.org/en-US/docs/Web/Events">tons of events</a> that we can take advantage of. There are several ways to capture events, but the best, and preferred way, is through a built-in function of the JavaScript <abbr>DOM</abbr> called <code>addEventListener</code>. Talking about what to when an event occurs always starts with the premise that you must be able to <em>perceive an event</em>, so it should be easy to remember <strong>add • event • listener</strong> as a concept. You have all the objects on a page, how do they know when something happens? <em>You tell them to listen.</em></p>
-        <p>There is another way to listen for events by setting attribute on an element (either in <abbr>HTML</abbr> or JavaScript)—you will no doubt see this technique often. While convenient and easy, I rarely (almost never) do this for valid technical reasons, but more importantly, it violates a design principle called <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a>. We have three facets that control interactive applications; semantics and structure (<abbr >HTML</abbr>), view and design (<abbr>CSS</abbr>), and behavior (JavaScript)—best to keep them separate.</p>
+        <p>There is another way to listen for events by setting attribute on an element (either in <abbr>HTML</abbr> or JavaScript)—you will no doubt see this technique often. While convenient and easy, I rarely (almost never) do this for valid technical reasons, but more importantly, it violates a design principle called <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a>. We have three facets that control interactive applications; semantics and structure (<abbr>HTML</abbr>), view and design (<abbr>CSS</abbr>), and behavior (JavaScript)—best to keep them separate.</p>
         <p>Now considering the process of an event occurring, remember that it is <em>emmitted</em> from a source, be it an <code>Element</code> or the <code>window</code> object, etc., and you must apply a listener directly to that source in order to <q>hear it.</q> It might occur to you that Elements have children and parents; begin the mental process of thinking about what that might mean for how the event <em>propogates</em> or <em>bubbles</em>.</p>
       </div>
       <div class="whitepaper container t b">
@@ -61,7 +61,7 @@
           <dd>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">EventTarget</a> interface is implemented by any object that can receive events and have listeners applied to them</dd>
           <dd>Typical objects are any <abbr>HTML</abbr> <code>Element</code> or <code>window</code> object, but there are hundreds of events that can be applied to many other objects.</dd>
         </dl>
-        <hr class="clear ruled"/>
+        <hr class="clear ruled" />
         <div class="focus">
           <h4>A moment of reflection</h4>
           <p>I've skipped over a lot of necessary-but-confusing details that we will discuss together. Start on your own by revisiting this: <strong>Why/how does the dot operator work?</strong></p>
@@ -70,6 +70,7 @@
       </div>
     </section>
   </article>
+  <!-- insert views/topics/tables/css-specificity.html -->
   <article>
     <h2>Case Study: A Lightbox and JavaScript</h2>
     <p>Recalling our case study from last week, an introduction to all of the important <abbr>CSS</abbr> css for making an overlay possible was given. Surprisingly, this is the harder half of the equation in terms of steps needed to solve the problem. As we understand that process, the remaining JavaScript is quite simple, and really only requires we understand our previously outlined material. Really, our case study continues thinking about several questions.</p>

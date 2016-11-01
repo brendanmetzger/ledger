@@ -17,6 +17,7 @@
     <dl class="whitepaper t b">
       <dt>css variables</dt>
       <dd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables">css variables</a> are a relatively new concept that allows you to specify a setting once, and use it later in your code. Variables are useful whenever you are repeating information, thus you only have to specify it once and change it once if necessary.</dd>
+      <dd>Be sure to keep track of the <a href="http://caniuse.com/#feat=css-variables">support tables</a> when you are doing work that requires cross-browser compatibility.</dd>
       <dt>:root</dt>
       <dd>The root <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:root">:root</a> of your document is the <code>&lt;html&gt;</code> element. While you could certainly use a type selector, it can easily be overridden<sup>*</sup>, so the <code>:root</code> pseudo class is a good place to store important things, like variable declarations.</dd>
       <dd><sup>*</sup> overriding style declarations is easy and useful—which is why first letter in <abbr>CSS</abbr> stands for <em>cascading</em>. However, without understanding that principle, confusion often arises when you seem to be making a change in your code but don't see that change in your browser.</dd>
