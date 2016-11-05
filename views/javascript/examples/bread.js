@@ -1,11 +1,11 @@
 var ns = function() {
 
 /* functions as values */
-// variable assigned to a string
+// variable assigned to a string (static)
 var english_greeting = "hello";
-// vs. assigned to a function
+// vs. assigned to a function (dynamic)
 var englishGreeting = function() {
-  return 'hello';
+  return 'could depend...';
 };
 /* end functions as values */
 

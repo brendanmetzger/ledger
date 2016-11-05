@@ -1,5 +1,5 @@
 <div>
-  <link rel="stylesheet" href="/css/review.css" media="screen" charset="utf-8"/>
+  <link rel="stylesheet" href="/css/review.css" media="screen" charset="utf-8" />
   <header>
     <!-- insert views/outline/_/crumbs.html -->
     <h1 class="massive">Artiface</h1>
@@ -11,11 +11,11 @@
     <p>Lest we forget, there are a handful of <em>types</em> that can represent a <em>value</em> in JavaScript. First are <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">primitive types</a>, such as <strong>Number</strong>, <strong>String</strong>, <strong>Boolean</strong>, <strong>Null</strong> and <strong>Undefined</strong>. Then, there are <em>object-types</em>: objects are combinations of primitive types as well as other objects, and we can make an <em>object literal</em> in a fashion such as <code>var obj = {};</code>. The <strong>Array</strong> is a special case of object as is the <strong>Function</strong>—in JavaScript, a function is really just a <em>callable object</em>.</p>
     <p>Some minutia notwithstanding, <strong>there are roughly 6 things you can make in JavaScript</strong>—devising interesting combinations of them; this can loosely be called <q>programming</q></p>
     <h4 class="tt">Review the following and jot down the answers (there are 8 questions)</h4>
-    <dl  class="review b">
+    <dl class="review b">
       <dt><code>Math.pow</code></dt>
       <dd>What is Math, and what is pow? Where is it declared? (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow">hint</a>); Has it been applied?</dd>
       <dt><code>var ultimate_answer = 42;</code></dt>
-      <dd>What is the value of our declared variable?  What is it named? What is its type?</dd>
+      <dd>What is the value of our declared variable? What is it named? What is its type?</dd>
       <dt><code>var expression = Math.pow(7, 2) - 7;</code></dt>
       <dd>What is happening here? What is the value? What is the <em>type</em> of the value?</dd>
     </dl>
@@ -29,8 +29,8 @@
       <div class="comparison container whitepaper t b">
         <h4>Night/Day</h4>
         <p>Silly, yes, but note how attitude has two intirely different meanings depending on the class of a parent element. A useful feature; <em>you should employ such tactics frequently</em>.</p>
-        <hr class="ruled t b"/>
-        <link rel="stylesheet" href="/css/examples/namespace.css" media="screen" charset="utf-8"/>
+        <hr class="ruled t b" />
+        <link rel="stylesheet" href="/css/examples/namespace.css" media="screen" charset="utf-8" />
         <div class="half float left">
           <pre class="prettyprint">
             <!-- review views/css/examples/namespace.css night  -->
@@ -60,7 +60,7 @@
           <p><q lang="fr">French</q></p>
           <p><q lang="de">German</q></p>
           <p><q lang="pl">Polish</q></p>
-          <link rel="stylesheet" href="/css/examples/quotes.css"/>
+          <link rel="stylesheet" href="/css/examples/quotes.css" />
         </aside>
         <div class=" _______ float left">
           <pre class="prettyprint">&lt;q cite="https://goo.gl/zN7JT"&gt;Any fool can know. The point is to understand&lt;/q&gt;</pre>
@@ -71,10 +71,10 @@
         </div>
       </div>
     </section>
-    <hr class="ruled clear t b"/>
+    <hr class="ruled clear t b" />
     <section>
       <h3>Variable Scope</h3>
-      <p>So we can stylistically determine how something looks (as will as linguistically add meaning) based on the heirarch and structure of our stylesheet. Likewise, we can (and should) be doing the same thing with our program code. Recalling <a href="http://eloquentjavascript.net/03_functions.html">Chapter 3</a> of <em>Eloquent JavaScript</em> (assigned two weeks ago), I mentioned that the material was a bit terse, so now we'll look a little closer.</p>
+      <p>So we can stylistically determine how something looks (as will as linguistically add meaning) based on the heirarch and structure of our stylesheet. Likewise, we can (and should) be doing the same thing with our program code. Recalling <a href="http://eloquentjavascript.net/03_functions.html">Chapter 3</a> of <em>Eloquent JavaScript</em>, I mentioned that the material was a bit terse, so now we'll look a little closer.</p>
       <p>If I declare a function, it is not much different than declaring a variable. I pick out a name, and that name, gives me a way to assign and store some <em>value</em> for later use: strings, numbers, booleans, nulls, undefined, and objects (which include arrays and functins). Where that variable declaration happens and how we gain access to it falls under the canopy of <strong>variable scope</strong></p>
 
       <div class="whitepaper container t">
@@ -86,7 +86,7 @@
         <pre class="prettyprint float left ____">
           <!-- review views/javascript/examples/scope.js global  -->
         </pre>
-        <hr class="clear ruled t b"/>
+        <hr class="clear ruled t b" />
         <aside class="note ______ float left">
           <h5>Global Scope vs. Local Scope</h5>
           <p>In the current version<sup>*</sup> of javascript, there is only one other type of scope available, called <em>local scope</em>. Local scope is created within the body of a function declaration. Spot the following: there are three variables declared, two in the global scope, one scoped to the <code>drive</code> function. The two <code>truck</code> variables share the <em>same name</em>, but they in <em>different scopes</em>, and thus, <em>different variables</em>.</p>
@@ -94,7 +94,7 @@
         <pre class="prettyprint ____ float left">
           <!-- review views/javascript/examples/scope.js local  -->
         </pre>
-        <hr class="clear ruled t b"/>
+        <hr class="clear ruled t b" />
         <aside class="note ______ float left">
           <h5>Arguments and Parameters</h5>
           <p>Something we often forget about is the nature of declared arguments as a way to usurp the scope of a variable. Arguments are scoped to the function they belong. A correct way of thinking about arguments might be <code>function(var something)...</code> as we are declaring a variable to store whatever we pass in as a parameter. This is a good way of thinking about it, but never actually write var, it is a syntax error.</p>
@@ -102,7 +102,7 @@
         <pre class="prettyprint ____ float left">
           <!-- review views/javascript/examples/scope.js arguments  -->
         </pre>
-        <hr class="clear ruled t b"/>
+        <hr class="clear ruled t b" />
         <aside class="note ______ float left">
           <h5>Nesting Scopes</h5>
           <p>Once again, functions are objects, and objects can contain other objects. Declaring a function is declaring a variable, and if we can declare a variable within a function, it would seem like we should be able to declare a function inside another function—and we can. The important thing to remember is that a function will always go up the scope chain, all the way to the global scope if necessary. It will stop whenever it finds a variable with the name it seeks, and if no variable can be found with that name, it will be an <em>undefined</em></p>
@@ -117,7 +117,7 @@
   <article id="mouse-example">
     <h2>Case Study: Mouse Trail</h2>
     <p class="intro">I have made a few <q>mouse-trails</q> that illustrate some interesting techniques. In the simplest of cases, they are really quite simple tricks.</p>
-    <p>Picture a stack of 60 cards, which is really just a list, or in our parlance, an <code>array</code>. Now picture a ticking clock with 60 seconds: every second that ticks by, you pay attention to the card in the stack that corresponds to the second hand, ie. 30  seconds in, we are focusing on card 30. With that as a visual, consider the following instructions.</p>
+    <p>Picture a stack of 60 cards, which is really just a list, or in our parlance, an <code>array</code>. Now picture a ticking clock with 60 seconds: every second that ticks by, you pay attention to the card in the stack that corresponds to the second hand, ie. 30 seconds in, we are focusing on card 30. With that as a visual, consider the following instructions.</p>
     <ol class="whitepaper t b">
       <li>Declare an array to hold a list of Elements.</li>
       <li>Make a loop, and for each iteration, append an Element to your html document and to the previously mentioned array.</li>
@@ -131,18 +131,22 @@
       <li>using your element from number 7 set the <code>left</code> property to the x coordinate, and the <code>top</code> property to the y property.</li>
     </ol>
     <style media="screen">
-      .mouse-trail {padding:0;list-style-type:none;}
+      .mouse-trail {
+        padding: 0;
+        list-style-type: none;
+      }
+
       .mouse-trail li {
-        position:absolute;
-        width:5px;
-        height:5px;
-        background-color:rgba(0,0,0,0.25);
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background-color: rgba(0, 0, 0, 0.25);
       }
     </style>
     <script type="text/javascript">
       bloc.embed('/javascript/examples/assigned/mouse-trail.js');
-      bloc.init('mouse', function () {
-        document.querySelector('#mouse-example').addEventListener('click', function (evt) {
+      bloc.init('mouse', function() {
+        document.querySelector('#mouse-example').addEventListener('click', function(evt) {
           createTrail(25, this);
         });
 

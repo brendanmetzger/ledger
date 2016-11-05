@@ -1,0 +1,21 @@
+# Media
+
+## Goal
+(your words here)
+
+## TODO
+- [ ] Create a color scheme
+- [ ] Use `color` and `background-color` properties on several different elemenst to negotiate contrast.
+- [ ] Use `color` and `background-image` to negotiate contrast.
+- [ ] Have utilized and understood `background-position`, `background-size` and `background-repeat` and the shorthand for `background`
+- [ ] Have investigated `border` using both shorthand properties and `border-width`, `border-style` and `border-color` independantly
+- [ ] Used `border-radius` on elements with and without a border specified and understand what happens
+- [ ] Have used each of the combinators at least one time (>, +, ~)
+- [ ] Employed descendant selectors at least 5 different times
+- [ ] Employed a descendant selector at least 3 levels deep
+- [ ] FILL IN WITH YOUR OWN TODO (or accept 10% deduction)
+- [ ] FILL IN WITH YOUR OWN TODO (or accept 10% deduction)
+
+
+## Questions and Outcome
+(your words here)

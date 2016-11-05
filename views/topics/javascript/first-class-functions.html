@@ -1,7 +1,7 @@
-<section>
+<article id="first-class-function">
   <section class="three columns indented">
     <h3>The First-class Function</h3>
-    <p>From a linguistic perspective, <em>functional programming</em> may seem to be nothing more than <q>writing a program with functions</q>, but this is false: <strong>all programs</strong> are written with functions. Functional programming is a style that joins the austerity of mathematics as a means of writing programs. Conversely, in <em>imperative programming</em>, we solve problems sequentially with <em>loops, conditions, function calls, and instances of classes.</em> Functional programs solve problems only <em>with functions</em>, largely out of sequence and in no particular order. We will always focus on imperative style, but the reason I’m bringing up <a href="https://msdn.microsoft.com/en-us/library/bb669144.aspx">the contrast between them</a> is that while we will be using loops, conditions, etc, JavaScript, unlike other languages, requires a bit first-class function writing to do some entry level stuff, and that means we must face these concepts head-on.</p>
+    <p>From a linguistic perspective, <em>functional programming</em> may seem to be nothing more than <q>writing a program with functions</q>, but this is false: <strong>all programs</strong> are written with functions. Functional programming is a style that joins the austerity of mathematics as a means of writing programs. Conversely, in <em>imperative programming</em>, we solve problems sequentially with <em>loops, conditions, function calls, and instances of classes.</em> Functional programs solve problems only <em>with functions</em>, largely out of sequence and in no particular order. We will always focus on imperative style, but the reason I’m bringing up the contrast between them is that while we will be using loops, conditions, etc, JavaScript, unlike other languages, requires a bit first-class function writing to do some entry level stuff, and that means we must face these concepts head-on.</p>
     <p>A <a href="https://en.wikipedia.org/wiki/First-class_function">first-class function</a> is a fundamental part of the language, like our types (number, string, boolean, etc). Compare the two greeting variables in the following example:</p>
     <pre class="prettyprint" style="break-inside: avoid;">
       <!-- review views/javascript/examples/bread.js functions as values  -->
@@ -19,7 +19,7 @@
     <pre class="prettyprint float left ____">
       <!-- review views/javascript/examples/bread.js loaf  -->
     </pre>
-    <hr class="clear ruled t b"/>
+    <hr class="clear ruled t b" />
     <aside class="note ______ float left">
       <h5>But producing bread is probably better described as composite of several actions.</h5>
       <p>We have ingredients, but they have to be mixed, and after mixed, they have to be baked. Let’s assume we have declared functions called <code>mix</code> and <code>bake</code> that can take care of that for us. Note: what is returned when mix and bake are applied? Never fail to consider input vs. output.</p>
@@ -27,7 +27,7 @@
     <pre class="prettyprint ____ float left">
       <!-- review views/javascript/examples/bread.js compose  -->
     </pre>
-    <hr class="clear ruled t b"/>
+    <hr class="clear ruled t b" />
     <aside class="note ______ float left">
       <h5>But producing bread, at least in most situations, involves a person.</h5>
       <p>The previous function is great, but thinking a bit deeper, it assumes that all bread is made the same way. Any bread fan knows that two different bakers, even using the same ingredients, can make two entirely different loaves. Let’s create a notion of a baker.</p>
@@ -35,7 +35,7 @@
     <pre class="prettyprint ____ float left">
       <!-- review views/javascript/examples/bread.js baker  -->
     </pre>
-    <hr class="clear ruled t b"/>
+    <hr class="clear ruled t b" />
     <aside class="note ______ float left">
       <h5>First-Class Lesson 1: declared functions can <strong>return</strong> un-applied functions.</h5>
       <p>A <code>Baker</code> is really a person who bakes, so let’s just consider that one facet of an entire human. Here I declare two simplified people, both capable of <em>baking</em>. They're not baking 100% of the time; remember, they will only bake when called.</p>
@@ -45,7 +45,7 @@
     <pre class="prettyprint ____ float left">
       <!-- review views/javascript/examples/bread.js people  -->
     </pre>
-    <hr class="clear ruled t b"/>
+    <hr class="clear ruled t b" />
     <aside class="note ______ float left">
       <h5>First-Class Lesson 2: Functions can have un-applied functions as <strong>parameters</strong>.</h5>
       <p>There was a notion of this above in the <code>Baker</code> declaration when we specified and used the performAction <strong>argument</strong>—an extremely important concept. Our <code>Baker</code> function wants to be given a task (function) and some material as parameters, it will then apply the task with material on its own. Don’t miss the following point, <code>mix</code> and <code>bake</code> are declared, yet unapplied functions, and you need to be able to understand how they are applied.</p>
@@ -53,7 +53,7 @@
     <pre class="prettyprint ____ float left">
       <!-- review views/javascript/examples/bread.js perform  -->
     </pre>
-    <hr class="clear ruled t b"/>
+    <hr class="clear ruled t b" />
     <aside class="note ______ float left">
       <h5>All together.</h5>
       <p>Going way back to our <code>produceBread</code> function, let’s sub out all of our functionality with the stuff we now know. Our function definition now expects a Baker as the first argument: Bakers, when called, are given a task and the material to execute that task. Unravel this in your mind to the point where you understand that all of this is possible—you don’t have to know how to do it, just that it’s possible.</p>
@@ -61,7 +61,7 @@
     <pre class="prettyprint ____ float left">
       <!-- review views/javascript/examples/bread.js first class  -->
     </pre>
-    <hr class="clear ruled t b"/>
+    <hr class="clear ruled t b" />
     <aside class="note ______ float left">
       <h5>Purely Functional.</h5>
       <p>This last part is just for fun—definitely in the deep end, but as the finale to our example of functional programming, I think it is important that you see a working functional program [you can test in the console]. The take away, alluded to in the intro, is that carefully considered input/output can eliminate conditions, loops, and variables: thus things can occur out of order and state doesn’t matter. This is beautiful, and even if it escapes you, a little bit of this eloquence will save you years of toil as a program designer.</p>
@@ -69,6 +69,8 @@
     <pre class="prettyprint ____ float left">
       <!-- review views/javascript/examples/bread.js purity  -->
     </pre>
-    <script type="text/javascript">bloc.embed('/javascript/examples/bread.js');</script>
+    <script type="text/javascript">
+      bloc.embed('/javascript/examples/bread.js');
+    </script>
   </section>
-</section>
+</article>

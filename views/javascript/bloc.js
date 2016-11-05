@@ -1,35 +1,41 @@
-Event.prototype.theta = function () {
-  var rect  = this.target.getBoundingClientRect();
+/*jslint browser: true */
+/*jslint esversion: 6 */
 
-  if (this.type.substring(0, 5) == 'touch') {
-    var x = (this.touches[0].clientX - rect.left) - (rect.width / 2);
-    var y = (rect.height / 2) - (this.touches[0].clientY - rect.top);
+
+var bloc = window.bloc || {};
+
+window.Event.prototype.theta = function () {
+  var rect  = this.target.getBoundingClientRect(), x, y, theta;
+
+  if (this.type.substring(0, 5) === 'touch') {
+    x = (this.touches[0].clientX - rect.left) - (rect.width / 2);
+    y = (rect.height / 2) - (this.touches[0].clientY - rect.top);
   } else {
-    var x = (this.offsetX || this.layerX) - (rect.width / 2);
-    var y = (rect.height / 2) - (this.offsetY || this.layerY);
+    x = (this.offsetX || this.layerX) - (rect.width / 2);
+    y = (rect.height / 2) - (this.offsetY || this.layerY);
   }
-  var theta = Math.atan2(x, y) * (180 / Math.PI);
+  theta = Math.atan2(x, y) * (180 / Math.PI);
   return theta < 0 ? 360 + theta : theta;
 };
 
-String.prototype.format = function() {
-  var args = typeof arguments[0] === 'object' ? arguments[0] : arguments;
-  return this.replace(/{((?:\d+)|(?:[a-z]+))}/g, function(match, key) {
-    return typeof args[key] != 'undefined' ? args[key] : match;
+String.prototype.format = function (o) {
+  var args = typeof o === 'object' ? o : arguments;
+  return this.replace(/\{((?:\d+)|(?:[a-z]+))\}/g, function (match, key) {
+    return typeof args[key] !== 'undefined' ? args[key] : match;
   });
 };
 
 var cycle = function (index, limit) {
   return function () {
     return index++ % limit;
-  }
+  };
 };
 
 var timecode2Seconds = function (timecode) {
   return timecode.split(':').reverse().reduce(function (accumulator, current, idx) {
     return accumulator + parseInt(current, 10) * Math.pow(60, idx);
   }, 0);
-}
+};
 
 /* SVG */
 
@@ -48,7 +54,7 @@ var SVG = function (node, width, height) {
   this.point = this.element.createSVGPoint();
 };
 
-SVG.prototype.createElement = function(name, opt, parent) {
+SVG.prototype.createElement = function (name, opt, parent) {
   var node = document.createElementNS('http://www.w3.org/2000/svg', name);
   for (var key in opt) node.setAttribute(key, opt[key]);
   return parent === null ? node : (parent || this.element).appendChild(node);
@@ -59,7 +65,7 @@ SVG.prototype.createElement = function(name, opt, parent) {
 SVG.prototype.cursorPoint = function(evt){
   this.point.x = evt.clientX; this.point.y = evt.clientY;
   return this.point.matrixTransform(this.element.getScreenCTM().inverse());
-}
+};
 
 /* end SVG */
 
@@ -70,14 +76,14 @@ function JSONP(src, callback, listener) {
   } else {
     var key = 'JSONP_cb_'+Date.now().toString(36);
     window[key] = callback;
-    script.src = src + '&callback=' + key
+    script.src = src + '&callback=' + key;
   }
   document.head.appendChild(script);
 }
 
 
 function decHex(decimal, pad = '00') {
-  return (pad + parseInt(decimal, 10).toString(16).toUpperCase()).slice(-pad.length)
+  return (pad + parseInt(decimal, 10).toString(16).toUpperCase()).slice(-pad.length);
 }
 
 function decBin(decimal, pad = '00000000') {
@@ -86,22 +92,18 @@ function decBin(decimal, pad = '00000000') {
 
 
 function Validator(url, callback) {
-  var url = 'https://validator.nu/?level=error&doc='+encodeURIComponent(url)+'&out=json';
-  JSONP(url, callback)
+  JSONP('https://validator.nu/?level=error&doc='+encodeURIComponent(url)+'&out=json', callback);
 }
 
 function Wikipedia(article, callback) {
-  var url = 'https://en.wikipedia.org/w/api.php?action=parse&prop=text&format=json&page=' + article;
-  JSONP(url, callback)
+  JSONP('https://en.wikipedia.org/w/api.php?action=parse&prop=text&format=json&page=' + article, callback);
 }
 
 function cssValidator(stylesheet, callback) {
-  var url = "https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3&uri=" + stylesheet
-  JSONP(url, callback)
+  JSONP("https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3&uri=" + stylesheet, callback);
 }
 
 Wikipedia.viewer = function (object) {
-  console.log(object.parse.title);
   var drawer = document.body.appendChild(document.createElement('article'));
   var button = drawer.appendChild(document.createElement('button'));
 
@@ -115,7 +117,7 @@ Wikipedia.viewer = function (object) {
   });
   [].forEach.call(drawer.querySelectorAll('section a'), function (a) {
     // don't have access to wikipedia, so just make links regular texn
-    var span = document.createElement('span')
+    var span = document.createElement('span');
     span.innerHTML = a.innerHTML;
     a.parentNode.replaceChild(span, a);
   });
@@ -125,7 +127,7 @@ bloc.init('manage-links', function () {
   document.body.addEventListener('click', function (evt) {
     if (evt.target.matches('a[href^=http]')) {
       evt.preventDefault();
-      var wiki = evt.target.href.match(/.*wikipedia.*\/(.*)$/)
+      var wiki = evt.target.href.match(/.*wikipedia.*\/(.*)$/);
       if (wiki) {
         Wikipedia(wiki.pop(), Wikipedia.viewer);
       } else {

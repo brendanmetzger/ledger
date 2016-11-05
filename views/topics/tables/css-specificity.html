@@ -5,56 +5,67 @@
 
   <table class="full definitions">
     <style media="screen">
-    .definitions caption {
-      margin:0 0 1em;
-    }
-    .definitions tr td:last-of-type {
-      border-right:none;
-      font-weight:600;
-    }
-    .definitions tr td:first-of-type {
-      text-align:right;
-      font-size:2em;
-      padding:0.125em 1em;
-      border-left:none;
-    }
-    .definitions th {
-      padding:1em;
-    }
-    .definitions tr td:not(:first-of-type)  {
-      text-align:center;
-    }
-    .a {
-      color: rgb(225, 95, 185);
-    }
-    .b {
-      color: rgb(45, 205, 140);
-    }
-    .c {
-      color:rgb(15, 100, 190);
-    }
-    span.a:after {
-      content:'100';
-    }
-    span.b:after {
-      content:'10';
-    }
-    span.c:after {
-      content:'1';
-    }
-    td:hover span[class]:after {
-      width:auto;
-    }
-    td span[class]:after {
-      width:0;
-      overflow:hidden;
-      display:inline-block;
-      /*someday: font-variant-position: sub;*/
-      font-size: 0.5em;
-      font-weight:400;
-      padding:0 0.125em;
+      .definitions caption {
+        margin: 0 0 1em;
+      }
 
-    }
+      .definitions tr td:last-of-type {
+        border-right: none;
+        font-weight: 600;
+      }
+
+      .definitions tr td:first-of-type {
+        text-align: right;
+        font-size: 2em;
+        padding: 0.125em 1em;
+        border-left: none;
+      }
+
+      .definitions th {
+        padding: 1em;
+      }
+
+      .definitions tr td:not(:first-of-type) {
+        text-align: center;
+      }
+
+      ._a {
+        color: rgb(225, 95, 185);
+      }
+
+      ._b {
+        color: rgb(45, 205, 140);
+      }
+
+      ._c {
+        color: rgb(15, 100, 190);
+      }
+
+      span._a:after {
+        content: '100';
+      }
+
+      span._b:after {
+        content: '10';
+      }
+
+      span._c:after {
+        content: '1';
+      }
+
+      td:hover span[class]:after {
+        width: auto;
+      }
+
+      td span[class]:after {
+        width: 0;
+        overflow: hidden;
+        display: inline-block;
+        /*someday: font-variant-position: sub;*/
+        font-size: 0.5em;
+        font-weight: 400;
+        padding: 0 0.125em;
+      }
     </style>
     <caption class="rag-right container whitepaper">
       <h4>Calculating Selector specificity</h4>
@@ -71,9 +82,9 @@
     <thead>
       <tr>
         <th>Selector</th>
-        <th class="a _">a</th>
-        <th class="b _">b</th>
-        <th class="c _">c</th>
+        <th class="_a _">a</th>
+        <th class="_b _">b</th>
+        <th class="_c _">c</th>
         <th class="__">Specificity</th>
       </tr>
     </thead>
@@ -86,56 +97,56 @@
         <td>0</td>
       </tr>
       <tr>
-        <td><span class="c">li</span></td>
+        <td><span class="_c">li</span></td>
         <td>0</td>
         <td>0</td>
         <td>1</td>
         <td>1</td>
       </tr>
       <tr>
-        <td><span class="c">ul</span> <span class="c">li</span></td>
+        <td><span class="_c">ul</span> <span class="_c">li</span></td>
         <td>0</td>
         <td>0</td>
         <td>2</td>
         <td>2</td>
       </tr>
       <tr>
-        <td><span class="c">article</span> > <span class="c">ol</span> + <span class="c">li</span></td>
+        <td><span class="_c">article</span> > <span class="_c">ol</span> + <span class="_c">li</span></td>
         <td>0</td>
         <td>0</td>
         <td>3</td>
         <td>3</td>
       </tr>
       <tr>
-        <td><span class="c">h1</span> + *<span class="b">[rel=up]</span></td>
+        <td><span class="_c">h1</span> + *<span class="_b">[rel=up]</span></td>
         <td>0</td>
         <td>1</td>
         <td>1</td>
         <td>11</td>
       </tr>
       <tr>
-        <td><span class="c">ul</span> > <span class="c">ol</span> > <span class="c">li</span><span class="b">.red</span></td>
+        <td><span class="_c">ul</span> > <span class="_c">ol</span> > <span class="_c">li</span><span class="_b">.red</span></td>
         <td>0</td>
         <td>1</td>
         <td>3</td>
         <td>13</td>
       </tr>
       <tr>
-        <td>* <span class="c">li</span><span class="b">.red</span><span class="b">.level</span></td>
+        <td>* <span class="_c">li</span><span class="_b">.red</span><span class="_b">.level</span></td>
         <td>0</td>
         <td>2</td>
         <td>1</td>
         <td>21</td>
       </tr>
       <tr>
-        <td><span class="a">#x34y</span></td>
+        <td><span class="_a">#x34y</span></td>
         <td>1</td>
         <td>0</td>
         <td>0</td>
         <td>100</td>
       </tr>
       <tr>
-        <td><span class="a">#s12</span>:not(<span class="c">article</span>)</td>
+        <td><span class="_a">#s12</span>:not(<span class="_c">article</span>)</td>
         <td>1</td>
         <td>0</td>
         <td>1</td>

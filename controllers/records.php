@@ -19,7 +19,8 @@ class Records extends \bloc\controller
   {
     return "show all or just one student";
   }
-
+  
+  
   public function GETindex($path = null)
   {
     $view = new View(self::layout);

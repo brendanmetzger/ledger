@@ -1,0 +1,43 @@
+<article id="introduction-to-events" data-classification="javascript event beginner fundamental">
+    <h2>Events</h2>
+    
+    <section>
+      <p class="intro">An image loads, the page is scrolled, a bit of text selected, the cursor dances across the screen. It's all happening—you decide to make something out of it.</p>
+      <div class="three columns indented">
+        <blockquote class="quote centered tt bb">
+          <p>If a tree falls in a forest and no one is around to hear it, does it make a sound?</p>
+        </blockquote>
+        <p>This seemingly simple question has been the substance of deep philosophical thought for centuries. In this classic thought experiment we consider all of the events that can occur without our knowing and then get <a href="https://en.wikipedia.org/wiki/Metaphysics">metaphysical</a> about observation and knowledge of reality. So I'll just segue with an updated version: <q>if a mouse button is press but a developer doesn’t register a listener, does a click happen?</q>.</p>
+        <p>With some knowledge of functions, we can actually consider the <a href="https://developer.mozilla.org/en-US/docs/Web/Events">multitudinous events</a> we can use. There are several ways to capture events, but the best, and preferred way, is through a built-in function of the JavaScript <abbr>DOM</abbr> called <code>addEventListener</code>. Talking about what to do when an event occurs begins with the premise that you are need to start paying attention, so it should be easy to remember <strong>add • event • listener</strong> as a concept. You have all the objects on a page, how do they know when something happens? <em>You tell them to listen.</em></p>
+        <p>There is another way to listen for events by setting attribute on an element (either in <abbr>HTML</abbr> or JavaScript)—you will no doubt see this technique often. While convenient and easy, I rarely (almost never) do this for valid technical reasons, but more importantly, it violates a design principle called <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a>. We have three facets that control interactive applications; semantics and structure (<abbr>HTML</abbr>), view and design (<abbr>CSS</abbr>), and behavior (JavaScript)—best to keep them separate.</p>
+        <p>Now considering the process of an event occurring, remember that it is <em>emmitted</em> from a source, be it an <code>Element</code> or the <code>window</code> object, etc., and you must apply a listener directly to that source in order to <q>hear it.</q> It might occur to you that Elements have children and parents; begin the mental process of thinking about what that might mean for how the event <em>propogates</em> or <em>bubbles</em>.</p>
+      </div>
+      <div class="whitepaper container t b">
+        <h3>Usage and Documentation</h3>
+        <div class="________ float left">
+          <h4>Function Signature</h4>
+          <p>A function signature specifies the general information about a function like the <em>name</em>, number and type <em>arguments</em> and what it <em>returns</em>. This information can usually be found in the documentation of a language or framework—I doubt anyone flat out reads an entire manual, but <em>knowing how to read it</em> and <em>knowing where to find it</em> is mandatory.</p>
+          <h4>Definition</h4>
+          <dl>
+            <dt><code><span class="typ">void</span><sup>1</sup> <span style="color:#000;text-decoration:underline;">addEventListener</span>(<span class="typ">string</span> event<sup>2</sup>, <span class="typ">function</span> callback<sup>3</sup>, [<span class="typ">boolean</span> capture<sup>4</sup>]);</code></dt>
+            <dd>The <em>name</em> of the function is underlined in black text</dd>
+            <dd><sup>1</sup> The return value of the function - in this case, void indicates that the function <em>returns nothing</em></dd>
+            <dd><sup>2</sup> The first argument expects a string, in this case, the type of event ('click', 'scroll', etc.)</dd>
+            <dd><sup>3</sup> The next argument is a callback which must be a type function (yet-to-be called).</dd>
+            <dd><sup>4</sup> Regards if event captures or bubbles (advanced). Brackets indicate optional, defaults to false.</dd>
+            <dt>The Callback Signature</dt>
+            <dd>Whenever you write a callback, you should specify an argument. This argument will hold the data about the event that occured—you can call it whatever you like—I generally name it <em>evt</em></dd>
+            <dd>When an event is emitted, and the listener hears it, it will execute your callback function. Because the event listener is handling things, it will send along the data.</dd>
+          </dl>
+        </div>
+        <dl class="__ float left">
+          <dt><code>Event</code></dt>
+          <dd>The Event object is passed along as a parameter to your callback whenever it occurs. It has dozens of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event#Properties">properties</a></dd>
+          <dd>You can make <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events">custom events</a> (not very common)</dd>
+          <dt><code>EventTarget</code></dt>
+          <dd>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">EventTarget</a> interface is implemented by any object that can receive events and have listeners applied to them</dd>
+          <dd>Typical objects are any <abbr>HTML</abbr> <code>Element</code> or <code>window</code> object, but there are hundreds of events that can be applied to many other objects.</dd>
+        </dl>
+      </div>
+    </section>
+  </article>
