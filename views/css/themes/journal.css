@@ -333,6 +333,20 @@ ol:not(.linenums) > li:before {
   font-family: Inconsolata;
   padding-right: 0.5em;
   margin-left: -2.25em;
+  --color: #EC008C;
+}
+
+ol.big li:before {
+  font-size: 150%;
+  display:block;
+  padding:0;
+  margin:0.5em -1em;
+  color: var(--color);
+  width: 4ch;
+/*  transform: rotate(-5deg);*/
+}
+ol.concepts li {
+  margin: 0.5em 2em;
 }
 
 ul {
@@ -855,3 +869,4 @@ body > div:last-of-type form {
   background-color: #fff;
   box-shadow: 0 0 0.5em rgba(0,0,0,0.1);
 }
+
