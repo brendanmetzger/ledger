@@ -20,27 +20,26 @@
       animation: typing 3s steps(12) infinite, caret 1s steps(1) infinite;
     }
     .conversation {
-      font-family: 'Abel';
+      font-family: 'Avenir Next Condensed', 'Arial';
       color:#000;
       position: relative;
       padding: 2em;
-      line-height:2;
+      line-height:1.75;
     }
 
     /* ]]> */
   </style>
-  <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet"/>
-  <p class="intro">Enumeration is a fancy way of counting, which is what computers excel at. Just like there are many ways to count, there are many ways to instruct a computer to do it.</p>
+  <p class="intro">Enumeration is a fancy way of saying ‘countable’, and counting is just about all computers actually do. Just like there are many ways to count, there are many ways to instruct a computer to do it.</p>
   <p>Rather than go through the de facto pattern of learning JavaScript, something banal like—<q>lets count to ten using a computer!!</q>—I'm going to expedite our focus to an intermediate-level inspection of loops. Starting with banal programs prevents us from thinking about counting in terms of practical problem solving opportunities. This means that you may need to go backwards and practice the beginner stuff on your own, which in truth is quite important to be familiar with.</p>
   <ol class="t b big concepts whitepaper">
     <li><strong>Flow-of-control</strong>, or flow control is the order in which individual statements or function calls of a program are evaluated and/or executed.</li>
     <li><strong>A loop</strong> is a type of flow control concerned with repeating process, or <em>iteration</em></li>
     <li>When we are interested in manipulating anything that fits the description of <strong>more than one or once</strong>, a looping mechanism is employed</li>
   </ol>
-  <p>With those rules in mind, especially the last one, lets concern ourselves with the notion of how we keep track of stuff. From my perspective in a classroom, I can address any single person individually, usually by finding some unique aspect that they possess (like a name), and address a message at them. To address the room, address everyone at the same time, but that is a human convenience. To think like a computer, I would have to consider a great many more things. The following is the thought process I might have if I was a computer trying to say hello to everyone in a room. As humans it's easier to understand that I'd just say it to everyone at the room at once, but computers can only execute one instruction at a time.</p>
+  <p>With those rules in mind, especially the last one, lets concern ourselves with the notion of how we keep track of stuff. From my perspective in a classroom, I can address any single person, individually, by finding some unique aspect that they possess (like a name), and direct a message towards. To address an entire room at once is a human convenience—computers can only process one instruction at a time (though they can do it in a fraction of a billionth of a second). Now, to think like a computer would address a room, I would have consider it as a process . The following is the inner-monologue I might have if I was that computer trying to say hello to everyone in a room.</p>
     <div class="comparison container">
       <aside class="______ float left">
-        <p class="conversation">A room is... a list. Starting from 0, there are 14 people in this room for a length of 15. I want to say hello to everyone in the room. I'll start at person 0, is 0 less than 15? Yes. <q>Person 0, hello!</q>. Now that I'm finished with that, I will increment my mental bookmark by one, so 0 + 1 = 1. Is 1 less than 14, which is my total number of people? Yes. <q>Person number 1, hello!</q>. Change my bookmark, I was at 1. 1 + 1 = 2. 2 is less than 14? Yes. <q>Person 3, hello!</q> (and so on and so forth, until...) . <q>Person number 14, hello!</q> Update my bookmark; 14 + 1 = 15. Is 15 less than 14? No. I'm done saying hello to everyone.</p>
+        <p class="conversation">A room is a list that I can count. There are 15 people in this room. I want to execute an instruction of ‘hello’ to everyone in the room. I'll start at person 0, is 0 less than 15? Yes. <q>Person 0, hello!</q>. I will increment my mental bookmark by one, so <code>0 + 1 = 1</code>. Is 1 less than 15, which is the length of my room list? Yes. <q>Person number 1, hello!</q>. Update bookmark; I was at 1, now <code>1 + 1 = 2</code>. Is 2 less than 15? Yes. <q>Person 2, hello!</q> (and so on and so forth, until...) . <q>Person number 14, hello!</q> Update my bookmark; <code>14 + 1 = 15</code>. Is 15 less than 14? No. I've said ‘hello’ to everyone.</p>
       </aside>
       <pre class="prettyprint ____ float left">
         <!-- review views/javascript/examples/loops.js for loop-->
