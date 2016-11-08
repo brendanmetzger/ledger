@@ -1,0 +1,20 @@
+# Order
+
+## Goal
+(your words here)
+
+## TODO
+- [ ] Used more than one JavaScript event listener
+- [ ] Authored and used 10 JavaScript functions
+- [ ] Correctly used the following html elements at least once: <dl>, <input>, <aside>, <mark> and <footer>
+- [ ] Correctly used the css properties or values at least once: hyphens, linear-gradient, background-size
+- [ ] Correctly used the following css pseudos at least once: :target, :nth-child(), :before and :not
+- [ ] Used at least one media query
+- [ ] Your code is structurally organized either by your hand or with a plugin
+- [ ] Your css file is over 100 lines long, and your JavaScript is over 50 lines
+- [ ] FILL IN WITH YOUR OWN TODO (or accept 10% deduction)
+- [ ] FILL IN WITH YOUR OWN TODO (or accept 10% deduction)
+
+
+## Questions and Outcome
+(your words here)

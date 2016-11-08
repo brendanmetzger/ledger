@@ -10,6 +10,7 @@ pre {
   white-space: pre;
   letter-spacing: 0;
   font-style: normal;
+  tab-size: 2;
 }
 
 samp {
