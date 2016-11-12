@@ -119,14 +119,9 @@ class Records extends \bloc\controller
 
 
 
-      $this->{$topic} = $this->item =  Data::FACTORY($topic, $this->student->evaluation($topic, $index));
-
-      $criterion = \models\Criterion::Collect(null, "[@type='{$topic}' and (@course = '{$this->student->course}' or @course = '*')]")->pick($index);
-
-      $this->files = \models\Assessment::LINKS($this->student->evaluation($topic, $index, $criterion));
-
-
-
+      $criterion  = \models\Criterion::Collect(null, "[@type='{$topic}' and (@course = '{$this->student->course}' or @course = '*')]")->pick($index);
+      $this->{$topic} = $this->item = $this->student->evaluation($topic, $index, $criterion);
+      $this->files = \models\Assessment::LINKS($this->item);
 
       $this->template = 'editor';
       $view->context = "views/layouts/forms/assignment.html";

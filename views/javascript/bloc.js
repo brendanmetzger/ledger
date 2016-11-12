@@ -31,12 +31,6 @@ var cycle = function (index, limit) {
   };
 };
 
-var timecode2Seconds = function (timecode) {
-  return timecode.split(':').reverse().reduce(function (accumulator, current, idx) {
-    return accumulator + parseInt(current, 10) * Math.pow(60, idx);
-  }, 0);
-};
-
 /* SVG */
 
 /* Quick way to create an SVG element with and a prototypal method
@@ -82,12 +76,13 @@ function JSONP(src, callback, listener) {
 }
 
 
-function decHex(decimal, pad = '00') {
-  return (pad + parseInt(decimal, 10).toString(16).toUpperCase()).slice(-pad.length);
+function decHex(decimal, pad) {
+  
+  return (pad + parseInt(decimal, 10).toString(16).toUpperCase()).slice(-(pad || '00').length);
 }
 
-function decBin(decimal, pad = '00000000') {
-  return (pad + parseInt(decimal, 10).toString(2)).slice(-pad.length);
+function decBin(decimal, pad) {
+  return (pad + parseInt(decimal, 10).toString(2)).slice(-(pad || '00').length);
 }
 
 

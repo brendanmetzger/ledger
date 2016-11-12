@@ -47,7 +47,7 @@ trait evaluation {
     if ($this->status == 'open') {
       return 'NA';
     }
-    return ($this->status == 'marked' && $this->score <= 0) ? '⚐' : '✗';
+    return $this->score == 0 ? '♻' : ($this->score < 0 ? '⚐' : '✗');
   }
 
   public function getWeighted(\DOMElement $context)

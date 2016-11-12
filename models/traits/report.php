@@ -24,16 +24,15 @@ trait report {
       $content = base64_decode($file->getAttribute('content'));
     } else {
 
-      $content = file_get_contents($this->url);
+      $content = trim(file_get_contents($this->url));
       $file = $doc->documentElement->appendChild($doc->createElement('file'));
-
       $file->setAttribute('index', $idx);
+      $file->setAttribute('sloc', count(preg_split('/\n/', $content)));
       $file->setAttribute('name', $filename);
       $file->setAttribute('content', base64_encode($content));
       $file->setAttribute('created', (new \DateTime())->format('Y-m-d H:i:s'));
       $doc->save();
     }
-
 
     return $content;
   }
@@ -88,11 +87,12 @@ trait report {
     if ($file instanceof \bloc\dom\element && (new \DateTime($file->getAttribute('created')))->diff(new \DateTime())->format('%a') < 1) {
       $content = base64_decode($file->getAttribute('content'));
     } else {
-      $content = file_get_contents($url);
+      $content = trim(file_get_contents($url));
       $file = $doc->documentElement->appendChild($doc->createElement('file'));
       $file->setAttribute('index', $idx);
       $file->setAttribute('name', $filename);
       $file->setAttribute('content', base64_encode($content));
+      $file->setAttribute('sloc', count(preg_split('/\n/', $content)));
       $file->setAttribute('created', (new \DateTime())->format('Y-m-d H:i:s'));
 
       $cssvalidator = "https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3svg&uri=";
@@ -100,10 +100,38 @@ trait report {
       $report = base64_encode(($code < 400) ? file_get_contents($cssvalidator . $url) : 'NA');
 
       $file->setAttribute('errors', $report);
+      $file->setAttribute('stats', exec("echo '{$content}' | analyze-css -"));
       $doc->save();
     }
 
     return $file;
+  }
+  
+  public function getStructure(\DOMelement $context                                                               )
+  {
+    $doc = $this->markup;
+    $xpath = new \DOMXpath($this->markup);
+    $counts = [];
+    foreach ($xpath->query("/html/body//*") as $element) { 
+      $counts[$element->nodeName] = ($counts[$element->nodeName] ?? 0) + 1;
+    }
+    
+    arsort($counts);
+
+    return new \bloc\types\Dictionary([
+      'total'    => array_sum($counts),
+      'distinct' => count($counts),
+      'list'     =>  (new \bloc\types\Dictionary($counts))->map(function($count, $key) {
+        return ['name' => $key, 'count' => $count];
+      })
+    ]);
+    
+  }
+  
+  public function getLint(\DOMElement $context)
+  {
+    // This will use eslint to gather errors
+    // "cat {$content} | eslint --no-eslintrc --parser-options=ecmaVersion:7  --env browser -f json  --stdin"
   }
 
   public function getValidate(\DOMelement $context)

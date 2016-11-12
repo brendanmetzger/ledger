@@ -50,7 +50,7 @@
     </div>
     <hr class="ruled t b" />
     <h4>Inputs</h4>
-    <p>Input is largely controlled via the <code>input</code> Element. The input is an <a href="https://developer.mozilla.org/en-US/docs/Glossary/empty_element">empty element</a>, and depending on the <code>type</code> attribute, it well exhibit a different function. For instance, <code>&lt;input type="text"...</code> is your basic text input field, where <code>&lt;input type="checkbox"...</code> would be a checkbox. You can make <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">many types of input</a>, below is a quick overview of some interesting ones.</p>
+    <p>Input is largely controlled via the <code>input</code> Element. The input is an <a href="https://developer.mozilla.org/en-US/docs/Glossary/empty_element">empty element</a>, and depending on the <code>type</code> attribute, it well exhibit a different function. For instance, <code>&lt;input type="text"...</code> is your basic text input field, where <code>&lt;input type="checkbox"...</code> would be a checkbox. You can make <a href="https://developer.mozilla.org#the-Input-element">many types of input</a>, below is a quick overview of some interesting ones.</p>
     <dl class="whitepaper tt bb">
       <dt><pre class="prettyprint">&lt;input type="text" value="<span class="text input">content</span>"/&gt;</pre></dt>
       <dd><input type="text" value="content" class="example" oninput="document.querySelector('.text.input').textContent = this.value;" /></dd>
@@ -58,7 +58,7 @@
       <dt><pre class="prettyprint checkbox">&lt;label&gt;&lt;input type="checkbox" value="mmm-hmmm"/&gt;check?&lt;/label&gt;</pre></dt>
       <dd><label><input type="checkbox" checked="checked" value="is checked" onclick="document.querySelector('pre.checkbox').classList.toggle('strike')"/>check?</label></dd>
       <dd>The checkbox is interesting: you set the value, and the value only is sent if the box is checked.</dd>
-      <dd>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label">Label Element</a> provides additional functionality.</dd>
+      <dd>The <a href="https://developer.mozilla.org#the-label-element">Label Element</a> provides additional functionality.</dd>
       <dt><pre class="prettyprint">&lt;input type="range" min="0" max="100" step="5" value="<span class="range input">50</span>"/&gt;</pre></dt>
       <dd><input type="range" min="5" max="100" step="5" value="50" oninput="document.querySelector('.range.input').textContent = this.value" /></dd>
       <dt><pre class="prettyprint">&lt;input type="color" value="<span class="color input">EE33AA</span>"/&gt;</pre></dt>

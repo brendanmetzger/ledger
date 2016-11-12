@@ -118,38 +118,38 @@
     The return value expression must start on the same line as the <code>return</code> keyword in order to avoid semicolon insertion. </p>
   <h3 id="if statement"> <code>if</code> Statement </h3>
   <p> The <code>if</code> class of statements should have the following form: </p>
-  <p> <code>&nbsp;&nbsp;&nbsp;&nbsp;if (</code><var>condition</var><code>)
+  <p> <code>    if (</code><var>condition</var><code>)
     {<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><var>statements</var><code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;if (</code><var>condition</var><code>) {<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><var>statements</var><code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><var>statements</var><code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;if (</code><var>condition</var><code>) {<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><var>statements</var><code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;} else if (</code><var>condition</var><code>)
+            </code><var>statements</var><code><br>
+        }<br>
+        <br>
+        if (</code><var>condition</var><code>) {<br>
+            </code><var>statements</var><code><br>
+        } else {<br>
+            </code><var>statements</var><code><br>
+        }<br>
+        <br>
+        if (</code><var>condition</var><code>) {<br>
+            </code><var>statements</var><code><br>
+        } else if (</code><var>condition</var><code>)
     {<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><var>statements</var><code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><var>statements</var><code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;}</code> </p>
+            </code><var>statements</var><code><br>
+        } else {<br>
+            </code><var>statements</var><code><br>
+        }</code> </p>
   <h3 id="for statement"> <code>for</code> Statement </h3>
   <p> A <code>for</code> class of statements should have the following form: </p>
-  <p> <code>&nbsp;&nbsp;&nbsp;&nbsp;for (</code><var>initialization</var><code>;
+  <p> <code>    for (</code><var>initialization</var><code>;
     </code><var>condition</var><code>; </code><var>update</var><code>) {<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><var>statements</var><code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+            </code><var>statements</var><code><br>
+        }<br>
     <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;for (</code><var>variable</var><code> in </code><var>object</var><code>)
+        for (</code><var>variable</var><code> in </code><var>object</var><code>)
     {<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (</code><var>filter</var><code>) {<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><var>statements</var><code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;}</code> </p>
+            if (</code><var>filter</var><code>) {<br>
+                </code><var>statements</var><code><br>
+            } <br>
+        }</code> </p>
   <p> The first form should be used with arrays and with loops of a predeterminable
     number of iterations. </p>
   <p> The second form should be used with objects. Be aware that members that
@@ -157,34 +157,34 @@
     be included in the enumeration. It is wise to program defensively by using
     the <code>hasOwnProperty</code> method to distinguish the true members
     of the <var>object</var>: </p>
-  <p> <code>&nbsp;&nbsp;&nbsp;&nbsp;for (</code><var>variable</var><code>
+  <p> <code>    for (</code><var>variable</var><code>
     in </code><var>object</var><code>) {<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if </code><code>(</code><var>object</var><code>.hasOwnProperty(</code><var>variable</var><code>))</code><code>
+            if </code><code>(</code><var>object</var><code>.hasOwnProperty(</code><var>variable</var><code>))</code><code>
     {<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><var>statements</var><code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;}</code></p>
+                </code><var>statements</var><code><br>
+            } <br>
+        }</code></p>
   <h3 id="while statement"> <code>while</code> Statement </h3>
   <p> A <code>while</code> statement should have the following form: </p>
-  <p> <code>&nbsp;&nbsp;&nbsp;&nbsp;while (</code><var>condition</var><code>)
+  <p> <code>    while (</code><var>condition</var><code>)
     {<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><var>statements</var><code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;}</code> </p>
+            </code><var>statements</var><code><br>
+        }</code> </p>
   <h3 id="do statement"> <code>do</code> Statement </h3>
   <p> A <code>do</code> statement should have the following form: </p>
-  <p> <code>&nbsp;&nbsp;&nbsp;&nbsp;do {<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><var>statements</var><code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;} while (</code><var>condition</var><code>);</code> </p>
+  <p> <code>    do {<br>
+            </code><var>statements</var><code><br>
+        } while (</code><var>condition</var><code>);</code> </p>
   <p> Unlike the other compound statements, the <code>do</code> statement
     always ends with a <code>;</code> <small>(semicolon)</small>. </p>
   <h3 id="switch statement"> <code>switch</code> Statement </h3>
   <p> A <code>switch</code> statement should have the following form: </p>
-  <p> <code>&nbsp;&nbsp;&nbsp;&nbsp;switch (</code><var>expression</var><code>) {<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;case </code><var>expression</var><code>:<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><var>statements</var><code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;default:<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><var>statements</var><code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;}
+  <p> <code>    switch (</code><var>expression</var><code>) {<br>
+        case </code><var>expression</var><code>:<br>
+            </code><var>statements</var><code><br>
+        default:<br>
+            </code><var>statements</var><code><br>
+        }
   </code></p>
   <p> Each <code>case</code> is aligned with the <code>switch</code>. This
     avoids over-indentation. A <code>case</code> label is not a statement, and should not be indented like one.</p>
@@ -193,19 +193,19 @@
     Do not fall through. </p>
   <h3 id="try statement"> <code>try</code> Statement </h3>
   <p> The <code>try</code> class of statements should have the following form: </p>
-  <p> &nbsp;&nbsp;&nbsp;&nbsp;<code>try {</code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<var>statements</var><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;<code>} catch (</code><var>variable</var><code>) {</code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<var>statements</var><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+  <p>     <code>try {</code><br>
+            <var>statements</var><br>
+        <code>} catch (</code><var>variable</var><code>) {</code><br>
+            <var>statements</var><br>
+        }<br>
     <br>
-    &nbsp;&nbsp; &nbsp;<code>try {</code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<var>statements</var><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;<code>} catch (</code><var>variable</var><code>) {</code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<var>statements</var><br>
-    &nbsp;&nbsp;<code>&nbsp;} finally {</code><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<var>statements</var><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;<code>}</code> </p>
+        <code>try {</code><br>
+            <var>statements</var><br>
+        <code>} catch (</code><var>variable</var><code>) {</code><br>
+            <var>statements</var><br>
+      <code> } finally {</code><br>
+            <var>statements</var><br>
+        <code>}</code> </p>
   <h3 id="continue statement"> <code>continue</code> Statement </h3>
   <p> Avoid use of the <code>continue</code> statement. It tends to obscure the
     control flow of the function. </p>

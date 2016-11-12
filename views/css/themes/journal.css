@@ -474,11 +474,9 @@ form textarea {
 }
 
 legend {
-  padding: 0 0.5em;
   font-size: 2em;
   font-weight: 400;
-  text-transform: uppercase;
-  color: rgba(0,0,0,0.3);
+  color: #EC008C;
 }
 
 fieldset {

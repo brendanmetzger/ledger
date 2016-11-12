@@ -1,6 +1,38 @@
-<fieldset id="practice" class="notes" data-url="[$url]">
-  <legend>[Practice $index]</legend>
-  <h3 class="centered percentage ruled bottom top">[$practice:percentage]</h3>
+<fieldset id="practice" data-url="[$url]">
+  <legend class="percentage">[Practice $index score: $practice:percentage]</legend>
+  <ul>
+    <li>Hours Spent: <b>[$practice:hours]</b></li>
+    <li>Total Elements: <b>[$practice:structure:total]</b></li>
+    <li>Distinct Elements: <b>[$practice:structure:distinct]</b></li>
+    <!-- <li>SLOC (HTML): </li>
+    <li>SLOC (CSS): </li>
+    <li>SLOC (JS): </li> -->
+  </ul>
+  <style type="text/css" media="screen">
+    /* <![CDATA[ */
+    table tbody td {
+      padding: 0.25em;
+    }
+    /* ]]> */
+  </style>
+  <details open="open">
+    <summary><small>Breakdown</small></summary>
+    <table class="full t b centered">
+      <caption class="rag-right">
+      </caption>
+      <thead>
+        <th>Element</th>
+        <th>Quantity</th>
+      </thead>
+      <tbody>
+        <!-- iterate practice:structure:list -->
+        <tr>
+          <td><code>[$name]</code></td>
+          <td>[$count]</td>
+        </tr>
+      </tbody>
+    </table>
+  </details>
   <section class="sliders">
     <label class="container">
       <h4>Effort</h4>
@@ -20,7 +52,7 @@
     </label>
   </section>
   <label for="notes">Notes</label>
-  <textarea name="practice[CDATA]" cols="30" rows="20" id="notes" style="font-size:1.25em;height:50vh;width:calc(100% + 2em);margin:0em -1em;padding:1em;">[$practice]</textarea>
+  <textarea name="practice[CDATA]" cols="30" rows="10" id="notes" style="font-size:1.25em;height:40vh;width:calc(100% + 2em);margin:0em -1em;padding:1em;">[$practice]</textarea>
   <script type="text/javascript">
     // <![CDATA[
     bloc.embed('/javascript/iam.js');
