@@ -144,14 +144,15 @@ namespace models;
       $xpath = new \DOMXpath($doc);
 
       $report = $assessment->validate;
+      // FIXME: report now contains warnings.
       $number_of_errors = count($report->messages);
       $files = [
         [
           'name'    => 'index.html',
-          'content' => $assessment->plain,
+          'content' => base64_decode($assessment->plain->getAttribute('content')),
           'type'    => 'lang-html',
           'url'     => $assessment->url,
-          'report'  => ['count' => count($report->messages), 'errors' => (new \bloc\types\Dictionary($report->messages))->map(function ($item) {
+          'report'  => ['sloc'    => $assessment->plain->getAttribute('sloc'), 'count' => count($report->messages), 'errors' => (new \bloc\types\Dictionary($report->messages))->map(function ($item) {
             return ['line' => $item->lastLine ?? 1, 'message' => $item->message];
           })],
 
@@ -200,7 +201,7 @@ namespace models;
           'name'    => $file->getAttribute('name'),
           'content' => null,
           'type'    => 'lang-css',
-          'report'  =>  ['count' => $count, 'errors' => (new \bloc\types\Dictionary($report->cssvalidation->errors ?? []))->map(function ($item) {
+          'report'  =>  ['sloc' => $file->getAttribute('sloc'), 'count' => $count, 'errors' => (new \bloc\types\Dictionary($report->cssvalidation->errors ?? []))->map(function ($item) {
             return ['line' => $item->line , 'message' => $item->message];
           })],
         ];

@@ -31,6 +31,9 @@ ul.scores li {
 td[style], col[style] {
   background-color: hsla(calc(var(--hue) * 1.25), 75% , calc(var(--value) / 2.5 + 50%), 0.35);
 }
+td[title^='-'] {
+  background-color: rgba(255, 0, 0, 0.2);
+}
 
 .percentage[title^='A'], .A {
   color: rgb(106, 194, 136);

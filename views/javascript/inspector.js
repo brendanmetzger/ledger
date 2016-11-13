@@ -27,7 +27,7 @@ bloc.init('viewer', function () {
               panel.classList.add('prettyprinted');
             }
           });
-          request.send()
+          request.send();
         } else if (! panel.classList.contains('prettyprinted')) {
 
           panel.classList.add('prettyprint');
@@ -36,7 +36,14 @@ bloc.init('viewer', function () {
         setTimeout(function () {
           [].forEach.call(panel.parentNode.querySelectorAll('li[data-line]'), function (li) {
             var idx = parseInt(li.dataset.line, 10) - 1;
-            li.parentNode.parentNode.nextElementSibling.querySelector('ol').children[idx].classList.add('error');
+            var line = li.parentNode.parentNode.nextElementSibling.querySelector('ol').children[idx];
+            if (li.className == 'lang-css' && /\-\-|var\(/.test(line.textContent)) {
+              li.textContent = 'Line ' + li.dataset.line + ': limited browser support';
+              line.classList.add('warn');
+            } else {
+              line.classList.add('error');
+            }
+            
           });
         }, 1000);
       }

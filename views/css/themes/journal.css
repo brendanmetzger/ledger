@@ -199,7 +199,7 @@ h2:not(:first-child) {
 h3,
 summary {
   font-size: calc(1em + 2vmin);
-  margin: 0.5em 0;
+  margin: 0.35em 0;
   font-weight: 400;
   line-height: 0.875;
 }
@@ -265,17 +265,11 @@ time.pending {
 }
 
 td time.pending:before {
-  content: '✎';
-  color: rgba(0,0,0,0.5);
+  content: '✶';
+  color: #333;
   padding: 0 0.5em 0 0;
 }
 
-time.transpired:before {
-  content: '\2718';
-  color: #333;
-  padding-right: 0.25em;
-  color: #555;
-}
 
 time.transpired {
   color: #AAA;
@@ -354,7 +348,7 @@ ul {
 }
 
 ul:not([class]) {
-  margin: 2em 0;
+  margin: 1em 0;
 }
 
 ul.stylized {
@@ -393,13 +387,6 @@ ul.bad li:before {
   border-top-width: calc(1vmin);
   margin: calc(5vmax) 0;
   padding: 2vmax 0;
-}
-
-.paginate article:before {
-  content: ' ';
-  background-color: red;
-  display: block;
-  margin-left: -2.5vw;
 }
 
 main {
@@ -480,7 +467,7 @@ legend {
 }
 
 fieldset {
-  margin: 2em 0;
+  margin: 1em 0;
   padding: 0;
   border-width: 1px 0 0;
   border-color: rgba(0,0,0,0.2);

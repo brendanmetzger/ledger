@@ -72,7 +72,7 @@ namespace models;
           'datetime' => $begin->format(\DateTime::RFC3339),
           'status'   => $now->format('U') > $begin->format('U') - 1000 ? 'transpired' : 'pending',
           'index'    => $index++,
-          'ticker'   => $interval->format('%r') === '-' ? $interval->format('%a days ago') : $interval->format('%a days'),
+          'ticker'   => $interval->format('%r') === '-' ? $interval->format('-%a days') : $interval->format('+%a days'),
         ];
         foreach ($holidays as $idx => $holiday) {
           if ($holiday['start'] <= $begin && $holiday['end'] >= $begin) {

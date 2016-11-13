@@ -20,10 +20,7 @@ trait report {
 
 
     $file = $doc->last("/records/file[@index='{$idx}' and @name='{$filename}']");
-    if ($file instanceof \bloc\dom\element && (new \DateTime($file->getAttribute('created')))->diff(new \DateTime())->format('%a') < 1) {
-      $content = base64_decode($file->getAttribute('content'));
-    } else {
-
+    if (! $file instanceof \bloc\dom\element || (new \DateTime($file->getAttribute('created')))->diff(new \DateTime())->format('%a') > 1) {
       $content = trim(file_get_contents($this->url));
       $file = $doc->documentElement->appendChild($doc->createElement('file'));
       $file->setAttribute('index', $idx);
@@ -34,13 +31,16 @@ trait report {
       $doc->save();
     }
 
-    return $content;
+    return $file;
   }
 
   public function getMarkup(\DOMElement $context)
   {
     $doc = new \DOMDocument();
-    $doc->loadHTML($this->plain);
+    $content = base64_decode($this->plain->getAttribute('content'));
+    $doc->loadHTML($content, LIBXML_NOBLANKS);
+    $doc->formatOutput = true;
+    $doc->normalizeDocument();
     return $doc;
   }
 
@@ -148,7 +148,7 @@ trait report {
 
       $content = base64_decode($errors);
     } else {
-      $handle = curl_init("https://validator.nu/?level=error&doc={$this->url}&out=json");
+      $handle = curl_init("https://validator.nu/?outline=yes&doc={$this->url}&out=json");
       curl_setopt_array($handle, [
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_USERAGENT => $_SERVER['HTTP_USER_AGENT'],
