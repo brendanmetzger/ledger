@@ -196,11 +196,32 @@ namespace models;
           $count = "NA";
         }
 
+        $quality = new \bloc\types\Dictionary([
+          'rules' => 'Total number of rules authored',
+          'selectors' => 'Total Selectors',
+          'selectorsByAttribute' => 'Attribute Selectors',
+          'selectorsByClass' => 'Class selectors',
+          'selectorsByTag' => 'Type (Element) selectors',
+          'selectorsById' => 'ID selectors',
+          'selectorsByPseudo' => 'Pseudo selectors',
+          'qualifiedSelectors' => 'Qualified Selectors',
+          'colors' => 'The number of colors specified',
+          'mediaQueries' => 'Number of media queries',
+          'complexSelectors' => 'Complex Selectors',
+          'duplicatedSelectors' => 'Selectors that can be combined',
+          'duplicatedProperties' => 'Properties that can be grouped',
+        ]);
+        
+        $stats = json_decode($file->getAttribute('stats'))->metrics;
+       
         $files[] = [
           'url'     => base64_encode($uri),
           'name'    => $file->getAttribute('name'),
           'content' => null,
           'type'    => 'lang-css',
+          'console' => $quality->map(function($item, $key) use($stats) {
+            return ['name' => $item, 'value' => $stats->{$key} ];
+          }),
           'report'  =>  ['sloc' => $file->getAttribute('sloc'), 'count' => $count, 'errors' => (new \bloc\types\Dictionary($report->cssvalidation->errors ?? []))->map(function ($item) {
             return ['line' => $item->line , 'message' => $item->message];
           })],

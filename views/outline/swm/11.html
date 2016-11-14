@@ -21,34 +21,45 @@
   </article>
   <!-- insert views/topics/technology/servers.html -->
   <article>
-    <h2>Case Study: Lightbox and <abbr title="JavaScript Object Notation">JSON</abbr></h2>
-    <p class="intro">Plainly spoken from <a href="http://www.json.org">json.org</a>, <q cite="http://www.json.org">JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language</q>.</p>
-    <p>This is a great thing to get a taste of; imagine you can create and add data to a project without having to author the data, or write the <abbr>HTML</abbr> over and over. Many feeds and services all over the internet can be gathered and applied in this manner. Here I have used a concept called <abbr title="Javascript Object Notation With Padding">JSONP</abbr> to gather images from some subreddits and display them for a lightbox.</p>
-    <link rel="stylesheet" href="/css/gallery.css" media="screen" title="no title" charset="utf-8" />
-    <div class="whitepaper container tt bb">
-      <section class="reddit gallery ______ float left">
-        <h3 class="rag-left whitepaper">Click To Load Gallery</h3>
-      </section>
-      <aside class="____ float left">
-        <pre class="prettyprint">
-          <!-- review views/javascript/examples/json.js Load Reddit-->
-          <hr class="divider" data-after="CSS" data-before="JavaScript"/>
-          <!-- review views/css/gallery.css gallery-->
-        </pre>
-      </aside>
-    </div>
-    <script type="text/javascript">
-      bloc.embed('/javascript/examples/json.js');
-      var galleries = ['architecture', 'cableporn', 'designporn', 'awww', 'DesirePath', ];
+    <h2>Variable Scope</h2>
+    <p>We can stylistically determine how something looks (as will as linguistically add meaning) through the hierarchy and structure of our outline, ie., a <code class="element">h2</code> is most important to its containing <code class="element">section</code> or <code class="element">article</code> element. We can do a similar thing our program code. Recalling <a href="http://eloquentjavascript.net/03_functions.html">Chapter 3</a> of <em>Eloquent JavaScript</em>, I mentioned that the material was a bit terse, so now we'll look a little closer.</p>
+    <p>If I declare a function, it is not much different than declaring a variable. I pick out a name, and that name, gives me a way to assign and store some <em>value</em> for later use: strings, numbers, booleans, nulls, undefined, and objects (including arrays and functions). Where that variable declaration happens and how we gain access to it is the concept <strong>variable scope</strong>.</p>
 
-      function loadGal() {
-        var gal = galleries[Math.floor(Math.random() * galleries.length)];
-        document.head.appendChild(document.createElement('script')).src = 'https://www.reddit.com/r/{0}/top.json?sort=top&amp;t=week&amp;jsonp=loadRedditGallery'.format(gal);
-        this.innerHTML = "r/{0}".format(gal);
-        this.removeEventListener('click', loadGal);
-      }
-      document.querySelector('section.gallery > h3').addEventListener('click', loadGal);
-    </script>
+    <div class="whitepaper container t">
+      <h4 class="clear centered">All Sorts of Scope</h4>
+      <aside class="note ______ float left">
+        <h5>Variables must be declared somewhere.</h5>
+        <p>When you write some code a compilation process takes looks at all of your declarations and converts them to program code. The outermost layer is called <em>the global scope</em>. At right, we have declared two things and added them to the global scope, what are they?</p>
+      </aside>
+      <pre class="prettyprint float left ____">
+        <!-- review views/javascript/examples/scope.js global  -->
+      </pre>
+      <hr class="clear ruled t b" />
+      <aside class="note ______ float left">
+        <h5>Global Scope vs. Local Scope</h5>
+        <p>In the current version<sup>*</sup> of javascript, there is only one other type of scope available, called <em>local scope</em>. Local scope is created within the body of a function declaration. Spot the following: there are three variables declared, two in the global scope, one scoped to the <code>drive</code> function. The two <code>truck</code> variables share the <em>same name</em>, but they in <em>different scopes</em>, and thus, <em>different variables</em>.</p>
+      </aside>
+      <pre class="prettyprint ____ float left">
+        <!-- review views/javascript/examples/scope.js local  -->
+      </pre>
+      <hr class="clear ruled t b" />
+      <aside class="note ______ float left">
+        <h5>Arguments and Parameters</h5>
+        <p>Something we often forget about is the nature of declared arguments as a way to usurp the scope of a variable. Arguments are scoped to the function they belong. A correct way of thinking about arguments might be <code>function(var something)…</code> as we are declaring a variable to store whatever we pass in as a parameter. This is a good way of thinking about it, but never actually write var, it is a syntax error.</p>
+      </aside>
+      <pre class="prettyprint ____ float left">
+        <!-- review views/javascript/examples/scope.js arguments  -->
+      </pre>
+      <hr class="clear ruled t b" />
+      <aside class="note ______ float left">
+        <h5>Nesting Scopes</h5>
+        <p>Once again, functions are objects, and objects can contain other objects. Declaring a function is declaring a variable, and if we can declare a variable within a function, it would seem like we should be able to declare a function inside another function—and we can. The important thing to remember is that a function will always go up the scope chain, all the way to the global scope if necessary. It will stop whenever it finds a variable with the name it seeks, and if no variable can be found with that name, it will be an <em>undefined</em></p>
+        <p>Spot the following: five variable declarations, three scopes. Practice spotting the difference between function <em>declaration</em> and function <em>execution</em> of a function.</p>
+      </aside>
+      <pre class="prettyprint ____ float left">
+        <!-- review views/javascript/examples/scope.js nested  -->
+      </pre>
+    </div>
   </article>
   <article>
     <h2>Reference and Practice Material</h2>

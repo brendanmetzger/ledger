@@ -97,7 +97,7 @@ strong,.strong{font-weight:600}
   .columns.four {-moz-column-count:4;-webkit-column-count:4;column-count:4}
 }
 
-.margins > p {
+.margins > p, p.margins, p.margins ~ p {
   margin-bottom:0.5em;
 }
 

@@ -481,9 +481,18 @@ form textarea {
 }
 
 button {
-  padding: 1em;
   cursor: pointer;
   box-shadow: 0 0 0.5em rgba(0,0,0,0.1);
+  width: 3em;
+  padding: 0;
+  line-height: 0;
+}
+
+.drawer button {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  height: 3em;  
 }
 
 button:hover {
@@ -765,6 +774,12 @@ div.thumbinner img {
   box-shadow: -0.5em 0 0.5em rgba(0,0,0,0.2);
   padding: 2em;
   box-sizing: border-box;
+}
+.locked {
+  overflow: hidden;
+}
+.drawer *:not(button) {
+  pointer-events: none;
 }
 
 .neat {

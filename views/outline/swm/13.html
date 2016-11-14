@@ -7,12 +7,37 @@
   </header>
   <article>
     <h2>Task</h2>
-    <p>Today's main order of business is some <a href="/lecture/essay/it-is-known">quiz fodder</a>.</p>
+    <p>Today’s main order of business is some <a href="/lecture/essay/it-is-known">quiz fodder</a>.</p>
   </article>
-  <article class="indented">
-    <h2>Drawing</h2>
-    <p>There are two fundamental ways to draw using web technologies: using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">canvas element</a> and with <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">Scalable Vector Graphics</a> referred to as <abbr title="Scalable Vector Graphics">SVG</abbr>. To draw with the canvas element, you start with an html element called <code>canvas</code> and from there, use a JavaScript <abbr>API</abbr> to make shapes, set fill colors, etc. <abbr>SVG</abbr> on the other hand, is and <abbr>XML</abbr> file, and these files can be constructed by vector drawing programs like Adobe Illustrator, embedded as an image like any other format (<code>&lt;img src="file.svg"/&gt;</code>) or embedded directly into an HTML page as an <code>&lt;svg&gt;</code> element</p>
-    <p>Using illustrator, we'll take a very quick tour over adding an svg to a document, and recall that we can now use JavaScript and <abbr>CSS</abbr> to adjust scenarios.</p>
+  <article>
+    <h2>Case Study: Lightbox and <abbr title="JavaScript Object Notation">JSON</abbr></h2>
+    <p class="intro">Plainly spoken from <a href="http://www.json.org">json.org</a>, <q cite="http://www.json.org">JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language</q>.</p>
+    <p>This is a great thing to get a taste of; imagine you can create and add data to a project without having to author the data, or write the <abbr>HTML</abbr> over and over. Many feeds and services all over the internet can be gathered and applied in this manner. Here I have used a concept called <abbr title="Javascript Object Notation With Padding">JSONP</abbr> to gather images from some subreddits and display them for a lightbox.</p>
+    <link rel="stylesheet" href="/css/gallery.css" media="screen" title="no title" charset="utf-8" />
+    <div class="whitepaper container tt bb">
+      <section class="reddit gallery ______ float left">
+        <h3 class="rag-left whitepaper">Click To Load Gallery</h3>
+      </section>
+      <aside class="____ float left">
+        <pre class="prettyprint">
+          <!-- review views/javascript/examples/json.js Load Reddit-->
+          <hr class="divider" data-after="CSS" data-before="JavaScript"/>
+          <!-- review views/css/gallery.css gallery-->
+        </pre>
+      </aside>
+    </div>
+    <script type="text/javascript">
+      bloc.embed('/javascript/examples/json.js');
+      var galleries = ['architecture', 'designporn', 'awww', 'DesirePath', ];
+
+      function loadGal() {
+        var gal = galleries[Math.floor(Math.random() * galleries.length)];
+        document.head.appendChild(document.createElement('script')).src = 'https://www.reddit.com/r/{0}/top.json?sort=top&amp;t=week&amp;jsonp=loadRedditGallery'.format(gal);
+        this.innerHTML = "r/{0}".format(gal);
+        this.removeEventListener('click', loadGal);
+      }
+      document.querySelector('section.gallery > h3').addEventListener('click', loadGal);
+    </script>
   </article>
   <article>
     <h2>Frameworks</h2>
@@ -25,8 +50,8 @@
     <div class="three columns">
       <p>The truth is that there is no shame in this, often we are just too proud to admit we don’t know everything (oddly, we have no trouble admitting we don’t have the time [though that’s often less true]). There are always problems that are difficult to solve and others with the time have gone to great length to solve already. Given plenty of experience and time, frameworks are nothing more than convenient; but without those two factors, they can be necessary.</p>
       <p>There was a point in JavaScript development where different browsers implemented the <abbr title="document object model">DOM</abbr> differently—it was so ugly that you had either had to spend all your time fixing bugs or use a framework that fixed the bugs for you to give a consistent <abbr>api</abbr>. Long ago, in non-<abbr title="internet explorer">IE</abbr> to bind an event listener you would use our familiar <code>addEventListener</code>, but in Internet Explorer, you would use <code>addEvent</code>. The spec agreed it should be <code>addEventListener</code>, but marketshare allowed some bigger players to do whatever they wanted.</p>
-      <p>So frameworks ironed this out for us—we didn't have to write <a href="https://en.wikipedia.org/wiki/Spaghetti_code">spaghetti code</a> to grapple with inconsistencies. One such framework, say jQuery, might give us a new method called <code>on</code> that did all the event lister stuff for us,and more—it was a windfall at the time. Today, much of this is a non-issue, we can write nice clean, cross-browser code, but jQuery lives on because it has become very familiar.</p>
-      <p>And this is a caveat I'd mention now; when a framework prevents you from expanding your perspective, it is an awkward tool. Like a crutch that alleviates an ailment, it won't provide an advantage over someone who can function without one. I was an early proponent and enthusiast of any tool that makes us better, mind, there is a large gulf between <q>better</q> and <q>adequate</q> when it comes to proficiency.</p>
+      <p>So frameworks ironed this out for us—we didn’t have to write <a href="https://en.wikipedia.org/wiki/Spaghetti_code">spaghetti code</a> to grapple with inconsistencies. One such framework, say jQuery, might give us a new method called <code>on</code> that did all the event lister stuff for us,and more—it was a windfall at the time. Today, much of this is a non-issue, we can write nice clean, cross-browser code, but jQuery lives on because it has become very familiar.</p>
+      <p>And this is a caveat I'd mention now; when a framework prevents you from expanding your perspective, it is an awkward tool. Like a crutch that alleviates an ailment, it won’t provide an advantage over someone who can function without one. I was an early proponent and enthusiast of any tool that makes us better, mind, there is a large gulf between <q>better</q> and <q>adequate</q> when it comes to proficiency.</p>
       <p>This is an important point I make: we should use frameworks often, and enjoy using them, but take to heart, in a best case world, you write your own code. Take a humble moment every now and then to remember that and let it push your design and your curiosity forward.</p>
     </div>
     <h3 class="tt">A review</h3>
@@ -35,15 +60,15 @@
       <dt><a href="http://vanilla-js.com/">Vanilla JS</a></dt>
       <dd>A joke site used to talk about the state of the current language and that modern techniques available are actually more terse and straightforward, and efficient than the most popular frameworks.</dd>
       <dt><a href="http://jquery.com/">jQuery</a></dt>
-      <dd>Everybody knows about this... with jQuery you go shopping for every plugin and interface widget ever made: light-boxes, carousels, parallax effects, oh my!</dd>
+      <dd>Everybody knows about this… with jQuery you go shopping for every plugin and interface widget ever made: light-boxes, carousels, parallax effects, oh my!</dd>
       <dt><a href="http://facebook.github.io/react/">React</a></dt>
-      <dd>Lots of people are talking about this. That's all I can say, as I will shamefully admit, I can’t help but find it incredibly intimidating and generally, <a href="https://twitter.com/thomasfuchs/status/708675139253174273">overdoing it</a>.</dd>
+      <dd>Lots of people are talking about this. That’s all I can say, as I will shamefully admit, I can’t help but find it incredibly intimidating and generally, <a href="https://twitter.com/thomasfuchs/status/708675139253174273">overdoing it</a>.</dd>
       <dt><a href="http://snapsvg.io/">Snap <abbr>SVG</abbr></a></dt>
       <dd>A vector drawing framework (formerly called Raphaël). Scalable vector graphics are fun, but I daresay, a bit intimidating. This is a good toe-dip into that pool.</dd>
       <dt><a href="https://d3js.org/">D3</a></dt>
       <dd>A data-visualization library. Absolutely adored by data journalists, map geeks and statistics nerds.</dd>
       <dt><a href="http://ramdajs.com/0.21.0/">Ramda</a></dt>
-      <dd>Just because... This is a <em>functional</em> library, that allows you to program in an entirely new style. It's part genius, bewildering, sometimes ridiculous and entirely fascinating.</dd>
+      <dd>Just because… This is a <em>functional</em> library, that allows you to program in an entirely new style. It’s part genius, bewildering, sometimes ridiculous and entirely fascinating.</dd>
     </dl>
     <!--
     a potential svg project/processing

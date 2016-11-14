@@ -19,7 +19,7 @@
   </style>
   <article>
     <h2>Review</h2>
-    <p>Last week we went over classes and ID's, naming conventions and you began an introduction to programming. Because they are so important, we are going to open up the resumé from last week and cover classes and ids some more, as well as go over the concept of a jump-nav</p>
+    <p>Last week we went over classes and ID’s, naming conventions and you began an introduction to programming. Because they are so important, we are going to open up the resumé from last week and cover classes and ids some more, as well as go over the concept of a jump-nav</p>
   </article>
   <article>
     <h2>The last big ideas of <abbr title="Hypertext Markup Language">html</abbr></h2>
@@ -91,10 +91,10 @@
   <article class="margins">
     <h2><abbr title="Cascading Stylesheet">CSS</abbr> Units: <em>color</em></h2>
     <p>While we understand length and size units (px, em, vw, wh, %) another important value to understand how to set is <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">color</a>.</p>
-    <p>I recommend that if you are new to color, you start by using and understanding how hex colors are specified. Hex stands for hexadecimal, and essentially it is just the red, green and blue system converted to the condensed hexadecimal number system. Once you understand this in principle, I think it is useful to use rgb values for the fact that you can specify an alpha channel—or an opacity of the color. From there, you can use an entirely different color scheme like hsl, or hue, saturation, luminosity. I won't dwell on this system yet, but it can be much easier to use HSL when we begin programming in the future.</p>
+    <p>I recommend that if you are new to color, you start by using and understanding how hex colors are specified. Hex stands for hexadecimal, and essentially it is just the red, green and blue system converted to the condensed hexadecimal number system. Once you understand this in principle, I think it is useful to use rgb values for the fact that you can specify an alpha channel—or an opacity of the color. From there, you can use an entirely different color scheme like hsl, or hue, saturation, luminosity. I won’t dwell on this system yet, but it can be much easier to use HSL when we begin programming in the future.</p>
     <h3 class="tt">Colorful Displays</h3>
     <p>In our displays, we use a three channel color system, each channel can hold 8 bits. That is, the red channel has 8 bits, the green channel has 8 bits, and the blue channel has 8 bits. 8 bits are quite important, and to a large extent, understanding 8 bits in a few different ways is all we need to get the gist of color.</p>
-    <p>Before we analyze a few methods, let's look at what 8 bits actually looks like a few different ways. In binary, it is an 8 digit number: <code>00000000</code>. Remember, a bit is a binary digit, which is a 0 or 1. We can count in binary, so essentially, each channel can count up to <code>11111111</code>. That same number, converted to decimal is <code>255</code>. That number in hex is, interestingly, <code>FF</code>.</p>
+    <p>Before we analyze a few methods, let’s look at what 8 bits actually looks like a few different ways. In binary, it is an 8 digit number: <code>00000000</code>. Remember, a bit is a binary digit, which is a 0 or 1. We can count in binary, so essentially, each channel can count up to <code>11111111</code>. That same number, converted to decimal is <code>255</code>. That number in hex is, interestingly, <code>FF</code>.</p>
     <p>Use the table below to start exploring colors and how they work.</p>
     <div class="container t ruled top">
       <div class="one-third float left note">
@@ -109,7 +109,7 @@
       </div>
       <div class="one-third float left note">
         <h3><abbr title="hue saturation lightness">hsl</abbr> and <abbr title="hue saturation lightness alpha">hsla</abbr></h3>
-        <p>This is the new kid on the block, and has some interesting applications with JavaScript. I don't use it as much for my regular color assignments, but that could be mostly out of habit. <abbr>HSL</abbr> can be easier to work with from memory, as the saturation and lighness components are just components of the hue. Like rgb, you may specify an alpha channel.</p>
+        <p>This is the new kid on the block, and has some interesting applications with JavaScript. I don’t use it as much for my regular color assignments, but that could be mostly out of habit. <abbr>HSL</abbr> can be easier to work with from memory, as the saturation and lighness components are just components of the hue. Like rgb, you may specify an alpha channel.</p>
 
         <p></p>
       </div>
@@ -236,7 +236,7 @@
     <h2>Control Statements</h2>
     <!--  insert views/css/media/flow.svg -->
     <h3>With CSS</h3>
-    <p>Last week, we saw that adding a type selector directly adjacent to a class selector, ie. <code>h3.special { ... }</code> says something like <q>only apply the class named special if the element is an h3</q>. Fixate for a moment on the word <b>if</b> and note that it implies there is a condition of true or false happening.</p>
+    <p>Last week, we saw that adding a type selector directly adjacent to a class selector, ie. <code>h3.special { … }</code> says something like <q>only apply the class named special if the element is an h3</q>. Fixate for a moment on the word <b>if</b> and note that it implies there is a condition of true or false happening.</p>
     <p>This, along with other careful use of classes can simulate boolean behavior with <abbr>CSS</abbr>, and can be used to great effect—which is why I think <a href="http://www.sitepoint.com/6-current-options-css-preprocessors/"><abbr>css</abbr> preprocessors</a> (programs that write <abbr>css</abbr> for you) are somewhat unnecessary. Written way back in the <abbr title="World Wide Web Consortium">W3C</abbr> <abbr>css</abbr> 2.0 spec: <q cite="https://www.w3.org/TR/CSS2/selector.html#class-html"><abbr title="Cascading Style Sheets">CSS</abbr> gives so much power to the <q>class</q> attribute, that authors could conceivably design their own <q>document language</q> based on elements with almost no associated presentation.</q> Broken down, the rules that inform how you may apply classes are so powerful that we could introduce meta-level thinking (not you actually would, or should.)</p>
     <section class="comparison container">
       <aside class="______ float left t b ruled top bottom">

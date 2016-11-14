@@ -7,16 +7,16 @@
   <article class="margins">
     <h2>Review</h2>
     <p>Last week we covered some important <abbr title="Cascading Stylesheets">CSS</abbr> properties fundamental to the concerns of an overlay. We wrote the entirety of a cosine function using nothing but functions and simple mathematics that we all have posessed since Junior High.</p>
-    <p>Today has some heady material, so to get you sharpened for the task at hand, here is a <a href="https://gist.github.com/brendanmetzger/ae72cb1526294ea0f40a38b80b855f68">pop-quiz</a>. Grab a sheet of paper, and fill out the questions and return to me. It's open notes, open internet, open ask a classmate. If you can't wrap your mind around any of the questions, articulate what you don't understand. If you can't articulate what you don't understand, we will have to discuss plan C.</p>
+    <p>Today has some heady material, so to get you sharpened for the task at hand, here is a <a href="https://gist.github.com/brendanmetzger/ae72cb1526294ea0f40a38b80b855f68">pop-quiz</a>. Grab a sheet of paper, and fill out the questions and return to me. It’s open notes, open internet, open ask a classmate. If you can’t wrap your mind around any of the questions, articulate what you don’t understand. If you can’t articulate what you don’t understand, we will have to discuss plan C.</p>
   </article>
   <article>
     <h2>Functional Ideas: <em>the callback</em></h2>
-    <p class="intro">You will learn syntax on your own given the practice—it’s actually very straightforward once you get over the unfamiliarity hurdle. Correctly writing programs isn't really about syntax, it’s about abstracting ideas—and yes, I’ll admit, that is a bijillion times harder.</p>
+    <p class="intro">You will learn syntax on your own given the practice—it’s actually very straightforward once you get over the unfamiliarity hurdle. Correctly writing programs isn’t really about syntax, it’s about abstracting ideas—and yes, I’ll admit, that is a bijillion times harder.</p>
     <section>
       <div class="two columns indented">
         <p>Well known at this point is that functions are first <em>declared</em> and then <em>executed</em> (you may also hear it termed applying a function or calling a function). Sometimes we do the declaring, sometimes the language has defined functions for us, like <code>console.log</code>. Sometimes we take charge of executing a function in our code, sometimes the function is executed by something out of our control—perhaps when a certain event occurs.</p>
         <p>It is the latter method that is particularly interesting, which is simply a declared function passed as a parameter to another function. You must read and understand that notion: <mark>a function can be passed to another function</mark> and it is so important it has been given its own word to define the concept: a <strong>callback</strong>. Whenever you see or hear it, you know that one function expects another function as a parameter (the parameter being the callback). Commit this to memory!</p>
-        <p>The function given the callback parameter determines when and how the callback function is executed; and right there, in a nutshell, is how JavaScript does it's most profound business. This concept governs event-based programming, so if you are an interactive designer, this is where your world of design opens up to a new frontier.</p>
+        <p>The function given the callback parameter determines when and how the callback function is executed; and right there, in a nutshell, is how JavaScript does it’s most profound business. This concept governs event-based programming, so if you are an interactive designer, this is where your world of design opens up to a new frontier.</p>
       </div>
     </section>
   </article>
@@ -32,7 +32,7 @@
       <li>How might we pay attention to if an overlay is open already, and what do we do with that information?</li>
       <li>How do we close the lightbox?</li>
     </ol>
-    <p class="focus">Much of the time you see <code>&lt;div onclick="..."</code> is because it is easier, and you don't have to concern yourself with page load, and this is something to start concerning yourself with. If you try to access the <code>document</code> object in your script file before everything has loaded, things don’t work quite right. But when does the page load? <q>When</q> questions are best answered through events, which are surveyed with listeners. Without further adieu: consider <code>window.addEventListener('load', callback)</code> and why it might be so crucial.</p>
+    <p class="focus">Much of the time you see <code>&lt;div onclick="…"</code> is because it is easier, and you don’t have to concern yourself with page load, and this is something to start concerning yourself with. If you try to access the <code>document</code> object in your script file before everything has loaded, things don’t work quite right. But when does the page load? <q>When</q> questions are best answered through events, which are surveyed with listeners. Without further adieu: consider <code>window.addEventListener('load', callback)</code> and why it might be so crucial.</p>
   </article>
   <article>
     <h2>Reference and Practice Material</h2>
@@ -42,7 +42,7 @@
     <h3>Make sure you understand the following principles:</h3>
       <dl>
         <dt>When do you need an event listener?</dt>
-        <dd>Simply put, you need an event listener when you want to plan around something happening, but you don't know when, where when falls anywhere from any moment to never.</dd>
+        <dd>Simply put, you need an event listener when you want to plan around something happening, but you don’t know when, where when falls anywhere from any moment to never.</dd>
         <dt>What’s up with the word <em>callback</em>?</dt>
         <dd>First, it is a regular function.</dd>
         <dd>A regular function becomes a callback when it is passed to another function as a parameter.</dd>
@@ -51,8 +51,8 @@
     </div>
     <dl class="tt">
       <dt>Some topics I will not have time to work into the lecture (unless specifically asked)</dt>
-      <dd>I haven't spent much time talking about control structures (you read about them in <a href="http://eloquentjavascript.net/02_program_structure.html">chapter 2</a>) because I think it is easier to digest examples when you come to points in your own work when you will need to employ sech things. Everything I do will assume you understand this stuff in principle.</dd>
-      <dd>Here is <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else">documentation on if...else</a></dd>
+      <dd>I haven’t spent much time talking about control structures (you read about them in <a href="http://eloquentjavascript.net/02_program_structure.html">chapter 2</a>) because I think it is easier to digest examples when you come to points in your own work when you will need to employ sech things. Everything I do will assume you understand this stuff in principle.</dd>
+      <dd>Here is <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if…else">documentation on if…else</a></dd>
       <dd>Here is <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for">documentation on a for loop</a></dd>
       <dt>Working with Events and Event Listeners</dt>
       <dd><a class="watch" href="http://www.lynda.com/JavaScript-tutorials/Introduction-JavaScript-event-handling/81266/87543-4.html?srchtrk=index%3a1%0alinktypeid%3a2%0aq%3ajavascript%0apage%3a1%0as%3arelevance%0asa%3atrue%0aproducttypeid%3a2">Chapter 6</a> of this Lynda.com series covers events.</dd>

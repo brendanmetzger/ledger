@@ -6,7 +6,7 @@
   </header>
   <article>
     <h2><code>this</code> is confusing</h2>
-    <blockquote class="quote" cite="Simpson, Kyle (2014-07-11). You Don't Know JS: this &amp; Object Prototypes (p. 1). O'Reilly Media.">
+    <blockquote class="quote" cite="Simpson, Kyle (2014-07-11). You Don’t Know JS: this &amp; Object Prototypes (p. 1). O'Reilly Media.">
       <p>One of the most confused mechanisms in JavaScript is the this keyword. It’s a special identifier keyword that’s automatically defined in the scope of every function, but what exactly it refers to bedevils even seasoned JavaScript developers.</p>
       <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&amp;%20object%20prototypes/ch1.md">Kyle Simpson <em>You Don’t Know JS</em></a>
     </blockquote>
@@ -23,7 +23,7 @@
       <hr class="ruled t b"/>
       <aside class="note ______ float left">
         <h5>Default Binding</h5>
-        <p>Variables declared in the global scope, are synonymous with global-object properties of the same name. The <code>window</code> object is our global object. Examining the code, the default binding for <code>this</code> is the window object. We declared a variable in the global scope called <code>taco</code> and assigned an object literal. In the function you see <code>taco</code> three ways: these tacos are not copies of each other, they <em>are each other</em>. <strong>Note:</strong> in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">strict mode</a> default binding does not happen, which is fine, because you shouldn't really count on it to do anything useful anyway.</p>
+        <p>Variables declared in the global scope, are synonymous with global-object properties of the same name. The <code>window</code> object is our global object. Examining the code, the default binding for <code>this</code> is the window object. We declared a variable in the global scope called <code>taco</code> and assigned an object literal. In the function you see <code>taco</code> three ways: these tacos are not copies of each other, they <em>are each other</em>. <strong>Note:</strong> in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">strict mode</a> default binding does not happen, which is fine, because you shouldn’t really count on it to do anything useful anyway.</p>
       </aside>
       <pre class="prettyprint ____ float left">
         <!-- review views/javascript/examples/binding.js binding default -->
@@ -39,7 +39,7 @@
       <hr class="clear ruled t b"/>
       <aside class="note ______ float left">
         <h5>Explicit Binding</h5>
-        <p>Charming as the last example is, I can barely think of good reasons to do this purposefully. Not because it isn't useful, but because binding is tricky, and <em>implicitly</em> doing something tricky might not be as valuable as <em>explicitly</em> doing something tricky.</p>
+        <p>Charming as the last example is, I can barely think of good reasons to do this purposefully. Not because it isn’t useful, but because binding is tricky, and <em>implicitly</em> doing something tricky might not be as valuable as <em>explicitly</em> doing something tricky.</p>
         <p>We know you can call a function with the <code>()</code> operator, but you can also call functions using two methds, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call"><code>call</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply"><code>apply</code></a>. The first parameter supplied to both these functions is the object you want to become <code>this</code> within the function itself.</p>
       </aside>
       <pre class="prettyprint ____ float left">

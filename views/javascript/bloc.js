@@ -101,14 +101,20 @@ function cssValidator(stylesheet, callback) {
 Wikipedia.viewer = function (object) {
   var drawer = document.body.appendChild(document.createElement('article'));
   var button = drawer.appendChild(document.createElement('button'));
-
+  var lockBody = function (evt) {
+    var method = evt.type.substring(5) == 'over' ? 'add' : 'remove';
+    document.body.classList[method]('locked');
+  };
   drawer.classList.add('drawer');
   drawer.appendChild(document.createElement('h1')).innerHTML = object.parse.title;
   drawer.appendChild(document.createElement('section')).innerHTML = object.parse.text['*'];
+  drawer.addEventListener('mouseover', lockBody);
+  drawer.addEventListener('mouseout', lockBody);
   button.innerHTML = '☓';
   button.title = "Close Drawer";
   button.addEventListener('click', function (evt) {
     document.body.removeChild(this.parentNode);
+    document.body.classList.remove('locked');
   });
   [].forEach.call(drawer.querySelectorAll('section a'), function (a) {
     // don't have access to wikipedia, so just make links regular texn

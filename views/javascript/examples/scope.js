@@ -24,7 +24,7 @@ drive();
 var coffee = 'Intellegentsia';
 
 function brew(coffee) {
-  alert(coffee)
+  alert(coffee);
 }
 
 brew('Peets');
@@ -32,20 +32,19 @@ brew('Peets');
 
 
 /* nested */
-var booty = "Gold Ingot";
+var booty = "gold";
 
 function sailTo(name) {
-  alert("Arrived at: " + name);
 
   function xMarksTheSpot(paces) {
-    alert("Paces: " + paces);
-    alert("Collect: " + booty);
+    alert("Arrived at: " + name);
+    alert("Take " + paces + ' paces to the ' + booty);
   }
 
   xMarksTheSpot(10);
-  alert(paces); // paces undefined in current scope
+  // note, we access to xMarksTheSpot and name and booty, but no access to paces
 }
 
 sailTo('Atlantis');
-alert(name); // name is undefined in global scope
+// we have no access to anything except booty and sailTo from this spot
 /* end nested */

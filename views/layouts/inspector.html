@@ -19,6 +19,7 @@
       color:#f8f8f8;
       padding:1em;
       box-shadow: inset 0px 1px 5em 0px rgba(0,0,0,0.5);
+      z-index: 2;
     }
     .panel ul.plain {
       padding: 1em 0 0;
@@ -125,6 +126,12 @@
   <section class="panel">
     <details class="console">
       <summary>Console Messages</summary>
+      <h3>Code Quality</h3>
+      <ul class="plain">
+        <!-- iterate console -->
+        <li><dfn>[$name]</dfn>: <var>[$value]</var></li>
+      </ul>
+      <h3>Warnings and Errors</h3>
       <ul class="plain">
         <!-- iterate report:errors -->
         <li data-line="[$line]" class="[[$$type]]">[Line $line: $message]</li>
