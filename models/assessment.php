@@ -153,7 +153,7 @@ namespace models;
           'type'    => 'lang-html',
           'url'     => $assessment->url,
           'report'  => ['sloc'    => $assessment->plain->getAttribute('sloc'), 'count' => count($report->messages), 'errors' => (new \bloc\types\Dictionary($report->messages))->map(function ($item) {
-            return ['line' => $item->lastLine ?? 1, 'message' => $item->message];
+            return ['line' => $item->lastLine ?? 1, 'message' => $item->message, 'type' => $item->type];
           })],
 
         ],
@@ -223,7 +223,7 @@ namespace models;
             return ['name' => $item, 'value' => $stats->{$key} ];
           }),
           'report'  =>  ['sloc' => $file->getAttribute('sloc'), 'count' => $count, 'errors' => (new \bloc\types\Dictionary($report->cssvalidation->errors ?? []))->map(function ($item) {
-            return ['line' => $item->line , 'message' => $item->message];
+            return ['line' => $item->line , 'message' => $item->message, 'type' => ''];
           })],
         ];
       }

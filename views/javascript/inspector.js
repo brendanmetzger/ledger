@@ -39,9 +39,9 @@ bloc.init('viewer', function () {
             var line = li.parentNode.parentNode.nextElementSibling.querySelector('ol').children[idx];
             if (li.className == 'lang-css' && /\-\-|var\(/.test(line.textContent)) {
               li.textContent = 'Line ' + li.dataset.line + ': limited browser support';
-              line.classList.add('warn');
+              line.classList.add('info');
             } else {
-              line.classList.add('error');
+              line.classList.add(li.dataset.type || 'error');
             }
             
           });

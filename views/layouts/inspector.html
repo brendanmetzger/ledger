@@ -14,12 +14,20 @@
     }
     .panel details {
       position:absolute;
+      background-color:#333;
       width:100%;
-      background-color: rgba(10,10,10,0.8);
-      color:#f8f8f8;
       padding:1em;
-      box-shadow: inset 0px 1px 5em 0px rgba(0,0,0,0.5);
+      color:#fff;
       z-index: 2;
+      overflow: auto;
+      height:2em;
+      transition: height 0.25s;
+    }
+    .panel details[open] {
+      color: #333;
+      height: 87.5vh;
+      background-color: rgba(255,255,255,0.85);
+      box-shadow: inset 0px 1px 5em 0px rgba(0,0,0,0.5);
     }
     .panel ul.plain {
       padding: 1em 0 0;
@@ -34,21 +42,7 @@
       margin:0;
       font-size:1.5em;
     }
-
-    li.error {
-      background-color: rgba(255,0,0,0.1);
-      box-shadow: 0 0 1em 0.5em rgba(255,0,0,0.1);
-    }
     
-    li.warn:after {
-      content: '⚠︎';
-      color: rgba(0,0,0,0.85);
-      padding: 0 0.25em;
-      transform: scale(1.5);
-      display: inline-block;
-      background-color: rgba(255, 255, 0, 0.44);
-      border-radius: 25%;
-    }
 
     .inspector .panel iframe {
       height:90vh;
@@ -110,6 +104,34 @@
     li[data-errors='0']:after {
       background-color:rgb(78, 210, 131);
     }
+    li.error {
+      background-color: rgba(255,0,0,0.05);
+      box-shadow: 0 0 1em 0.25em rgba(255,0,0,0.05);
+    }
+    li.info {
+      background-color: rgba(0,0,255,0.05);
+      box-shadow: 0 0 1em 0.25em rgba(0,0,255,0.05);
+    }
+    li[data-type]:before {
+      border-radius: 50%;
+      width: 1.5em;
+      display: inline-block;
+      height: 1.5em;
+      text-align: center;
+      line-height: 1.5;
+      color: #fff;
+      font-family: monospace;
+      margin-right: 0.5em;
+    }
+    li[data-type='info']:before {
+      content: 'i';
+      background-color: #00A4E4;
+    }
+    li[data-type='error']:before {
+      content: 'e';
+      background-color: #EE2E24;
+    }
+    
   </style>
   <script type="text/javascript">bloc.embed('/javascript/inspector.js');</script>
   <ul class="plain buttons stretch" style="background-color:#444;">
@@ -125,16 +147,16 @@
   <!--  iterate files -->
   <section class="panel">
     <details class="console">
-      <summary>Console Messages</summary>
-      <h3>Code Quality</h3>
+      <summary style="padding:0.25em">Console Messages</summary>
+      <h3 class="t">Code Quality</h3>
       <ul class="plain">
         <!-- iterate console -->
         <li><dfn>[$name]</dfn>: <var>[$value]</var></li>
       </ul>
-      <h3>Warnings and Errors</h3>
+      <h3 class="t">Warnings and Errors</h3>
       <ul class="plain">
         <!-- iterate report:errors -->
-        <li data-line="[$line]" class="[[$$type]]">[Line $line: $message]</li>
+        <li data-line="[$line]" class="[[$$type]]" data-type="[$type]">[Line $line: $message]</li>
       </ul>
     </details>
     <pre data-file="[$name]" class="[linenums $type]">[$content]</pre>
