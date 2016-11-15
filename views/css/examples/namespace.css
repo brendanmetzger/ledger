@@ -1,19 +1,13 @@
 /* night */
-.night {
-  background-color:rgb(76, 63, 136);
-  padding:2vmin;
-}
-.night .attitude {
+.night { background-color:#7B2B83 }
+.night > .attitude {
   color:#fff;
   font-family:fantasy;
 }
 /* end night*/
 /* day */
-.day {
-  background-color: rgb(255, 239, 182);
-  border:2vmin solid rgb(255, 250, 210);
-}
-.day .attitude {
+.day { background-color: #FFCF01 }
+.day > .attitude {
   color:#000;
   font-family:sans-serif;
 }

@@ -208,8 +208,6 @@ namespace models;
           'colors' => 'The number of colors specified',
           'mediaQueries' => 'Number of media queries',
           'complexSelectors' => 'Complex Selectors',
-          'duplicatedSelectors' => 'Selectors that can be combined',
-          'duplicatedProperties' => 'Properties that can be grouped',
         ]);
         
         $stats = json_decode($file->getAttribute('stats'))->metrics;

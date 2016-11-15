@@ -30,7 +30,7 @@
       <h4>A silly example</h4>
       <div class="comparison container whitepaper t b">
         <h4>Night/Day</h4>
-        <p>Silly, yes, but note how attitude has two intirely different meanings depending on the class of a parent element. A useful feature; <em>you should employ such tactics frequently</em>.</p>
+        <p>Note how <code>.attitude</code> has two entirely different meanings depending on where it is in the descendant chain base on the parent element class. <strong>Employ such tactics frequently</strong>!</p>
         <hr class="ruled t b" />
         <link rel="stylesheet" href="/css/examples/namespace.css" media="screen" charset="utf-8" />
         <div class="half float left">
@@ -39,7 +39,7 @@
           </pre>
           <h5 class="pad code">&lt;div class="night"&gt;<br/>  &lt;p class="attitude"&gt;…</h5>
           <div class="night">
-            <p class="attitude">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p class="attitude">What color and font-family is this text and why?</p>
           </div>
         </div>
         <div class="half float left">
@@ -48,7 +48,7 @@
           </pre>
           <h5 class="pad code">&lt;div class="day"&gt;<br/>  &lt;p class="attitude"&gt;…</h5>
           <div class="day">
-            <p class="attitude">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p class="attitude">What color and font-family is this text and why?</p>
           </div>
         </div>
       </div>
@@ -76,12 +76,11 @@
   </article>
   <article class="indented">
     <h2>Drawing</h2>
-    <p>There are two fundamental ways to draw using web technologies: using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">canvas element</a> and with <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">Scalable Vector Graphics</a> referred to as <abbr title="Scalable Vector Graphics">SVG</abbr>. To draw with the canvas element, you start with an html element called <code>canvas</code> and from there, use a JavaScript <abbr>API</abbr> to make shapes, set fill colors, etc. <abbr>SVG</abbr> on the other hand, is and <abbr>XML</abbr> file, and these files can be constructed by vector drawing programs like Adobe Illustrator, embedded as an image like any other format (<code>&lt;img src="file.svg"/&gt;</code>) or embedded directly into an HTML page as an <code>&lt;svg&gt;</code> element</p>
-    <p>Using illustrator, we'll take a very quick tour over adding an svg to a document, and recall that we can now use JavaScript and <abbr>CSS</abbr> to adjust scenarios.</p>
+    <p>There are two fundamental ways to draw using web technologies: using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">canvas element</a> and with <a href="https://developer.mozilla.org/en-US/docs/Web/SVG">Scalable Vector Graphics</a> referred to as <abbr title="Scalable Vector Graphics">SVG</abbr>. To draw with the canvas element, you start with an html element called <code>canvas</code> and from there, you must use a JavaScript <abbr>API</abbr> to make shapes, set fill colors, etc. <abbr>SVG</abbr> on the other hand, is an <abbr>XML</abbr> file, and these files can be constructed by vector drawing programs like Adobe Illustrator, embedded as an image like any other format (<code>&lt;img src="file.svg"/&gt;</code>) or embedded directly into an HTML page as an <code>&lt;svg&gt;</code> element</p>
   </article>
   <article id="mouse-example">
     <h2>Case Study: Mouse Trail</h2>
-    <p class="intro">I have made a few <q>mouse-trails</q> that illustrate some interesting techniques. In the simplest of cases, they are really quite simple tricks.</p>
+    <p class="intro">Though perhaps an interface annoyance of yesteryear, the <q>mouse-trail</q> can introduce some interesting techniques. Creating elements, cycles (clock arithmetic) and utilizing <code>event</code> properties to name a few.</p>
     <p>Picture a stack of 60 cards, which is really just a list, or in our parlance, an <code>array</code>. Now picture a ticking clock with 60 seconds: every second that ticks by, you pay attention to the card in the stack that corresponds to the second hand, ie. 30 seconds in, we are focusing on card 30. With that as a visual, consider the following instructions.</p>
     <ol class="whitepaper t b">
       <li>Declare an array to hold a list of Elements.</li>
@@ -120,6 +119,7 @@
   </article>
   <article>
     <h2>Reference and Practice Material</h2>
+    <p>Reminder, next week I will be out of town. Here is the <a href="http://iam.colum.edu/brendan.metzger/vids/?video=FA16-SWM-00-11-1.mp4">recorded lecture</a></p>
     <dl>
       <dt>Enhancing the <abbr>DOM</abbr></dt>
       <dd>Chapter 3, <a href="https://www.lynda.com/HTML-tutorials/Changing-HTML-attributes/122462/137630-4.html?">modifying <abbr>DOM</abbr> attributes and content</a></dd>
@@ -127,6 +127,9 @@
       <dt>Objects, Functions, Scope</dt>
       <dd>Chapter 3 of Eloquent JavaScript introduces </dd>
       <dd>More on <a href="http://hangar.runway7.net/javascript/guide">objects, functions, scopes…</a> if you’re ready, a nice article to revisit some of the finer points and untangle the language. Read lightly, this introduces techniques we don’t have to get too serious about yet.</dd>
+      <dt>Drawing with <abbr>svg</abbr></dt>
+      <dd>Scalable vector graphics can be as simple as making a circle, but do not be fooled, you can do some intensely complicated things, like <a href="http://www.nytimes.com/interactive/2014/11/04/upshot/senate-maps.html">congressional mapping</a>.</dd>
+      <dd>A <a href="http://www.w3schools.com/graphics/svg_intro.asp">W3Schools Tutorial</a> lays out the basics to get started with the ideas.</dd>
     </dl>
   </article>
 </div>
