@@ -483,16 +483,20 @@ form textarea {
 button {
   cursor: pointer;
   box-shadow: 0 0 0.5em rgba(0,0,0,0.1);
-  width: 3em;
   padding: 0;
   line-height: 0;
+}
+
+form button {
+  padding: 1em;
 }
 
 .drawer button {
   position: fixed;
   top: 1em;
   right: 1em;
-  height: 3em;  
+  height: 3em;
+  width: 3em;  
 }
 
 button:hover {
