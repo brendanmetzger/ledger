@@ -118,4 +118,12 @@ th.lighter {
   .gradebook tbody td {
     padding:0;
   }
+
+  div.overflow {
+    max-width:100vw;
+    overflow-x: scroll;
+  }
+  div.overflow caption h3 {
+    text-align:left;
+  }
 }
