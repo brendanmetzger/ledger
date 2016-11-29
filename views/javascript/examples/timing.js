@@ -1,9 +1,9 @@
 var timers = {
-basic: function(elem) {
+basic: function (elem) {
 /* basic timeout */
 
 elem.dataset.text = elem.innerHTML;
-elem.innerHTML = 'wait for it...';
+elem.innerHTML    = 'wait for it...';
 
 setTimeout(function () {
   alert('hello!');
@@ -17,8 +17,9 @@ setTimeout(function () {
 },
 typewriter: function () {
 /* clearing timers */
+// declare variables
 var elem = document.querySelector('textarea[name="limerick"]');
-var tID  = 0;
+var tID  = 0; // keeps track of the timeout id
 var size = 0;
 
 // store a version of the value, set to blank

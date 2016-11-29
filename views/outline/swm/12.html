@@ -7,7 +7,7 @@ timeouts and Event Delegation</p>
   </header>
   <article>
     <h2>Review</h2>
-    <p>Last week we looked at input elements, finished our lightbox case-study and covered <abbr title="JavaScript Object Notation with Padding">JSONp</abbr> as a means to embedding data on your page. We briefly discussed jQuery, and if curious, we can spend more time discussing JavaScript frameworks (which will be discussed a little bit next week as well.)</p>
+    <p>Last week we looked at Web Servers. This week we will mostly be practicing and working out examples.</p>
   </article>
   <article>
     <h2>Intervals and Timeouts</h2>
@@ -17,7 +17,7 @@ timeouts and Event Delegation</p>
         <h5>Setting a timeout.</h5>
         <p>The button below has an event listener applied, and that listener will set the timeout you see to the right. When clicked, the button will set two timeouts. The first will display an alert message in 1 second, the second will reset the html to a the initial state before the click.</p>
         <p><strong>Note:</strong> timeouts are set in milliseconds, so 1000 milliseconds is equal to 1 second.</p>
-        <button type="button" onclick="timers.basic(this)">I am slow..</button>
+        <button type="button" onclick="timers.basic(this)" style="padding:1em;">I am slow..</button>
       </aside>
       <pre class="prettyprint _____ float left">
         <!-- review views/javascript/examples/timing.js basic timeout -->
@@ -53,4 +53,21 @@ timeouts and Event Delegation</p>
     </script>
   </article>
   <!-- insert views/topics/javascript/bubble-capture.html -->
+  <article id="intro-to-flexbox" class="margins">
+    <h2>Introduction to Flexible Boxes</h2>
+    <p class="intro"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">From <abbr title="mozilla developer network">mdn</abbr></a>, flexbox is a <q>layout mode providing for the arrangement of elements on a page such that the elements behave predictably when the page layout must accommodate different screen sizes and different display devices.</q></p>
+    <p>Flexible boxes are quite new but have reached a <a href="http://caniuse.com/#feat=flexbox">stable point</a> where they are safe to use in any project environment. Some find flexible boxes to be easier all around—personally, for the most simple of matters I think they require a lot of nuanced skills, and thus I consider them as easy as float-based layouts. It is hard to argue that they make difficult layout problems much easier to solve, especially responsive layouts that must react to a variety of devices and resolutions. The defining aspect of a flexible box is its namesake; it gives an element the ability to alter height and width according to the specific display device used. It can expand and stretch and shrink <strong>without necessarily having to specify any units</strong>.</p>
+    <p>For that reason, <a href="http://codepen.io/brendanmetzger/pen/JbraKv?editors=1100#0">as an introductory example</a> I will  showcase a most simple resolution of our classic grid problem using flexible boxes instead of floats. I will also throw in a caveat that the flexible box system can be a shortcut that unfortunately makes a lot of layouts generic, so if you take a liking to the methods available, </p>
+    
+  </article>
+  <!-- insert views/topics/javascript/data-storage.html -->
+  <article>
+    <h2>Reference and Practice Material</h2>
+    <dl>
+      <dt>Flexbox</dt>
+      <dd>A <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">CSS tricks guide</a> to flexbox</dd>
+      <dd>A lynda.com series of <a href="https://www.lynda.com/CSS-tutorials/CSS-Flexbox-First-Look/116352-2.html">flexbox basics</a>—please note, technology is dated very quickly, and wherever you see <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix">vendor prefixes</a> used in regards to flexbox you should realize that the material may be stale.</dd>
+      <dd>And of course, the Mozilla Developer Network page on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">using CSS Flexible Boxes</a></dd>
+    </dl>
+  </article>
 </div>

@@ -1,4 +1,4 @@
-<article>
+<article data-classification="javascript intermediate event">
   <h2>Bubbling and Delegation</h2>
   <p class="intro">Now that we are well along in our semester, some of you may find it useful to understand event bubbling and more importantly, a concept known as <strong>event delegation</strong>. Even if not immediatly relevant, event delegation is a great introduction to the concept of <a href="https://en.wikipedia.org/wiki/Design_pattern">design patterns</a>.</p>
   <p>Paraphrased, a design pattern is <q>the reusable form of a solution to a design problem.</q> Often when engaged with large-scale design and programming projects, you can break big challenges into smaller, familiar sets of premises. One such premise in interactive design is the presentation visual matrix, or grid of elements that you would like to interact with, such as a gallery or sequencing/matching game.</p>
@@ -13,7 +13,7 @@
       <p>The div below has an event listener assigned. Clicking on any element will duplicate itself, and assign the <code>textContent</code> of its clone to its own value doubled. Largely, this is only to illustrate the point that every element can respond to events, event immediately after creation.</p>
       <p>Click on the white '2' element, and any subsequent elements to get a gist of what is happening.</p>
       <hr class="ruled t b"/>
-      <div class="delegate"><span>2</span></div>
+      <div class="delegate" data-markup="div class='delegate'"><span>2</span></div>
     </aside>
     <pre class="prettyprint _____ float left">
       <!-- review views/javascript/examples/bubbling.js event delegation -->

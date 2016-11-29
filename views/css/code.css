@@ -3,6 +3,7 @@
 .code,
 .code *,
 .notate:after,
+*[data-markup]:before,
 code,
 code *,
 pre {
@@ -146,6 +147,27 @@ pre .atv {
 pre .dec {
   color: #72b072;
 }
+
+*[data-markup] {position:relative;}
+*[data-markup]:before {
+  content: "<" attr(data-markup) ">";
+  position: absolute;
+  top: calc(-1.5em - 1px);
+  right: -1px;
+  border-radius: 0.25em 0.25em 0 0;
+  background-color: #fff;
+  line-height: 1;
+  padding: 0.25em 0.5em;
+  color: rgba(0,0,0,0.65);
+  font-size: 1.5em;
+  border: 1px solid #eee;
+  border-bottom-width: 0;
+}
+
+
+
+
+
 /* decimal         - lightgreen */
 /* Specify class=linenums on a pre to get line numbering */
 ol.linenums {
