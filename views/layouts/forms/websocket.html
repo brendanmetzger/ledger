@@ -1,0 +1,35 @@
+<form>
+  <script type="text/javascript">
+    // <![CDATA[
+      var ws = new WebSocket("ws://127.0.0.1:9502");
+      var input, output;
+      ws.addEventListener('open', function(evt) {
+        // Web Socket is connected, send data using send()
+        console.log('open', evt);
+      });
+
+      addEventListener('load', function (evt) {
+        input = document.querySelector('main').appendChild(document.createElement('input'));
+        input.type = 'text';
+        input.addEventListener('blur', function (evt) {
+          ws.send(this.value);
+        });
+        output = document.querySelector('main').appendChild(document.createElement('textarea'));
+      });
+
+      ws.addEventListener('message', function (evt) {
+        var data = JSON.parse(evt.data);
+
+        console.log(evt, data);
+        
+        output.value += data.message + "\n";
+      });
+
+      ws.addEventListener('close', function() {
+        // websocket is closed.
+        alert("Connection is closed...");
+      });
+      
+    // ]]>
+  </script>
+</form>

@@ -36,6 +36,13 @@ class Overview extends \bloc\controller
     $view->content =  sprintf("views/topics/%s/%s.html", $subject, $topic);
     return $view->render($this());
   }
+  
+  public function GETws()
+  {
+    $view = new View(self::layout);
+    $view->content = 'views/layouts/forms/websocket.html';
+    return $view->render();
+  }
 
   public function GETessay($topic = null)
   {
