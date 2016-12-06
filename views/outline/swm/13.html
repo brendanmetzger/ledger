@@ -1,44 +1,8 @@
 <div>
   <header>
     <!-- insert views/outline/_/crumbs.html -->
-    <h1 class="massive">Giants</h1>
-    <p class="intro"><q>If I have seen further, it is by standing on the shoulders of giants.</q> –Issac Newton</p>
-    <p class="intro">In class work, more on <abbr title="Application Programming Interface">API</abbr>s:  DOM manipulation, drawing, programming, and other areas.</p>
   </header>
-  <article>
-    <h2>Task</h2>
-    <p>Today’s main order of business is some <a href="/lecture/essay/it-is-known">quiz fodder</a>.</p>
-  </article>
-  <article>
-    <h2>Case Study: Lightbox and <abbr title="JavaScript Object Notation">JSON</abbr></h2>
-    <p class="intro">Plainly spoken from <a href="http://www.json.org">json.org</a>, <q cite="http://www.json.org">JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language</q>.</p>
-    <p>This is a great thing to get a taste of; imagine you can create and add data to a project without having to author the data, or write the <abbr>HTML</abbr> over and over. Many feeds and services all over the internet can be gathered and applied in this manner. Here I have used a concept called <abbr title="Javascript Object Notation With Padding">JSONP</abbr> to gather images from some subreddits and display them for a lightbox.</p>
-    <link rel="stylesheet" href="/css/gallery.css" media="screen" title="no title" charset="utf-8" />
-    <div class="whitepaper container tt bb">
-      <section class="reddit gallery ______ float left">
-        <h3 class="rag-left whitepaper">Click To Load Gallery</h3>
-      </section>
-      <aside class="____ float left">
-        <pre class="prettyprint">
-          <!-- review views/javascript/examples/json.js Load Reddit-->
-          <hr class="divider" data-after="CSS" data-before="JavaScript"/>
-          <!-- review views/css/gallery.css gallery-->
-        </pre>
-      </aside>
-    </div>
-    <script type="text/javascript">
-      bloc.embed('/javascript/examples/json.js');
-      var galleries = ['architecture', 'designporn', 'awww', 'DesirePath', ];
-
-      function loadGal() {
-        var gal = galleries[Math.floor(Math.random() * galleries.length)];
-        document.head.appendChild(document.createElement('script')).src = 'https://www.reddit.com/r/{0}/top.json?sort=top&amp;t=week&amp;jsonp=loadRedditGallery'.format(gal);
-        this.innerHTML = "r/{0}".format(gal);
-        this.removeEventListener('click', loadGal);
-      }
-      document.querySelector('section.gallery > h3').addEventListener('click', loadGal);
-    </script>
-  </article>
+  <!-- insert /views/prologue/it-is-known.html -->
   <article>
     <h2>Frameworks</h2>
     <p class="intro">Using a framework—from my experience—is only necessary in the following circumstance: you know what you want to make but don’t know how to do it, nor do you have time to learn how. Without decades of experience and bunch of free time, this is almost a guarantee.</p>
@@ -55,13 +19,16 @@
       <dt><a href="http://vanilla-js.com/">Vanilla JS</a></dt>
       <dd>A joke site used to talk about the state of the current language and that modern techniques available are actually more terse and straightforward, and efficient than the most popular frameworks.</dd>
       <dt><a href="http://jquery.com/">jQuery</a></dt>
-      <dd>Everybody knows about this… with jQuery you go shopping for every plugin and interface widget ever made: light-boxes, carousels, parallax effects, oh my!</dd>
+      <dd>The most famous framework ever… with jQuery you go shopping for every plugin and interface widget ever made: light-boxes, carousels, parallax effects, oh my! Many people treat this as de-facto—which is never advisable in my opinion.</dd>
       <dt><a href="http://facebook.github.io/react/">React</a></dt>
       <dd>Lots of people are talking about this. That’s all I can say, as I will shamefully admit, I can’t help but find it incredibly intimidating and generally, <a href="https://twitter.com/thomasfuchs/status/708675139253174273">overdoing it</a>.</dd>
-      <dt><a href="http://snapsvg.io/">Snap <abbr>SVG</abbr></a></dt>
-      <dd>A vector drawing framework (formerly called Raphaël). Scalable vector graphics are fun, but I daresay, a bit intimidating. This is a good toe-dip into that pool.</dd>
-      <dt><a href="https://d3js.org/">D3</a></dt>
-      <dd>A data-visualization library. Absolutely adored by data journalists, map geeks and statistics nerds.</dd>
+      <dt>Drawing</dt>
+      <dd><a href="http://snapsvg.io/">Snap <abbr>SVG</abbr></a> is a vector drawing framework (formerly called Raphaël). Scalable vector graphics are fun, but I daresay, a bit intimidating. This is a good toe-dip into that pool.</dd>
+      
+      <dd><a href="https://two.js.org/">Two.js</a> is more motion-graphics centered drawing api, meaning it has an animation loop, meaning, it is good for creating sequences to watch rather than interact with.</dd>
+      <dd><a href="https://d3js.org/">D3</a> is a data-visualization library. Absolutely adored by data journalists, map geeks and statistics nerds.</dd>
+      <dt>Games</dt>
+      <dd>Someone has already compiled <a href="http://html5gameengine.com/">a list</a>—sorting by popularity will get showcase some of the better ones.</dd>
       <dt><a href="http://ramdajs.com/0.21.0/">Ramda</a></dt>
       <dd>Just because… This is a <em>functional</em> library, that allows you to program in an entirely new style. It’s part genius, bewildering, sometimes ridiculous and entirely fascinating.</dd>
     </dl>
@@ -69,20 +36,5 @@
     a potential svg project/processing
     https://www.khanacademy.org/computer-programming/how-to-read-documentation/1239335119
     -->
-  </article>
-  <article class="margins">
-    <h2>Some Thoughts on Code Sharing</h2>
-    <!-- <img src="/media/images/alfa-romea-alfasud.jpg" style="mix-blend-mode: multiply;shape-outside:polygon(0 40%, 20% 30%, 50% 20%, 90% 20%, 100% 50%, 80% 80%,20% 90%, 0 70%)" class="____ float right"/> -->
-    
-    <p>I am always reevaluating what should and should not be presented to folks starting ot to learn so many new concepts in the web development domain, and typically it centers around, <q>does this lead to good habits?</q> That means I leave some good techniques (and some even easy ones), as well as many optimizations out on the curb. Optimizations are largely meaningless—consider an expensive racing bicycle—it may be half a kilogram lighter, but that is largely meaningless if you are not in excellent shape.</p>
-    <p>For this reason, I find it harder and harder to teach fundamentals when libraries like jQuery do so much optimization and you'll never know what is and is not relevant. As I researched this section for material, I stumbled on a well suited example.</p>
-    <h3 class="tt b">Optimization</h3>
-    <p>I have taught you at this point to always use the <code>addEventListener('load', <i>callback</i>)</code> in your script if you are going to query or modify the <abbr>dom</abbr>. In the jQuery framework, the authors <a href="http://learn.jquery.com/about-jquery/how-jquery-works/#launching-code-on-document-ready">say something</a> similar, albeit by glossing over several details. My beef is twofold: first, they use a sloppy JavaScript technique to point out the native weakness and second, they negatively critique the <code>load</code> event as dangerous without stating how they have improved it.</p>
-    <p>I happen to know how they improved it; they simply used a more nuanced event, which would be <code>addEventListener('DOMContentLoaded', <i>callback</i>)</code>, a very modest enhancement from what I've taught all along in this course. Now, are you ready for the caveats?</p>
-    <img src="/media/images/ship.png" style="mix-blend-mode: multiply;" class="full"/>
-    <h3 class="tt b">Cross-Browser Compatibility</h3>
-    <p>The <code>DOMContentLoaded</code> event does not work in versions of internet explorer 8 and below, (a tiny tiny tiny market share mind you). A small enough marketshare that I would completely rule it out, or make a quick 3 second solution to solve this problem if necessary. Mind, 0.4% (or, 0.004 in decimal) use this browser <em>globally</em>. Far more people do not have functioning hands, mind you.</p>
-    <p>To a novice, that three second solution would likely not identify itself, so they might search for one, and find something called a <a href="https://en.wikipedia.org/wiki/Polyfill">polyfill</a>. <a href="https://gist.github.com/ShirtlessKirk/06e55abf19d527fe736d">I found a polyfill</a> for this very problem, which I read parsed and found to be questionable—particularly lines 172~173. I have scanned up and down, and though I understand the syntax, most of the technique goes way over my head. Here is the part I can explain: at line 172~173 it appears the author sometimes executes the callback twice (but doesn't really know and even admits that in the adjacent comment). Now it would be fair to ask—assuming I am right about a potential bug—why hasn’t it been identified? Because there is only a .004 chance that anyone will ever see it, and of that 0.004 that could, there is fraction of that percent that would even notice.</p>
-    <p>This is 400 lines of code and I'm telling you that with elegance and human ingenuity, it could be done with about 4. Remember that when you cut and paste, it might look like a genius work of engineering or it could be a bridge waiting to collapse under its own weight.</p>
   </article>
 </div>

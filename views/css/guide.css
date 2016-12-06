@@ -113,8 +113,6 @@ strong,.strong{font-weight:600}
 
 .column.ruled > * {border-right-width:1px}
 
-.top    { padding-top:0.5em}
-.bottom { padding-bottom:0.5em}
 
 .ruled.bottom {border-bottom-width:1px}
 .ruled.top    {border-top-width:1px}
