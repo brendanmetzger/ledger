@@ -30,6 +30,11 @@ namespace models;
     {
       return $this->status == 'open' ? 'NA' : $this->stats['standard'];
     }
+    
+    public function setQuiz(\DOMElement $context, $value)
+    {
+      $context->nodeValue = base64_encode($value);
+    }
 
 
     public function getLetter(\DOMElement $context)
