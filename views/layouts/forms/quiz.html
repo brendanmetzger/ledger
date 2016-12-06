@@ -2,7 +2,13 @@
   <legend>[$topic]</legend>
   <label for="credit" class="h4 t b">Score</label>
   <input id="credit" style="font-size:3em;width:4em;" type="number" name="quiz[@][credit]" value="[$quiz:@credit]" />
+  <textarea name="quiz[CDATA]" cols="30" rows="20" id="notes" style="font-size:1.25em;width:100%;height:30vh;" onkeyup="getSize(this);">[$quiz]</textarea>
   <script type="text/javascript">
-    document.querySelector('#credit').select();
+    var credit = document.querySelector('#credit');
+    credit.select();
+    function getSize(textarea) {
+      credit.value = Math.min(100, textarea.value.replace(/^\s+|\s+$/g, '').split(/\s+/).length * 0.25);
+    }
+    
   </script>
 </fieldset>
