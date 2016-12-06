@@ -9,7 +9,7 @@ On a farm with cattle, the barns need to get shoveled. I still remember that fir
 
 ## The value of shoveling.
 
-The analogy sticks. You know the shape of the barn, the corners, and the tight spots. You know the uneven crack in the cement. You know the space of the columns.
+The analogy sticks. You know the shape of the barn, the corners, and the tight spots. You know the uneven crack in the cement. You know the space of the columns. It is a human sized problem, solved at a human pace.
 
 ## Your Job
 
@@ -17,4 +17,4 @@ Regardless of how far you get, what technique you employ, you shovel the barn. I
 
 ## My Job
 
-I am going to teach you how to start that finicky old tractor. Sometimes we spray a little ether into the air intake, or massage the choke valve into it's sweet spot. You aren't going to know everything about this old beast – I certainly don't, but we'll get it running and make our work easier and some of us will even learn to enjoy it.
+I am going to teach you how to start that finicky old tractor. Sometimes we spray a little ether into the air intake, or massage the choke valve into it's sweet spot. You aren't going to know everything about this old beast – I certainly don’t, but we'll get it running and make our work easier and some of us will even learn to enjoy it.
