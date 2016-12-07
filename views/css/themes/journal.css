@@ -286,12 +286,13 @@ li {
 h6,
 p {
   font-size: 1.85em;
-  line-height: 1.5em;
+  line-height: 1.5;
   font-weight: 400;
   font-variant-ligatures: normal;
   font-family: Baskerville, 'Goudy Old Style',Georgia;
   max-width: 55em;
   font-feature-settings: "liga" 1;
+  word-wrap: break-word;
 }
 
 dl.ordered,

@@ -141,11 +141,15 @@ class Task extends \bloc\controller
 
   public function CLIlines()
   {
-    $doc     = new Document("data/SP16");
-    $notes = (new \DomXpath($doc))->query("//student/project");
+    $doc     = new Document("data/FA16");
+    $notes = (new \DomXpath($doc))->query("//student/quiz");
 
     foreach ($notes as $note) {
-      $note->nodeValue = base64_encode($note->nodeValue);
+      if (strpos($note->nodeValue, ' ') !== false) {
+        echo "FIX: " . substr($note->nodeValue, 0, 25) . "\n";
+        $note->nodeValue = base64_encode($note->nodeValue);
+      }
+      
     }
 
     $this->save($doc);

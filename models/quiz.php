@@ -41,4 +41,9 @@ namespace models;
     {
       return \models\Assessment::LETTER($this->stats['standard'] / 100);
     }
+    
+    public function __toString()
+    {
+      return base64_decode($this->context->nodeValue);
+    }
   }
