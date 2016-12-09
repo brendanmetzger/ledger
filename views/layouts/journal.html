@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/themes/journal.css"/>
     <link rel="stylesheet" href="/css/grades.css"/>
     <link rel="stylesheet" href="/css/code.css"/>
+    <link rel="icon"  type="image/png" href="/media/images/favicon.png"/>
     <link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/458eb080-e11e-4976-9309-44ecbcfd039a.css"/>
     <script type="text/javascript">
       // <![CDATA[
@@ -74,26 +75,17 @@
     </footer>
     <script type="text/javascript">
       // <![CDATA[
-      function noisyBG(opacity) {
+      function noise(opacity, count) {
         var canvas = document.createElement("canvas"),
             ctx = canvas.getContext('2d'),
-            number,
-            opacity = opacity || 0.2;
-        var limit = canvas.width = canvas.height = 150;
-        var count = 0;
-        while (250 > count++) {
-          ctx.fillStyle = "rgba(225,225,100," +(0.8 * Math.random()) + ")";
-          var x = Math.random() * limit;
-          var y = Math.random() * limit;
-          var dir = [Math.random() * limit, 1];
-          ctx.fillRect(x, y, 1, 1);
-        }
+            opacity = opacity || 0.2,
+            limit = canvas.width = canvas.height = 150;
+            ctx.fillStyle = "rgba(225,225,150,0.8)";
+        while (count-- > 0) ctx.fillRect(Math.random() * limit, Math.random() * limit, 1, 1);
         return "url(" + canvas.toDataURL("image/png") + ")";
       }
-      var out = 'body {background-image:'+noisyBG(0.1) + ', ' + noisyBG(0.1)+';background-position:0 0, 50px -50px, 20px 30px;}';
-      var style = document.head.appendChild(document.createElement('style'));
-      style.setAttribute('type', 'text/css');
-      style.textContent = out;
+      var out = 'body {background-image:'+noise(0.1, 250) + ', ' + noise(0.1, 250)+';background-position:0 0, 50px -50px, 20px 30px;}';
+      document.head.appendChild(document.createElement('style')).textContent = out;
       window.bloc.load();
       // ]]>
     </script>

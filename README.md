@@ -11,7 +11,7 @@ A way to Organize my teaching materials, my students, and my assignments.
   - improperly attributed work
   - precision (both syntax and aesthetic)
 - [x] automatically show validation errors
-- [ ] compute unique tags used
+- [x] compute unique tags used
 - [ ] consider #lines of css & uniqueness.
 - [x] validate css
 - [ ] get sessions to last longer, or automatically log out so I don't write a bunch and get an unauthorized error when I try to save
@@ -19,26 +19,28 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] send email after grade is marked with my notes and a link to the notes.
 - [x] make icon for wikipedia links.
 - [x] Open wikipedia links in a console. Open with API
-- [ ] Make fixed close button and lock <body> when mouse is scrolling wikipedia content
+- [x] Make fixed close button and lock <body> when mouse is scrolling wikipedia content
 - [ ] Make an index in the outlines with anchors to each section.
 - [ ] Make a 'Panic Protocol' page
-- [ ] Design a Favicion
+- [x] Add a Favicion
 - [ ] implement a progress report every 3 weeks
-- [ ] request that examples/help be done as a gist/codepen/fiddle
+- [ ] request that examples/help be done as a gist/codepen/fiddle/gomix
 - [ ] Take screenshots of assignments (http://www.page2images.com/)
 - [ ] Make Screencast for workflow
 - [ ] Make tutorial for node/js localhost server, php, python.
 - [ ] Do several studies on algorithmic art.
 - [ ] Implement web-socket interface that reacts to people in course
 - [ ] Show who is in attendance in toolbar (header or footer I suppose)
-- [ ] Get a diff algorithim to determine how much the code changes between last recorded version.
+- [ ] Get a diff algorithm to determine how much the code changes between last recorded version.
 - [ ] Allow users to change their first name.
 - [x] Prioritize grading based on time spent
 - [x] Add a flag that indicates absent, which is not necessarily the points awarded.
 - [ ] Cover <table>s and <form>s in ASWM
 - [ ] Do quiz online.
-- [ ] In the beginning of an outline, say what is due, what was due, etc.
+- [ ] In the beginning of an outline, say what is due, what was due... ie., a recap of where we are at in the semester
 - [ ] Make an infographic/visualization of the semester to come
 - [ ] Add courses/sections to instructor footer
 - [ ] show course progress (perhaps as a favicon) in terms of semester and individual classes
 - [ ] Write essay explaining how to approach effort in that I'm the client, students are design/development firm (sending broken links bad)
+- [ ] Change load script to new technique from TCF
+- [ ] Compile `<mark>` elements to construct an overview at the end of every lecture outline. (start using `<mark>` elements this way)

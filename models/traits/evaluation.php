@@ -39,7 +39,7 @@ trait evaluation {
 
   public function getLetter(\DOMElement $context)
   {
-    return \models\Assessment::LETTER($this->score);
+    return \models\Assessment::LETTER(round($this->score));
   }
 
   public function getFlag(\DOMElement $context)
