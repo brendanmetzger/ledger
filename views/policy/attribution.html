@@ -36,11 +36,24 @@
     </div>
   </section>
   <section class="bottom ruled tt">
-    <h3 class="bottom ruled">A note on style: <em>You, me, and ⌘-V</em></h3>
+    <h3>A note on style: <em>You, me, and ⌘-V</em></h3>
     <p>One of the main areas of concern when evaluating student student work comes down to effort, and if you try, I'll be your champion. If I start to suspect that your work suffers on this front, I’m going to raise an eyebrow. Allow me to elaborate…</p>
-    <hr class="ruled" />
+
     <section class="explain container t b">
-      <aside class="______ float left margins note">
+      <style type="text/css" media="screen">
+        /* <![CDATA[ */
+        .explain {
+          display: flex;
+        }
+        
+        .explain > *:nth-child(2) {
+          flex:1 0 25%;
+          box-shadow: inset 0.35em 0 0.5em -0.5em rgba(0,0,0,0.35);
+          background: linear-gradient(90deg, rgba(255,255,255,0.5), transparent);
+        }
+        /* ]]> */
+      </style>
+      <aside class="margins note">
         <p>Without giving away all my tricks, let us gander at the adjacent <abbr title="cascading stylesheets">CSS</abbr> snippit. </p>
         <ul>
           <li>The selector class names are first using a hyphen then an underscore in the second.</li>
@@ -50,7 +63,7 @@
           <li>There is an extra space after the colon in the first style… typo? Who’s to say.</li>
         </ul>
       </aside>
-      <pre class="prettyprint ____ float left">
+      <pre class="prettyprint">
         <!--  preview views/css/examples/bad.css 2..9 -->
       </pre>
     </section>

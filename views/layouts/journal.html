@@ -84,7 +84,7 @@
         while (count-- > 0) ctx.fillRect(Math.random() * limit, Math.random() * limit, 1, 1);
         return "url(" + canvas.toDataURL("image/png") + ")";
       }
-      var out = 'body, .noise {background-image:'+noise(0.1, 250) + ', ' + noise(0.1, 250)+';background-position:0 0, 50px -50px, 20px 30px;}';
+      var out = 'html, .noise {background-image:'+noise(0.1, 250) + ', ' + noise(0.1, 250)+';background-position:0 0, 50px -50px, 20px 30px;}';
       document.head.appendChild(document.createElement('style')).textContent = out;
       window.bloc.load();
       // ]]>

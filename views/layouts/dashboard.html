@@ -51,7 +51,7 @@
           <th>Grade</th>
         </tr>
       </thead>
-      <tbody class="vertical">
+      <tbody>
         <!-- iterate student:practice:list -->
         <tr class="[$practice:status]" title="[$practice:letter]">
           <th>[$practice:criterion:@index]</th>
@@ -96,7 +96,7 @@
           <th>Score</th>
         </tr>
       </thead>
-      <tbody class="vertical">
+      <tbody>
         <!-- iterate student:projects:list -->
         <tr class="[$project:status]">
           <th>[$project:criterion:@index]</th>
@@ -104,7 +104,7 @@
           <td>
             <a href="[[/$$student:course/criterion/project/$project:criterion:@index/$$student:section:@id]]">[$project:criterion:@title]</a>
           </td>
-          <td class="centered"><a href="[[$$student:@url/$project:criterion:path/]]">Preview</a></td>
+          <td class="centered"><a href="[[$$student:@url/project/$project:index/]]">Preview</a></td>
           <td class="[$schedule:status centered]">
             <a href="[[/$$student:course/notes/$project:criterion:path/$$student:@id]]">[[$$review]]</a>
             <a href="[[/$$instructor:path/$project:criterion:path/$$student:@id]]">[[$$instructor:edit]]</a>
@@ -147,7 +147,7 @@
           <th title="given score based on weighted mean and standard deviation"><span>score</span></th>
         </tr>
       </thead>
-      <tbody class="vertical">
+      <tbody>
         <!-- iterate student:quizzes:list -->
         <tr class="[$quiz:status]">
           <th>[$quiz:criterion:@title]</th>
@@ -175,7 +175,8 @@
   </section>
   <section style="margin:5em 0;padding:2em;border-top-width:1em;">
     <h2>Cumulative Grade: <strong class="percentage" title="[$student:grade:letter]">[$student:grade:score]</strong></h2>
-    <p class="focus"><strong>Note:</strong> until one of every type of assignment have been graded, the average score is based on pending perfect scores; after the midterm, based on your other criteria your scores may change significantly. Where marked, I have curved grades using <a href="https://en.wikipedia.org/wiki/Standard_score">standard score</a>. I will act as the arbiter and use the scores you see here to determine your final grade which will ultimately reflect competency gained and necessary to advance through the curriculum. </p>
+    <h4 class="vertical">Note</h4>
+    <p>Until one of every type of assignment have been graded, the average score is based on pending perfect scores; after the midterm, based on your other criteria your scores may change significantly. Where marked, I have curved grades using <a href="https://en.wikipedia.org/wiki/Standard_score">standard score</a>. I will act as the arbiter and use the scores you see here to determine your final grade which will ultimately reflect competency gained and necessary to advance through the curriculum. </p>
 
   </section>
 </article>
