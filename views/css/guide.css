@@ -40,8 +40,8 @@ blockquote q {text-indent:-1em;}
 abbr[title]{cursor:help;}
 i,.i,q:not([class]) {font-style:italic;}
 em, .em {font-style:oblique}
-
 strong,.strong{font-weight:600}
+.thin {font-weight:100;}
 
 ._________  {width:90%}
 .mmmmmmmmm  {margin-left:90%}
@@ -109,7 +109,15 @@ strong,.strong{font-weight:600}
 
 .float {box-sizing:border-box}
 
-
+hr.ruled {
+  border-width: 0;
+  clear: both;
+  height: 1px;
+  background-image: linear-gradient(90deg, rgba(0,0,0,0.125) 50%, rgba(255,255,255,0) 0%);
+  background-position: bottom;
+  background-size: 2em 1px;
+  background-repeat: repeat-x;
+}
 
 .column.ruled > * {border-right-width:1px}
 

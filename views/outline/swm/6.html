@@ -31,6 +31,38 @@
       <li>I won’t talk further about <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations">keyframe animations</a> in this course—you’re welcome to explore them on your own.</li>
     </ul>
   </article>
+  <article>
+    <h2>Animation</h2>
+    <p>At its core, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">keyframe animation</a>.</p>
+    <div class="filmstrip">
+      <input type="range" value="0" oninput="this.parentNode.style.animationDuration = this.value + 'ms'" min="0" max="1000" step="10"/>
+      <input type="range" value="10" oninput="this.parentNode.style.width = this.value + '%'" min="10" max="100" step="10"/>
+      <style type="text/css" media="screen">
+        /* <![CDATA[ */
+        
+        @keyframes run {
+          0% {background-position: 100% 0}
+          100% {background-position:0 0}
+        }
+        .filmstrip input {
+          display:block;
+        }
+        .filmstrip {
+          background-image:url(/media/images/dog-running.png);
+          background-repeat: no-repeat;
+          mix-blend-mode: darken;
+          height:130px;
+          width:10%;
+
+        }
+        .filmstrip:hover {
+          animation: run 1000ms steps(15) infinite;
+        }
+        
+        /* ]]> */
+      </style>
+    </div>
+  </article>
   <article class="margins">
     <h2>More on Attributes</h2>
     <h4>Selectors</h4>
