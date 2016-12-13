@@ -81,8 +81,8 @@ function decHex(decimal, pad) {
   return (pad + parseInt(decimal, 10).toString(16).toUpperCase()).slice(-(pad || '00').length);
 }
 
-function decBin(decimal, pad) {
-  return (pad + parseInt(decimal, 10).toString(2)).slice(-(pad || '00').length);
+function decBin(decimal, pad = '00000000') {
+  return (pad + parseInt(decimal, 10).toString(2)).slice(-pad.length);
 }
 
 
