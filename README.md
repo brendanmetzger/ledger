@@ -44,3 +44,4 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Write essay explaining how to approach effort in that I'm the client, students are design/development firm (sending broken links bad)
 - [ ] Change load script to new technique from TCF
 - [ ] Compile `<mark>` elements to construct an overview at the end of every lecture outline. (start using `<mark>` elements this way)
+- [ ] Implement basic usage/analytics tracking

@@ -11,8 +11,16 @@
     <hr class="ruled t b"/>
     <ul class="plain cards">
       <!-- iterate section:students -->
-      <li><a href="[$student:@url/project/final/]">[$student:@name]</a></li>
+      <li>
+        <img data-raw="[$student:@url/project/final/]" style="max-width:5em;"/>
+        <a href="[$student:@url/project/final/]">[$student:@name]</a>
+      </li>
     </ul>
+    <script type="text/javascript">
+      // <![CDATA[
+        document.querySelectorAll('img[data-raw]').forEach(img => img.src = '/media/screenshots/'+btoa(img.dataset.raw) + '.jpg');
+      // ]]>
+    </script>
   </article>
   <article>
     <img src="/media/images/handshake.png" alt="two gentleman wrestlers shaking hands" class="float right" style="margin:2.5em 10% 0 3em;mix-blend-mode:multiply;"/>

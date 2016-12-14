@@ -55,6 +55,8 @@ $app->prepare('http-request', function ($app, $params) {
 
 
 $app->prepare('debug', function ($app, $response) {
+    if ($response->type != 'html') return;
+    
     $app::instance()->log('Peak Memory: ' . round(memory_get_peak_usage() / pow(1024, 2), 4). "Mb");
     $app::instance()->log('Executed in: ' . round(microtime(true) - $app->benchmark, 4) . "s");
 
