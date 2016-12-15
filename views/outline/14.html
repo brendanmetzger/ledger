@@ -11,16 +11,30 @@
     <hr class="ruled t b"/>
     <ul class="plain cards">
       <!-- iterate section:students -->
-      <li>
-        <img data-raw="[$student:@url/project/final/]" style="max-width:5em;"/>
+      <li class="card">
         <a href="[$student:@url/project/final/]">[$student:@name]</a>
       </li>
     </ul>
     <script type="text/javascript">
       // <![CDATA[
-        document.querySelectorAll('img[data-raw]').forEach(img => img.src = '/media/screenshots/'+btoa(img.dataset.raw) + '.jpg');
+        document.querySelectorAll('.card a').forEach(a => a.parentNode.style.backgroundImage = 'url(/media/screenshots/'+btoa(a.href) + '.jpg)');
       // ]]>
     </script>
+    <style type="text/css" media="screen">
+      /* <![CDATA[ */
+      .card {
+        background-size:cover;
+      }
+      .card a {
+        display: block;
+        color:#fff;
+        background-color:rgba(0,0,0,0.5);
+        text-shadow:1px 1px #333;
+        box-shadow: inset 0 0 10em rgba(0,0,0,0.9);
+        padding: 5em 1em;
+      }
+      /* ]]> */
+    </style>
   </article>
   <article>
     <img src="/media/images/handshake.png" alt="two gentleman wrestlers shaking hands" class="float right" style="margin:2.5em 10% 0 3em;mix-blend-mode:multiply;"/>

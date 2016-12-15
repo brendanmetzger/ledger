@@ -548,7 +548,6 @@ ul.cards {
 
 ul.cards li {
   background-color: rgba(255,255,255,0.5);
-  padding: 1em;
   box-shadow: 0 0.125em 0.125em rgba(0,0,0,0.1);
   box-sizing: border-box;
   margin: 0.25em;
