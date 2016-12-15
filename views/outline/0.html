@@ -41,8 +41,8 @@
 
         <h4 class="vertical">Authoring</h4>
         <p>Authorship is not something to undervalue. Essentially it implies that you understand the techniques involved and the decision made to produce an outcome of your choosing. This is what separates professionals from amateurs.</p>
-        <p>Process plays the key role in authorship—and this course will encourage that iterative process. There is a technique {insert actual technique} in <abbr title="Interaction Design">IxD</abbr> that says the best way to prevent mistakes is to make them impossible. The authoring process can be used to ensure that plagiarism just doesn't make any sense by making it awkward to implement.</p>
-        <p>The way this is done is through iterative development. That means that spending 5 straight hours in one sitting—which is not recommended anyway—is worth the less than spending an hour <em>a few days of the week</em>. The goal of stringing together several hours here and there is much more beneficial than the <a href="https://en.wikipedia.org/wiki/Waterfall_model">waterfall approach</a> to developing both concepts as well as understanding design decisions.</p>
+        <p>Process plays the key role in authorship—and this course will encourage that iterative process. There is a technique {insert actual technique} in <abbr title="Interaction Design">IxD</abbr> that says the best way to prevent mistakes is to make them impossible. I will insure that plagiarism cannot exist by regulating the process by which you author material in this course.</p>
+        <p>The way this is done is through iterative development. That means that spending 5 straight hours in one sitting—which is not recommended anyway—is worth the less than spending an hour <em>a few days of the week</em>. The goal of stringing together several hours here and there is much more beneficial than the <a href="https://en.wikipedia.org/wiki/Waterfall_model">waterfall approach</a>—both in developing concepts as well as refactoring design decisions.</p>
         
 
         <h4 class="vertical">Finishing</h4>
@@ -66,7 +66,7 @@
         object-position:0 0;
         margin:1em;
         shape-outside: polygon(30% 0, 100% 65%, 110% 90%, 0 100%);
-        animation: run 2s steps(9) infinite;
+/*        animation: run 2s steps(9) infinite;*/
       }
       
       .animate:hover {
@@ -78,6 +78,14 @@
       }
       /* ]]> */
     </style>
+    <script type="text/javascript">
+      // <![CDATA[
+        var runner = document.querySelector('img.animate');
+        addEventListener('scroll', function () {
+          runner.style.objectPosition = (((Math.floor(window.scrollY/6) % 9) / 9) * 100) + '% 0';
+        });
+      // ]]>
+    </script>
   </article>
   <!-- replace lecture nextSibling-->
   <!-- insert views/outline/_/template.html -->

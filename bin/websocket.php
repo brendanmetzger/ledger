@@ -10,12 +10,10 @@ $serv->on('open', function($server, $req) {
 $serv->on('message', function($server, $frame) {
   print_r($frame);
   foreach($server->connections as $fd) {
-    
     $out = [
       'message' => $frame->data,
       'frame'   => $fd,
     ];
-    
     $server->push($fd, json_encode($out));
   }
 });

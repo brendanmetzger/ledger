@@ -19,17 +19,6 @@ class Media extends \bloc\controller
 
   public function GETscreenshots($file)
   {
-    echo "<em>{$file}</em>";
-  }
-
-  public function POSTscreenshot($request, $file)
-  {
-    $result = json_decode($_POST['result']);
-    file_put_contents(PATH."media/screenshots/{$file}", file_get_contents(urldecode($result->image_url)));
-  }
-
-  public function CLIscreenshots($file)
-  {
     $para = [
       'p2i_url'         => base64_decode($file),
       'p2i_screen'      => '1024x768',
@@ -52,15 +41,21 @@ class Media extends \bloc\controller
     curl_setopt($ch, CURLOPT_TIMEOUT, 30);
     $data = curl_exec($ch);
     curl_close($ch);
-
+    
     if ($data) {
       // this means the image was decoded already
-      print_r(json_decode($data));
+      // return the image
     }
+    
+    $out = file_get_contents(PATH.'media/images/waiting.jpg');
+    file_put_contents(PATH."media/screenshots/{$file}.jpg", $out);
+    return $out;
+  }
 
-
-    copy(PATH."media/images/waiting.jpg", PATH."media/screenshots/{$file}");
-    echo file_get_contents(PATH."media/images/waiting.jpg");
+  public function POSTscreenshot($request, $file)
+  {
+    $result = json_decode($_POST['result']);
+    file_put_contents(PATH."media/screenshots/{$file}", file_get_contents(urldecode($result->image_url)));
   }
 
 }
