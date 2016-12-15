@@ -29,6 +29,17 @@ samp {
   white-space: pre-line;
 }
 
+.explain {
+  display: flex;
+}
+
+.explain > *:nth-child(2) {
+  flex:1 0 auto;
+  min-width:25%;
+  box-shadow: inset 0.35em 0 0.5em -0.5em rgba(0,0,0,0.35);
+  background: linear-gradient(90deg, rgba(255,255,255,0.5), transparent);
+}
+
 code sup {
   color: #333;
   font-size: 75%;

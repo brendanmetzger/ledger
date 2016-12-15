@@ -185,11 +185,27 @@ h1 {
   font: 400 4em/1em 'Avenir Next','HelveticaNeue-Light','Helvetica Neue',Helvetica;
 }
 
+@font-face {
+    font-family: label;
+    src: url(/media/fonts/impact-label.ttf);
+    font-weight:400;
+}
+
 .h2,
 h2 {
   font-size: calc(1.5em + 1vw + 1vh);
   line-height: 150%;
   font-weight: 200;
+}
+
+article[data-classification] {
+  border:none;
+}
+article[data-classification] h2{
+  font-family:label;
+  color:#333;
+  mix-blend-mode:multiply;
+  transform:rotate(-2.5deg) translateY(-1em);
 }
 
 
