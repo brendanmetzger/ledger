@@ -1,6 +1,6 @@
 <?php
 
-$serv = new swoole_websocket_server("127.0.0.1", 9502);
+$serv = new swoole_websocket_server("http://127.0.0.1/", 9502);
 
 $serv->on('open', function($server, $req) {
   echo "connection open: {$req->fd}\n";
