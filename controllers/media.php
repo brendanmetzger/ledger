@@ -55,7 +55,7 @@ class Media extends \bloc\controller
   public function POSTscreenshot($request, $file)
   {
     $result = json_decode($_POST['result']);
-    file_put_contents(PATH."media/screenshots/{$file}", file_get_contents(urldecode($result->image_url)));
+    file_put_contents(PATH."media/screenshots/{$file}.jpg", file_get_contents(urldecode($result->image_url)));
   }
 
 }
