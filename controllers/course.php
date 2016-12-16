@@ -123,7 +123,7 @@ class Course extends \bloc\controller
     return $out . "</pre>";
   }
 
-  public function GETprogress()
+  public function GEThelper()
   {
     // this is a javascript file
     $track = [
@@ -131,8 +131,9 @@ class Course extends \bloc\controller
       'time' => $_SERVER['REQUEST_TIME'],
       'addr' => $_SERVER['REMOTE_ADDR'],
      ];
-    $data = json_encode($track);
-    return "console.log({$data})";
+    $out  = file_get_contents(PATH . 'views/javascript/iam.js');
+    $out .= sprintf('console.log(%s);', json_encode($track));
+    return $out;
   }
 
   public function GETrubric($type = 'project')

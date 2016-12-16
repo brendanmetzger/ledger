@@ -14,9 +14,9 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [x] compute unique tags used
 - [ ] consider #lines of css & uniqueness.
 - [x] validate css
-- [ ] get sessions to last longer, or automatically log out so I don't write a bunch and get an unauthorized error when I try to save
+- [x] get sessions to last longer, or automatically log out so I don't write a bunch and get an unauthorized error when I try to save
 - [ ] don't release grades until everyone's has been graded. (so I can implement a curve)
-- [ ] send email after grade is marked with my notes and a link to the notes.
+- [ ] send email after grade is marked with my notes and a link.
 - [x] make icon for wikipedia links.
 - [x] Open wikipedia links in a console. Open with API
 - [x] Make fixed close button and lock <body> when mouse is scrolling wikipedia content
