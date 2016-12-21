@@ -32,6 +32,13 @@
     sessionStorage.setItem(key, scores.join(':'));
     return scores;
   }
+  
+  function checkHTMLindentation() {
+    // will give back an array of numbers corresponding to spaces/tabs used
+    // if pattern starts odd, tabs are used, and it should osscilate between odd/even 
+    // if spaces are used, everything should be even.
+    var pattern = htm.match(/\n\s+/gm).map(item => item.match(/[^\n]/g).length);
+  }
 
   function drawHelper() {
     var list = document.body.appendChild(document.createElement('ul'));

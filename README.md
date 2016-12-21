@@ -45,3 +45,4 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Change load script to new technique from TCF
 - [ ] Compile `<mark>` elements to construct an overview at the end of every lecture outline. (start using `<mark>` elements this way)
 - [ ] Implement basic usage/analytics tracking
+- [ ] Add a readme for all interactive tidbits

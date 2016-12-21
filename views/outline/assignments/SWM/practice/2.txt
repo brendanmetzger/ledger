@@ -1,11 +1,11 @@
-# Media
+# No. 2
 
-## Goal
+## Abstract
 (your words here)
 
 ## TODO
 - [ ] Create a color scheme
-- [ ] Use `color` and `background-color` properties on several different elemenst to negotiate contrast.
+- [ ] Use `color` and `background-color` properties on several different elements to negotiate contrast.
 - [ ] Use `color` and `background-image` to negotiate contrast.
 - [ ] Have utilized and understood `background-position`, `background-size` and `background-repeat` and the shorthand for `background`
 - [ ] Have investigated `border` using both shorthand properties and `border-width`, `border-style` and `border-color` independantly
