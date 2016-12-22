@@ -15,7 +15,8 @@ trait config {
     $this->year        = date('Y');
 
     $this->title       = ucwords($request->controller . ' - ' . $request->action);
-
+    $this->entropy     = rand();
+    
     //TODO: this should be done automatically
     $this->semester    = "FA16";
     $this->email       = 'bmetzger@colum.edu';

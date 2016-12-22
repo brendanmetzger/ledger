@@ -90,7 +90,7 @@
           <th>Project</th>
           <th>Due</th>
           <th>Assignment Details</th>
-          <th>Your page</th>
+          <th>Your page<sup><a href="#cache-invalidation">[*]</a></sup></th>
           <th>Notes</th>
           <th>Raw</th>
           <th>Score</th>
@@ -104,7 +104,7 @@
           <td>
             <a href="[[/$$student:course/criterion/project/$project:criterion:@index/$$student:section:@id]]">[$project:criterion:@title]</a>
           </td>
-          <td class="centered"><a href="[[$$student:@url/project/$project:index/]]">Preview</a></td>
+          <td class="centered"><a href="[[$$student:@url/project/$project:index/?$$entropy]]">Preview</a></td>
           <td class="[$schedule:status centered]">
             <a href="[[/$$student:course/notes/$project:criterion:path/$$student:@id]]">[[$$review]]</a>
             <a href="[[/$$instructor:path/$project:criterion:path/$$student:@id]]">[[$$instructor:edit]]</a>
@@ -123,7 +123,7 @@
       </tfoot>
     </table>
   </section>
-
+  
   <section>
 
     <table class="full chart">
@@ -179,4 +179,13 @@
     <p>Until one of every type of assignment have been graded, the average score is based on pending perfect scores; after the midterm, based on your other criteria your scores may change significantly. Where marked, I have curved grades using <a href="https://en.wikipedia.org/wiki/Standard_score">standard score</a>. I will act as the arbiter and use the scores you see here to determine your final grade which will ultimately reflect competency gained and necessary to advance through the curriculum. </p>
 
   </section>
+  <footer onclick="window.location.hash = '_'">
+    <h2>Footnotes/<abbr title="frequently asked questions">FAQ</abbr></h2>
+    <section id="cache-invalidation">
+      <h3>Cache Invalidation</h3>
+      <p>You may notice a random string of numbers preceded by a question mark when you link to your page—let me explain. The default behavior of a server is to do something as fast as possible, and depending on what time a file is <em>requested</em> it may <em>respond</em> with a special header code called a <code>304 Not Modified</code>, in essence, telling your browser, <q>load the same thing if you want</q>, and a browser usually does. The server your work is hosted on is configured to send 304s quite liberally—generally ok to do for production sites—but it makes it difficult to develop websites over the internet.</p>
+      <p>Thus, when developing, you should (1) have dev tools open, and (2) then make sure cache is disabled (show note) to ensure you get the resource as intended. To make sure that you see you changes as requested, I append a harmless string of numbers (a common trick of <a href="https://en.wikipedia.org/wiki/Cache_invalidation">cache invalidation</a>) after the url that makes it look like a different resource to caching algorithims. This is called a <a href="https://en.wikipedia.org/wiki/Query_string">query string</a>, and they are harmless in most contexts and only used to avail in server-side programming anyway.</p>
+    </section>
+  </footer>
+  
 </article>
