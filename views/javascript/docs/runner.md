@@ -2,7 +2,7 @@
 
 ![Muybridge-style running illustration](http://52.35.59.206/media/images/running-man.png)
 
-Doing this work I ran into the ever-fascinating fact that (0.9999... = 1)[https://en.wikipedia.org/wiki/0.999...] and even proved through a little animation exercize. 
+Doing this work I ran into the ever-fascinating fact that [0.9999... = 1](https://en.wikipedia.org/wiki/0.999...) and even proved through a little animation exercise. 
 
 ##HTML
 
