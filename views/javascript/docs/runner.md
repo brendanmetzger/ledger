@@ -2,6 +2,8 @@
 
 ![Muybridge-style running illustration](http://52.35.59.206/media/images/running-man.png)
 
+Doing this work I ran into the ever-fascinating fact that (0.9999... = 1)[https://en.wikipedia.org/wiki/0.999...] and even proved through a little animation exercize. 
+
 ##HTML
 
 ```html
@@ -58,13 +60,13 @@ var jogger = function() {
   // if you look at it that way, because 12 mod 12 = 0 after all. Generally you can put any 
   // number of positions on a clock-like interface from 0 to n. To convert to numerical 
   // position on the clock, we can use a modulus operator; and keep visualizing when using a
-  //  modulus on a clock with n positions, the result can only ever be 0 through n-1.
+  // modulus on a clock with n positions, the result can only ever be 0 through n-1.
   var position = (delta % frames);
 
   // now I need to convert my position to a percentage. This is tricky: I am in any one of
   // the following positions on my clock [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]. Intuitively, position
   // 0 should be 0% and position 9 should be 100%. That is, 0 / factor = 0, and 9 / factor = 1. You
-  // can see that 9 is the number we are looing for so solve both scenarios. This also corresponds 
+  // can see that 9 is the number we are looing for to solve both scenarios. This also corresponds 
   // nicely to our remainder problem: we only have frames - 1 possible places to move to, so lets 
   // do the math and multiply by 100 to get a percentage.   
   var step = (position / (frames - 1)) * 100;
@@ -74,9 +76,6 @@ var jogger = function() {
   // the following looks funny, but the totatl think if hard coded would look like:
   // runner.style.objectPosition = "88.88% 0" 
   img_element.style.objectPosition = step + '% 0';
-  
-  // Lastly, doing this work I ran into the ever-fascinating fact that 
-  // 0.9999... = 1 (see here!)[https://en.wikipedia.org/wiki/0.999...]
 };
 
 // add an event listener to the window object that is triggered on 'scroll' and 
