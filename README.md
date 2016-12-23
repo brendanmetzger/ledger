@@ -47,3 +47,8 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Implement basic usage/analytics tracking
 - [ ] Add a readme for all interactive tidbits
 - [ ] Parse readme.md files for interactives themselves.
+- [ ] **Make a scroll-spy that checks boxes as you continue down outline. Show user analytics as well. Track velocity so
+
+
+** What about an ajax callback that returns an intention. Like, if true, check this box. I suppose this is a promise maybe? That means investigate promises.
+
