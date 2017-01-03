@@ -48,7 +48,8 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Add a readme for all interactive tidbits
 - [ ] Parse readme.md files for interactives themselves.
 - [ ] **Make a scroll-spy that checks boxes as you continue down outline. Show user analytics as well. Track velocity so
-
+- [ ] When doing a site download/analysis, find images (jpg/png/svg/gif) and do a file size/dimension analysis, generate color-coded FPO replacement.
+- [ ] The above replacement should scan CSS files for url(!http) resources as well.
 
 ** What about an ajax callback that returns an intention. Like, if true, check this box. I suppose this is a promise maybe? That means investigate promises.
 

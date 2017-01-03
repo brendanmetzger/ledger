@@ -9,6 +9,7 @@ trait config {
     \models\Data::$DB = 'FA16';
     \bloc\view::addRenderer('before', Render::PARTIAL());
     \bloc\view::addRenderer('after', Render::HTML());
+    \bloc\view::addRenderer('after', Render::EXAMPLES());
     \bloc\view::addRenderer('after', Render::PREVIEWS());
     \bloc\view::addRenderer('after', Render::REVIEW());
 

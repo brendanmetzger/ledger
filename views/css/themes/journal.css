@@ -8,6 +8,7 @@ body {
   overflow-x: hidden;
 }
 
+
 .percentage:after {
   content: '%';
   font-size: 0.75em;
@@ -19,22 +20,6 @@ abbr[title^='Interaction'] {
   font-variant: normal;
 }
 
-.read,
-.watch {
-  border: none;
-}
-
-.read {
-  padding-left: 1.35em;
-  background: transparent url("/css/media/book.svg") -0.25em 30% no-repeat;
-  background-size: auto 120%;
-}
-
-.watch {
-  background: transparent url("/css/media/film.svg") 0 50% no-repeat;
-  background-size: auto 120%;
-  padding-left: 1.75em;
-}
 
 .warn.focus {
   margin: 5vmin 0;
@@ -50,21 +35,7 @@ u {
   text-decoration: none;
 }
 
-a[href*='en.wikipedia.org'] {
-  background: transparent url("/css/media/wikipedia.svg") no-repeat;
-  background-position: -1em 0;
-  padding-left: 0.5em;
-  background-size: auto 2em;
-  text-shadow: -1px 0 0 rgba(255,255,255,0.95);
-  border: none;
-  transition: background-position 0.25s, background-size 0.25s, padding 0.125s;
-}
 
-a[href*='en.wikipedia.org']:hover {
-  background-size: auto 5em;
-  padding-left: 1.25em;
-  background-position: -2.5em -1em;
-}
 
 nav ul.index {
   border-width: 1px 0 0;
@@ -156,20 +127,44 @@ body > footer {
   background-color: rgba(0,0,0,0.9);
 }
 
-a {
-  color: rgb(0, 125, 175);
+
+a[href] {
+  color: #444;
 }
 
-article a {
+article a[href] {
   text-decoration: none;
-  border-bottom: 1px dashed rgba(0,0,0,0.25);
+  background: linear-gradient(#7499DA, #7499DA) repeat-x 0 1.05em;
+  background-size: 100% 1px;
+  text-shadow: 1px 0 #fbfaf7, -1px 0 #fbfaf7;
+}
+article a[href]:hover {
+  color: #444;
+  background-size:100% 2px;
+  
+}
+
+article a[href*='en.wikipedia.org'] {
+  background: transparent url("/css/media/wikipedia.svg") no-repeat;
+  background-position: -1em 0;
+  padding-left: 0.5em;
+  background-size: auto 2em;
+  text-shadow: -1px 0 0 rgba(255,255,255,0.95);
+  border: none;
+  transition: background-position 0.25s, background-size 0.25s, padding 0.125s;
+}
+
+a[href*='en.wikipedia.org']:hover {
+  background-size: auto 5em;
+  padding-left: 1.25em;
+  background-position: -2.5em -1em;
 }
 
 a:hover,
 a:hover > *,
 summary:hover {
+  color:#aaa;
   cursor: pointer;
-  color: #888;
 }
 
 .intro {
@@ -533,6 +528,13 @@ footer.hud {
   background-color: rgba(0,0,0,0.85);
   text-transform: lowercase;
   font-variant: small-caps;
+}
+
+footer.hud nav a {
+  color: #888;
+}
+footer.hud a:hover{
+  color:#fff;
 }
 
 ul.bar {
@@ -902,4 +904,8 @@ h4.vertical {
 }
 h4.vertical + p:first-line {
   font-weight:800;
+}
+
+.sketch img {
+  mix-blend-mode:overlay;
 }

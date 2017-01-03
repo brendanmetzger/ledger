@@ -51,5 +51,20 @@ class Overview extends \bloc\controller
     $view->content =  sprintf("views/prologue/%s.html", $topic);
     return $view->render($this());
   }
+  
+  public function CLIgit()
+  {
+    $git = exec('which git');
+    
+    $cmd = 'cd ' . PATH . 'data/ && ' . $git . ' checkout test && ' . $git . ' status';
+    ob_start();
+    passthru($cmd, $ret);
+    $output = ob_get_clean();
+    
+    
+    echo $output;
+    echo $ret;
+    
+  }
 
 }
