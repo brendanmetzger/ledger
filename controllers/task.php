@@ -274,5 +274,29 @@ class Task extends \bloc\controller
 
     $this->save($doc);
   }
+  /**
+   * README file as full-page documentation
+   *
+   * @param string $readme the name of the file
+   * @return string
+   */
+  public function GETdocumentation($readme)
+  {
+    // parse comments
+    // \/\*([\s\S]*?)\*\/|([^\\:]|^)\/\/.*$
+  }
+  
+  public function POSTvalidate($request, $url)
+  {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, base64_decode($url));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $_POST);
+    $output = curl_exec($ch);
+    $info = curl_getinfo($ch);
+    curl_close($ch);
+    return $output;
+  }
 
 }

@@ -2,8 +2,6 @@
 
   function getCSScheckup(CSS, re) {
     
-    
-    
     var current = Object.keys(CSS)
            .map(StyleSheetList.prototype.item.bind(CSS))
            .reduce((a, s) => s.rules ? a + Object.keys(s.rules)
@@ -57,29 +55,58 @@
     var element = new Image();
     Object.defineProperty(element, 'id', {
       get: function () {
-        
         var item = document.querySelector(selector);
         item.parentNode.classList.remove('console');
         item.parentNode.removeChild(item);
-        
       }
     });
 
     console.log('%cTodays secret code: ', element);
   }
-
-
-  function Validator(url, callback) {
-    var url = 'https://validator.w3.org/nu/?level=error&doc='+encodeURIComponent(url)+'&out=json';
-    JSONP(url, callback)
+  
+  
+  function validateHTML(text, callback) {
+    var req  = new XMLHttpRequest();
+    var data = new FormData();
+    data.append('out', 'json');
+    data.append('content', text);
+    req.overrideMimeType('application/json');
+    req.open('POST', 'https://validator.nu/');
+    req.addEventListener('load', callback);
+    req.send(data);
   }
 
-
-  function JSONP(src, callback) {
-    var key = 'JSONP_cb_'+Date.now().toString(36);
-    window[key] = callback;
-    document.head.appendChild(document.createElement('script')).src = src + '&callback=' + key;
+  
+  function validateCSS(text, callback) {
+    var data = new FormData();
+    data.append('profile', 'css3svg');
+    data.append('output', 'json');
+    data.append('warning', '1'); // can be 0
+    data.append('text', text);
+    
+    var req  = new XMLHttpRequest();
+    var url = btoa("https://jigsaw.w3.org/css-validator/validator");
+    req.open('POST', 'http://pedagogy/task/validate/'+url+'.js', true);
+    req.overrideMimeType('application/json');
+    req.addEventListener('load', callback);
+    req.send(data);
   }
+  
+  validateCSS('* {fart: none; }', function (evt) {
+    console.log(JSON.parse(evt.target.responseText));
+  });
+  
+  function getSource(url, callback) {
+    var req = new XMLHttpRequest();
+    req.open('GET', url, true);
+    req.addEventListener('load', callback);
+    req.send();
+  }
+  var current = window.location.href;
+  getSource(current, function (evt) {
+    // console.log(evt.target.responseText);
+    validateHTML(evt.target.responseText, logger);
+  });
   
   addEventListener('load', function() {
     drawHelper('_e_s_p_e_c_i_a_l_');
