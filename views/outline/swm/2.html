@@ -9,98 +9,24 @@
     <h2>Review/Questions</h2>
     <p>Last Week we went over structure and outlining and introduced type and descendant selectors in <abbr title="Cascading Stylesheets">CSS</abbr>. We are becoming comfortable the web development workflow and tools.</p>
   </article>
-  <article class="margins">
-    <h2>Programming (baby) step #2: <em>An example of computability</em></h2>
-    <p>I mentioned in the last outline that counting is a part of human history, and likewise, is the essential function of a computer. I provided some links and claimed that computers can be composed of essentially simple circuits made of relays (electrically controlled switches) and flip-flops (circuits that can remember their last state).</p>
-    <p>First, let’s take a look at a this <a href="https://www.youtube.com/watch?v=gI8luQnyM9A">square root calculator</a>. If interest/time permits, I'll go over <a href="https://gist.github.com/brendanmetzger/dbbf341f08c06f37f4739ad620af1289">this gist</a> I wrote of a tiny program that can count in any number of ways.</p>
-  </article>
-  <article>
-    <h2>Editing Calisthenics</h2>
-    <p>We now are familiar with using command+arrow keys to jump around our editor. We know that holding shift down while doing this will select text. We are aware of indentation guides and invisible characters. If you are not aware of any of this stuff yet, or need a refresher: re-watch the lectures or ask me at any point if you need to clarify—this is the convenient stuff that will make your life easier!</p>
-      <p>Over the last few weeks you've spent some time writing markup and indenting and organizing. Taking it a step further, let’s investigate ways we can <strong>indent a bunch of lines at once</strong>, and then let’s talk about <strong>commenting</strong>.</p>
-  </article>
-  <article class="margins">
-    <h2>Attributes</h2>
-    <p>So far our <abbr title="hypertext markup language">HTML</abbr> has been pretty basic so far in that we have not investigated <a href="https://en.wikipedia.org/wiki/HTML_attribute">attributes</a> unless they were mandatory (like the <code>href</code> in anchors.  An attribute is always written on the opening tag of an Element and is defined by a keyword followed by an = sign and a quoted string of text. W use them to start describing unique characteristics that might apply to a specific node and features it has. For instance, in the case of an <code>&lt;a&gt;</code> Element, the <code>href</code> attribute (known as the hypertext reference) determines where the anchor should take the user when they engage it.</p>
-    <p><em>Attributes are now an essential part of our vocabulary</em> as we will be learning and using new ones throughout the semester. Some attributes apply to only specific Elements, while others are universal, in that we can apply them to any element. Let’s jump into our preliminary investigation with a universal attribute called <code>style</code>.</p>
-  </article>
-  <article>
-    <h2>Demo: <em>a résumé</em></h2>
-    <p>Something that is suitable for today’s material would be a résumé. Like the templates offered when you start up a word processing program, today we are going to investigate ways to show the same content, with different styles using one stylesheet. By using methods of taxonomy, we'll demonstrate the power of clever naming and organization. First, I've started a <a href="/student/structure/resume.html">résumé</a> for you. Let’s practice together implementing more structure around the elements we know.</p>
-  </article>
-  <article class="margins">
-    <h2><abbr title="Cascading Stylesheet">CSS</abbr> Units: <em>length and size</em></h2>
-    <p>The most notable CSS units are involved in <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">determining length</a>. Consider the sample boxes below each have their <code>width</code> property set to the same number with a different unit. Make sure to resize your window to understand how some units are affected by the size of your browser (vw/vh) or the size of their containing element (%) or the size of the font (em). Pixels are static and not affected proportionally, but be aware that modern screens have different pixel sizes, so scaling and approximation will occur and designing with pixels is becoming unfavorable especially where mobile and responsive design are concerned.</p>
-    <p>Also, spend some time looking at <a href="http://htmldog.com/guides/css/beginner/margins/">margins and padding</a>. Picture a bunch of cardboard boxes on the floor; the is the space between the boxes is the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">margin</a>, and within each box the space afforded the contents is called the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding">padding</a>. I'll leave it up to you to find yourself the documentation for borders—or in this example, the cardboard of the box itself.</p>
-    <h3 class="t">Looking at length units</h3>
-    <div class="example">
-      <input type="range" min="25" max="75" step="1" value="25"/>
-      <samp data-unit="px">This paragraph is <code>?</code> wide</samp>
-      <samp data-unit="em">This paragraph is <code>?</code> wide</samp>
-      <samp data-unit="vw">This paragraph is <code>?</code> wide</samp>
-      <samp data-unit="vh">This paragraph is <code>?</code> wide</samp>
-      <samp data-unit="%">This paragraph is <code>?</code> wide</samp>
-      <samp data-unit="ch">This paragraph is <code>?</code> wide</samp>
-    </div>
-    <style media="screen">
-      div.example {
-        border:1px solid rgba(0,0,0,0.2);
-        padding:2em;
-        background-color:rgba(255,255,255,0.25);
-      }
-      div.example samp {
-        white-space: nowrap;
-        color:#AAA;
-        font-size:1.5em;
-        transition: width 0.5s;
-        background-color:#333;
-        margin:0.5em;
-        padding:1em;
-        line-height:1;
-        display:block;
-      }
-    </style>
-    <script type="text/javascript">
-      addEventListener('load', function () {
-        var lis = document.querySelectorAll('div.example samp');
-        var inp = document.querySelector('div.example input');
-        inp.addEventListener('input', function (evt) {
-          [].forEach.call(lis, function (li) {
-            li.firstElementChild.textContent = li.style.width = this.value + li.dataset.unit;
-
-          }, this);
-
-        });
-        var click = document.createEvent('MouseEvents');
-        click.initEvent('input', true, true);
-        inp.dispatchEvent(click);
-      });
-    </script>
-  </article>
-  <article class="indented">
-    <h2>Selectors: <em>Classes, IDs, and pseudo classes</em></h2>
-    <p class="intro">Now that we have some familiarity <abbr title="hypertext markup language">HTML</abbr> structure and how to take advantage of Element types and decendancy using <abbr title="cascading stylesheets">CSS</abbr>, we can take our first step towards naming things as we would prefer.</p>
-    <p>Classes and IDs are added as attributes of an Element Node. Adding classes to elements is the most powerful ways to style a document if you are clever and/or careful. Adding IDs is less important for styling and more important for targeting a unique (that means only one) element—which is especially useful in JavaScript and XML.<a href="http://www.w3schools.com/css/css_pseudo_classes.asp">Pseudo-classes</a> are ways to style transient states, such as a user hovering over an element with <code>:hover</code>, or an element’s position in the hierarchy with <code>:first-child</code> They are called pseudo because you don’t add them, the browser kind of adds them for you when necessary.</p>
-    <p>With <strong>well structured HTML</strong>, you need fewer elements to accomplish an elegant design through <abbr title="cascading stylesheet">CSS</abbr>—as opposed to sloppy <abbr title="HTML">HTML</abbr> that mandates many classes/ids and other selectors. For the professional developer, the less written, the easier it is to maintain code. To write less code, I believe in this general rule of thumb: if your CSS class doesn’t seem like it could apply to more than one element, rethink your approach. If your ID seems like it could apply to several things, you should rethink your approach. Lastly, when using ID selectors, only use them to add meaning, uniqueness, and specificity to your markup, and only use them to add style as a last resort or if you are feeling extremely lazy.</p>
-    <h4 class="t">Usage of classes</h4>
-    <p>You may add a class attribute to any Element Node like <code>&lt;elem class="name"&gt;</code>. Do note, you can add multilpe classes to an Element Node by specifying multiple names in the class attribute separated by whitespace, ie. <code>&lt;elem class="name1 name2 name3 …"&gt;</code>.</p>
-    <p>To target a named class in a stylesheet, you simply use a period prefixed to the class name, such as <code>.name { …properties }</code>. If you want to specify that a rule only applies to an Element of a certain type, you can specify that by using the type selector in addition to the class selector, ie. <code>elem.classname { …properties }</code>.</p>
-    <h4 class="t">Usage of ID’s</h4>
-    <p>ID’s are very similar to classes except in a few significant ways. You add an ID attribute the same as a class, ie. <code>&lt;elem id="name"&gt;</code>. The two exceptions: an ID can <strong>never</strong> be used more than once in a document <span class="discuss">(why?)</span> and given that notion, you cannot add more than one ID to an element. If those points seem odd or meaningless to you, my beginner advice is avoid them until the meaning becomes necessary (which I find to be extremely rare by-the-way).</p>
-    <p>To target an ID in your stylsheet, it’s just like css except you use an octothorpe (<a href="https://en.wiktionary.org/wiki/octothorpe">pound sign</a>) instead of a period, ie. <code>#name { …properties }</code>.</p>
-  </article>
+  <!-- insert views/topics/programming_strategy/computability.html -->
+  <!-- insert views/topics/programming_strategy/keyboards.html -->
+  <!-- insert views/topics/markup/attributes.html -->
+  <!-- insert views/topics/studies/resume.html -->
+  <!-- insert views/topics/stylesheets/length-units.html -->
+  <!-- insert views/topics/stylesheets/class-and-id-selectors.html -->
+  <!-- insert views/topics/perspective/naming-conventions.html  -->
   <article>
     <h2>In Class Work</h2>
     <p>Use some time to play with the résumé  provided, and make sure you are able to do the implement and understand:</p>
     <ul class="stylized star t">
-      <li>add multilpe classes to one element</li>
+      <li>add multiple classes to one element</li>
       <li>use a type selector with a class</li>
-      <li>use decendancy witha class and type</li>
-      <li>use decendancy with multiple classes</li>
-      <li>use types, classes, and decendancy (oh my)</li>
+      <li>use descendant selectors (class and type)</li>
+      <li>use types, classes, and descendent selectors all together</li>
     </ul>
   </article>
-  <!-- insert views/topics/perspective/naming-conventions.html  -->
+  
   <article>
     <h2>References and Practice Materials</h2>
     <p class="intro">Here is the list of <a href="http://iam.colum.edu/brendan.metzger/vids/">previous lectures</a> that are available to watch.</p>

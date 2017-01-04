@@ -29,11 +29,26 @@ class Overview extends \bloc\controller
     return $view->render($this());
   }
 
-  public function GETtopic($subject, $topic)
+  public function GETtopics($subject = null, $topic = null)
   {
     $view = new View(self::layout);
     // get all topics
-    $view->content =  sprintf("views/topics/%s/%s.html", $subject, $topic);
+    
+    if ($subject == null) {
+      $editorial = new \models\editorial('views/topics');
+      $this->columns = $editorial->getColumns();
+      $view->content = 'views/layouts/topics.html';
+    } else if ($topic != null){
+      // sub for localhost
+      $path = sprintf("views/topics/%s/%s.html", $subject, $topic);
+      if ($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
+        $this->edit = PATH.$path;
+      }
+      $view->content = "views/layouts/topic.html";
+      $view->topic   =  $path;
+    }
+    
+
     return $view->render($this());
   }
   

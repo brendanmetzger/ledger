@@ -1,0 +1,49 @@
+<article class="margins">
+  <h2><abbr title="Cascading Stylesheet">CSS</abbr> Units: <em>length and size</em></h2>
+  <p>The most notable CSS units are involved in <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">determining length</a>. Consider the sample boxes below each have their <code>width</code> property set to the same number with a different unit. Make sure to resize your window to understand how some units are affected by the size of your browser (vw/vh) or the size of their containing element (%) or the size of the font (em). Pixels are static and not affected proportionally, but be aware that modern screens have different pixel sizes, so scaling and approximation will occur and designing with pixels is becoming unfavorable especially where mobile and responsive design are concerned.</p>
+  <p>Also, spend some time looking at <a href="http://htmldog.com/guides/css/beginner/margins/">margins and padding</a>. Picture a bunch of cardboard boxes on the floor; the is the space between the boxes is the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">margin</a>, and within each box the space afforded the contents is called the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding">padding</a>. I'll leave it up to you to find yourself the documentation for borders—or in this example, the cardboard of the box itself.</p>
+  <h3 class="t">Looking at length units</h3>
+  <div class="example">
+    <input type="range" min="25" max="75" step="1" value="25"/>
+    <samp data-unit="px">This paragraph is <code>?</code> wide</samp>
+    <samp data-unit="em">This paragraph is <code>?</code> wide</samp>
+    <samp data-unit="vw">This paragraph is <code>?</code> wide</samp>
+    <samp data-unit="vh">This paragraph is <code>?</code> wide</samp>
+    <samp data-unit="%">This paragraph is <code>?</code> wide</samp>
+    <samp data-unit="ch">This paragraph is <code>?</code> wide</samp>
+  </div>
+  <style media="screen">
+    div.example {
+      border:1px solid rgba(0,0,0,0.2);
+      padding:2em;
+      background-color:rgba(255,255,255,0.25);
+    }
+    div.example samp {
+      white-space: nowrap;
+      color:#AAA;
+      font-size:1.5em;
+      transition: width 0.5s;
+      background-color:#333;
+      margin:0.5em;
+      padding:1em;
+      line-height:1;
+      display:block;
+    }
+  </style>
+  <script type="text/javascript">
+    addEventListener('load', function () {
+      var lis = document.querySelectorAll('div.example samp');
+      var inp = document.querySelector('div.example input');
+      inp.addEventListener('input', function (evt) {
+        [].forEach.call(lis, function (li) {
+          li.firstElementChild.textContent = li.style.width = this.value + li.dataset.unit;
+
+        }, this);
+
+      });
+      var click = document.createEvent('MouseEvents');
+      click.initEvent('input', true, true);
+      inp.dispatchEvent(click);
+    });
+  </script>
+</article>

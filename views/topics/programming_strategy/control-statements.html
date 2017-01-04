@@ -1,0 +1,87 @@
+<article class="margins">
+  <h2>Control Statements by Syntax</h2>
+  <!--  insert views/css/media/flow.svg -->
+  <h3>With CSS</h3>
+  <p>Last week, we saw that adding a type selector directly adjacent to a class selector, ie. <code>h3.special { … }</code> says something like <q>only apply the class named special if the element is an h3</q>. Fixate for a moment on the word <b>if</b> and note that it implies there is a condition of true or false happening.</p>
+  <p>This, along with other careful use of classes can simulate boolean behavior with <abbr>CSS</abbr>, and can be used to great effect—which is why I think <a href="http://www.sitepoint.com/6-current-options-css-preprocessors/"><abbr>css</abbr> preprocessors</a> (programs that write <abbr>css</abbr> for you) are somewhat unnecessary. Written way back in the <abbr title="World Wide Web Consortium">W3C</abbr> <abbr>css</abbr> 2.0 spec: <q cite="https://www.w3.org/TR/CSS2/selector.html#class-html"><abbr title="Cascading Style Sheets">CSS</abbr> gives so much power to the <q>class</q> attribute, that authors could conceivably design their own <q>document language</q> based on elements with almost no associated presentation.</q> Broken down, the rules that inform how you may apply classes are so powerful that we could introduce meta-level thinking (not you actually would, or should.)</p>
+  <section class="explain container">
+    <aside class="t b">
+      <p class="note">Looking at the sample carousel through the styles below. Notice how the styles specify chained classes—this effectively allows you to use combinations of classes to dictate style.</p>
+      <h3 class="tt centered"><code>&lt;p class="<span data-example="code">lined</span>"&gt;</code></h3>
+      <div data-example="code" class="lined" style="margin:2em;font-size:2em;transition:all 0.5s;">Dreamcatcher vegan bitters drinking vinegar post-ironic. Marfa godard trust fund bicycle rights 3 wolf moon. Tilde etsy DIY kombucha four loko. Vinyl offal mustache intelligentsia bitters, single-origin coffee brunch leggings ethical hoodie echo park whatever vice chicharrones tacos.</div>
+    </aside>
+    <pre class="prettyprint">
+      <!-- review views/css/examples/variables.css chaining -->
+    </pre>
+    <link rel="stylesheet" href="/css/examples/variables.css" title="variable-example"/>
+    <script type="text/javascript">
+    // <![CDATA[
+      bloc.init('class-cycle', function () {
+        var elems = document.querySelectorAll('[data-example="code"]');
+        var sequence = ['text', 'lined', 'text', 'lined top', 'lined top purple', 'lined bottom blue', 'lined top bottom', 'text purple', 'text lined top bottom blue'];
+        var current = cycle(0, sequence.length);
+        setInterval(function () {
+          var class_name = sequence[current()];
+          elems.item(0).innerText = class_name;
+          elems.item(1).className = class_name;
+        }, 2500);
+
+      });
+    //]]>
+    </script>
+  </section>
+  <hr class="ruled b t"/>
+  <h3>With Javascript</h3>
+  <p>Boolean Algebra, the namesake of George Boole, a 19th century mathematician who pioneered the system of logical operations, can take complicated sets of logic and break them into a fundamental binary solution that can only be one of two values: <code>true</code> and <code>false</code>. These <strong>Boolean values</strong> have straightforward properties, but as you combine them and use the algebraic systems, they quickly escalate in complexity.</p>
+  <section class="comparison container whitepaper t b">
+    <dl class="half float left">
+      <dt class="h3"><strong>true</strong> values and expressions</dt>
+      <dd><q>true</q> (obviously), in JavaScript, this is written <code>true</code></dd>
+      <dd><q>not false</q>,  <code>!false</code></dd>
+      <dd><q>true <strong>or</strong> false</q>, <code>true || false</code></dd>
+      <dd><q>Five is greater than 2</q>, <code>5 &gt; 2</code></dd>
+      <dd><q>This name is the same</q> <code>'Boabdil' == 'Boabdil'</code></dd>
+      <dd><q>This name is <strong>not</strong> the same</q> <code>'Boabdil' != 'boabdil'</code></dd>
+    </dl>
+    <dl class="half float left">
+      <dt class="h3"><strong>false</strong> values and expressions</dt>
+      <dd><q>false</q> (obviously), in JavaScript, this is written as <code>false</code></dd>
+      <dd><q>not true</q>, <code>!true</code></dd>
+      <dd><q>true <strong>and</strong> false</q>, <code>true &amp;&amp; false</code></dd>
+      <dd><q>Five is less than 2</q>, <code>5 &lt; 2</code></dd>
+      <dd><q>This name doesn’t match</q>,   <code>'Boabdil' == 'boabdil'</code></dd>
+      <dd><q>This name is <strong>doesn’t not</strong> match</q> <code>'Boabdil' != 'Boabdil'</code></dd>
+    </dl>
+  </section>
+  
+  <section class="explain">
+    <aside class="note container">
+      <img src="/media/images/fork.png" class="__ float left" style="mix-blend-mode:darken;margin:0 2em;"/>
+      <h3>Order of Evaluation</h3>
+      <p>Looking at the adjacent example, notice my careful use of parentheses. In general, always use parentheses for clarity, even when you fundamentally know the order of operations. Boolean operations are more obscure when it comes to order of evaluation, performing what is known as <a href="https://en.wikipedia.org/wiki/Short-circuit_evaluation">Short-circuit Evaluation</a>, which is a type of optimization (and quite unnecessary for most JavaScript programming).</p>
+      <p>Fundamentally, without use of parentheses, the operation trys to find a true/false value as quickly as possible. Take the example and remove the parentheses and you’ll see an example of this.</p>
+    </aside>
+    <pre class="prettyprint">
+      <!-- review views/javascript/examples/booleans.js order of evaluation-->
+    </pre>
+    <script type="text/javascript">bloc.embed('/javascript/examples/booleans.js', true);</script>
+  </section>
+  <h3>Coercion</h3>
+  <p>While not particularly useful to a beginner programmer, type coercion is often a <em>misunderstood and misused</em> part of programming languages. In JavaScript, you have the following primitive types at your disposal: <code>number</code>, <code>string</code>, <code>boolean</code>, <code>null</code> and <code>undefined</code>. Trying to use any non-boolean type in a logical operation (any operation that uses a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators">logical operator</a>) may produce unexpected results as they are cast to booleans for comparison. Depending on the value they might be considered <mark class="strong">truthy</mark> or <mark class="strong">falsy</mark>. As you begin, try very hard not to rely on coercion until you understand it intuitively. In the meantime, here is a table to start getting familiar:</p>
+    <table class="full">
+      <tbody>
+        <tr>
+          <th>TRUTHY</th>
+          <td>any <strong>non-zero</strong> number</td>
+          <td>any <strong>non-empty</strong> string</td>
+          <td>evaluating arrays and objects, even if empty (never do this!!)</td>
+        </tr>
+        <tr>
+          <th>FALSY</th>
+          <td>the number <code>0</code></td>
+          <td>an empty string <code>''</code></td>
+          <td><code>null</code>, <code>undefined</code> and <code>NaN</code> values</td>
+        </tr>
+      </tbody>
+    </table>
+</article>
