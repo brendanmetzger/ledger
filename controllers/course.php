@@ -19,7 +19,6 @@ class Course extends \bloc\controller
 
   protected function GETindex(User $user, $index = '0', $section = '01')
   {
-
     $view = new View(static::layout);
     $view->content = "views/outline/{$index}.html";
     $view->context = "views/layouts/list/schedule.html";
@@ -30,18 +29,10 @@ class Course extends \bloc\controller
     $schedule[$index]['selected'] = 'selected';
 
     $this->timestamp = $schedule[$index]['date'];
-    $this->datetime =  $schedule[$index]['datetime'];
-    $this->schedule = $schedule;
-
-    $this->index  = $index;
+    $this->datetime  = $schedule[$index]['datetime'];
+    $this->schedule  = $schedule;
+    $this->index     = $index;
     
-    if ($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
-      $this->edit = "(edit)";
-    }
-    
-
-
-
     return $view->render($this());
   }
 
@@ -54,11 +45,11 @@ class Course extends \bloc\controller
     $this->section = (new \Models\Course($this->course))->section($section);
     $this->schedule = $this->section->schedule;
 
-
     $this->timeline = [
       'assigned' => $this->schedule[$this->criterion['@assigned']],
       'due'      => $this->schedule[$this->criterion['@due']],
     ];
+    
     $path = "views/outline/assignments/".static::ID."/$type/$index.html";
     if (!file_exists(PATH.$path)) {
       $view->content = 'views/layouts/error.html';
@@ -114,6 +105,16 @@ class Course extends \bloc\controller
     readfile($file);
     @unlink($file);
     exit();
+  }
+  
+  /*
+    TODO This needs to switch to student in due time
+  */
+  protected function GETquiz(User $student)
+  {
+    $view = new View(self::layout);
+    $view->content = 'views/layouts/quiz.html';
+    return $view->render($this());
   }
 
   protected function GETpeers(Student $student)

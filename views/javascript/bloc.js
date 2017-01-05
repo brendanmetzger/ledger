@@ -136,6 +136,12 @@ bloc.init('manage-links', function () {
       }
     }
   });
+  document.querySelectorAll('*[data-path]').forEach(function (item) {
+    var a = item.insertBefore(document.createElement('a'), item.firstChild);
+    a.href = "txmt://open?url=file://" + item.dataset.path;
+    a.textContent = '⊛';
+    a.className = 'pin link';
+  });
 });
 
 

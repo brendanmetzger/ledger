@@ -46,7 +46,7 @@
     <link rel="icon"  type="image/png" href="/media/images/favicon.png"/>
     <link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/458eb080-e11e-4976-9309-44ecbcfd039a.css"/>
   </head>
-  <body class="[$template]">
+  <body class="[$template $mode]">
     <nav>
       <div>
         <!--  replace context nextSibling -->
@@ -85,7 +85,7 @@
         return "url(" + canvas.toDataURL("image/png") + ")";
       }
       var out = 'html, .noise {background-image:'+noise(0.1, 250) + ', ' + noise(0.1, 250)+';background-position:0 0, 50px -50px, 20px 30px;}';
-      // document.head.appendChild(document.createElement('style')).textContent = out;
+      document.head.appendChild(document.createElement('style')).textContent = out;
       window.bloc.load();
       // ]]>
     </script>

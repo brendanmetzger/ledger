@@ -1,24 +1,31 @@
-<article>
-  <h2>[$course:@title Quiz]</h2>
-  <h4>Name:</h4>
-  <hr class="ruled" />
-  <style media="print" type="text/css">
-  body {border:none;margin:0;}
-  h2 {font-size:2em;}
-  body > nav, body > footer { display:none}
-  ol ul li { padding: 0.5em 0 !important;border-color: #EEE;}
+<form action="/records/quiz/" method="POST">
+  <input type="hidden" name="[@index]" value="" />
+  <input type="hidden" name="[@score]" value="" />
+  <h2>DATE: Quiz</h2>
+  
+  <label for="answer">
+    <h3>What counting system was developed by ancient Sumerians and Babylonians and is still used in a modified form today?</h3>
+  </label>
+  <textarea class="full lined" id="answer" name="answer"></textarea>
+  <style type="text/css" media="screen">
+    /* <![CDATA[ */
+    label[for] h3 {
+      font-size:2.5em;
+      font-family:Inconsolata;
+      line-height: 1.25;
+      max-width:50%;
+    }
+    form textarea.lined {
+      max-width:50em;
+      font-family: 'Baskerville';
+      padding:1.65em 3em 0;
+      line-height:1.5;
+      background-size: 1.5em 1.5em, 2.5em 10px;
+      background-image: linear-gradient(transparent 97.5%, rgba(0, 0, 255, 0.05) 2.5%), linear-gradient(90deg, transparent 97.5%, rgba(255,0,0,0.1) 2.5%);
+      background-repeat: repeat, repeat-y;
+    }
+    /* ]]> */
   </style>
-  <ol>
-    <!-- iterate questions -->
-    <li>
-      <dfn>[$question]</dfn>
-      <!-- <textarea name="answer" class="full" rows="8" style="margin-top:0.5em;height:5em;">[$answer]</textarea> -->
-      <ul class="plain">
-        <li>[$answer]</li>
-        <li>[$answer]</li>
-        <li>[$answer]</li>
-        <li>[$answer]</li>
-      </ul>
-    </li>
-  </ol>
-</article>
+  <button type="submit">Answer</button>
+  <button type="submit" onclick="document.querySelector('#answer').value = this.textContent;this.parentNode.removeChild(this);return false;">I don't know.</button>
+</form>

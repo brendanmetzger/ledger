@@ -193,10 +193,8 @@ h2 {
   font-weight: 200;
 }
 
-article[data-classification] {
-  border:none;
-}
-article[data-classification] h2{
+
+.print-machine {
   font-family:label;
   color:#333;
   mix-blend-mode:multiply;
@@ -384,6 +382,7 @@ ul.good li:before {
   color: rgb(129, 201, 120);
 }
 
+.alert,
 .error,
 ul.bad li:before {
   color: rgb(244, 75, 121);
@@ -493,8 +492,6 @@ form textarea {
 button {
   cursor: pointer;
   box-shadow: 0 0 0.5em rgba(0,0,0,0.1);
-  padding: 0;
-  line-height: 0;
 }
 
 form button {
@@ -697,7 +694,7 @@ nav form {
   transition: background-color 0.25s, padding 0.125s;
 }
 
-.epilogue,
+.paginate > div ~ .epilogue,
 .prologue {
   padding: 2.5vw;
   box-shadow: 0 0 1em rgba(0,0,0,0.1);
@@ -909,3 +906,11 @@ h4.vertical + p:first-line {
 .sketch img {
   mix-blend-mode:overlay;
 }
+
+.pin.link {
+  text-decoration: none;
+  margin: -10px 0 0 -10px;
+  font-size:25px;
+  color:rgba(235,0,145,0.85);
+}
+

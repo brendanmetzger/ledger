@@ -14,7 +14,7 @@ trait config {
     \bloc\view::addRenderer('after', Render::REVIEW());
 
     $this->year        = date('Y');
-
+    $this->mode        = getenv('MODE');
     $this->title       = ucwords($request->controller . ' - ' . $request->action);
     $this->entropy     = rand();
     

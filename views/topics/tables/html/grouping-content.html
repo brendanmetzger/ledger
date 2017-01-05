@@ -1,50 +1,56 @@
 <table>
   <caption class="rag-right">
     <h2>Grouping Content</h2>
-    <p>Use HTML text content elements to organize blocks or sections of content placed between the opening and closing <code>body</code> tags. Important for accessibility and <abbr title="search engine optimization">seo</abbr>, these elements identify the purpose or structure of that content</p>
+    <p>Use HTML text content elements to organize blocks or sections of content placed between the opening and closing <code>body</code> tags. Important for accessibility and <abbr title="search engine optimization">seo</abbr>, these elements identify the purpose or structure of that content. <mark>Every one of these elements is a <a href="/overview/glossary#block-vs-inline">block-level element</a> according to a browser's default stylesheet.</mark></p>
   </caption>
   <thead>
     <tr>
       <th>Element</th>
       <th>Description</th>
+      <th><abbr title="too long; didn't read">TL;DR</abbr></th>
     </tr>
   </thead>
   <tbody class="elements">
-    <tr>
+    <tr data-relevancy="3">
       <th>
         <code id="#the-dd-element">dd</code>
       </th>
       <td>The <strong>HTML <code>dd</code> element</strong> (<em>HTML Description Element</em>) indicates the description of a term in a description list (<a href="#the-dl-element"><code>dl</code></a>) element. This element can occur only as a child element of a description list and it must follow a <a href="#the-dt-element"><code>dt</code></a> element.</td>
+      <td><strong>Always and only</strong> use with a <code>dl</code>—this is the definition component of a definition list.</td>
     </tr>
-    <tr>
+    <tr data-relevancy="1">
       <th>
         <code id="#the-div-element">div</code>
       </th>
       <td>The <strong>HTML <code>div</code> element</strong> (or <em>HTML Document Division Element</em>) is the generic container for flow content, which does not inherently represent anything. It can be used to group elements for styling purposes (using the <strong>class</strong> or <strong>id</strong> attributes), or because they share attribute values, such as <strong>lang</strong>. It should be used only when no other semantic element (such as <a href="#the-article-element"><code>article</code></a> or <a href="#the-nav-element"><code>nav</code></a>) is appropriate.</td>
+      <td>The screwdriver of Elements: indispensable, but professionals don't overuse this one. Use to nudge a <em>visual</em> outcome without changing any semantic meaning.</td>
     </tr>
-    <tr>
+    <tr data-relevancy="3">
       <th>
         <code id="#the-dl-element">dl</code>
       </th>
       <td>The <strong>HTML <code>dl</code> element</strong> (or <em>HTML</em> <em>Description List Element</em>) encloses a list of pairs of terms and descriptions. Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).</td>
+      <td>A special type of list, and as the name suggests, anything suitable for the structure of a definition.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-dt-element">dt</code>
       </th>
       <td>The <strong>HTML <code>dt</code> element</strong> (or <em>HTML Definition Term Element</em>) identifies a term in a definition list. This element can occur only as a child element of a <a href="#the-dl-element"><code>dl</code></a>. It is usually followed by a <a href="#the-dd-element"><code>dd</code></a> element; however, multiple <code>dt</code> elements in a row indicate several terms that are all defined by the immediate next <a href="#the-dd-element"><code>dd</code></a> element.</td>
+      <td><strong>Only and always</strong> use within a <code>dl</code>. This is the part of the list getting defined.</td>
     </tr>
-    <tr>
+    <tr data-relevancy="2">
       <th>
         <code id="#the-figcaption-element">figcaption</code>
       </th>
       <td>The <strong>HTML <code>figcaption</code> element</strong> represents a caption or a legend associated with a figure or an illustration described by the rest of the data of the <a href="#the-figure-element"><code>figure</code></a> element which is its immediate ancestor which means <code>figcaption</code> can be the first or last element inside a <a href="#the-figure-element"><code>figure</code></a> block. Also, the <em>HTML Figcaption Element </em>is optional; if not provided, then the parent figure element will have no caption.</td>
+      <td><strong>Only and always</strong> use within a <code>figure</code> Element—wrap the descriptive text in this.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-figure-element">figure</code>
       </th>
-      <td>The <strong>HTML <code>figure</code> element</strong> represents self-contained content, frequently with a caption (<a href="#the-figcaption-element"><code>figcaption</code></a>)<em><code>,</code></em> and is typically referenced as a single unit. While it is related to the main flow, its position is independent of the main flow. Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</td>
+      <td>The <strong>HTML <code>figure</code> element</strong> represents self-contained content, frequently with a caption (<a href="#the-figcaption-element"><code>figcaption</code></a>) and is typically referenced as a single unit. While it is related to the main flow, its position is independent of the main flow. Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</td>
     </tr>
     <tr>
       <th>

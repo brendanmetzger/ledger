@@ -1,33 +1,35 @@
-<article>
+<article class="columns">
   <style type="text/css" media="screen">
     /* <![CDATA[ */
     .columns {
       display:flex;
       flex-wrap:wrap;
+      margin:0 -2.5vw;
     }
     .columns section {
       flex: 1 0 auto;
-      background-color:rgba(255,255,255,0.5);
+      background-color:rgba(255,255,255,0.25);
       padding:1em;
-      margin:1.25em;
-      box-shadow: 0 0 0 1.5em rgba(0,0,0,0.05);
+      margin:1em;
+      box-shadow: 0 0 0 1.5em rgba(0,0,0,0.1);
+    }
+    section h2 {
+/*        writing-mode: vertical-rl;*/
+/*        text-orientation: upright;*/
     }
     /* ]]> */
   </style>
-  <h3>Columns</h3>
-  <div class="columns">
-    <!-- iterate columns -->
-    <section>
-      <h2 class="caps">[$name]</h2>
-      <ul class="plain">
-        <!-- iterate essays -->
-        <li>
-          <a href="[/overview/topics/$path/]">[$name]</a>
-          <small>[$tags]</small>
-          <!-- <small>[$intro]</small> -->
-          <a href="[txmt://open?url=file://$fullpath]">edit</a>
-        </li>
-      </ul>
-    </section>
-  </div>
+  <!-- iterate columns -->
+  <section>
+    <h2 class="caps">[$name]</h2>
+    <ul class="plain">
+      <!-- iterate essays -->
+      <li>
+        <a href="[/overview/topics/$path/]">[$name]</a>
+        <small>[$tags]</small>
+        <!-- <small>[$intro]</small> -->
+        
+      </li>
+    </ul>
+  </section>
 </article>

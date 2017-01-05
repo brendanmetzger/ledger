@@ -52,5 +52,8 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] The above replacement should scan CSS files for url(!http) resources as well.
 - [ ] Add a way to embed specific sections of articles in outlines
 - [ ] Add a tldr; to articles;
+- [ ] Set up glossary/faq controller
+- [ ] Add font/size, contrast, and typeface preferences
+- [x] Auto generate link to edit file in textmate
 ** What about an ajax callback that returns an intention. Like, if true, check this box. I suppose this is a promise maybe? That means investigate promises.
 

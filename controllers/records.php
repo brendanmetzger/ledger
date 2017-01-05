@@ -5,7 +5,7 @@ use \bloc\view;
 use \models\data;
 use \models\Instructor as Admin;
 use \models\Student as Student;
-
+use \bloc\types\authentication as User;
 /**
  * Records Management
  */
@@ -139,7 +139,7 @@ class Records extends \bloc\controller
   protected function POSTevaluate(Admin $instructor, $request, $topic, $index, $sid)
   {
     $student = new Student($sid);
-    $item = Data::FACTORY($topic, $student->evaluation($topic, $index), $_POST);
+    $item    = Data::FACTORY($topic, $student->evaluation($topic, $index), $_POST);
 
     if ($item->save()) {
       \bloc\router::redirect($_POST['redirect']);
@@ -149,6 +149,16 @@ class Records extends \bloc\controller
       $view->content = "views/layouts/error.html";
       return $view->render($this(['message' => "did not save"]));
     }
+  }
+  
+  /*
+    TODO make sure this is as student
+  */
+  protected function POSTquiz(User $student, $request)
+  {
+    
+    print_r($_POST);
+    die();
   }
 
   protected function GETinquiry(Student $student)

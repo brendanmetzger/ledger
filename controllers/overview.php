@@ -20,12 +20,20 @@ class Overview extends \bloc\controller
   {
     $view = new View(self::layout);
     return $view->render($this());
+    // todo: return $this->GETtopics();
   }
 
   protected function GETinstructor(Admin $instructor)
   {
     $view = new View(self::layout);
     $view->content = 'views/layouts/instructor.html';
+    return $view->render($this());
+  }
+  
+  public function GETglossary()
+  {
+    $view = new View(self::layout);
+    $view->content = 'views/topics/glossary.html';
     return $view->render($this());
   }
 

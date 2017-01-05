@@ -1,111 +1,155 @@
 <article class="topic glossary container">
-  <h2 class="ruled">Glossary</h2>
-  <details class="one-third float left">
-    <summary>Tools and Methodologies</summary>
+  <style type="text/css" media="screen">
+    /* <![CDATA[ */
+    dt:target {
+      color:#ec008c;
+      font-size:200%;
+      margin: 1em 0 0;
+    }
+    
+    dt:target ~ dd {
+      box-shadow: 0 0 0.25em rgba(0,0,0,0.1);
+    }
+
+    section.columns {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    section.columns div {
+      box-sizing:border-box;
+      flex: 1 0 auto;
+      background-color:rgba(255,255,255,0.25);
+      padding:1em;
+      margin:1em;
+      box-shadow: 0 0 0 1.5em rgba(0,0,0,0.1);
+    }
+    /* ]]> */
+  </style>
+  <section>
+    <h2>Frequently Asked Questions</h2>
     <dl>
-      <dt>Text Editor</dt>
-      <dd>…</dd>
-      <dt>Browsers</dt>
-      <dd>…</dd>
-      <dt>Browser Console</dt>
-      <dd><a href="https://developers.google.com/web/tools/chrome-devtools/debug/console/console-ui">Chrome Console Documentation</a></dd>
-      <dt><abbr title="Read Eval Print Loop">REPL</abbr></dt>
-      <dt>Code Conventions</dt>
-      <dd>JavaScript developers often write <a href="http://www.j-io.org/Javascript-Naming_Conventions">their code like this</a></dd>
-      <dt><a href="https://en.wikipedia.org/wiki/Web_server">Web Server</a></dt>
-      <dd>Software that enables a computer to respond to HTTP requests. Popular Web Servers are Apache and Nginx</dd>
+      <dt id="are-px-ok">Are there instances where px is preferred to some other unit?</dt>
+      <dd>Pixels can be useful when you only need about one of them: ie, a border or outline, a hairline margin between two elements. If not a hairline, then no, anything more than 2px is probably unnecessary.</dd>
+      <dt id="overflow-problems" data-classification="css layout">Why is my text breaking outside of my container element?</dt>
+      <dd>Likely, because you have a physical height set, and once you tell an element how tall it can (or cannot) be, some of its content is liable to spill out if necessary. This is something that can be used to your advantage.</dd>
+      <dd>Overflow</dd>
+      <dt id="margin-collapsing">Why are the margins of two elements next to each other not as big as they should be?</dt>
+      <dd>Because of margins collapse.</dd>
+      <dt id="block-vs-inline">What is the difference between block-level and inline Elements?</dt>
+      <dd>Block-level Elements define their own space</dd>
+      <dd>Inline Elements can wrap and flow according to the size limits of the parent container.</dd>
     </dl>
-  </details>
-  <details class="one-third float left">
-    <summary>Javascript</summary>
-    <dl>
-      <dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Primitive_values">Primitive Types</a></dt>
-      <dd>Boolean</dd>
-      <dd>Null</dd>
-      <dd>Undefined</dd>
-      <dd>Number</dd>
-      <dd>String</dd>
-      <dd>Symbol (new)</dd>
-      <dt>Objects &amp; Reference Types</dt>
-      <dd>…</dd>
-    </dl>
-  </details>
-  <details class="one-third float left">
-    <summary>Cascading Style Sheets</summary>
-    <dl>
-      <dt>Reference</dt>
-      <dd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">MDN</a> has it all.</dd>
-    </dl>
-  </details>
-  <details class="one-third float left">
-    <summary>Files, File and Operating Systems</summary>
-    <dl>
-      <dt>Absolute vs. Relative Paths</dt>
-      <dd>…</dd>
-      <dt>Directory</dt>
-      <dd>…</dd>
-      <dt>File Extension</dt>
-      <dd>…</dd>
-      <dt>Document Root (see web server)</dt>
-      <dd>…</dd>
-      <dt>Index page</dt>
-      <dd>…</dd>
-      <dt><abbr title="Portable Operating System Interface">POSIX</abbr></dt>
-      <dd>…</dd>
-      <dt>Zip File</dt>
-      <dd>An archive format that supports lossless compression</dd>
-      <dd>…</dd>
-      <dd>Zip Files can be used to pass an entire directory through <abbr>HTTP</abbr></dd>
-      <dd>…</dd>
-    </dl>
-  </details>
-  <details class="one-third float left">
-    <summary>Markup Languages</summary>
-    <p class="em">A striking feature of markup languages is that they are a <a href="https://en.wikipedia.org/wiki/Human-readable_medium">human-readable</a> medium.</p>
-    <dl>
-      <dt><abbr title="Hypertext markup language">html</abbr></dt>
-      <dd>…</dd>
-      <dt><abbr title="Extensible Markup Language">xml</abbr></dt>
-      <dd>…</dd>
-      <dt>Document Element (Or Root Element)</dt>
-      <dd>…</dd>
-      <dt>Empty vs closed elements</dt>
-      <dd>…</dd>
-      <dt>Doctype</dt>
-      <dd>…</dd>
-    </dl>
-  </details>
-  <details class="one-third float left">
-    <summary>Communications Protocols</summary>
-    <dl>
-      <dt><a href="https://en.wikipedia.org/wiki/Communications_protocol">Network Protocol</a></dt>
-      <dd>A system of rules that allow two or more entities of a communications system to transmit information to one another.</dd>
-      <dt><abbr title="Uniform Resource Locators">URL</abbr>s</dt>
-      <dd>…</dd>
-      <dt><abbr title="Hypertext Transfer Protocol">http</abbr></dt>
-      <dd>The Hypertext Transfer Protocol is a request/response format that exchanges data between client (browser) and server.</dd>
-      <dd>See <strong>Webserver</strong> in Tools and Methodologies</dd>
-      <dt><abbr title="File Transfer Protocol">ftp</abbr></dt>
-      <dd>…</dd>
-    </dl>
-  </details>
-  <details class="one-third float left">
-    <summary>General Web Development Terms</summary>
-    <dl>
-      <dt>Sitemap (xml)</dt>
-      <dd>…</dd>
-    </dl>
-  </details>
-  <details class="one-third float left">
-    <summary>Online Resources</summary>
-    <dl>
-      <dt>Tools</dt>
-      <dd>Mastering the <a href="http://blog.teamtreehouse.com/mastering-developer-tools-console">developer tools</a> console</dd>
-      <dd><a href="http://git-scm.com/">Git</a> and <a href="https://guides.github.com/">GitHub</a></dd>
-      <dt>Tutorials</dt>
-      <dd><a href="http://learn.shayhowe.com/html-css/">Learn HTML &amp; CSS</a>, a nice, colorful online book-ish type plan.</dd>
-      <dd>A glossy HTML &amp; CSS primer called <a href="http://marksheet.io/">MarkSheet</a>.</dd>
-      <dd><a href="https://www.khanacademy.org/computing/computer-programming/html-css">Khan Academy</a> has an extensive library on many subjects, including web development.</dd>
-    </dl>
-  </details>
-</article>
+  </section>
+  <section class="columns">
+    <h2 class="ruled full">Glossary</h2>
+    <div>
+      <h3>Tools and Methodologies</h3>
+      <dl>
+        <dt>Text Editor</dt>
+        <dd>…</dd>
+        <dt>Browsers</dt>
+        <dd>…</dd>
+        <dt>Browser Console</dt>
+        <dd><a href="https://developers.google.com/web/tools/chrome-devtools/debug/console/console-ui">Chrome Console Documentation</a></dd>
+        <dt><abbr title="Read Eval Print Loop">REPL</abbr></dt>
+        <dt>Code Conventions</dt>
+        <dd>JavaScript developers often write <a href="http://www.j-io.org/Javascript-Naming_Conventions">their code like this</a></dd>
+        <dt><a href="https://en.wikipedia.org/wiki/Web_server">Web Server</a></dt>
+        <dd>Software that enables a computer to respond to HTTP requests. Popular Web Servers are Apache and Nginx</dd>
+      </dl>
+    </div>
+    <div>
+      <h3>Javascript</h3>
+      <dl>
+        <dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Primitive_values">Primitive Types</a></dt>
+        <dd>Boolean</dd>
+        <dd>Null</dd>
+        <dd>Undefined</dd>
+        <dd>Number</dd>
+        <dd>String</dd>
+        <dd>Symbol (new)</dd>
+        <dt>Objects &amp; Reference Types</dt>
+        <dd>…</dd>
+      </dl>
+    </div>
+    <div>
+      <h3>Cascading Style Sheets</h3>
+      <dl>
+        <dt>Reference</dt>
+        <dd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">MDN</a> has it all.</dd>
+      </dl>
+    </div>
+    <div>
+      <h3>Files, File and Operating Systems</h3>
+      <dl>
+        <dt>Absolute vs. Relative Paths</dt>
+        <dd>…</dd>
+        <dt>Directory</dt>
+        <dd>…</dd>
+        <dt>File Extension</dt>
+        <dd>…</dd>
+        <dt>Document Root (see web server)</dt>
+        <dd>…</dd>
+        <dt>Index page</dt>
+        <dd>…</dd>
+        <dt><abbr title="Portable Operating System Interface">POSIX</abbr></dt>
+        <dd>…</dd>
+        <dt>Zip File</dt>
+        <dd>An archive format that supports lossless compression</dd>
+        <dd>…</dd>
+        <dd>Zip Files can be used to pass an entire directory through <abbr>HTTP</abbr></dd>
+        <dd>…</dd>
+      </dl>
+    </div>
+    <div>
+      <h3>Markup Languages</h3>
+      <p class="em">A striking feature of markup languages is that they are a <a href="https://en.wikipedia.org/wiki/Human-readable_medium">human-readable</a> medium.</p>
+      <dl>
+        <dt><abbr title="Hypertext markup language">html</abbr></dt>
+        <dd>…</dd>
+        <dt><abbr title="Extensible Markup Language">xml</abbr></dt>
+        <dd>…</dd>
+        <dt>Document Element (Or Root Element)</dt>
+        <dd>…</dd>
+        <dt>Empty vs closed elements</dt>
+        <dd>…</dd>
+        <dt>Doctype</dt>
+        <dd>…</dd>
+      </dl>
+    </div>
+    <div>
+      <h3>Communications Protocols</h3>
+      <dl>
+        <dt><a href="https://en.wikipedia.org/wiki/Communications_protocol">Network Protocol</a></dt>
+        <dd>A system of rules that allow two or more entities of a communications system to transmit information to one another.</dd>
+        <dt><abbr title="Uniform Resource Locators">URL</abbr>s</dt>
+        <dd>…</dd>
+        <dt><abbr title="Hypertext Transfer Protocol">http</abbr></dt>
+        <dd>The Hypertext Transfer Protocol is a request/response format that exchanges data between client (browser) and server.</dd>
+        <dd>See <strong>Webserver</strong> in Tools and Methodologies</dd>
+        <dt><abbr title="File Transfer Protocol">ftp</abbr></dt>
+        <dd>…</dd>
+      </dl>
+    </div>
+    <div>
+      <h3>General Web Development Terms</h3>
+      <dl>
+        <dt>Sitemap (xml)</dt>
+        <dd>…</dd>
+      </dl>
+    </div>
+    <div>
+      <h3>Online Resources</h3>
+      <dl>
+        <dt>Tools</dt>
+        <dd>Mastering the <a href="http://blog.teamtreehouse.com/mastering-developer-tools-console">developer tools</a> console</dd>
+        <dd><a href="http://git-scm.com/">Git</a> and <a href="https://guides.github.com/">GitHub</a></dd>
+        <dt>Tutorials</dt>
+        <dd><a href="http://learn.shayhowe.com/html-css/">Learn HTML &amp; CSS</a>, a nice, colorful online book-ish type plan.</dd>
+        <dd>A glossy HTML &amp; CSS primer called <a href="http://marksheet.io/">MarkSheet</a>.</dd>
+        <dd><a href="https://www.khanacademy.org/computing/computer-programming/html-css">Khan Academy</a> has an extensive library on many subjects, including web development.</dd>
+      </dl>
+    </div>
+  </section>
+  </article>

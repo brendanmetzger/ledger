@@ -158,8 +158,8 @@ sup {line-height:0;font-size:1em;padding:0 0.125em;font-family:Baskerville;}
 .rag-right {text-align:left}
 
 .strike{text-decoration:line-through;}
-
-*.tuck{margin-left:-0.15em}
+.pin {position:absolute;}
+.tuck{margin-left:-0.15em}
 .heart:before {
   content:'✦';
   font-weight:200;

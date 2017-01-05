@@ -1,10 +1,35 @@
-<article class="margins">
+<article class="margins" >
   <h2><abbr title="Cascading Stylesheet">CSS</abbr> Units: <em>length and size</em></h2>
-  <p>The most notable CSS units are involved in <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">determining length</a>. Consider the sample boxes below each have their <code>width</code> property set to the same number with a different unit. Make sure to resize your window to understand how some units are affected by the size of your browser (vw/vh) or the size of their containing element (%) or the size of the font (em). Pixels are static and not affected proportionally, but be aware that modern screens have different pixel sizes, so scaling and approximation will occur and designing with pixels is becoming unfavorable especially where mobile and responsive design are concerned.</p>
-  <p>Also, spend some time looking at <a href="http://htmldog.com/guides/css/beginner/margins/">margins and padding</a>. Picture a bunch of cardboard boxes on the floor; the is the space between the boxes is the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">margin</a>, and within each box the space afforded the contents is called the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding">padding</a>. I'll leave it up to you to find yourself the documentation for borders—or in this example, the cardboard of the box itself.</p>
+  <section class="margins">
+    <h3>Theory</h3>
+    <p>Designing in terms of units may be something you have never thought about all that much, but understanding units is crucial to executing any feasible interactive project. Unlike an architect that knows the project site of a structure or a graphic designer that knows the dimensions of the paper they use, an interactive designer does not really know how their design may be realized. This can be difficult to wrap your head around but there are fundamentals that can be understood and applied right away.</p>
+    <h4>Abandon pixels</h4>
+    <p>Ask yourself, how wide is the viewport you are looking at? Is it universal—that is, am I just as likely to be using the same sized device as you right this moment? Of course not—<dfn id="viewport-dimension">viewport dimensions</dfn> are <dfn id="variable">variable</dfn>.</p>
+    <p>Before any discussion of variables let us do a quick example of the foibles of trying to figure something simple out with a concrete number. Take a guess at how wide this viewport is—and <button onclick="alert('The viewport is ' + window.innerWidth+'px wide.'); return false;">click here</button> to find out specifically. Resize your browser window and try again. I'll assume the best case scenario is that you could come up with a ballpark approximation on widths (or heights for that matter), but you are not getting the exact number and one of my personal tenets of interactive design is <strong>be exact</strong>. The only way to do that using <code>px</code> is to utilize some very clunky, outdated and hard to understand JavaScript wizardry.</p>
+    <h4>Adopt Viewport Units</h4>
+    <p>If abandoning pixels for measurement, how would one use a different unit to describe width. Perhaps the best method would be to use a <strong>variable unit</strong>. <button onclick="alert('The viewport is 100vw wide.'); return false;">Click here</button> to measure the viewport width using <code>vw</code> units, and do the same resize song and dance. <strong>A variable unit</strong> doesn't always mean the same thing—which is precisely what a variable, in general, is. Our viewport is always, exactly, <code>100vw</code> wide and we can work backwards from there. <mark>When designing, keep that property fresh in your mind—it is your landscape, your sheet of paper. Every composition from beginning to end relies on understanding dimensions.</mark> With variables, you don't need, and shouldn't use specific numbers anymore. If you happen to find yourself using a weirdly specific number, things are a mess somewhere.</p>
+    <h4>Understanding percentages</h4>
+    <p>Often misunderstood, sometimes confounding, working with percentages seems more intuitive than it is. There are some things to think about whenever you are using a <code>%</code> as a unit of measurement. The first is, <em>percentage of what?</em> The answer is the parent element determines the physical value of the percentage. Here is a caveat: you cannot set a <code>height</code> so easily with a percentage. The height of a block depends on its content (think how text wraps), whereas the width actually determines how the content will wrap. Thus, a width can be determined, whereas a height can only be set if the height of the parent is known ahead of time. Of course, that can be done by actually setting the height non-percentage unit. Then you have to worry about <a href="/overview/glossary#overflow-problems">overflow problems</a></p>
+  </section>
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">Determining length</a> is a necessary function of many <abbr>CSS</abbr> properties. Consider the sample boxes below each have their <code>width</code> property set to the same number with a different unit. Make sure to resize your window to understand how some units are affected by the size of your browser (vw/vh) or the size of their containing element (%) or the size of the font (em). Pixels are static and not affected proportionally, but be aware that modern screens have different pixel sizes, so scaling and approximation will occur and designing with pixels is becoming unfavorable especially where mobile and responsive design are concerned.</p>
+  
   <h3 class="t">Looking at length units</h3>
   <div class="example">
-    <input type="range" min="25" max="75" step="1" value="25"/>
+    <fieldset>
+      <label>
+        <input type="range" min="25" max="75" data-unit="units" step="1" value="25"/>
+        <span class="caps spaced">Unit Value</span>
+      </label>
+      <label>
+        <input type="range" min="50" max="100" step="1" data-unit="%" value="100"/>
+        <span class="caps spaced">Container width</span>
+      </label>
+      <label>
+        <input type="range" min="1" max="2" step="0.1" data-unit="em" value="1"/>
+        <span class="caps spaced">Container Font Size</span>
+      </label>
+      <label class="caps spaced alert">(Also test changing size of browser window)</label>
+    </fieldset>
     <samp data-unit="px">This paragraph is <code>?</code> wide</samp>
     <samp data-unit="em">This paragraph is <code>?</code> wide</samp>
     <samp data-unit="vw">This paragraph is <code>?</code> wide</samp>
@@ -14,36 +39,94 @@
   </div>
   <style media="screen">
     div.example {
-      border:1px solid rgba(0,0,0,0.2);
-      padding:2em;
+      border:1px dashed rgba(0,0,0,0.25);
+      padding:20px;
       background-color:rgba(255,255,255,0.25);
+      box-sizing:border-box;
+      background-size: 10px 10px;
+      background-position:top left;
+      background-image: linear-gradient(90deg, transparent 9px, rgba(0,0,255,0.1) 1px), linear-gradient(0deg, transparent 9px, rgba(255,0,0,0.05) 1px);
     }
+    div.example label {display:block;}
+    div.example label input {
+      width: 20em;
+      position:relative;
+    }
+    div.example fieldset {
+      border:none;
+      background-color:rgba(255,255,255,0.5);
+      margin:-20px -20px 1em;
+      padding:20px 20px 5px;
+      box-shadow: 0 0.125em 1em rgba(0,0,0,0.05);
+    }
+    div.example label span {line-height:1;transform:translateY(-0.25em);}
+    div.example label span:before {content: '←';padding:0 0.5em;}
     div.example samp {
       white-space: nowrap;
       color:#AAA;
       font-size:1.5em;
       transition: width 0.5s;
       background-color:#333;
-      margin:0.5em;
-      padding:1em;
+      margin:1px 0;
+      padding:10px;
       line-height:1;
       display:block;
+    }
+    input[type=range]:before, input[type=range]:after {
+      position:absolute;
+      font-size:0.75em;
+      top:-1.125em;
+      font-weight:100;
+      letter-spacing:1px;
+    }
+    input[type=range]:before {
+      content: attr(min) attr(data-unit);
+    }
+    input[type=range]:after {
+      content: attr(max) attr(data-unit);
+      right:0;
     }
   </style>
   <script type="text/javascript">
     addEventListener('load', function () {
+      var div = document.querySelector('div.example');
       var lis = document.querySelectorAll('div.example samp');
-      var inp = document.querySelector('div.example input');
-      inp.addEventListener('input', function (evt) {
+      var inp = document.querySelectorAll('div.example input');
+      inp[0].addEventListener('input', function (evt) {
         [].forEach.call(lis, function (li) {
           li.firstElementChild.textContent = li.style.width = this.value + li.dataset.unit;
 
         }, this);
-
       });
+      inp[1].addEventListener('input', function (evt) {
+        div.style.width = this.value + '%';
+      });
+      
+      inp[2].addEventListener('input', function (evt) {
+        div.style.fontSize = this.value + 'em';
+      });
+      
       var click = document.createEvent('MouseEvents');
       click.initEvent('input', true, true);
-      inp.dispatchEvent(click);
+      inp[0].dispatchEvent(click);
     });
   </script>
+    <footer>
+      <h3>Footnotes</h3>
+      <p>Probably move the following to another section</p>
+      <p>Spend some time looking at and thinking about margins and padding. Picture a bunch of cardboard boxes on the floor; the is the space between the boxes is the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">margin</a>, and within each box the space afforded the contents is called the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding">padding</a>. I'll leave it up to you to find yourself the documentation for borders—or in this example, the cardboard of the box itself.</p>
+      <ol>
+        <li><a href="#viewport-dimension">viewport dimensions</a> are 1) the height and width of your viewport, and 2) a category of unit available in <abbr>CSS</abbr></li>
+        <li><a href="#variable">Variables</a> may be familiar from algebra, but now is the moment I get to exclaim <q>this is when you apply the lessons of math class!</q>.</li>
+      </ol>
+    </footer>
+    <style type="text/css" media="screen">
+      /* <![CDATA[ */
+      dfn:target {
+        background-color:#333;
+        color:#fff;
+        display:inline-block;
+      }
+      /* ]]> */
+    </style>
 </article>
