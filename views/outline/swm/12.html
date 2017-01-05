@@ -6,63 +6,15 @@
     <p class="intro">A distinguishing feature of interactive design (IxD) is controlling notions of <q>when</q> and <q>how often.</q> Here is an introduction to timing with intervals and
 timeouts.</p>
   </header>
-  <article>
-    <h2>Review</h2>
+  <aside>
+    <h3>Review</h3>
     <p>Last week we looked at Web Servers. This week we will mostly be practicing and working out examples.</p>
-  </article>
-  <article>
-    <h2>Intervals and Timeouts</h2>
-    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout">Window Timers</a> are a mechanism in JavaScript that allow you to delay or repeat the application of bits of code. Conceptually, it shouldn’t bend the mind too much to learn that these efforts require the use of <em>callbacks</em>, that is, functions passed to another function, with the other function determining <em>when to apply the callback</em>. We understand the motivation behind this from our experience with <strong>Event Listeners</strong>; they employ the same principles of <a href="https://en.wikipedia.org/wiki/Asynchrony_(computer_programming)">asynchrony</a>.</p>
-    <section class="whitepaper container t b">
-      <aside class="_____ note float left">
-        <h5>Setting a timeout.</h5>
-        <p>The button below has an event listener applied, and that listener will set the timeout you see to the right. When clicked, the button will set two timeouts. The first will display an alert message in 1 second, the second will reset the html to a the initial state before the click.</p>
-        <p><strong>Note:</strong> timeouts are set in milliseconds, so 1000 milliseconds is equal to 1 second.</p>
-        <button type="button" onclick="timers.basic(this)" style="padding:1em;">I am slow..</button>
-      </aside>
-      <pre class="prettyprint _____ float left">
-        <!-- review views/javascript/examples/timing.js basic timeout -->
-      </pre>
-      <hr class="clear ruled t b"/>
-      <aside class="_____ note float left">
-        <h5>Setting an interval.</h5>
-        <p>The most obvious analogy one can draw to an interval is a clock. So obvious in fact, that we get lost in the nature of what an <em>intervals</em> explain concepts in mathematics, music, and cartesian space. They give means to understand phenomena that occurs on a continuum through finite analysis, and any explanation of color, time and distance cannot avoid such analysis.</p>
-        <p id="color" class="notate">The script adjacent employs an interval combined with a transition in css. Recall our modulus operator can explain an interval. The <abbr title="Cascading Stylesheet">CSS</abbr> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">hsl color</a> property describes color value along a <a href="https://en.wikipedia.org/wiki/HSL_and_HSV">cylindrical coordinate</a>. Circles, loops, timers, color: <strong>they can all be merged conceptually as intervals.</strong></p>
-      </aside>
-      <pre class="prettyprint _____ float left">
-        <!-- review views/javascript/examples/timing.js basic interval -->
-      </pre>
-      <hr class="clear ruled t b"/>
-      <aside class="_____ note float left">
-        <h5>Clearing timeouts and intervals.</h5>
-        <p>When applying a <code>setTimeout</code> or <code>setInterval</code>, you must be concerned with one other facet, and that is how to stop them. Using the <em>focus</em> and <em>blur</em> events of the <code>textarea</code> below you can see a simple typewrite effect in action. When calling setTimeout, it will return an integer representing the timeou ID. You can pass that id to a function called <code>clearTimeout</code> and it will cancel your callback from executing.</p>
-        <textarea name="limerick" class="code" style="width:100%;height:10em;font-size:2em;line-height:1.25;border:1px solid rgba(0,0,0,0.1)" spellcheck="false">
-          <!-- preview views/_draft/limerick.txt 1..100 -->
-        </textarea>
-        <p>You may notice some new stuff: I introduce some string functions that let you slice apart a string, as well as a cryptic looking <em>regular expression</em> that I use to give an extra pause whenever the last word typed is capitalized or a non-word character. Simple tricks like this can be used to give programs an organic feeling.</p>
-      </aside>
-      <pre class="prettyprint _____ float left">
-        <!-- review views/javascript/examples/timing.js clearing timers -->
-      </pre>
-    </section>
-    <script type="text/javascript">
-      bloc.embed('/javascript/examples/timing.js');
-      bloc.init('intervals', function() {
-        timers.interval();
-        timers.typewriter();
-      });
-    </script>
-  </article>
+  </aside>
+  <!-- insert views/topics/javascript/intervals-and-timeouts.html -->
   <!-- insert views/topics/javascript/bubble-capture.html -->
-  <article id="intro-to-flexbox" class="margins">
-    <h2>Introduction to Flexible Boxes</h2>
-    <p class="intro"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">From <abbr title="mozilla developer network">mdn</abbr></a>, flexbox is a <q>layout mode providing for the arrangement of elements on a page such that the elements behave predictably when the page layout must accommodate different screen sizes and different display devices.</q></p>
-    <p>Flexible boxes are quite new but have reached a <a href="http://caniuse.com/#feat=flexbox">stable point</a> where they are safe to use in any project environment. Some find flexible boxes to be easier all around—personally, for the most simple of matters I think they require a lot of nuanced skills, and thus I consider them as easy as float-based layouts. It is hard to argue that they make difficult layout problems much easier to solve, especially responsive layouts that must react to a variety of devices and resolutions. The defining aspect of a flexible box is its namesake; it gives an element the ability to alter height and width according to the specific display device used. It can expand and stretch and shrink <strong>without necessarily having to specify any units</strong>.</p>
-    <p>For that reason, <a href="http://codepen.io/brendanmetzger/pen/JbraKv?editors=1100#0">as an introductory example</a> I will  showcase a most simple resolution of our classic grid problem using flexible boxes instead of floats. I will also throw in a caveat that the flexible box system can be a shortcut that unfortunately makes a lot of layouts generic, so if you take a liking to the methods available, </p>
-    
-  </article>
+  <!-- insert views/topics/stylesheets/flexbox.html -->
   <!-- insert views/topics/javascript/data-storage.html -->
-  <article>
+  <footer id="reference-and-practice">
     <h2>Reference and Practice Material</h2>
     <dl>
       <dt>Flexbox</dt>
@@ -70,5 +22,5 @@ timeouts.</p>
       <dd>A lynda.com series of <a href="https://www.lynda.com/CSS-tutorials/CSS-Flexbox-First-Look/116352-2.html">flexbox basics</a>—please note, technology is dated very quickly, and wherever you see <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix">vendor prefixes</a> used in regards to flexbox you should realize that the material may be stale.</dd>
       <dd>And of course, the Mozilla Developer Network page on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">using CSS Flexible Boxes</a></dd>
     </dl>
-  </article>
+  </footer>
 </div>

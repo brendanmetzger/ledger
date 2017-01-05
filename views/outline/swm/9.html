@@ -4,37 +4,18 @@
     <h1 class="massive">Observations</h1>
     <p class="intro">Intro to <abbr title="Document Object Model">DOM</abbr> events and and manipulation, as well as <em>first-class</em> functions.</p>
   </header>
-  <article class="margins">
+  <aside class="margins">
     <h2>Review</h2>
     <p>Last week we covered some important <abbr title="Cascading Stylesheets">CSS</abbr> properties fundamental to the concerns of an overlay. We wrote the entirety of a cosine function using nothing but functions and simple mathematics that we all have posessed since Junior High.</p>
     <p>Today has some heady material, so to get you sharpened for the task at hand, here is a <a href="https://gist.github.com/brendanmetzger/ae72cb1526294ea0f40a38b80b855f68">pop-quiz</a>. Grab a sheet of paper, and fill out the questions and return to me. It’s open notes, open internet, open ask a classmate. If you can’t wrap your mind around any of the questions, articulate what you don’t understand. If you can’t articulate what you don’t understand, we will have to discuss plan C.</p>
-  </article>
-  <article>
-    <h2>Functional Ideas: <em>the callback</em></h2>
-    <p class="intro">You will learn syntax on your own given the practice—it’s actually very straightforward once you get over the unfamiliarity hurdle. Correctly writing programs isn’t really about syntax, it’s about abstracting ideas—and yes, I’ll admit, that is a bijillion times harder.</p>
-    <section>
-      <div class="two columns indented">
-        <p>Well known at this point is that functions are first <em>declared</em> and then <em>executed</em> (you may also hear it termed applying a function or calling a function). Sometimes we do the declaring, sometimes the language has defined functions for us, like <code>console.log</code>. Sometimes we take charge of executing a function in our code, sometimes the function is executed by something out of our control—perhaps when a certain event occurs.</p>
-        <p>It is the latter method that is particularly interesting, which is simply a declared function passed as a parameter to another function. You must read and understand that notion: <mark>a function can be passed to another function</mark> and it is so important it has been given its own word to define the concept: a <strong>callback</strong>. Whenever you see or hear it, you know that one function expects another function as a parameter (the parameter being the callback). Commit this to memory!</p>
-        <p>The function given the callback parameter determines when and how the callback function is executed; and right there, in a nutshell, is how JavaScript does it’s most profound business. This concept governs event-based programming, so if you are an interactive designer, this is where your world of design opens up to a new frontier.</p>
-      </div>
-    </section>
-  </article>
+  </aside>
+
+  <!-- insert views/topics/javascript/callbacks.html -->
   <!-- insert views/topics/javascript/loops.html  -->
   <!-- insert views/topics/javascript/events.html  -->
-  <article>
-    <h2>Case Study: A Lightbox and JavaScript</h2>
-    <p>Recalling our case study from last week, an introduction to all of the important <abbr>CSS</abbr> css for making an overlay possible was given. Surprisingly, this is the harder half of the equation in terms of steps needed to solve the problem. As we understand that process, the remaining JavaScript is quite simple, and really only requires we understand our previously outlined material. Really, our case study continues thinking about several questions.</p>
-    <ol class="t whitepaper">
-      <li>When does a overlay need to be opened?</li>
-      <li>Is it triggered by multiple elements?</li>
-      <li>If triggered by multiple events, how should we assign a listener?</li>
-      <li>How might we pay attention to if an overlay is open already, and what do we do with that information?</li>
-      <li>How do we close the lightbox?</li>
-    </ol>
-    <p class="focus">Much of the time you see <code>&lt;div onclick="…"</code> is because it is easier, and you don’t have to concern yourself with page load, and this is something to start concerning yourself with. If you try to access the <code>document</code> object in your script file before everything has loaded, things don’t work quite right. But when does the page load? <q>When</q> questions are best answered through events, which are surveyed with listeners. Without further adieu: consider <code>window.addEventListener('load', callback)</code> and why it might be so crucial.</p>
-  </article>
-  <article>
+  <!-- insert views/topics/studies/lightbox-behavior.html -->
+  
+  <footer id="reference-and-practice">
     <h2>Reference and Practice Material</h2>
     <p class="intro">Cognition and knowledge retention are difficult tasks. The new material this week has been events, but it’s no mistake that I keep revisiting functions, I will tell you every week until the end of the semester, they are the heart &amp; soul of the language, and the design pattern you must learn.</p>
     <p>Something interesting about JavaScript; the more you know it, the more profoundly simple (or insanely complex, depending on how you view simplicity) it becomes. I want you to revisit the material and the outlines I write regularly. Go further than I ask, because it will benefit you greatly. This week’s practice work is will be made much easier by material tucked away in the resources below: it’s completely up to you to find it.</p>
@@ -70,5 +51,5 @@
       <li><a class="read" href="http://learnlayout.com/">Learn <abbr>CSS</abbr> Layout</a></li>
       
     </ol>
-  </article>
+  </footer>
 </div>

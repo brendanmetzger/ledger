@@ -17,23 +17,28 @@ class Course extends \bloc\controller
   const ID = null;
   const layout = 'views/layouts/journal.html';
 
-  protected function GETindex(User $user, $id = '0', $section = '01')
+  protected function GETindex(User $user, $index = '0', $section = '01')
   {
 
     $view = new View(static::layout);
-    $view->content = "views/outline/{$id}.html";
+    $view->content = "views/outline/{$index}.html";
     $view->context = "views/layouts/list/schedule.html";
-    $view->lecture = "views/outline/".strtolower(static::ID)."/{$id}.html";
+    $view->lecture = "views/outline/".strtolower(static::ID)."/{$index}.html";
     $this->course = new \Models\Course(Data::ID(static::ID));
     $this->section = $this->course->section($section);
     $schedule = $this->section->schedule;
-    $schedule[$id]['selected'] = 'selected';
+    $schedule[$index]['selected'] = 'selected';
 
-    $this->timestamp = $schedule[$id]['date'];
-    $this->datetime =  $schedule[$id]['datetime'];
+    $this->timestamp = $schedule[$index]['date'];
+    $this->datetime =  $schedule[$index]['datetime'];
     $this->schedule = $schedule;
 
-    $this->index  = $id;
+    $this->index  = $index;
+    
+    if ($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
+      $this->edit = "(edit)";
+    }
+    
 
 
 

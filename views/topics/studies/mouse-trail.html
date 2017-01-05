@@ -1,0 +1,39 @@
+<article id="mouse-trail" data-classification="">
+  <h2>Case Study: Mouse Trail</h2>
+  <p class="intro">Though perhaps an interface annoyance of yesteryear, the <q>mouse-trail</q> can introduce some interesting techniques. Creating elements, cycles (clock arithmetic) and utilizing <code>event</code> properties to name a few.</p>
+  <p>Picture a stack of 60 cards, which is really just a list, or in our parlance, an <code>array</code>. Now picture a ticking clock with 60 seconds: every second that ticks by, you pay attention to the card in the stack that corresponds to the second hand, ie. 30 seconds in, we are focusing on card 30. With that as a visual, consider the following instructions.</p>
+  <ol class="whitepaper t b">
+    <li>Declare an array to hold a list of Elements.</li>
+    <li>Make a loop, and for each iteration, append an Element to your html document and to the previously mentioned array.</li>
+    <li>Declare some css to set the style of the Elements (notably absolute positioning)</li>
+    <li>Set up an event listener to track mouse movement; first parameter is 'mousemove', second parameter is a <em>callback</em> function.</li>
+    <li>Set a variable to keep count of our cycle—make sure the variable is outside of your callback; this is a scope issue.</li>
+    <li>Whenever your callback fires, update your counter variable by one</li>
+    <li>Take count % total length to know you which element to update (this is <a href="https://en.wikipedia.org/wiki/Modular_arithmetic">modular arithmetic</a>)</li>
+    <li>count % total will give you an integer, use that integer to grab an element of the list of elements (<code>array[int]</code>)</li>
+    <li>your callback should have an event object: use some of the properties it provides to find where the mouse was when the event fired</li>
+    <li>using your element from number 7 set the <code>left</code> property to the x coordinate, and the <code>top</code> property to the y property.</li>
+  </ol>
+  <style media="screen">
+    .mouse-trail {
+      padding: 0;
+      list-style-type: none;
+    }
+
+    .mouse-trail li {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background-color: rgba(0, 0, 0, 0.25);
+    }
+  </style>
+  <script type="text/javascript">
+    bloc.embed('/javascript/examples/assigned/mouse-trail.js');
+    bloc.init('mouse', function() {
+      document.querySelector('#mouse-example').addEventListener('click', function(evt) {
+        createTrail(25, this);
+      });
+
+    });
+  </script>
+</article>

@@ -1,0 +1,12 @@
+<article>
+  <h2>Case Study: A Lightbox and JavaScript</h2>
+  <p>Recalling our case study from last week, an introduction to all of the important <abbr>CSS</abbr> css for making an overlay possible was given. Surprisingly, this is the harder half of the equation in terms of steps needed to solve the problem. As we understand that process, the remaining JavaScript is quite simple, and really only requires we understand our previously outlined material. Really, our case study continues thinking about several questions.</p>
+  <ol class="t whitepaper">
+    <li>When does a overlay need to be opened?</li>
+    <li>Is it triggered by multiple elements?</li>
+    <li>If triggered by multiple events, how should we assign a listener?</li>
+    <li>How might we pay attention to if an overlay is open already, and what do we do with that information?</li>
+    <li>How do we close the lightbox?</li>
+  </ol>
+  <p class="focus">Much of the time you see <code>&lt;div onclick="…"</code> is because it is easier, and you don’t have to concern yourself with page load, and this is something to start concerning yourself with. If you try to access the <code>document</code> object in your script file before everything has loaded, things don’t work quite right. But when does the page load? <q>When</q> questions are best answered through events, which are surveyed with listeners. Without further adieu: consider <code>window.addEventListener('load', callback)</code> and why it might be so crucial.</p>
+</article>

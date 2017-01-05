@@ -4,45 +4,12 @@
     <h1 class="massive">Midterm Evaluations</h1>
     <p class="intro">Quiz recap, midterm critique and discussion, some advanced <abbr>CSS</abbr> techniques, survey and next steps.</p>
   </header>
-  <article>
+  <aside>
     <h2>Review Topics</h2>
     <p>We took a quiz and discussed <abbr title="Cascading Stylesheets">CSS</abbr> transitions and introduced <abbr title="document object model">dom</abbr> programming.</p>
-  </article>
+  </aside>
   <!-- insert views/outline/critique.html -->
-  <article class="margins">
-    <h2>Functions &amp; Pseudo Selectors</h2>
-    <p class="intro">The concepts of ‘pseudo’ classes and elements get us ever closer to designing as a programmer.</p>
-    <p>We took a giant step forward with the application of pseudo classes to apply styles depending on order of elements with selectors utilizing <code>:nth-child</code>. Now comes the introduction of the limited ways that <abbr>css</abbr> can generate a tiny bit of content on its own, how to utilize variables in stylesheets, and the ability of the <code>calc</code> function to do some interesting tricks. These principles are a gateway to writing optimized software utilizing principles such as <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself"><abbr title="don’t repeat yourself">dry</abbr></a>.</p>
-    <p><img src="/css/media/function-machine.svg" alt="function diagram" style="width:15%;margin:0 1em 0 0;" class="float left" />A significant portion of interactive design—as well as programming—requires us to look at design and development fundamentally as calculations and conditions. Designing this way is abstract and once learned, significantly more powerful than one-dimensional stuff. No longer would we write something like <q>make this <code>20px</code> wide</q>, but rather <q>make this 1/5 of the viewport</q>, where the viewport is largely unknown in all circumstances. The reason we develop a vocabulary of selectors is so that we can <a href="https://en.wikipedia.org/wiki/Loose_coupling">loosely couple</a> <abbr>html</abbr> structure from <abbr title="cascading stylesheets">css</abbr> view considerations, and likewise, from JavaScript behavior manipulations. With loose coupling, you can make changes to any facet of your project without affecting the other areas. We will need to learn a little bit about functions—which can be thought of as machines that takes input to modify, perform operations, and usually return output.</p>
-    <dl class="whitepaper t b">
-      <dt>css variables</dt>
-      <dd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables">css variables</a> are a relatively new concept that allows you to specify a setting once, and use it later in your code. Variables are useful whenever you are repeating information, thus you only have to specify it once and change it once if necessary.</dd>
-      <dd>Be sure to keep track of the <a href="http://caniuse.com/#feat=css-variables">support tables</a> when you are doing work that requires cross-browser compatibility.</dd>
-      <dt>:root</dt>
-      <dd>The root <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:root">:root</a> of your document is the <code>&lt;html&gt;</code> element. While you could certainly use a type selector, it can easily be overridden<sup>*</sup>, so the <code>:root</code> pseudo class is a good place to store important things, like variable declarations.</dd>
-      <dd><sup>*</sup> overriding style declarations is easy and useful—which is why first letter in <abbr>CSS</abbr> stands for <em>cascading</em>. However, without understanding that principle, confusion often arises when you seem to be making a change in your code but don’t see that change in your browser.</dd>
-      <dt>the <code>calc</code> function</dt>
-      <dd>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc">calc</a> function allows you to multiply, add, subtract, and divide numbers to create new dimensions—and the numbers can be of any unit.</dd>
-      <dd>Useful for setting a minimum constraint such as type size, ie., <code>font-size: calc(3vmin + 1em)</code></dd>
-      <dd>useful for obscure column widths, ie., <code>width: calc(100% / 9)</code></dd>
-      <dt>The <a href="https://en.wikipedia.org/wiki/Negation">negation</a> pseudo class <code>:not</code></dt>
-      <dd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:not">This pseudo class</a> negates any selector inside the argument.</dd>
-      <dd>example: <code>p:not(.special)</code> selects all paragraphs that do not have a class of special.</dd>
-      <dd>example: <code>section p:not(:first-of-type)</code> selects all paragraphs of a section <em>except</em> the first one.</dd>
-      <dd>example: <code>article > *:not(section)</code> selects every <em>child</em> of an article that is not a section.</dd>
-      <dt><code>:before</code> &amp; <code>:after</code></dt>
-      <dd>These <strong>pseudo-elements</strong> are a nice trick to add custom bullets, icons, or bits of boiler plate text to certain elements like quotation marks surrounding text enclosed with &lt;q&gt; Elements (<a href="http://codepen.io/brendanmetzger/pen/zKjGBg?editors=1100#0">revisit this example</a>)</dd>
-      <dd><code>p:after {content: '…'}</code> would add ‘…’ after of every paragraph.</dd>
-      <dd><code>abbr:before {content: attr(title)}</code> would write the title attribute before each abbreviation.</dd>
-      <dt>The <code>attr</code> function</dt>
-      <dd>Another function that allows you to use the contents of an attribute in a <abbr>CSS</abbr> property. As of this writing, you can only affect the <code>content</code> property, but that will very likely change in the coming years. One such feature would be for a tooltip (<a href="http://codepen.io/brendanmetzger/pen/yawPkX?editors=1100#0">example here</a>).</dd>
-      <dt><code>:first-letter</code> &amp; <code>:first-line</code></dt>
-      <dd>Another pair of pseudo elements that are somewhat self explanatory.</dd>
-      <dd><code>p:first-letter {font-size:500%;}</code> would make the first letter of every paragraph 500% larger than the adjacent text.</dd>
-      <dd><code>p:first-line {font-weight: 800}</code> would make the first line of text in every paragraph bold.</dd>
-    </dl>
-    <p><a href="https://css-tricks.com/pseudo-class-selectors/"><abbr>CSS</abbr> tricks</a> has an intro to selectors and takes you the entire way through some of the finer points. Now that we're this far along, I’m attaching the <a href="https://www.w3.org/TR/selectors/#selectors">full Selector whitepaper</a> for the no-nonsense, down to brass-tacks types because at this point, you should be a whiz at selecting elements.</p>
-  </article>
+  <!-- insert views/topics/stylesheets/advanced-techniques.html -->
   <article>
     <h2>Survey &amp; Next Steps</h2>
     <p>I hope throughout the course of working on a midterm you have identified some weak spots and areas that you need to focus on. When faced with a blank canvas, it becomes incredibly easy to let frustrations get the better of us. I understand this all too well, but hopefully this exercise reinforces that once you get the ball rolling it becomes easier to apply new concepts.</p>
@@ -51,8 +18,8 @@
       <li>What do you feel we should spend more time on?</li>
     </ol>
   </article>
-  <article>
+  <footer id="reference-and-practice">
     <h2>References and Practice Material</h2>
     <p class="intro">Here is the list of <a href="http://iam.colum.edu/brendan.metzger/vids/">previous lectures</a> that are available to watch. A reminder: post midterm, we will begin actually using JavaScript, so you should have watched and read and practiced enough to let the mystery subside and be comfortable dealing with the basics: <code>variables</code>, <code>objects</code>, <code>arrays</code>, <code>conditions</code>, <code>operators</code>, <code>loops</code> and <code>functions</code>.</p>
-  </article>
+  </footer>
 </div>
