@@ -1,0 +1,27 @@
+  <article id="functions" data-classification="function javascript intermediate fundamental">
+    <h2>The Idea Behind Functions</h2>
+    <p class="intro">The most important part of the way we write JavaScript is the notion of functions. Before we go down that road, we must understand a little bit about the namesake and the reasoning behind these methods. Functions are necessary, they are fascinating and they can even be beautiful.</p>
+    <section class="container">
+      <div class="______ float left indented">
+        <p>In the beginning—and not particularly surprising considering the name—computers were primarily concerned with expediting rote computations. I've tried introducing functions in non-threatening ways, comparing them to cheeky things we know in real life; making pancakes and washing dishes—functions as routines. However, this doesn’t convey the the true import of functions, nor give much advice on how to use them correctly. Most often you’ll hear functions defined as <dfn>a principle of organizing code to make programs reusable, decrease errors and avoid duplication</dfn>.</p>
+        <p>In a more rigorous way of thinking, such a definition equates authoring functions as a means of satisfying a <q>best practice,</q> but that’s a bit misleading. Clarity and organization are certainly a byproduct of abstracting code, not the reason to do it. In their <a href="https://en.wikipedia.org/wiki/Pure_function">purest form</a>, functions take input and return some sort of output. We already know about some functions already from the world of mathematics, so rather than invent a new function, perhaps it will be more beneficial to dissect an existing one.</p>
+      </div>
+      <figure class="____ float left">
+        <figcaption class="pad">A function can be thought of as a machine that takes something as input and returns output. Given the same input, it will always return the same output.</figcaption>
+        <img src="/css/media/function-machine.svg" alt="function diagram" style="width:50%;margin:0 25%;" />
+      </figure>
+    </section>
+    <section class="example container whitepaper tt">
+      <aside class="tt ______ float left margins">
+        <p>Let’s consider the <strong>cosine</strong>. Why is it a function, and what does that mean? Yes, it’s a button on a calculator, but we can make our own cosine function using a <a href="https://en.wikipedia.org/wiki/Taylor_series">300 year old technique</a> (which is likely what most calculator buttons are implementing as well). Understanding the following code will allow you to walk away knowing a few things: there is no such thing as magic and small details can lead to big ideas.</p>
+        <p>While looking at the formula below, the first mystery we’ll see is that the cosine function (denoted <em>cos(x)</em>) is really a composition of two other mathematical functions and repeatable process (a loop). Make sure you are able to spot these three elements: <a href="https://en.wikipedia.org/wiki/Exponential_function">the exponential function</a>, <a href="https://en.wikipedia.org/wiki/Factorial">and the factorial function</a>. Then, there are a few tricks like getting a number to flip from positive to negative, and all of a sudden you shave the time it takes to manually compute a cosine from about 15 minutes in 1715 to as fast as your fingers can move today.</p>
+        <img src="https://upload.wikimedia.org/math/7/5/0/75020b6f0a1afdfb5b67e11f520a99e7.png" alt="the cosine power series" class="t pad" />
+      </aside>
+      <pre class="prettyprint ____ float left">
+        <!-- review views/javascript/examples/cosine.js taylor-->
+      </pre>
+      <script type="text/javascript">
+        bloc.embed('/javascript/examples/cosine.js');
+      </script>
+    </section>
+  </article>

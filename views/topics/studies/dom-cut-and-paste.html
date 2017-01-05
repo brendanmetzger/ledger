@@ -1,0 +1,19 @@
+<article id="DOM-case-study" data-classification="">
+  <h2><abbr title="document object model">DOM</abbr> Tricks</h2>
+  <p>I've put together the following example not in the spirit of knowing it fully as an exercise, but as an anecdote to what interactive programming really entails; a lot of stylesheet manipulation, a a little bit of JavaScript and very thoughtful structure of content and data.</p>
+  <section class="explain container t ruled top">
+    <aside class="note">
+      <p>The <code>:not</code> pseudo class coupled <code>:before</code> pseudo element should read like the following: <q>select h2 elements without a ‘cutout’ class and set some content before them.</q></p>
+      <p>Transitions are simple enough to implement, but designing with the full power of transitions can be quite masterful. In the example <abbr>CSS</abbr> I've provided, scan the document for <code>&lt;h2&gt;</code> Elements with a little pair of scissors before the text—click on them. Note in the code, the <abbr>CSS</abbr> is controlling the scissor icon with a pseudo element, and thus can be manipulated with <abbr>CSS</abbr> techniques we have available.</p>
+      <p>Look at the contrasting <abbr>CSS</abbr> and Javascript as it illustrates a key point about the nature of our programming languages. First, <mark>I haven’t changed any of my markup</mark> to accommodate the <abbr>CSS</abbr> or JavaScript I need to pull off this trick. The next is that <abbr>CSS</abbr> is by far most verbose part of any program I write and I've utilized complicated selectors to my advantage. The last bit is the JavaScript, which, when aided by efficient <abbr>CSS</abbr> and <abbr>HTML</abbr>, is typically concise.</p>
+      <p><strong>Please Note:</strong> The JavaScript is obscure and I use some techniques I wouldn’t expect out of an advanced class, but this is only to illustrate this point. Try to get the gist first, and worry about the details later. You will learn easier techniques for accomplishing similar tasks.</p>
+      <hr class="ruled" />
+      <p><strong>When using transforms</strong>, be aware that you’ll only be able to apply transformations to a <a href="https://www.w3.org/TR/css-transforms-1/#transformable-element">transformable elements</a>, that is, <em>an element that applies block-formatting</em> via the box-model. Remember, <mark> any element can be forced into a block formatted element explicitly by setting <code>display</code> property to 'block' or 'inline-block', or implicitly when you have set a <code>float</code> or used an absolute or fixed <code>position</code></mark>.</p>
+    </aside>
+    <pre class="prettyprint">
+      <!-- review views/css/examples/transitions.css transitions -->
+      <hr class="divider" data-before="CSS" data-after="JavaScript"/>
+      <!-- review views/javascript/examples/dom.js click to cut -->
+    </pre>
+  </section>
+</article>

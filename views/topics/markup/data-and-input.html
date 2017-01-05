@@ -1,0 +1,43 @@
+<article>
+  <h2>Data &amp; The <code>&lt;input&gt;</code> element</h2>
+  <div class="three columns indented">
+    <p>In this course, we will mostly be concerned with the basic use of forms to provide input and a point of interaction. It is worth briefly mentioning that they are actually quite complex, and necessarily so: the provide the interface to send huge amounts of information to a back-end server for storage, processing, payment and many other activities. For this reason, they have hundreds of attributes concerning data protection, validation, and accessibility. As such, they can be a bit overwhelming, so for a first pass, the introduction will be brief and any further interest can be self-directed. The Mozilla Developer Network has a <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms">nice guide</a> for creating forms if you are interested.</p>
+    <p>Of fundamental concern to us as <em>interactive</em> designers and developers is a notion of input/output. We are quite familiar with the mouse/trackpad as an input device: x/y movement coordinates, clicking, selection and scrolling are executed through such devices. Considering the keyboard, we have the full range of a keystroke (down, up, and press) which can be executed on any key, and along with meta keys (option, command, control).</p>
+  </div>
+  <hr class="ruled t b" />
+  <h4>Inputs</h4>
+  <p>Input is largely controlled via the <code>input</code> Element. The input is an <a href="https://developer.mozilla.org/en-US/docs/Glossary/empty_element">empty element</a>, and depending on the <code>type</code> attribute, it well exhibit a different function. For instance, <code>&lt;input type="text"…</code> is your basic text input field, where <code>&lt;input type="checkbox"…</code> would be a checkbox. You can make <a href="https://developer.mozilla.org#the-Input-element">many types of input</a>, below is a quick overview of some interesting ones.</p>
+  <dl class="whitepaper tt bb">
+    <dt><pre class="prettyprint">&lt;input type="text" value="<span class="text input">content</span>"/&gt;</pre></dt>
+    <dd><input type="text" value="content" class="example" oninput="document.querySelector('.text.input').textContent = this.value;" /></dd>
+    <dd>The text input is your go-to for basic input. The value attribute holds whatever is typed into the box</dd>
+    <dt><pre class="prettyprint checkbox">&lt;label&gt;&lt;input type="checkbox" value="mmm-hmmm"/&gt;check?&lt;/label&gt;</pre></dt>
+    <dd><label><input type="checkbox" checked="checked" value="is checked" onclick="document.querySelector('pre.checkbox').classList.toggle('strike')"/>check?</label></dd>
+    <dd>The checkbox is interesting: you set the value, and the value only is sent if the box is checked.</dd>
+    <dd>The <a href="https://developer.mozilla.org#the-label-element">Label Element</a> provides additional functionality.</dd>
+    <dt><pre class="prettyprint">&lt;input type="range" min="0" max="100" step="5" value="<span class="range input">50</span>"/&gt;</pre></dt>
+    <dd><input type="range" min="5" max="100" step="5" value="50" oninput="document.querySelector('.range.input').textContent = this.value" /></dd>
+    <dt><pre class="prettyprint">&lt;input type="color" value="<span class="color input">EE33AA</span>"/&gt;</pre></dt>
+    <dd><input type="color" value="#EE33AA" oninput="document.querySelector('.color.input').textContent = this.value;" /></dd>
+    <dt><pre class="prettyprint select"><![CDATA[<select>
+<option value="nothing">default</option>
+<option value="better">another option</option>
+<option value="medium">choose this</option>
+</select>]]></pre></dt>
+    <dd>
+      <select oninput="alert('you chose: ' + this.value);">
+        <option value="nothing">default</option>
+        <option value="better">another option</option>
+        <option value="medium">choose this</option>
+      </select>
+    </dd>
+  </dl>
+  <h4>And More!</h4>
+  <p>That is an extremely terse list; there are textareas, radio buttons, and many more types of input to do <strong>exactly what you intend</strong>. Knowing the inputs available and how to use them is an important part of interactive design and programming. Be sure to know about the <a href="http://www.w3schools.com/tags/ref_eventattributes.asp">form events</a> available—in my examples above I am using the <code>oninput</code> events. You should understand what <code>blur</code> and <code>focus</code> mean, as well as using the form values.</p>
+  <p class="focus t"><strong>Note:</strong> many used <code>onkeyup</code> (or down/press) listeners to do the turkish keyboard. Can you think of a way to use <code>oninput</code> and the <code>value</code> property to do something similar?</p>
+</article>
+<article>
+  <h2>Case Study: JavaScript functions</h2>
+  <p class="intro">One of the best uses of JavaScript is to disseminate information through interactivity. The following case study we will work on a few weeks at a time use functions and programming to make our jobs a little easier.</p>
+  <p>I've spent a bit of time putting together <a href="http://codepen.io/brendanmetzger/full/XjvbaP/">this example</a> to help showcase interactivity and time management. It will be worth studying now so that we can refactor in the coming weeks and slowly learn the ropes when it comes to pragmatically thinking about ways to use interactivity to both solve problems and provide interesting design solutions.</p>
+</article>

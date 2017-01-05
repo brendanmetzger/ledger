@@ -1,0 +1,39 @@
+<article id="intro-to-dom-programming" data-classification="introductory">
+  <h2>Intro to <abbr title="Document Object Model">DOM</abbr> Programming</h2>
+  <section class="two columns outdented">
+    <p>I’m going to expose the tiniest bit of JavaScript that should dovetail nicely with the concepts we’re becoming comfortable with. Namely, we know that when we load up a big <abbr>HTML</abbr> file that it it is converted into this very specific <strong>object</strong>, and this object, like any object, has properties that describe it. Some of the properties actually perform tasks, and as such, they are actually a <code>function</code> of the object, often called <em>methods</em>. Get comfortable with the terms <em>property</em> and <em>method</em> when talking about objects.</p>
+    <p>To further analyze this way of thought, picture your oven. It has knobs and burners, it has a <i>color</i>, a <i>manufacturer</i>, and it might have properties indicating its state, like <i>‘is clean’</i>. These are all properties, but let’s note the differences between how they describe the oven. The <i>color</i> property is static, that is it will not change, while the <i>‘is clean’</i> property may change as the result of other actions. The knobs property is interesting; notice that they perform an <em>action</em>—turning knob is expected to cause a change the <i>temperature</i> property.</p>
+    <p>As meta as this all seems, this abstraction is important, and perfectly describes programming. Looking back, we already know we have a <code>document</code> object that it has properties and properties tell us things about the object, like when it was last modified: type <code>document.lastModified</code> into your browser console and see what happens (in fact, do it several times).</p>
+    <p>Of present concern is the things we can ask the <code>document</code> to do for us, like find elements. One of the most important parnts of a document is the fact that it can help us find other elements using <em>query selectors</em>—yes, the very same selectors you've been learning about for weeks!</p>
+  </section>
+  <hr class="ruled t b" />
+  <p>Arguably the most useful feature of JavaScript is the tight integration to the Document Object Model, and the quickest introduction we can make is by employing our <abbr>CSS</abbr> selector knowledge. The <code>document</code> object itself has many methods for selecting Elements, but there are really only two you need to remember. The two methods in question are <em>querySelector</em> and <em>querySelectorAll</em>, and you access them by using the ‘.’ operator on the <code>document</code>. These two methods can be fed regular <abbr>css</abbr> query selectors as arguments and will return the appropriate <abbr>html</abbr> element(s).</p>
+  <section class="instruction container pad">
+    <dl class="______ float left">
+      <dt class="h5 pad"><code>document.querySelector(<em>query</em>)</code></dt>
+      <dd>Select and return the first node that matches the query</dd>
+      <dd>ex: <code>document.querySelector('div')</code> selects the first <code>&lt;div&gt;</code> in the document</dd>
+      <dd>ex: <code>document.querySelector('div#test')</code> selects a <code>&lt;div id="test"&gt;</code> element.</dd>
+      <dt class="h5 pad"><code>document.querySelectorAll(<em>query</em>)</code></dt>
+      <dd>ex: <code>document.querySelectorAll('div')</code> selects <strong>all</strong> <code>&lt;div&gt;</code>'s the document</dd>
+      <dd>ex: <code>document.querySelectorAll('section > p')</code> selects <strong>all</strong> <code>&lt;p&gt;</code>'s that are the immediate children of a section.</dd>
+    </dl>
+    <ol class="____ float left whitepaper">
+      <li>Open your console so you can query <em>this document</em></li>
+      <li>place your cursor after the <strong>&gt;</strong> prompt</li>
+      <li>If you haven’t yet, type <code>document</code> and inspect output</li>
+      <li>type <code>document.querySelector</code></li>
+      <li>Output indicates function <em>has not been called</em>!</li>
+      <li>type <code>document.querySelector('h2');</code></li>
+      <li>type <code>document.querySelectorAll('h2');</code></li>
+      <li>type <code>document.querySelectorAll('h2').item(0);</code></li>
+      <li>Compare output of #5 to #7</li>
+    </ol>
+  </section>
+  <section class="t b">
+    <h4>But Why?</h4>
+    <p>I don’t think it becomes immediately apparent why we need JavaScript when <abbr>css</abbr> is so powerful (and in truth an argument could be made that you can do great work without it) so I'll try to distill it as best I can. The first reason is that it gives staying power (<a href="http://codepen.io/brendanmetzger/pen/VKEWpv">example here</a>) in that you can change the state of a document and that change remains—like turning the knob on an oven, the oven is on until you turn the knob back. The second component of JavaScript is how we listen for events that happen on the page. We have hover, sure, but we also can tell if the page is scrolled, if the content has been modified, if a user is mousing over an element, if they have resized a window, etc. At the most essential, I'll put it like this, <strong>JavaScript lets you design in the 4th dimension of time</strong>—something quite fun, but that takes lots of practice. Web design is flat and 1 dimensional without it.</p>
+
+  </section>
+  <p class="focus"><strong>Note</strong>, some people still use things like <code>document.getElementById</code> and <code>document.getElementsByTagName</code>, and you’ll surely run into decades of tutorials suggesting you do the same. Be aware, modern methods provide a significant upgrade and I suggest you use the new stuff</p>
+</article>
