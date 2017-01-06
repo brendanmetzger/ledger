@@ -1,0 +1,98 @@
+<article id="interaction-design">
+  <h2>Interaction Design (IxD)</h2>
+  <div class="interactive container">
+    <svg class="venn _____ float left" version="1.1" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50">
+      <defs>
+        <path id="arc" d="M 0 0 A 10,10 0 1 1 20,0"/>
+        <path id="arc-down" d="M 0 0 A 10,10 0 0 0 20,0"/>
+      </defs>
+      <g>
+
+        <circle cx="15" cy="15" r="13" class="technical" style="fill:rgba(255, 131, 131, 0.91);stroke:rgba(255, 131, 131, 1)"/>
+        
+        <circle cx="35" cy="15" r="13" class="aesthetic" style="fill:rgba(133, 255, 133, 0.8);fill:rgba(133, 255, 133, 1);"/>
+        <circle cx="25" cy="32.5" r="13" class="authorship" style="fill:rgba(113, 113, 246, 0.84);rgba(113, 113, 246, 1);"/>
+                
+        <text x="0" y="0" style="fill:rgba(200, 131, 131,0.5);" transform="translate(6, 16)" ><textPath xlink:href="#arc" startOffset="0">Technical</textPath></text>
+        <text x="0" y="0" style="fill:rgba(133, 200, 133, 0.5);" transform="translate(24, 16)"><textPath xlink:href="#arc" startOffset="55%">Aesthetic</textPath></text>
+        <text x="0" y="0" style="fill:rgba(113, 113, 200, 0.5);" transform="translate(15, 33.5)"><textPath xlink:href="#arc-down" startOffset="25%">Authorship</textPath></text>
+      </g>
+    </svg>
+    <div class="accordion float left _____">
+      <div>
+        <input type="radio" name="venn" id="designer" checked="checked" value="13:13:13"/>
+        <label for="designer">The Interactive Designer</label>
+        <p>An interactive designer is a professional who can compose without completely realizing how the work will be realized. Using psychology, data, programming, variables, conditions, time and above all, <strong>being organized</strong>, one can truly create work the world has never seen.</p>
+        <p>The overlap—or union—of the Venn diagram represents what I'll dub <q>interactive design achieved</q></p>
+      </div>
+      <div>
+        <input type="radio" name="venn" id="dream" value="10:10:10"/>
+        <label for="dream">The Jack of all Trades (master of none)</label>
+        <p>To be ok at stuff...</p>
+      </div>
+      <div>
+        <input type="radio" name="venn" id="technical" value="12:3:5"/>
+        <label for="technical">The Technician</label>
+        <p>A highly technical individual...</p>
+      </div>
+      <div>
+        <input type="radio" name="venn" id="author"  value="7:7:10"/>
+        <label for="author">The Raconteur</label>
+        <p>Some people have great ideas, charisma, or points they like to get across.</p>  
+      </div>    
+      <div>
+        <input type="radio" name="venn" id="artistic" value="3:12:5"/>
+        <label for="artistic">The Artist</label>
+        <p>A highly artistic</p>
+      </div>
+      <div>
+        <input type="radio" name="venn" id="you" value="5:5:5"/>
+        <label for="you">You?</label>
+        <p>Play around here to see what you think</p>
+        <input type="range" min="5" max="15" value="13" oninput="document.querySelector('.technical').setAttribute('r', this.value);" />
+        <input type="range" min="5" max="15" value="13" oninput="document.querySelector('.aesthetic').setAttribute('r', this.value);" />
+        <input type="range" min="5" max="15" value="13" oninput="document.querySelector('.authorship').setAttribute('r', this.value);" />
+      </div>
+    </div>
+  </div>
+  <style type="text/css" media="screen">
+    /* <![CDATA[ */
+    .venn text {
+      font-size:25%;
+      text-transform:uppercase;
+    }
+    .venn g {
+      isolation:isolate;
+    }
+    .venn circle {
+      mix-blend-mode:screen;
+      stroke-width:0.25;
+    }
+    .accordion {
+      display:block;
+    }
+    .accordion div > label ~ * {
+      display:none;
+    }
+    .accordion input:checked + label ~ * {
+      display:block;
+    }
+    /* ]]> */
+  </style>
+  <script type="text/javascript">
+    // <![CDATA[
+      var ranges = document.querySelectorAll('.accordion input[type=range]');
+      var circles = document.querySelectorAll('.venn circle');
+      document.querySelectorAll('.accordion input[type="radio"]').forEach(function (input) {
+        input.addEventListener('change', setVenn);
+      });
+      
+      
+      function setVenn(evt) {
+        this.value.split(':').forEach(function (value, i) {
+          circles[i].setAttribute('r', value);
+        });
+      }
+    // ]]>
+  </script>
+</article>

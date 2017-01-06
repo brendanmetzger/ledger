@@ -55,6 +55,7 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Set up glossary/faq controller
 - [ ] Add font/size, contrast, and typeface preferences
 - [x] Auto generate link to edit file in textmate
+- [ ] Loops as 99 bottles of beer on the wall
 
 ** What about an ajax callback that returns an intention. Like, if true, check this box. I suppose this is a promise maybe? That means investigate promises.
 

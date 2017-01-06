@@ -31,12 +31,13 @@
         </label>
         <label class="caps spaced alert">(Also test changing size of browser window)</label>
       </fieldset>
-      <samp data-unit="px">This paragraph is <code>?</code> wide</samp>
-      <samp data-unit="em">This paragraph is <code>?</code> wide</samp>
-      <samp data-unit="vw">This paragraph is <code>?</code> wide</samp>
-      <samp data-unit="vh">This paragraph is <code>?</code> wide</samp>
-      <samp data-unit="%">This paragraph is <code>?</code> wide</samp>
-      <samp data-unit="ch">This paragraph is <code>?</code> wide</samp>
+      <samp data-unit="px" style="--delay:0.05s">Box is <code>?</code> wide</samp>
+      <samp data-unit="em" style="--delay:0.1s">Box is <code>?</code> wide</samp>
+      <samp data-unit="em" data-divisor="10" style="--delay:0.1s">Box is <code>?</code> wide</samp>
+      <samp data-unit="vw" style="--delay:0.15s">Box is <code>?</code> wide</samp>
+      <samp data-unit="vh" style="--delay:0.15s">Box is <code>?</code> wide</samp>
+      <samp data-unit="%"  style="--delay:0.1s">Box is <code>?</code> wide</samp>
+      <samp data-unit="ch" style="--delay:0.05s">Box is <code>?</code> wide</samp>
     </div>
     <style media="screen">
       div.example {
@@ -63,6 +64,10 @@
       }
       div.example label span {line-height:1;transform:translateY(-0.25em);}
       div.example label span:before {content: '←';padding:0 0.5em;}
+      div.example samp code {
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.65);
+        font-weight:800;
+      }
       div.example samp {
         white-space: nowrap;
         color:#AAA;
@@ -74,6 +79,7 @@
         line-height:1;
         display:block;
         mix-blend-mode: exclusion;
+        transition-delay: var(--delay);
       }
       input[type=range]:before, input[type=range]:after {
         position:absolute;
@@ -97,7 +103,8 @@
         var inp = document.querySelectorAll('div.example input');
         inp[0].addEventListener('input', function (evt) {
           [].forEach.call(lis, function (li) {
-            li.firstElementChild.textContent = li.style.width = this.value + li.dataset.unit;
+            var divisor = parseInt(li.dataset.divisor || '1', 10);
+            li.firstElementChild.textContent = li.style.width = (this.value / divisor + li.dataset.unit);
 
           }, this);
         });

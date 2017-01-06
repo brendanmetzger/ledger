@@ -392,6 +392,15 @@ ul.bad li:before {
   color: rgb(244, 75, 121);
 }
 
+.error a[href*=line] {
+  background:rgba(255,0,0, 0.15);
+  border-radius:1em;
+  text-decoration:underline;
+  padding:1em;
+  margin:1em;
+  font-size:3em;
+  display:block;
+}
 .chart {
   padding: 0 2.5em;
 }
