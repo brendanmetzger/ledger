@@ -11,122 +11,128 @@
     <h4>Understanding percentages</h4>
     <p>Often misunderstood, sometimes confounding, working with percentages seems more intuitive than it is. There are some things to think about whenever you are using a <code>%</code> as a unit of measurement. The first is, <em>percentage of what?</em> The answer is the parent element determines the physical value of the percentage. Here is a caveat: you cannot set a <code>height</code> so easily with a percentage. The height of a block depends on its content (think how text wraps), whereas the width actually determines how the content will wrap. Thus, a width can be determined, whereas a height can only be set if the height of the parent is known ahead of time. Of course, that can be done by actually setting the height non-percentage unit. Then you have to worry about <a href="/overview/glossary#overflow-problems">overflow problems</a></p>
   </section>
-  <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">Determining length</a> is a necessary function of many <abbr>CSS</abbr> properties. Consider the sample boxes below each have their <code>width</code> property set to the same number with a different unit. Make sure to resize your window to understand how some units are affected by the size of your browser (vw/vh) or the size of their containing element (%) or the size of the font (em). Pixels are static and not affected proportionally, but be aware that modern screens have different pixel sizes, so scaling and approximation will occur and designing with pixels is becoming unfavorable especially where mobile and responsive design are concerned.</p>
+  <section class="interactive margins">
+    <h3 class="t">Examining length unit behaviors</h3>
+    <p>Application of a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">length</a> is necessary in many <abbr>CSS</abbr> properties. Consider the sample boxes below each have their <code>width</code> property set to the same number with a different unit. Make sure to resize your window to understand how some units are affected by the size of your browser (<code>vw</code> and <code>vh</code>), the size of their containing element (<code>%</code>) or the size of the font (<code>em</code>). Pixels are static—that is they are not affected by any aspect of the browser itself—but be warned, modern device screens have differing pixel densities which is yet another reason to consider them unreliable for interactive design.</p>
   
-  <h3 class="t">Looking at length units</h3>
-  <div class="example">
-    <fieldset>
-      <label>
-        <input type="range" min="25" max="75" data-unit="units" step="1" value="25"/>
-        <span class="caps spaced">Unit Value</span>
-      </label>
-      <label>
-        <input type="range" min="50" max="100" step="1" data-unit="%" value="100"/>
-        <span class="caps spaced">Container width</span>
-      </label>
-      <label>
-        <input type="range" min="1" max="2" step="0.1" data-unit="em" value="1"/>
-        <span class="caps spaced">Container Font Size</span>
-      </label>
-      <label class="caps spaced alert">(Also test changing size of browser window)</label>
-    </fieldset>
-    <samp data-unit="px">This paragraph is <code>?</code> wide</samp>
-    <samp data-unit="em">This paragraph is <code>?</code> wide</samp>
-    <samp data-unit="vw">This paragraph is <code>?</code> wide</samp>
-    <samp data-unit="vh">This paragraph is <code>?</code> wide</samp>
-    <samp data-unit="%">This paragraph is <code>?</code> wide</samp>
-    <samp data-unit="ch">This paragraph is <code>?</code> wide</samp>
-  </div>
-  <style media="screen">
-    div.example {
-      border:1px dashed rgba(0,0,0,0.25);
-      padding:20px;
-      background-color:rgba(255,255,255,0.25);
-      box-sizing:border-box;
-      background-size: 10px 10px;
-      background-position:top left;
-      background-image: linear-gradient(90deg, transparent 9px, rgba(0,0,255,0.1) 1px), linear-gradient(0deg, transparent 9px, rgba(255,0,0,0.05) 1px);
-    }
-    div.example label {display:block;}
-    div.example label input {
-      width: 20em;
-      position:relative;
-    }
-    div.example fieldset {
-      border:none;
-      background-color:rgba(255,255,255,0.5);
-      margin:-20px -20px 1em;
-      padding:20px 20px 5px;
-      box-shadow: 0 0.125em 1em rgba(0,0,0,0.05);
-    }
-    div.example label span {line-height:1;transform:translateY(-0.25em);}
-    div.example label span:before {content: '←';padding:0 0.5em;}
-    div.example samp {
-      white-space: nowrap;
-      color:#AAA;
-      font-size:1.5em;
-      transition: width 0.5s;
-      background-color:#333;
-      margin:1px 0;
-      padding:10px;
-      line-height:1;
-      display:block;
-    }
-    input[type=range]:before, input[type=range]:after {
-      position:absolute;
-      font-size:0.75em;
-      top:-1.125em;
-      font-weight:100;
-      letter-spacing:1px;
-    }
-    input[type=range]:before {
-      content: attr(min) attr(data-unit);
-    }
-    input[type=range]:after {
-      content: attr(max) attr(data-unit);
-      right:0;
-    }
-  </style>
-  <script type="text/javascript">
-    addEventListener('load', function () {
-      var div = document.querySelector('div.example');
-      var lis = document.querySelectorAll('div.example samp');
-      var inp = document.querySelectorAll('div.example input');
-      inp[0].addEventListener('input', function (evt) {
-        [].forEach.call(lis, function (li) {
-          li.firstElementChild.textContent = li.style.width = this.value + li.dataset.unit;
-
-        }, this);
-      });
-      inp[1].addEventListener('input', function (evt) {
-        div.style.width = this.value + '%';
-      });
-      
-      inp[2].addEventListener('input', function (evt) {
-        div.style.fontSize = this.value + 'em';
-      });
-      
-      var click = document.createEvent('MouseEvents');
-      click.initEvent('input', true, true);
-      inp[0].dispatchEvent(click);
-    });
-  </script>
-    <footer>
-      <h3>Footnotes</h3>
-      <p>Probably move the following to another section</p>
-      <p>Spend some time looking at and thinking about margins and padding. Picture a bunch of cardboard boxes on the floor; the is the space between the boxes is the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">margin</a>, and within each box the space afforded the contents is called the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding">padding</a>. I'll leave it up to you to find yourself the documentation for borders—or in this example, the cardboard of the box itself.</p>
-      <ol>
-        <li><a href="#viewport-dimension">viewport dimensions</a> are 1) the height and width of your viewport, and 2) a category of unit available in <abbr>CSS</abbr></li>
-        <li><a href="#variable">Variables</a> may be familiar from algebra, but now is the moment I get to exclaim <q>this is when you apply the lessons of math class!</q>.</li>
-      </ol>
-    </footer>
-    <style type="text/css" media="screen">
-      /* <![CDATA[ */
-      dfn:target {
-        background-color:#333;
-        color:#fff;
-        display:inline-block;
+    <div class="example">
+      <fieldset>
+        <label>
+          <input type="range" min="25" max="75" data-unit="units" step="1" value="25"/>
+          <span class="caps spaced">Unit Value</span>
+        </label>
+        <label>
+          <input type="range" min="50" max="100" step="1" data-unit="%" value="100"/>
+          <span class="caps spaced">Container width</span>
+        </label>
+        <label>
+          <input type="range" min="1" max="2" step="0.1" data-unit="em" value="1"/>
+          <span class="caps spaced">Container Font Size</span>
+        </label>
+        <label class="caps spaced alert">(Also test changing size of browser window)</label>
+      </fieldset>
+      <samp data-unit="px">This paragraph is <code>?</code> wide</samp>
+      <samp data-unit="em">This paragraph is <code>?</code> wide</samp>
+      <samp data-unit="vw">This paragraph is <code>?</code> wide</samp>
+      <samp data-unit="vh">This paragraph is <code>?</code> wide</samp>
+      <samp data-unit="%">This paragraph is <code>?</code> wide</samp>
+      <samp data-unit="ch">This paragraph is <code>?</code> wide</samp>
+    </div>
+    <style media="screen">
+      div.example {
+        padding:20px;
+        background-color:rgba(255,255,255,0.25);
+        box-sizing:border-box;
+        background-size: 10px 10px;
+        background-position:top left;
+        background-image: linear-gradient(90deg, transparent 9px, rgba(0,0,255,0.1) 1px), linear-gradient(0deg, transparent 9px, rgba(255,0,0,0.05) 1px);
+        margin: 2em -2.5vw;
+        box-shadow: 0.5em 0 0.5em rgba(0,0,0,0.05);
       }
-      /* ]]> */
+      div.example label {display:block;}
+      div.example label input {
+        width: 20em;
+        position:relative;
+      }
+      div.example fieldset {
+        border:none;
+        background-color:rgba(255,255,255,0.5);
+        margin:-20px -20px 1em;
+        padding:20px 20px 5px;
+        box-shadow: 0 0.125em 1em rgba(0,0,0,0.05);
+      }
+      div.example label span {line-height:1;transform:translateY(-0.25em);}
+      div.example label span:before {content: '←';padding:0 0.5em;}
+      div.example samp {
+        white-space: nowrap;
+        color:#AAA;
+        font-size:1.5em;
+        transition: width 0.5s;
+        background-color:#333;
+        margin:1px 0;
+        padding:10px;
+        line-height:1;
+        display:block;
+        mix-blend-mode: exclusion;
+      }
+      input[type=range]:before, input[type=range]:after {
+        position:absolute;
+        font-size:0.75em;
+        top:-1.125em;
+        font-weight:100;
+        letter-spacing:1px;
+      }
+      input[type=range]:before {
+        content: attr(min) attr(data-unit);
+      }
+      input[type=range]:after {
+        content: attr(max) attr(data-unit);
+        right:0;
+      }
     </style>
+    <script type="text/javascript">
+      addEventListener('load', function () {
+        var div = document.querySelector('div.example');
+        var lis = document.querySelectorAll('div.example samp');
+        var inp = document.querySelectorAll('div.example input');
+        inp[0].addEventListener('input', function (evt) {
+          [].forEach.call(lis, function (li) {
+            li.firstElementChild.textContent = li.style.width = this.value + li.dataset.unit;
+
+          }, this);
+        });
+        inp[1].addEventListener('input', function (evt) {
+          var res = 'calc(5vw + '+this.value+'%)';
+          console.log(res);
+          div.style.width = res;
+        });
+      
+        inp[2].addEventListener('input', function (evt) {
+          div.style.fontSize = this.value + 'em';
+        });
+      
+        var click = document.createEvent('MouseEvents');
+        click.initEvent('input', true, true);
+        inp[0].dispatchEvent(click);
+      });
+    </script>
+  </section>
+  <footer>
+    <h3>Footnotes</h3>
+    <p>Probably move the following to another section</p>
+    <p>Spend some time looking at and thinking about margins and padding. Picture a bunch of cardboard boxes on the floor; the is the space between the boxes is the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">margin</a>, and within each box the space afforded the contents is called the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding">padding</a>. I'll leave it up to you to find yourself the documentation for borders—or in this example, the cardboard of the box itself.</p>
+    <ol>
+      <li><a href="#viewport-dimension">viewport dimensions</a> are 1) the height and width of your viewport, and 2) a category of unit available in <abbr>CSS</abbr></li>
+      <li><a href="#variable">Variables</a> may be familiar from algebra, but now is the moment I get to exclaim <q>this is when you apply the lessons of math class!</q>.</li>
+    </ol>
+  </footer>
+  <style type="text/css" media="screen">
+    /* <![CDATA[ */
+    dfn:target {
+      background-color:#333;
+      color:#fff;
+      display:inline-block;
+    }
+    /* ]]> */
+  </style>
 </article>

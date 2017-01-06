@@ -55,5 +55,10 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Set up glossary/faq controller
 - [ ] Add font/size, contrast, and typeface preferences
 - [x] Auto generate link to edit file in textmate
+
 ** What about an ajax callback that returns an intention. Like, if true, check this box. I suppose this is a promise maybe? That means investigate promises.
+
+
+# TODOs and notes
+For student-graded quizzes, create an algorithm that as soon as a student gets a question marke wrong at least once, they start grading quizzes that other students got the answer to wrong. An answer of "I don't know" (or blank) is automatically wrong, so we can eliminate the grading of those right away. 
 

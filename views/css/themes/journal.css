@@ -82,8 +82,12 @@ h1.massive {
 
 mark {
   padding: 0.125em 0.5em;
+  border-radius:1em;
   margin: 0 -0.5em;
-  background-color: rgba(214, 255, 50, 0.125);
+  background-color: rgba(50, 235, 255, 0.1);
+  -webkit-box-decoration-break: clone;
+  -o-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .divider {
