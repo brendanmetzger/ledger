@@ -1,3 +1,0 @@
-# RewriteEngine on
-# RewriteCond %{REQUEST_URI} ^/courses/gradebook/.*$
-# RewriteRule ^(.*)$ /courses/gradebook/views/$1 [L]

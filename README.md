@@ -63,3 +63,27 @@ A way to Organize my teaching materials, my students, and my assignments.
 # TODOs and notes
 For student-graded quizzes, create an algorithm that as soon as a student gets a question marke wrong at least once, they start grading quizzes that other students got the answer to wrong. An answer of "I don't know" (or blank) is automatically wrong, so we can eliminate the grading of those right away. 
 
+
+# Ideas / Examples
+
+- [ ] The slide in message when user scrolls y amount of screen
+- [ ] Fix a JSON object riddled with errors (use cuepoints object)
+- [ ] Design a page to be scrolled as the interactive element
+
+
+## Warm-ups
+```
+// refactor
+function isEven(value) {
+	if (value % 2 == 0) {
+    return true;
+  }
+	else {
+    return false;
+  }	
+}
+
+// 1. based on the above, write a function isOdd
+// 2. rewrite the isEven function to be more artilate
+// 3. Think about if/why one should write either of these.
+```
