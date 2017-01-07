@@ -921,9 +921,36 @@ h4.vertical + p:first-line {
 }
 
 .pin.link {
-  text-decoration: none;
-  margin: -10px 0 0 -10px;
-  font-size:25px;
-  color:rgba(235,0,145,0.85);
+  background: none !important;
+  font-size: 25px;
+  color: rgba(235,0,145,0.85);
+  opacity: 0.5;
+  transform: scale(0.75) translate(-12px, -15px);
+}
+.pin.link:hover {
+  opacity:1;
+}
+.pin.link img {
+  width:100%;
 }
 
+abbr[title]:after {
+  font-variant: normal;
+  content: attr(title);
+  padding: 0.25em 1em;
+  border-radius:1em 1em 1em 0;
+  position: absolute;
+  transform: translate(-8em, 0) rotate(0) scale(0);
+  background-color: rgba(255,255,255,0.9);
+  border:1px solid #EEE;
+  color:#000;
+  box-shadow: 0.125em -0.125em 0.5em rgba(0,0,0,0.125);
+  transition: all 0.5s;
+  opacity:0;
+  border:1px solid #ddd;
+}
+
+p:hover abbr[title]:after {
+  opacity: 1;
+  transform: translate(-1em, -2.5em) rotate(-10deg) scale(1);
+}

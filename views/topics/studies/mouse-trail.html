@@ -28,12 +28,14 @@
     }
   </style>
   <script type="text/javascript">
-    bloc.embed('/javascript/examples/assigned/mouse-trail.js');
-    bloc.init('mouse', function() {
-      document.querySelector('#mouse-example').addEventListener('click', function(evt) {
-        createTrail(25, this);
-      });
+    // <![CDATA[
+      bloc.embed('/javascript/examples/assigned/mouse-trail.js');
+      bloc.init('mouse', function() {
+        document.querySelector('#mouse-trail').addEventListener('click', function(evt) {
+          createTrail(25, this);
+        });
 
-    });
+      });
+    // ]]>
   </script>
 </article>

@@ -29,8 +29,23 @@ samp {
   white-space: pre-line;
 }
 
-.explain {
+.explain, .split {
   display: flex;
+}
+
+.split > * {
+  width:50%;
+  margin:2em 1em;
+}
+
+.explain.whitepaper, .split.whitepaper {
+  box-shadow:0 0 2.5em rgba(0,0,0,0.05);
+  margin:2.5vw -2.5vw;
+  padding:0 1em;
+}
+
+.explain.whitepaper > * {
+  padding:4em 2em;
 }
 
 .explain > *:nth-child(2) {
@@ -176,7 +191,19 @@ pre .dec {
 }
 
 
-
+pre[title]:before {
+  position:relative;
+  top:-0.5em;
+  font-style:italic;
+  text-transform:uppercase;
+  letter-spacing:0.125em;
+  text-align:right;
+  color:#777;
+  border-bottom:1px solid #AAA;
+  padding:0.25em 1em;
+  display:block;
+  content: attr(title);
+}
 
 
 /* decimal         - lightgreen */
@@ -184,19 +211,14 @@ pre .dec {
 ol.linenums {
   margin-top: 0;
   margin-bottom: 0;
-  color: #AEAEAE;
+  color: #777;
 }
-/* IE indents via margin-left */
-/* Alternate shading for lines */
-li.L1,
-li.L3,
-li.L5,
-li.L7,
-li.L9 {}
-margin-left */
-/* Alternate shading for lines */
-li.L1,
-li.L3,
-li.L5,
-li.L7,
-li.L9 {}
+ol.linenums li {
+  border-top:none;
+  border-bottom:1px dotted #EEE;
+  padding:0.125em;
+}
+ol.linenums li:last-of-type {
+  border:none;
+}
+

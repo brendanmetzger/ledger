@@ -1,9 +1,9 @@
 var boundExample = {
   processItems: function() {
     this.items.each(function (item) {
-      // Process item
       this.markItemAsProcessed(item);
     }.bind(this));
+    // Notice trailing call to bind.
   }
 };
 
@@ -11,8 +11,8 @@ var scopedExample = {
   processItems: function() {
     var that = this;
     this.items.each(function (item) {
-      // Process item
       that.markItemAsProcessed(item);
+      // Notice use of `that` instead of `this`
     });
   }
 };
@@ -34,7 +34,7 @@ Array.prototype.forEach = function (callback, context) {
 (function () {
   'use strict';
 
-  function ItemProcessor() {
+  function itemProcessor() {
     return {
       items: ['a', 'b', 'c'],
       processed: [],
@@ -48,10 +48,10 @@ Array.prototype.forEach = function (callback, context) {
       markItemAsProcessed: function (item) {
         this.processed.push(item);
       }
-    }
+    };
   }
 
-  var obj = ItemProcessor();
+  var obj = itemProcessor();
   obj.processItems();
   obj.markItemAsProcessed(obj.items[0]);
   console.log('that', obj.processed);
@@ -62,7 +62,7 @@ Array.prototype.forEach = function (callback, context) {
 (function () {
   'use strict';
 
-  function ItemProcessor() {
+  function itemProcessor() {
     return {
       items: ['a', 'b', 'c'],
       processed: [],
@@ -73,10 +73,10 @@ Array.prototype.forEach = function (callback, context) {
       markItemAsProcessed: function (item) {
         this.processed.push(item);
       }
-    }
+    };
   }
 
-  var obj = ItemProcessor();
+  var obj = itemProcessor();
   obj.processItems();
   obj.markItemAsProcessed(obj.items[0]);
   console.log('bind', obj.processed);
@@ -95,7 +95,7 @@ var examples = {
   delayAddClass_v2: function () {
     function delay() {
       $span.classList.add('highlight');
-    };
+    }
     setTimeout(delay, 25);
   },
   poachFunctionPropError: function () {
@@ -110,3 +110,13 @@ var examples = {
     [].forEach.call(elems, callback); // works!
   }
 }
+
+function sing(bottle) {
+  // 🎼
+}
+
+var bottles = [99, 98, 97, 96]; //...and so on
+var verse   = bottles.length;
+sing(bottles[verse - 1]);
+sing(bottles[verse - 2]);
+sing(bottles[verse - 3]);

@@ -1,6 +1,15 @@
 <article class="columns">
   <style type="text/css" media="screen">
     /* <![CDATA[ */
+    body {
+      background-image: url(/media/images/muybridge-halftone.png);
+      background-size:auto 2000vh;
+      background-repeat:no-repeat;
+      background-attachment:fixed;
+      background-position:-10em -700vh;
+      mix-blend-mode:multiply;
+      isolation:isolate;
+    }
     .columns {
       display:flex;
       flex-wrap:wrap;
@@ -19,6 +28,14 @@
     }
     /* ]]> */
   </style>
+  <script type="text/javascript">
+    // <![CDATA[
+      addEventListener('scroll', function jog (evt) {
+        let val = -((Math.floor(scrollY/30) % 20) * 100);
+        document.body.style.backgroundPosition = '-10em ' + val +'vh';
+      });
+    // ]]>
+  </script>
   <!-- iterate columns -->
   <section>
     <h2 class="caps">[$name]</h2>

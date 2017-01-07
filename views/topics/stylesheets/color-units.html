@@ -93,34 +93,42 @@
 
   </style>
   <script type="text/javascript">
-    var inputs = [];
-    var composites = document.querySelectorAll('#color-table td.composite');
-    var composite = document.querySelector('#color-table tfoot input');
-    [].forEach.call(document.querySelectorAll('#color-table input[type="range"]'), function (input, idx) {
-      inputs.push(input);
+    // <![CDATA[
+      var inputs = [];
+      var composites = document.querySelectorAll('#color-table td.composite');
+      var composite = document.querySelector('#color-table tfoot input');
+      [].forEach.call(document.querySelectorAll('#color-table input[type="range"]'), function (input, idx) {
+        inputs.push(input);
 
-      function updateColor() {
-        var rgb = [];
-        inputs.forEach(function(input, idx) {
-          composites[0].children[idx].innerHTML = decHex(input.value);
-          composites[1].children[idx].innerHTML = input.value;
+        function updateColor() {
+          var rgb = [];
+          inputs.forEach(function(input, idx) {
+            rgb.push(parseInt(input.value));
+            composites[0].children[idx].innerHTML = decHex(input.value);
+            composites[1].children[idx].innerHTML = input.value;
+          });
+          
+          composite.value = composites[0].textContent;
+        }
+      
+        function andit(red, green, blue) {
+          document.body.style.backgroundColor = `rgb(${red&green}, ${green|blue}, ${blue^red})`;
+        }
+
+        input.addEventListener('input', function (evt) {
+          var rgb = ['00','00','00'];
+          var bin = this.parentNode.nextElementSibling;
+          var dec = bin.nextElementSibling;
+          var hex = dec.nextElementSibling;
+          rgb[idx] = decHex(this.value);
+          this.parentNode.previousElementSibling.firstElementChild.value = "#"+rgb.join('');
+          bin.textContent = decBin(this.value);
+          dec.textContent = this.value;
+          hex.textContent = rgb[idx];
+          updateColor();
         });
-        composite.value = composites[0].textContent;
-      }
-
-      input.addEventListener('input', function (evt) {
-        var rgb = ['00','00','00'];
-        var bin = this.parentNode.nextElementSibling;
-        var dec = bin.nextElementSibling;
-        var hex = dec.nextElementSibling;
-        rgb[idx] = decHex(this.value);
-        this.parentNode.previousElementSibling.firstElementChild.value = "#"+rgb.join('');
-        bin.textContent = decBin(this.value);
-        dec.textContent = this.value;
-        hex.textContent = rgb[idx];
-        updateColor();
       });
-    });
+    // ]]>
   </script>
 
 

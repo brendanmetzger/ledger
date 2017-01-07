@@ -48,12 +48,7 @@ class Overview extends \bloc\controller
       $view->content = 'views/layouts/topics.html';
     } else if ($topic != null){
       // sub for localhost
-      $path = sprintf("views/topics/%s/%s.html", $subject, $topic);
-      if ($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
-        $this->edit = PATH.$path;
-      }
-      $view->content = "views/layouts/topic.html";
-      $view->topic   =  $path;
+      $view->content = sprintf("views/topics/%s/%s.html", $subject, $topic);
     }
     
 

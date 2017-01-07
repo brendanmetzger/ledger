@@ -1,64 +1,73 @@
-<article class="_________">
+<article>
   <header>
     <h4 class="bottom ruled heart"> No. 01</h4>
-    <h1 class="massive"><code>this</code> is important</h1>
-    <h2>A foray into function binding and closures</h2>
-    <p class="intro _______">I ran across an article called <a href="http://alistapart.com/article/getoutbindingsituations">Getting Out of Binding Situations in JavaScript</a> (written some years ago) and realized that programming how-to articles are sometimes heavy on solution and a little light on perspective.</p>
+    <h1 class="massive">Nobody gets <code>this</code></h1>
+    <h5 class="tt">A double-entendre (and foray into function binding and closures)</h5>
+    <p class="intro _______">I ran across an article called <a href="http://alistapart.com/article/getoutbindingsituations">Getting Out of Binding Situations in JavaScript</a> (written some years ago) and realized that programming how-to articles offer quite different—although cogent—perspectives.</p>
   </header>
-  <section class="three columns ruled top bottom dropcap">
-    <p>Without perspective people become dogmatic and righteous and maybe even a tad confused, so before taking anything as gospel, let’s use the example I culled in that article and give <em>more</em> perspective (assuming you may read that one as well).</p>
-    <p>Let’s start right in with a tidbit of code – code that indicates we are in a bit of a pickle due to scope; provided are two  solutions to get out of that pickle. Boiled way down, we have two similar pieces of code, starting with the left, the article informs us, <q>…Notice the trailing call to bind. However, such code is not as good an idea as it may seem. We saw that achieving such a “bound reference” requires us to wrap the original method within an anonymous function, which means calling the bound method reference results in two method calls: our anonymous wrapper, and the original method.</q></p>
+  <section class="three columns dropcap">
+    <p>Without perspective people become dogmatic and righteous and maybe even a tad confused, so before taking anything as gospel, let’s use the example I culled in that article do (quite literally) some <em>this vs. that</em>. I've noticed myself writing code a bit differently from many, and I realized it is probably because of philosophy I adopted from the frameworks and languages I was fascinated with years ago. My goal is not to pick anything apart, but to try and offer some insight into something that many people who are comfortable with JavaScript may have some trouble seeing.</p>
+    <p>Let’s start right in with a tidbit of code—a classic two-pronged example about the foibles of scope, which anyone tinkering with advanced scripts will have run into at some point. Boiled way down, we have two similar pieces of code, starting with the left, the article informs us, <q>…such a “bound reference” requires us to wrap the original method within an anonymous function, which … results in two method calls: our anonymous wrapper, and the original method.</q> That is true, <code>bind</code> could be seen as a wrapper function, deceptively adding an extra call, but that was by choice, not necessity, as will be illustrated next.</p>
   </section>
-  <section class="comparison container">
-    <pre class="prettyprint half float left">
+  <section class="split whitepaper">
+    <pre class="prettyprint linenums" title="With binding">
       <!-- preview views/javascript/examples/binding-situations.js 2..7 -->
     </pre>
-    <pre class="prettyprint half float left">
+    <pre class="prettyprint linenums" title="With 'that'">
       <!-- preview views/javascript/examples/binding-situations.js 11..17 -->
     </pre>
   </section>
-  <p class="indented">Now let’s look at the improved solution on the right. <q>This code uses a language feature called <q>lexical closure</q></q> and it is an improvement because <q>…it would be far less than the cost of an extra function call at every turn of the loop</q>. More or less efficient, I really don’t know, but the extra function call referred to is from <code>.bind(this)</code>, and from the perspective of when it was written (2008), that might be true, but we can make them equals at the very least. The author mentions how jQuery implements this philosophic principle on scope resolution for good reason, but I’m going to try and demonstrate a counterpoint that even if not preferred, should be understood as fully as possible, which is: <strong>if you are using <code>this</code>, keep <code>this</code> relevant.</strong></p>
-  <p>I’m going to be a dilettante and announce that <code>Function.bind</code> was a brilliant addition to ES5, and for the frameworks implementing it sooner as a prototypal method (Prototype, MooTools), bless your hearts for showing me the way. The code below shows my version of how I’d use bind (then and now) to counterpoint the example code earlier. Just read it to yourself 5 times, and if it makes less sense than either of the solutions posed <span data-layout="above">At left</span>, I’ll concede. If curiosity starts to build about this 'bind' stuff being quite valuable, continue please.</p>
-  <section class="comparison container">
-    <pre class="prettyprint half float left">
-      <!-- preview views/javascript/examples/binding-situations.js 11..17 -->
-    </pre>
-    <pre class="prettyprint half float left">
+  <p class="margins">Glance below et voilà—look at the modified <code>bind</code> on the left and it now has an equivalent number of function calls. The original version (<abbr title="right hand side">RHS</abbr>), the author mentions how jQuery implements this philosophic principle on scope resolution for good reason; I will counterpoint that even if not preferred, I have a very different philosophy: <strong>if you are using <code>this</code>, keep it relevant.</strong></p>
+  
+  <section class="split whitepaper">
+    <pre class="prettyprint linenums" title="Refactored bind Version">
       <!-- preview views/javascript/examples/binding-situations.js 21..23 -->
     </pre>
+    <pre class="prettyprint linenums" title="that version from previously">
+      <!-- preview views/javascript/examples/binding-situations.js 11..17 -->
+    </pre>
   </section>
-  <h2>Making examples is hard</h2>
-  <p>Now, for a beginner, the article presented things that you would not pick up on, and I’ll pick at this because it does favor one solution over another in terms of performance, and in that spirit, it should be pointed out that for the example given, both <em>lexical closure</em> and <code>bind</code> are unnecessary. In fact, my counterpoint to the previous example almost elucidates that. Going backwards a few steps, if you start to get scope and the scope resolution of <code>this</code>, you can take shortcuts. Let’s look at the example that is correct but in the context of talking about scope but misleads you in the actual optimization. From the article, the only reason we need <em>lexical closure</em> or <em>binding</em> is because of that pesky <em>anonymous function</em> in our <code>each</code> method: <q>This code will trigger an error stating that the <code>markItemAsProcessed</code> method is undefined</q><sup><a href="#_1">1</a></sup>. That code is below on the left.</p>
-  <section class="comparison container" title="Given Example">
-    <pre class="prettyprint half float left">
+  <h2>Examples are usually weird</h2>
+  <p>I’m going to be a dilettante and announce that <code>Function.bind</code> was a brilliant addition to <abbr title="ecmascript version 5">ES5</abbr>, and this using frameworks that employed a prototypal method for <code>bind</code> (Prototype, MooTools), likely adopted this philosophy of doing business. Add to that most examples needed to illustrate some obscure point largely leave the reader with a gap in understanding the difference between functionality and author preference.</p>
+  <p>Back to the article I read, for a beginner there are too many things to overlook, and I’ll pick at it a bit more because it does favor one solution over another (in terms of performance) and everybody always wants to be the best so that comes across as gospel. I am going to argue philosophy, because that seems just as interesting to me. Examine the following:</p>
+  <section class="split whitepaper">
+    <pre class="prettyprint linenums" title="markitem... will be undefined">
       this.items.forEach(function(item) {
         // typeError – dunno what `this` is..
         this.markItemAsProcessed(item);
       });
     </pre>
-    <pre class="prettyprint half float left" title="Refactored Example">
-      // `this` references are in same scope here
+    <pre class="prettyprint linenums" title="callback doesn't have to be anonymous">
+      // `this` scope now resolves to one/same place
       this.items.forEach(this.markItemAsProcessed);
     </pre>
   </section>
-  <p>Now, we fixed the typeError that immediately with the example on the right. Also, by way of the author’s (probably true) reasoning, it will be <em>even more efficient</em> because it makes one less function call. Now, I’m not doing this to point out egg on someone’s face, just giving the introduction to this notion: in JavaScript we pass functions around like they are contagious, and we can manipulate them long after they are declared, giving us something we’ll casually call <q>dynamic scope</q>. The ongoing goal of this lecture is to highlight situations where you can use either closure (lexical) or binding (dynamic) scope and getting the difference betwixt the two. Programming is expressive and interesting, and the fact that JavaScript offers so many techniques makes it interesting—albeit a tad frustrating at first.</p>
-  <h2>Functions beget functions</h2>
-  <p>What is <code>Array.forEach</code> anyway? First, it takes a function, any function – named or anonymous – as the first argument and calls that function for every index of the array. Glancing at the homemade version below reminds us that <code>Array.forEach</code> is itself a function, thus, <em>it has it’s own scope</em>, and because of that – and for for sake of simplicity – let’s just say that our callback will not have the scope that it had where <em>we wrote it</em> (lexical). Moreover, the brain and eyeballs we use to scan our program’s source code will no doubt have lost track of <q>lexical scope</q> by this point, so we stare cross-eyed at the nonsense in front of us, convinced that we messed something up. Rather than do that over and over, let’s right now make a pithy rule of thumb called the <strong>callback principle</strong>: functions, anonymous or otherwise, passed as arguments to other functions will have their scope mangled; it will elude you; it will trick your eyeballs; predict it happening before it foils you.</p>
-  <div class="container">
-    <p class="____ m float left note">Do note, in the adjacent example, our actual Array (ie. [1,2,3]) is <code>this</code> from <code>forEach</code>'s perspective. That makes sense when tracing back to who had responsibility for declaring <code>forEach</code>. If you’re fuzzy about passing functions vs. executing them, revist the <a href="lecture/index/programming/functions">function lecture</a></p>
-    <pre class="_____ float left prettyprint">
+  <p>I say making examples is super hard because a beginner might not see that it's just an example of using a  <em>closure</em> vs. <em>bind</em> and not a very good solution to an actual problem. In fact, my counterpoint to the previous example almost elucidates that. Going backwards a few steps, as you get a feel for scope resolution, you take bigger shortcuts. From the article, the only reason we need to mess with a closure/binding is because of the <strong>anonymous function</strong> in our <code>each</code> method. Reminder, in JavaScript (pre <abbr title="ecmascript version 6">es6</abbr> anyway), functions change scope. Thus the <abbr title="left hand side">lhs</abbr> triggers an error that <code>markItemAsProcessed</code> is undefined because another function begets a change of scope begets a change of <code>this</code>, but we never needed it in the first place, and this is no small thing—I think a majority of people writing JavaScript do not see that—maybe they are <mark>uncomfortable seeing functions without adjacent parentheses?</mark></p>
+  <p>Leave off the parentheses and you can give a function to another function. With <code>bind</code>, JavaScript functions manipulate themselves into different functions and you can do intriguing things like <a href="https://en.wikipedia.org/wiki/Currying">currying</a> and <a href="https://en.wikipedia.org/wiki/Partial_application">partial application</a> which are oddly fun mind-benders.</p>
+    <h2>Functions beget functions: Way down to brass tacks</h2>
+  <p>Just what is <code>Array.forEach</code> anyway? It is a function itself, and it takes a function—declared or anonymous—as the first argument. That <em>callback</em> function is called for every index the array and the value is passed to that function. Glancing at the homemade version below reminds us that <code>Array.forEach</code> is itself a function, thus, <em>it has it’s own scope</em>, and because of that – and for for sake of simplicity – let’s just say that our callback will not have the scope that it had where <em>we wrote it</em> (lexical). Moreover, the brain and eyeballs we use to scan our program’s source code will no doubt have lost track of <q>lexical scope</q> by this point, so we stare cross-eyed at the nonsense in front of us, convinced that we messed something up. Rather than do that over and over, let’s right now make a pithy rule of thumb called the <strong>callback principle</strong>: functions, anonymous or otherwise, passed as arguments to other functions will have their scope mangled; it will elude you; it will trick your eyeballs; predict it happening before it foils you.</p>
+  <div class="explain whitepaper">
+    <p class="note">Conceptually, we want to sing the <i>99 bottles of beer on the wall</i>—yes, better suited for a traditional loop—so mentally picture an array filled with actual bottle objects to get in the mood.</p>
+    <pre class="prettyprint">
+      <!-- preview views/javascript/examples/binding-situations.js 114..122 -->
+    </pre>
+  </div>
+  
+  <div class="explain whitepaper">
+    
+    <pre class="prettyprint">
       <!-- preview views/javascript/examples/binding-situations.js 26..32 -->
     </pre>
   </div>
+  <p>Messing with the identity (<code>this</code>) of a function gives us something we’ll casually call <q>dynamic scope</q>. The ongoing goal of this essay is to highlight situations where you can use either closure (lexical) or binding (dynamic) scope and getting the difference betwixt the two. Programming is expressive and interesting, and the fact that JavaScript offers so many techniques makes it interesting—albeit a tad frustrating at first.</p>
+  
+  
   <h2>Beginner languages and <em>Lambda Abstractions</em></h2>
-  <p>JavaScript is frustrating for many people, and I think it starts with the fact that instead of a slow and steady introduction to anonymous functions and closures – which are a bit more niche in other popular languages – one is thrust into that way of thinking right away through necessity of important JavaScript functions like <code>setTimeout</code> and <code>addEventListener</code>. Further, <code>this</code> does not work as straight-forward as it does in class-based definitions; it can <em>and must</em> be manipulated to implement object-oriented JavaScript. <strong>Every scope has a <code>this</code> bound to some object; every function creates its own scope, and if not told otherwise, figures out what <code>this</code> represents</strong> based on where it was called from.</p>
-  <h2>Elegance, is a virtue</h2>
+  <p>JavaScript is frustrating for many people, and I think it starts with the fact that instead of a slow and steady introduction to anonymous functions and closures – which are a bit more niche in other popular languages – one is thrust into that way of thinking right away through necessity of important JavaScript functions like <code>setTimeout</code> and <code>addEventListener</code>. Further, compared to tradition <abbr title="object oriented">oo</abbr> languages, <code>this</code> this works quite different from class-based definitions.  it can <em>and must</em> be manipulated to implement object-oriented JavaScript. <strong>Every scope has a <code>this</code> bound to some object; every function creates its own scope, and if not told otherwise, figures out what <code>this</code> represents</strong> based on where it was called from.</p>
+  <h3>Elegance, is a virtue</h3>
   <p>In the examples to follow, we will assume that scope resolution is quite necessary. Referencing the code below, note that in the body of <code>markItemAsProcessed</code>, it requires access to its containing object via <code>this</code>; the object that defines and implements the <code>items</code> property and the <code>processItems</code> property (a function). Since we know what this object is, we should go ahead and use <code>this</code> and keep things <a href="https://en.wikipedia.org/wiki/Loose_coupling">loosly coupled</a>. In their entirety, these examples employ a list of items, and have a method that can 'process' them all at once, which in this instance, is pushing them into an <code>Array</code> called 'processed'. Here are two techniques, one using scoped variables, and the other binding <code>this</code>.</p>
-  <section class="explain container">
-    <pre class="prettyprint half float left">
-      <!-- preview views/javascript/examples/binding-situations.js 39..50 -->
-    </pre>
-    <aside class="half float left">
+  <section class="explain whitepaper">
+    <aside>
       <h4>Design thinking: Using a closure (lexical)</h4>
       <ol>
         <li>Iterate through items using a <code class="A">Array.forEach</code> passing an <span class="B">anonymous function</span> as the callback argument</li>
@@ -68,12 +77,12 @@
         <li>Call <code>that.markItemAsProcessed</code> with the item argument from the outer anonymous callback function.</li>
       </ol>
     </aside>
-  </section>
-  <section class="explain container">
-    <pre class="prettyprint half float left">
-      <!-- preview views/javascript/examples/binding-situations.js 67..75 -->
+    <pre class="prettyprint" style="min-width:30%">
+      <!-- preview views/javascript/examples/binding-situations.js 39..50 -->
     </pre>
-    <aside class="half float left">
+  </section>
+  <section class="explain whitepaper">
+    <aside>
       <h4>Design thinking: Using bound function (dynamic)</h4>
       <ol>
         <li>Iterate through items using <code>Array.forEach</code> and the instance method <code>markItemAsProcessed</code> as the callback argument</li>
@@ -82,19 +91,21 @@
         <li>Because of [1], explicitely bind <code>this</code> to <code>this.markItemAsProcessed</code></li>
       </ol>
     </aside>
+    <pre class="prettyprint" style="min-width:30%">
+      <!-- preview views/javascript/examples/binding-situations.js 67..75 -->
+    </pre>
   </section>
   <p>Introducing <code>var that = this;</code> doesn’t do anything bad, but it <em>doesn’t</em> do something that the second version does, and something that I consider quite beneficial. First, it is not that there is one less step in the second example – that is not an advantage, nor should concision be a goal when writing elegant or maintainable code. I prefer the design thinking of the second one because of the introduction and consideration of [1] - which never has a clear spot to introduce itself in the first example – at least it didn’t to me. I was more focused on examining the scope/closure of my <em>anonymous function</em> than thinking about the context of <code>this</code> in my <em>entire object</em>.</p>
-  <p>Further, swapping around <code><strong>that</strong>.doingSomething</code> is a bit of linguistic subterfuge – I prefer  to stay focused on <code><strong>this</strong>.doingSomething</code>. I think a reference to <code>this</code> is something you keep track of wholistically, whereas variable scope has a more myopic role; in fact you literally need to see where things in the code are defined to put the pieces back together (by definiton of <em>lexical scope</em>). Now in a more opinionated fashion, using variables as references to <code>this</code> messes with my intuition regarding demonstrative pronouns, and choosing another variable name is all the same to me: <code><strong>(this|obj|super|whatever)</strong>.doingSomething</code> can’t trump the pristine focus of <code><strong>this</strong>.doingSomething</code> – as long as I stay mindful of what <code>this</code> is.</p>
+  <p>Further, swapping around <code><strong>that</strong>.doingSomething</code> is a bit of linguistic subterfuge – I prefer  to stay focused on <code><strong>this</strong>.doingSomething</code>. I think a reference to <code>this</code> is something you keep track of wholistically, whereas variable scope has a more myopic role; you literally need to see where things in the code are defined to put the pieces back together (by definiton of <em>lexical scope</em>). Now in a more opinionated fashion, using variables as references to <code>this</code> messes with my intuition regarding demonstrative pronouns, and choosing another variable name is all the same to me: <code><strong>(this|obj|super|whatever)</strong>.doingSomething</code> can’t trump the pristine focus of <code><strong>this</strong>.doingSomething</code> – as long as I stay mindful of what <code>this</code> is.</p>
   <h2>A working version</h2>
   <p>Below there are two exampleo of some code doing the exact same things. Output <code>item.processed === ['a', 'b', 'c', 'a']</code> and have the same interface. Output available in console.</p>
-  <div class="container">
-    <pre class="prettyprint half float left">
+  <div class="split whitepaper">
+    <pre class="prettyprint linenums" title="scoping 'that'">
       <!-- preview views/javascript/examples/binding-situations.js 34..59 -->
     </pre>
-    <pre class="prettyprint half float left">
+    <pre class="prettyprint linenums" title="binding 'this'">
       <!-- preview views/javascript/examples/binding-situations.js 62..86 -->
     </pre>
-    <hr class="clear"/>
   </div>
   <p>My last note, even though both examples work, in the non-bind way, I got there by trial and error because I didn’t expect it to work the way it is written (ie, I was shoving more references to <code>that</code> in than I needed). This is a full concession to perhaps my weakness in understanding scope, but after calling <code>that.markItemAsProcessed</code> and then looking back into the actual <code>markItemAsProcessed</code> function definiton, I’m always a bit bemused to understand how it knows what <code>this</code> references. Then I look at it for awhile, and go "ohhhh! right…". Then I repeat my confusion a little later.</p>
   <h2>Regardless of technique</h2>
@@ -104,11 +115,11 @@
     <!-- preview views/javascript/examples/binding-situations.js 109..110 -->
   </pre>
   <p>Further into the weeds, timeouts are mind-benders when it comets to scope in general, and we almost always find it convenient (myself included) to create a function just to call <em>one</em> other function. Example of the traditional method below left, and by binding <code>DOMTokenList.add</code> as our function on the right. Assume a scoped variable called <code>$span</code> referencing an <code>Element</code> for both examples. <code>Element</code> has a prototype of <code>Node</code>, and it’s necessary to get a feel for prototypes when going hunting for functions we want to steal.</p>
-  <section class="comparison container">
-    <pre class="prettyprint half float left">
+  <section class="split whitepaper">
+    <pre class="prettyprint linenums">
       <!-- preview views/javascript/examples/binding-situations.js 96..98 -->
     </pre>
-    <pre class="prettyprint half float left">
+    <pre class="prettyprint linenums">
       <!-- preview views/javascript/examples/binding-situations.js 89..93 -->
     </pre>
   </section>

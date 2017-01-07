@@ -52,10 +52,11 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] The above replacement should scan CSS files for url(!http) resources as well.
 - [ ] Add a way to embed specific sections of articles in outlines
 - [ ] Add a tldr; to articles;
-- [ ] Set up glossary/faq controller
+- [x] Set up glossary/faq controller
 - [ ] Add font/size, contrast, and typeface preferences
 - [x] Auto generate link to edit file in textmate
-- [ ] Loops as 99 bottles of beer on the wall
+- [ ] Flashcards
+- [x] hovering a paragraph writes out abbreviations
 
 ** What about an ajax callback that returns an intention. Like, if true, check this box. I suppose this is a promise maybe? That means investigate promises.
 
@@ -69,6 +70,9 @@ For student-graded quizzes, create an algorithm that as soon as a student gets a
 - [ ] The slide in message when user scrolls y amount of screen
 - [ ] Fix a JSON object riddled with errors (use cuepoints object)
 - [ ] Design a page to be scrolled as the interactive element
+- [ ] Game of Life on Scroll instead of timer
+- [ ] Do a lecture on mapping for ASWM
+- [ ] Loops as 99 bottles of beer on the wall
 
 
 ## Warm-ups

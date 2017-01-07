@@ -41,7 +41,7 @@ namespace models;
           if (!$doc->documentElement) continue;
           $xpath = new \DOMXpath($doc);
           $name  = $file->getBasename('.html');
-          $title = $xpath->query('/*/h1|/*/h2')->item(0)->nodeValue ?? $name;
+          $title = $xpath->query('/*/header/h1|/h1|/*/h2')->item(0)->nodeValue ?? $name;
           // get h2 later
           $essays[] = [
             'path'  => "{$colname}/{$name}",
