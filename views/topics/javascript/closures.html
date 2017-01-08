@@ -42,25 +42,34 @@
       this.items.forEach(this.markItemAsProcessed);
     </pre>
   </section>
-  <p>I say making examples is super hard because a beginner might not see that it's just an example of using a  <em>closure</em> vs. <em>bind</em> and not a very good solution to an actual problem. In fact, my counterpoint to the previous example almost elucidates that. Going backwards a few steps, as you get a feel for scope resolution, you take bigger shortcuts. From the article, the only reason we need to mess with a closure/binding is because of the <strong>anonymous function</strong> in our <code>each</code> method. Reminder, in JavaScript (pre <abbr title="ecmascript version 6">es6</abbr> anyway), functions change scope. Thus the <abbr title="left hand side">lhs</abbr> triggers an error that <code>markItemAsProcessed</code> is undefined because another function begets a change of scope begets a change of <code>this</code>, but we never needed it in the first place, and this is no small thing—I think a majority of people writing JavaScript do not see that—maybe they are <mark>uncomfortable seeing functions without adjacent parentheses?</mark></p>
-  <p>Leave off the parentheses and you can give a function to another function. With <code>bind</code>, JavaScript functions manipulate themselves into different functions and you can do intriguing things like <a href="https://en.wikipedia.org/wiki/Currying">currying</a> and <a href="https://en.wikipedia.org/wiki/Partial_application">partial application</a> which are oddly fun mind-benders.</p>
-    <h2>Functions beget functions: Way down to brass tacks</h2>
-  <p>Just what is <code>Array.forEach</code> anyway? It is a function itself, and it takes a function—declared or anonymous—as the first argument. That <em>callback</em> function is called for every index the array and the value is passed to that function. Glancing at the homemade version below reminds us that <code>Array.forEach</code> is itself a function, thus, <em>it has it’s own scope</em>, and because of that – and for for sake of simplicity – let’s just say that our callback will not have the scope that it had where <em>we wrote it</em> (lexical). Moreover, the brain and eyeballs we use to scan our program’s source code will no doubt have lost track of <q>lexical scope</q> by this point, so we stare cross-eyed at the nonsense in front of us, convinced that we messed something up. Rather than do that over and over, let’s right now make a pithy rule of thumb called the <strong>callback principle</strong>: functions, anonymous or otherwise, passed as arguments to other functions will have their scope mangled; it will elude you; it will trick your eyeballs; predict it happening before it foils you.</p>
-  <div class="explain whitepaper">
-    <p class="note">Conceptually, we want to sing the <i>99 bottles of beer on the wall</i>—yes, better suited for a traditional loop—so mentally picture an array filled with actual bottle objects to get in the mood.</p>
-    <pre class="prettyprint">
-      <!-- preview views/javascript/examples/binding-situations.js 114..122 -->
-    </pre>
-  </div>
-  
-  <div class="explain whitepaper">
+  <p>I say making examples is super hard because a beginner might not see that it's just an example of using a    <em>closure</em> vs. <em>bind</em> and not a very good solution to an actual problem. In fact, my counterpoint to the previous example almost elucidates that. Going backwards a few steps, as you get a feel for scope resolution, you take bigger shortcuts. From the article, the only reason we need to mess with a closure/binding is because of the <strong>anonymous function</strong> in our <code>each</code> method. Reminder, in JavaScript (pre <abbr title="ecmascript version 6">es6</abbr> anyway), functions do and are used to change scope. Thus the <abbr title="left hand side">lhs</abbr> triggers an error that <code>markItemAsProcessed</code> is undefined that function changed the scope and changed the <code>this</code>. But wait! We never needed it in the first place, and this is no small thing—I think a majority of people writing JavaScript do not see that—maybe they are <mark>uncomfortable seeing functions without adjacent parentheses?</mark></p>
+  <p>Leave off the parentheses and you can give a function to another function because it is yet-to-be-called, ahem,  <em>callback</em>. You don't really need to bind all that often, but it's an awesome thing to take advantage of every now and then. With <code>bind</code>, JavaScript functions are basically manipulating themselves into different functions—and from there you can do intriguing things like <a href="https://en.wikipedia.org/wiki/Currying">currying</a> and <a href="https://en.wikipedia.org/wiki/Partial_application">partial application</a> which are oddly fun mind-benders.</p>
     
-    <pre class="prettyprint">
-      <!-- preview views/javascript/examples/binding-situations.js 26..32 -->
-    </pre>
-  </div>
-  <p>Messing with the identity (<code>this</code>) of a function gives us something we’ll casually call <q>dynamic scope</q>. The ongoing goal of this essay is to highlight situations where you can use either closure (lexical) or binding (dynamic) scope and getting the difference betwixt the two. Programming is expressive and interesting, and the fact that JavaScript offers so many techniques makes it interesting—albeit a tad frustrating at first.</p>
+    
+  <section>
+      <h2>Functions beget functions: Way down to brass tacks</h2>
+      <p><code>Array.forEach</code> is actually just a clever shortcut for folks who prefer the functional way of doing things and I think it is worth understanding fully. It is a function itself, and it takes a function—declared or anonymous—as the first argument. That <em>callback</em> function is called for every index the array and the value is passed to that function. That foils many, so lets unwind the process a bit further and be much more inefficient with things.</p>
+
+    <div class="explain whitepaper">
+      <aside class="note">
+        <p>Conceptually, we want to sing the <i>99 bottles of beer on the wall</i>—using only procedural functions. Step 1, make a function to sing the song, step two, run that function 99 times, until verse is 0 and we have no more bottles on the wall.</p>
+        <hr class="ruled"/>
+        <p>You may note, why not just use a loop. Sure, that would be better, but that's not the point here. I am only interested in functions and bigger ideas will come along soon enough.</p>
+      </aside>
+      <pre class="prettyprint">
+        <!-- review views/javascript/examples/binding-situations.js beer song -->
+      </pre>
+    </div>
   
+    <div class="explain whitepaper">
+    
+      <pre class="prettyprint">
+        <!-- preview views/javascript/examples/binding-situations.js 26..32 -->
+      </pre>
+    </div>
+    <p>Glancing at the homemade version below reminds us that <code>Array.forEach</code> is itself a function, thus, <em>it has it’s own scope</em>, and because of that – and for for sake of simplicity – let’s just say that our callback will not have the scope that it had where <em>we wrote it</em> (lexical). Moreover, the brain and eyeballs we use to scan our program’s source code will no doubt have lost track of <q>lexical scope</q> by this point, so we stare cross-eyed at the nonsense in front of us, convinced that we messed something up. Rather than do that over and over, let’s right now make a pithy rule of thumb called the <strong>callback principle</strong>: functions, anonymous or otherwise, passed as arguments to other functions will have their scope mangled; it will elude you; it will trick your eyeballs; predict it happening before it foils you.</p>
+    <p>Messing with the identity (<code>this</code>) of a function gives us something we’ll casually call <q>dynamic scope</q>. The ongoing goal of this essay is to highlight situations where you can use either closure (lexical) or binding (dynamic) scope and getting the difference betwixt the two. Programming is expressive and interesting, and the fact that JavaScript offers so many techniques makes it interesting—albeit a tad frustrating at first.</p>
+  </section>
   
   <h2>Beginner languages and <em>Lambda Abstractions</em></h2>
   <p>JavaScript is frustrating for many people, and I think it starts with the fact that instead of a slow and steady introduction to anonymous functions and closures – which are a bit more niche in other popular languages – one is thrust into that way of thinking right away through necessity of important JavaScript functions like <code>setTimeout</code> and <code>addEventListener</code>. Further, compared to tradition <abbr title="object oriented">oo</abbr> languages, <code>this</code> this works quite different from class-based definitions.  it can <em>and must</em> be manipulated to implement object-oriented JavaScript. <strong>Every scope has a <code>this</code> bound to some object; every function creates its own scope, and if not told otherwise, figures out what <code>this</code> represents</strong> based on where it was called from.</p>
@@ -142,5 +151,4 @@
       <li id="_1"><sup>1</sup><a href="http://alistapart.com/article/getoutbindingsituations#snippet8">Snippet</a></li>
     </ul>
   </footer>
-  <script type="text/javascript">bloc.embed('javascript/examples/binding-situations.js');</script>
 </article>

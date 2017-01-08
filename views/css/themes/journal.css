@@ -1,6 +1,9 @@
+:root {
+  --sans: "Avenir Next", "HelveticaNeue-Light","Helvetica Neue", Helvetica;
+}
 html {background-color: hsl(45, 30%, 97.5%)}
 body {
-  font: 400 0.625em/250% "Avenir Next", "HelveticaNeue-Light","Helvetica Neue",Helvetica;
+  font: 400 0.625em/250% var(--sans);
   padding: 0.25em 0 2em;
   border-width: 1vh 0 0;
   box-sizing: border-box;
@@ -904,7 +907,7 @@ h4.vertical {
   clear: left;
   padding:0.75em 1.5em;
   margin: 0.25em 1.5em 0.25em 0;
-  font-family: 'Avenir Next';
+  font-family: var(--sans);
   text-transform: uppercase;
   box-shadow: inset -0.25em 0 0.25em -0.125em rgba(0,0,0,0.1);
   float:left;
@@ -935,22 +938,24 @@ h4.vertical + p:first-line {
 }
 
 abbr[title]:after {
+  font-family: var(--sans);
   font-variant: normal;
   content: attr(title);
-  padding: 0.25em 1em;
-  border-radius:1em 1em 1em 0;
+  padding: 0.5em 1em;
   position: absolute;
-  transform: translate(-8em, 0) rotate(0) scale(0);
-  background-color: rgba(255,255,255,0.9);
-  border:1px solid #EEE;
-  color:#000;
-  box-shadow: 0.125em -0.125em 0.5em rgba(0,0,0,0.125);
-  transition: all 0.5s;
-  opacity:0;
-  border:1px solid #ddd;
+  transform: translate(-65%, 0) rotate(0) scale(0);
+  background-color: rgba(245,245,245,0.9);
+  color: #333;
+  box-shadow: -0.25em 1em 1em 0em rgba(0,0,0,0.2);
+  transition: transform 0.35s, opacity 0.25s 0.125s;
+  opacity: 0;
+  font-size: 85%;
+  border-bottom: 2px solid rgba(0,0,0,0.5);
+  text-transform: capitalize;
 }
 
+p:hover abbr[title] {color:red;}
 p:hover abbr[title]:after {
   opacity: 1;
-  transform: translate(-1em, -2.5em) rotate(-10deg) scale(1);
+  transform: translate(-65%, -100%) rotate(0) scale(1);
 }

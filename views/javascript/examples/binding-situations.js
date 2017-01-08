@@ -109,14 +109,19 @@ var examples = {
     // Array has a forEach method, let's poach it with `call`.
     [].forEach.call(elems, callback); // works!
   }
+};
+
+/* beer song */
+function sing(index) {
+  // index bottles of beer o.t.w,
+  // index bottles of beer...
 }
 
-function sing(bottle) {
-  // 🎼
-}
-
-var bottles = [99, 98, 97, 96]; //...and so on
+var bottles = [99, 98, 97, 96, 95, 94 /* ... */]; 
 var verse   = bottles.length;
 sing(bottles[verse - 1]);
 sing(bottles[verse - 2]);
 sing(bottles[verse - 3]);
+// ...
+sing(bottles[verse - 99]);
+/* end beer song */
