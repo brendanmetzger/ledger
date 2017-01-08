@@ -1,5 +1,7 @@
+<div>
 <article id="variable-scope" data-classification="">
   <h2>Variable Scope</h2>
+  <p class="intro">Recall for a moment, the beloved chestnut <q>Whatever happens in Vegas, stays in vegas?</q>. Now behold: Whatever variables are declared in a particular scope stay in that scope. Let’s explore.</p>
   <p>We can stylistically determine how something looks (as will as linguistically add meaning) through the hierarchy and structure of our outline, ie., a <code class="element">h2</code> is most important to its containing <code class="element">section</code> or <code class="element">article</code> element. We can do a similar thing our program code. Recalling <a href="http://eloquentjavascript.net/03_functions.html">Chapter 3</a> of <em>Eloquent JavaScript</em>, I mentioned that the material was a bit terse, so now we'll look a little closer.</p>
   <p>If I declare a function, it is not much different than declaring a variable. I pick out a name, and that name, gives me a way to assign and store some <em>value</em> for later use: strings, numbers, booleans, nulls, undefined, and objects (including arrays and functions). Where that variable declaration happens and how we gain access to it is the concept <strong>variable scope</strong>.</p>
 
@@ -39,3 +41,46 @@
     </pre>
   </div>
 </article>
+
+
+<article>
+  
+  <section>
+    <h2>Lexical Scope</h2>
+    <p class="intro">Recall for a moment, the beloved chestnut <q>Whatever happens in Vegas, stays in vegas?</q>. Now behold: Whatever variables are declared in a particular scope stay in that scope. Let’s explore.</p>
+    <div class="dropcap margins" style="opacity:0.1">
+      <p class="______ m justified">Imagine an all-seeing, all knowing presence, out in the ether, beyond the multiverse. A presense so powerful it knows of the galaxies, stars, planets, corporate charters, sports teams, fauna, flora, fungi and bacteria it conjured into existence. It knows about them, how to talk to them, how to ask them things. Now imagine a universe precisely the opposite; <em>reverse the order</em> starting with the bacteria and ending with the stars, galaxies and the divine. This is the universe of <strong>lexical scope</strong>. To continue our metaphor, the bacteria, knows of itself and all the things that came before. It knows about all the things that make up its existence <em>and it knows how to talk to them</em>. Ending with the stars, galaxies, and the deity, it has all the answers. God, in this heretic metaphor, knows only what it sees around itself.</p>
+      <p class="_____ mm justified">Now, before you we get too excited about our incredible godlike bacterium, let’s remember a major caveat of monotheism: gods don’t seem to care (or know) much about other gods, and bacteria is no different. The bacteria, all knowing as it believes itself to be, doesn’t know anything about the other bacteria it lives among, sharing it’s world</p>
+      <p class="____ mmm justified">I’ll wrap it up even though we're delicately close to a philosophical breakthrough, let’s end the metaphor and say that scope is the nested structure of program. From deep within, scope means an area of a program that has access to the elements that were declared before, but not necessarily elements declared adjacent.</p>
+    </div>
+    
+  </section>
+  
+
+
+  <section>
+    <h3>Global Scope</h3>
+    <p>Everything we do in Javascript has a scope by default, the outermost called the <strong>global scope</strong>. If you create a new script, embedded or linked and start declaring variables, making expressions and statements, you are in the global scope. When we start declaring types such as <code>objects</code> and <code>functions</code> then variable declarations and expressions within the object and function, variables are local to that object; this is <strong>local scope</strong></p>
+    <h3>Local Scope</h3>
+
+    <h3>Intermediate</h3>
+    <p>Javascript does not have block level scope – or at least not yet. Generally block-level scope means that wherever you have your <strong>{curly braces}</strong> you can declare a scope - like if/else conditions</p>
+    <h3>The <code>var</code> keyword</h3>
+
+    <h3>Read</h3>
+    <a href="http://eloquentjavascript.net/03_functions.html#h_u4j2OhpYkg">Functions &amp; Scopes</a>
+  </section>
+
+
+  <h2>call and apply</h2>
+  <p>These let you execute a function and manipulate it getting it to have an identity crisis while it executes.</p>
+  <h2>bind</h2>
+  <p>lets you brainwash a function into changing it’s identity. You execute it later on, and it is still brainwashed.</p>
+  <footer>
+    <ul>
+      <li><a href="http://hangar.runway7.net/javascript/guide">The Javascript Guide to Objects, Functions, Scope, Prototypes and Closures</a></li>
+    </ul>
+  </footer>
+</article>
+
+</div>

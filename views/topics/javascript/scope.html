@@ -1,16 +1,38 @@
 <article>
-
-  <header>
-    <h4 class="bottom ruled heart"> No. 0004</h4>
-    <h1 class="massive">Lexical Scope</h1>
-    <p class="intro _______">Recall for a moment, the beloved chestnut <q>Whatever happens in Vegas, stays in vegas?</q>. Now behold: Whatever variables are declared in a particular scope stay in that scope. Let’s explore.</p>
-  </header>
-
-  <section class="dropcap margins">
-    <p class="______ m justified">Imagine an all-seeing, all knowing presense, out in the ether, beyond the multiverse. A presense so powerful it knows of the galaxies, stars, planets, corporate charters, sports teams, fauna, flora, fungi and bacteria it conjured into existence. It knows about them, how to talk to them, how to ask them things. Now imagine a universe precisely the opposite; <em>reverse the order</em> starting with the bacteria and ending with the stars, galaxies and the divine. This is the universe of <strong>lexical scope</strong>. To continue our metaphore, the bacteria, knows of itself and all the things that came before. It knows about all the things that make up its existence <em>and it knows how to talk to them</em>. Ending with the stars, galaxies, and the deity, it has all the answers. God, in this heretic metaphor, knows as much as the bacteria in our world.</p>
-    <p class="_____ mm justified">Now, before you we get too excited about our incredible godlike bacterium, let’s remember a major caveat of monotheism: gods don’t seem to care (or know) much about other gods, and bacteria is no different. The bacteria, all knowing as it believes itself to be, doesn’t know anything about the other bacteria it lives among, sharing it’s world</p>
-    <p class="____ mmm justified">I’ll wrap it up even though we're delicately close to a philosophical breakthrough, let’s end the metaphor and say that scope is the nested stucture of program. From deep within, scope means an area of a program that has access to the elements that were declared before, but not necessarily elements declared adjacent.</p>
+  
+  <section>
+    <h2>Lexical Scope</h2>
+    <p class="intro">Recall for a moment, the beloved chestnut <q>Whatever happens in Vegas, stays in vegas?</q>. Now behold: Whatever variables are declared in a particular scope stay in that scope. Let’s explore.</p>
+    <div class="dropcap margins" style="opacity:0.1">
+      <p class="______ m justified">Imagine an all-seeing, all knowing presence, out in the ether, beyond the multiverse. A presense so powerful it knows of the galaxies, stars, planets, corporate charters, sports teams, fauna, flora, fungi and bacteria it conjured into existence. It knows about them, how to talk to them, how to ask them things. Now imagine a universe precisely the opposite; <em>reverse the order</em> starting with the bacteria and ending with the stars, galaxies and the divine. This is the universe of <strong>lexical scope</strong>. To continue our metaphor, the bacteria, knows of itself and all the things that came before. It knows about all the things that make up its existence <em>and it knows how to talk to them</em>. Ending with the stars, galaxies, and the deity, it has all the answers. God, in this heretic metaphor, knows only what it sees around itself.</p>
+      <p class="_____ mm justified">Now, before you we get too excited about our incredible godlike bacterium, let’s remember a major caveat of monotheism: gods don’t seem to care (or know) much about other gods, and bacteria is no different. The bacteria, all knowing as it believes itself to be, doesn’t know anything about the other bacteria it lives among, sharing it’s world</p>
+      <p class="____ mmm justified">I’ll wrap it up even though we're delicately close to a philosophical breakthrough, let’s end the metaphor and say that scope is the nested structure of program. From deep within, scope means an area of a program that has access to the elements that were declared before, but not necessarily elements declared adjacent.</p>
+    </div>
+    
   </section>
+  <section>
+    <h2>Closure</h2>
+    <p><a href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">Closure</a> is one of these things that takes awhile to <a href="https://en.wikipedia.org/wiki/Grok">grok</a> but once you do, it isn’t nearly as profound as it seems.</p>
+    <ol class="m t">
+      <li>Any programming language will have rules that define scope.</li>
+      <li>Scope is simply where variables are declared and what parts of a program can access them.</li>
+      <li>A program always introduces something into a <strong>global scope</strong>. It is generally advised to keep this to a minimum<sup>*</sup></li>
+      <li>Arguments are variables; thus, arguments are scoped into the function they live in.</li>
+      <li>Languages with first-class functions have closures.</li>
+    </ol>
+    <p class="note"><sup>*</sup> Frameworks are careful about polluting the global scope—this is why jQuery has the $, underscore has the _, etc; they are creating a namespace and wrapping all of their code behind it. No magic, just considerate authorship.</p>
+    <section class="container">
+      <aside class="note m __ float left">
+        <p>Looking at this example, first, find the four variables that are declared. Take a good look at where they are declared, and note their scopes.</p>
+        <p> This function is a bit of a riddle, but the crux of scope is that it can be used in a nested fashion, but functions can latch on to the scope they had where they were declared. This is <strong>lexical closure</strong>. I don’t expect it to sink in right away, but you probably alread use it without knowing it, so now you must begin an effort to understand it.</p>
+      </aside>
+      <pre class="prettyprint _______ float left">
+        <!-- review views/javascript/examples/functions.js scopes -->
+      </pre>
+    </section>
+    
+  </section>
+
 
   <section>
     <h3>Global Scope</h3>
@@ -25,7 +47,6 @@
     <a href="http://eloquentjavascript.net/03_functions.html#h_u4j2OhpYkg">Functions &amp; Scopes</a>
   </section>
 
-  <pre class="prettyprint"><!--  preview views/javascript/examples/scope.js 5..13 --></pre>
 
   <h2>call and apply</h2>
   <p>These let you execute a function and manipulate it getting it to have an identity crisis while it executes.</p>
@@ -36,7 +57,4 @@
       <li><a href="http://hangar.runway7.net/javascript/guide">The Javascript Guide to Objects, Functions, Scope, Prototypes and Closures</a></li>
     </ul>
   </footer>
-  <script type="text/javascript">
-    bloc.embed('javascript/examples/scope.js');
-  </script>
 </article>

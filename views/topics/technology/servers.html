@@ -1,6 +1,31 @@
-<article>
-  <h2>Servers</h2>
+<article id="hypertext-transfer-protocol" data-classification="intermediate workflow">
+  <h2>Servers, Filesystems et al.</h2>
+  
+  <style type="text/css" media="screen">
+    /* <![CDATA[ */
+    .tldr h4:before {
+      content: 'TL;DR ';
+      font-family:var(--mono);
+      color: #000;
+    }
+    .tldr {
+      background-color:rgba(255,255,255,0.5);
+      margin:2.5vw -2.5vw;
+      padding:2.5vw;
+      background-blend-mode:overlay;
+      box-shadow: 0 0 1em 0.125em rgba(0,0,0,0.1);
+    }
+    /* ]]> */
+  </style>
+  <aside class="tldr container" style="background-image: linear-gradient(rgba(255,175,0,0.1), transparent">
+    <img src="/media/images/mirror.jpg" class="__ float left" style="margin:1em 1em 0 -2.5vw;mix-blend-mode:multiply;"/>
+    <h4>Check the Mirrors</h4>
+    <p>In a simple anecdote, for a developer, the browser’s address bar is like the rearview mirror of a car; something routinely checked and when done, it provides basic awareness of what is going on. If this behavior sounds unfamiliar, it is high time to correct that and learn to check and understand what you are seeing. That goes for both operating vehicles and web development.</p>
+
+    
+  </aside>
   <p>When you connect to a website, you are performing a fundamentally simple task. In this relationship, you and your computer are called <em>a client</em> and the computer you are requesting information from is called <em>a server</em>. The client/server describes the relationship, it does not describe the technology or specific software in place, in that regard, clients and servers are simply computers exchanging data across a network. The client/server relationship describes the role and way information is received and transmitted. A client requests information from a server, and the server, always <em>listening</em> for connections, responds to any request it understands.</p>
+  
   <section class="tt">
     <h3>Breakdown of the Request ⥂ Response cycle</h3>
     <p>When you upload your work to the Interactive Arts &amp; media <em>server</em> you then view pages using the <samp>http://</samp> exchange. Some, especially beginners, generally develop their applications directly in a browser using the <samp>file://</samp> protocol. These are different ideas about exchanging information; the sooner one understands network protocols and the request vs. the response, the sooner one can develop internet applications.</p>
@@ -10,7 +35,7 @@
         <dt>The <strong>Scheme</strong> (or part up to and including <samp>://</samp>)</dt>
         <dd>the scheme tells the computer how the information is going to be exchanged</dd>
         <dd>Most often, a scheme starts with <code>http</code>, (hypertext transfer protocol), which indicates a <em>client</em> will send a request to a <em>server</em>. This transaction requires a network connection to be made. The terms of the exchange are established and honored according to the rules of the protocol.</dd>
-        <dd>There are other protocols such as <samp>ftp://</samp>, <samp>https://</samp>, <samp>mailto://</samp> and <samp>file://</samp> that make exchanges according to different sets of rules—some, like the file protocol <strong>do not require</strong> nor happen over a network connection.</dd>
+        <dd>There are other protocols such as <samp>ftp://</samp>, <samp>https://</samp>, <samp>mailto://</samp> and <samp>file://</samp> that make exchanges according to different sets of rules—some, like the <samp>file://</samp> protocol <strong>do not require</strong> nor happen over a network connection.</dd>
         <dt>The <strong>Host</strong></dt>
         <dd>The host is most often a domain name, like <samp>www.example.com</samp>. A domain name is a human friendly way to remember what the address for a particular computer.</dd>
         <dd>If a domain name is given, it is converted to an IP address by the Domain Name System (DNS), which can be thought of as a phonebook connecting the names of websites with the number, or IP address, of how to reach a unique and particular computer, like like <samp>52.35.59.206</samp></dd>
@@ -18,7 +43,7 @@
         <dd>The host is located by it’s unique IP address, and a <strong>request</strong> for a particular file (see path below) is sent over the network to the computer specified</dd>
         <dt>The <strong>Path</strong></dt>
         <dd>The first slash after the domain (ie. <samp style="color:#888">http://example.com<strong style="color:#EE3124">/</strong></samp>) is called the <em>document root</em> and the path after this slash is the file the server will attempt to send back.</dd>
-        <dd>The document root can be any directory, in your IAM account, it is called <samp>pub</samp>, and the files in the <samp>pub</samp> folder are available online.</dd>
+        <dd>The document root can be any directory on a server that has been specified by a configuration file. Depending on the server software, or by convention, the directory os often called <samp>pub</samp>, <samp>htdocs</samp> or <samp>www</samp>. All files in the document root (directory) are accessible online over a network.</dd>
         <dt>The <strong>Response</strong></dt>
         <dd>The server is a special computer that has software running that listens for network connections. When a request is made, it asks the server for a file according to a certain protocol, and the server sends it’s response, most typically an HTML file, but it can also send images, CSS, javascript and many other types of content and media.</dd>
         <dd>The software running is designed to efficiently deal with thousands of requests, but as these computers are not rendering graphics or needing drivers for printing, keyboards, etc., they need little more than a fraction of the power of a modern smart phone.</dd>

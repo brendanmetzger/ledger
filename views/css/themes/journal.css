@@ -1,6 +1,10 @@
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
+
 :root {
   --sans: "Avenir Next", "HelveticaNeue-Light","Helvetica Neue", Helvetica;
+  --mono: Inconsolata, 'Courier New', monospace;
 }
+
 html {background-color: hsl(45, 30%, 97.5%)}
 body {
   font: 400 0.625em/250% var(--sans);

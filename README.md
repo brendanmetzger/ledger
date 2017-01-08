@@ -73,6 +73,7 @@ For student-graded quizzes, create an algorithm that as soon as a student gets a
 - [ ] Game of Life on Scroll instead of timer
 - [ ] Do a lecture on mapping for ASWM
 - [ ] Loops as 99 bottles of beer on the wall
+- [ ] youtube player API
 
 
 ## Warm-ups

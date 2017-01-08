@@ -14,6 +14,20 @@
     <p>This no doubt looks a bit odd, but the important thing to notice is that both examples produce a similar outcome: they assign a <code>string</code> with a typical english greeting to a variable, but they take a very different approach. Just like a <code>number</code> indicates quantitative property, such as measurement, <code>function</code> represents an action to take place. However, that action does not take place until you call the function with the <code>()</code> operator. In this example, I'm doing that immediately after I declare the function body (which is some of the cleverness I mentioned earlier).</p>
     <p>A function starts as an idea of something to be done written in the function definition. Once <strong>defined</strong>, it can be <strong>executed</strong> at any time to produce value. Pause there: it produces a value by <strong>returning</strong> something; numbers, strings, booleans, arrays, objects, even other functions! This is the <em>first-class</em> shenanigans I'm talking about: functions can be tossed around like any other type.</p>
   </section>
+  
+  <section class="explain whitepaper">
+    <aside class="note">
+      <h3>The Chicken or the Egg</h3>
+      <p>Because of its first-class nature, a function can be stored in a variable, in a data structure like an array or an object. A function can be passed as an argument to another function. A function return another function. (a tenet of any language implementing first-class functions). While many languages support these features and allow you to utilize them if you prefer JavaScript requires the methodology.</p>
+      <p>In this example you will notice a function returning a function. What happens when I execute the <code>Chicken()</code> function? What do I get back? How about an <code>Egg()</code>?</p>
+      <p>This is a riddle;  play with it in the console for awhile until you get the hang of it. The premise, though simple, is probably a new concept: whenever you call a function, you will <strong>always</strong> get back another function. That means, you can keep calling over and over, ad infinitum.</p>
+    </aside>
+    <pre class="prettyprint">
+      <!-- review views/javascript/examples/functions.js chicken or the egg -->
+    </pre>
+  </section>
+  
+  
   <section class="example container whitepaper tt bb">
     <h4 class="clear centered">Some Examples: A loaf of bread</h4>
     <p class="intro">Before you begin making bread, you absolutely, fundamentally, completely know what a <em>variable</em> is and how to <em>assign</em> a <em>value</em> to it. Further, you understand <em>strings, numbers and booleans</em>. At this point, you have a decent idea of what an <em>object</em> is, and its sub-type, the <em>array</em>. You’re quite familiar with the syntax required: quotes, square and curly brackets, and parentheses. If any of this is a mystery, <strong>rewind</strong>!</p>

@@ -1,39 +1,56 @@
-<article>
-  <h1>Functions</h1>
-  <h2>todo</h2>
-  <ul>
-    <li>Need to talk about declaring named functions</li>
-    <li>Assigning functions</li>
-    <li>implications of hoisting (advanced)</li>
-    <li>executing or calling functions with () or .call, etc</li>
-  </ul>
+<article id="functions-bits" data-classification="basic function javascript">
+  <h2>Functions; all the bits and pieces</h2>
+  <p>Functions are probably the most profound aspect of JavaScript programming, and from a very technical perspective, they are really <i>Callable Objects</i>. Just like an object, they have properties and values, and just like an object, those values may be of <strong>any type</strong>, including other functions! Perhaps this sounds like nonsense now, but thus begins the introduction to JavaScript functions.</p>
+  <h3>Declaring a function</h3>
+  <p>I’m going to assume that for the most part we know what functions and why we make them, so instead, we’ll jump straight to mechanics. Functions can be declared by <strong>assignment</strong> or by using a <strong>named function</strong>. They have virtually the same outcome aside from a notion of <i>hoisting</i>, which you can forget about for awhile as it has few applicable purposes worth mentioning.</p>
+  <section class="container">
+    <aside class="note m ___ float left">
+      <p>Regarding the first two examples, functions can be declared as above, or assigned as below. There is some advocacy for the former; declaring functions in this manner has some advantages with scope and hoisting. If that sounds daunting, don’t worry, it’s quite obscure and not worth getting into at this point. I advise you learn and use both as you see fit.</p>
+      <p>Looking at the next two, we see functions are values, and thus you can just declare them and do nothing. Or, you can just make an anonymous function and call it immediately–note those parentheses at the end. This is an <a href="https://en.wikipedia.org/wiki/Immediately-invoked_function_expression">immediately invoked function expression</a> (IIFE). Framework authors use these constantly, and while they look intense, they are just a hop on our path to understanding functions.</p>
+    </aside>
+    <pre class="prettyprint ______ float left">
+      <!-- review views/javascript/examples/functions.js declaring functions -->
+    </pre>
+  </section>
+  
+  <section data-level="basic" style="display:none;">
+    <h1>Functions</h1>
+    <h2>todo</h2>
+    <ul>
+      <li>Need to talk about declaring named functions</li>
+      <li>Assigning functions</li>
+      <li>implications of hoisting (advanced)</li>
+      <li>executing or calling functions with () or .call, etc</li>
+    </ul>
 
-  <h2>Declaring Functions</h2>
-  <h3>a function itself can be a variable declared through naming or through an expression.</h3>
-  <h2>Executing functions</h2>
-  <h2>Passing Functions</h2>
-  <h2>returning things. like objects <code>someFunc().prop</code> vs someFunc('prop');</h2>
-  <pre class="prettyprint">
-    <!-- preview views/javascript/examples/advanced/functions.js 1..6 -->
-  </pre>
+    <h2>Declaring Functions</h2>
+    <h3>a function itself can be a variable declared through naming or through an expression.</h3>
+    <h2>Executing functions</h2>
+    <h2>Passing Functions</h2>
+    <h2>returning things. like objects <code>someFunc().prop</code> vs someFunc('prop');</h2>
+    <pre class="prettyprint">
+      <!-- preview views/javascript/examples/advanced/functions.js 1..6 -->
+    </pre>
 
-  <h2>Advanced: Functional thinking.</h2>
-  <dl>
-    <dt>Statements</dt>
-    <dd>Evaluable code that has a <strong>return value</strong></dd>
-    <dt>First-Class Functions</dt>
-    <dd>Either accept a function as an argument or return an function as a value. This concept is extremely useful for code abstraction. <strong>JavaScript employs first class functions regularly.</strong></dd>
-    <dt>Pure Functions</dt>
-    <dd>A function that does not mutate values or situations outside of the function itself. A higher level concept important to <a href="https://en.wikipedia.org/wiki/Functional_programming">functional programming</a></dd>
-    <dt>Recursion</dt>
-    <dd>Algorithms that operate in an iterable fashion by evaluating only the input and whether or not it should execute itself again with the modified value of the input.</dd>
-  </dl>
-
-  <h2>Reading</h2>
-  <a href="http://eloquentjavascript.net/05_higher_order.html#h_j9ps8qrlyo">Chapter 5 Introduction</a>
-  <a href="http://eloquentjavascript.net/05_higher_order.html#h_xxCc98lOBK">Abstraction</a>
-  <a href="http://eloquentjavascript.net/05_higher_order.html#h_xxCc98lOBK">Abstracting Array Traversal</a>
-  <a href="http://eloquentjavascript.net/05_higher_order.html#h_xxCc98lOBK">Higher Order Functions</a>
-  <a href="http://eloquentjavascript.net/05_higher_order.html#h_7/X8BSjdvi">Passing Along Arguments</a>
-  <a href="http://eloquentjavascript.net/05_higher_order.html#h_j9ps8qrlyo">Binding</a>
+    <h2>Advanced: Functional thinking.</h2>
+    <dl>
+      <dt>Statements</dt>
+      <dd>Evaluable code that has a <strong>return value</strong></dd>
+      <dt>First-Class Functions</dt>
+      <dd>Either accept a function as an argument or return an function as a value. This concept is extremely useful for code abstraction. <strong>JavaScript employs first class functions regularly.</strong></dd>
+      <dt>Pure Functions</dt>
+      <dd>A function that does not mutate values or situations outside of the function itself. A higher level concept important to <a href="https://en.wikipedia.org/wiki/Functional_programming">functional programming</a></dd>
+      <dt>Recursion</dt>
+      <dd>Algorithms that operate in an iterable fashion by evaluating only the input and whether or not it should execute itself again with the modified value of the input.</dd>
+    </dl>
+  </section>
+  <footer>
+    <h2>Reading</h2>
+    <a href="http://eloquentjavascript.net/05_higher_order.html#h_j9ps8qrlyo">Chapter 5 Introduction</a>
+    <a href="http://eloquentjavascript.net/05_higher_order.html#h_xxCc98lOBK">Abstraction</a>
+    <a href="http://eloquentjavascript.net/05_higher_order.html#h_xxCc98lOBK">Abstracting Array Traversal</a>
+    <a href="http://eloquentjavascript.net/05_higher_order.html#h_xxCc98lOBK">Higher Order Functions</a>
+    <a href="http://eloquentjavascript.net/05_higher_order.html#h_7/X8BSjdvi">Passing Along Arguments</a>
+    <a href="http://eloquentjavascript.net/05_higher_order.html#h_j9ps8qrlyo">Binding</a>
+  </footer>
 </article>
