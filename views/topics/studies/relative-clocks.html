@@ -1,0 +1,80 @@
+<article>
+  <h2>Case Study: Relative Clocks</h2>
+  <p class="intro t b m">This week I've written up a sample piece of code that goes through many of the topics from the previous weeks and introduces some new ones from this week. Form some groups, open a text editor and quietly pick this apart and try to figure it out what the various pieces do. Some parts are simple, some quite complex, but it outlines many principles, none of them arbitrary. Look carefully at the way variables are named, the length of the lines, the size of functions, and the indentation and formatting.</p>
+  <section class="explain whitepaper">
+    <aside>
+      <h4>The Dataset</h4>
+    </aside>
+    <pre class="prettyprint">
+      <!-- review views/javascript/examples/assigned/function-medley.js the dataset -->
+    </pre>
+  </section>
+  
+  <section class="explain whitepaper">
+    <aside>
+      <h4>Simple Functions</h4>
+      <p>You can bend functions to do some pretty interesting things, if you are patient enough to figure it out.</p>
+    </aside>
+    <pre class="prettyprint">
+      <!-- review views/javascript/examples/assigned/function-medley.js simple functions -->
+    </pre>
+  </section>
+  
+  <section class="explain whitepaper">
+    <aside>
+      <h4>A utility Function</h4>
+    </aside>
+    <pre class="prettyprint">
+      <!-- review views/javascript/examples/assigned/function-medley.js utility function -->
+    </pre>
+  </section>
+  
+  <section class="explain whitepaper">
+    <aside>
+      <h4>The Regular Expression</h4>
+      <p>Here is a Regular Expression (RegEx) to convert the string to a more consistent array. Reading from the left, the expression indicates: "match 1 or more digits, maybe a period and 0 or more digits followed by spaces and one of the following words: day, hour, minute or second" Mars' string of "24 hours 39 minutes and 35 seconds" converts to the <code>Array</code> <samp>['24 hour', '39 minute', '35 second']</samp></p>
+      <h4>Iterating Objects</h4>
+      <p>Objects can be iterated, but it is a bit clunky, and use of the bracket operator shown earlier will be required once again.</p>
+    </aside>
+    <pre class="prettyprint">
+      <!-- review views/javascript/examples/assigned/function-medley.js data parsing -->
+    </pre>
+  </section>
+  
+  
+  <section class="explain whitepaper">
+    <aside>
+      <h4>A doozy of a function</h4>
+      <p>This is a function that takes a function as a callback parameter and returns a function. You may never quite wrap your head around this, but if you do, you will experience about 5 days of euphoria. Give or take.</p>
+      <p>Here is what it does: give it an integer for a start position, the total hours, and something to do—a callback—on each cycle. Hypothetically, say we had an alarm clock that needed to go off every cycle, starting at 8am, the code would be <code>clock(8, 24, ⏰);</code> </p>
+    </aside>
+    <pre class="prettyprint">
+      <!-- review views/javascript/examples/assigned/function-medley.js closure -->
+    </pre>
+  </section>
+  
+  
+  <section class="container whitepaper">
+    <h4>Code Hunt</h4>
+    <aside class="____ float left">
+      <p>I want to balance cramming syntax with growing perspective about the facets of programming that I appreciate, so I've decided to offer up a little bit of a challenge for this week.</p>
+      <p>I've talked about it a little bit, so I’ll go over it a bit more: <strong>naming conventions</strong> are consistent use of variables to define what type of objects they hold. Referencing the adjacent code you will see the following conventions at play.</p>
+      <ul class="stylized star">
+        <li><code>camelCaseStrings</code> store <strong>functions</strong>, <mark>functions are executable</mark></li>
+        <li><code>snake_case_strings</code> represent primitive types, objects and arrays</li>
+        <li><code>FirstWordUppercase</code> means that the <mark>object that is to be constructed</mark> with the <code>new</code> operator, like the <code>Date</code> object.</li>
+      </ul>
+      <p>Together, work through the adjacent code. Parts are simple, others abstruse. I've asked questions throughout the source code;  it’s not so important that you understand how the program works, but you should start to understand how <em>parts of the program work.</em>. You've heard me ramble on how JavaScript is functional and too much logic is poison. <strong>Count the number of control statements</strong> used in the program—as you see, it’s possible to be very frugal with them.</p>
+      <p>I expect some of the code to be a head scratcher, so write down your questions and curiosities, and we’ll go over them in detail in the Q/A portion of class.</p>
+      <p>The clock is a <a href="/css/media/clock.svg">simple <abbr>SVG</abbr> element</a> I made. If svg is unfamiliar, spend some time researching it—it’s very handy, and can be used as a vector image, as data and you can interact with it with both JS and <abbr>CSS</abbr>.</p>
+      <p>The implementation of the code is below. Drag the slider to determine how fast the clock ticks.</p>
+      <div class="pad t">
+        <!--  insert views/css/media/clock.svg -->
+      </div>
+    </aside>
+    <pre class="prettyprint ______ float left">
+      <!-- review views/javascript/examples/assigned/function-medley.js function examples -->
+    </pre>
+  </section>
+  <script type="text/javascript">bloc.embed('/javascript/examples/assigned/function-medley.js');</script>
+</article>

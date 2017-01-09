@@ -1,17 +1,24 @@
 <article id="intervals-and-timeouts" data-classification="">
   <h2>Intervals and Timeouts</h2>
-  <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout">Window Timers</a> are a mechanism in JavaScript that allow you to delay or repeat the application of bits of code. Conceptually, it shouldn’t bend the mind too much to learn that these efforts require the use of <em>callbacks</em>, that is, functions passed to another function, with the other function determining <em>when to apply the callback</em>. We understand the motivation behind this from our experience with <strong>Event Listeners</strong>; they employ the same principles of <a href="https://en.wikipedia.org/wiki/Asynchrony_(computer_programming)">asynchrony</a>.</p>
-  <section class="whitepaper container t b">
-    <aside class="_____ note float left">
-      <h5>Setting a timeout.</h5>
+  <p class="intro"><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout">Window Timers</a> are a mechanism in JavaScript that allow you to delay or repeat a function. Conceptually, it shouldn’t bend the mind too much to learn that these efforts require the use of <em>callbacks</em>—principally similar to <strong>Event Listeners</strong>.</p>
+  
+  <section class="two columns margins dropcap">
+    <p>The <code>setTimeout</code> function can be thought of as adding a delay to a piece of your code. Like so many things in JavaScript, it takes a callback function as it’s first argument (think about why that needs to be the case), and it takes in integer as the second, which is the number of milliseconds you want to wait before the callback is executed. It returns a timeout id, see <em>clearing window timers</em>.</p>
+    <p>Do note, for a long time <code>setTimeout</code> was used to animate elements. Now, animation is largely handled by <abbr>css</abbr>, but the need still arises for custom animations here and there. In the event that this is you goal, the browser provides a more efficient means of custom animations through <a href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame"><code>requestAnimationFrame</code></a>.</p>
+    <p>A close cousin to a timeout, <code>setInterval</code> takes the same argument pattern but has one significant difference, and that is it keeps firing on the interval. Like it’s cousin, it returns a <samp>timeout ID</samp>. That ID can be used to cancel any pending timeout or interval when passed to the <code>clearTimeout</code> or <code>clearInterval</code> function. Make sure to visit the <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers">documenation for window timers</a> for a good briefing.</p>
+  </section>
+  <div class="explain whitepaper">
+    <aside class="note">
+      <h4>Setting a timeout</h4>
       <p>The button below has an event listener applied, and that listener will set the timeout you see to the right. When clicked, the button will set two timeouts. The first will display an alert message in 1 second, the second will reset the html to a the initial state before the click.</p>
       <p><strong>Note:</strong> timeouts are set in milliseconds, so 1000 milliseconds is equal to 1 second.</p>
       <button type="button" onclick="timers.basic(this)" style="padding:1em;">I am slow..</button>
     </aside>
-    <pre class="prettyprint _____ float left">
+    <pre class="prettyprint">
       <!-- review views/javascript/examples/timing.js basic timeout -->
     </pre>
-    <hr class="clear ruled t b"/>
+  </div>
+  <section class="container">
     <aside class="_____ note float left">
       <h5>Setting an interval.</h5>
       <p>The most obvious analogy one can draw to an interval is a clock. So obvious in fact, that we get lost in the nature of what an <em>intervals</em> explain concepts in mathematics, music, and cartesian space. They give means to understand phenomena that occurs on a continuum through finite analysis, and any explanation of color, time and distance cannot avoid such analysis.</p>
@@ -33,6 +40,10 @@
       <!-- review views/javascript/examples/timing.js clearing timers -->
     </pre>
   </section>
+  
+  
+
+  
   <script type="text/javascript">
     bloc.embed('/javascript/examples/timing.js');
     bloc.init('intervals', function() {

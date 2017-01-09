@@ -1,4 +1,19 @@
-/* function examples */
+/*the dataset*/
+// Here is a dataset, All times gathered from http://www.planetsforkids.org/
+var planet_table = {
+  Mercury: "58 days and 15 hours",
+  Venus: "243 days",
+  Earth: "23 hours and 56 minutes",
+  Mars: "24 hours 39 minutes and 35 seconds",
+  Jupiter: "9.9 hours",
+  Saturn: "10 hours 39 minutes and 24 seconds",
+  Uranus: "17 hours 14 minutes and 24 seconds",
+  Neptune: "16 hours 6 minutes and 36 seconds",
+  Pluto: "6.39 days"
+};
+/*  end the dataset */
+
+/* simple functions */
 
 function isNumber(item) {
   return typeof item === 'number';
@@ -9,30 +24,45 @@ function add(first, second) {
 }
 
 function sum() {
-  return [].filter.call(arguments, isNumber).reduce(add, 0);
+  return [...arguments].filter(isNumber).reduce(add, 0);
 }
 
-// start position, number of hours in day, callback to execute
-// when 'ticking'. Note of the return value of outermost function.
-function clock(position, size, onTick) {
-  return function () {
-    return onTick(position++ / size,  position % size);
-  }
-}
+/* end simple functions */
 
-// given convertToHours(30, 'minute'), returns 0.5
-// given convertToHours(2, 'day'), returns 48
-function convertToHours(quantity, unit) {
-  var hours_in = {
+/* utility function */
+// given toHours('30 minute'), returns 0.5
+// given toHours('2 day'), returns 48
+function toHours(time) {
+  console.log(time);
+  time = time.split(' ');
+  var table = {
     day:    24,
     hour:   1,
     minute: 1 / 60,
     second: 1 / 60 / 60
-  }
-  return hours_in[unit] * quantity;
+  };
+  return table[time[1]] * parseInt(time[0], 10);
 }
 
+/* end utility function */
+
+/* closure */
+
+// start position, number of hours in day, callback to execute
+// when 'ticking'. Note of the return value of outermost function.
+function clock(position, hours, callback) {
+  return function () {
+    return callback((position++) / hours,  position % hours);
+  };
+}
+
+/* end closure */
+
+
 function makeClock(DOMelem, planet, total_hours) {
+  // round for good measure
+  total_hours = Math.round(total_hours);
+  
   // set the text to the planet name
   DOMelem.querySelector('text.title').textContent = planet;
 
@@ -43,7 +73,7 @@ function makeClock(DOMelem, planet, total_hours) {
   var tally  = DOMelem.querySelector('text.total');
 
   // space dashes to reflect the amount of hours
-  var dash_size = Math.abs(2 * radius * Math.PI - (total_hours * 1.5)) / total_hours
+  var dash_size = Math.abs(2 * radius * Math.PI - (total_hours * 1.5)) / total_hours;
   DOMelem.querySelector('circle').style.strokeDasharray = dash_size + ' 1.5';
 
   // moveHand func has acceess to radius, hand, and tally vars. This is called..?
@@ -60,25 +90,6 @@ function makeClock(DOMelem, planet, total_hours) {
   return clock(0, total_hours, moveHand);
 }
 
-// Here is a dataset, All times gathered from http://www.planetsforkids.org/
-var planets = {
-  Mercury: "58 days and 15 hours",
-  Venus: "243 days",
-  Earth: "23 hours and 56 minutes",
-  Mars: "24 hours 39 minutes and 35 seconds",
-  Jupiter: "9.9 hours",
-  Saturn: "10 hours 39 minutes and 24 seconds",
-  Uranus: "17 hours 14 minutes and 24 seconds",
-  Neptune: "16 hours 6 minutes and 36 seconds",
-  Pluto: "6.39 days"
-};
-
-// Here is a Regular Expression (RegEx) to convert the string to a
-// more consistent array. Reading from the left, the expression indicates:
-// "match 1 or more digits, maybe a period and 0 or more digits followed
-//  by spaces and one of the following words: day, hour, minute or second"
-// Mars' string converts to ['24 hour', '39 minute', '35 second']
-var expression = /([0-9]+\.?[0-9]*)\s+(day|hour|minute|second)/g;
 
 
 // My setup function will be called when the window finishes loading
@@ -111,23 +122,30 @@ function setup(evt) {
     timer = setInterval(tickAllClocks, parseInt(this.value, 10));
   });
 
+  
+  /* data parsing */
+  
+  var expression = /([0-9]+\.?[0-9]*)\s+(day|hour|minute|second)/g;
+  
   // objects can be iterated. planet will hold the property (key)
-  for(var planet in planets) {
-    // object values can be accessed with brackets, not just the dot operator
-    var time_array = planets[planet].match(expression);
-    var converted  = time_array.map(function (time_str) {
-      return convertToHours.apply(null, time_str.split(' '));
-    });
-    // days, minutes, seconds are all hours: sum, round result to integer
-    var total_earth_hours = Math.round(sum.apply(null, converted));
+  for(var planet in planet_table) {
+    // We start with something like this "10 hours 39 minutes and 24 seconds"
+    var timestamps = planet_table[planet].match(expression);
+    // after matching, we have: ['10 hour', '39 minute', '24 second']
+    // mapped `toHours` gives numbers [10, 0.65, 0.006666]
+    // then using sum function to get total hours!
+    var earth_hours = sum(...timestamps.map(toHours));
+    
+    
 
     // I'm using cloneNode to duplicate my node
     var ClockElement = DOMcontainer.appendChild(DOMsvgClock.cloneNode(true));
-    var tickerFunc = makeClock(ClockElement, planet, total_earth_hours);
+    var tickerFunc = makeClock(ClockElement, planet, earth_hours);
+   
     clocks.push(tickerFunc);
   }
 }
 
-/* end function examples */
+/* end data parsing */
 
 window.addEventListener('load', setup);

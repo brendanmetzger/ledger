@@ -9,4 +9,32 @@
     <li>How do we close the lightbox?</li>
   </ol>
   <p class="focus">Much of the time you see <code>&lt;div onclick="…"</code> is because it is easier, and you don’t have to concern yourself with page load, and this is something to start concerning yourself with. If you try to access the <code>document</code> object in your script file before everything has loaded, things don’t work quite right. But when does the page load? <q>When</q> questions are best answered through events, which are surveyed with listeners. Without further adieu: consider <code>window.addEventListener('load', callback)</code> and why it might be so crucial.</p>
-</article>
+
+    <p class="intro">Plainly spoken from <a href="http://www.json.org">json.org</a>, <q cite="http://www.json.org">JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language</q>.</p>
+    <p>This is a great thing to get a taste of; imagine you can create and add data to a project without having to author the data, or write the <abbr>HTML</abbr> over and over. Many feeds and services all over the internet can be gathered and applied in this manner. Here I have used a concept called <abbr title="Javascript Object Notation With Padding">JSONP</abbr> to gather images from some subreddits and display them for a lightbox.</p>
+    <link rel="stylesheet" href="/css/gallery.css" media="screen" title="no title" charset="utf-8" />
+    <div class="whitepaper container tt bb">
+      <section class="reddit gallery ______ float left">
+        <h3 class="rag-left whitepaper">Click To Load Gallery</h3>
+      </section>
+      <aside class="____ float left">
+        <pre class="prettyprint">
+          <!-- review views/javascript/examples/json.js Load Reddit-->
+          <hr class="divider" data-after="CSS" data-before="JavaScript"/>
+          <!-- review views/css/gallery.css gallery-->
+        </pre>
+      </aside>
+    </div>
+    <script type="text/javascript">
+      bloc.embed('/javascript/examples/json.js');
+      var galleries = ['architecture', 'designporn', 'awww', 'DesirePath', ];
+
+      function loadGal() {
+        var gal = galleries[Math.floor(Math.random() * galleries.length)];
+        document.head.appendChild(document.createElement('script')).src = 'https://www.reddit.com/r/{0}/top.json?sort=top&amp;t=week&amp;jsonp=loadRedditGallery'.format(gal);
+        this.innerHTML = "r/{0}".format(gal);
+        this.removeEventListener('click', loadGal);
+      }
+      document.querySelector('section.gallery > h3').addEventListener('click', loadGal);
+    </script>
+  </article>

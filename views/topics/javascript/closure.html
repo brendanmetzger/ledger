@@ -1,0 +1,22 @@
+<article>
+  <h2>Closure</h2>
+  <p><a href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">Closure</a> is one of these things that takes awhile to <a href="https://en.wikipedia.org/wiki/Grok">grok</a> but once you do, it isn’t nearly as profound as it seems.</p>
+  <ol class="m t">
+    <li>Any programming language will have rules that define scope.</li>
+    <li>Scope is simply where variables are declared and what parts of a program can access them.</li>
+    <li>A program always introduces something into a <strong>global scope</strong>. It is generally advised to keep this to a minimum<sup>*</sup></li>
+    <li>Arguments are variables; thus, arguments are scoped into the function they live in.</li>
+    <li>Languages with first-class functions have closures.</li>
+  </ol>
+  <p class="note"><sup>*</sup> Frameworks are careful about polluting the global scope—this is why jQuery has the $, underscore has the _, etc; they are creating a namespace and wrapping all of their code behind it. No magic, just considerate authorship.</p>
+  <section class="explain">
+    <aside class="note ">
+      <p>Looking at this example, first, find the four variables that are declared. Take a good look at where they are declared, and note their scopes.</p>
+      <p> This function is a bit of a riddle, but the crux of scope is that it can be used in a nested fashion, but functions can latch on to the scope they had where they were declared. This is <strong>lexical closure</strong>. I don’t expect it to sink in right away, but you probably alread use it without knowing it, so now you must begin an effort to understand it.</p>
+    </aside>
+    <pre class="prettyprint">
+      <!-- review views/javascript/examples/functions.js scopes -->
+    </pre>
+  </section>
+  
+</article>
