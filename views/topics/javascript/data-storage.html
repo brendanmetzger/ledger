@@ -9,7 +9,6 @@
     <p>To begin learning JavaScript, below I’ve listed two data storage mechanisms utilized in the language. Just like <abbr>HTML</abbr> is a structure mechanism for data that we design with css, JavaScript employs methods to structure data so it can be retrieved and manipulated.</p>
     <hr class="ruled t b"/>
     <section class="container margins">
-
       <h3>Objects</h3>
       <p class="container"><img src="/css/media/tackle.png" alt="card catalog" class="float left __" style="shape-outside:url(/css/media/tackle.png);shape-image-threshold:0.25;shape-margin:1em;" />As programs get more complex it becomes important to place data and behavior into structures that help organize and clarify our programs purpose. In JavaScript, objects provide an efficient means to store and utilize program components. They store a value associated with a property (often called a <em>key</em>). The structure is similar to the way we declare <abbr>CSS</abbr> properties with colon except in two very important ways: first, the value can be anything, including other objects (in stylesheets, the value is always a style definition) and second, the <code>property: value</code> is not terminated by a semi-colon. In fact, you do not need to terminate the line with anything unless you are declaring another property, in which case, you use a comma between them.</p>
       <p>While objects are very prominent in the JavaScript (essentially everything), it may aid you to first start thinking of objects as data structures so you can practice your ability to navigate them. Once you've mastered setting and accessing object properties, you’ll learn that they can actually be programmed to exhibit certain behaviors as well. You can assign an object to a named variable like <code>var example = {property: 'value'};</code> and access that property with <code>console.log(example.property);</code> using the <em>dot operator</em>.</p>
@@ -18,10 +17,10 @@
       <h3>Arrays</h3>
       <p><img src="/css/media/catalog.png" alt="card catalog" class="float right __" style="shape-outside:url(/css/media/catalog.png);shape-image-threshold:0.25;shape-margin:1em;"/>Arrays are <em>a special type of object</em> which maintain order. Instead of using strings as keys, they use integers, called indices.  Instead of using curly braces to declare them, you use square brackets. To access an item in an array, you use brackets along with the index you are interested in. Indices always start at 0. Beyond that, like an object, you can put anything you like in an array, including other arrays. While this might seem like less useful than an object at first glance,  in programming, order is <em>precisely what you want</em> making the array extremely useful and necessary type of object. An array is declared <code>var example = ['value'];</code>, and it is accessed <code>console.log(example[0]);</code> using the bracket operator.</p>
     </section>
-
-    <section class="container t">
-      <h4 class="ruled top t pad">Using Objects and Arrays to talk about data.</h4>
-      <aside class="float left ____ note">
+	
+    <section class="explain whitepaper">
+      <aside class="note">
+        <h4>Using Objects and Arrays to talk about data.</h4>
         <p>Brackets, both square and curly, are going to become extremely familiar to you by the end of the semester. Objects use curly brackets, arrays use square brackets—make sure you syntactically see the following structure.</p>
         <p>In my adjacent object definition, I have assigned an object to variable called refrigerator. That object has things called <strong>properties</strong>, and those properties have <strong>values</strong>. A value can be of any <strong>type</strong>—a number, string, boolean, even another object or array. Programmers in other languages really appreciate the JavaScript syntax for describing objects, because it is expressive, powerful and quite legible once you get the hang of it. As a reminder, we have been talking about objects since the very beginning with the <strong>Document Object</strong>; the concept centers around humans and machines exchanging structured data.</p>
         <p>Also my harping on structure should be clear at this point. Note that the indentation, the opening and closing of braces and brackets helps clarify the hierarchy.</p>
@@ -33,7 +32,7 @@
           <li><code>refrigerator.shelves[1].contents[0]</code> is 'mayonnaise'</li>
         </ul>
       </aside>
-      <pre class="prettyprint float left ______">
+      <pre class="prettyprint">
         <!-- review views/javascript/examples/objects.js basic object -->
       </pre>
     </section>
