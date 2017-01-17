@@ -1,46 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<!-- 
+  - [ ] Remove the entire class attribute from the root element
+  - [ ] Consult developer tools and fix all broken file paths leading to 404's
+-->
+<html lang="en" class="restricted">
   <head>
     <meta charset="utf-8" />
     <meta name="author" content="[$student:@name]" />
-    <meta name="hours" content="0" />
-    <!-- The capitalized paths below need to be adjusted -->
-    <!-- Reminder, you’ll need ../ (up one directory)-->
-    <link rel="stylesheet" href="./INCORRECT/PATH/styles/global.css" />
-    <link rel="stylesheet" href="[./styles/$embeds.css]" />
-    <!-- JavaScript -->
-    <script src="[$domain/course/progress.js]" defer="defer">[$empty]</script>
-	  <script src="./INCORRECT/PATH/scripts/global.js">[$empty]</script>
-    <script src="[./scripts/$embeds.js]">[$empty]</script>
+    <meta name="hours" content="0" />    
+    <link rel="stylesheet" href="[$domain/course/helper.css]" />
+    <link rel="stylesheet" href="FIX/global.css" />
+    <link rel="stylesheet" href="[FIX/$resource.css]" />
+	  <script src="FIX/global.js" defer="defer">[$empty]</script>
+    <script src="[FIX/$resource.js]" defer="defer">[$empty]</script>
+    <script src="[$domain/course/helper.js]" async="async">[$empty]</script>
   </head>
 
-  <body class="[$embeds]">
+  <body>
     <header>
-      <h2>[$student:@name]</h2>
+      <h1>[$student:@name]</h1>
+      <h3>[A completely un-started $student:course markup file]</h3>
     </header>
-    <main>
-      <!-- replace template -->
-    </main>
-    <footer>
-      <p id='copyright'>[©20?? $student:@name]</p>
-      <ul>
-        <li><a href="[$domain/]">Course Outline</a></li>
-        <li><a href="[$student:@url]">Site Index</a></li>
-      </ul>
-    </footer>
-    <script type="text/javascript">
-      // <![CDATA[
-      // here is an example of a script directly embedded in a html document.
-      // by the end of the semester this code snippit should make sense!
+    
+    <!-- replace template -->
 
-      var copy = document.querySelector('#copyright');
-      // Construct a date object, and use the method below to get the year.
-      var year = (new Date()).getFullYear();
-      // we are using a function called `replace` to set the 20?? to an actual year
-      copy.innerHTML = copy.innerHTML.replace('20??',  year);
-      // ]]>
-    </script>
+    <!-- replace footer -->
+    
   </body>
   
 </html>

@@ -19,103 +19,80 @@ namespace models;
         'assignment' => [],
       ]
     ];
-
-    static public function BUILD(Student $student, $file = null)
+    
+    static public function TEMPLATE(Student $student, $file = null)
     {
       $zip   = new \ZipArchive;
-      $dom   = new \bloc\DOM\Document('data/student-site');
-      $xpath = new \DomXpath($dom);
-
-      $parse = function($context) use (&$parse, $xpath, $dom) {
-        foreach ($xpath->query('./file', $context) as $file) {
-          if ($file->hasAttribute('pattern')) {
-            $pattern = strtolower(str_replace(' ', '-', sprintf($file->getAttribute('pattern'), $context->parentNode->getAttribute('title'))));
-            $file->setAttribute('name', $pattern);
-          }
-        }
-
-        foreach ($xpath->query('./directory', $context) as $directory) {
-          $name = $directory->getAttribute('name');
-          if ($directory->hasAttribute('clone')) {
-            $replacements = $xpath->query($directory->getAttribute('clone'));
-            foreach ($replacements as $replacement) {
-              $cloned = $directory->appendChild($replacement->cloneNode(!$replacement->hasAttribute('clone')));
-              foreach ($xpath->query('./file[@clone="ignore"]', $cloned) as $ignore) {
-                $cloned->removeChild($ignore);
-              }
-            }
-            $parent = $directory->parentNode;
-            $directory = $parent->removeChild($directory);
-            $pattern = $directory->getAttribute('pattern');
-            foreach (explode('|', $name) as $idx) {
-              $newnode = $parent->appendChild($directory->cloneNode(true));
-              $newnode->setAttribute('name', strtolower($idx));
-              $newnode->setAttribute('title', sprintf($pattern, $idx));
-              $parse($newnode);
-            }
-          } else if ($directory->childNodes->length > 0) {
-            $parse($directory);
-          }
-        }
-      };
-
-      call_user_func($parse, $dom->documentElement, '', './');
-      $filepath = 'views/student/site';
-      $cache = [];
+      $data = [
+        'empty'   => null,
+        'student' => $student,
+        'domain' => DOMAIN,
+      ];
+      $trimmable = strlen("<?xml version=\"1.0\"?>\n");
+      $template = 'data/template/site/';
       $zip->open($file, \ZIPARCHIVE::OVERWRITE);
 
-      $zipper = function($context, $path) use(&$zipper, $zip, $filepath, $student, &$cache) {
-        $path .= '/';
+      // make a folder for class work and studies
+      foreach ($student->section->schedule as $date) {
+        if ($date['status'] == 'holiday') continue;
+        $format = $date['object']->format('m-d-y');
+        $dir = '/studies/'.$format;
+        $zip->addEmptyDir($dir);
 
-        $title = $context->getAttribute('title') ?: '';
-        foreach ($context->childNodes as $level) {
-          $type = $level->nodeName;
-          $name = $level->getAttribute('name');
-          if ($type == 'file') {
-            $ext = substr($name, strpos($name, '.'));
-            $base = substr($name, 0, strpos($name, '.'));
-            if (! array_key_exists($name, $cache)) {
-              if (file_exists(PATH.$filepath . $path . $name)) {
-                $cache[$name] = $filepath . $path . $name;
-              } else if (file_exists(PATH.$filepath . $level->getAttribute('template'))) {
-                $cache[$name] = $filepath . $level->getAttribute('template');
-              }
-            }
-
-            if ($ext == '.html' || $ext == '.xml') {
-              $view = new \bloc\view($cache[$name]);
-              if ($context->hasAttribute('template')) {
-                $view->template = $filepath.$context->getAttribute('template');
-              }
-
-              $text = (string)$view->render([
-				        'id' => $name,
-                'empty' => null,
-                'student' => $student,
-                'title' => $title,
-                'datapath' => substr($path, 1, -6),
-                'embeds' => strtolower(str_replace(' ', '-', $title)),
-                'domain' => DOMAIN,
-              ]);
-
-              if ($ext != '.xml') {
-                $text = substr($text, strlen('<?xml version="1.0"?>') + 1);
-              }
-              $zip->addFromString(substr($path.$name, 1), $text);
-            } else {
-              $zip->addFile(PATH.$cache[$name], substr($path.$name,1));
-            }
-          } else {
-            $zip->addEmptyDir($path.'/');
-            $zipper($level, $path.$name);
-          }
+        $view = new \bloc\view($template.'index.html');
+        $view->footer = "{$template}/templates/up.html";     
+        $view->template = "{$template}templates/notes.html";
+        
+        $zip->addFromString($dir.'/index.html', substr($view->render(array_merge($data, [
+          'title' => 'Notes ' . $date['datetime'],
+          'resource' => $format,
+        ])), $trimmable));
+        
+        $zip->addFromString("{$dir}/{$format}.css", "/* {$format} Stylesheet */");
+        $zip->addFromString("{$dir}/{$format}.js", "// {$format} JS */"); 
+      }      
+      
+      // Add a file for each project
+      foreach ($student->projects->list as $project) {
+        $title = $project['project']->title;
+        $view = new \bloc\view($template.'index.html');
+        $view->footer = "{$template}/templates/copyright.html";
+        if ($title != 'final') {
+          $view->template = "{$template}templates/project.html";
+          $dir = "/{$title}/";
+          $readme = "# Notes for {$title} project\n\nLook at the dates below that govern the timeline for this project: use them to project-manage goals, technical difficulties, and workflow.";
+          $readme .= "\n\n## " . implode("\n\n## ", array_map(function($date) {
+              return $date->format('l F jS, Y');
+            }, iterator_to_array(new \DatePeriod($project['schedule']['object'], new \DateInterval('P1D') ,$project['due']['object']))));
+        } else {
+          $view->template = "{$template}templates/abstract.html";
+          $dir = "/";
+          $readme = "# This is your main readme file\n\nAnd this is where you tell me about your everything that happened with this class, this project, and this semester. [Markdown format](https://en.wikipedia.org/wiki/Markdown) is appreciated";
         }
-      };
 
-      $zipper($dom->documentElement, '', '');
+        $zip->addFromString("{$dir}index.html", substr($view->render(array_merge($data, [
+          'title'    => $title,
+          'resource' => $title,
+        ])), $trimmable));
+        
+        $zip->addFromString("/{$dir}/README.txt", $readme);
+        $zip->addFromString("/src/css/{$title}.css", "/*\n{$title} stylesheet TODO:\n - [ ] copy list from course outline*/");
+        $zip->addFromString("/src/js/{$title}.js", "/*\n{$title} javascript TODO:\n - [ ] copy list from course outline*/");
+      }
+      
+      // add media
+      foreach (glob(PATH.'data/template/site/media/*.*') as $file) {
+        $zip->addFile($file, '/assets/'.basename($file));
+      }
+      
+      // add global src files
+      $zip->addFile(PATH.'data/template/src/global.css', '/src/css/global.css');
+      $zip->addFile(PATH.'data/template/src/global.js', '/src/js/global.js');
+      
       $zip->close();
       return $file;
     }
+    
 
     public function getAssignments(\DOMElement $context)
     {

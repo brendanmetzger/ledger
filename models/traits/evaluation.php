@@ -16,11 +16,16 @@ trait evaluation {
     $this->student = $student;
     return $this;
   }
+  
+  public function getTitle(\DOMElement $context)
+  {
+    return $this->criterion->context['@title'];
+  }
 
   public function getIndex(\DOMelement $context)
-    {
-      return $this->criterion->context['@index'];
-    }
+  {
+    return $this->criterion->context['@index'];
+  }
 
   public function beforeSave()
   {

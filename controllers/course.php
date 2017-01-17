@@ -95,7 +95,7 @@ class Course extends \bloc\controller
   protected function GETtemplate(Student $student)
   {
     $file = tempnam('/tmp', 'zip');
-    \models\outline::BUILD($student, $file);
+    \models\outline::TEMPLATE($student, $file);
     ///Then download the zipped file.
     ob_clean();
     ob_end_flush();
@@ -124,7 +124,6 @@ class Course extends \bloc\controller
       if (substr($model['student']['@name'], 0, 6) != 'Course') {
         $out .= $model['student']['@name'] . ' ('. metaphone($model['student']['@name'], 5).') ' . $model['student']['@url'] . "/\n";
       }
-
     }
     return $out . "</pre>";
   }
@@ -136,7 +135,8 @@ class Course extends \bloc\controller
       'page' => parse_url($_SERVER['HTTP_REFERER']),
       'time' => $_SERVER['REQUEST_TIME'],
       'addr' => $_SERVER['REMOTE_ADDR'],
-     ];
+    ];
+     
     $out  = file_get_contents(PATH . 'views/javascript/iam.js');
     $out .= sprintf('console.log(%s);', json_encode($track));
     return $out;

@@ -172,6 +172,22 @@ pre .dec {
   color: #72b072;
 }
 
+.elements th > code {
+  font-size: 150%;
+}
+code.element:before,
+code.element:after,
+.elements code:before,
+.elements code:after {
+  content: '<';
+  padding:0 0.25em;
+  font-size:75%;
+}
+code.element:after,
+.elements code:after {
+  content: '>';
+}
+
 *[data-markup] {position:relative;}
 *[data-markup]:before {
   content: "<" attr(data-markup) ">";

@@ -73,7 +73,9 @@ namespace models;
           'status'   => $now->format('U') > $begin->format('U') - 1000 ? 'transpired' : 'pending',
           'index'    => $index++,
           'ticker'   => $interval->format('%r') === '-' ? $interval->format('-%a days') : $interval->format('+%a days'),
+          'object'    => clone $begin,
         ];
+        
         foreach ($holidays as $idx => $holiday) {
           if ($holiday['start'] <= $begin && $holiday['end'] >= $begin) {
             $date['index'] = 'Break';
