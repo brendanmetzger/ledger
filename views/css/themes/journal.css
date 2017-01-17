@@ -924,7 +924,7 @@ h4.vertical + p:first-line {
 }
 
 .sketch img {
-  mix-blend-mode:overlay;
+  mix-blend-mode:multiply;
 }
 
 .pin.link {

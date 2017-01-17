@@ -43,7 +43,7 @@
   <section data-level="intermediate">
     <h3>Event-Driven Programming</h3>
     <p>It may seem like just an interesting feature of the language, but it’s important to grasp conceptually why first-class functions are quite necessary to <a href="https://en.wikipedia.org/wiki/Event-driven_programming">event-driven programming</a>. When we have program that is going to respond to clicks, keystrokes, and any other input, our application has to have something prepared. Unlike imperative types of programming (like procedural), the program has an event loop that must have <em>some function</em> it can execute when needed. This makes sense: functions are callable bits of program; they lie waiting for something to poke them and say <q>go ahead, do what you do</q>. These are referred to as <strong>callbacks</strong>, and a ten-dollar word that you will learn to love about such programming is the nature of asynchronous code that can execute at unknown times.</p>
-    <div class="explain">
+    <div class="explain whitepaper">
       <aside class="note">
         <p>Looking at the code on the right, there isn’t a another way to program it without using first-class functions and their accompanying features. In this case, we are listening for two <strong>events</strong>, there are three (anonymous) <strong>callback functions</strong> and two <strong> closures</strong>—make sure you can spot them all.</p>
         <button type="button" data-color="cornflowerblue" class="trigger">Execute Code</button>
