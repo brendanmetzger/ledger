@@ -199,7 +199,9 @@ tbody th:last-of-type {
 }
 tbody th:first-of-type {
   text-align:right;
-  border-width:1px 2px 1px 0;
+  border-width:1px 1px 1px 0;
+  border-right-color:#000;
+  padding-right:2em;
 }
 
 tbody td {

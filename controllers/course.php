@@ -128,17 +128,28 @@ class Course extends \bloc\controller
     return $out . "</pre>";
   }
 
-  public function GEThelper()
+  public function GEThelper($file)
   {
+    
+
+    
     // this is a javascript file
     $track = [
       'page' => parse_url($_SERVER['HTTP_REFERER']),
       'time' => $_SERVER['REQUEST_TIME'],
       'addr' => $_SERVER['REMOTE_ADDR'],
     ];
-     
-    $out  = file_get_contents(PATH . 'views/javascript/iam.js');
-    $out .= sprintf('console.log(%s);', json_encode($track));
+    
+    if ($track['addr'] != '127.0.0.1') return;
+    
+    $format = \bloc\application::instance()->getExchange('request')->format;
+    
+    if ($format == 'css') {
+      $out  = file_get_contents(PATH . 'views/css/iam.css');
+    } else if ($format == 'js') {
+      $out  = file_get_contents(PATH . 'views/javascript/iam.js');
+      $out .= sprintf('console.log(%s);', json_encode($track));
+    }
     return $out;
   }
 

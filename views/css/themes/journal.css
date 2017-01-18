@@ -152,7 +152,6 @@ article a[href] {
 article a[href]:hover {
   color: #444;
   background-size:100% 2px;
-  
 }
 
 article a[href*='en.wikipedia.org'] {
@@ -166,9 +165,8 @@ article a[href*='en.wikipedia.org'] {
 }
 
 a[href*='en.wikipedia.org']:hover {
-  background-size: auto 5em;
-  padding-left: 1.25em;
-  background-position: -2.5em -1em;
+  background-size: auto 5em !important;
+  background-position: -2.75em -0.5em;
 }
 
 a:hover,

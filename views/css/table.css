@@ -14,6 +14,9 @@
 table {
   caption-side: top;
 }
+td.centered {
+  vertical-align:middle;
+}
 td a, th a {
   border: none;
   transition: opacity 0.75s;

@@ -102,10 +102,20 @@
     req.addEventListener('load', callback);
     req.send();
   }
+  
   var current = window.location.href;
   getSource(current, function (evt) {
     // console.log(evt.target.responseText);
-    validateHTML(evt.target.responseText, logger);
+    validateHTML(evt.target.responseText, function (evt) {
+      var messages = JSON.parse(evt.target.responseText).messages;
+      messages.forEach(function (obj) {
+        if (obj.type == 'error') {
+          console.error('HTML Validation:', obj.message);
+        } else {
+          console.info(obj.message);
+        }
+      });
+  });
   });
   
   addEventListener('load', function() {

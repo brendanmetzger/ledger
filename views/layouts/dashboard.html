@@ -89,7 +89,7 @@
         <tr>
           <th>Project</th>
           <th>Due</th>
-          <th>Assignment Details</th>
+          <th>Details</th>
           <th>Your page<sup><a href="#cache-invalidation">[*]</a></sup></th>
           <th>Notes</th>
           <th>Raw</th>
@@ -99,10 +99,10 @@
       <tbody>
         <!-- iterate student:projects:list -->
         <tr class="[$project:status]">
-          <th>[$project:criterion:@index]</th>
+          <th><span style="font-family:'Avenir Next Condensed';font-size:5em;font-weight:200;text-transform:uppercase;line-height:1;letter-spacing:-0.075em;color:rgba(0,0,0,0.65);">[$project:criterion:@title]</span></th>
           <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <em class="ticker">[$due:ticker]</em></td>
-          <td>
-            <a href="[[/$$student:course/criterion/project/$project:criterion:@index/$$student:section:@id]]">[$project:criterion:@title]</a>
+          <td style="width:15%">
+            <a href="[[/$$student:course/criterion/project/$project:criterion:@index/$$student:section:@id]]">[ $project:criterion]</a>
           </td>
           <td class="centered"><a href="[[$$student:@url/project/$project:index/?$$entropy]]">Preview</a></td>
           <td class="[$schedule:status centered]">

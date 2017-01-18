@@ -22,6 +22,8 @@ namespace models;
     
     static public function TEMPLATE(Student $student, $file = null)
     {
+      \bloc\view::removeRenderers();
+      \bloc\view::$edit = false;
       $zip   = new \ZipArchive;
       $data = [
         'empty'   => null,
@@ -29,59 +31,66 @@ namespace models;
         'domain' => DOMAIN,
       ];
       $trimmable = strlen("<?xml version=\"1.0\"?>\n");
-      $template = 'data/template/site/';
+      $template = 'data/template';
       $zip->open($file, \ZIPARCHIVE::OVERWRITE);
-
+      
+      $snippet = "Rename this file and make into something useful ;)\n\n";
       // make a folder for class work and studies
       foreach ($student->section->schedule as $date) {
         if ($date['status'] == 'holiday') continue;
         $format = $date['object']->format('m-d-y');
+        $snippet .= "<li><a href=\"./{$format}/index.html\">{$date['date']}</a></li>\n";
         $dir = '/studies/'.$format;
         $zip->addEmptyDir($dir);
 
-        $view = new \bloc\view($template.'index.html');
-        $view->footer = "{$template}/templates/up.html";     
-        $view->template = "{$template}templates/notes.html";
+        $view = new \bloc\view("{$template}/layout.html");
+        $view->body = "{$template}/notes.html";
         
-        $zip->addFromString($dir.'/index.html', substr($view->render(array_merge($data, [
+        $zip->addFromString("{$dir}/index.html", substr($view->render(array_merge($data, [
           'title' => 'Notes ' . $date['datetime'],
           'resource' => $format,
         ])), $trimmable));
         
         $zip->addFromString("{$dir}/{$format}.css", "/* {$format} Stylesheet */");
         $zip->addFromString("{$dir}/{$format}.js", "// {$format} JS */"); 
-      }      
+      }
       
+      $zip->addFromString("/studies/TODO.txt", $snippet);
+      
+      $quotes = new \bloc\DOM\Document('data/quotes');
+      $xpath  = new \DomXpath($quotes);
       // Add a file for each project
       foreach ($student->projects->list as $project) {
         $title = $project['project']->title;
-        $view = new \bloc\view($template.'index.html');
-        $view->footer = "{$template}/templates/copyright.html";
+        $view = new \bloc\view("{$template}/layout.html");
         if ($title != 'final') {
-          $view->template = "{$template}templates/project.html";
+          $view->body = "{$template}/project.html";
+
           $dir = "/{$title}/";
-          $readme = "# Notes for {$title} project\n\nLook at the dates below that govern the timeline for this project: use them to project-manage goals, technical difficulties, and workflow.";
-          $readme .= "\n\n## " . implode("\n\n## ", array_map(function($date) {
+          $readme = "# Notes for {$title} project\n\n##TODO\n{$project['project']['criterion']}\n\nLook at the dates below: I urge you to use them to create an outline and journal your agenda, project-manage goals, note technical difficulties and jot ideas.";
+          $readme .= "\n\n##Log\n" . implode("\n", array_map(function($date) {
               return $date->format('l F jS, Y');
             }, iterator_to_array(new \DatePeriod($project['schedule']['object'], new \DateInterval('P1D') ,$project['due']['object']))));
         } else {
-          $view->template = "{$template}templates/abstract.html";
+          $view->body = "{$template}/abstract.html";
           $dir = "/";
           $readme = "# This is your main readme file\n\nAnd this is where you tell me about your everything that happened with this class, this project, and this semester. [Markdown format](https://en.wikipedia.org/wiki/Markdown) is appreciated";
         }
 
         $zip->addFromString("{$dir}index.html", substr($view->render(array_merge($data, [
+          'description' => $project['project']['criterion'],
+          'quote'       => $xpath->query("//quote[@for='{$title}']")->item(0),
           'title'    => $title,
           'resource' => $title,
         ])), $trimmable));
         
         $zip->addFromString("/{$dir}/README.txt", $readme);
-        $zip->addFromString("/src/css/{$title}.css", "/*\n{$title} stylesheet TODO:\n - [ ] copy list from course outline*/");
-        $zip->addFromString("/src/js/{$title}.js", "/*\n{$title} javascript TODO:\n - [ ] copy list from course outline*/");
+        $zip->addFromString("/src/css/{$title}.css", "/*\n{strtoupper($title)} StyleSheet TODO:\n - [ ] copy list from course outline\n*/");
+        $zip->addFromString("/src/js/{$title}.js", "/*\n{strtoupper($title)} JavaScript TODO:\n - [ ] copy list from course outline\n*/");
       }
-      
+
       // add media
-      foreach (glob(PATH.'data/template/site/media/*.*') as $file) {
+      foreach (glob(PATH.'data/template/media/*.*') as $file) {
         $zip->addFile($file, '/assets/'.basename($file));
       }
       
