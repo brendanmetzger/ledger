@@ -67,8 +67,8 @@ namespace models;
           $view->body = "{$template}/project.html";
 
           $dir = "/{$title}/";
-          $readme = "# Notes for {$title} project\n\n##TODO\n{$project['project']['criterion']}\n\nLook at the dates below: I urge you to use them to create an outline and journal your agenda, project-manage goals, note technical difficulties and jot ideas.";
-          $readme .= "\n\n##Log\n" . implode("\n", array_map(function($date) {
+          $readme = "# Notes for {$title} project\n\n## TODO\n{$project['project']['criterion']}\n\nLook at the dates below: I urge you to use them to create an outline and journal your agenda, project-manage goals, note technical difficulties and jot ideas.";
+          $readme .= "\n\n## Log\n" . implode("\n", array_map(function($date) {
               return $date->format('l F jS, Y');
             }, iterator_to_array(new \DatePeriod($project['schedule']['object'], new \DateInterval('P1D') ,$project['due']['object']))));
         } else {
