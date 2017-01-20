@@ -128,7 +128,7 @@ class Course extends \bloc\controller
     return $out . "</pre>";
   }
 
-  public function GEThelper($file)
+  public function GEThelper($id, $file)
   {
     
 
@@ -147,8 +147,8 @@ class Course extends \bloc\controller
     if ($format == 'css') {
       $out  = file_get_contents(PATH . 'views/css/iam.css');
     } else if ($format == 'js') {
-      $out  = file_get_contents(PATH . 'views/javascript/iam.js');
-      $out .= sprintf('console.log(%s);', json_encode($track));
+      $validator = DOMAIN.'/task/validate/';
+      $out  = substr_replace(trim(file_get_contents(PATH . 'views/javascript/iam.js')), "('{$id}', '{$validator}');", -1);
     }
     return $out;
   }

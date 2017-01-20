@@ -1,4 +1,6 @@
-(function(){
+// commit curve = (x, a) => x ** a / (x ** a + ((1 - x) ** a)) use as a factor of 2.7
+
+(function(identity, domain) {
 
   function getCSScheckup(CSS, re) {
     
@@ -14,7 +16,6 @@
     var delta = current - scores[scores.length - 1];
     
     if (delta !== 0) scores.push(current);
-    
     
     sessionStorage.setItem(key, scores.join(':'));
     return scores;
@@ -60,19 +61,21 @@
         item.parentNode.removeChild(item);
       }
     });
-
     console.log('%cTodays secret code: ', element);
   }
   
   
   function validateHTML(text, callback) {
-    var req  = new XMLHttpRequest();
     var data = new FormData();
     data.append('out', 'json');
     data.append('content', text);
+
+    var req  = new XMLHttpRequest();
+    var url = btoa('https://validator.nu/');
     req.overrideMimeType('application/json');
-    req.open('POST', 'https://validator.nu/');
+    req.open('POST', domain+identity+'/html/'+url+'.js', true);
     req.addEventListener('load', callback);
+    
     req.send(data);
   }
 
@@ -86,15 +89,16 @@
     
     var req  = new XMLHttpRequest();
     var url = btoa("https://jigsaw.w3.org/css-validator/validator");
-    req.open('POST', 'http://pedagogy/task/validate/'+url+'.js', true);
+    req.open('POST', domain+identity+'/css/'+url+'.js', true);
     req.overrideMimeType('application/json');
     req.addEventListener('load', callback);
     req.send(data);
   }
   
-  validateCSS('* {fart: none; }', function (evt) {
-    console.log(JSON.parse(evt.target.responseText));
-  });
+  
+  // validateCSS('* {fart: none; }', function (evt) {
+  //   console.log(JSON.parse(evt.target.responseText));
+  // });
   
   function getSource(url, callback) {
     var req = new XMLHttpRequest();
@@ -124,4 +128,6 @@
     console.log('css development', getCSScheckup(document.styleSheets, /[^;]/g));
     console.log('html development', getHTMLcheckup());
   });
-}());
+  
+  console.log(identity);
+});

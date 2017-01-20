@@ -11,7 +11,7 @@ use \bloc\dom\query;
 
   class Data
   {
-    static public $DB  = '';
+    static public $SEMESTER  = '';
 
     public $storage = null;
 
@@ -20,7 +20,7 @@ use \bloc\dom\query;
       static $instance = null;
 
       if ($instance === null) {
-        $instance = new static(self::$DB);
+        $instance = new static(self::$SEMESTER . '/records');
       }
 
       return $instance;

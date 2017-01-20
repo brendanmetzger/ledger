@@ -10,11 +10,10 @@ use \bloc\DOM\Document;
 
 class Task extends \bloc\controller
 {
+  
+  use traits\config;
   const SEMESTER = 'data/36-1420-01-FA15';
-  public function __construct($request)
-  {
-  }
-
+  
   public function GETsource($url, $encode = false)
   {
     $url = base64_decode($url);
@@ -69,7 +68,6 @@ class Task extends \bloc\controller
 
   public function CLItemplate()
   {
-    \models\data::$DB = 'FA16';
     // should return a zip file
     $student = new \models\student(\models\data::ID('YNUZ'));
     $outline = \models\outline::BUILD($student, $student->course . '.zip');
@@ -286,17 +284,39 @@ class Task extends \bloc\controller
     // \/\*([\s\S]*?)\*\/|([^\\:]|^)\/\/.*$
   }
   
-  public function POSTvalidate($request, $url)
+  public function POSTvalidate($request, $id, $type, $url)
   {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, base64_decode($url));
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $_POST);
+    curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+    // log transaction, time, user, file, hash
+    $hash = sha1($_POST['content']);
+    $time = time();
+    $path = sprintf("%sdata/%s/log/%s", PATH, \models\Data::$SEMESTER, date('m-d-Y', time()));
+    $out = "<validate user=\"{$id}\" time=\"{$time}\" hash=\"{$hash}\"/>\n";
+    if ($type == 'css') {
+      # code...
+    } else if ($type == 'html') {
+      
+    }
+    file_put_contents($path, $out, FILE_APPEND);
     $output = curl_exec($ch);
     $info = curl_getinfo($ch);
     curl_close($ch);
     return $output;
+  }
+  
+  public function CLIcommits()
+  {
+    echo 'no';
+    /*
+    - parse the daily log file
+    - for each student with activity
+    
+    */
   }
 
 }

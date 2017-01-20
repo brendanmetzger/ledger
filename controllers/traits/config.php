@@ -6,7 +6,7 @@ trait config {
 
   public function __construct($request)
   {
-    \models\Data::$DB = 'SP17/records';
+    \models\Data::$SEMESTER = 'SP17';
     \bloc\view::addRenderer('before', Render::PARTIAL());
     \bloc\view::addRenderer('after', Render::HTML());
     \bloc\view::addRenderer('after', Render::EXAMPLES());

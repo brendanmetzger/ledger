@@ -24,11 +24,13 @@ namespace models;
     {
       \bloc\view::removeRenderers();
       \bloc\view::$edit = false;
-      $zip   = new \ZipArchive;
+      $zip  = new \ZipArchive;
       $data = [
         'empty'   => null,
+        'code'    => base64_encode($student['@name']),
+        'id'      => $student['@id'],
         'student' => $student,
-        'domain' => DOMAIN,
+        'domain'  => DOMAIN,
       ];
       $trimmable = strlen("<?xml version=\"1.0\"?>\n");
       $template = 'data/template';
@@ -38,7 +40,7 @@ namespace models;
       // make a folder for class work and studies
       foreach ($student->section->schedule as $date) {
         if ($date['status'] == 'holiday') continue;
-        $format = $date['object']->format('m-d-y');
+        $format = $date['object']->format('m-d-Y');
         $snippet .= "<li><a href=\"./{$format}/index.html\">{$date['date']}</a></li>\n";
         $dir = '/studies/'.$format;
         $zip->addEmptyDir($dir);
