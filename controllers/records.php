@@ -108,8 +108,6 @@ class Records extends \bloc\controller
 
     $view = new View(self::layout);
 
-
-
     if ($topic == 'practice' || $topic == 'project') {
       $this->url = $this->student->context['@url'] . "/{$topic}/{$index}";
       if ($topic == 'project') {

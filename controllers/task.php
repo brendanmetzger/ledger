@@ -35,11 +35,12 @@ class Task extends \bloc\controller
   private function save($doc)
   {
     if ($doc->validate()) {
-      $doc->save();
+      return $doc->save();
     } else {
       echo "ERROR \n";
       print_r($doc->errors());
       echo "\n";
+      return false;
     }
   }
 
@@ -87,6 +88,13 @@ class Task extends \bloc\controller
     foreach ($imports as $import) {
       $this->CLIenroll($semester, $course, $section, $import['id'], $import['name'], $import['email'], $import['cl'], $import['major']);
     }
+  }
+  
+  public function CLIunenroll($id)
+  {
+    // if before drop, remove node and branche
+    // if before withdraw, deactivate node
+    // else, do not remove.
   }
 
   public function CLIenroll($semester, $course, $section, $id = null, $name = null, $email = null, $year = null, $major = null)
@@ -141,43 +149,16 @@ class Task extends \bloc\controller
     $student->setAttribute('major', $major);
     echo $student->write() . "\nCreate Account (Y/n): ";
     if (strtoupper(trim(fgets(STDIN))) === 'Y') {
-      return $this->save($doc);
-    }
-  }
-
-  public function CLIlines()
-  {
-    $doc     = new Document("data/FA16");
-    $notes = (new \DomXpath($doc))->query("//student/quiz");
-
-    foreach ($notes as $note) {
-      if (strpos($note->nodeValue, ' ') !== false) {
-        echo "FIX: " . substr($note->nodeValue, 0, 25) . "\n";
-        $note->nodeValue = base64_encode($note->nodeValue);
-      }
+      $saved = $this->save($doc);
       
+      if ($saved) {
+        // create a branch in data/SEM/work/
+        $git = exec('which git');
+        $cmd = sprintf('cd %sdata/%s/work/ && %s branch %s', PATH, $semester, $git, $key);
+        echo exec($cmd);
+      }
+      return true;
     }
-
-    $this->save($doc);
-  }
-
-  public function CLImake(string $semester,  $path = 'data/student/')
-  {
-    echo "Will create a directory for each student in {$path}";
-
-    $doc = new Document("data/{$semester}");
-    $students = (new \DomXpath($doc))->query("//student[@id]");
-
-    foreach ($students as $student) {
-
-      $student_directory_path = PATH.$path.$student->getAttribute('id').'.xml';
-      echo "Creating file: {$student_directory_path}\n";
-      file_put_contents($student_directory_path, '<records/>');
-    }
-
-
-    // gather list of students
-    // make a path
   }
 
   private function parseStudentFile($xml)
@@ -224,62 +205,6 @@ class Task extends \bloc\controller
     return $students;
   }
 
-
-  public function CLIbuildWeeks()
-  {
-    $doc  = new \bloc\DOM\Document(self::SEMESTER);
-    $xml  = new \DomXpath($doc);
-
-    $classes = $xml->query('/course/classes')->item(0);
-    echo "here";
-    for ($i=1; $i < 16; $i++) {
-      $week = $classes->appendChild($doc->createElement('week'));
-      $week->setAttribute('index',  $i);
-      echo "\nWeek {$i} Class title: ";
-      $week->setAttribute('title', trim(fgets(STDIN)));
-    }
-
-    $this->save($doc);
-  }
-
-
-  public function CLIassignment()
-  {
-    $doc  = new \bloc\DOM\Document(self::SEMESTER);
-    $xml  = new \DomXpath($doc);
-
-    $assignment = $xml->query('/course/assignments')->item(0)->appendChild($doc->createElement('assignment'));
-    $weeks      = $xml->query('/course/classes/outline');
-    // title, points, id
-
-    echo "\nEnter Assignment Title: ";
-    $title = trim(fgets(STDIN));
-    $assignment->setAttribute('title', $title);
-
-    $id = preg_replace(['/\s+/', '/[^a-z]/i'], ['-', ''], $title);
-    $assignment->setAttribute('id', $id);
-
-    echo "\nEnter number of points: ";
-    $points = trim(fgets(STDIN));
-    $assignment->setAttribute('points', (int)$points);
-
-    echo "\nWeek number: ";
-
-    $week = ((int)trim(fgets(STDIN)) - 1);
-    if ($week >= 0 && $week < 15) {
-      $ref = $weeks->item($week)->appendChild($doc->createElement('assignment'));
-      $ref->setAttribute('ref', $id);
-    }
-
-    echo "\nAssignment Details: ";
-    $details = trim(fgets(STDIN));
-
-    if (!empty($details)) {
-      $assignment->setNodeValue($details);
-    }
-
-    $this->save($doc);
-  }
   /**
    * README file as full-page documentation
    *
@@ -305,11 +230,13 @@ class Task extends \bloc\controller
     $time = time();
     $path = sprintf("%sdata/%s/log/%s", PATH, \models\Data::$SEMESTER, date('m-d-Y', time()));
     $out = "<validate user=\"{$id}\" time=\"{$time}\" hash=\"{$hash}\"/>\n";
+    
     if ($type == 'css') {
       # code...
     } else if ($type == 'html') {
       
     }
+    
     file_put_contents($path, $out, FILE_APPEND);
     $output = curl_exec($ch);
     $info = curl_getinfo($ch);
@@ -319,7 +246,7 @@ class Task extends \bloc\controller
   
   public function CLIcommits()
   {
-    
+    // parse the daily log file
     $path = sprintf("%sdata/%s/log/%s", PATH, \models\Data::$SEMESTER, date('m-d-Y', time()));
     $doc = new \DOMDocument();
     $doc->loadXML(sprintf("<log>%s</log>", file_get_contents($path)));
@@ -327,17 +254,24 @@ class Task extends \bloc\controller
     $students = [];
 
     foreach ((new \DOMXpath($doc))->query('//*[@user]') as $node) {
-      $id = $node->getAttribute('user');
-      $students[$id] = new \models\Student($sid);;
+      $sid = $node->getAttribute('user');
+      $students[$sid] = new \models\Student($sid);
     }
     
-    print_r($students);
     
-    /*
-    - parse the daily log file
-    - for each student with activity
+    $git = exec('which git');
     
-    */
+    
+    foreach ($students as $id => $student) {
+
+      $cmd = sprintf('cd %sdata/%s/work/ && %s checkout %s', PATH, \models\Data::$SEMESTER, $git, $student['@key']);
+      
+      // echo $cmd;
+      echo exec($cmd);
+    }
+    
+    
+    
   }
 
 }
