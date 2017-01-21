@@ -82,7 +82,7 @@ class Task extends \bloc\controller
 
   public function CLIimport($semester, $course, $section = '01')
   {
-    $path  =  "data/classlists/{$semester}-{$course}-{$section}";
+    $path  =  "data/{$semester}/{$course}-{$section}";
     $imports = $this->parseStudentFile(new \DomXpath(new Document($path)));
     foreach ($imports as $import) {
       $this->CLIenroll($semester, $course, $section, $import['id'], $import['name'], $import['email'], $import['cl'], $import['major']);
@@ -91,7 +91,7 @@ class Task extends \bloc\controller
 
   public function CLIenroll($semester, $course, $section, $id = null, $name = null, $email = null, $year = null, $major = null)
   {
-    $doc     = new Document("data/{$semester}");
+    $doc     = new Document("data/{$semester}/records");
     $section = (new \DomXpath($doc))->query("//courses/section[@id='{$section}' and @course='{$course}']");
     if ($section->length < 1) {
       throw new \RuntimeException("No section {$section} for {$course} in {$semester}", 1);
@@ -102,6 +102,13 @@ class Task extends \bloc\controller
     if ($name === null) {
       echo "\nName: ";
       $name = trim(fgets(STDIN));
+    } else {
+      echo "Student is '{$name}'\n";
+      echo "Enter if ok, or new name to adjust:";
+      $adjustment = trim(fgets(STDIN));
+      if (!empty($adjustment)) {
+        $name = $adjustment;
+      }
     }
 
     if ($id === null) {
@@ -126,7 +133,8 @@ class Task extends \bloc\controller
     }
     $student->setAttribute('name', $name);
     $student->setAttribute('email', $email);
-    $key  = substr($email, 0, strpos($email, '@'));
+    $key  = strtolower(substr($email, 0, strpos($email, '@')));
+    $student->setAttribute('key', $key);
     $student->setAttribute('url', "http://iam.colum.edu/students/{$key}/{$course}");
     $student->setAttribute('id', \models\Student::BLEAR($id));
     $student->setAttribute('year', $year);
@@ -284,7 +292,7 @@ class Task extends \bloc\controller
     // \/\*([\s\S]*?)\*\/|([^\\:]|^)\/\/.*$
   }
   
-  public function POSTvalidate($request, $id, $type, $url)
+  public function POSTvalidate($request, $id, $type, $url, $file)
   {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, base64_decode($url));
@@ -311,7 +319,20 @@ class Task extends \bloc\controller
   
   public function CLIcommits()
   {
-    echo 'no';
+    
+    $path = sprintf("%sdata/%s/log/%s", PATH, \models\Data::$SEMESTER, date('m-d-Y', time()));
+    $doc = new \DOMDocument();
+    $doc->loadXML(sprintf("<log>%s</log>", file_get_contents($path)));
+
+    $students = [];
+
+    foreach ((new \DOMXpath($doc))->query('//*[@user]') as $node) {
+      $id = $node->getAttribute('user');
+      $students[$id] = new \models\Student($sid);;
+    }
+    
+    print_r($students);
+    
     /*
     - parse the daily log file
     - for each student with activity

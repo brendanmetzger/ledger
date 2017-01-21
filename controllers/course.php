@@ -131,8 +131,6 @@ class Course extends \bloc\controller
   public function GEThelper($id, $file)
   {
     
-
-    
     // this is a javascript file
     $track = [
       'page' => parse_url($_SERVER['HTTP_REFERER']),

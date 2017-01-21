@@ -25,9 +25,9 @@ namespace models;
     ];
 
 
-    static public function BLEAR($key, $seed = 16)
+    static public function BLEAR($key)
     {
-      return strtoupper(base_convert((int)$key * $seed, 10, $seed));
+      return strtr(strtoupper(base_convert((int)$key, 10, 26)), '0123456789', 'QRSTUVWXYZ');
     }
 
     public function authenticate($token)

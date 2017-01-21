@@ -1,24 +1,40 @@
+/* jshint esversion: 6 */
+
 // commit curve = (x, a) => x ** a / (x ** a + ((1 - x) ** a)) use as a factor of 2.7
 
 (function(identity, domain) {
 
   function getCSScheckup(CSS, re) {
+           
     
-    var current = Object.keys(CSS)
-           .map(StyleSheetList.prototype.item.bind(CSS))
-           .reduce((a, s) => s.rules ? a + Object.keys(s.rules)
-           .map(i => s.rules[i].cssText.replace(re, '').length)
-           .reduce((a, v) => a + v, 0) : a, 0);
-    
-    var key = 'CSS'+btoa(window.location.pathname);     
-    var scores = (sessionStorage.getItem(key) || current.toString()).split(':').map(i => parseInt(i, 10));
+    return CSS.map(function (sheet) {
+      let file = btoa(sheet.href.substring(sheet.href.indexOf('/', 7)));
+      let size = Array.from(sheet.rules)
+                      .map( r => r.cssText.replace(re, '').length)
+                      .reduce((a, v) => a + v, 0) ;
 
-    var delta = current - scores[scores.length - 1];
-    
-    if (delta !== 0) scores.push(current);
-    
-    sessionStorage.setItem(key, scores.join(':'));
-    return scores;
+      let scores = (sessionStorage.getItem(file) || size.toString()).split(':').map(i => parseInt(i, 10));
+      let delta  = size - scores[scores.length - 1];
+      console.log(delta, size);
+      if (delta !== 0) {
+        scores.push(size);
+        if (Math.abs(delta) > 1) {
+          getSource(atob(file), function (evt) {
+            validateCSS(evt.target.responseText, function (evt) {
+              var messages = JSON.parse(evt.target.responseText).cssvalidation;
+              if (messages.result.errorcount > 0) {
+                messages.errors.forEach(function (error) {
+                  var msg = `line  ${error.line} of  ${atob(file)}`;
+                  console.debug(error.message, msg);
+                });
+              }
+            });
+          });
+        }
+      }
+      sessionStorage.setItem(file, scores.join(':'));
+      return scores;
+    });
   }
   
   function getHTMLcheckup() {
@@ -48,7 +64,6 @@
     item.innerHTML = 'open your console when developing';
     item.dataset.type  = 'console';
     item.classList.add('error');
-    
   }
 
 
@@ -61,7 +76,7 @@
         item.parentNode.removeChild(item);
       }
     });
-    console.log('%cTodays secret code: ', element);
+    console.debug('%cconsole is open ', element);
   }
   
   
@@ -69,11 +84,11 @@
     var data = new FormData();
     data.append('out', 'json');
     data.append('content', text);
-
     var req  = new XMLHttpRequest();
     var url = btoa('https://validator.nu/');
+    var file = btoa(window.location.pathname);
     req.overrideMimeType('application/json');
-    req.open('POST', domain+identity+'/html/'+url+'.js', true);
+    req.open('POST', domain+identity+'/html/'+url+'/'+file+'.js', true);
     req.addEventListener('load', callback);
     
     req.send(data);
@@ -88,8 +103,9 @@
     data.append('text', text);
     
     var req  = new XMLHttpRequest();
+    var file = btoa(window.location.pathname);
     var url = btoa("https://jigsaw.w3.org/css-validator/validator");
-    req.open('POST', domain+identity+'/css/'+url+'.js', true);
+    req.open('POST', domain+identity+'/css/'+url+'/'+file+'.js', true);
     req.overrideMimeType('application/json');
     req.addEventListener('load', callback);
     req.send(data);
@@ -114,7 +130,7 @@
       var messages = JSON.parse(evt.target.responseText).messages;
       messages.forEach(function (obj) {
         if (obj.type == 'error') {
-          console.error('HTML Validation:', obj.message);
+          console.debug('HTML Validation:', obj.message);
         } else {
           console.info(obj.message);
         }
@@ -125,9 +141,7 @@
   addEventListener('load', function() {
     drawHelper('_e_s_p_e_c_i_a_l_');
     checkConsole('#_e_s_p_e_c_i_a_l_ [data-type=console]');
-    console.log('css development', getCSScheckup(document.styleSheets, /[^;]/g));
-    console.log('html development', getHTMLcheckup());
-  });
-  
-  console.log(identity);
+    getCSScheckup(Array.from(document.styleSheets).filter(item => item.href && item.href.includes(window.location.hostname)), /[^;]/g);
+    getHTMLcheckup();
+  });  
 });

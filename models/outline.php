@@ -87,8 +87,8 @@ namespace models;
         ])), $trimmable));
         
         $zip->addFromString("/{$dir}/README.txt", $readme);
-        $zip->addFromString("/src/css/{$title}.css", "/*\n{strtoupper($title)} StyleSheet TODO:\n - [ ] copy list from course outline\n*/");
-        $zip->addFromString("/src/js/{$title}.js", "/*\n{strtoupper($title)} JavaScript TODO:\n - [ ] copy list from course outline\n*/");
+        $zip->addFromString("/src/css/{$title}.css", "/*\n{$title} StyleSheet TODO:\n - [ ] copy list from course outline\n*/");
+        $zip->addFromString("/src/js/{$title}.js", "/*\n{$title} JavaScript TODO:\n - [ ] copy list from course outline\n*/");
       }
 
       // add media

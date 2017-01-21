@@ -33,7 +33,7 @@ html.VOID blockquote p:not(:last-of-type) {font-size:5vmin;font-family:Baskervil
   background-color: rgb(193, 17, 17);
 }
 
-#_e_s_p_e_c_i_a_l_.open, #_e_s_p_e_c_i_a_l_:hover {
+#_e_s_p_e_c_i_a_l_.open {
   transform: rotate(0deg);
   opacity: 1;
   height: 15vh;
