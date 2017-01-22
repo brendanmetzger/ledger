@@ -27,7 +27,7 @@ namespace models;
 
     public function getIndex(\DOMelement $context)
     {
-      return ['midterm', 'final'][$this->criterion->context['@index']];
+      return [$this->criterion->context['@path']];
     }
 
     public function setProject(\DOMElement $context, $value)
@@ -38,6 +38,16 @@ namespace models;
     public function __toString()
     {
       return base64_decode($this->context->nodeValue);
+    }
+    
+    public function getBaseUrl(\DOMElement $context)
+    {
+      return $this->student['@url'] . $this->criterion->context['@path'] . '/';
+    }
+    
+    public function getTitle(\DOMElement $context)
+    {
+      return $this->criterion->context['@title'];
     }
 
     public function getInputs(\DOMElement $context)

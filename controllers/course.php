@@ -138,7 +138,7 @@ class Course extends \bloc\controller
       'addr' => $_SERVER['REMOTE_ADDR'],
     ];
     
-    if ($track['addr'] != '127.0.0.1') return;
+    if ($track['page']['host'] != '127.0.0.1')  return '/* localhost-only viewing of helper files */';
     
     $format = \bloc\application::instance()->getExchange('request')->format;
     

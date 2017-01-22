@@ -2,7 +2,7 @@
   <link rel="stylesheet" href="/css/table.css" />
   <header class="banner">
     <h1>[$student:@name]</h1>
-    <h4>[$student:@major $student:@year]</h4>
+    <h4>[$student:@role $student:@year]</h4>
   </header>
   <section class="b">
     <table class="full chart">
@@ -104,7 +104,7 @@
           <td style="width:15%">
             <a href="[[/$$student:course/criterion/project/$project:criterion:@index/$$student:section:@id]]">[ $project:criterion]</a>
           </td>
-          <td class="centered"><a href="[[$$student:@url/project/$project:index/?$$entropy]]">Preview</a></td>
+          <td class="centered"><a href="[[$$project:baseurl/?$$entropy]]">Preview</a></td>
           <td class="[$schedule:status centered]">
             <a href="[[/$$student:course/notes/$project:criterion:path/$$student:@id]]">[[$$review]]</a>
             <a href="[[/$$instructor:path/$project:criterion:path/$$student:@id]]">[[$$instructor:edit]]</a>

@@ -146,7 +146,7 @@ class Task extends \bloc\controller
     $student->setAttribute('url', "http://iam.colum.edu/students/{$key}/{$course}");
     $student->setAttribute('id', \models\Student::BLEAR($id));
     $student->setAttribute('year', $year);
-    $student->setAttribute('major', $major);
+    $student->setAttribute('role', $major);
     echo $student->write() . "\nCreate Account (Y/n): ";
     if (strtoupper(trim(fgets(STDIN))) === 'Y') {
       $saved = $this->save($doc);
@@ -242,7 +242,7 @@ class Task extends \bloc\controller
       
     } else if ($type == 'js') {
       $lint = exec('which eslint');
-      $output = exec("echo {$_POST['content']} | {$lint} --no-eslintrc --parser-options=ecmaVersion:7  --env browser -f json  --stdin")
+      $output = exec("echo {$_POST['content']} | {$lint} --no-eslintrc --parser-options=ecmaVersion:7  --env browser -f json  --stdin");
     }
     
     return $output;
@@ -250,16 +250,78 @@ class Task extends \bloc\controller
   
   public function CLIcommits()
   {
+    $now = time();
+    
     // parse the daily log file
     $path = sprintf("%sdata/%s/log/%s", PATH, \models\Data::$SEMESTER, date('m-d-Y', time()));
     $doc = new \DOMDocument();
     $doc->loadXML(sprintf("<log>%s</log>", file_get_contents($path)));
 
-    $students = [];
-
+    $updates = [];
+    
+    // get the students who made updates
     foreach ((new \DOMXpath($doc))->query('//*[@user]') as $node) {
       $sid = $node->getAttribute('user');
-      $students[$sid] = new \models\Student($sid);
+      if (!array_key_exists($sid, $updates)) {
+        $updates[$sid] = [];
+      }
+      $updates[$sid][$node->getAttribute('file')] = $node->getAttribute('hash');
+    }
+    
+    // get all students and scan server for updates
+    stream_context_set_default(
+        array(
+            'http' => array(
+                'method' => 'HEAD'
+            )
+        )
+    );
+    foreach (\models\data::instance()->query('//')->find('student') as $student) {
+      // iterate projects and get a report on what to grab.
+      $student =  new \models\student($student['@id']);
+      // look into global.css and global.js files
+      $files = [];
+      
+      $files[] = "{$student['@url']}/src/js/global.js";
+      $files[] = "{$student['@url']}/src/css/global.css";
+      
+      
+      // iterate projects
+      foreach ($student->projects['list'] as $iterator) {
+        $url = $iterator['project']->baseurl;
+        $title = $iterator['project']->title;
+        
+        $files[] = "{$url}index.html";
+        $files[] = "{$url}README.txt";
+        $files[] = "{$student['@url']}/src/js/{$title}.js";
+        $files[] = "{$student['@url']}/src/css/{$title}.css";
+      }
+      
+      foreach ($files as $key => $file) {
+        usleep(250000);
+        $headers = get_headers($file, 1);
+        $last_mod = round(($now - strtotime($headers['Last-Modified'])) / (60 * 60 * 24), 2);
+        echo "last mod ". $last_mod . "\n";
+        if ($last_mod > 1) {
+          unset($files[$key]);
+        } else if (substr($file, -4) == 'html') {
+          // use this to validate HTML and gather response
+          $handle = curl_init("https://validator.nu/?outline=yes&doc={$file}&out=json&showsource=yes");
+          curl_setopt_array($handle, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_USERAGENT => 'Brendansbot/1.0',
+          ]);
+
+          $content = json_decode(curl_exec($handle));
+          $content->messages;
+          // trim off the url;
+          // file_put_contents($file, $content->source->code);
+          unset($files[$key]);
+        }
+      }
+      echo "These files need updating";
+      print_r($files);
+      
     }
 
     $git = exec('which git');
@@ -273,7 +335,7 @@ class Task extends \bloc\controller
       // update images 
       
       // echo $cmd;
-      echo exec($cmd);
+      // echo exec($cmd);
     }
   }
 }

@@ -34,7 +34,7 @@ namespace models;
 
     public function getStudents(\DOMElement $context)
     {
-      return $context->find('student[@major!="instructor"]')->map(function($student) {
+      return $context->find('student[@role!="instructor"]')->map(function($student) {
         return ['student' => new Student($student)];
       });
     }

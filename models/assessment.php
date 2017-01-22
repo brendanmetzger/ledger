@@ -248,7 +248,7 @@ namespace models;
 
 
         $score = $map[$evaluation]->score;
-
+        $map[$evaluation]->loadStudent($this->student);
         if (($evaluation === 'quiz' || $evaluation === 'project') && $total > $criterion['@index']) {
           $stats = $this->collective($this->student->section, $criterion);
           if ($score > 0 && $stats['sd'] > 0) {
