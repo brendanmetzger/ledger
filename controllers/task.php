@@ -154,13 +154,13 @@ class Task extends \bloc\controller
       $saved = $this->save($doc);
       
       if ($saved) {
-        sleep(1);
         $object = new \models\student($student);
         // create and checkout branch in data/SEM/work/
         
+        chdir($path);
+        
         $cmds = [];
         
-        $cmds[] = sprintf('cd %s', $path);
         $cmds[] = sprintf('%s checkout -b %s', $git, $key);
         $cmds[] = 'mkdir -p src/js';
         $cmds[] = 'mkdir -p src/css';
@@ -187,9 +187,10 @@ class Task extends \bloc\controller
         $cmds[] = sprintf('%s commit -m %s', $git, "'initiated branch'");
         $cmds[] = sprintf('%s checkout master', $git);
         // run first commit
-        $cmd = implode(' && ', $cmds);
-  
-        echo exec($cmd) . "\n\n";
+        foreach ($cmds as $cmd) {
+          echo exec($cmd) . "\n(via {$cmd})\n";
+          usleep(1000);
+        }
       }
       
       return true;
