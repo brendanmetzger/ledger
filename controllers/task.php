@@ -100,6 +100,8 @@ class Task extends \bloc\controller
   public function CLIenroll($semester, $course, $section, $id = null, $name = null, $email = null, $year = null, $major = null)
   {
     $doc     = new Document("data/{$semester}/records");
+    $path    = sprintf("%sdata/%s/work/", PATH, $semester);
+    $git     = exec('which git');
     $section = (new \DomXpath($doc))->query("//courses/section[@id='{$section}' and @course='{$course}']");
     if ($section->length < 1) {
       throw new \RuntimeException("No section {$section} for {$course} in {$semester}", 1);
@@ -152,11 +154,44 @@ class Task extends \bloc\controller
       $saved = $this->save($doc);
       
       if ($saved) {
-        // create a branch in data/SEM/work/
-        $git = exec('which git');
-        $cmd = sprintf('cd %sdata/%s/work/ && %s branch %s', PATH, $semester, $git, $key);
-        echo exec($cmd);
+        sleep(1);
+        $object = new \models\student($student);
+        // create and checkout branch in data/SEM/work/
+        
+        $cmds = [];
+        
+        $cmds[] = sprintf('cd %s', $path);
+        $cmds[] = sprintf('%s checkout -b %s', $git, $key);
+        $cmds[] = 'mkdir -p src/js';
+        $cmds[] = 'mkdir -p src/css';
+        $cmds[] = 'touch src/js/global.js';
+        $cmds[] = 'touch src/css/global.css';
+        
+        
+        // iterate projects
+        foreach ($object->projects['list'] as $iterator) {
+          $dir   = trim($iterator['project']['criterion']['@path'], '/');
+          $title = $iterator['project']['criterion']['@title'];
+
+          if (! empty($dir)) {
+            $cmds[] = sprintf('mkdir %s', $dir);
+            $dir .= '/';
+          }
+          
+          $cmds[] = sprintf('touch %sindex.html', $dir);
+          $cmds[] = sprintf('touch %sREADME.txt', $dir);
+          $cmds[] = sprintf('touch src/js/%s.js', $title);
+          $cmds[] = sprintf('touch src/css/%s.css', $title);
+        }
+        $cmds[] = sprintf('%s add --all', $git);
+        $cmds[] = sprintf('%s commit -m %s', $git, "'initiated branch'");
+        $cmds[] = sprintf('%s checkout master', $git);
+        // run first commit
+        $cmd = implode(' && ', $cmds);
+  
+        echo exec($cmd) . "\n\n";
       }
+      
       return true;
     }
   }
