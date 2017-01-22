@@ -42,8 +42,6 @@ u {
   text-decoration: none;
 }
 
-
-
 nav ul.index {
   border-width: 1px 0 0;
   padding: 0;
@@ -83,7 +81,7 @@ li {
 
 .script,
 h1.massive {
-  font-family: 'Dr Carbfred W01 Regular';
+  font-family: 'Dr Carbfred W01 Regular', Mistral, Cursize;
   padding: 1vmax 0 0 0.5em;
 }
 

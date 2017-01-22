@@ -131,7 +131,7 @@ trait report {
   public function getLint(\DOMElement $context)
   {
     // This will use eslint to gather errors
-    // "cat {$content} | eslint --no-eslintrc --parser-options=ecmaVersion:7  --env browser -f json  --stdin"
+    // "echo {$content} | eslint --no-eslintrc --parser-options=ecmaVersion:7  --env browser -f json  --stdin"
   }
 
   public function getValidate(\DOMelement $context)

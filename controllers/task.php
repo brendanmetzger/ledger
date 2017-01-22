@@ -219,28 +219,32 @@ class Task extends \bloc\controller
   
   public function POSTvalidate($request, $id, $type, $url, $file)
   {
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, base64_decode($url));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $_POST);
-    curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+    
     // log transaction, time, user, file, hash
     $hash = sha1($_POST['content']);
     $time = time();
+    $file = base64_decode($file);
     $path = sprintf("%sdata/%s/log/%s", PATH, \models\Data::$SEMESTER, date('m-d-Y', time()));
-    $out = "<validate user=\"{$id}\" time=\"{$time}\" hash=\"{$hash}\"/>\n";
-    
-    if ($type == 'css') {
-      # code...
-    } else if ($type == 'html') {
+    $out = "<validate user=\"{$id}\" time=\"{$time}\" file=\"{$file}\" hash=\"{$hash}\"/>\n";
+    file_put_contents("/tmp/{$hash}", gzcompress($_POST['content']));
+    file_put_contents($path, $out, FILE_APPEND);
+
+    if ($type == 'css' || $type == 'html') {
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, base64_decode($url));
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch, CURLOPT_POST, true);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $_POST);
+      curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+      $output = curl_exec($ch);
+      $info = curl_getinfo($ch);
+      curl_close($ch);
       
+    } else if ($type == 'js') {
+      $lint = exec('which eslint');
+      $output = exec("echo {$_POST['content']} | {$lint} --no-eslintrc --parser-options=ecmaVersion:7  --env browser -f json  --stdin")
     }
     
-    file_put_contents($path, $out, FILE_APPEND);
-    $output = curl_exec($ch);
-    $info = curl_getinfo($ch);
-    curl_close($ch);
     return $output;
   }
   
@@ -257,21 +261,19 @@ class Task extends \bloc\controller
       $sid = $node->getAttribute('user');
       $students[$sid] = new \models\Student($sid);
     }
-    
-    
+
     $git = exec('which git');
-    
-    
+
     foreach ($students as $id => $student) {
 
       $cmd = sprintf('cd %sdata/%s/work/ && %s checkout %s', PATH, \models\Data::$SEMESTER, $git, $student['@key']);
       
+      // get all the files, update commit.
+      
+      // update images 
+      
       // echo $cmd;
       echo exec($cmd);
     }
-    
-    
-    
   }
-
 }

@@ -1,9 +1,15 @@
-/* jshint esversion: 6 */
-
 // commit curve = (x, a) => x ** a / (x ** a + ((1 - x) ** a)) use as a factor of 2.7
 
-(function(identity, domain) {
+/*
+  TODO Log most recent errors file, line, message
+*/
 
+(function(identity, domain) {
+  if (! navigator.onLine) {
+    console.info("you are not online, validator is turned off");
+    return;
+  }
+  
   function getCSScheckup(CSS, re) {
            
     
@@ -12,10 +18,9 @@
       let size = Array.from(sheet.rules)
                       .map( r => r.cssText.replace(re, '').length)
                       .reduce((a, v) => a + v, 0) ;
-
+                      
       let scores = (sessionStorage.getItem(file) || size.toString()).split(':').map(i => parseInt(i, 10));
       let delta  = size - scores[scores.length - 1];
-      console.log(delta, size);
       if (delta !== 0) {
         scores.push(size);
         if (Math.abs(delta) > 1) {
@@ -32,6 +37,7 @@
           });
         }
       }
+      
       sessionStorage.setItem(file, scores.join(':'));
       return scores;
     });
@@ -42,7 +48,24 @@
     var current = document.documentElement.outerHTML.replace(/[^\<\>]/g, '').length / 2;
     var scores = (sessionStorage.getItem(key) || current.toString()).split(':').map(i => parseInt(i, 10));
     var delta = current - scores[scores.length - 1];
-    if (delta !== 0) scores.push(current);
+    if (delta !== 0) {
+      scores.push(current)
+      if (Math.abs(delta) > 1) {
+        getSource(window.location.href, function (evt) {
+          // console.log(evt.target.responseText);
+          validateHTML(evt.target.responseText, function (evt) {
+            var messages = JSON.parse(evt.target.responseText).messages;
+            messages.forEach(function (obj) {
+              if (obj.type == 'error') {
+                console.debug('HTML Validation:', obj.message);
+              } else {
+                console.info(obj.message);
+              }
+            });
+          });
+        });
+      }
+    };
     
     sessionStorage.setItem(key, scores.join(':'));
     return scores;
@@ -122,21 +145,6 @@
     req.addEventListener('load', callback);
     req.send();
   }
-  
-  var current = window.location.href;
-  getSource(current, function (evt) {
-    // console.log(evt.target.responseText);
-    validateHTML(evt.target.responseText, function (evt) {
-      var messages = JSON.parse(evt.target.responseText).messages;
-      messages.forEach(function (obj) {
-        if (obj.type == 'error') {
-          console.debug('HTML Validation:', obj.message);
-        } else {
-          console.info(obj.message);
-        }
-      });
-  });
-  });
   
   addEventListener('load', function() {
     drawHelper('_e_s_p_e_c_i_a_l_');
