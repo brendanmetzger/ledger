@@ -188,11 +188,12 @@ class Task extends \bloc\controller
         $cmds[] = sprintf('%s checkout master', $git);
         // run first commit
         foreach ($cmds as $cmd) {
-          echo exec($cmd) . "\n(via {$cmd})\n";
+          echo "{$cmd}\n";
+          exec($cmd, $out);
+          print_r($out);
           usleep(1000);
         }
       }
-      
       return true;
     }
   }
@@ -287,32 +288,29 @@ class Task extends \bloc\controller
   public function CLIcommits()
   {
     $now = time();
+    $git = exec('which git');
     
     // parse the daily log file
-    $path = sprintf("%sdata/%s/log/%s", PATH, \models\Data::$SEMESTER, date('m-d-Y', time()));
-    $doc = new \DOMDocument();
-    $doc->loadXML(sprintf("<log>%s</log>", file_get_contents($path)));
-
-    $updates = [];
-    
-    // get the students who made updates
-    foreach ((new \DOMXpath($doc))->query('//*[@user]') as $node) {
-      $sid = $node->getAttribute('user');
-      if (!array_key_exists($sid, $updates)) {
-        $updates[$sid] = [];
-      }
-      $updates[$sid][$node->getAttribute('file')] = $node->getAttribute('hash');
-    }
+    // $path = sprintf("%sdata/%s/log/%s", PATH, \models\Data::$SEMESTER, date('m-d-Y', time()));
+    // $doc = new \DOMDocument();
+    // $doc->loadXML(sprintf("<log>%s</log>", file_get_contents($path)));
+    //
+    // $updates = [];
+    //
+    // // get the students who made updates
+    // foreach ((new \DOMXpath($doc))->query('//*[@user]') as $node) {
+    //   $sid = $node->getAttribute('user');
+    //   if (!array_key_exists($sid, $updates)) {
+    //     $updates[$sid] = [];
+    //   }
+    //   $updates[$sid][$node->getAttribute('file')] = $node->getAttribute('hash');
+    // }
     
     // get all students and scan server for updates
-    stream_context_set_default(
-        array(
-            'http' => array(
-                'method' => 'HEAD'
-            )
-        )
-    );
-    foreach (\models\data::instance()->query('//')->find('student') as $student) {
+    stream_context_set_default(['http' => ['method' => 'HEAD']]);
+    // $query = "@role!='instructor'";
+    $query = "@id='TRSYCP'";
+    foreach (\models\data::instance()->query('//')->find("student[{$query}]") as $student) {
       // iterate projects and get a report on what to grab.
       $student =  new \models\student($student['@id']);
       // look into global.css and global.js files
@@ -324,7 +322,7 @@ class Task extends \bloc\controller
       
       // iterate projects
       foreach ($student->projects['list'] as $iterator) {
-        $url = $iterator['project']->baseurl;
+        $url   = $iterator['project']->baseurl;
         $title = $iterator['project']->title;
         
         $files[] = "{$url}index.html";
@@ -332,46 +330,91 @@ class Task extends \bloc\controller
         $files[] = "{$student['@url']}/src/js/{$title}.js";
         $files[] = "{$student['@url']}/src/css/{$title}.css";
       }
+      chdir(sprintf('%sdata/%s/work/', PATH, \models\Data::$SEMESTER));
+      
+      $messages = [];
+      echo exec(sprintf('%s checkout %s', $git, $student['@key']));
       
       foreach ($files as $key => $file) {
-        usleep(250000);
         $headers = get_headers($file, 1);
         $last_mod = round(($now - strtotime($headers['Last-Modified'])) / (60 * 60 * 24), 2);
-        echo "last mod ". $last_mod . "\n";
-        if ($last_mod > 1) {
-          unset($files[$key]);
-        } else if (substr($file, -4) == 'html') {
-          // use this to validate HTML and gather response
-          $handle = curl_init("https://validator.nu/?outline=yes&doc={$file}&out=json&showsource=yes");
-          curl_setopt_array($handle, [
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_USERAGENT => 'Brendansbot/1.0',
-          ]);
+        
+        echo "last modified ". $last_mod . "\n";
+        
+        if ($last_mod < 1) {
+          $path = substr($file, strlen("{$student['@url']}/"));
+          if (substr($file, -4) == 'html') {
+            // use this to validate HTML and gather response
+            $handle = curl_init("https://validator.nu/?outline=yes&doc={$file}&out=json&showsource=yes");
+            curl_setopt_array($handle, [
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_USERAGENT => 'BrendanBot/1.0',
+            ]);
 
-          $content = json_decode(curl_exec($handle));
-          $content->messages;
-          // trim off the url;
-          // file_put_contents($file, $content->source->code);
-          unset($files[$key]);
+            $result  = json_decode(curl_exec($handle));
+            $content = $result->source->code;
+            $report  = [
+              'file'     => $path,
+              'sloc'     => count(preg_split('/\n/', $content)),
+              'analysis' => 'TODO',
+              'messages' => [],
+            ];
+            
+            foreach ($result->messages as $message) {
+              $report['messages'][] = [
+                'line'  => $result->messages->lastLine,
+                'type'  => $result->messages->type,
+                'text'  => $result->messages->message,
+              ];
+            }
+            $messages[] = $report;
+            
+          } else {
+            echo "Checking {$path}\n";
+            $content = file_get_contents($file, false, stream_context_create(['http' => ['method' => 'GET']]));
+            $report = [
+              'file' => $path,
+              'sloc' => count(preg_split('/\n/', $content)),
+              'messages' => [],
+            ];
+            if (substr($file, -3) == 'css') {
+              $cssvalidator = "https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3svg&uri=";
+              $result = json_decode(file_get_contents($cssvalidator . $file, false, stream_context_create(['http' => ['method' => 'GET']])));
+              $report['analysis'] = exec("echo '{$content}' | analyze-css -");
+              if ($result->cssvalidation->result->errorcount > 0) {
+                foreach ($result->cssvalidation->errors as $error) {
+                  $report['messages'][] = [
+                    'line' => $error->line,
+                    'type' => $error->type,
+                    'text' => $error->message,
+                  ];
+                }
+                
+                $messages[] = $report;
+              }
+               
+              //TODO analyze-css !
+            } else if (substr($file, -2) == 'js') {
+              // TODO sloc
+              // TODO eslint
+            }
+            
+            
+          }
+          // update the file with the new content
+          file_put_contents($path, $content);
+        } else {
+          echo "Not updating {$path}\n";
         }
+        usleep(20000);
       }
-      echo "These files need updating";
-      print_r($files);
-      
+      print_r($messages);
+      echo exec(sprintf('%s commit --all -m %s', $git, '"make a better message"'), $out);
+      print_r($out);
     }
 
-    $git = exec('which git');
 
-    foreach ($students as $id => $student) {
-
-      $cmd = sprintf('cd %sdata/%s/work/ && %s checkout %s', PATH, \models\Data::$SEMESTER, $git, $student['@key']);
-      
-      // get all the files, update commit.
-      
-      // update images 
-      
-      // echo $cmd;
-      // echo exec($cmd);
-    }
+    echo exec(sprintf('%s checkout master', $git));
+    
   }
 }

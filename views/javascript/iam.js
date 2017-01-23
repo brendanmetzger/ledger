@@ -122,6 +122,7 @@
     var data = new FormData();
     data.append('profile', 'css3svg');
     data.append('output', 'json');
+    data.append('showsource', 'yes');
     data.append('warning', '1'); // can be 0
     data.append('text', text);
     
