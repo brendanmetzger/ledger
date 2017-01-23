@@ -59,52 +59,7 @@
       </tbody>
     </table>
   </div>
-  <div class="overflow">
-    <table class="full chart tt bb">
-      <caption>
-        <h3 class="rag-left pad b caps spaced">Practice</h3>
-      </caption>
-      <thead>
-        <tr class="rotate">
-          <th>Assignment</th>
-          <!-- iterate section:students -->
-          <th><a href="[/records/student/$student:@id]">[$student:shortname]</a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- iterate records:practice -->
-        <tr class="[$criterion:status]">
-          <th><a href="[[/records/book/$$section:@course/$$section:@id/practice/$criterion:@index]]">[$title]</a></th>
-          <!-- iterate records -->
-          <td class="[centered marked $assessment:schedule:status]" style="[--hue: $assessment:practice:percentage; --value: 50%;]" title="[$assessment:practice:letter]">
-            <a class="percentage edit" href="[[/records/evaluate/practice/$$criterion:@index/$student:@id]]">[$assessment:practice:percentage]</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="full chart tt bb">
-      <caption>
-        <h3 class="rag-left pad b caps spaced">Quizzes</h3>
-      </caption>
-      <thead>
-        <tr class="rotate">
-          <th>Exam</th>
-          <!-- iterate section:students -->
-          <th><a href="[/records/student/$student:@id]">[$student:shortname]</a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- iterate records:quiz -->
-        <tr class="[$criterion:status]">
-          <th>[$title]</th>
-          <!-- iterate records -->
-          <td class="[centered marked $assessment:schedule:status]" title="[$assessment:quiz:letter]" style="[--hue: $assessment:stats:standard; --value: $assessment:stats:standard%;]">
-            <a class="percentage quick edit" href="[[/records/evaluate/quiz/$$criterion:@index/$student:@id]]">[$assessment:quiz:weighted]</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+
   <script type="text/javascript">
     bloc.init('ajax', function() {
       document.querySelector('article.gradebook').addEventListener('click', function(evt) {
