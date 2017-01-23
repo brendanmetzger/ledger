@@ -285,6 +285,17 @@ class Task extends \bloc\controller
     return $output;
   }
   
+  public function CLItest()
+  {
+    $template = new \bloc\View('views/layouts/email.html');
+    $template->content = 'views/layouts/forms/recap.html';
+
+    $output = [];
+
+    \models\Message::TRANSACTION('update', 'brendan.metzger@gmail.com', (string)$template->render($output));
+    echo "sent an email";
+  }
+  
   public function CLIcommits()
   {
     $now = time();
@@ -308,9 +319,10 @@ class Task extends \bloc\controller
     
     // get all students and scan server for updates
     stream_context_set_default(['http' => ['method' => 'HEAD']]);
-    // $query = "@role!='instructor'";
-    $query = "@id='TRSYCP'";
+    $query = "@role!='instructor'";
+    // $query = "@id='TRSYCP'";
     foreach (\models\data::instance()->query('//')->find("student[{$query}]") as $student) {
+      $out = null;
       // iterate projects and get a report on what to grab.
       $student =  new \models\student($student['@id']);
       // look into global.css and global.js files
@@ -351,24 +363,24 @@ class Task extends \bloc\controller
               CURLOPT_USERAGENT => 'BrendanBot/1.0',
             ]);
 
-            $result  = json_decode(curl_exec($handle));
-            $content = $result->source->code;
-            $report  = [
-              'file'     => $path,
-              'sloc'     => count(preg_split('/\n/', $content)),
-              'analysis' => 'TODO',
-              'messages' => [],
-            ];
-            
-            foreach ($result->messages as $message) {
-              $report['messages'][] = [
-                'line'  => $result->messages->lastLine,
-                'type'  => $result->messages->type,
-                'text'  => $result->messages->message,
+            if ($result  = json_decode(curl_exec($handle))) {
+              $content = $result->source->code;
+              $report  = [
+                'file'     => $path,
+                'sloc'     => count(preg_split('/\n/', $content)),
+                'analysis' => 'TODO',
+                'messages' => [],
               ];
-            }
-            $messages[] = $report;
             
+              foreach ($result->messages as $message) {
+                $report['messages'][] = [
+                  'line'  => $result->messages->lastLine,
+                  'type'  => $result->messages->type,
+                  'text'  => $result->messages->message,
+                ];
+              }
+              $messages[] = $report;
+            }
           } else {
             echo "Checking {$path}\n";
             $content = file_get_contents($file, false, stream_context_create(['http' => ['method' => 'GET']]));
@@ -379,18 +391,20 @@ class Task extends \bloc\controller
             ];
             if (substr($file, -3) == 'css') {
               $cssvalidator = "https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3svg&uri=";
-              $result = json_decode(file_get_contents($cssvalidator . $file, false, stream_context_create(['http' => ['method' => 'GET']])));
               $report['analysis'] = exec("echo '{$content}' | analyze-css -");
-              if ($result->cssvalidation->result->errorcount > 0) {
-                foreach ($result->cssvalidation->errors as $error) {
-                  $report['messages'][] = [
-                    'line' => $error->line,
-                    'type' => $error->type,
-                    'text' => $error->message,
-                  ];
-                }
+              
+              if ($result = json_decode(file_get_contents($cssvalidator . $file, false, stream_context_create(['http' => ['method' => 'GET']])))) {
+                if ($result->cssvalidation->result->errorcount > 0) {
+                  foreach ($result->cssvalidation->errors as $error) {
+                    $report['messages'][] = [
+                      'line' => $error->line,
+                      'type' => $error->type,
+                      'text' => $error->message,
+                    ];
+                  }
                 
-                $messages[] = $report;
+                  $messages[] = $report;
+                }
               }
                
               //TODO analyze-css !
@@ -412,7 +426,6 @@ class Task extends \bloc\controller
       echo exec(sprintf('%s commit --all -m %s', $git, '"make a better message"'), $out);
       print_r($out);
     }
-
 
     echo exec(sprintf('%s checkout master', $git));
     

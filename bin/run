@@ -4,6 +4,7 @@
 namespace bloc;
 
 date_default_timezone_set ('America/Chicago');
+chdir('/var/www/pedagogy/bin');
 
 #1. Frow where run is located, load the application file. This is the only mandatory part I think.
 require_once  '../bloc/application.php';

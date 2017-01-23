@@ -13,7 +13,8 @@ class Message
   const KEY = "c446d292-5969-4148-8910-d683afd54905";
   const SENDER = "bmetzger@colum.edu";
   public $transactions = [
-    'login' => 'Login Link'
+    'login' => 'Login Link',
+    'update' => '*SWM Updates'
   ];
 
   public function send($recipient, $subject, $message)
