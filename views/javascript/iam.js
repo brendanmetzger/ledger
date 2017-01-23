@@ -1,4 +1,4 @@
-// commit curve = (x, a) => x ** a / (x ** a + ((1 - x) ** a)) use as a factor of 2.7
+// commit curve = (x, a) => x ** a / (x ** a + ((1 - x) ** a)) use as a factor of 2.5
 
 /*
   TODO Log most recent errors file, line, message

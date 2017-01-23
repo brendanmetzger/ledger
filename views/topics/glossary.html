@@ -33,12 +33,16 @@
       <dd>Pixels can be useful when you only need about one of them: ie, a border or outline, a hairline margin between two elements. If not a hairline, then no, anything more than 2px is probably unnecessary.</dd>
       <dt id="overflow-problems" data-classification="css layout">Why is my text breaking outside of my container element?</dt>
       <dd>Likely, because you have a physical height set, and once you tell an element how tall it can (or cannot) be, some of its content is liable to spill out if necessary. This is something that can be used to your advantage.</dd>
-      <dd>Overflow</dd>
+      <dd>You should investigate the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow">overflow property</a>. A nutshell: <code>overflow:hidden</code> hides the overflow content, setting <code>overflow:auto|scroll|scrollX|scrollY</code> will allow you to scroll the content, where as <code>overflow:visible</code> does just that, and is <strong>what happens by default</strong>.</dd>
       <dt id="margin-collapsing">Why are the margins of two elements next to each other not as big as they should be?</dt>
       <dd>Because of margins collapse.</dd>
       <dt id="block-vs-inline">What is the difference between block-level and inline Elements?</dt>
       <dd>Block-level Elements define their own space</dd>
       <dd>Inline Elements can wrap and flow according to the size limits of the parent container.</dd>
+      <dt id="cache-invalidation">Why is there a string of numbers in my url when I follow a link to my website the dashboard?</dt>
+      <dd>This is a technique known as <a href="https://en.wikipedia.org/wiki/Cache_invalidation">cache invalidation</a> to make sure you get the latest version of your website. The random numbers are used as a part of a <a href="https://en.wikipedia.org/wiki/Query_string">query string</a>, which is a harmless way to make the page appear to be unique. </dd>
+      <dd>The default behavior of a server is to do something as fast as possible, and depending on what time a file is <em>requested</em> it may <em>respond</em> with a special header code called a <code>304 Not Modified</code>, in essence, telling your browser, <q>load the same thing if you want</q>. Thus, when developing, you should (1) have dev tools open, and (2) then make sure cache is disabled to ensure you get the resource as intended.</dd>
+      
     </dl>
   </section>
   <section class="columns">

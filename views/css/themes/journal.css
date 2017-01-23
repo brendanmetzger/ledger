@@ -707,7 +707,7 @@ nav form {
 .whitepaper {
   padding: 2.5vmax 5vmax;
   background-color: rgba(255,255,255,0.5);
-  transition: background-color 0.25s, padding 0.125s;
+  transition: background-color 0.25s;
 }
 
 .paginate > div ~ .epilogue,
@@ -717,11 +717,15 @@ nav form {
   margin: 20vmin -2.5vw 0;
 }
 
-details.whitepaper {
-  padding: 1vmin 1.5vmax;
+details.whitepaper[open] {
+  box-shadow: 0 0 1em rgba(0,0,0,0.125);
+  margin: 0 -2.5vmax -1px;
+  padding:2em 5vmax;
+  border-bottom: 1px solid rgba(0,0,0,0.35);
 }
 
 details.whitepaper:not([open]) {
+  padding:2em;
   background-color: transparent;
 }
 
@@ -954,8 +958,17 @@ abbr[title]:after {
   text-transform: capitalize;
 }
 
+abbr[title] ~ abbr[title]:after {
+  transform: translate(-65%, -100%) rotate(0) scale(1);
+}
+
 p:hover abbr[title] {color:red;}
 p:hover abbr[title]:after {
   opacity: 1;
   transform: translate(-65%, -100%) rotate(0) scale(1);
+}
+
+p:hover abbr[title] ~ abbr[title]:after {
+  box-shadow: -0.25em -0.25em 1em 0em rgba(0,0,0,0.2);
+  transform: translate(-15%, 85%) rotate(0) scale(1);
 }

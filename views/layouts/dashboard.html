@@ -36,7 +36,7 @@
   <section>
     <table class="full chart">
       <caption class="rag-right">
-        <!-- insert views/topics/_policy/research-studies.html -->
+        <!-- insert views/topics/_policy/practice.html -->
       </caption>
       <colgroup>
         <col span="1" style="width:1em;" />
@@ -44,34 +44,24 @@
       <thead>
         <tr>
           <th>[i]</th>
-          <th>Due</th>
-          <th>Assignment Details</th>
-          <th>Your page</th>
-          <th>Notes</th>
-          <th>Grade</th>
+          <th>Date</th>
+          <th>Commits</th>
+          <th>Raw</th>
+          <th>Value</th>
         </tr>
       </thead>
       <tbody>
-        <!-- iterate student:practice:list -->
-        <tr class="[$practice:status]" title="[$practice:letter]">
-          <th>[$practice:criterion:@index]</th>
-          <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <em class="ticker">[$due:ticker]</em></td>
-          <td class="centered">
-            <a href="[[/$$student:course/criterion/practice/$practice:criterion:@index/$$student:section:@id/$$student:course]]">[$practice:criterion:@title]</a>
-          </td>
-          <td class="centered"><a href="[[$$student:@url/practice/$practice:criterion:@index/]]">Preview</a></td>
-          <td class="[$schedule:status centered]">
-            <a href="[[/$$student:course/notes/practice/$practice:criterion:@index/]]">[[$$review]]</a>
-            <a href="[[/$$instructor:path/practice/$practice:criterion:@index/$$student:@id]]">[[$$instructor:edit]]</a>
-          </td>
-          <td class="[$schedule:status centered]">
-            <strong class="percentage">[$practice:percentage]</strong>
-          </td>
+        <tr>
+          <th>nil</th>
+          <td class="centered">TBD</td>
+          <td class="centered">-------</td>
+          <td>TBD</td>
+          <td>TBD</td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="5">µ ⋅ <span class="percentage">[$student:practice:weight]</span></th>
+          <th colspan="4">µ ⋅ <span class="percentage">[$student:practice:weight]</span></th>
           <td class="centered"><strong class="percentage">[$student:practice:score]</strong></td>
         </tr>
       </tfoot>
@@ -88,9 +78,9 @@
       <thead>
         <tr>
           <th>Project</th>
-          <th>Due</th>
+          <th>Critique</th>
           <th>Details</th>
-          <th>Your page<sup><a href="#cache-invalidation">[*]</a></sup></th>
+          <th>Your page<sup><a href="/overview/glossary#cache-invalidation">[*]</a></sup></th>
           <th>Notes</th>
           <th>Raw</th>
           <th>Score</th>
@@ -174,18 +164,8 @@
     </table>
   </section>
   <section style="margin:5em 0;padding:2em;border-top-width:1em;">
-    <h2>Cumulative Grade: <strong class="percentage" title="[$student:grade:letter]">[$student:grade:score]</strong></h2>
+    <h2>Cumulative Grade: <strong class="percentage" title="[$student:grade:letter]" data-score="[$student:grade:score]">NA</strong></h2>
     <h4 class="vertical">Note</h4>
     <p>Until one of every type of assignment have been graded, the average score is based on pending perfect scores; after the midterm, based on your other criteria your scores may change significantly. Where marked, I have curved grades using <a href="https://en.wikipedia.org/wiki/Standard_score">standard score</a>. I will act as the arbiter and use the scores you see here to determine your final grade which will ultimately reflect competency gained and necessary to advance through the curriculum. </p>
-
-  </section>
-  <footer onclick="window.location.hash = '_'">
-    <h2>Footnotes/<abbr title="frequently asked questions">FAQ</abbr></h2>
-    <section id="cache-invalidation">
-      <h3>Cache Invalidation</h3>
-      <p>You may notice a random string of numbers preceded by a question mark when you link to your page—let me explain. The default behavior of a server is to do something as fast as possible, and depending on what time a file is <em>requested</em> it may <em>respond</em> with a special header code called a <code>304 Not Modified</code>, in essence, telling your browser, <q>load the same thing if you want</q>, and a browser usually does. The server your work is hosted on is configured to send 304s quite liberally—generally ok to do for production sites—but it makes it difficult to develop websites over the internet.</p>
-      <p>Thus, when developing, you should (1) have dev tools open, and (2) then make sure cache is disabled (show note) to ensure you get the resource as intended. To make sure that you see you changes as requested, I append a harmless string of numbers (a common trick of <a href="https://en.wikipedia.org/wiki/Cache_invalidation">cache invalidation</a>) after the url that makes it look like a different resource to caching algorithims. This is called a <a href="https://en.wikipedia.org/wiki/Query_string">query string</a>, and they are harmless in most contexts and only used to avail in server-side programming anyway.</p>
-    </section>
-  </footer>
-  
+  </section>  
 </article>
