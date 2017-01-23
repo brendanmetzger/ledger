@@ -42,7 +42,9 @@ namespace models;
         if ($date['status'] == 'holiday') continue;
         $format = $date['object']->format('m-d-Y');
         $snippet .= "<li><a href=\"./{$format}/index.html\">{$date['date']}</a></li>\n";
-
+        $dir = '/studies/'.$format;
+        // $zip->addEmptyDir($dir);
+        
         $view = new \bloc\view("{$template}/layout.html");
         $view->body = "{$template}/notes.html";
 

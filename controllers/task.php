@@ -293,7 +293,7 @@ class Task extends \bloc\controller
     $output = [];
 
     \models\Message::TRANSACTION('update', 'brendan.metzger@gmail.com', (string)$template->render($output));
-    echo "sent an email";
+    echo "sent an email " . date();
   }
   
   public function CLIcommits()
