@@ -709,12 +709,11 @@ nav form {
   background-color: rgba(255,255,255,0.5);
   transition: background-color 0.25s;
 }
-
 .paginate > footer ~ .epilogue,
 .prologue {
   padding: 2.5vw;
   box-shadow: 0 0 1em rgba(0,0,0,0.1);
-  margin: 0 -2.5vw;
+  margin: 0 -2.5vmax;
 }
 
 details.whitepaper[open] {
@@ -919,8 +918,11 @@ h4.vertical {
   writing-mode: vertical-lr;
   text-orientation: upright;
 }
-h4.vertical + p:first-line {
+h4.vertical + p:first-line, p.note:first-line {
   font-weight:800;
+}
+p.note {
+  background-color:rgba(0,0,0,0.1);
 }
 
 .sketch img {
