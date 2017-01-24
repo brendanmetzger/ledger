@@ -8,7 +8,7 @@
 
 html {background-color: hsl(45, 30%, 97.5%)}
 body {
-  font: 400 0.625em/250% var(--sans);
+  font: 400 0.625em/250% "Avenir Next", "HelveticaNeue-Light","Helvetica Neue", 'Arial Nova', Helvetica, Arial;
   padding: 0.25em 0 2em;
   border-width: 1vh 0 0;
   box-sizing: border-box;
