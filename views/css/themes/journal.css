@@ -1,8 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Inconsolata);
 
 :root {
-  --sans: "Avenir Next", "HelveticaNeue-Light","Helvetica Neue", Helvetica;
+  --sans: "Avenir Next", "HelveticaNeue-Light","Helvetica Neue", 'Arial Nova', Helvetica, Arial;
   --mono: Inconsolata, 'Courier New', monospace;
+  --condensed: 'Avenir Next Condensed', 'Arial Nova Condensed';
 }
 
 html {background-color: hsl(45, 30%, 97.5%)}
@@ -184,7 +185,7 @@ summary:hover {
 .h1,
 h1 {
   letter-spacing: -0.125vmin;
-  font: 400 4em/1em 'Avenir Next','HelveticaNeue-Light','Helvetica Neue',Helvetica;
+  font: 400 4em/1em var(--sans);
 }
 
 @font-face {
@@ -530,7 +531,7 @@ button:hover {
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   color:color: rgba(0,0,0,0.1);
-  font-family: "Gill Sans", 'Avenir Next', Helvetica, Arial;
+  font-family: var(--sans);
   font-weight: 200;
   letter-spacing: 0;
 }
@@ -652,7 +653,7 @@ summary:focus {
 
 .glossary details p {
   font-size: 1.25em;
-  font-family: 'Avenir Next', Avenir, Helvetica;
+  font-family: var(--sans);
   line-height: 1em;
 }
 
@@ -778,7 +779,7 @@ table.vertical-navbox {
 .drawer blockquote p {
   font-size: 1.25em;
   font-weight: 400;
-  font-family: 'Avenir Next', 'Helvetica Neue';
+  font-family: var(--sans);
 }
 
 .drawer div.thumb {
@@ -925,6 +926,10 @@ p.note {
   background-color:rgba(0,0,0,0.1);
 }
 
+.whitepaper + p.note {
+  background-color:#fff;
+}
+
 .sketch img {
   mix-blend-mode:multiply;
 }
@@ -984,7 +989,7 @@ footer[id] {
 }
 footer[id] h3 {
   text-transform:uppercase;
-  font-family: 'Avenir Next Condensed';
+  font-family: var(--condensed);
   font-size:5em;
 }
 

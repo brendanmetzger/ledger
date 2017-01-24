@@ -53,7 +53,7 @@ class Course extends \bloc\controller
     $path = "views/outline/assignments/".static::ID."/$type/$index.html";
     if (!file_exists(PATH.$path)) {
       $view->content = 'views/layouts/error.html';
-      $this->message = "Assignment not ready";
+      $this->message = "Assignment deatails pending";
     } else {
       $view->content = 'views/outline/assignments/template.html';
       $view->overview = $path;
