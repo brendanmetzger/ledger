@@ -710,11 +710,11 @@ nav form {
   transition: background-color 0.25s;
 }
 
-.paginate > div ~ .epilogue,
+.paginate > footer ~ .epilogue,
 .prologue {
   padding: 2.5vw;
   box-shadow: 0 0 1em rgba(0,0,0,0.1);
-  margin: 20vmin -2.5vw 0;
+  margin: 0 -2.5vw;
 }
 
 details.whitepaper[open] {
@@ -971,4 +971,21 @@ p:hover abbr[title]:after {
 p:hover abbr[title] ~ abbr[title]:after {
   box-shadow: -0.25em -0.25em 1em 0em rgba(0,0,0,0.2);
   transform: translate(-15%, 85%) rotate(0) scale(1);
+}
+
+
+footer[id] {
+  background-color: rgba(0,0,0,0.1);
+  margin:2.5vmax -2.5vmax 0;
+  padding:5vmax;
+  box-shadow:inset 0 0.25em 0.125em  rgba(0,0,0,0.1);
+}
+footer[id] h3 {
+  text-transform:uppercase;
+  font-family: 'Avenir Next Condensed';
+  font-size:5em;
+}
+
+footer[id] a {
+  background-color:#fff;
 }
