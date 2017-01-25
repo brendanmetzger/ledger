@@ -17,6 +17,8 @@ trait config {
     $this->mode        = getenv('MODE');
     $this->title       = ucwords($request->controller . ' - ' . $request->action);
     $this->entropy     = rand();
+    $this->cdn         = $this->mode === 'local' ? '/media' : 'http://cdn.thirty.cc'; 
+    
     
     //TODO: this should be done automatically
     $this->semester    = "FA16";
@@ -63,7 +65,7 @@ trait config {
       $view->user = \bloc\dom\Document::ELEM('<input type="text" value="" name="uid" placeholder="instructor"/>');
     }
 
-    $this->status   = $messages[$status];
+    $this->status = $messages[$status];
     return $view->render($this());
   }
 

@@ -100,7 +100,7 @@ class Records extends \bloc\controller
    * @param int $index assignment number
    * @param string $sid student id number
    **/
-  protected function GETevaluate(Admin $instructor, $topic, $index, $sid = null)
+  protected function GETevaluate(Admin $instructor, $topic, int $index, $sid = null)
   {
     $this->student = new Student($sid);
     $this->topic = $topic;
@@ -114,9 +114,7 @@ class Records extends \bloc\controller
         $path = ['midterm','final'][$index];
         $this->url = $this->student->context['@url'] . "/{$topic}/{$path}";
       }
-
-
-
+      
       $criterion  = \models\Criterion::Collect(null, "[@type='{$topic}' and (@course = '{$this->student->course}' or @course = '*')]")->pick($index);
       $this->{$topic} = $this->item = $this->student->evaluation($topic, $index, $criterion);
       $this->files = \models\Assessment::LINKS($this->item);
@@ -134,7 +132,7 @@ class Records extends \bloc\controller
     return $view->render($this());
   }
 
-  protected function POSTevaluate(Admin $instructor, $request, $topic, $index, $sid)
+  protected function POSTevaluate(Admin $instructor, $request, $topic, int $index, $sid)
   {
     $student = new Student($sid);
     $item    = Data::FACTORY($topic, $student->evaluation($topic, $index), $_POST);

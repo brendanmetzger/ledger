@@ -285,6 +285,7 @@ class Task extends \bloc\controller
     return $output;
   }
   
+  
   public function CLItest()
   {
     $template = new \bloc\View('views/layouts/email.html');
