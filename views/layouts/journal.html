@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="user-scalable=yes,width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <script type="text/javascript">
+    <script type="text/javascript" data-src="[$cdn]">
       // <![CDATA[
       // Autoload scripts
       var bloc = window.bloc || (function(s,c,p1,p2,append) {
@@ -28,22 +28,22 @@
       }(document.createElement('script'),{},[],[],Node.prototype.appendChild));
 
       var mobile = (/mobile/i).test(navigator.userAgent);
-
+      var src    = document.querySelector('script[data-src]').getAttribute('data-src');
 
       // Embed script for site
-      bloc.embed('/javascript/bloc.js');
-      bloc.embed('/javascript/smooth-scroll.js');
-      bloc.embed('/javascript/vendor/prettify.js');
+      bloc.embed(src+'/javascript/bloc.js');
+      bloc.embed(src+'/javascript/smooth-scroll.js');
+      bloc.embed(src+'/javascript/prettify.js');
       bloc.init('prettyprint', function () {
         prettyPrint();
       });
       // ]]>
     </script>
-    <link rel="stylesheet" href="/css/guide.css"/>
-    <link rel="stylesheet" href="/css/themes/journal.css"/>
-    <link rel="stylesheet" href="/css/grades.css"/>
-    <link rel="stylesheet" href="/css/code.css"/>
-    <link rel="icon"  type="image/png" href="/media/images/favicon.png"/>
+    <link rel="stylesheet" href="[$cdn/css/guide.css]"/>
+    <link rel="stylesheet" href="[$cdn/css/journal.css]"/>
+    <link rel="stylesheet" href="[$cdn/css/grades.css]"/>
+    <link rel="stylesheet" href="[$cdn/css/code.css]"/>
+    <link rel="icon"  type="image/png" href="[$cdn/images/favicon.png]"/>
     <link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/458eb080-e11e-4976-9309-44ecbcfd039a.css"/>
   </head>
   <body class="[$template $mode]">
