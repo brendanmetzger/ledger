@@ -26,12 +26,13 @@ namespace models;
       \bloc\view::$edit = false;
       $zip  = new \ZipArchive;
       $data = [
+        'mode'    => getenv('MODE'),
         'empty'   => null,
         'code'    => base64_encode($student['@name']),
         'id'      => $student['@id'],
         'student' => $student,
         'domain'  => DOMAIN,
-        'cdn'     => getenv('MODE') === 'local' ? DOMAIN : 'http://cdn.thirty.cc/',
+        'cdn'     => (getenv('MODE') == 'local') ? DOMAIN : 'http://cdn.thirty.cc/',
       ];
       $trimmable = strlen("<?xml version=\"1.0\"?>\n");
       $template = 'data/template';
