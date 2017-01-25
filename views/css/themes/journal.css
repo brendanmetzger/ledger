@@ -154,7 +154,7 @@ article a[href]:hover {
 }
 
 article a[href*='en.wikipedia.org'] {
-  background: transparent url("/css/media/wikipedia.svg") no-repeat;
+  background: transparent url("//cdn.thirty.cc/images/wikipedia.svg") no-repeat;
   background-position: -1em 0;
   padding-left: 0.5em;
   background-size: auto 2em;
@@ -190,7 +190,7 @@ h1 {
 
 @font-face {
     font-family: label;
-    src: url(/media/fonts/impact-label.ttf);
+    src: url('//cdn.thirty.cc/fonts/impact-label.ttf');
     font-weight:400;
 }
 
@@ -435,7 +435,7 @@ body > nav div ul {
   display: flex;
   height: auto;
   flex-flow: row;
-  background: transparent url("/css/media/swipe.svg") no-repeat 0 220%;
+  background: transparent url("//cdn.thirty.cc/images/swipe.svg") no-repeat 0 220%;
   background-size: auto 80%;
 }
 

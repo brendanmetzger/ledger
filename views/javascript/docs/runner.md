@@ -8,7 +8,7 @@ Doing this work I ran into the ever-fascinating fact that [0.9999... = 1](https:
 
 ```html
 
-<img src="/media/images/running-man.png" class="animate"/>
+<img src="http://cdn.thirty.cc/images/running-man.png" class="animate"/>
 
 ```
 
