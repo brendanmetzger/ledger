@@ -19,7 +19,6 @@ trait config {
     $this->entropy     = rand();
     $this->cdn         = $this->mode === 'local' ? '' : 'http://cdn.thirty.cc'; 
     
-    
     //TODO: this should be done automatically
     $this->semester    = "FA16";
     $this->email       = 'bmetzger@colum.edu';
@@ -132,10 +131,11 @@ trait config {
     }
     $view = new \bloc\View(self::layout);
     $view->content = 'views/layouts/forms/transaction.html';
-    return $view->render([
+
+    return $view->render(array_merge((array)$this(), [
       'link' => 'http://www.colum.edu/loopmail',
       'title' => 'Email Sent',
       'message' => 'check your email'
-    ]);
+    ]));
   }
 }

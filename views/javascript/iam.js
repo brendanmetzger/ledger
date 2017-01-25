@@ -4,16 +4,16 @@
   TODO Log most recent errors file, line, message
 */
 
-(function(identity, domain) {
+window.validate = (function(identity, domain) {
   if (! navigator.onLine) {
     console.info("you are not online, validator is turned off");
     return;
   }
   
-  function getCSScheckup(CSS, re) {
+  function getCSScheckup(CSS, re, force) {
            
     
-    return CSS.map(function (sheet) {
+    CSS.map(function (sheet) {
       let file = btoa(sheet.href.substring(sheet.href.indexOf('/', 7)));
       let size = Array.from(sheet.rules)
                       .map( r => r.cssText.replace(re, '').length)
@@ -21,54 +21,58 @@
                       
       let scores = (sessionStorage.getItem(file) || size.toString()).split(':').map(i => parseInt(i, 10));
       let delta  = size - scores[scores.length - 1];
-      if (delta !== 0) {
-        scores.push(size);
-        if (Math.abs(delta) > 1) {
-          getSource(atob(file), function (evt) {
-            validateCSS(evt.target.responseText, function (evt) {
-              var messages = JSON.parse(evt.target.responseText).cssvalidation;
-              if (messages.result.errorcount > 0) {
-                messages.errors.forEach(function (error) {
-                  var msg = `line  ${error.line} of  ${atob(file)}`;
-                  console.debug(error.message, msg);
-                });
-              }
-            });
+      scores.push(size);
+      if (Math.abs(delta) > 1 || force) {
+        getSource(atob(file), function (evt) {
+          validateCSS(evt.target.responseText, function (evt) {
+            var messages = JSON.parse(evt.target.responseText).cssvalidation;
+            if (messages.result.errorcount == 0) {
+              console.debug('No errors in ', atob(file));
+              return;
+            };
+            console.group('CSS Validation');
+            if (messages.result.errorcount > 0) {
+              messages.errors.forEach(function (error) {
+                console.debug(`${error.message} at line ${error.line} of ${atob(file)}`);
+              });
+            }
+            console.groupEnd();
           });
-        }
+        });
       }
       
       sessionStorage.setItem(file, scores.join(':'));
       return scores;
     });
+    return "Validating CSS..."
   }
   
-  function getHTMLcheckup() {
+  function getHTMLcheckup(force) {
     var key = 'HTML'+btoa(window.location.pathname);     
-    var current = document.documentElement.outerHTML.replace(/[^\<\>]/g, '').length / 2;
-    var scores = (sessionStorage.getItem(key) || current.toString()).split(':').map(i => parseInt(i, 10));
-    var delta = current - scores[scores.length - 1];
-    if (delta !== 0) {
-      scores.push(current)
-      if (Math.abs(delta) > 1) {
-        getSource(window.location.href, function (evt) {
-          // console.log(evt.target.responseText);
-          validateHTML(evt.target.responseText, function (evt) {
-            var messages = JSON.parse(evt.target.responseText).messages;
-            messages.forEach(function (obj) {
-              if (obj.type == 'error') {
-                console.debug('HTML Validation:', obj.message);
-              } else {
-                console.info(obj.message);
-              }
-            });
+    var size = document.documentElement.outerHTML.replace(/[^\<\>]/g, '').length / 2;
+    var scores = (sessionStorage.getItem(key) || size.toString()).split(':').map(i => parseInt(i, 10));
+    var delta = size - scores[scores.length - 1];
+    scores.push(size)
+    if (Math.abs(delta) > 1 || force) {
+      getSource(window.location.href, function (evt) {
+        // console.log(evt.target.responseText);
+        validateHTML(evt.target.responseText, function (evt) {
+          var messages = JSON.parse(evt.target.responseText).messages;
+          console.group('HTML Validation');
+          messages.forEach(function (obj) {
+            if (obj.type == 'error') {
+              console.debug(obj.message, 'at line', obj.lastLine);
+            } else {
+              console.info(obj.message);
+            }
           });
+          console.groupEnd();
         });
-      }
-    };
+      });
+    }
     
     sessionStorage.setItem(key, scores.join(':'));
-    return scores;
+    return 'Validating HTML...';
   }
   
   function checkHTMLindentation() {
@@ -99,7 +103,7 @@
         item.parentNode.removeChild(item);
       }
     });
-    console.debug('%cconsole is open ', element);
+    console.debug('%cto debug, run: validate.html() or validate.css()  ', element);
   }
   
   
@@ -147,10 +151,20 @@
     req.send();
   }
   
+  var validate = {
+    html: function (auto) {
+      return getHTMLcheckup(!auto);
+    },
+    css: function(auto) {
+      return getCSScheckup(Array.from(document.styleSheets).filter(item => item.href && item.href.includes(window.location.hostname)), /[^;]/g, !auto);
+    }
+  };
+  
   addEventListener('load', function() {
     drawHelper('_e_s_p_e_c_i_a_l_');
     checkConsole('#_e_s_p_e_c_i_a_l_ [data-type=console]');
-    getCSScheckup(Array.from(document.styleSheets).filter(item => item.href && item.href.includes(window.location.hostname)), /[^;]/g);
-    getHTMLcheckup();
-  });  
+    validate.html(true);
+    validate.css(true);
+  });
+  return validate;
 });

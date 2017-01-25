@@ -131,7 +131,6 @@ class Course extends \bloc\controller
   public function GEThelper($id, $file)
   {    
     $format = \bloc\application::instance()->getExchange('request')->format;
-    
     if ($format == 'css') {
       $out  = file_get_contents(PATH . 'views/css/iam.css');
     } else if ($format == 'js') {

@@ -31,6 +31,7 @@ namespace models;
         'id'      => $student['@id'],
         'student' => $student,
         'domain'  => DOMAIN,
+        'cdn'     => getenv('MODE') === 'local' ? DOMAIN : 'http://cdn.thirty.cc/',
       ];
       $trimmable = strlen("<?xml version=\"1.0\"?>\n");
       $template = 'data/template';
