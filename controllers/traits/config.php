@@ -17,7 +17,7 @@ trait config {
     $this->mode        = getenv('MODE');
     $this->title       = ucwords($request->controller . ' - ' . $request->action);
     $this->entropy     = rand();
-    $this->cdn         = $this->mode === 'local' ? '/media' : 'http://cdn.thirty.cc'; 
+    $this->cdn         = $this->mode === 'local' ? '' : 'http://cdn.thirty.cc'; 
     
     
     //TODO: this should be done automatically

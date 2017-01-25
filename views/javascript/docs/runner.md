@@ -1,6 +1,6 @@
 # Running with page scroll
 
-![Muybridge-style running illustration](http://52.35.59.206/media/images/running-man.png)
+![Muybridge-style running illustration](http://cdn.thirty.cc/media/images/running-man.png)
 
 Doing this work I ran into the ever-fascinating fact that [0.9999... = 1](https://en.wikipedia.org/wiki/0.999...) and even proved through a little animation exercise. 
 
@@ -8,7 +8,7 @@ Doing this work I ran into the ever-fascinating fact that [0.9999... = 1](https:
 
 ```html
 
-<img src="http://cdn.thirty.cc/images/running-man.png" class="animate"/>
+<img src="http://cdn.thirty.cc/media/images/running-man.png" class="animate"/>
 
 ```
 

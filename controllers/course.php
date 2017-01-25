@@ -129,17 +129,7 @@ class Course extends \bloc\controller
   }
 
   public function GEThelper($id, $file)
-  {
-    
-    // this is a javascript file
-    $track = [
-      'page' => parse_url($_SERVER['HTTP_REFERER']),
-      'time' => $_SERVER['REQUEST_TIME'],
-      'addr' => $_SERVER['REMOTE_ADDR'],
-    ];
-    
-    if ($track['page']['host'] != '127.0.0.1')  return '/* localhost-only viewing of helper files */';
-    
+  {    
     $format = \bloc\application::instance()->getExchange('request')->format;
     
     if ($format == 'css') {
