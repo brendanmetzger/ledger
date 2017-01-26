@@ -32,18 +32,30 @@ trait config {
     }
   }
 
-  public function authenticate()
+  public function authenticate($user = null)
   {
     if ((isset($_SESSION) && array_key_exists('id', $_SESSION))) {
       $node = \models\Data::ID($_SESSION['id']);
       return \models\Data::FACTORY($node->nodeName, $node);
+    } else if (array_key_exists('token', $_COOKIE)) {
+      $credentials = explode('-', $_COOKIE['token']);
+      $node = \models\Data::ID($credentials[0]);
+      $user = \models\Data::Factory($node->nodeName, $node)->authenticate($credentials[1]);
     }
-    return null;
+    
+    if ($user && $user instanceof \bloc\types\authentication) {
+      \bloc\Application::instance()->session('COLUM', ['id' => $user['@id']]);
+    }
+    
+    return $user;
   }
 
   public function GETlogout($user)
   {
     session_destroy();
+    // destroy cookie
+    setcookie('token', '', time()-3600, '/');
+    
     \bloc\router::redirect('/');
   }
 
@@ -70,14 +82,13 @@ trait config {
 
   public function GETtoken($pin, $token)
   {
-    try {
-      $user = (new \models\student(\models\Data::ID($pin)))->authenticate($token);
-      \bloc\Application::instance()->session('COLUM', ['id' => $pin]);
-      \models\Data::instance()->storage->save();
-      \bloc\router::redirect("/{$user->course}/dashboard");
-    } catch (\InvalidArgumentException $e) {
-      return $this->GETError($e->getMessage(), $e->getCode());
-    }
+    // authentication of a user will throw an exception if unavailable.
+    $user = $this->authenticate((new \models\student(\models\Data::ID($pin)))->authenticate($token));
+
+    // set a cookie that can be used on subsuquent logins
+    setcookie('token', $pin.'-'.$token, time()+60*60*24*30, '/');
+    
+    \bloc\router::redirect("/{$user->course}/dashboard");
   }
 
   public function GETError($message, $code = 404)
@@ -109,6 +120,7 @@ trait config {
           throw new \InvalidArgumentException("Token Already Requested", 2);
         } else {
           $user->setAttribute('token', $token);
+          
           \models\Data::instance()->storage->save();
 
           // email the user a link.
@@ -120,8 +132,8 @@ trait config {
             'title' => $user['@name'],
             'message' => 'login to course site'
           ];
-
-          \models\Message::TRANSACTION('login', $user['@email'], (string)$template->render($output));
+          $time = date('M j');
+          \models\Message::TRANSACTION("Login Link: {$time}", $user['@email'], (string)$template->render($output));
         }
       }
     } catch (\InvalidArgumentException $e) {

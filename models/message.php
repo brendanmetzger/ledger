@@ -12,10 +12,6 @@ class Message
 {
   const KEY = "c446d292-5969-4148-8910-d683afd54905";
   const SENDER = "bmetzger@colum.edu";
-  public $transactions = [
-    'login' => 'Login Link',
-    'update' => '*SWM Updates'
-  ];
 
   public function send($recipient, $subject, $message)
   {
@@ -29,9 +25,9 @@ class Message
     );
   }
 
-  static public function TRANSACTION($type, $recipient, $message)
+  static public function TRANSACTION($subject, $recipient, $message)
   {
     $instance = new self;
-    $instance->send($recipient, $instance->transactions[$type], $message);
+    $instance->send($recipient, $subject, $message);
   }
 }
