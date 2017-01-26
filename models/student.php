@@ -67,6 +67,23 @@ namespace models;
     {
       return explode(' ', $context['@name'])[0];
     }
+    
+    public function getLog(\DOMElement $context)
+    {
+      $cwd = getcwd();
+    
+      chdir(sprintf('%sdata/%s/work/', PATH, \models\Data::$SEMESTER));
+      exec('git checkout ' . $context['@key'] . ' 2>&1');
+      exec('git log --no-merges --date-order --reverse --pretty=format:\'{"hash":"%h", "date":"%aI", "msg":"%s"}\'', $output, $return);
+      exec('git checkout master');
+      chdir($cwd);
+      
+      return array_map(function($item) {
+        $item = json_decode($item);
+        $item->date = new \DateTime($item->date);
+        return $item;
+      }, $output);
+    }
 
     public function getSection(\DOMElement $context)
     {

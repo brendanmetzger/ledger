@@ -41,30 +41,22 @@
       <colgroup>
         <col span="1" style="width:1em;" />
       </colgroup>
-      <thead>
-        <tr>
-          <th>[i]</th>
-          <th>Date</th>
-          <th>Commits</th>
-          <th>Raw</th>
-          <th>Value</th>
-        </tr>
-      </thead>
       <tbody>
         <tr>
-          <th>nil</th>
-          <td class="centered">TBD</td>
-          <td class="centered">-------</td>
-          <td>TBD</td>
-          <td>TBD</td>
+          <th>Week</th>
+          <!-- iterate student:practice:list -->
+          <td>[$practice:criterion:@index]</td>
+          <th class="lighter"><span>µ × </span><span class="percentage">[$student:practice:weight]</span></th>
+        </tr>
+        <tr>
+          <th>Matrix</th>
+          <!-- iterate student:practice:list -->
+          <td class="[$schedule:status]" title="[$practice:score]">
+            <strong>[$practice:report]</strong>
+          </td>
+          <th class="percentage">[$student:practice:score]</th>
         </tr>
       </tbody>
-      <tfoot>
-        <tr>
-          <th colspan="4">µ ⋅ <span class="percentage">[$student:practice:weight]</span></th>
-          <td class="centered"><strong class="percentage">[$student:practice:score]</strong></td>
-        </tr>
-      </tfoot>
     </table>
   </section>
   <section>

@@ -27,7 +27,7 @@ class Task extends \bloc\controller
     // https://api.instagram.com/v1/users/self/?access_token=ACCESS-TOKEN
   }
 
-  public function authenticate()
+  public function authenticate($user = null)
   {
     return true;
   }
@@ -288,13 +288,9 @@ class Task extends \bloc\controller
   
   public function CLItest()
   {
-    $template = new \bloc\View('views/layouts/email.html');
-    $template->content = 'views/layouts/forms/recap.html';
-
-    $output = [];
-
-    \models\Message::TRANSACTION('update', 'brendan.metzger@gmail.com', (string)$template->render($output));
-    echo "sent an email " . date();
+    chdir('/var/www/pedagogy');
+    $out =  exec('git diff --shortstat');
+    echo $out;
   }
   
   public function CLIcommits()
@@ -424,7 +420,8 @@ class Task extends \bloc\controller
         usleep(20000);
       }
       print_r($messages);
-      echo exec(sprintf('%s commit --all -m %s', $git, '"make a better message"'), $out);
+      $cm = exec('git diff --shortstat');
+      echo exec(sprintf('%s commit --all -m "%s"', $git, $cm), $out);
       print_r($out);
     }
 

@@ -18,7 +18,7 @@ trait report {
     $idx = $idx = $this->index;
     $filename = substr($this->url, -1) === '/' ? 'index.html' : pathinfo(parse_url($this->url)['path'])['basename'];
 
-
+    return '';
     $file = $doc->last("/records/file[@index='{$idx}' and @name='{$filename}']");
     if (! $file instanceof \bloc\dom\element || (new \DateTime($file->getAttribute('created')))->diff(new \DateTime())->format('%a') > 1) {
       $content = trim(file_get_contents($this->url));

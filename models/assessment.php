@@ -245,8 +245,6 @@ namespace models;
           'due'       => $this->student->section->schedule[$criterion['@due'] ?: $index],
         ];
 
-
-
         $score = $map[$evaluation]->score;
         $map[$evaluation]->loadStudent($this->student);
         if (($evaluation === 'quiz' || $evaluation === 'project') && $total > $criterion['@index']) {

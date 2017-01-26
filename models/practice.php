@@ -39,4 +39,10 @@ namespace models;
       $deductions = ($context['@punctuality'] / 7) * $context['@mission'];
       return round(($context['@effort'] + $context['@organization']) * $deductions, 2);
     }
+    
+    public function getReport(\DOMElement $context)
+    {
+      // \bloc\application::instance()->log($this->student->log);
+      return 'TBD';
+    }
   }

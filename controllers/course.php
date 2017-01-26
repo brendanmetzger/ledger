@@ -78,6 +78,10 @@ class Course extends \bloc\controller
   {
     $view = new View(self::layout);
     $this->evaluation = Data::FACTORY($topic, $student->evaluation($topic, $index));
+    
+    $view->content = 'views/layouts/error.html';
+    $this->message = "not yet...";
+    return $view->render($this());
     if ($topic == 'project') {
       $path = ['midterm','final'][$index];
       $this->url = $this->student->context['@url'] . "/{$topic}/{$path}";
