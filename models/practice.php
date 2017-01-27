@@ -14,14 +14,20 @@ namespace models;
 
     static public $fixture = [
       'practice' => [
-        '@' => ['effort' => 0, 'organization' => 0, 'punctuality' => 7, 'mission' => 1, 'created' => 0, 'updated' => 0],
+        '@' => ['value' => 0],
         'CDATA' => '',
       ]
     ];
 
-    public function setValueAttribute(\DOMElement $context, $value)
+    public function setCommitsAttribute(\DOMElement $context, $commits)
     {
-      $context->setAttribute('value', 0);
+      $context->setAttribute('commits', implode($commits));
+
+      $exponent = 2.5;
+      $value    = $this->total / 5;  // 5 is based on 5 days in a week;
+      $score    = $value**$exponent / ($value**$exponent + ((1-$value)**$exponent));
+      $context->setAttribute('value', $score);
+      
     }
 
     public function setPractice(\DOMElement $context, $value)
@@ -36,13 +42,32 @@ namespace models;
 
     public function getScore(\DOMElement $context)
     {
-      $deductions = ($context['@punctuality'] / 7) * $context['@mission'];
-      return round(($context['@effort'] + $context['@organization']) * $deductions, 2);
+      $report = $this->report;
+      return (float)$context['@value'];
+    }
+    
+    public function getTotal(\DOMElement $context)
+    {
+      return array_sum(str_split($context['@commits']));
     }
     
     public function getReport(\DOMElement $context)
     {
-      // \bloc\application::instance()->log($this->student->log);
-      return 'TBD';
+      $log = $this->student->log;
+      
+      // cross reference the log to assign commits for that week
+      
+      $index = $this->criterion["@index"];
+      $week = $this->student->section->schedule[$index];
+      if ($week['status'] != 'transpired') return;
+      
+      $end = clone $week['object'];
+      $end->add(new \DateInterval('P7D'));
+      $commits = array_map(function($date) use ($log) {
+        return array_key_exists($date->format('yz'), $log) ? 1 : 0;
+      }, iterator_to_array(new \DatePeriod($week['object'], new \DateInterval('P1D') , $end)));
+      $this->setCommitsAttribute($context, $commits ?? []);
+      $context->setAttribute('updated', (new \DateTime())->format('Y-m-d H:i:s'));
+      return $commits;
     }
   }

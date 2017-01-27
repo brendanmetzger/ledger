@@ -286,146 +286,129 @@ class Task extends \bloc\controller
   }
   
   
-  public function CLItest()
+  public function CLIsource()
   {
-    chdir('/var/www/pedagogy');
-    $out =  exec('git diff --shortstat');
-    echo $out;
+    $student =  new \models\student('TRSYCP');
+    
+    foreach ($student->files as $key => $file) {
+      $report = new \models\Report($file, $student['@url']);
+      $days = $report->getLastModified(86400);
+      echo "Last Modified: {$days}\n";
+      if ($days > 1) continue;
+      echo "\n ----- REPORT: {$file} ------\n";
+      // validate
+      echo "\nValidating...\n";
+      $validation = $report->validate();
+      print_r($validation);
+      
+      // analyze
+      echo "\nAnalyzing Code...\n";
+      $analysis = $report->getAnalysis();
+      print_r($analysis);
+      
+      // get source
+      echo "\nSource length: ";
+      echo strlen($report->getSource());
+      
+      echo "\n\n -------- Finished ------ \n\n";
+    }
+    
   }
   
   public function CLIcommits()
   {
-    $now = time();
-    $git = exec('which git');
+    $git = new \models\Source(\models\Data::$SEMESTER);
     
-    // parse the daily log file
-    // $path = sprintf("%sdata/%s/log/%s", PATH, \models\Data::$SEMESTER, date('m-d-Y', time()));
-    // $doc = new \DOMDocument();
-    // $doc->loadXML(sprintf("<log>%s</log>", file_get_contents($path)));
-    //
-    // $updates = [];
-    //
-    // // get the students who made updates
-    // foreach ((new \DOMXpath($doc))->query('//*[@user]') as $node) {
-    //   $sid = $node->getAttribute('user');
-    //   if (!array_key_exists($sid, $updates)) {
-    //     $updates[$sid] = [];
-    //   }
-    //   $updates[$sid][$node->getAttribute('file')] = $node->getAttribute('hash');
-    // }
-    
-    // get all students and scan server for updates
-    stream_context_set_default(['http' => ['method' => 'HEAD']]);
     $query = "@role!='instructor'";
     // $query = "@id='TRSYCP'";
     foreach (\models\data::instance()->query('//')->find("student[{$query}]") as $student) {
-      $out = null;
       // iterate projects and get a report on what to grab.
       $student =  new \models\student($student['@id']);
-      // look into global.css and global.js files
-      $files = [];
-      
-      $files[] = "{$student['@url']}/src/js/global.js";
-      $files[] = "{$student['@url']}/src/css/global.css";
-      
-      
-      // iterate projects
-      foreach ($student->projects['list'] as $iterator) {
-        $url   = $iterator['project']->baseurl;
-        $title = $iterator['project']->title;
-        
-        $files[] = "{$url}index.html";
-        $files[] = "{$url}README.txt";
-        $files[] = "{$student['@url']}/src/js/{$title}.js";
-        $files[] = "{$student['@url']}/src/css/{$title}.css";
-      }
-      chdir(sprintf('%sdata/%s/work/', PATH, \models\Data::$SEMESTER));
       
       $messages = [];
-      echo exec(sprintf('%s checkout %s', $git, $student['@key']));
+      $git->checkout($student['@key']);
       
-      foreach ($files as $key => $file) {
-        $headers = get_headers($file, 1);
-        $last_mod = round(($now - strtotime($headers['Last-Modified'])) / (60 * 60 * 24), 2);
+      foreach ($student->files as $key => $file) {
+        $report = new models\Report($file, $student['@url']);
         
-        echo "last modified ". $last_mod . "\n";
+        // 86400 is one day
+        $days = $report->getLastModified(86400);
+        echo "Last Modified: {$days}\n";
+        if ($days > 1) continue;
         
-        if ($last_mod < 1) {
-          $path = substr($file, strlen("{$student['@url']}/"));
-          if (substr($file, -4) == 'html') {
-            // use this to validate HTML and gather response
-            $handle = curl_init("https://validator.nu/?outline=yes&doc={$file}&out=json&showsource=yes");
-            curl_setopt_array($handle, [
-              CURLOPT_RETURNTRANSFER => true,
-              CURLOPT_USERAGENT => 'BrendanBot/1.0',
-            ]);
+        
+        $path = substr($file, strlen("{$student['@url']}/"));
+        
+        if (substr($file, -4) == 'html') {
+          // use this to validate HTML and gather response
+          $handle = curl_init("https://validator.nu/?outline=yes&doc={$file}&out=json&showsource=yes");
+          curl_setopt_array($handle, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_USERAGENT => 'BrendanBot/1.0',
+          ]);
 
-            if ($result  = json_decode(curl_exec($handle))) {
-              $content = $result->source->code;
-              $report  = [
-                'file'     => $path,
-                'sloc'     => count(preg_split('/\n/', $content)),
-                'analysis' => 'TODO',
-                'messages' => [],
-              ];
-            
-              foreach ($result->messages as $message) {
-                $report['messages'][] = [
-                  'line'  => $result->messages->lastLine,
-                  'type'  => $result->messages->type,
-                  'text'  => $result->messages->message,
-                ];
-              }
-              $messages[] = $report;
-            }
-          } else {
-            echo "Checking {$path}\n";
-            $content = file_get_contents($file, false, stream_context_create(['http' => ['method' => 'GET']]));
-            $report = [
-              'file' => $path,
-              'sloc' => count(preg_split('/\n/', $content)),
+          if ($result  = json_decode(curl_exec($handle))) {
+            $content = $result->source->code;
+            $report  = [
+              'file'     => $path,
+              'sloc'     => count(preg_split('/\n/', $content)),
+              'analysis' => 'TODO',
               'messages' => [],
             ];
-            if (substr($file, -3) == 'css') {
-              $cssvalidator = "https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3svg&uri=";
-              $report['analysis'] = exec("echo '{$content}' | analyze-css -");
-              
-              if ($result = json_decode(file_get_contents($cssvalidator . $file, false, stream_context_create(['http' => ['method' => 'GET']])))) {
-                if ($result->cssvalidation->result->errorcount > 0) {
-                  foreach ($result->cssvalidation->errors as $error) {
-                    $report['messages'][] = [
-                      'line' => $error->line,
-                      'type' => $error->type,
-                      'text' => $error->message,
-                    ];
-                  }
-                
-                  $messages[] = $report;
-                }
-              }
-               
-              //TODO analyze-css !
-            } else if (substr($file, -2) == 'js') {
-              // TODO sloc
-              // TODO eslint
+          
+            foreach ($result->messages as $message) {
+              $report['messages'][] = [
+                'line'  => $result->messages->lastLine,
+                'type'  => $result->messages->type,
+                'text'  => $result->messages->message,
+              ];
             }
-            
-            
+            $messages[] = $report;
           }
-          // update the file with the new content
-          file_put_contents($path, $content);
         } else {
-          echo "Not updating {$path}\n";
+          echo "Checking {$path}\n";
+          $content = file_get_contents($file, false, stream_context_create(['http' => ['method' => 'GET']]));
+          $report = [
+            'file' => $path,
+            'sloc' => count(preg_split('/\n/', $content)),
+            'messages' => [],
+          ];
+          if (substr($file, -3) == 'css') {
+            $cssvalidator = "https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3svg&uri=";
+            $report['analysis'] = exec("echo '{$content}' | analyze-css -");
+            
+            if ($result = json_decode(file_get_contents($cssvalidator . $file, false, stream_context_create(['http' => ['method' => 'GET']])))) {
+              if ($result->cssvalidation->result->errorcount > 0) {
+                foreach ($result->cssvalidation->errors as $error) {
+                  $report['messages'][] = [
+                    'line' => $error->line,
+                    'type' => $error->type,
+                    'text' => $error->message,
+                  ];
+                }
+                $messages[] = $report;
+              }
+            }
+             
+            //TODO analyze-css !
+          } else if (substr($file, -2) == 'js') {
+            // TODO sloc
+            // TODO eslint
+          }
+          
+          
         }
+        // update the file with the new content
+        file_put_contents($path, $content);
+
         usleep(20000);
       }
       print_r($messages);
-      $cm = exec('git diff --shortstat');
-      echo exec(sprintf('%s commit --all -m "%s"', $git, $cm), $out);
-      print_r($out);
+      
+      $commit = $git->commit($git->diff('--shortstat'));
+      print_r($commit);
     }
-
-    echo exec(sprintf('%s checkout master', $git));
     
+    print_r($git->push('master', '--all'));
   }
 }

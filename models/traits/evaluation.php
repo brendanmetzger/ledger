@@ -39,7 +39,7 @@ trait evaluation {
 
   public function getPercentage(\DOMElement $context)
   {
-    return $this->status == 'open' ? 'NA' : ($this->score * 100);
+    return $this->status == 'open' ? 'NA' : round($this->score * 100);
   }
 
   public function getLetter(\DOMElement $context)

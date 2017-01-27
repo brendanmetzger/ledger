@@ -145,7 +145,6 @@ trait report {
 
     $file = $doc->last("/records/file[@index='{$idx}' and @name='{$filename}']");
     if ($errors = $file->getAttribute('errors')) {
-
       $content = base64_decode($errors);
     } else {
       $handle = curl_init("https://validator.nu/?outline=yes&doc={$this->url}&out=json");

@@ -71,4 +71,5 @@ namespace models;
     {
       return $this->status == 'open' ? 'NA' : $this->stats['standard'];
     }
+    
   }

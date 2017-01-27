@@ -71,18 +71,15 @@ namespace models;
     public function getLog(\DOMElement $context)
     {
       $cwd = getcwd();
-    
-      chdir(sprintf('%sdata/%s/work/', PATH, \models\Data::$SEMESTER));
-      exec('git checkout ' . $context['@key'] . ' 2>&1');
-      exec('git log --no-merges --date-order --reverse --pretty=format:\'{"hash":"%h", "date":"%aI", "msg":"%s"}\'', $output, $return);
-      exec('git checkout master');
-      chdir($cwd);
+      $git = new \models\source(Data::$SEMESTER);
+      $git->checkout($context['@key']);
+      $log = $git->log();
+            
+      $keys = array_map(function(&$log) {
+        return (new \DateTime($log['date']))->format('yz');
+      }, $log);
       
-      return array_map(function($item) {
-        $item = json_decode($item);
-        $item->date = new \DateTime($item->date);
-        return $item;
-      }, $output);
+      return array_combine($keys, $log);
     }
 
     public function getSection(\DOMElement $context)
@@ -133,5 +130,22 @@ namespace models;
       $apr = $score > 96 ? 'over' : ($score <= 70 ? 'under' : 'meet');
       return new \bloc\types\Dictionary(['score' => $score, 'letter' => Assessment::LETTER($score, 100), 'apr' => $apr]);
     }
-
+    
+    public function getFiles(\DOMElement $context)
+    {
+      $files = [];
+      $domain = $context['@url'];
+      $files[] = "{$domain}/src/js/global.js";
+      $files[] = "{$domain}/src/css/global.css";
+      // iterate projects
+      foreach ($this->projects['list'] as $iterator) {
+        $url   = $iterator['project']->baseurl;
+        $title = $iterator['project']->title;
+        $files[] = "{$url}index.html";
+        $files[] = "{$url}README.txt";
+        $files[] = "{$domain}/src/js/{$title}.js";
+        $files[] = "{$domain}/src/css/{$title}.css";
+      }
+      return $files;
+    }
 }

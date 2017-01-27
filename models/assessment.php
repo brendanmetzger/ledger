@@ -240,13 +240,13 @@ namespace models;
 
       $collect = Criterion::collect(function ($criterion, $index) use($evaluation, $total, $reviewed, $average, &$accumulator, &$flags) {
         $map = [
-          $evaluation => Data::FACTORY($evaluation, $reviewed->pick($index))->loadCriterion($criterion),
+          $evaluation => Data::FACTORY($evaluation, $reviewed->pick($index))->loadCriterion($criterion)->loadStudent($this->student),
           'schedule'  => $this->student->section->schedule[$criterion['@assigned'] ?: $index],
           'due'       => $this->student->section->schedule[$criterion['@due'] ?: $index],
         ];
-
+        
         $score = $map[$evaluation]->score;
-        $map[$evaluation]->loadStudent($this->student);
+        
         if (($evaluation === 'quiz' || $evaluation === 'project') && $total > $criterion['@index']) {
           $stats = $this->collective($this->student->section, $criterion);
           if ($score > 0 && $stats['sd'] > 0) {
