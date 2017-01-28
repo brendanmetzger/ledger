@@ -37,7 +37,7 @@ namespace models;
       }, $result);
     }
     
-    private function execute($command, &$output = null, &$status = null)
+    public function execute($command, &$output = null, &$status = null)
     {
       $output = null;
       $cwd = getcwd();

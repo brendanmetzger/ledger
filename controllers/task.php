@@ -90,13 +90,19 @@ class Task extends \bloc\controller
     }
   }
   
+  /*
+    TODO Rather than the manual process, it would be nice to have a command.
+  */
   public function CLIunenroll($id)
   {
-    // if before drop, remove node and branche
+    // if before drop, remove node and branch
     // if before withdraw, deactivate node
     // else, do not remove.
   }
 
+  /*
+    TODO Add most of this functionality to the student model, perhaps a static method
+  */
   public function CLIenroll($semester, $course, $section, $id = null, $name = null, $email = null, $year = null, $major = null)
   {
     $doc     = new Document("data/{$semester}/records");
@@ -256,7 +262,6 @@ class Task extends \bloc\controller
   
   public function POSTvalidate($request, $id, $type, $url, $file)
   {
-    
     // log transaction, time, user, file, hash
     $hash = sha1($_POST['content']);
     $time = time();
@@ -278,7 +283,7 @@ class Task extends \bloc\controller
       curl_close($ch);
       
     } else if ($type == 'js') {
-      $lint = exec('which eslint');
+      $lint   = exec('which eslint');
       $output = exec("echo {$_POST['content']} | {$lint} --no-eslintrc --parser-options=ecmaVersion:7  --env browser -f json  --stdin");
     }
     
@@ -290,38 +295,45 @@ class Task extends \bloc\controller
   {
     $student =  new \models\student('TRSYCP');
     
+    $reports = [];
     foreach ($student->files as $key => $file) {
       $report = new \models\Report($file, $student['@url']);
-      $days = $report->getLastModified(86400);
-      echo "Last Modified: {$days}\n";
-      if ($days > 1) continue;
-      echo "\n ----- REPORT: {$file} ------\n";
+      
+      // Skip files that have not been updated in the last day
+      if ($report->getLastModified(86400) > 1) continue;
+      
+      echo "\n ----- CHANGE REPORT: {$file} -----\n";
+      
       // validate
       echo "\nValidating...\n";
-      $validation = $report->validate();
-      print_r($validation);
+      echo  json_encode($report->validate());
       
       // analyze
       echo "\nAnalyzing Code...\n";
-      $analysis = $report->getAnalysis();
-      print_r($analysis);
-      
-      // get source
-      echo "\nSource length: ";
-      echo strlen($report->getSource());
-      
-      echo "\n\n -------- Finished ------ \n\n";
+      echo json_encode($report->getAnalysis());
+
     }
     
+  }
+  
+  public function CLIpull()
+  {
+    $semester = \models\Data::$SEMESTER;
+    $git = new \models\Source($semester);
+    
+    foreach (\models\data::instance()->query('//')->find("student[@role!='instructor']") as $student) {
+      echo $git->checkout($student['@key']) . "\n";
+      echo $git->execute('pull') . "\n";
+    }
+    
+    exec(sprintf('chmod -R g+w %s/data/%s/work', PATH, $semester));
   }
   
   public function CLIcommits()
   {
     $git = new \models\Source(\models\Data::$SEMESTER);
     
-    $query = "@role!='instructor'";
-    // $query = "@id='TRSYCP'";
-    foreach (\models\data::instance()->query('//')->find("student[{$query}]") as $student) {
+    foreach (\models\data::instance()->query('//')->find("student[@role!='instructor']") as $student) {
       // iterate projects and get a report on what to grab.
       $student =  new \models\student($student['@id']);
       

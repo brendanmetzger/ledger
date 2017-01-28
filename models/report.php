@@ -6,7 +6,15 @@ namespace models;
  */
  class Report
  {
-    private $now, $url, $domain, $file, $info, $source = '', $headers = null, $report = [];
+    private $now,
+            $url,
+            $domain,
+            $file,
+            $info,
+            $source = '',
+            $headers = null,
+            $report = [],
+            $validated = false;
     
     // Some Static Methods
     public function __construct($url, $domain)
@@ -40,10 +48,11 @@ namespace models;
     
     public function validate()
     {
+      $this->validated = true;
       $type = $this->info['extension'];
       $validator = "validate{$type}";
       if (! method_exists($this, $validator)) return;
-      
+      $this->report['messages'] = [];
       // should return a reliably mapped object
       return $this->{$validator}();
     }
@@ -57,8 +66,6 @@ namespace models;
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_USERAGENT => 'BrendanBot/1.0',
       ]);
-      
-      $this->report['messages'] = [];
 
       if ($result = json_decode(curl_exec($handle))) {
         $this->source = $result->source->code;
@@ -76,7 +83,6 @@ namespace models;
     private function validateCSS()
     {
       $path = 'https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3svg&uri=%s';
-      $this->report['messages'] = [];
       $result = json_decode(file_get_contents(sprintf($path, $this->url), false, stream_context_create(['http' => ['method' => 'GET']])));
       
       if ($result && $result->cssvalidation->result->errorcount > 0) {
@@ -93,9 +99,30 @@ namespace models;
       return $this->report['messages'];
     }
     
+    public function validateJS()
+    {
+      $lint    = exec('which eslint');
+      $content = $this->getSource();
+      file_put_contents('/tmp/source.js', $content);
+      $output  = json_decode(exec("{$lint} --no-inline-config --no-eslintrc --parser-options=ecmaVersion:7  --env browser -f json /tmp/source.js", $outer));
+      if ($output[0]->errorCount > 0) {
+        foreach ($output[0]->messages as $message) {
+          $this->report['messages'][] = [
+            'line' => $message->line,
+            'type' => $message->severity,
+            'text' => $message->message . ': `' . trim($message->source) . '`',
+          ];
+        }
+      }
+
+      return $this->report['messages'];
+    }
+    
     
     public function getSource()
     {
+      if (! $this->validated ) $this->validate();
+      
       if (empty($this->source)) {
         $GET_context = stream_context_create(['http' => ['method' => 'GET']]);
         $this->source = file_get_contents($this->url, false, $GET_context);
@@ -103,6 +130,19 @@ namespace models;
       return $this->source;
     }
     
+    public function getErrors()
+    {
+      if (! $this->validated) $this->validate();
+      
+      if ($this->info['extension'] == 'html') {
+        return count(array_filter($this->report['messages'], function($message) {
+          return $message['type'] == 'error';
+        }));
+      } else {
+        // TODO: need to filter out mix-blend-mode and variables for advanced use.
+        return count($this->report['messages']);
+      }
+    }  
     
     public function getSLOC()
     {
@@ -111,7 +151,12 @@ namespace models;
     
     public function getSize()
     {
-      // TODO
+      return strlen($report->getSource());
+    }
+    
+    public function getHash()
+    {
+      return sha1($this->getSource());
     }
     
     public function getAnalysis()
@@ -144,17 +189,16 @@ namespace models;
         $this->report['analysis'] = $result['metrics'];
       }
       
-      if ($this->info['extension'] == 'js') {
-        // todo
-      }
       
       return $this->report['analysis'];
     }
     
-    public function toXML()
+    public function getReport()
     {
-      // convert the entire report to an xml object
-      
+      $this->validate();
+      $this->getAnalysis();
+      return $this->report;
     }
+
     
 }
