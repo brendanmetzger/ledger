@@ -296,13 +296,18 @@ class Task extends \bloc\controller
     $student =  new \models\student('TRSYCP');
     
     $reports = [];
-    foreach ($student->files as $key => $file) {
-      $report = new \models\Report($file, $student['@url']);
-      
+    $files = $student->files;
+    
+    foreach ($files as $file) {
+      $report = new \models\Report($file['url'], $student['@url']);
       // Skip files that have not been updated in the last day
       if ($report->getLastModified(86400) > 1) continue;
+
+      if ($file['project'] != 'global') {
+        echo "\n\n\n We will need to save the {$file['project']} project";
+      }
       
-      echo "\n ----- CHANGE REPORT: {$file} -----\n";
+      echo "\n ----- CHANGE REPORT: {$file['url']} -----\n";
       
       // validate
       echo "\nValidating...\n";
@@ -311,9 +316,7 @@ class Task extends \bloc\controller
       // analyze
       echo "\nAnalyzing Code...\n";
       echo json_encode($report->getAnalysis());
-
     }
-    
   }
   
   public function CLIpull()

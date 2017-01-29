@@ -122,7 +122,6 @@ namespace models;
     public function getSource()
     {
       if (! $this->validated ) $this->validate();
-      
       if (empty($this->source)) {
         $GET_context = stream_context_create(['http' => ['method' => 'GET']]);
         $this->source = file_get_contents($this->url, false, $GET_context);
@@ -188,9 +187,12 @@ namespace models;
         $result = json_decode(exec("echo '{$this->getSource()}' | analyze-css -"), true);
         $this->report['analysis'] = $result['metrics'];
       }
-      
-      
       return $this->report['analysis'];
+    }
+    
+    public function save()
+    {
+      file_put_contents($this->file, $this->getSource());
     }
     
     public function getReport()

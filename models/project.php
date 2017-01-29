@@ -13,12 +13,25 @@ namespace models;
     static public $fixture = [
       'project' => [
         '@' => ['axes' => [0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05]],
-        'CDATA' => '',
+        'file' => [
+          ['CDATA'  => '', '@' => ['errors' => 0, 'sloc' => 0, 'length' => 0, 'hash' => '', 'report' => '', 'type' => '', 'path' => '%s/index.html']],
+          ['CDATA'  => '', '@' => ['errors' => 0, 'sloc' => 0, 'length' => 0, 'hash' => '', 'report' => '', 'type' => '', 'path' => '%s/README.txt']],
+          ['CDATA'  => '', '@' => ['errors' => 0, 'sloc' => 0, 'length' => 0, 'hash' => '', 'report' => '', 'type' => '', 'path' => 'src/css/%s.css']],
+          ['CDATA'  => '', '@' => ['errors' => 0, 'sloc' => 0, 'length' => 0, 'hash' => '', 'report' => '', 'type' => '', 'path' => 'src/js/%s.js']],
+        ]
       ]
     ];
 
     static public $metrics = ['Concept', 'Organized', 'Syntax/Errors', 'Explanations', 'Presentation', 'Research', 'Detail', 'Delivery/Time', 'Completion', 'Authorship'];
-
+    
+    public function getFixture()
+    {
+      foreach (self::$fixture['project']['file'] as &$file) {
+        $file['@']['path'] = sprintf($file['@']['path'], $this->title);
+      }
+      
+      return self::$fixture;
+    }
 
     public function getAxes(\DOMElement $context)
     {

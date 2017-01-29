@@ -135,16 +135,18 @@ namespace models;
     {
       $files = [];
       $domain = $context['@url'];
-      $files[] = "{$domain}/src/js/global.js";
-      $files[] = "{$domain}/src/css/global.css";
+      $files[] = ['project' => 'global', 'url' => "{$domain}/src/js/global.js"];
+      $files[] = ['project' => 'global', 'url' => "{$domain}/src/css/global.css"];
       // iterate projects
       foreach ($this->projects['list'] as $iterator) {
+        $check = $iterator['project']->getFixture();
+        print_r($check);
         $url   = $iterator['project']->baseurl;
         $title = $iterator['project']->title;
-        $files[] = "{$url}index.html";
-        $files[] = "{$url}README.txt";
-        $files[] = "{$domain}/src/js/{$title}.js";
-        $files[] = "{$domain}/src/css/{$title}.css";
+        $files[] = ['project' => $title, 'url' => "{$url}index.html"];
+        $files[] = ['project' => $title, 'url' => "{$url}README.txt"];
+        $files[] = ['project' => $title, 'url' => "{$domain}/src/js/{$title}.js"];
+        $files[] = ['project' => $title, 'url' => "{$domain}/src/css/{$title}.css"];
       }
       return $files;
     }
