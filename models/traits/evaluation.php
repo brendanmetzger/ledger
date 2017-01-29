@@ -2,20 +2,10 @@
 namespace models\traits;
 
 trait evaluation {
+
+  // these are dependencies
   protected $criterion = null,
             $student   = null;
-
-  public function loadCriterion(\DOMElement $criterion)
-  {
-    $this->criterion = new \models\Criterion($criterion);
-    return $this;
-  }
-
-  public function loadStudent(\models\Student $student)
-  {
-    $this->student = $student;
-    return $this;
-  }
   
   public function getTitle(\DOMElement $context)
   {

@@ -53,7 +53,7 @@ namespace models;
         $scores = [];
         foreach ($section->students as $item) {
           $context = $item['student']->context->getElement($c['@type'], $c['@index']);
-          $score = Data::FACTORY($c['@type'], $context)->loadCriterion($c)->score;
+          $score = Data::FACTORY($c['@type'], $context, null, [new \models\Criterion($c)])->score;
           if ($score > 0) {
             $scores[] = $score;
           }
@@ -240,7 +240,7 @@ namespace models;
 
       $collect = Criterion::collect(function ($criterion, $index) use($evaluation, $total, $reviewed, $average, &$accumulator, &$flags) {
         $map = [
-          $evaluation => Data::FACTORY($evaluation, $reviewed->pick($index))->loadCriterion($criterion)->loadStudent($this->student),
+          $evaluation => Data::FACTORY($evaluation, $reviewed->pick($index), null, [new \models\Criterion($criterion), $this->student]),
           'schedule'  => $this->student->section->schedule[$criterion['@assigned'] ?: $index],
           'due'       => $this->student->section->schedule[$criterion['@due'] ?: $index],
         ];
@@ -263,7 +263,7 @@ namespace models;
       }, "[@type='{$evaluation}' and (@course = '{$course}' or @course = '*')]");
 
       $weight = Assessment::$weight[$evaluation];
-
+                            
       return new \bloc\types\dictionary([
         'list'   => iterator_to_array($collect, false),
         'score'  => $average === 1 && $total == 0 ? $weight : max(0, round($accumulator * $weight, 1)),

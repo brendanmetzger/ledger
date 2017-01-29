@@ -293,29 +293,30 @@ class Task extends \bloc\controller
   
   public function CLIsource()
   {
-    $student =  new \models\student('TRSYCP');
+    $student =  new \models\student('TRSYCP');    
+    // TODO check the two global files
     
-    $reports = [];
-    $files = $student->files;
     
-    foreach ($files as $file) {
-      $report = new \models\Report($file['url'], $student['@url']);
-      // Skip files that have not been updated in the last day
-      if ($report->getLastModified(86400) > 1) continue;
-
-      if ($file['project'] != 'global') {
-        echo "\n\n\n We will need to save the {$file['project']} project";
+    // then check all project files
+    foreach ($student->projects['list'] as $iterator) {
+      $project = $iterator['project'];
+      foreach ($project['file'] as $file) {
+        
+        $report = new \models\Report($student->domain, $file['@path']);
+        if ($report->getLastModified(86400) > 1) continue;
+        echo "\n ----- CHANGE REPORT: {$file['url']} -----\n";
+        
+        $file->setAttribute('errors', $report->getErrors());
+        $file->setAttribute('sloc', $report->getSLOC());
+        $file->setAttribute('length', $report->getSize());
+        $file->setAttribute('hash', $report->getHash());
+        $file->setAttribute('report', $report);
+        
+        echo $file->write() . "\n";
       }
-      
-      echo "\n ----- CHANGE REPORT: {$file['url']} -----\n";
-      
-      // validate
-      echo "\nValidating...\n";
-      echo  json_encode($report->validate());
-      
-      // analyze
-      echo "\nAnalyzing Code...\n";
-      echo json_encode($report->getAnalysis());
+      if (!$project->save()) {
+        print_r($project->errors);
+      }
     }
   }
   

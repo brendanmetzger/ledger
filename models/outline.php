@@ -22,6 +22,9 @@ namespace models;
     
     static public function TEMPLATE(Student $student, $file = null)
     {
+      /*
+        TODO Structure of template should come entirely from a model/fixture
+      */
       \bloc\view::removeRenderers();
       \bloc\view::$edit = false;
       $zip  = new \ZipArchive;

@@ -57,7 +57,7 @@ namespace models;
       $element = $this->context->getElement($topic, $index);
       // load the criterion & student if specified
       if ($criteria) {
-        return Data::FACTORY($topic, $element)->loadCriterion($criteria)->loadStudent($this);
+        return Data::FACTORY($topic, $element, null, [new \models\Criterion($criteria), $this]);
       }
 
       return $element;
@@ -99,7 +99,7 @@ namespace models;
 
     public function getQuiz(\DOMElement $context)
     {
-      return $this->assessment()->getEvaluation('quiz', $this->course);
+      return $this->assessment()->getEvaluation('quiz');
     }
 
     public function getProjects(\DOMElement $context)
@@ -119,7 +119,7 @@ namespace models;
 
     public function getPractice(\DOMElement $context)
     {
-      return $this->assessment()->getEvaluation('practice', $this->course);
+      return $this->assessment()->getEvaluation('practice');
     }
 
     public function getGrade(\DOMElement $context)
@@ -131,23 +131,8 @@ namespace models;
       return new \bloc\types\Dictionary(['score' => $score, 'letter' => Assessment::LETTER($score, 100), 'apr' => $apr]);
     }
     
-    public function getFiles(\DOMElement $context)
+    public function getDomain(\DOMElement $context)
     {
-      $files = [];
-      $domain = $context['@url'];
-      $files[] = ['project' => 'global', 'url' => "{$domain}/src/js/global.js"];
-      $files[] = ['project' => 'global', 'url' => "{$domain}/src/css/global.css"];
-      // iterate projects
-      foreach ($this->projects['list'] as $iterator) {
-        $check = $iterator['project']->getFixture();
-        print_r($check);
-        $url   = $iterator['project']->baseurl;
-        $title = $iterator['project']->title;
-        $files[] = ['project' => $title, 'url' => "{$url}index.html"];
-        $files[] = ['project' => $title, 'url' => "{$url}README.txt"];
-        $files[] = ['project' => $title, 'url' => "{$domain}/src/js/{$title}.js"];
-        $files[] = ['project' => $title, 'url' => "{$domain}/src/css/{$title}.css"];
-      }
-      return $files;
+      return $context['@url'] . '/';
     }
 }

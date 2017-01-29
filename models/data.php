@@ -35,10 +35,10 @@ use \bloc\dom\query;
       return $element;
     }
 
-    static public function FACTORY($model, $initialization, $data = [])
+    static public function FACTORY($model, $initialization, $data = [], $dependencies = [])
     {
       $classname = NS . __NAMESPACE__ . NS . $model;
-      return  new $classname($initialization, $data);
+      return  new $classname($initialization, $data, $dependencies);
     }
 
 

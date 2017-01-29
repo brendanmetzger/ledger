@@ -17,15 +17,14 @@ namespace models;
             $validated = false;
     
     // Some Static Methods
-    public function __construct($url, $domain)
+    public function __construct($domain, $file)
     {
       stream_context_set_default(['http' => ['method' => 'HEAD']]);
-      $this->now = time();
-      $this->url = $url;
+      $this->now    = time();
+      $this->file   = $file;
       $this->domain = $domain;
-      $this->file = substr($url, strlen("{$domain}/"));
-      $this->info = pathinfo($this->file);
-
+      $this->url    = $domain . $file;
+      $this->info   = pathinfo($this->file);
     }
     
     public function __destruct()
@@ -150,7 +149,7 @@ namespace models;
     
     public function getSize()
     {
-      return strlen($report->getSource());
+      return strlen($this->getSource());
     }
     
     public function getHash()
@@ -195,11 +194,11 @@ namespace models;
       file_put_contents($this->file, $this->getSource());
     }
     
-    public function getReport()
+    public function __toString()
     {
       $this->validate();
       $this->getAnalysis();
-      return $this->report;
+      return json_encode($this->report, JSON_HEX_QUOT);
     }
 
     
