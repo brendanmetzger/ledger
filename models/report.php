@@ -56,7 +56,6 @@ namespace models;
         $this->report['messages'] = $this->{$validator}();
       }
       
-      // should return a reliably mapped object
       return $this->report['messages'];
     }
     

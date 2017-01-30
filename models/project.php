@@ -12,7 +12,7 @@ namespace models;
 
     static public $fixture = [
       'project' => [
-        '@' => ['axes' => [0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05], 'commits' => 0],
+        '@' => ['axes' => [0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05], 'value' => 0],
         'file' => [
           ['CDATA'  => '', '@' => ['errors' => 0, 'sloc' => 0, 'length' => 0, 'hash' => '', 'aux' => '', 'report' => '', 'path' => '%s/index.html']],
           ['CDATA'  => '', '@' => ['errors' => 0, 'sloc' => 0, 'length' => 0, 'hash' => '', 'aux' => '', 'report' => '', 'path' => '%s/README.txt']],
@@ -47,13 +47,6 @@ namespace models;
         $context->nodeValue = base64_encode($data['CDATA']);
       }
     }
-    
-    // public function getFile(\DOMElement $context)
-    // {
-    //   print_r($context['file']);
-    //   return "BURRRRRRRRRRRRRP\n";
-    // }
-    
 
     public function getAxes(\DOMElement $context)
     {
@@ -65,17 +58,11 @@ namespace models;
       return [$this->criterion->context['@path']];
     }
 
-
     public function __toString()
     {
       return base64_decode($this->context->nodeValue);
     }
-    
-    public function getBaseUrl(\DOMElement $context)
-    {
-      return $this->student['@url'] . $this->criterion->context['@path'] . '/';
-    }
-    
+        
     public function getTitle(\DOMElement $context)
     {
       return $this->criterion->context['@title'];

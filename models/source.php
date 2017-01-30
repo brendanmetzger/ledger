@@ -8,10 +8,10 @@ namespace models;
  {
     private $path, $git;
 
-    public function __construct($semester)
+    public function __construct($semester, $path = '%sdata/%s/work/')
     {
       $this->git  = exec('which git');
-      $this->path = sprintf('%sdata/%s/work/', PATH, $semester);
+      $this->path = sprintf($path, PATH, $semester);
     }
     
     public function checkout($branch)
@@ -19,9 +19,9 @@ namespace models;
       return $this->execute("checkout {$branch}");
     }
     
-    public function commit($subject, $body = null)
+    public function commit($subject, $options = '', $body = null)
     {
-      $this->execute("commit --all -m \"{$subject}\"", $result);
+      $this->execute("commit --all -m \"{$subject}\" {$options}", $result);
       return $result;
     }
     

@@ -17,15 +17,21 @@ class Course extends \bloc\controller
   const ID = null;
   const layout = 'views/layouts/journal.html';
 
-  protected function GETindex(User $user, $index = '0', $section = '01')
+  protected function GETindex(User $user, $index = null, $section = '01')
   {
     $view = new View(static::layout);
-    $view->content = "views/outline/{$index}.html";
-    $view->context = "views/layouts/list/schedule.html";
-    $view->lecture = "views/outline/".strtolower(static::ID)."/{$index}.html";
     $this->course = new \Models\Course(Data::ID(static::ID));
     $this->section = $this->course->section($section);
     $schedule = $this->section->schedule;
+    
+    if ($index === null) {
+      // automatically set to current day.
+      $index = \models\Calendar::INDEX($schedule);
+    }
+    
+    $view->content = "views/outline/{$index}.html";
+    $view->context = "views/layouts/list/schedule.html";
+    $view->lecture = "views/outline/".strtolower(static::ID)."/{$index}.html";
     $schedule[$index]['selected'] = 'selected';
 
     $this->timestamp = $schedule[$index]['date'];

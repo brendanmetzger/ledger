@@ -6,43 +6,35 @@
     <h4><time>[$section:time]</time> <span>[Room $section:@room]</span></h4>
   </header>
   <div class="overflow">
-    <table class="full chart tt bb">
+    <table class="full chart tt bb" style="table-layout: fixed;">
       <caption>
         <h3 class="rag-left pad b caps spaced">Overview</h3>
       </caption>
       <thead>
-        <tr class="rotate">
-          <th>index</th>
+        <tr class="rotate" data-size="large">
           <!-- iterate section:students -->
           <th><a href="[/records/student/$student:@id]">[$student:shortname]</a></th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th>Grade</th>
           <!-- iterate section:students -->
           <td style="[--hue: $student:grade:score; --value: $student:grade:score%;]" class="centered">[$student:grade:letter]</td>
         </tr>
         <tr>
-          <th>Score</th>
           <!-- iterate section:students -->
           <td class="centered percentage">[$student:grade:score]</td>
-        </tr>
-        <tr>
-          <th>absences</th>
-          <!-- iterate section:students -->
-          <td class="centered">todo</td>
         </tr>
       </tbody>
     </table>
 
-    <table class="full chart tt bb">
+    <table class="full chart tt bb" style="table-layout: fixed;">
       <caption>
         <h3 class="rag-left pad b caps spaced">Attendance</h3>
       </caption>
       <thead>
-        <tr class="rotate">
-          <th>Week</th>
+        <tr class="rotate" data-size="large">
+          <th><b>week</b></th>
           <!-- iterate section:students -->
           <th><a href="[/records/student/$student:@id]">[$student:shortname]</a></th>
         </tr>

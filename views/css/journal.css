@@ -65,12 +65,17 @@ body > nav li {
 ul.index li.pending a {
   color: #CCC;
 }
-
 ul.index a:not(.selected):hover,
 ul.index li a.selected {
-  background-color: rgba(255,255,255,0.25);
-  color: #333;
-  background-color: rgba(0,0,0,0.025);
+  color: #000;
+  background: linear-gradient(270deg, transparent, rgba(0,0,0, 0.025));
+  box-shadow: 0 0 0.5em rgba(0,0,0,0.1);
+}
+ul.index li a.selected {
+  font-weight:600;
+}
+li.transpired a {
+  color:#333;
 }
 
 hr,

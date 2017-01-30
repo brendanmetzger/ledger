@@ -105,6 +105,13 @@ th.lighter {
   font-weight:600;
 }
 
+tr[data-size='large'] th > * {
+  writing-mode: vertical-lr;
+  transform: scale(-1, -1);
+  background: none;
+}
+
+
 @media(max-width: 50em) {
   tr.rotate th:first-of-type {width:auto;}
   tr.rotate th:not(:first-of-type) {

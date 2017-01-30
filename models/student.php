@@ -71,7 +71,7 @@ namespace models;
     public function getLog(\DOMElement $context)
     {
       $git = new \models\source(Data::$SEMESTER);
-      $hmmm = $git->checkout($context['@key']);
+      $git->checkout($context['@key']);
       $log = $git->log();
 
       $keys = array_map(function(&$log) {

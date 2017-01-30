@@ -293,12 +293,12 @@ class Task extends \bloc\controller
   
   public function CLIcommits()
   {
-    $sem = \models\Data::$SEMESTER;
-    $git = new \models\Source($sem);
+    $sem  = \models\Data::$SEMESTER;
+    $git  = new \models\Source($sem);
+    $date = (new \DateTime())->modify('-1 day')->setTime(12, 0)->format(DATE_ISO8601);
     
     chdir(sprintf('%sdata/%s/work/', PATH, $sem));
     
-    // foreach (\models\data::instance()->query('//')->find("student[@id='ENSE']") as $node) {
     foreach (\models\data::instance()->query('//')->find("student[@role!='instructor']") as $node) {
       $student = new \models\student($node['@id']);
       
@@ -310,12 +310,10 @@ class Task extends \bloc\controller
       $git->checkout($student['@key']);
 
       foreach ($student->projects['list'] as $iterator) {
-        $project = $iterator['project'];
-        $commits = 0;
-        
         // Track the two * auxillary files
         $auxillary = [];
-
+        $project   = $iterator['project'];
+        
         // then check all project files
         foreach ($project['file'] as $file) {
           // Gather the report. This is complicated because some files can be used in
@@ -327,42 +325,48 @@ class Task extends \bloc\controller
           }
           
           echo "-- CHECKING {$file['@path']} for {$student['@name']}\n";
-          $commits += count($git->log($file['@path'], "--after='{$start}'")) . "\n\n";
           
-          if ($report->getLastModified(86400) > 1) continue;
+          $commits = count($git->log($file['@path'], "--after='{$start}'")) . "\n\n";
+          $file->setAttribute('age', $report->getLastModified(86400));
           
-          echo "---- UPDATING...\n";
-          // count the number of commits
+          if ((int)$file['@age'] > 1) continue;
+          
+          echo "---- UPDATING... ";
           
           $file->setAttribute('errors', $report->getErrors());
           $file->setAttribute('sloc', $report->getSLOC());
           $file->setAttribute('length', $report->getSize());
           $file->setAttribute('hash', $report->getHash());
           $file->setAttribute('report', $report);
+          $file->setAttribute('commits', $commits + ($report->getHash() == $file['@hash'] ? 0 : 1));
           
           // save file
-          if (! $report->save()) {
-            echo "------ ERROR: file not saved";
-          }
-          // pause for a 1/10 second so we don't burden servers
-          usleep(100000);
+          echo  "------ " . (! $report->save() ?  'ERROR' : 'success') . " on save\n";
+
+          // pause for a 1/5 second so we don't upset anyone
+          usleep(200000);
         }
-        
-        $project->context->setAttribute('commits', $commits);
-        
-        if (! $project->save()) {
-          print_r($project->errors);
-        }
+                
+        // save project, print errors if any problems
+        if (! $project->save()) print_r($project->errors);
+
       }
       
-      $commit = $git->commit($git->diff('--shortstat'));
+      $commit = $git->commit($git->diff('--shortstat'), "--date=\"{$data}\"");
       print_r($commit);
     }
-    
     print_r($git->push('master', '--all'));
   }
   
-  public function CLIpull()
+  public function CLIbackup($semester, $message = 'Automated Push')
+  {
+    // checkout current semester
+    $git = new \models\source($semester, '%sdata/%s');
+    $git->commit($message);
+    $git->push('master', 'origin');
+  }
+  
+  public function CLIpull($chmod)
   {
     $semester = \models\Data::$SEMESTER;
     $git = new \models\Source($semester);
@@ -371,7 +375,6 @@ class Task extends \bloc\controller
       echo $git->checkout($student['@key']) . "\n";
       echo $git->execute('pull') . "\n";
     }
-    
-    exec(sprintf('chmod -R g+w %s/data/%s/work', PATH, $semester));
   }
+  
 }

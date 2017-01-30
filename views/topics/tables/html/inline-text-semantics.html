@@ -1,12 +1,13 @@
 <table>
-  <caption class="rag-right">
-    <h2>Text Level Semantics</h2>
+  <caption class="rag-right whitepaper" style="margin:2em -2.5vmax;border-bottom:1px solid #FFF">
+    <h3>Text Level Semantics</h3>
     <p>Use the HTML <dfn>inline</dfn> text semantic to define the meaning, structure, or style of a word, line, or any arbitrary piece of text. Here is the full <a href="https://w3c.github.io/html/textlevel-semantics.html#textlevel-semantics">whitepaper</a> for review.</p>
   </caption>
   <thead>
     <tr>
       <th>Element</th>
       <th>Description</th>
+      <th><abbr title="too long, didn't read">TL;DR</abbr></th>
     </tr>
   </thead>
   <tbody class="elements">
@@ -14,163 +15,190 @@
       <th>
         <code id="#the-a-element">a</code>
       </th>
-      <td>The HTML Anchor Element (<strong><code>a</code></strong>) defines a hyperlink to a location on the same page or any other page on the Web. It can also be used (in an obsolete way) to create an anchor point&#x2014;a destination for hyperlinks within the content of a page, so that links aren’t limited to connecting simply to the top of a page.</td>
+      <td>The Anchor Element (<strong><code>a</code></strong>) defines a hyperlink to a location on the same page or any other page on the Web. It can also be used (in an obsolete way) to create an anchor point&#x2014;a destination for hyperlinks within the content of a page, so that links aren’t limited to connecting simply to the top of a page.</td>
+      <td>Perhaps the most important Element ever created, how you link from one place in on the internet to another.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-abbr-element">abbr</code>
       </th>
-      <td>The <strong>HTML <code>abbr</code> element</strong> (or <em>HTML Abbreviation Element</em>) represents an abbreviation and optionally provides a full description for it. If present, the <code>title</code> attribute must contain this full description and nothing else.</td>
+      <td>The <code>abbr</code> element (or <em>HTML Abbreviation Element</em>) represents an abbreviation and optionally provides a full description for it. If present, the <code>title</code> attribute must contain this full description and nothing else.</td>
+      <td>Surprisingly useful—know this one.</td>
     </tr>
-    <tr>
+    <tr data-priority="3">
       <th>
         <code id="#the-b-element">b</code>
       </th>
-      <td>The <strong>HTML <code>b</code> Element</strong> represents a span of text stylistically different from normal text, without conveying any special importance or relevance. It is typically used for keywords in a summary, product names in a review, or other spans of text whose typical presentation would be boldfaced. Another example of its use is to mark the lead sentence of each paragraph of an article.</td>
+      <td>The <code>b</code> Elementrepresents a span of text stylistically different from normal text, without conveying any special importance or relevance. It is typically used for keywords in a summary, product names in a review, or other spans of text whose typical presentation would be boldfaced. Another example of its use is to mark the lead sentence of each paragraph of an article.</td>
+      <td>9 times out of 10 you <em>should</em> be using the <code>strong</code> Element—but if you just need to have bolder text with no semantic meaning, this is your pick.</td>
     </tr>
-    <tr>
+    <tr data-priority="4">
       <th>
         <code id="#the-bdi-element">bdi</code>
       </th>
-      <td>The <em>HTML <code>bdi</code> Element</em> (or Bi-Directional Isolation Element) isolates a span of text that might be formatted in a different direction from other text outside it.</td>
+      <td>The <code>bdi</code> Element (or Bi-Directional Isolation Element) isolates a span of text that might be formatted in a different direction from other text outside it.</td>
+      <td>Rarely need this in western text.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-bdo-element">bdo</code>
       </th>
-      <td>The <strong>HTML <code>bdo</code> Element</strong> (or <em>HTML bidirectional override element</em>) is used to override the current directionality of text. It causes the directionality of the characters to be ignored in favor of the specified directionality.</td>
+      <td>The <code>bdo</code> Element (or <em>HTML bidirectional override element</em>) is used to override the current directionality of text. It causes the directionality of the characters to be ignored in favor of the specified directionality.</td>
+      <td>Rarely need this in western text.</td>
     </tr>
     <tr>
       <th>
-        <code id="#the-br-element">br</code>
+        <code id="#the-br-element">br/</code>
       </th>
-      <td>The HTML element <em>line break</em> <code>br</code> produces a line break in text (carriage-return). It is useful for writing a poem or an address, where the division of lines is significant.</td>
+      <td>The <em>line break</em> <code>br/</code> produces a line break in text (carriage-return). It is useful for writing a poem or an address, where the division of lines is significant.</td>
+      <td>99.9% of the time this is misused to control padding. Do <em>not</em> use the <code>br/</code> for that. Only application is for literally adding an arbitrary line-break to a sentence.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-cite-element">cite</code>
       </th>
-      <td>The <em>HTML Citation Element</em> (<strong>cite</strong>) represents a reference to a creative work. It must include the title of a work or a URL reference, which may be in an abbreviated form according to the conventions used for the addition of citation metadata.</td>
+      <td>The Citation Element (<code>cite</code>) represents a reference to a creative work. It must include the title of a work or a URL reference, which may be in an abbreviated form according to the conventions used for the addition of citation metadata.</td>
+      <td>Occasionally useful fore heavily marked up documents.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-code-element">code</code>
       </th>
-      <td>The <em>HTML Code Element</em> (<strong>code</strong>) represents a fragment of computer code. By default, it is displayed in the browser’s default monospace font.</td>
+      <td>The Code Element (<code>code</code>) represents a fragment of computer code. By default, it is displayed in the browser’s default monospace font.</td>
+      <td>Renders a monospaced font by default. Depending on the nature of the explanation, quite handy.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-data-element">data</code>
       </th>
-      <td>The <strong>HTML <code>data</code> Element</strong> links a given content with a machine-readable translation. If the content is time- or date-related, the <a href="#the-time-element"><code>time</code></a> must be used.</td>
+      <td>The <code>data</code> Element links a given content with a machine-readable translation. If the content is time- or date-related, the <a href="#the-time-element"><code>time</code></a> must be used.</td>
+      <td>I've honestly not used this yet, but I like to know I could.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-dfn-element">dfn</code>
       </th>
-      <td>The <em>HTML Definition Element</em> (<strong>dfn</strong>) represents the defining instance of a term.</td>
+      <td>The Definition Element (<code>dfn</code>) represents the defining instance of a term.</td>
+      <td>Will italicize text as its default style. Useful for heavily marked-up documents.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-em-element">em</code>
       </th>
-      <td>The HTML<em> </em>element<em> emphasis </em> <strong>em</strong> marks text that has stress emphasis. The <code>em</code> element can be nested, with each level of nesting indicating a greater degree of emphasis.</td>
+      <td>The emphasis Element <code>em</code> marks text that has stress emphasis. The <code>em</code> element can be nested, with each level of nesting indicating a greater degree of emphasis.</td>
+      <td>This element should be in heavy rotation—it also italicizes text.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-i-element">i</code>
       </th>
-      <td>The <strong>HTML <code>i</code> Element</strong> represents a range of text that is set off from the normal text for some reason, for example, technical terms, foreign language phrases, or fictional character thoughts. It is typically displayed in italic type.</td>
+      <td>The <code>i</code> Element represents a range of text that is set off from the normal text for some reason, for example, technical terms, foreign language phrases, or fictional character thoughts. It is typically displayed in italic type.</td>
+      <td>9 out of 10 times you should be using a <code>em</code> Element. But if you need to italicize something for eyeballs only (no semantic meaning), this will do it.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-kbd-element">kbd</code>
       </th>
-      <td>The <em>HTML Keyboard Input Element</em> (<strong>kbd</strong>) represents user input and produces an inline element displayed in the browser’s default monospace font.</td>
+      <td>The Keyboard Input Element(<code>kbd</code>) represents user input and produces an inline element displayed in the browser’s default monospace font.</td>
+      <td>Not widely used</td>
     </tr>
     <tr>
       <th>
         <code id="#the-mark-element">mark</code>
       </th>
-      <td>The <em>HTML Mark Element</em> (&lt;mark&gt;) represents highlighted text, i.e., a run of text marked for reference purpose, due to its <em>relevance</em> in a particular context. For example it can be used in a page showing search results to highlight every instance of the searched-for word.</td>
+      <td>The  Mark Element (<code>mark</code>) represents highlighted text, i.e., a run of text marked for reference purpose, due to its <em>relevance</em> in a particular context. For example it can be used in a page showing search results to highlight every instance of the searched-for word.</td>
+      <td>Picture what a highlighter does.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-q-element">q</code>
       </th>
-      <td>The <em>HTML Quote Element</em> (<strong>q</strong>) indicates that the enclosed text is a short inline quotation. This element is intended for short quotations that don’t require paragraph breaks; for long quotations use <a href="#the-blockquote-element" title="The HTM L&lt;blockquote&gt; Element (or HTML Block Quotation Element) indicates that the enclosed text is an extended quotation. Usually, this is rendered visually by indentation (see Notes for how to change it). A URL for the source of the quotation may be given using the cite attribute, while a text representation of the source can be given using th e&lt;cite&gt; element."><code>blockquote</code></a> element.</td>
+      <td>The Quote Element(<code>q</code>) indicates that the enclosed text is a short inline quotation. This element is intended for short quotations that don’t require paragraph breaks; for long quotations use <code>blockquote</code> element.</td>
+      <td>Quotations—and you can do even fancier things with <em>quotation marks</em> using <abbr>css</abbr>.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-rp-element">rp</code>
       </th>
-      <td>The <strong>HTML <code>rp</code> element</strong> is used to provide fall-back parenthesis for browsers non-supporting ruby annotations. Ruby annotations are for showing pronunciation of East Asian characters, like using Japanese furigana or Taiwainese bopomofo characters. The <code>rp</code> element is used in the case of lack of <a href="#the-ruby-element" title="The HTM L&lt;ruby&gt; Element represents a ruby annotation. Ruby annotations are for showing pronunciation of East Asian characters."><code>ruby</code></a> element support its content has what should be displayed in order to indicate the presence of a ruby annotation, usually parentheses.</td>
+      <td>The  <code>rp</code> Element is used to provide fall-back parenthesis for browsers non-supporting ruby annotations. Ruby annotations are for showing pronunciation of East Asian characters, like using Japanese furigana or Taiwainese bopomofo characters. The <code>rp</code> element is used in the case of lack of <code>ruby</code> element support its content has what should be displayed in order to indicate the presence of a ruby annotation, usually parentheses.</td>
+      <td>Not useful in western text.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-s-element">s</code>
       </th>
-      <td>The <em>HTML Strikethrough Element</em> (<code>s</code>) renders text with a strikethrough, or a line through it. Use the <code>s</code> element to represent things that are no longer relevant or no longer accurate. However, <code>s</code> is not appropriate when indicating document edits; for that, use the <a href="#the-del-element" title="The HTML Deleted Text Element (&lt;del&gt;) represents a range of text that has been deleted from a document. This element is often (but need not be) rendered with strike-through text."><code>del</code></a> and <a href="#the-ins-element" title="The HTM L&lt;ins&gt; Element (or HTML Inserted Text) HTML represents a range of text that has been added to a document."><code>ins</code></a> elements, as appropriate.</td>
+      <td>The Strikethrough Element (<code>s</code>) renders text with a strikethrough, or a line through it. Use the <code>s</code> element to represent things that are no longer relevant or no longer accurate. However, <code>s</code> is not appropriate when indicating document edits; for that, use the <a href="#the-del-element"><code>del</code></a> and <a href="#the-ins-element" title="The HTM L&lt;ins&gt; Element (or HTML Inserted Text) HTML represents a range of text that has been added to a document."><code>ins</code></a> elements, as appropriate.</td>
+      <td>Crosses something out. Especially important to signify editorial changes to a document.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-samp-element">samp</code>
       </th>
-      <td>The HTML <code>samp</code> element is an element intended to identify sample output from a computer program. It is usually displayed in the browser’s default monotype font (such as Lucida Console).</td>
+      <td>The <code>samp</code> element is an element intended to identify sample output from a computer program. It is usually displayed in the browser’s default monotype font (such as Lucida Console).</td>
+      <td>Not used all that often.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-small-element">small</code>
       </th>
-      <td>The HTML Small Element (<code>small</code>) makes the text <em>font size</em> one size smaller (for example, from large to medium, or from small to x-small) down to the browser’s minimum font size.  In HTML5, this element is repurposed to represent side-comments and small print, including copyright and legal text, independent of its styled presentation.</td>
+      <td>The Small Element (<code>small</code>) makes the text <em>font size</em> one size smaller (for example, from large to medium, or from small to x-small) down to the browser’s minimum font size.  In HTML5, this element is repurposed to represent side-comments and small print, including copyright and legal text, independent of its styled presentation.</td>
+      <td>Think legalese and stuff you don't think anyone would try to read. <strong>Not intended to control size of text</strong>.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-span-element">span</code>
       </th>
-      <td>The <strong>HTML <em><code>span</code></em> element</strong> is a generic inline container for phrasing content, which does not inherently represent anything. It can be used to group elements for styling purposes (using the <code>class</code> or <code>id</code> attributes), or because they share attribute values, such as <code>lang</code>.</td>
+      <td>The <code>span</code> Element is a generic inline container for phrasing content, which does not inherently represent anything. It can be used to group elements for styling purposes (using the <code>class</code> or <code>id</code> attributes), or because they share attribute values, such as <code>lang</code>.</td>
+      <td>Means nothing—so if you want to style something and there is literally not a more appropriate element to choose, this is what you turn to. <mark>You really need to understand that last sentence.</mark></td>
     </tr>
     <tr>
       <th>
         <code id="#the-strong-element">strong</code>
       </th>
-      <td>The HTML Strong Element (<code>strong</code>) gives text strong importance, and is typically displayed in bold.</td>
+      <td>The Strong Element (<code>strong</code>) gives text strong importance, and is typically displayed in bold.</td>
+      <td>Bolds texts and imparts the meaning of bold text—as in it is something important.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-sub-element">sub</code>
       </th>
-      <td>The <em>HTML Subscript Element</em> (<code>sub</code>) defines a span of text that should be displayed, for typographic reasons, lower, and often smaller, than the main span of text.</td>
+      <td>The Subscript Element(<code>sub</code>) defines a span of text that should be displayed, for typographic reasons, lower, and often smaller, than the main span of text.</td>
+      <td>Subscript, the darling of math and science.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-sup-element">sup</code>
       </th>
-      <td>The <em>HTML Superscript Element</em> (<code>sup</code>) defines a span of text that should be displayed, for typographic reasons, higher, and often smaller, than the main span of text.</td>
+      <td>The Superscript Element (<code>sup</code>) defines a span of text that should be displayed, for typographic reasons, higher, and often smaller, than the main span of text.</td>
+      <td>Superscript, also the darling of math and science.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-time-element">time</code>
       </th>
-      <td>The <strong>HTML <code>time</code> element</strong> represents either a time on a 24-hour clock or a precise date in the <a href="http://en.wikipedia.org/wiki/Gregorian_calendar">Gregorian calendar</a> (with optional time and timezone information).</td>
+      <td>The <code>time</code> Element represents either a time on a 24-hour clock or a precise date in the <a href="http://en.wikipedia.org/wiki/Gregorian_calendar">Gregorian calendar</a> (with optional time and timezone information).</td>
+      <td>This one should be used more often—accurately representing dates and times is quite important (if you use them)</td>
     </tr>
     <tr>
       <th>
         <code id="#the-u-element">u</code>
       </th>
-      <td>The <em>HTML Underline Element</em> (<code>u</code>) renders text with an underline, a line under the baseline of its content.</td>
+      <td>The Underline Element (<code>u</code>) renders text with an underline, a line under the baseline of its content.</td>
+      <td>Be careful with this—<abbr title="user experience">ux</abbr> generally reserves underlined things to mean it is a link.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-var-element">var</code>
       </th>
-      <td>The HTML Variable Element (<code>var</code>) represents a variable in a mathematical expression or a programming context.</td>
+      <td>The Variable Element (<code>var</code>) represents a variable in a mathematical expression or a programming context.</td>
+      <td>Not used all that often outside of technical write-ups.</td>
     </tr>
     <tr>
       <th>
         <code id="#the-wbr-element">wbr</code>
       </th>
-      <td>The HTML element <em>word break opportunity</em> <code>wbr</code> represents a position within text where the browser may optionally break a line, though its line-breaking rules would not otherwise create a break at that location.</td>
+      <td>The element <em>word break opportunity</em> <code>wbr</code> represents a position within text where the browser may optionally break a line, though its line-breaking rules would not otherwise create a break at that location.</td>
+      <td>If you are very uptight about how you want a line to break, this is your jam. I've never used it myself.</td>
     </tr>
   </tbody>
 </table>

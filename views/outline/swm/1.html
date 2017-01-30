@@ -1,13 +1,14 @@
 <div id="[$course:@id]">
-  <header>
+  <header class="container">
     <!-- insert views/outline/_/crumbs.html -->
     <img src="[$cdn/media/images/workout-female-vintage.png]" class="float left __" style="mix-blend-mode: multiply;margin:3em 1em 0;"/>
-    <h1 class="massive">All about Nodes</h1>
-    <p class="intro">Every interval we will add more to our repertoire, building on fundamentals week by week. After an introduction to filesystems and networks, once on a server, a website’s raison d'être is to broadcast information, and that information must be marked up for a machine to parse and organize. This is not a question of style and aesthetic, it is about communication.</p>
+    <h1 class="massive">Nature of Work</h1>
+    <p class="intro">Any website’s raison d'être is to broadcast information, and that information must be marked up for a machine to parse and organize. This is not a question of style and aesthetic, it is about communication. Communicating is actually a difficult art form, much harder than today’s concept: structuring information.</p>
   </header>
   <aside>
-    <h3>Review/Questions</h3>
-    <p>Last week we were introduced to some tools used for web development. I will use <a href="http://atom.io">Atom</a> in this course. You learned about a few protocols, namely hypetext transfer protocol for using a browser to got files from <a href="https://en.wikipedia.org/wiki/Web_server">web servers</a> as well as the file transfer protocol for getting files <em>to and from</em> computers—typically a personal computer and a computer acting as a web server.</p>
+    <h3>Review &amp; Warm Up</h3>
+    <p>Last week some tools used for web development (servers and text editors) and concepts surrounding filesystems and networks. For tools I will use <a href="http://brackets.io">Brackets</a> and <a href="https://cyberduck.io/">Cyberduck</a>—not because they are the best, but they have useful features I think many of you will appreciate.  I actually prefer that you use whatever tools you feel most comfortable with, so if you feel comfortable with something else and it meets our course objectives, then use it.</p>
+    <p>You learned about a few protocols, namely hypetext transfer protocol for using a browser to got files from <a href="https://en.wikipedia.org/wiki/Web_server">web servers</a> as well as the file transfer protocol for getting files <em>to and from</em> computers—typically a personal computer and a computer acting as a web server.</p>
     <section class="whitepaper t">
       <h3>Keys to successful web-development</h3>
       <ul class="stylized star">
@@ -18,35 +19,26 @@
       </ul>
     </section>
   </aside>
+  <!-- insert views/topics/markup/nodes.html -->
   
   <article>
-    <!-- insert views/topics/tables/html/grouping-content.html -->
+    <h2>Investigating Inline Elements</h2>
+    <p class="intro">Inline elements are for wrapping up text. If surrounding a bunch of other <abbr>html</abbr> Elements with one of these darlings, then you are on the wrong track.</p>
     <!-- insert views/topics/tables/html/inline-text-semantics.html -->
   </article>
   
-  <!-- insert views/topics/markup/nodes.html -->
   <!-- insert views/topics/markup/sectioning-and-outlining.html -->
   <!-- insert views/topics/stylesheets/anatomy-of-css.html -->
   <!-- insert views/topics/stylesheets/type-and-descendant.html -->
   <!-- insert views/topics/stylesheets/typographic-properties.html -->
   <!-- insert views/topics/concepts/counting.html -->
 
-  <footer id="reference-and-practice">
-    <h2>References and Practice Materials</h2>
-    <p class="intro">Here is the list of <a href="http://iam.colum.edu/brendan.metzger/vids/">previous lectures</a> that are available to watch.</p>
-    <dl>
-      <dt>A Web Development Primer</dt>
-      <dd>This course, while having no pre-requisites, will move at a good clip. If you are rusty, new, or want to be really prepared, I highly (highly) suggest you spend a good chunk of time going over <a href="http://marksheet.io/introduction.html">how the web works</a>, <a href="http://marksheet.io/html-basics.html">HTML basics</a>, and <a href="http://marksheet.io/html-content.html">HTML content</a>.</dd>
-
-      <dt>HTML Elements</dt>
-      <dd>The Mozilla Developer Network has a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">comprehensive list</a> of elements—no need to memorize, <strong>absolutely spend some time reviewing this list</strong>.</dd>
-
-      <dt>Sectioning and Outlining</dt>
-      <dd>Many developers suffer from a syndrome known as divitis, which is an overuse of <code>&lt;span&gt;</code> and <code>&lt;div&gt;</code> elements. While <a href="https://en.wikipedia.org/wiki/Span_and_div">span and div are handy</a>, and do fulfill a role, conscientious web developers engage in semantic markup, starting with using proper <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML_sections_and_outlines">sections and outlines</a>.</dd>
-
-      <dt>Javascript and the Browser</dt>
-      <dd>Though it’s <a href="http://eloquentjavascript.net/12_browser.html">Chapter 12</a> of a JavaScript Programming book, I think it serves as a perfect starting point for the level of thinking we need to engage in, and that is the notion of networks, servers, clients and protocols.</dd>
-    </dl>
+  <footer id="reference-and-practice" class="margins">
+    <img src="https://cdn.worldvectorlogo.com/logos/slack-1.svg" class="__ float right" style="margin-left: 2em;mix-blend-mode:luminosity;"/>
+    
+    <h3>Reference &amp; Practice Material</h3>
+    <p>I trust that you have throughly gone over the template and know the size and scope of the rest of the work for the semester. I have set up <a href="https://thirty-cc.slack.com/shared_invite/MTM1MDczNzA0ODg2LTE0ODU3OTkwOTEtYWVmZjA0YjM1YQ">Slack team</a> where we should start directing our concerns regarding tools, how-tos, debugging, and help needed. <mark>This tool is for you, not me—I urge anyone and everyone to ask and answer questions that you desire a more immediate response.</mark> For reading, I would breeze through <strong>chapters one and two</strong> of your <abbr>CSS</abbr> book. Then sit down and carefully read <strong>chapter six</strong>, because as they say, <a href="https://ia.net/know-how/the-web-is-all-about-typography-period">Web Design is 95% typography</a>. Concerning the <abbr>html5</abbr> reference, read <strong>chapter one</strong>.</p>
+    <p>To reinforce the point about how we must appreciate networks and localhosts, here is graphically bedazzled video rundown of <a href="https://www.youtube.com/watch?v=1K64fWX5z4U"><abbr>http</abbr> and <abbr>html</abbr></a>, courtesy of Khan Academy.</p>
   </footer>
 
   <script type="text/javascript">
