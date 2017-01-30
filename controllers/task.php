@@ -358,6 +358,8 @@ class Task extends \bloc\controller
       $commit = $git->commit($git->diff('--shortstat'));
       print_r($commit);
     }
+    
+    print_r($git->push('master', '--all'));
   }
   
   public function CLIpull()

@@ -14,17 +14,20 @@ namespace models;
 
     static public $fixture = [
       'practice' => [
-        '@' => ['value' => 0, 'commits' => ''],
+        '@' => ['value' => 0, 'commits' => '0000000'],
         'CDATA' => '',
       ]
     ];
 
     public function setCommitsAttribute(\DOMElement $context, $commits)
     {
+      if (is_string($commits)) {
+        $commits = str_split($commits);
+      }
       $context->setAttribute('commits', implode($commits));
-
+      $total = array_sum($commits);
       $exponent = 2.5;
-      $value    = $this->total / 5;  // 5 is based on 5 days in a week;
+      $value    = $total / 5;  // 5 is based on 5 days in a week;
       $score    = $value**$exponent / ($value**$exponent + ((1-$value)**$exponent));
       $context->setAttribute('value', $score);
       
@@ -42,11 +45,13 @@ namespace models;
 
     public function getScore(\DOMElement $context)
     {
+      $report = $this->total;
       return (float)$context['@value'];
     }
     
     public function getTotal(\DOMElement $context)
     {
+      $report = $this->report;
       return array_sum(str_split($context['@commits']));
     }
     
@@ -55,7 +60,6 @@ namespace models;
       $log = $this->student->log;
       
       // cross reference the log to assign commits for that week
-      
       $index = $this->criterion["@index"];
       $week = $this->student->section->schedule[$index];
       if ($week['status'] != 'transpired') return;
@@ -65,7 +69,7 @@ namespace models;
       $commits = array_map(function($date) use ($log) {
         return array_key_exists($date->format('yz'), $log) ? 1 : 0;
       }, iterator_to_array(new \DatePeriod($week['object'], new \DateInterval('P1D') , $end)));
-      $this->setCommitsAttribute($context, $commits ?? []);
+      $this->setCommitsAttribute($context, $commits ?? '');
       $context->setAttribute('updated', (new \DateTime())->format('Y-m-d H:i:s'));
       return $commits;
     }

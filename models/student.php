@@ -70,11 +70,10 @@ namespace models;
     
     public function getLog(\DOMElement $context)
     {
-      $cwd = getcwd();
       $git = new \models\source(Data::$SEMESTER);
-      $git->checkout($context['@key']);
+      $hmmm = $git->checkout($context['@key']);
       $log = $git->log();
-            
+
       $keys = array_map(function(&$log) {
         return (new \DateTime($log['date']))->format('yz');
       }, $log);
