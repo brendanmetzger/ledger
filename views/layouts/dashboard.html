@@ -45,13 +45,13 @@
         <tr>
           <th>Week</th>
           <!-- iterate student:practice:list -->
-          <td>[$practice:criterion:@index]</td>
+          <td class="centered">[$practice:criterion:@index]</td>
           <th class="lighter"><span>µ × </span><span class="percentage">[$student:practice:weight]</span></th>
         </tr>
         <tr>
           <th>Commits</th>
           <!-- iterate student:practice:list -->
-          <td class="[$schedule:status]" title="[$practice:score]">
+          <td class="[$schedule:status centered]" title="[$practice:score]">
             <strong class="percentage">[$practice:total @ $practice:percentage]</strong>
           </td>
           <th class="percentage">[$student:practice:score]</th>
@@ -74,12 +74,12 @@
           <th>Details</th>
           <th>Your page<sup><a href="/overview/glossary#cache-invalidation">[*]</a></sup></th>
           <th>Notes</th>
-          <th>Raw</th>
+          <th>∑ Commits</th>
           <th>Score</th>
         </tr>
       </thead>
       <tbody>
-        <!-- iterate student:projects:list -->
+        <!-- iterate student:project:list -->
         <tr class="[$project:status]">
           <th><span style="font-family:var(--condensed);font-size:5em;font-weight:200;text-transform:uppercase;line-height:1;letter-spacing:-0.075em;color:rgba(0,0,0,0.65);">[$project:criterion:@title]</span></th>
           <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <em class="ticker">[$due:ticker]</em></td>
@@ -91,8 +91,8 @@
             <a href="[[/$$student:course/notes/$project:criterion:path/$$student:@id]]">[[$$review]]</a>
             <a href="[[/$$instructor:path/$project:criterion:path/$$student:@id]]">[[$$instructor:edit]]</a>
           </td>
-          <td class="[$schedule:status centered]">
-            <strong>[$project:score]</strong>
+          <td class="centered" style="vertical-align:middle;">
+            <strong>[$project:@commits]</strong>
           </td>
           <td class="centered"><span class="percentage">[$project:weighted]</span></td>
         </tr>

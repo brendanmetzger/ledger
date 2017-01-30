@@ -39,4 +39,20 @@ namespace models;
       $output['period'] = new \DatePeriod($output['start'], new \DateInterval('P7D') ,$output['end']);
       return $output;
     }
+    
+    /**
+     * Get Current Week Index
+     *
+     * @return int
+     */
+    static public function INDEX(array $schedule)
+    {
+      $now   = new \DateTime;
+      $index = 0;
+      foreach ($schedule as $interval) {
+        if ($now < $interval['object']) break;
+        $index = $interval['index'];
+      }
+      return $index;
+    }
 }

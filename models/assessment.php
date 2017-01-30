@@ -233,16 +233,17 @@ namespace models;
     public function getEvaluation($evaluation, $course = "*")
     {
       $reviewed = $this->student->context->find("{$evaluation}[@updated]");
-      $total = $reviewed->count();
+      $total    = $reviewed->count();
       $average  = 1 / ($total ?: 1);
-      $accumulator = 0;
-      $flags = ["⚐" => 0, "✗" => 0];
+      $accrual  = 0;
+      $flags    = ["⚐" => 0, "✗" => 0];
 
-      $collect = Criterion::collect(function ($criterion, $index) use($evaluation, $total, $reviewed, $average, &$accumulator, &$flags) {
+      $collect = Criterion::collect(function ($criterion, $index) use($evaluation, $total, $reviewed, $average, &$accrual, &$flags) {
+        $node = $reviewed->pick($index) ?? $this->student->context->getFirst($evaluation, $index);
         $map = [
-          $evaluation => Data::FACTORY($evaluation, $reviewed->pick($index), null, [new \models\Criterion($criterion), $this->student]),
-          'schedule'  => $this->student->section->schedule[$criterion['@assigned'] ?: $index],
-          'due'       => $this->student->section->schedule[$criterion['@due'] ?: $index],
+          $evaluation => Data::FACTORY($evaluation, $node, null, [new \models\Criterion($criterion), $this->student]),
+          'schedule'  => $this->student->section->schedule[$criterion['@assigned'] ?: $index ],
+          'due'       => $this->student->section->schedule[$criterion['@due'] ?: $index ],
         ];
         
         $score = $map[$evaluation]->score;
@@ -256,7 +257,7 @@ namespace models;
           $stats['standard'] = $score * 100;
           $map['stats'] = $map[$evaluation]->stats = $stats;
         }
-        $accumulator = ($accumulator + ($score * $average));
+        $accrual = ($accrual + ($score * $average));
 
         return $map;
 
@@ -266,7 +267,7 @@ namespace models;
                             
       return new \bloc\types\dictionary([
         'list'   => iterator_to_array($collect, false),
-        'score'  => $average === 1 && $total == 0 ? $weight : max(0, round($accumulator * $weight, 1)),
+        'score'  => $average === 1 && $total == 0 ? $weight : max(0, round($accrual * $weight, 1)),
         'weight' => $weight,
       ]);
     }

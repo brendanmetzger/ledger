@@ -114,8 +114,8 @@
       <tr class="[$criterion:status]">
         <th><a href="[[/records/book/$$section:@course/$$section:@id/project/$criterion:@index]]">[$title]</a></th>
         <!-- iterate records -->
-        <td class="[centered marked $assessment:schedule:status]" title="[$assessment:project:letter]" style="[--hue: $assessment:stats:standard; --value: $assessment:stats:standard%;]">
-          <a class="percentage edit" href="[[/records/evaluate/project/$$criterion:@index/$student:@id]]">[$assessment:project:weighted]</a>
+        <td class="centered marked" title="[$assessment:project:letter]" style="[--hue: $assessment:stats:standard; --value: $assessment:stats:standard%;]">
+          <a class="edit" href="[[/records/evaluate/project/$$criterion:@index/$student:@id]]">[$assessment:project:@commits]</a>
         </td>
       </tr>
     </tbody>

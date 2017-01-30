@@ -29,9 +29,9 @@ namespace models;
     {
       return $this->execute("diff {$options}");
     }
-    public function log($options = '--no-merges --date-order --reverse')
+    public function log($file = '.', $options = '--no-merges --date-order --reverse')
     {
-      $this->execute("log {$options} --pretty=format:'{\"hash\":\"%h\", \"date\":\"%aI\", \"msg\":\"%s\"}'", $result);
+      $this->execute("log {$options} --pretty=format:'{\"hash\":\"%h\", \"date\":\"%aI\", \"msg\":\"%s\"}' {$file}", $result);
       return array_map(function($item) {
         return json_decode($item, true);
       }, $result);

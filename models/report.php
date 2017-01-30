@@ -13,7 +13,7 @@ namespace models;
             $info,
             $source = '',
             $headers = null,
-            $report = [],
+            $report = ['messages' => null, 'analysis' => null],
             $validated = false;
     
     // Some Static Methods
@@ -51,16 +51,20 @@ namespace models;
       $type = $this->info['extension'];
       $validator = "validate{$type}";
       if (! method_exists($this, $validator)) return;
-      $this->report['messages'] = [];
+
+      if ($this->report['messages'] === null) {
+        $this->report['messages'] = $this->{$validator}();
+      }
+      
       // should return a reliably mapped object
-      return $this->{$validator}();
+      return $this->report['messages'];
     }
     
-    private function validateHTML()
+    private function validateHTML(array $messages = [])
     {
-      $path   = 'https://validator.nu/?outline=yes&doc=%s&out=json&showsource=yes';
-      $handle = curl_init(sprintf($path, $this->url));
-      
+      $path     = 'https://validator.nu/?outline=yes&doc=%s&out=json&showsource=yes';
+      $handle   = curl_init(sprintf($path, $this->url));
+
       curl_setopt_array($handle, [
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_USERAGENT => 'BrendanBot/1.0',
@@ -69,25 +73,24 @@ namespace models;
       if ($result = json_decode(curl_exec($handle))) {
         $this->source = $result->source->code;
         foreach ($result->messages as $message) {
-          $this->report['messages'][] = [
+          $messages[] = [
             'line'  => $message->lastLine,
             'type'  => $message->type,
             'text'  => $message->message,
           ];
         }        
       }
-      return $this->report['messages'];
+      return $messages;
     }
     
-    private function validateCSS()
+    private function validateCSS(array $messages = [])
     {
-      $path = 'https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3svg&uri=%s';
-      $result = json_decode(file_get_contents(sprintf($path, $this->url), false, stream_context_create(['http' => ['method' => 'GET']])));
-      
-      if ($result && $result->cssvalidation->result->errorcount > 0) {
+      $path     = 'https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3svg&uri=%s';
+      $result   = json_decode(file_get_contents(sprintf($path, $this->url), false, stream_context_create(['http' => ['method' => 'GET']])));
 
+      if ($result && $result->cssvalidation->result->errorcount > 0) {
         foreach ($result->cssvalidation->errors as $error) {
-          $this->report['messages'][] = [
+          $messages[] = [
             'line' => $error->line,
             'type' => $error->type,
             'text' => $error->message,
@@ -95,18 +98,19 @@ namespace models;
         }
 
       }
-      return $this->report['messages'];
+      return $messages;
     }
     
-    public function validateJS()
+    private function validateJS(array $messages = [])
     {
-      $lint    = exec('which eslint');
-      $content = $this->getSource();
+      $lint     = exec('which eslint');
+      $content  = $this->getSource();
+
       file_put_contents('/tmp/source.js', $content);
       $output  = json_decode(exec("{$lint} --no-inline-config --no-eslintrc --parser-options=ecmaVersion:7  --env browser -f json /tmp/source.js", $outer));
       if ($output[0]->errorCount > 0) {
         foreach ($output[0]->messages as $message) {
-          $this->report['messages'][] = [
+          $messages[] = [
             'line' => $message->line,
             'type' => $message->severity,
             'text' => $message->message . ': `' . trim($message->source) . '`',
@@ -114,7 +118,7 @@ namespace models;
         }
       }
 
-      return $this->report['messages'];
+      return $messages;
     }
     
     
@@ -159,39 +163,40 @@ namespace models;
     
     public function getAnalysis()
     {
-      $this->report['analysis'] = null;
+      if ($this->report['analysis'] === null) {
       // HTML we need to count nodes n stuff
-      if ($this->info['extension'] == 'html') {
-        if (empty($this->source)) {
-          $this->validate();
-        }
-        $doc = new \DOMDocument();
-        $doc->loadHTML($this->getSource(), LIBXML_NOBLANKS);
-        $doc->normalizeDocument();
-        $xpath = new \DOMXpath($doc);
-        $counts = [];
-        foreach ($xpath->query("/html/body//*") as $element) { 
-          $counts[$element->nodeName] = ($counts[$element->nodeName] ?? 0) + 1;
-        }
+        if ($this->info['extension'] == 'html') {
+          if (empty($this->source)) {
+            $this->validate();
+          }
+          $doc = new \DOMDocument();
+          $doc->loadHTML($this->getSource(), LIBXML_NOBLANKS);
+          $doc->normalizeDocument();
+          $xpath = new \DOMXpath($doc);
+          $counts = [];
+          foreach ($xpath->query("/html/body//*") as $element) { 
+            $counts[$element->nodeName] = ($counts[$element->nodeName] ?? 0) + 1;
+          }
     
-        arsort($counts);
-        $this->report['analysis'] = [
-          'total'    => array_sum($counts),
-          'distinct' => count($counts),
-          'list'     =>  $counts,
-        ];
-      }
+          arsort($counts);
+          $this->report['analysis'] = [
+            'total'    => array_sum($counts),
+            'distinct' => count($counts),
+            'list'     =>  $counts,
+          ];
+        }
       
-      if ($this->info['extension'] == 'css') {
-        $result = json_decode(exec("echo '{$this->getSource()}' | analyze-css -"), true);
-        $this->report['analysis'] = $result['metrics'];
+        if ($this->info['extension'] == 'css') {
+          $result = json_decode(exec("echo '{$this->getSource()}' | analyze-css -"), true);
+          $this->report['analysis'] = $result['metrics'];
+        }
       }
       return $this->report['analysis'];
     }
     
     public function save()
     {
-      file_put_contents($this->file, $this->getSource());
+      return file_put_contents($this->file, $this->getSource());
     }
     
     public function __toString()

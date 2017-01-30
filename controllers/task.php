@@ -291,32 +291,72 @@ class Task extends \bloc\controller
   }
   
   
-  public function CLIsource()
+  public function CLIcommits()
   {
-    $student =  new \models\student('TRSYCP');    
-    // TODO check the two global files
+    $sem = \models\Data::$SEMESTER;
+    $git = new \models\Source($sem);
     
+    chdir(sprintf('%sdata/%s/work/', PATH, $sem));
     
-    // then check all project files
-    foreach ($student->projects['list'] as $iterator) {
-      $project = $iterator['project'];
-      foreach ($project['file'] as $file) {
+    // foreach (\models\data::instance()->query('//')->find("student[@id='ENSE']") as $node) {
+    foreach (\models\data::instance()->query('//')->find("student[@role!='instructor']") as $node) {
+      $student = new \models\student($node['@id']);
+      
+      // get the current week
+      $week    = \models\calendar::INDEX($student->section->schedule);
+      $start   = $student->section->schedule[0]['object']->format(DATE_ISO8601);
+      
+      echo "--- Checking {$student['@name']} ---\n";
+      $git->checkout($student['@key']);
+
+      foreach ($student->projects['list'] as $iterator) {
+        $project = $iterator['project'];
+        $commits = 0;
         
-        $report = new \models\Report($student->domain, $file['@path']);
-        if ($report->getLastModified(86400) > 1) continue;
-        echo "\n ----- CHANGE REPORT: {$file['url']} -----\n";
+        // Track the two * auxillary files
+        $auxillary = [];
+
+        // then check all project files
+        foreach ($project['file'] as $file) {
+          // Gather the report. This is complicated because some files can be used in
+          // in multiple projects, so to optimize redundant checks, cache them
+          if ($file['@aux'] == '*') {
+            $report = $auxillary[$file['@path']] ?? $auxillary[$file['@path']] = new \models\Report($student->domain, $file['@path']);
+          } else {
+            $report = new \models\Report($student->domain, $file['@path']);
+          }
+          
+          echo "-- CHECKING {$file['@path']} for {$student['@name']}\n";
+          $commits += count($git->log($file['@path'], "--after='{$start}'")) . "\n\n";
+          
+          if ($report->getLastModified(86400) > 1) continue;
+          
+          echo "---- UPDATING...\n";
+          // count the number of commits
+          
+          $file->setAttribute('errors', $report->getErrors());
+          $file->setAttribute('sloc', $report->getSLOC());
+          $file->setAttribute('length', $report->getSize());
+          $file->setAttribute('hash', $report->getHash());
+          $file->setAttribute('report', $report);
+          
+          // save file
+          if (! $report->save()) {
+            echo "------ ERROR: file not saved";
+          }
+          // pause for a 1/10 second so we don't burden servers
+          usleep(100000);
+        }
         
-        $file->setAttribute('errors', $report->getErrors());
-        $file->setAttribute('sloc', $report->getSLOC());
-        $file->setAttribute('length', $report->getSize());
-        $file->setAttribute('hash', $report->getHash());
-        $file->setAttribute('report', $report);
+        $project->context->setAttribute('commits', $commits);
         
-        echo $file->write() . "\n";
+        if (! $project->save()) {
+          print_r($project->errors);
+        }
       }
-      if (!$project->save()) {
-        print_r($project->errors);
-      }
+      
+      $commit = $git->commit($git->diff('--shortstat'));
+      print_r($commit);
     }
   }
   
@@ -331,100 +371,5 @@ class Task extends \bloc\controller
     }
     
     exec(sprintf('chmod -R g+w %s/data/%s/work', PATH, $semester));
-  }
-  
-  public function CLIcommits()
-  {
-    $git = new \models\Source(\models\Data::$SEMESTER);
-    
-    foreach (\models\data::instance()->query('//')->find("student[@role!='instructor']") as $student) {
-      // iterate projects and get a report on what to grab.
-      $student =  new \models\student($student['@id']);
-      
-      $messages = [];
-      $git->checkout($student['@key']);
-      
-      foreach ($student->files as $key => $file) {
-        $report = new models\Report($file, $student['@url']);
-        
-        // 86400 is one day
-        $days = $report->getLastModified(86400);
-        echo "Last Modified: {$days}\n";
-        if ($days > 1) continue;
-        
-        
-        $path = substr($file, strlen("{$student['@url']}/"));
-        
-        if (substr($file, -4) == 'html') {
-          // use this to validate HTML and gather response
-          $handle = curl_init("https://validator.nu/?outline=yes&doc={$file}&out=json&showsource=yes");
-          curl_setopt_array($handle, [
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_USERAGENT => 'BrendanBot/1.0',
-          ]);
-
-          if ($result  = json_decode(curl_exec($handle))) {
-            $content = $result->source->code;
-            $report  = [
-              'file'     => $path,
-              'sloc'     => count(preg_split('/\n/', $content)),
-              'analysis' => 'TODO',
-              'messages' => [],
-            ];
-          
-            foreach ($result->messages as $message) {
-              $report['messages'][] = [
-                'line'  => $result->messages->lastLine,
-                'type'  => $result->messages->type,
-                'text'  => $result->messages->message,
-              ];
-            }
-            $messages[] = $report;
-          }
-        } else {
-          echo "Checking {$path}\n";
-          $content = file_get_contents($file, false, stream_context_create(['http' => ['method' => 'GET']]));
-          $report = [
-            'file' => $path,
-            'sloc' => count(preg_split('/\n/', $content)),
-            'messages' => [],
-          ];
-          if (substr($file, -3) == 'css') {
-            $cssvalidator = "https://jigsaw.w3.org/css-validator/validator?output=json&warning=0&profile=css3svg&uri=";
-            $report['analysis'] = exec("echo '{$content}' | analyze-css -");
-            
-            if ($result = json_decode(file_get_contents($cssvalidator . $file, false, stream_context_create(['http' => ['method' => 'GET']])))) {
-              if ($result->cssvalidation->result->errorcount > 0) {
-                foreach ($result->cssvalidation->errors as $error) {
-                  $report['messages'][] = [
-                    'line' => $error->line,
-                    'type' => $error->type,
-                    'text' => $error->message,
-                  ];
-                }
-                $messages[] = $report;
-              }
-            }
-             
-            //TODO analyze-css !
-          } else if (substr($file, -2) == 'js') {
-            // TODO sloc
-            // TODO eslint
-          }
-          
-          
-        }
-        // update the file with the new content
-        file_put_contents($path, $content);
-
-        usleep(20000);
-      }
-      print_r($messages);
-      
-      $commit = $git->commit($git->diff('--shortstat'));
-      print_r($commit);
-    }
-    
-    print_r($git->push('master', '--all'));
   }
 }

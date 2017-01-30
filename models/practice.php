@@ -8,13 +8,13 @@ namespace models;
 
   class Practice extends \bloc\Model
   {
-    use traits\indexed, traits\persist, traits\evaluation, traits\report;
+    use traits\indexed, traits\persist, traits\evaluation;
 
     const XPATH = false;
 
     static public $fixture = [
       'practice' => [
-        '@' => ['value' => 0],
+        '@' => ['value' => 0, 'commits' => ''],
         'CDATA' => '',
       ]
     ];
@@ -42,7 +42,6 @@ namespace models;
 
     public function getScore(\DOMElement $context)
     {
-      $report = $this->report;
       return (float)$context['@value'];
     }
     
