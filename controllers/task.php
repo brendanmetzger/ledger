@@ -341,7 +341,7 @@ class Task extends \bloc\controller
           $file->setAttribute('commits', $commits + ($report->getHash() == $file['@hash'] ? 0 : 1));
           
           // save file
-          echo  "------ " . (! $report->save() ?  'ERROR' : 'success') . " on save\n";
+          echo (! $report->save() ?  'ERROR' : 'success') . " on save\n";
 
           // pause for a 1/5 second so we don't upset anyone
           usleep(200000);
@@ -352,7 +352,7 @@ class Task extends \bloc\controller
 
       }
       
-      $commit = $git->commit($git->diff('--shortstat'), "--date=\"{$data}\"");
+      $commit = $git->commit($git->diff('--shortstat'), "--date=\"{$date}\"");
       print_r($commit);
     }
     print_r($git->push('master', '--all'));
