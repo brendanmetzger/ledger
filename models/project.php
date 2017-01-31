@@ -52,6 +52,11 @@ namespace models;
     {
       return explode('+', $context['@axes']);
     }
+    
+    public function getBaseUrl(\DOMElement $context)
+    {
+      return $this->student['@url'] . $this->criterion->context['@path'] . '/';
+    }
 
     public function getIndex(\DOMelement $context)
     {
