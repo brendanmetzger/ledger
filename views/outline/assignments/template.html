@@ -3,9 +3,10 @@
     <h4 class="bottom ruled heart">[$type $criterion:@index]</h4>
     <h5>Assigned: <time datetime="[$timeline:assigned:datetime]" class="[$timeline:assigned:status]">[$timeline:assigned:date]</time> — Due: <time datetime="[$timeline:due:datetime]" class="[$timeline:due:status]">[$timeline:due:date]</time> <em>[(which is $timeline:due:ticker)]</em></h5>
     <h1 style="font-weight:100;background-color:rgba(0,0,0,0.8);color:#fff;padding:1em;letter-spacing:0.05em;margin:0.5em -1em;">Topic: <strong class="caps">[$criterion:@title]</strong></h1>
+    <p class="intro">[$criterion]</p>
   </header>
   <!-- replace overview -->
-  <footer class="ruled top container epilogue">
+  <footer class="ruled top container prologue" style="display:none;">
     <h4>※ Keep in Mind</h4>
     <section class="bb">
       <p class="intro">For your homework to be reviewed, you must do two things:</p>

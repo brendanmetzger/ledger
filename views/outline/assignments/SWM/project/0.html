@@ -1,0 +1,58 @@
+<div class="panels">
+  <style type="text/css" media="screen">
+    /* <![CDATA[ */
+    .panels {
+      display:flex;
+      margin: 1em -1.5vmax;
+    }
+    .panels > * {
+      flex: 0 0 33.3%;
+      padding:1em;
+      box-sizing:border-box;
+    }
+    .panels textarea.lined {
+      width:100%;
+      height:25vh;
+      border:none;
+      resize: none;
+      font-size:1.125em;
+    }
+    
+    .panels p {
+      margin: 1em;
+    }
+    /* ]]> */
+  </style>
+  <section>
+    <h4>Markup Requirements</h4>
+    <p>Copy the following and paste into the top of the appropriate <samp>index.html</samp> file.</p>
+    <textarea class="lined code" readonly="readonly" onfocus="this.select();">&lt;!--
+- [ ] use a header element
+- [ ] use a section element
+- [ ] use a footer element
+- [ ] use a ul or an ol
+- [ ] ADD your own technical item
+--&gt;</textarea>
+  </section>
+  <section>
+    <h4>StyleSheet Requirements</h4>
+    <p>Copy the following and paste into the top of the <samp>[src/css/$criterion:@title.css]</samp> file.</p>
+    <textarea class="lined code" readonly="readonly" onfocus="this.select();">/*
+- [ ] only use vw, vh, vmin, vmax, % and (r)em as units
+- [ ] apply font-size, line-height, letter-spacing and text-indent
+- [ ] apply width, height, and overflow properties
+- [ ] ADD your own technical item
+*/</textarea>
+  </section>
+  <section>
+    <h4>JavaScript Requirements</h4>
+    <p>Copy the following and paste into the top of the <samp>[src/js/$criterion:@title.js]</samp> file.</p>
+    <textarea class="lined code" readonly="readonly" onfocus="this.select();">/*
+- [ ] Write a comment
+- [ ] Log a message to the console
+- [ ] Declare 3 different *types* of variable
+- [ ] Write a condition
+- [ ] Author a `for` loop
+*/</textarea>
+  </section>
+</div>
