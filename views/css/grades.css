@@ -93,3 +93,25 @@ ul.scores li.pending.open {
 .under {
   border-color:rgb(169, 201, 182);
 }
+
+
+.panels {
+  display:flex;
+  margin: 1vmax -1.5vmax;
+}
+.panels > * {
+  flex: 0 0 33.3%;
+  padding:0.25em;
+  box-sizing:border-box;
+}
+.panels textarea.lined {
+  width:100%;
+  height:25em;
+  border:none;
+  resize: none;
+  font-size:1.125em;
+}
+
+.panels p {
+  margin: 1em;
+}
