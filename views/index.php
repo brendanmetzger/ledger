@@ -9,18 +9,8 @@ date_default_timezone_set ('America/Chicago');
 require  '../bloc/application.php';
 
 
-
 #2. Create an instance of the application
 $app = Application::instance(['mode' => getenv('MODE') ?: 'production']);
-
-#3. Get a Session ready
-$app->prepare('session-start', function ($app) {
-  $app->session('COLUM');
-});
-
-$app->prepare('clean-up', function ($app) {
-  session_write_close();
-});
 
 
 # main page deal
@@ -74,6 +64,4 @@ $app->prepare('debug', function ($app, $response) {
 });
 
 #4. Run the app. Nothing happens w/o this. Can call different stuff from the queue.
-$app->execute('session-start');
 $app->execute('http-request', $_REQUEST);
-$app->execute('clean-up');

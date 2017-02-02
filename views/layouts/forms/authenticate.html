@@ -1,14 +1,15 @@
-<form action="[/$template/login]" method="post">
+<form action="[/$template/login]" method="post" class="whitepaper" style="margin:5em -2.5vmax;box-shadow:0 0 0.5em rgba(0,0,0,0.125)">
   <style media="screen">
     fieldset.login input {
       font-size:5em;
       padding:0.25em;
     }
   </style>
+  <h2 class="caps" style="font-family:'Avenir Next Condensed'">Login Required</h2>
   <fieldset class="login">
-    <legend>[$status]</legend>
+    <legend class="tt bb">[$status]</legend>
     <!-- replace user -->
-    <input type="password" value="" name="pin" placeholder="identification / oasis" required="required"/>
+    <input type="password" value="" name="pin" placeholder="identification / oasis" required="required" style="width:100%;"/>
   </fieldset>
   <button type="submit">Authenticate</button>
 </form>

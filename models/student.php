@@ -25,20 +25,23 @@ namespace models;
     ];
 
 
-    static public function BLEAR($key)
+    static public function BLEAR($key, $direction = 0)
     {
-      return strtr(strtoupper(base_convert((int)$key, 10, 26)), '0123456789', 'QRSTUVWXYZ');
+      if ($direction === 0) {
+        return strtr(strtoupper(base_convert((int)$key, 10, 26)), '0123456789', 'QRSTUVWXYZ');
+      }
+      if ($direction === 1) {
+        return (int) base_convert(strtr($key, 'QRSTUVWXYZ', '0123456789'), 26, 10);
+      }
     }
 
     public function authenticate($token)
     {
-      $computed = \bloc\types\token::generate($this->context['@email'], getenv('EMAIL_TOKEN'));
-      if ($token === $computed && $token === $this->context['@token']) {
+      if ($token === $this->context['@email'] && $this->context->hasAttribute('token')) {
+        $this->context->removeAttribute('token');
         return $this;
-      } else {
-        $message =  ($this->context['@token'] !== $computed) ? "Token has expired": "Invalid Request";
-        throw new \InvalidArgumentException($message, 401);
       }
+      throw new \InvalidArgumentException("This token is no longer active", 3);
     }
 
     public function getRecords(\DOMElement $context)

@@ -99,6 +99,22 @@ class Task extends \bloc\controller
     // if before withdraw, deactivate node
     // else, do not remove.
   }
+  
+  public function CLItoken($subject = false)
+  {
+    $token = new \bloc\types\token('http://nonsesnse');
+    
+    if ($subject) {
+      
+      echo "{$subject}\n\n" . $token->gen($subject, 'some secret') . "\n\n";
+    } else {
+      $key = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJITUFDU0hBMjU2In0%3D.eyJpYXQiOjE0ODU5ODIwOTksImV4cCI6MTQ4ODU3NDA5OSwic2NvcGVzIjpbXSwiaXNzIjoiaHR0cDpcL1wvbm9uc2VzbnNlIiwic3ViIjoidGVzdGVyYW9vIn0%3D.1f95775e149e7feded2aa86eb0c86de94962956324ef0d878ac055451f6d78c8';
+      // $out = $token->validate($key, 'some secret');
+      // print_r($out);
+      $id = $token->validate($key, 'some secret')->sub;
+      echo "\n\n {$id} \n\n";
+    }
+  }
 
   /*
     TODO Add most of this functionality to the student model, perhaps a static method

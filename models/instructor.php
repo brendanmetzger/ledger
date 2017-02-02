@@ -25,13 +25,13 @@ class Instructor extends \bloc\Model implements \bloc\types\authentication
   public function authenticate($token)
   {
     if (! password_verify($token, $this->context->getAttribute('hash'))) {
-      throw new \InvalidArgumentException("Credentials do not match", 1);
+      throw new \InvalidArgumentException("Authentication Error", 1);
     }
     return $this;
   }
 
   public function GETsections(\DOMElement $context)
   {
-    return \models\Section::collect(null, "[@instructor='{$_SESSION['id']}']");
+    return \models\Section::collect(null, "[@instructor='{$context['@id']}']");
   }
 }

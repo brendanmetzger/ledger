@@ -8,6 +8,8 @@ window.validate = (function(identity, domain) {
     return;
   }
   
+  if (window.location.hostname === 'iam.colum.edu') return false;
+  
   function getCSScheckup(CSS, re, force) {
            
     
