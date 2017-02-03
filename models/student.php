@@ -12,8 +12,8 @@ namespace models;
 
     const XPATH = '/model/courses/section/';
 
-    private $assessment = null;
-
+    private $assessment = null, $repository = null;
+    
     static public $fixture = [
       'student' => [
         '@' => ['id' => null, 'name' => '', 'email' => '', 'url' => ''],
@@ -71,11 +71,20 @@ namespace models;
       return explode(' ', $context['@name'])[0];
     }
     
+    public function repo()
+    {
+      if ($this->repository === null) {
+        $this->repository = new \models\source(Data::$SEMESTER);
+        $this->repository->checkout($this->context['@key']);
+      }
+
+      return $this->repository;
+    }
+    
     public function getLog(\DOMElement $context)
     {
-      $git = new \models\source(Data::$SEMESTER);
-      $git->checkout($context['@key']);
-      $log = $git->log();
+
+      $log = $this->repo()->log();
 
       $keys = array_map(function(&$log) {
         return (new \DateTime($log['date']))->format('yz');

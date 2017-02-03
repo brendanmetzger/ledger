@@ -6,7 +6,7 @@ namespace models;
  */
  class Source
  {
-    private $path, $git;
+    private $path,$git;
 
     public function __construct($semester, $path = '%sdata/%s/work/')
     {
@@ -52,6 +52,11 @@ namespace models;
       $this->checkout($branch);
       $this->execute("push {$options}", $result);
       return $result;
+    }
+    
+    public function getPath($file = '')
+    {
+      return $this->path . $file;
     }
     
     public function __destruct()

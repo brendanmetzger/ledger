@@ -157,6 +157,15 @@ window.validate = (function(identity, domain) {
     },
     css: function(auto) {
       return getCSScheckup(Array.from(document.styleSheets).filter(item => item.href && item.href.includes(window.location.hostname)), /[^;]/g, !auto);
+    },
+    density: function(elem) {
+      if (! elem instanceof Element) {
+        console.error("Please Enter a Valid HTML Node");
+        return; 
+      }
+      var re = /\s+/g;
+      var map = ['textContent','outerHTML'].map(m => elem[m].replace(re, ' ').trim().length);
+      return map[0] / (map[1] - map[0]);
     }
   };
   

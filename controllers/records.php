@@ -108,17 +108,9 @@ class Records extends \bloc\controller
 
     $view = new View(self::layout);
 
-    if ($topic == 'practice' || $topic == 'project') {
-      $this->url = $this->student->context['@url'] . "/{$topic}/{$index}";
-      if ($topic == 'project') {
-        $path = ['midterm','final'][$index];
-        $this->url = $this->student->context['@url'] . "/{$topic}/{$path}";
-      }
-      
+    if ($topic == 'project') {
       $criterion  = \models\Criterion::Collect(null, "[@type='{$topic}' and (@course = '{$this->student->course}' or @course = '*')]")->pick($index);
-      $this->{$topic} = $this->item = $this->student->evaluation($topic, $index, $criterion);
-      $this->files = \models\Assessment::LINKS($this->item);
-
+      $this->{$topic} = $this->item = $this->student->evaluation($topic, $index, $criterion);      
       $this->template = 'editor';
       $view->context = "views/layouts/forms/assignment.html";
       $view->content = "views/layouts/inspector.html";

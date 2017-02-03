@@ -74,10 +74,31 @@
           <th>Details</th>
           <th>Your page<sup><a href="/overview/glossary#cache-invalidation">[*]</a></sup></th>
           <th>Notes</th>
-          <th>∑ Commits</th>
+          <th>∑ Stats</th>
           <th>Score</th>
         </tr>
       </thead>
+      <style type="text/css" media="screen">
+        /* <![CDATA[ */
+        td.sub-table { padding:0;min-width:10em;}
+        td.sub-table dl {
+          padding:0;
+          display:flex;
+          flex-wrap:wrap;
+        }
+        td.sub-table dl > dt {
+          text-align:right;
+          color:rgba(0,0,0,0.65);
+        }
+        td.sub-table dl > * {
+          margin:0;
+          font-size:0.9em;
+          padding:0.125em 0.5em;
+          box-sizing:border-box;
+          flex: 0 0 50%;
+        }
+        /* ]]> */
+      </style>
       <tbody>
         <!-- iterate student:project:list -->
         <tr class="[$project:status]">
@@ -91,8 +112,19 @@
             <a href="[[/$$student:course/notes/$project:criterion:path/$$student:@id]]">[[$$review]]</a>
             <a href="[[/$$instructor:path/$project:criterion:path/$$student:@id]]">[[$$instructor:edit]]</a>
           </td>
-          <td class="centered" style="vertical-align:middle;">
-            <strong>[$project:@commits]</strong>
+          <td class="sub-table">
+            <dl>
+              <dt>Errors</dt>
+              <dd>[$project:contribution:errors]</dd>
+              <dt>Length</dt>
+              <dd>[$project:contribution:length]</dd>
+              <dt>Density</dt>
+              <dd>[$project:contribution:density]</dd>
+              <dt>Commits</dt>
+              <dd>[$project:contribution:commits]</dd>
+              <dt><abbr>SLOC</abbr></dt>
+              <dd>[$project:contribution:sloc]</dd>
+            </dl>
           </td>
           <td class="centered"><span class="percentage">[$project:weighted]</span></td>
         </tr>
@@ -105,9 +137,7 @@
       </tfoot>
     </table>
   </section>
-  
   <section>
-
     <table class="full chart">
       <caption class="rag-right">
         <!-- insert views/topics/_policy/quizzes.html -->

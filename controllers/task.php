@@ -389,7 +389,9 @@ class Task extends \bloc\controller
     
     foreach (\models\data::instance()->query('//')->find("student[@role!='instructor']") as $student) {
       echo $git->checkout($student['@key']) . "\n";
-      echo $git->execute('pull') . "\n";
+      exec('chmod -R g+r *');
+      // echo $git->execute('pull') . "\n";
+      
     }
   }
   

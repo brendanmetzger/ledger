@@ -18,6 +18,17 @@ namespace models;
         'CDATA' => '',
       ]
     ];
+    
+    public function setDiscourse(\DOMElement $context, $value)
+    {
+      $context->nodeValue = base64_encode($value);
+    }
+
+    public function __toString()
+    {
+      return base64_decode($this->context->nodeValue);
+    }
+    
     public function getScore(\DOMElement $context)
     {
       return $context['@punctuality'] + $context['@persistance'] + $context['@observation'] - 2;

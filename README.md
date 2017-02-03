@@ -2,7 +2,7 @@
 A way to Organize my teaching materials, my students, and my assignments.
 
 ## todo
-- [ ] add date to emails
+- [x] add date to emails
 - [x] student preview for practice notes
 - [ ] improve way to take attendance (attendance is registered by a quick quiz)
 - [x] crunch notes into 1 line before saving
@@ -12,7 +12,7 @@ A way to Organize my teaching materials, my students, and my assignments.
   - precision (both syntax and aesthetic)
 - [x] automatically show validation errors
 - [x] compute unique tags used
-- [ ] consider #lines of css & uniqueness.
+- [x] consider #lines of css & uniqueness.
 - [x] validate css
 - [x] get sessions to last longer, or automatically log out so I don't write a bunch and get an unauthorized error when I try to save
 - [ ] don't release grades until everyone's has been graded. (so I can implement a curve)
@@ -23,7 +23,6 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Make an index in the outlines with anchors to each section.
 - [ ] Make a 'Panic Protocol' page
 - [x] Add a Favicion
-- [ ] implement a progress report every 3 weeks
 - [ ] request that examples/help be done as a gist/codepen/fiddle/gomix
 - [ ] Take screenshots of assignments (http://www.page2images.com/)
 - [ ] Make Screencast for workflow
@@ -57,6 +56,7 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [x] Auto generate link to edit file in textmate
 - [ ] Flashcards
 - [x] hovering a paragraph writes out abbreviations
+- [ ] btoa on discourse input
 
 ** What about an ajax callback that returns an intention. Like, if true, check this box. I suppose this is a promise maybe? That means investigate promises.
 

@@ -1,13 +1,14 @@
 bloc.init('viewer', function () {
   document.querySelector('.tabbed > ul.buttons').addEventListener('click', function (evt) {
+    
+
     if (evt.target.matches('li[data-file]')) {
-
-      var file = evt.target.dataset.file;
-      var current = document.querySelector('.inspector li.active');
-          current.classList.remove('active');
-
       document.querySelector('.visible').classList.remove('visible');
+      document.querySelector(`section[data-file='${evt.target.dataset.file}']`).classList.add('visible');
+      document.querySelector('.inspector li.active').classList.remove('active');
       evt.target.classList.add('active');
+
+      return;
 
       var panel = document.querySelector('.inspector .panel > *[data-file="'+file+'"]');
 

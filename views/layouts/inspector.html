@@ -5,10 +5,19 @@
       height:5vh;
       overflow:hidden;
     }
+    
+    .docs {
+      overflow:auto;
+      background-color:rgba(0,0,0,0.1);
+    }
+    .docs li * {
+      font-size:100%;
+    }
     .inspector .panel {
       width:100%;
       height:90vh;
       margin:0;
+      padding:2em;
       box-sizing:border-box;
       display:block;
     }
@@ -49,9 +58,8 @@
       width:100%;
     }
     .inspector .panel pre {
-      height:calc(90vh - 4em);
+      height:90vh;
       width:100%;
-      padding-top:4em;
       box-sizing:border-box;
     }
 
@@ -136,30 +144,19 @@
   </style>
   <script type="text/javascript">bloc.embed('/javascript/inspector.js');</script>
   <ul class="plain buttons stretch" style="background-color:#444;">
-    <li data-file="preview" class="active">Preview</li>
-    <!--  iterate files -->
-    <li data-url="[$url]" data-file="[$name]" class="code" data-errors="[$report:count]" data-sloc="[$report:sloc]">[$name]</li>
+    <li data-file="readme" class="active">README</li>
+    <li data-file="preview">Preview</li>
+    <!--  iterate project:notes -->
+    <li data-file="[$file:@basename]" class="code" data-errors="[$file:@errors]" data-sloc="[$file:@sloc]">[$file:@name]</li>
   </ul>
-  <section class="panel visible">
-    <iframe data-file="preview" src="[$url?$entropy]" ondblclick="window.open(this.src);">
+  <section class="docs panel visible" data-file="readme">[$project:readme]</section>
+  <section class="panel" data-file="preview">
+    <iframe src="[$project:baseurl?$entropy]" ondblclick="window.open(this.src);">
       <p>I frame</p>
     </iframe>
   </section>
-  <!--  iterate files -->
-  <section class="panel">
-    <details class="console">
-      <summary style="padding:0.25em">Console Messages</summary>
-      <h3 class="t">Code Quality</h3>
-      <ul class="plain">
-        <!-- iterate console -->
-        <li><dfn>[$name]</dfn>: <var>[$value]</var></li>
-      </ul>
-      <h3 class="t">Warnings and Errors</h3>
-      <ul class="plain">
-        <!-- iterate report:errors -->
-        <li data-line="[$line]" class="[[$$type]]" data-type="[$type]">[Line $line: $message]</li>
-      </ul>
-    </details>
-    <pre data-file="[$name]" class="[linenums $type]">[$content]</pre>
+  <!--  iterate project:notes -->
+  <section class="panel" data-file="[$file:@basename]">
+    <pre class="[prettyprint linenums $file:@type]">[$content]</pre>
   </section>
 </div>
