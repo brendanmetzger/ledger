@@ -145,7 +145,8 @@ bloc.init('manage-links', function () {
       xhr.send();
     }
   });
-  document.querySelectorAll('*[data-path]').forEach(function (item) {
+  
+  Array.from(document.querySelectorAll('*[data-path]')).forEach(function (item) {
     var a = item.insertBefore(document.createElement('a'), item.firstChild);
     a.href = "txmt://open?url=file://" + item.dataset.path;
     a.innerHTML = '<img src="/css/media/file-code.svg"/>';
