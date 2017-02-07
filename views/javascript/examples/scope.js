@@ -37,14 +37,17 @@ var booty = "gold";
 function sailTo(name) {
 
   function xMarksTheSpot(paces) {
-    alert("Arrived at: " + name);
-    alert("Take " + paces + ' paces to the ' + booty);
+    alert(`Arrived at: ${name}`);
+    alert(`Take ${paces} paces to the ${booty}`);
   }
 
   xMarksTheSpot(10);
-  // note, we access to xMarksTheSpot and name and booty, but no access to paces
+  // note, we have access to `xMarksTheSpot`
+  // and `name` and `booty`
+  // but no access to `paces`
 }
 
 sailTo('Atlantis');
-// we have no access to anything except booty and sailTo from this spot
+// we have no access to anything except
+// `booty` and `sailTo` from this spot
 /* end nested */

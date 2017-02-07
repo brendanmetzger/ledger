@@ -27,71 +27,7 @@
     </pre>
   </section>
   
-  
-  <section class="example container whitepaper tt bb">
-    <h4 class="clear centered">Some Examples: A loaf of bread</h4>
-    <p class="intro">Before you begin making bread, you absolutely, fundamentally, completely know what a <em>variable</em> is and how to <em>assign</em> a <em>value</em> to it. Further, you understand <em>strings, numbers and booleans</em>. At this point, you have a decent idea of what an <em>object</em> is, and its sub-type, the <em>array</em>. You’re quite familiar with the syntax required: quotes, square and curly brackets, and parentheses. If any of this is a mystery, <strong>rewind</strong>!</p>
-    <aside class="note ______ float left">
-      <h5>At the most abstract level, we need <em>an interface</em> that produces a loaf of bread.</h5>
-      <p>We first have to say what producing bread is before we apply it. We send along any expected arguments as parameters during application—in this case, our declaration expects <code>ingredients</code> as an argument, and when applied, we send along an array as a parameter. Do not go further until you understand <strong>declaring vs. applying</strong> functions and <strong>arguments vs. parameters.</strong>.</p>
-    </aside>
-    <pre class="prettyprint float left ____">
-      <!-- review views/javascript/examples/bread.js loaf  -->
-    </pre>
-    <hr class="clear ruled t b" />
-    <aside class="note ______ float left">
-      <h5>But producing bread is probably better described as composite of several actions.</h5>
-      <p>We have ingredients, but they have to be mixed, and after mixed, they have to be baked. Let’s assume we have declared functions called <code>mix</code> and <code>bake</code> that can take care of that for us. Note: what is returned when mix and bake are applied? Never fail to consider input vs. output.</p>
-    </aside>
-    <pre class="prettyprint ____ float left">
-      <!-- review views/javascript/examples/bread.js compose  -->
-    </pre>
-    <hr class="clear ruled t b" />
-    <aside class="note ______ float left">
-      <h5>But producing bread, at least in most situations, involves a person.</h5>
-      <p>The previous function is great, but thinking a bit deeper, it assumes that all bread is made the same way. Any bread fan knows that two different bakers, even using the same ingredients, can make two entirely different loaves. Let’s create a notion of a baker.</p>
-    </aside>
-    <pre class="prettyprint ____ float left">
-      <!-- review views/javascript/examples/bread.js baker  -->
-    </pre>
-    <hr class="clear ruled t b" />
-    <aside class="note ______ float left">
-      <h5>First-Class Lesson 1: declared functions can <strong>return</strong> un-applied functions.</h5>
-      <p>A <code>Baker</code> is really a person who bakes, so let’s just consider that one facet of an entire human. Here I declare two simplified people, both capable of <em>baking</em>. They're not baking 100% of the time; remember, they will only bake when called.</p>
-      <p>In our highlighly simplified version, we are just going to assume that when either <code>Sue</code> or <code>Lou</code> is applied, they return a <code>Baker</code>. Do not forget that a Baker is a function itself: <em>look very closely</em> at how they return a <code>Baker</code>, <em>uncalled</em>. That is, think of it as returning the occupation of a Baker, not someone actually <em>baking.</em>.</p>
-      <p>Do not let this slip past you.</p>
-    </aside>
-    <pre class="prettyprint ____ float left">
-      <!-- review views/javascript/examples/bread.js people  -->
-    </pre>
-    <hr class="clear ruled t b" />
-    <aside class="note ______ float left">
-      <h5>First-Class Lesson 2: Functions can have un-applied functions as <strong>parameters</strong>.</h5>
-      <p>There was a notion of this above in the <code>Baker</code> declaration when we specified and used the performAction <strong>argument</strong>—an extremely important concept, so important, that it has been given it's own descriptive name: a <strong>callback</strong>. Our <code>Baker</code> function wants to be given a task (function) and some material as parameters, it will then apply the task with material on its own. Don’t miss the following point, <code>mix</code> and <code>bake</code> are only declared—they will be executed by something or someone else.</p>
-    </aside>
-    <pre class="prettyprint ____ float left">
-      <!-- review views/javascript/examples/bread.js perform  -->
-    </pre>
-    <!--
-    <hr class="clear ruled t b" />
-    <aside class="note ______ float left">
-      <h5>All together.</h5>
-      <p>Going way back to our <code>produceBread</code> function, let’s sub out all of our functionality with the stuff we now know. Our function definition now expects a Baker as the first argument: Bakers, when called, are given a task and the material to execute that task. Unravel this in your mind to the point where you understand that all of this is possible—you don’t have to know how to do it, just that it’s possible.</p>
-    </aside>
-    <pre class="prettyprint ____ float left">
-      review views/javascript/examples/bread.js first class
-    </pre>
-    <hr class="clear ruled t b" />
-    <aside class="note ______ float left">
-      <h5>Purely Functional.</h5>
-      <p>This last part is just for fun—definitely in the deep end, but as the finale to our example of functional programming, I think it is important that you see a working functional program [you can test in the console]. The take away, alluded to in the intro, is that carefully considered input/output can eliminate conditions, loops, and variables: thus things can occur out of order and state doesn’t matter. This is beautiful, and even if it escapes you, a little bit of this eloquence will save you years of toil as a program designer.</p>
-    </aside>
-    <pre class="prettyprint ____ float left">
-      review views/javascript/examples/bread.js purity
-    </pre>
-     -->
-    <script type="text/javascript">
-      bloc.embed('/javascript/examples/bread.js');
-    </script>
-  </section>
+  <script type="text/javascript">
+    bloc.embed('/javascript/examples/bread.js');
+  </script>
 </article>

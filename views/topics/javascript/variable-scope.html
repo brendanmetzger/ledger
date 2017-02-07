@@ -1,86 +1,55 @@
-<div>
 <article id="variable-scope" data-classification="">
-  <h2>Variable Scope</h2>
-  <p class="intro">Recall for a moment, the beloved chestnut <q>Whatever happens in Vegas, stays in vegas?</q>. Now behold: Whatever variables are declared in a particular scope stay in that scope. Let’s explore.</p>
-  <p>We can stylistically determine how something looks (as will as linguistically add meaning) through the hierarchy and structure of our outline, ie., a <code class="element">h2</code> is most important to its containing <code class="element">section</code> or <code class="element">article</code> element. We can do a similar thing our program code. Recalling <a href="http://eloquentjavascript.net/03_functions.html">Chapter 3</a> of <em>Eloquent JavaScript</em>, I mentioned that the material was a bit terse, so now we'll look a little closer.</p>
-  <p>If I declare a function, it is not much different than declaring a variable. I pick out a name, and that name, gives me a way to assign and store some <em>value</em> for later use: strings, numbers, booleans, nulls, undefined, and objects (including arrays and functions). Where that variable declaration happens and how we gain access to it is the concept <strong>variable scope</strong>.</p>
-
-  <div class="whitepaper container t">
-    <h4 class="clear centered">All Sorts of Scope</h4>
-    <aside class="note ______ float left">
-      <h5>Variables must be declared somewhere.</h5>
-      <p>When you write some code a compilation process takes looks at all of your declarations and converts them to program code. The outermost layer is called <em>the global scope</em>. At right, we have declared two things and added them to the global scope, what are they?</p>
-    </aside>
-    <pre class="prettyprint float left ____">
-      <!-- review views/javascript/examples/scope.js global  -->
-    </pre>
-    <hr class="clear ruled t b" />
-    <aside class="note ______ float left">
-      <h5>Global Scope vs. Local Scope</h5>
-      <p>In the current version<sup>*</sup> of javascript, there is only one other type of scope available, called <em>local scope</em>. Local scope is created within the body of a function declaration. Spot the following: there are three variables declared, two in the global scope, one scoped to the <code>drive</code> function. The two <code>truck</code> variables share the <em>same name</em>, but they in <em>different scopes</em>, and thus, <em>different variables</em>.</p>
-    </aside>
-    <pre class="prettyprint ____ float left">
-      <!-- review views/javascript/examples/scope.js local  -->
-    </pre>
-    <hr class="clear ruled t b" />
-    <aside class="note ______ float left">
-      <h5>Arguments and Parameters</h5>
-      <p>Something we often forget about is the nature of declared arguments as a way to usurp the scope of a variable. Arguments are scoped to the function they belong. A correct way of thinking about arguments might be <code>function(var something)…</code> as we are declaring a variable to store whatever we pass in as a parameter. This is a good way of thinking about it, but never actually write var, it is a syntax error.</p>
-    </aside>
-    <pre class="prettyprint ____ float left">
-      <!-- review views/javascript/examples/scope.js arguments  -->
-    </pre>
-    <hr class="clear ruled t b" />
-    <aside class="note ______ float left">
-      <h5>Nesting Scopes</h5>
-      <p>Once again, functions are objects, and objects can contain other objects. Declaring a function is declaring a variable, and if we can declare a variable within a function, it would seem like we should be able to declare a function inside another function—and we can. The important thing to remember is that a function will always go up the scope chain, all the way to the global scope if necessary. It will stop whenever it finds a variable with the name it seeks, and if no variable can be found with that name, it will be an <em>undefined</em></p>
-      <p>Spot the following: five variable declarations, three scopes. Practice spotting the difference between function <em>declaration</em> and function <em>execution</em> of a function.</p>
-    </aside>
-    <pre class="prettyprint ____ float left">
-      <!-- review views/javascript/examples/scope.js nested  -->
-    </pre>
-  </div>
-</article>
-
-
-<article>
-  
-  <section>
-    <h2>Lexical Scope</h2>
-    <p class="intro">Recall for a moment, the beloved chestnut <q>Whatever happens in Vegas, stays in vegas?</q>. Now behold: Whatever variables are declared in a particular scope stay in that scope. Let’s explore.</p>
-    <div class="dropcap margins" style="display:none">
-      <p class="______ m justified">Imagine an all-seeing, all knowing presence, out in the ether, beyond the multiverse. A presense so powerful it knows of the galaxies, stars, planets, corporate charters, sports teams, fauna, flora, fungi and bacteria it conjured into existence. It knows about them, how to talk to them, how to ask them things. Now imagine a universe precisely the opposite; <em>reverse the order</em> starting with the bacteria and ending with the stars, galaxies and the divine. This is the universe of <strong>lexical scope</strong>. To continue our metaphor, the bacteria, knows of itself and all the things that came before. It knows about all the things that make up its existence <em>and it knows how to talk to them</em>. Ending with the stars, galaxies, and the deity, it has all the answers. God, in this heretic metaphor, knows only what it sees around itself.</p>
-      <p class="_____ mm justified">Now, before you we get too excited about our incredible godlike bacterium, let’s remember a major caveat of monotheism: gods don’t seem to care (or know) much about other gods, and bacteria is no different. The bacteria, all knowing as it believes itself to be, doesn’t know anything about the other bacteria it lives among, sharing it’s world</p>
-      <p class="____ mmm justified">I’ll wrap it up even though we're delicately close to a philosophical breakthrough, let’s end the metaphor and say that scope is the nested structure of program. From deep within, scope means an area of a program that has access to the elements that were declared before, but not necessarily elements declared adjacent.</p>
-    </div>
-    
-  </section>
-  
-
-
-  <section>
-    <h3>Global Scope</h3>
-    <p>Everything we do in Javascript has a scope by default, the outermost called the <strong>global scope</strong>. If you create a new script, embedded or linked and start declaring variables, making expressions and statements, you are in the global scope. When we start declaring types such as <code>objects</code> and <code>functions</code> then variable declarations and expressions within the object and function, variables are local to that object; this is <strong>local scope</strong></p>
-    <h3>Local Scope</h3>
-
-    <h3>Intermediate</h3>
-    <p>Javascript does not have block level scope – or at least not yet. Generally block-level scope means that wherever you have your <strong>{curly braces}</strong> you can declare a scope - like if/else conditions</p>
-    <h3>The <code>var</code> keyword</h3>
-
-    <h3>Read</h3>
-    <a href="http://eloquentjavascript.net/03_functions.html#h_u4j2OhpYkg">Functions &amp; Scopes</a>
+  <header class="container">
+    <img src="[$cdn/media/images/russian-dolls.png]" class="float left ___" style="mix-blend-mode: multiply;margin:0 2em;shape-outside:ellipse(50% 45% at 50% 50%)"/>
+    <h2>Variable Scope</h2>
+    <p class="intro">Scope can be abstract, but it can also be visualized just as easily by modifying your perspective. Ultimately it describes the familiar organizing principle of separating various concerns into containers.</p>
+  </header>
+  <section class="three columns indented dropcap tt">
+    <p>One can stylistically determine how something looks and add meaning through the hierarchy and structure of a well defined outline, ie., given several <code class="element">h2</code> Elements, any individual Element is most important to its containing <code class="element">section</code> or <code class="element">article</code> element—this is what the specification tells us, and clearly this is a meaningful decision.</p>
+    <p>If I declare a function, the scope it declares between its opening and closing curly braces can be thought of just like a container for variables. In fact, until ES2016 was put on the shelves, this was the <em>only</em> way to declare scope, and account of that, it is Ok to think of it that way for the time being.</p>
+    <p>So just what is <q>scope</q>, and how should you visualize it? Perhaps it is easiest to picture yourself in large building with several floors and many rooms on each. The doors to any given room are locked and can only be opened from the inside—this means you can always go from the room you are in to the room outside and you cannot walk into other rooms.</p>
+    <p>The room you are in is your <strong>local scope</strong>—in that room there is a number of desks—might as well call that a variable like <samp>desk_count</samp>. Now from your local scope, there are questions you can and cannot ask about the building. You <strong>can</strong> ask things like <q>what floor am I on?</q> because your door opens from the inside—just walk out and look for the floor number. You can ask, <q>what building am I in?</q> by taking the elevator, walking outside, and looking at the address. At this point, you are outside, meaning there are no more doors to open: you are in the <em>global scope</em>.</p>
+    <p>Now the thing you cannot do is actually quite simple: you cannot open locked doors. That means, you cannot ask <q>how many desks are in such and such room?</q> And if this isn't quite clear, you have absolutely no way to know if that room even contains desks or what goes on on the inside.</p>
+    <p>The end of this anecdote is simply that <strong>functions</strong> are the rooms in this example. If we want to get anything in or out of a room/function, the room/function has to have a mechanism for exchanging input and output for people who do not have access. In terms of functions, <mark>this exchange is controlled through <dfn>scope</dfn>, <dfn>arguments</dfn> and <dfn>return</dfn> values</mark></p>
   </section>
 
-
-  <h2>call and apply</h2>
-  <p>These let you execute a function and manipulate it getting it to have an identity crisis while it executes.</p>
-  <h2>bind</h2>
-  <p>lets you brainwash a function into changing it’s identity. You execute it later on, and it is still brainwashed.</p>
-  <footer>
-    <ul>
-      <li><a href="http://hangar.runway7.net/javascript/guide">The Javascript Guide to Objects, Functions, Scope, Prototypes and Closures</a></li>
-    </ul>
-  </footer>
+  <section class="pulled">
+    <h4>Variables must be declared somewhere.</h4>
+    <figure class="explain whitepaper">
+      <figcaption class="note">
+        <p>When you write some code a compilation process takes looks at all of your declarations and converts them to program code. The outermost layer is called <em>the global scope</em>. At right, we have declared two things and added them to the global scope, what are they?</p>
+      </figcaption>
+      <pre class="prettyprint">
+        <!-- review views/javascript/examples/scope.js global  -->
+      </pre>
+    </figure>
+    <h4>Global Scope vs. Local Scope</h4>
+    <figure class="explain whitepaper">
+      <figcaption class="note">
+        <p>In the current version of javascript, there is only one other type of scope available, called <em>local scope</em>. Local scope is created within the body of a function declaration. Spot the following: there are three variables declared, two in the global scope, one scoped to the <code>drive</code> function. The two <code>truck</code> variables share the <em>same name</em>, but they in <em>different scopes</em>, and thus, <em>different variables</em>.</p>
+      </figcaption>
+      <pre class="prettyprint">
+        <!-- review views/javascript/examples/scope.js local  -->
+      </pre>
+    </figure>
+    <h4>Arguments and Parameters</h4>
+    <figure class="explain whitepaper">
+      <figcaption class="note">
+        <p>Something we often forget about is the nature of declared arguments as a way to usurp the scope of a variable. Arguments are scoped to the function they belong. A correct way of thinking about arguments might be <code>function (var something)</code> as we are declaring a variable to store whatever we pass in as a parameter. This is a good way of thinking about it, but never actually write var, it is a syntax error.</p>
+      </figcaption>
+      <pre class="prettyprint">
+        <!-- review views/javascript/examples/scope.js arguments  -->
+      </pre>      
+    </figure>
+    <h4>Nesting Scopes</h4>
+    <figure class="explain whitepaper">
+      <figcaption class="note">
+        <p>Once again, functions are objects, and objects can contain other objects. Declaring a function is declaring a variable, and if we can declare a variable within a function, it would seem like we should be able to declare a function inside another function—and we can. The important thing to remember is that a function will always go up the scope chain, all the way to the global scope if necessary. It will stop whenever it finds a variable with the name it seeks, and if no variable can be found with that name, it will be an <em>undefined</em></p>
+        <p>Spot the following: five variable declarations, three scopes. Practice spotting the difference between function <em>declaration</em> and function <em>execution</em> of a function.</p>
+      </figcaption>
+      <pre class="prettyprint">
+        <!-- review views/javascript/examples/scope.js nested  -->
+      </pre>
+    </figure>
+  </section>
 </article>
-
-</div>

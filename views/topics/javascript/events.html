@@ -11,7 +11,7 @@
     <p>Now considering the process of an event occurring, remember that it is <em>emitted</em> from a source, be it an <code>Element</code> or the <code>window</code> object, etc., and you must apply a listener directly to that source in order to <q>hear it.</q> I always remind you to think of any Element as a physical object, and that object has the ability to listen. I will also make a point of distinguishing the difference between <em>listening</em> and <em>hearing</em>—the former implies that one is actually registering and understanding what was heard. So when you instruct an element to listen as you would a person, you tell it what to listen for, and you give it something to do when it identifies that an action must be taken.</p>
   </div>
     
-   <div class="whitepaper container t b">
+   <div class="whitepaper container pulled">
     <h3>Usage and Documentation</h3>
     <div class="________ float left">
       <h4>Function Signature</h4>
@@ -40,18 +40,18 @@
     </dl>
   </div>
   
-  <section data-level="intermediate">
+  <section data-level="intermediate" class="tt">
     <h3>Event-Driven Programming</h3>
     <p>It may seem like just an interesting feature of the language, but it’s important to grasp conceptually why first-class functions are quite necessary to <a href="https://en.wikipedia.org/wiki/Event-driven_programming">event-driven programming</a>. When we have program that is going to respond to clicks, keystrokes, and any other input, our application has to have something prepared. Unlike imperative types of programming (like procedural), the program has an event loop that must have <em>some function</em> it can execute when needed. This makes sense: functions are callable bits of program; they lie waiting for something to poke them and say <q>go ahead, do what you do</q>. These are referred to as <strong>callbacks</strong>, and a ten-dollar word that you will learn to love about such programming is the nature of asynchronous code that can execute at unknown times.</p>
-    <div class="explain whitepaper">
-      <aside class="note">
+    <figure class="explain whitepaper">
+      <figcaption class="note">
         <p>Looking at the code on the right, there isn’t a another way to program it without using first-class functions and their accompanying features. In this case, we are listening for two <strong>events</strong>, there are three (anonymous) <strong>callback functions</strong> and two <strong> closures</strong>—make sure you can spot them all.</p>
-        <button type="button" data-color="cornflowerblue" class="trigger">Execute Code</button>
-      </aside>
+        <button type="button" data-color="#888" class="trigger">Execute Code</button>
+      </figcaption>
       <pre class="prettyprint">
         <!-- review views/javascript/examples/functions.js callbacks -->
       </pre>
-    </div>
+    </figure>
     
   </section>
     

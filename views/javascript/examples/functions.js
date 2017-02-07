@@ -86,16 +86,17 @@ function adder() {
 window.addEventListener('load', function (evt) {
   // <button data-color="cornflowerblue" class="trigger">Exec...
   var button = document.querySelector('button[data-color].trigger');
+  function flashBgColor (evt) {
+    evt.preventDefault(); // ???
+    var old_bg = getComputedStyle(document.body).backgroundColor;
+    document.body.style.transition = 'background-color 0.5s';
+    document.body.style.backgroundColor = button.dataset.color;
+    setTimeout(function () {
+      document.body.style.backgroundColor = old_bg;
+    }, 500);
+  }
   if (button) {
-    button.addEventListener('click', function (evt) { // anonymous`
-      evt.preventDefault(); // investigate this.
-      var old_bg = getComputedStyle(document.body).backgroundColor;
-      document.body.style.transition = 'background-color 0.5s';
-      document.body.style.backgroundColor = button.dataset.color;
-      setTimeout(function () {
-        document.body.style.backgroundColor = old_bg;
-      }, 500);
-    });
+    button.addEventListener('click', flashBgColor);
   }
 });
 /* end callbacks */

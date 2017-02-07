@@ -27,7 +27,7 @@ namespace models;
       $context->setAttribute('commits', implode($commits));
       $total = array_sum($commits);
       $exponent = 2.5;
-      $value    = $total / 5;  // 5 is based on 5 days in a week;
+      $value    = min(5, $total) / 5;  // 5 is based on 5 days in a week;
       $score    = $value**$exponent / ($value**$exponent + ((1-$value)**$exponent));
       $context->setAttribute('value', $score);
       

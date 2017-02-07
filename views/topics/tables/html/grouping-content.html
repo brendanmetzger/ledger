@@ -1,7 +1,9 @@
 <table>
-  <caption class="rag-right">
-    <h3>Grouping Content</h3>
-    <p>Use HTML text content elements to organize blocks or sections of content placed between the opening and closing <code class="element">body</code> tags. Anytime you are tempted to use a generic <code class="element">div</code> consult this list first to see if there is a suitable replacement. Important for accessibility and <abbr title="search engine optimization">seo</abbr>, these elements identify the purpose or structure of that content. <mark>Every one of these elements is a <a href="/overview/glossary#block-vs-inline">block-level element</a> according to your browser's default stylesheet.</mark></p>
+  <style type="text/css" media="screen">
+  </style>
+  <caption class="pulled whitepaper rag-right">
+    <h3>Grouping Elements</h3>
+    <p>Use <abbr>html</abbr> grouping elements to organize blocks or sections of content placed between the opening and closing <code class="element">body</code> tags. Anytime you are tempted to use a generic <code class="element">div</code> consult this list first to see if there is a suitable replacement. Important for accessibility and <abbr title="search engine optimization">seo</abbr>, these elements identify the purpose or structure of that content. <mark>Every one of these elements is a <a href="/overview/glossary#block-vs-inline">block-level element</a> according to your browser's default stylesheet.</mark></p>
   </caption>
   <thead>
     <tr>
@@ -11,88 +13,71 @@
     </tr>
   </thead>
   <tbody class="elements">
-    <tr data-relevancy="3">
-      <th>
-        <code id="#the-dd-element">dd</code>
-      </th>
-      <td>The <strong>HTML <code>dd</code> element</strong> (<em>HTML Description Element</em>) indicates the description of a term in a description list (<a href="#the-dl-element"><code>dl</code></a>) element. This element can occur only as a child element of a description list and it must follow a <a href="#the-dt-element"><code>dt</code></a> element.</td>
+    <tr id="the-dd-element" data-priority="3">
+      <th><code>dd</code></th>
+      <td>The <code>dd</code> element (<em>HTML Description Element</em>) indicates the description of a term in a description list (<a href="#the-dl-element"><code>dl</code></a>) element. This element can occur only as a child element of a description list and it must follow a <a href="#the-dt-element"><code>dt</code></a> element.</td>
       <td><strong>Only and always</strong> use with a <code>dl</code>—this is the definition component of a definition list.</td>
     </tr>
-    <tr data-relevancy="1">
-      <th>
-        <code id="#the-div-element">div</code>
-      </th>
-      <td>The <strong>HTML <code>div</code> element</strong> (or <em>HTML Document Division Element</em>) is the generic container for flow content, which does not inherently represent anything. It can be used to group elements for styling purposes (using the <strong>class</strong> or <strong>id</strong> attributes), or because they share attribute values, such as <strong>lang</strong>. It should be used only when no other semantic element (such as <a href="#the-article-element"><code>article</code></a> or <a href="#the-nav-element"><code>nav</code></a>) is appropriate.</td>
+    <tr id="the-div-element" data-priority="2">
+      <th><code>div</code></th>
+      <td>The <code>div</code> element (or <em>HTML Document Division Element</em>) is the generic container for flow content, which does not inherently represent anything. It can be used to group elements for styling purposes (using the <strong>class</strong> or <strong>id</strong> attributes), or because they share attribute values, such as <strong>lang</strong>. It should be used only when no other semantic element (such as <a href="#the-article-element"><code>article</code></a> or <a href="#the-nav-element"><code>nav</code></a>) is appropriate.</td>
       <td>The screwdriver of Elements: indispensable, but professionals don't overuse this one. Use to nudge a <em>visual</em> outcome without changing any semantic meaning.</td>
     </tr>
-    <tr data-relevancy="3">
-      <th>
-        <code id="#the-dl-element">dl</code>
-      </th>
-      <td>The <strong>HTML <code>dl</code> element</strong> (or <em>HTML</em> <em>Description List Element</em>) encloses a list of pairs of terms and descriptions. Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).</td>
+    <tr id="the-dl-element" data-priority="3">
+      <th><code>dl</code></th>
+      <td>The <code>dl</code> element (or <em>HTML</em> <em>Description List Element</em>) encloses a list of pairs of terms and descriptions. Common uses for this element are to implement a glossary or to display metadata (a list of key-value pairs).</td>
       <td>A special type of list, and as the name suggests, anything suitable for the structure of a definition.</td>
     </tr>
-    <tr>
-      <th>
-        <code id="#the-dt-element">dt</code>
-      </th>
-      <td>The <strong>HTML <code>dt</code> element</strong> (or <em>HTML Definition Term Element</em>) identifies a term in a definition list. This element can occur only as a child element of a <a href="#the-dl-element"><code>dl</code></a>. It is usually followed by a <a href="#the-dd-element"><code>dd</code></a> element; however, multiple <code>dt</code> elements in a row indicate several terms that are all defined by the immediate next <a href="#the-dd-element"><code>dd</code></a> element.</td>
+    <tr id="the-dt-element" data-priority="2">
+      <th><code>dt</code></th>
+      <td>The <code>dt</code> element (or <em>HTML Definition Term Element</em>) identifies a term in a definition list. This element can occur only as a child element of a <a href="#the-dl-element"><code>dl</code></a>. It is usually followed by a <a href="#the-dd-element"><code>dd</code></a> element; however, multiple <code>dt</code> elements in a row indicate several terms that are all defined by the immediate next <a href="#the-dd-element"><code>dd</code></a> element.</td>
       <td><strong>Only and always</strong> use within a <code>dl</code>. This is the part of the list getting defined.</td>
     </tr>
-    <tr data-relevancy="2">
+    <tr id="the-figcaption-element" data-priority="2">
       <th>
-        <code id="#the-figcaption-element">figcaption</code>
-      </th>
-      <td>The <strong>HTML <code>figcaption</code> element</strong> represents a caption or a legend associated with a figure or an illustration described by the rest of the data of the <a href="#the-figure-element"><code>figure</code></a> element which is its immediate ancestor which means <code>figcaption</code> can be the first or last element inside a <a href="#the-figure-element"><code>figure</code></a> block. Also, the <em>HTML Figcaption Element </em>is optional; if not provided, then the parent figure element will have no caption.</td>
-      <td><strong>Only and always</strong> use within a <code>figure</code> Element—wrap the descriptive text in this.</td>
+        <code>figcaption</code></th>
+      <td>The <code>figcaption</code> element represents a caption or a legend associated with a figure or an illustration described by the rest of the data of the <a href="#the-figure-element"><code>figure</code></a> element which is its immediate ancestor which means <code>figcaption</code> can be the first or last element inside a <code>figure</code> block. Also, the Figcaption Element is optional; if not provided, then the parent figure element will have no caption.</td>
+      <td><strong>Only and always</strong> use within a <code>figure</code> Element—wrap the descriptive text in this—important not just for search engines, but for people with vision impairments that may not be able to view visual aids.</td>
     </tr>
-    <tr>
-      <th>
-        <code id="#the-figure-element">figure</code>
-      </th>
-      <td>The <strong>HTML <code>figure</code> element</strong> represents self-contained content, frequently with a caption (<a href="#the-figcaption-element"><code>figcaption</code></a>) and is typically referenced as a single unit. While it is related to the main flow, its position is independent of the main flow. Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</td>
+    <tr id="the-figure-element" data-priority="1">
+      <th><code>figure</code></th>
+      <td>The <code>figure</code> element represents self-contained content, frequently with a caption (<a href="#the-figcaption-element"><code>figcaption</code></a>) and is typically referenced as a single unit. While it is related to the main flow, its position is independent of the main flow. Usually this is an image, an illustration, a diagram, a code snippet, or a schema that is referenced in the main text, but that can be moved to another page or to an appendix without affecting the main flow.</td>
+      <td>Consider context: if the content could possibly live in another context because it is independent (like an image) then this it can be represented by this element.</td>
     </tr>
-    <tr>
-      <th>
-        <code id="#the-hr-element">hr</code>
-      </th>
-      <td>The <strong>HTML <code>hr</code> element</strong> represents a thematic break between paragraph-level elements (for example, a change of scene in a story, or a shift of topic with a section). In previous versions of HTML, it represented a horizontal rule. It may still be displayed as a horizontal rule in visual browsers, but is now defined in semantic terms, rather than presentational terms.</td>
+    <tr id="the-hr-element" data-priority="3">
+      <th><code>hr</code></th>
+      <td>The <code>hr</code> element represents a thematic break between paragraph-level elements (for example, a change of scene in a story, or a shift of topic with a section). In previous versions of HTML, it represented a horizontal rule. It may still be displayed as a horizontal rule in visual browsers, but is now defined in semantic terms, rather than presentational terms.</td>
+      <td>Semantically, this unit is very niche. It still applies visual rule if used, but if this is merely a stylistic decision, it should be done in <abbr>css</abbr></td>
     </tr>
-    <tr>
-      <th>
-        <code id="#the-li-element">li</code>
-      </th>
-      <td>The <strong>HTML <code>li</code> element</strong> (or <em>HTML List Item Element</em>) is used to represent an item in a list. It must be contained in a parent element: an ordered list (<a href="#the-ol-element"><code>ol</code></a>), an unordered list (<a href="#the-ul-element"><code>ul</code></a>), or a menu (<a href="#the-menu-element"><code>menu</code></a>). In menus and unordered lists, list items are usually displayed using bullet points. In ordered lists, they are usually displayed with an ascending counter on the left, such as a number or letter.</td>
+    <tr id="the-li-element" data-priority="1">
+      <th><code>li</code></th>
+      <td>The <code>li</code> element (or <em>HTML List Item Element</em>) is used to represent an item in a list. It must be contained in a parent element: an ordered list (<a href="#the-ol-element"><code>ol</code></a>), an unordered list (<a href="#the-ul-element"><code>ul</code></a>), or a menu (<a href="#the-menu-element"><code>menu</code></a>). In menus and unordered lists, list items are usually displayed using bullet points. In ordered lists, they are usually displayed with an ascending counter on the left, such as a number or letter.</td>
+      <td>Know this and its possible parents.</td>
     </tr>
-    <tr>
-      <th>
-        <code id="#the-main-element">main</code>
-      </th>
-      <td>The <strong>HTML <code>main</code> element</strong> represents the main content of  the <a href="#the-body-element"><code>body</code></a> of a document or application. The main content area consists of content that is directly related to, or expands upon the central topic of a document or the central functionality of an application. This content should be unique to the document, excluding any content that is repeated across a set of documents such as sidebars, navigation links, copyright information, site logos, and search forms (unless the document’s main function is as a search form).</td>
+    <tr id="the-main-element" data-priority="2">
+      <th><code>main</code></th>
+      <td>The <code>main</code> element represents the main content of  the <a href="#the-body-element"><code>body</code></a> of a document or application. The main content area consists of content that is directly related to, or expands upon the central topic of a document or the central functionality of an application. This content should be unique to the document, excluding any content that is repeated across a set of documents such as sidebars, navigation links, copyright information, site logos, and search forms (unless the document’s main function is as a search form).</td>
+      <td>Can only use this once per document.</td>
     </tr>
-    <tr>
-      <th>
-        <code id="#the-ol-element">ol</code>
-      </th>
-      <td>The <strong>HTML <code>ol</code> Element</strong> (or <em>HTML Ordered List Element</em>) represents an ordered list of items. Typically, ordered-list items are displayed with a preceding numbering, which can be of any form, like numerals, letters or Romans numerals or even simple bullets. This numbered style is not defined in the HTML description of the page, but in its associated CSS, using the <a href="/en-US/docs/Web/CSS/list-style-type"><code>list-style-type</code></a> property.</td>
+    <tr id="the-ol-element" data-priority="1">
+      <th><code>ol</code></th>
+      <td>The <code>ol</code> Element (or <em>HTML Ordered List Element</em>) represents an ordered list of items. Typically, ordered-list items are displayed with a preceding numbering, which can be of any form, like numerals, letters or Romans numerals or even simple bullets. This numbered style is not defined in the HTML description of the page, but in its associated CSS, using the <samp>list-style-type</samp> property.</td>
+      <td>Very useful—remember, only allows <a href="#the-li-element"><code>li</code></a> Elements as children</td>
     </tr>
-    <tr>
-      <th>
-        <code id="#the-p-element">p</code>
-      </th>
-      <td>The <strong>HTML <code>p</code> element</strong> (or <em>HTML Paragraph Element</em>) represents a paragraph of text.</td>
+    <tr id="the-p-element" data-priority="1">
+      <th><code>p</code></th>
+      <td>The <code>p</code> or <em>paragraph </em>element represents a paragraph of text. Paragraphs are perhaps the most basic/fundamental unit for breaking large text into particular points or ideas.</td>
+      <td>Likely the most used element.</td>
     </tr>
-    <tr>
-      <th>
-        <code id="#the-pre-element">pre</code>
-      </th>
-      <td>The <strong>HTML <code>pre</code> element</strong> (or <em>HTML Pre-formatted Text</em>) represents preformatted text. Text within this element is typically displayed in a non-proportional (<dfn>monospace</dfn>) font exactly as it is laid out in the file. Whitespace inside this element is displayed as typed.</td>
+    <tr id="the-pre-element" data-priority="3">
+      <th><code>pre</code></th>
+      <td>The <code>pre</code> element (or <em>HTML Pre-formatted Text</em>) represents pre-formatted text. Text within this element is typically displayed in a non-proportional (<dfn>monospace</dfn>) font exactly as it is laid out in the file. Whitespace inside this element is displayed as typed.</td>
+      <td>Useful for showing snippits of code, or plain-text that must follow line breaks correctly—which makes this a niche element.</td>
     </tr>
-    <tr>
-      <th>
-        <code id="#the-ul-element">ul</code>
-      </th>
-      <td>The<strong> HTML <code>ul</code> element</strong> (or <em>HTML Unordered List Element</em>) represents an unordered list of items, namely a collection of items that do not have a numerical ordering, and their order in the list is meaningless. Typically, unordered-list items are displayed with a bullet, which can be of several forms, like a dot, a circle or a squared. The bullet style is not defined in the HTML description of the page, but in its associated CSS, using the <dfn>list-style-type</dfn> property.</td>
+    <tr id="the-ul-element" data-priority="1">
+      <th><code>ul</code></th>
+      <td>The <code>ul</code> element (or <em>HTML Unordered List Element</em>) represents an unordered list of items, namely a collection of items that do not have a numerical ordering, and their order in the list is meaningless. Typically, unordered-list items are displayed with a bullet, which can be of several forms, like a dot, a circle or a squared. The bullet style is not defined in the HTML description of the page, but in its associated CSS, using the <dfn>list-style-type</dfn> property.</td>
+      <td>Very useful—remember, only allows <a href="#the-li-element"><code>li</code></a> Elements as children</td>
     </tr>
   </tbody>
 </table>

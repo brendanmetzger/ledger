@@ -135,6 +135,15 @@ bloc.init('manage-links', function () {
         window.open(evt.target.href);
       }
     }
+    if (evt.target.matches('a.copy')) {
+      evt.preventDefault();
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', evt.target.href);
+      xhr.addEventListener('load', function(evt) {
+        window.prompt("Copy to clipboard: Ctrl+C, Enter", evt.target.responseText);
+      });
+      xhr.send();
+    }
   });
   document.querySelectorAll('*[data-path]').forEach(function (item) {
     var a = item.insertBefore(document.createElement('a'), item.firstChild);
@@ -143,5 +152,6 @@ bloc.init('manage-links', function () {
     a.className = 'pin link';
   });
 });
+
 
 

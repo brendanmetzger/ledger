@@ -12,21 +12,7 @@ html.VOID blockquote { padding:5vmax;margin:2em -5vmax;background-color:#fff;box
 html.VOID blockquote p:not(:last-of-type) {font-size:5vmin;font-family:Baskerville, Times, Georgia;line-height:1;font-style:italic;}
 
 #_e_s_p_e_c_i_a_l_ {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  position: fixed;
-  z-index: 1000;
-  width: 100vw;
-  height: 10vh;
-  background-color: hsla(200, 30%, 50%, 0.85);
-  bottom: 0;
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: left top;
-  opacity: 0.85;
-  transition: transform 0.125s, opacity 0.5s, height 0.25s;
+  display: none;
 }
 
 #_e_s_p_e_c_i_a_l_.console {
@@ -45,6 +31,7 @@ html.VOID blockquote p:not(:last-of-type) {font-size:5vmin;font-family:Baskervil
 
 #_e_s_p_e_c_i_a_l_:not(.open) li.error:before {
   content: ' ! ';
+  display:flex;
   font-weight: 800;
   font-size: 5vh;
 }

@@ -195,7 +195,7 @@ h1 {
 
 @font-face {
     font-family: label;
-    src: url('//cdn.thirty.cc/fonts/impact-label.ttf');
+    src: url('//cdn.thirty.cc/media/fonts/impact-label.ttf');
     font-weight:400;
 }
 
@@ -207,11 +207,17 @@ h2 {
 }
 
 
-.print-machine {
+.print-machine, .review h3 {
   font-family:label;
   color:#333;
   mix-blend-mode:multiply;
-  transform:rotate(-2.5deg) translateY(-1em);
+  margin:2em 0 0;
+  transform:rotate(-1.5deg) translate(-0.5em, -1em);
+}
+
+.review {
+  background-image: linear-gradient(0deg, rgba(255,255,255,0), rgba(255,255,255,0.5));
+  box-shadow:0 -0.25em 0.25em rgba(0,0,0,0.0.5);
 }
 
 
@@ -300,7 +306,6 @@ article:target h2 {
   color: rgb(210, 96, 96);
 }
 
-figcaption,
 li {
   font-size: 1rem;
   line-height: 1.25em;
@@ -415,9 +420,9 @@ ul.bad li:before {
 }
 
 .paginate article {
-  border-top-width: calc(1vmin);
-  margin: calc(5vmax) 0;
-  padding: 2vmax 0;
+  border-top: 1px solid #888;
+  margin: 5vmax 0;
+  padding: 5vmax 0 0;
 }
 
 main {
@@ -721,6 +726,10 @@ nav form {
   box-shadow: 0 0 1em rgba(0,0,0,0.1);
   margin: 0 -2.5vmax;
 }
+.pulled {
+  margin:2em -2.5vmax;
+  padding:2.5vmax 5vmax;
+}
 
 details.whitepaper[open] {
   box-shadow: 0 0 1em rgba(0,0,0,0.125);
@@ -1021,4 +1030,8 @@ textarea.lined {
 textarea.lined:focus {
   outline: none;
   box-shadow: 0 0 0 0.125em rgba(255,0,0,0.1);
+}
+
+tr:target {
+  background-color:rgba(0,0,0,0.1);
 }

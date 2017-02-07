@@ -2,15 +2,4 @@
   <p class="intro">This study is straightforward—make a gallery. It will eventually serve as a tangible start to apply interactive JavaScript; get the layout kinks worked out ahead of time.</p>
   <p>You could use portfolio work or a personal collection of photos. If you don’t understand the concepts at play, do your research. I've made it even easier to track your agenda. <strong>Copy and paste <a class="copy" href="/outline/assignments/SWM/practice/3.txt">this todo list</a> into your readme.txt file to fill out</strong>    as you work on this assignment.</p>
   <p class="tt focus">Note, I have left the last two items of the TODO list blank—items I have left for you to fill in. There are ever-advancing topics (like media queries &amp; mobile first) so make a goal for yourself so that I can see your organization and research principles.</p>
-  <script type="text/javascript">
-    document.querySelector('a.copy').addEventListener('click', function(evt) {
-      evt.preventDefault();
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', this.href);
-      xhr.addEventListener('load', function(evt) {
-        window.prompt("Copy to clipboard: Ctrl+C, Enter", evt.target.responseText);
-      });
-      xhr.send();
-    })
-  </script>
 </article>

@@ -1,22 +1,41 @@
 <div>
-  <header>
-    <!-- insert views/outline/_/crumbs.html -->
-    <h1 class="massive">Method</h1>
-  </header>
-  <aside>
-    <h3>Review/Questions</h3>
-    <p>Last Week we went over types, loops, and conditions and worked on a few sample programs.</p>
-  </aside>
-  <!-- insert views/topics/javascript/functions.html -->
-  <!-- insert views/topics/javascript/input-output.html -->
-  <!-- insert views/topics/javascript/first-class-functions.html -->
-  <!-- insert views/topics/javascript/events.html -->
-  <!-- insert views/topics/javascript/variable-scope.html-->
   <script type="text/javascript">
       bloc.embed('/javascript/examples/functions.js');
   </script>
-  <footer>
-    <h2>Review</h2>
-    <p>All of the code examples above as well as last week’s exercises <a class="read" href="/javascript/examples/functions.js">can be viewed here</a>. Jumping to exercises, you’ll see my solutions. Beginning programmers exhibit similar struggles around topics of program flow (especially logic) so I want to introduce my own personal mantra: while you code, <strong>imagine conditions (though quite necessary) as poisonous, and every time you nest a condition, you’re doubling the potency of the poison</strong>. Maybe that seems crazy now, but as you continue to advance, no matter the language, there are facilities that allow you to <mark>avoid writing all but the most trivial conditions</mark>. In functional programming these are fancy things like Functors and Monads. In Object Orientation, these are principles of polymorphism and usage of <a href="https://en.wikipedia.org/wiki/Design_Patterns">Design Patterns</a>. For beginners, this is looking at logic as a puzzle and trying to whittle down a complex task to the <mark>fewest conditions possible</mark>.</p>
+  <header>
+    <!-- insert views/outline/_/crumbs.html -->
+    <img src="[$cdn/media/images/tight-roll.png]" class="float left __" style="mix-blend-mode: multiply;margin:7.5em 5em 0 -1em;shape-outside:ellipse(33% 50% at 40% 55%)"/>
+    <h1 class="massive">Methods</h1>
+    <p class="intro">Functions are largely about encapsulating process. Sometimes that means breaking down a much bigger routine into smaller, more manageable chunks. Other times it simply defines a set of instructions that must be repeated at often or at unknown times.</p>
+  </header>
+  <aside class="pulled review">
+    <h3>Warming up</h3>
+    <p>We understand types and flow of control with loops and conditions. Moving forward I've devised a few examples to showcase some areas for you to focus on in the near future.</p>
+    
+    <h4 class="tt">Part One</h4>
+    <ol>
+      <li>Define a containing Element</li>
+      <li>Place 5-10 Elements in the containing Element</li>
+      <li>Each of the 5-10 elements should be the full height of the viewport</li>
+      <li>Add one more additional Element after the containing Element—as a sibling</li>
+      <li>Give that last element a class attribute of <samp>hidden</samp>, and hide the element</li>
+    </ol>
+    <h4 class="tt">Part Two</h4>
+    <ol>
+      <li>Give each of the 5-10 elements a random background color from an array of background colors. There should be the same number of background colors in the array as there are Elements in your container.</li>
+      <li>Add an event listener to monitor page scroll and observe that behavior</li>
+      <li>Calculate the percentage you have scrolled</li>
+      <li>if the user has scrolled a reasonable percentage, remove the <samp>hidden</samp> class attribute of the element that has that attribute.</li>
+    </ol>
+    
+  </aside>
+  <!-- insert views/topics/javascript/functions.html -->
+  <!-- insert views/topics/javascript/variable-scope.html-->
+  <!-- insert views/topics/javascript/first-class-functions.html -->
+  <!-- insert views/topics/javascript/events.html -->
+  <footer id="reference-and-practice" class="margins">
+    <h3>Reference &amp; Practice Material</h3>
+    <p><q>Functions are the bread and butter of JavaScript programming</q>—or so says <a href="http://eloquentjavascript.net/03_functions.html">Chapter Three</a> of <cite>Eloquent JavaScript</cite>. Confirm that statement by reading that Chapter. If you have yet to read <a href="http://eloquentjavascript.net/02_program_structure.html">Chapter Two</a>, do not delay, <mark>there will be quiz soon</mark> to help me determine if you are taking the reading seriously.</p>
+    <p>In <cite>JavaScript, The Definitive Guide</cite> read <strong>Chapter Four</strong> on constructing statements and then skim through <strong>Chapter Eight</strong> on functions and become familiar-ish—I will be talking about most of the material in that chapter as the course progresses.</p>
   </footer>
 </div>
