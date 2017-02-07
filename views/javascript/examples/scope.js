@@ -42,12 +42,9 @@ function sailTo(name) {
   }
 
   xMarksTheSpot(10);
-  // note, we have access to `xMarksTheSpot`
-  // and `name` and `booty`
-  // but no access to `paces`
+  // what items can we access here?
 }
 
 sailTo('Atlantis');
-// we have no access to anything except
-// `booty` and `sailTo` from this spot
+// what items can we access here?
 /* end nested */
