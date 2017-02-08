@@ -1,5 +1,18 @@
 <article>
-  <h2>Media</h2>
+  <h2>Content from Elsewhere</h2>
+  <h3>Using file paths</h3>
+  <p>Some folks are predisposed to hating paths, I would assume they dislike crossword puzzles, scrabble and word hunts. Even if such games go unappreciated, it would be hard to argue that they are conceptually difficult to wrap your head around. The same is true for paths—they have a few rules and once you understand them, they are not difficult.</p>
+  <h4>The Rules</h4>
+  <ol class="whitepaper pulled">
+    <li>There are two special symbols: <code>.</code> means <dfn title=".">current directory</dfn> and <code>..</code> means <dfn title="..">parent directory</dfn></li>
+    <li>The dots, if not at the very beginning of a path must be touching slashes—or said another way, should never be touching letters; ie., <samp class="error">not..ok</samp> vs. <samp class="success">yes/../ok</samp> vs <samp class="error">..no/way</samp> vs. <samp class="success">../good/job</samp></li>
+    <li>Moving directories is expressing a location: Understand that writing <samp class="success">yes/../ok</samp> is precisely the same thing as saying <samp class="success">./ok</samp>. There are infinite ways to move around a filesystem if you want to be absurd about it</li>
+    <li>A plain old <code>/</code> means <dfn title="/">directory</dfn> and if used at the very beginning of a path (without a dot) it means go to the beginning or <em>root</em> of the filesystem. When used with dots and words, it means move in and out of particular directories</li>
+    <li>Paths <em>implicitly</em> start from the the directory of the file they are specified in—you can explicitly use dots and slashes to change to an explicit starting point.</li>
+    <li>Words between slashes represent file names, and <strong>they must be an exact match</strong></li>
+    <li>Whitespace matters—try picturing it as pink-space if you must; clearly <samp class="error">dir🁢/src</samp> is not the same as <samp class="success">dir/src</samp></li>
+    <li>Blank spaces are hard to see, and a lot of mistakes are simply forgetting to notice it. Thus, <mark>I recommend never using non-word characters except for hyphens and underscores in file names</mark>.</li>
+  </ol>
   <h3>Embedding Images</h3>
   <p>Images are very easy to work with, in fact, optimizing and saving images (say, in Photoshop) is actually difficult—and beyond the scope of this course. As such let’s just revisit the basic embed of an image.</p>
   <pre class="prettyprint">
@@ -16,4 +29,5 @@
       Your browser does not support the audio element.
     &lt;/video&gt;
   </pre>
+  <!-- insert views/topics/tables/html/embedded-content.html -->
 </article>

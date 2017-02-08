@@ -83,8 +83,6 @@ class Course extends \bloc\controller
   protected function GETnotes(Student $student, $topic, $index)
   {
     $view = new View(self::layout);
-    // $this->evaluation = Data::FACTORY($topic, $student->evaluation($topic, $index));
-
     $criterion  = \models\Criterion::Collect(null, "[@type='{$topic}' and (@course = '{$student->course}' or @course = '*')]")->pick($index);
     $this->{$topic} = $this->item = $student->evaluation($topic, $index, $criterion);      
     $this->template   = 'editor';

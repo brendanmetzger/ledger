@@ -130,7 +130,8 @@ class Records extends \bloc\controller
     $item    = Data::FACTORY($topic, $student->evaluation($topic, $index), $_POST);
 
     if ($item->save()) {
-      \bloc\router::redirect($_POST['redirect']);
+      // add a bit of entropy so the response is not cached.
+      \bloc\router::redirect($_POST['redirect'] . '?'. time());
     } else {
       \bloc\application::instance()->log($item);
       $view = new View(self::layout);

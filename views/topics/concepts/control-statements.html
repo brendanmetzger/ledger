@@ -15,11 +15,12 @@
     svg:hover path:first-of-type{ stroke:cornflowerblue;stroke-opacity:1;}
   </style>
   
-  <h2>Control Statements by Syntax</h2>
+  <h2>Conditions</h2>
+  <p class="intro">Using the term quite loosely to start considering logic, conditions are going to be first presented as an examination of state—or stored information that can change at any given time. I think of writing classes as a way of declaring state.</p>
   <!--  insert views/css/media/flow.svg -->
-  <h3>With CSS</h3>
+  <h3><samp>if</samp> in CSS; qualifying class declarations.</h3>
   <p>Last week, we saw that adding a type selector directly adjacent to a class selector, ie. <code>h3.special { … }</code> says something like <q>only apply the class named special if the element is an h3</q>. Fixate for a moment on the word <b>if</b> and note that it implies there is a condition of true or false happening.</p>
-  <p>This, along with other careful use of classes can simulate boolean behavior with <abbr>CSS</abbr>, and can be used to great effect—which is why I think <a href="http://www.sitepoint.com/6-current-options-css-preprocessors/"><abbr>css</abbr> preprocessors</a> (programs that write <abbr>css</abbr> for you) are somewhat unnecessary. Written way back in the <abbr title="World Wide Web Consortium">W3C</abbr> <abbr>css</abbr> 2.0 spec: <q cite="https://www.w3.org/TR/CSS2/selector.html#class-html"><abbr title="Cascading Style Sheets">CSS</abbr> gives so much power to the <q>class</q> attribute, that authors could conceivably design their own <q>document language</q> based on elements with almost no associated presentation.</q> Broken down, the rules that inform how you may apply classes are so powerful that we could introduce meta-level thinking (not you actually would, or should.)</p>
+  <p>This, along with other careful use of classes can simulate boolean behavior with <abbr>CSS</abbr>, and can be used to great effect—which is why I think <a href="http://www.sitepoint.com/6-current-options-css-preprocessors/"><abbr>css</abbr> preprocessors</a> (programs that write <abbr>css</abbr> for you) are pretty obnoxious. Written way back in the <abbr title="World Wide Web Consortium">W3C</abbr> <abbr>css</abbr> 2.0 spec: <q cite="https://www.w3.org/TR/CSS2/selector.html#class-html"><abbr title="Cascading Style Sheets">CSS</abbr> gives so much power to the <q>class</q> attribute, that authors could conceivably design their own <q>document language</q> based on elements with almost no associated presentation.</q> Broken down, the rules that inform how you may apply classes are so powerful that we could introduce meta-level thinking (not you actually would, or should.)</p>
   <figure class="explain container">
     <figcaption>
       <p class="note">Looking at the sample carousel through the styles below. Notice how the styles specify chained classes—this effectively allows you to use combinations of classes to dictate style.</p>
@@ -46,10 +47,9 @@
     //]]>
     </script>
   </figure>
-  <hr class="ruled b t"/>
   <h3>With Javascript</h3>
   <p>Boolean Algebra, the namesake of George Boole, a 19th century mathematician who pioneered the system of logical operations, can take complicated sets of logic and break them into a fundamental binary solution that can only be one of two values: <code>true</code> and <code>false</code>. These <strong>Boolean values</strong> have straightforward properties, but as you combine them and use the algebraic systems, they quickly escalate in complexity.</p>
-  <section class="comparison container whitepaper t b">
+  <section class="comparison container whitepaper pulled">
     <dl class="half float left">
       <dt class="h3"><strong>true</strong> values and expressions</dt>
       <dd><q>true</q> (obviously), in JavaScript, this is written <code>true</code></dd>
@@ -71,8 +71,7 @@
   </section>
   
   <section class="explain">
-    <aside class="note container">
-      <img src="[$cdn/media/images/fork.png]" class="__ float left" style="mix-blend-mode:darken;margin:0 2em;"/>
+    <aside class="note">
       <h3>Order of Evaluation</h3>
       <p>Looking at the adjacent example, notice my careful use of parentheses. In general, always use parentheses for clarity, even when you fundamentally know the order of operations. Boolean operations are more obscure when it comes to order of evaluation, performing what is known as <a href="https://en.wikipedia.org/wiki/Short-circuit_evaluation">Short-circuit Evaluation</a>, which is a type of optimization (and quite unnecessary for most JavaScript programming).</p>
       <p>Fundamentally, without use of parentheses, the operation trys to find a true/false value as quickly as possible. Take the example and remove the parentheses and you’ll see an example of this.</p>
