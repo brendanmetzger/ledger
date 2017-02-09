@@ -972,7 +972,6 @@ abbr[title]:after {
   background-color: rgba(245,245,245,0.9);
   color: #333;
   box-shadow: -0.25em 1em 1em 0em rgba(0,0,0,0.2);
-  transition: transform 0.35s, opacity 0.25s 0.125s;
   opacity: 0;
   font-size: 85%;
   border-bottom: 2px solid rgba(0,0,0,0.5);

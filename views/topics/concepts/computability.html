@@ -1,5 +1,41 @@
-<article class="margins">
-  <h2>Programming (baby) step #2: <em>An example of computability</em></h2>
-  <p>I mentioned in the last outline that counting is a part of human history, and likewise, is the essential function of a computer. I provided some links and claimed that computers can be composed of essentially simple circuits made of relays (electrically controlled switches) and flip-flops (circuits that can remember their last state).</p>
-  <p>First, let’s take a look at a this <a href="https://www.youtube.com/watch?v=gI8luQnyM9A">square root calculator</a>. If interest/time permits, I'll go over <a href="https://gist.github.com/brendanmetzger/dbbf341f08c06f37f4739ad620af1289">this gist</a> I wrote of a tiny program that can count in any number of ways.</p>
+<article class="margins" id="import-of-counting">
+  <h2>Programming Concepts: <em>the importance of counting</em></h2>
+  <p>Counting is a pretty significant accomplishment, and likewise, is the essential function of a computer. Essentially pile up tons of switches into circuits and you have a machine that can count. I'm not dumbing anything down, sometimes simplicity is really really hard to understand.</p>
+  <p>Really, there are loads of quotes touting the maxim that making things simple takes more skill than making things complex. Consider the example below as proof. It simply shuffles the elements as you hover: last in the list goes to the first. It's also pure—click an element and it will duplicate itself without affecting the algorithm. This has almost nothing to do with programming, but with my understanding of how <abbr>html</abbr> is designed—<mark>it took me 2 lines of JavaScript, and decade to implement it that way.</mark></p>
+  <figure>
+    <style type="text/css" media="screen">
+      /* <![CDATA[ */
+      .shuffler {
+        display:flex;
+        margin:2em 0;
+      }
+      .shuffler li {
+        transform: skewX(-15deg);
+        text-align:center;
+        mix-blend-mode: multiply;
+        flex: 1 1 auto;
+        display:inline-block;
+        padding:1em;
+        margin:0;
+      }
+      /* ]]> */
+    </style>
+    <ul class="plain shuffler" onmousemove="setTimeout(Element.prototype.insertBefore.bind(this, this.lastChild, this.firstChild),100);" onclick="event.target.parentNode.insertBefore(event.target.cloneNode(true),event.target);">
+      <li style="background-color:cyan;">C</li>
+      <li style="background-color:magenta;">M</li>
+      <li style="background-color:yellow;">Y</li>
+      <li style="background-color:gray;">K</li>
+    </ul>
+  </figure>
+  <h3 class="tt">Indices</h3>
+  <p>I use this as our starting example to programming because it illustrates a point that many neglect, which is programming is a series of small ideas that add up to massive opportunities. For starters, I think it is crucial to understand that counting is a way of describing situations. Examine the <abbr>cmyk</abbr> list above and ask/answer the following questions to yourself. Consider answering the questions using only numbers and universal symbols—as if to someone that knows arithmetic, but does not speak the same language as you. This is a <em>simple</em> concept and yet is very <em>difficult</em>.</p>
+  <ol class="whitepaper pulled">
+    <li>What is a list? Describe if you must, but ultimately, use only abstract symbols. This may be a sketch if you must.</li>
+    <li>How long is the list? (A hint, the answer is a widely recognized symbol called an integer)</li>
+    <li>Is there a first element in the list? How would you describe that in the context of the list, using only symbols?</li>
+    <li>Is there an item that turns up last in the list? Describe it to me, using only symbols and operations?</li>
+    <li>How would you describe the second (or third or fourth) to last item in the list, again, using only symbols?</li>
+    <li>How would you move the first item to the last (assume that the list was in pencil on paper)?</li>
+  </ol>
+  
 </article>

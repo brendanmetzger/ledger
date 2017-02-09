@@ -18,7 +18,7 @@
   <h2>Conditions</h2>
   <p class="intro">Using the term quite loosely to start considering logic, conditions are going to be first presented as an examination of state—or stored information that can change at any given time. I think of writing classes as a way of declaring state.</p>
   <!--  insert views/css/media/flow.svg -->
-  <h3><samp>if</samp> in CSS; qualifying class declarations.</h3>
+  <h3>'Conditions' with selectors; <em>Thinking about <code>if</code></em></h3>
   <p>Last week, we saw that adding a type selector directly adjacent to a class selector, ie. <code>h3.special { … }</code> says something like <q>only apply the class named special if the element is an h3</q>. Fixate for a moment on the word <b>if</b> and note that it implies there is a condition of true or false happening.</p>
   <p>This, along with other careful use of classes can simulate boolean behavior with <abbr>CSS</abbr>, and can be used to great effect—which is why I think <a href="http://www.sitepoint.com/6-current-options-css-preprocessors/"><abbr>css</abbr> preprocessors</a> (programs that write <abbr>css</abbr> for you) are pretty obnoxious. Written way back in the <abbr title="World Wide Web Consortium">W3C</abbr> <abbr>css</abbr> 2.0 spec: <q cite="https://www.w3.org/TR/CSS2/selector.html#class-html"><abbr title="Cascading Style Sheets">CSS</abbr> gives so much power to the <q>class</q> attribute, that authors could conceivably design their own <q>document language</q> based on elements with almost no associated presentation.</q> Broken down, the rules that inform how you may apply classes are so powerful that we could introduce meta-level thinking (not you actually would, or should.)</p>
   <figure class="explain container">
@@ -68,18 +68,6 @@
       <dd><q>This name doesn’t match</q>,   <code>'Boabdil' == 'boabdil'</code></dd>
       <dd><q>This name is <strong>doesn’t not</strong> match</q> <code>'Boabdil' != 'Boabdil'</code></dd>
     </dl>
-  </section>
-  
-  <section class="explain">
-    <aside class="note">
-      <h3>Order of Evaluation</h3>
-      <p>Looking at the adjacent example, notice my careful use of parentheses. In general, always use parentheses for clarity, even when you fundamentally know the order of operations. Boolean operations are more obscure when it comes to order of evaluation, performing what is known as <a href="https://en.wikipedia.org/wiki/Short-circuit_evaluation">Short-circuit Evaluation</a>, which is a type of optimization (and quite unnecessary for most JavaScript programming).</p>
-      <p>Fundamentally, without use of parentheses, the operation trys to find a true/false value as quickly as possible. Take the example and remove the parentheses and you’ll see an example of this.</p>
-    </aside>
-    <pre class="prettyprint">
-      <!-- review views/javascript/examples/booleans.js order of evaluation-->
-    </pre>
-    <script type="text/javascript">bloc.embed('/javascript/examples/booleans.js', true);</script>
   </section>
   <h3>Coercion</h3>
   <p>While not particularly useful to a beginner programmer, type coercion is often a <em>misunderstood and misused</em> part of programming languages. In JavaScript, you have the following primitive types at your disposal: <code>number</code>, <code>string</code>, <code>boolean</code>, <code>null</code> and <code>undefined</code>. Trying to use any non-boolean type in a logical operation (any operation that uses a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators">logical operator</a>) may produce unexpected results as they are cast to booleans for comparison. Depending on the value they might be considered <mark class="strong">truthy</mark> or <mark class="strong">falsy</mark>. As you begin, try very hard not to rely on coercion until you understand it intuitively. In the meantime, here is a table to start getting familiar:</p>

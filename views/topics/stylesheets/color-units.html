@@ -7,18 +7,18 @@
   <p>Before we analyze a few methods, let’s look at what 8 bits actually looks like a few different ways. In binary, it is an 8 digit number: <code>00000000</code>. Remember, a bit is a binary digit, which is a 0 or 1. We can count in binary, so essentially, each channel can count up to <code>11111111</code>. That same number, converted to decimal is <code>255</code>. That number in hex is, interestingly, <code>FF</code>.</p>
   <p>Use the table below to start exploring colors and how they work.</p>
   <div class="container t ruled top">
-    <div class="one-third float left note">
-      <h3>Hexadecimal</h3>
+    <div class="one-third float left margins pad">
+      <h3 class="centered tt bb">Hexadecimal</h3>
       <p><a href="https://en.wikipedia.org/wiki/Hexadecimal">Hexadecimal</a>, or base 16 is yet another method of counting, one in which we have 16 distinct digits instead of our familiar 0–9, and they are <em>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F</em>.</p>
       <p>To specify a color, you concatenate three hex values in order from red to green to blue. 0 is black (no value), FF is is the highest value, ie., white is <code>#FFFFFF</code></p>
     </div>
-    <div class="one-third float left note">
-      <h3><abbr title="red green blue">rgb</abbr> and <abbr title="red green blue alpha">rgba</abbr></h3>
+    <div class="one-third float left margins pad">
+      <h3 class="centered tt bb"><abbr title="red green blue">rgb</abbr> and <abbr title="red green blue alpha">rgba</abbr></h3>
       <p>Red Green Blue is the long form of the hex system, but works in almost the same way. Instead of using hex, you use decimal. 0 is still black, but this time 255 is the upper limit, ie., white is <code>rgb(255, 255, 255)</code></p>
       <p>A very advantageous use of the rgb system is that you can add an alpha channel, or opacity. <code>rgba(255, 255, 255, 0.5)</code> would specify white at 50% opacity. <strong>This is handy.</strong></p>
     </div>
-    <div class="one-third float left note">
-      <h3><abbr title="hue saturation lightness">hsl</abbr> and <abbr title="hue saturation lightness alpha">hsla</abbr></h3>
+    <div class="one-third float left margins pad">
+      <h3 class="centered tt bb"><abbr title="hue saturation lightness">hsl</abbr> and <abbr title="hue saturation lightness alpha">hsla</abbr></h3>
       <p>This is the new kid on the block, and has some interesting applications with JavaScript. I don’t use it as much for my regular color assignments, but that could be mostly out of habit. <abbr>HSL</abbr> can be easier to work with from memory, as the saturation and lightness components are just components of the hue. Like rgb, you may specify an alpha channel.</p>
 
       <p></p>

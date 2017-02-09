@@ -57,7 +57,6 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Flashcards
 - [x] hovering a paragraph writes out abbreviations
 - [ ] btoa on discourse input
-- [ ] redirects should specify a nocache header.
 
 ** What about an ajax callback that returns an intention. Like, if true, check this box. I suppose this is a promise maybe? That means investigate promises.
 
