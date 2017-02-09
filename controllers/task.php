@@ -370,6 +370,14 @@ class Task extends \bloc\controller
       
       $commit = $git->commit($git->diff('--shortstat'), "--date=\"{$date}\"");
       print_r($commit);
+      
+      $index = \models\Calendar::INDEX($student->section->schedule);
+      $practice = $student->practice['list'][$index]['practice'];
+      
+      echo $practice['@commits'] . ' commits for ' . $practice->score . "%\n";
+      $practice->save();
+      echo "Saving practice no {$practice->index} for {$student['@name']}\n";
+      
     }
     print_r($git->push('master', '--all'));
   }
@@ -391,7 +399,6 @@ class Task extends \bloc\controller
       echo $git->checkout($student['@key']) . "\n";
       exec('chmod -R g+r *');
       // echo $git->execute('pull') . "\n";
-      
     }
   }
   
