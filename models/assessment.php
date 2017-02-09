@@ -264,7 +264,7 @@ namespace models;
       }, "[@type='{$evaluation}' and (@course = '{$course}' or @course = '*')]");
 
       $weight = Assessment::$weight[$evaluation];
-                            
+      
       return new \bloc\types\dictionary([
         'list'   => iterator_to_array($collect, false),
         'score'  => $average === 1 && $total == 0 ? $weight : max(0, round($accrual * $weight, 1)),
