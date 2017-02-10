@@ -81,7 +81,8 @@ namespace models;
     
     public function getBaseUrl(\DOMElement $context)
     {
-      return $this->student['@url'] . $this->criterion->context['@path'] . '/';
+      $url = $_SERVER['REQUEST_SCHEME'] . substr($this->student['@url'], 4);
+      return $url . $this->criterion->context['@path'] . '/';
     }
     
     public function getContribution(\DOMElement $context)
