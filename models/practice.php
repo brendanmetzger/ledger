@@ -59,14 +59,10 @@ namespace models;
     }
     
     
-    /*
-      TODO This will need to be placed into the cron that does the nightly updates.
-    */
-    
     public function getReport(\DOMElement $context)
     {
       $log = $this->student->log;
-      \bloc\application::instance()->log($log);
+
       // cross reference the log to assign commits for that week
       $index = $this->criterion["@index"];
       $week = $this->student->section->schedule[$index];
@@ -78,7 +74,6 @@ namespace models;
         return array_key_exists($date->format('yz'), $log) ? 1 : 0;
       }, iterator_to_array(new \DatePeriod($week['object'], new \DateInterval('P1D') , $end)));
       $this->setCommitsAttribute($context, $commits ?? '');
-      $context->setAttribute('updated', (new \DateTime())->format('Y-m-d H:i:s'));
       return $commits;
     }
   }

@@ -373,6 +373,7 @@ class Task extends \bloc\controller
       
       $index = \models\Calendar::INDEX($student->section->schedule);
       $practice = $student->practice['list'][$index]['practice'];
+      print_r($practice->report);
       
       echo $practice['@commits'] . ' commits for ' . $practice->score . "%\n";
       $practice->save();

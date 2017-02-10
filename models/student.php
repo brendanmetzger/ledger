@@ -83,7 +83,6 @@ namespace models;
     
     public function getLog(\DOMElement $context)
     {
-
       $log = $this->repo()->log();
 
       $keys = array_map(function(&$log) {

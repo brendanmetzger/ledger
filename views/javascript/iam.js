@@ -82,25 +82,12 @@ window.validate = (function(identity, domain) {
     var pattern = htm.match(/\n\s+/gm).map(item => item.match(/[^\n]/g).length);
   }
 
-  function drawHelper() {
-    var list = document.body.appendChild(document.createElement('ul'));
-    list.addEventListener('click', evt => list.classList.toggle('open'));
-    list.id = '_e_s_p_e_c_i_a_l_';
-    list.classList.add('console');
-    var item = list.appendChild(document.createElement('li'));
-    item.innerHTML = 'open your console when developing';
-    item.dataset.type  = 'console';
-    item.classList.add('error');
-  }
 
-
-  function checkConsole(selector) {
+  function checkConsole(element) {
     var element = new Image();
     Object.defineProperty(element, 'id', {
       get: function () {
-        var item = document.querySelector(selector);
-        item.parentNode.classList.remove('console');
-        item.parentNode.removeChild(item);
+        element.removeAttribute('data-warn');
       }
     });
     console.debug('%cto debug, run: validate.html() or validate.css()  ', element);
@@ -163,17 +150,18 @@ window.validate = (function(identity, domain) {
         console.error("Please Enter a Valid HTML Node");
         return; 
       }
-      var re = /\s+/g;
+      var re  = /\s+/g;
       var map = ['textContent','outerHTML'].map(m => elem[m].replace(re, ' ').trim().length);
       return map[0] / (map[1] - map[0]);
     }
   };
   
   addEventListener('load', function() {
-    drawHelper('_e_s_p_e_c_i_a_l_');
-    checkConsole('#_e_s_p_e_c_i_a_l_ [data-type=console]');
+    document.documentElement.dataset.warn = "open dev tools";
+    checkConsole(document.documentElement);
     validate.html(true);
     validate.css(true);
   });
+  
   return validate;
 });

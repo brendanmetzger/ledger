@@ -11,33 +11,15 @@ html.VOID h1 { text-transform: uppercase;letter-spacing:0.125em;border-bottom:2p
 html.VOID blockquote { padding:5vmax;margin:2em -5vmax;background-color:#fff;box-shadow:0 0 1em rgba(0,0,0,0.05);max-width:75%;}
 html.VOID blockquote p:not(:last-of-type) {font-size:5vmin;font-family:Baskerville, Times, Georgia;line-height:1;font-style:italic;}
 
-#_e_s_p_e_c_i_a_l_ {
-  display: none;
-}
-
-#_e_s_p_e_c_i_a_l_.console {
-  background-color: rgb(193, 17, 17);
-}
-
-#_e_s_p_e_c_i_a_l_.open {
-  transform: rotate(0deg);
-  opacity: 1;
-  height: 15vh;
-}
-
-#_e_s_p_e_c_i_a_l_ li {
-  padding: 5vh 1em;
-}
-
-#_e_s_p_e_c_i_a_l_:not(.open) li.error:before {
-  content: ' ! ';
-  display:flex;
-  font-weight: 800;
-  font-size: 5vh;
-}
-
-#_e_s_p_e_c_i_a_l_:not(.open) li.error {
-  transform: rotate(-45deg);
-  transform-origin: left top;
-  width: 0;
+html[data-warn]:before {
+  position: fixed;
+  content: attr(data-warn);
+  background-color: hsla(0, 75%, 75%, 0.95);
+  color: #fff;
+  top: 1em;
+  right: 1em;
+  z-index: 10;
+  padding: 1em;
+  font-family: 'Courier New', monospace;
+  width: 5em;
 }

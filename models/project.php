@@ -165,9 +165,14 @@ namespace models;
       $context->setAttribute('axes', implode($data, '+'));
     }
 
-    public function getScore(\DOMElement $context)
+    public function getBenchmark(\DOMElement $context)
     {
-      return $this->status == 'open' ? null : array_sum($this->axes);
+      return $this->status == 'open' ? null : round($this->contribution['commits'] / 70, 2);
+    }
+    
+    public function getScore()
+    {
+      return $this->status == 'open' ? 1 : array_sum($this->axes);
     }
 
     public function getWeighted(\DOMElement $context)
