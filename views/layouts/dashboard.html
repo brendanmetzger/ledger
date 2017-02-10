@@ -49,10 +49,10 @@
           <th class="lighter"><span>µ × </span><span class="percentage">[$student:practice:weight]</span></th>
         </tr>
         <tr>
-          <th>Commits</th>
+          <th>Hits</th>
           <!-- iterate student:practice:list -->
-          <td class="[$schedule:status centered]" title="[$practice:score]">
-            <strong class="percentage">[$practice:total @ $practice:percentage]</strong>
+          <td class="[$schedule:status centered]" style="[background-color:hsl(225, $practice:percentage%, 80%)]">
+            <strong>[$practice:total]</strong>
           </td>
           <th class="percentage">[$student:practice:score]</th>
         </tr>
@@ -74,6 +74,7 @@
           <th>Details</th>
           <th>Your page<sup><a href="/overview/glossary#cache-invalidation">[*]</a></sup></th>
           <th>Notes</th>
+          <th>Commits</th>
           <th>∑ Stats</th>
           <th>Score</th>
         </tr>
@@ -97,6 +98,23 @@
           box-sizing:border-box;
           flex: 0 0 50%;
         }
+        td.chart {
+          min-width:auto;
+          padding:0;
+        }
+        td.chart svg {
+          width: 100%;
+          display:block;
+        }
+        td.chart svg rect {
+          fill: rgba(0,0,0,0.05);
+          stroke: rgba(255,255,255,0.5);
+          stroke-width: 1;
+          shape-rendering:crispEdges;
+        }
+        td.chart svg rect.y {
+          fill: hsla(225, 100%, 80%, 0.75);
+        }
         /* ]]> */
       </style>
       <tbody>
@@ -104,7 +122,7 @@
         <tr class="[$project:status]">
           <th><span style="font-family:var(--condensed);font-size:5em;font-weight:200;text-transform:uppercase;line-height:1;letter-spacing:-0.075em;color:rgba(0,0,0,0.65);">[$project:criterion:@title]</span></th>
           <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <em class="ticker">[$due:ticker]</em></td>
-          <td style="width:15%">
+          <td style="width:15%;vertical-align:middle;">
             <a href="[[/$$student:course/criterion/project/$project:criterion:@index/$$student:section:@id]]">[ $project:criterion]</a>
           </td>
           <td class="centered"><a href="[[$project:baseurl?$$entropy]]">Preview</a></td>
@@ -112,6 +130,7 @@
             <a href="[[/$$student:course/notes/$project:criterion:path/$$student:@id]]">[[$$review]]</a>
             <a href="[[/$$instructor:path/$project:criterion:path/$$student:@id]]">[[$$instructor:edit]]</a>
           </td>
+          <td class="chart">[$project:chart]</td>
           <td class="sub-table">
             <dl>
               <dt>Errors</dt>
@@ -120,8 +139,6 @@
               <dd>[$project:contribution:length]</dd>
               <dt>Density</dt>
               <dd>[$project:contribution:density]</dd>
-              <dt>Commits</dt>
-              <dd>[$project:contribution:commits]</dd>
               <dt><abbr>SLOC</abbr></dt>
               <dd>[$project:contribution:sloc]</dd>
             </dl>
@@ -131,7 +148,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="6">µ ⋅ <span class="percentage">[$student:projects:weight]</span></th>
+          <th colspan="7">µ ⋅ <span class="percentage">[$student:projects:weight]</span></th>
           <td class="centered"><strong class="percentage">[$student:projects:score]</strong></td>
         </tr>
       </tfoot>
@@ -186,8 +203,8 @@
     </table>
   </section>
   <section style="margin:5em 0;padding:2em;border-top-width:1em;">
-    <h2>Cumulative Grade: <strong class="percentage" title="[$student:grade:letter]" data-score="[$student:grade:score]">NA</strong></h2>
+    <h2>Cumulative Grade: <strong class="percentage" data-letter="[$student:grade:letter]" data-score="[$student:grade:score]">[$student:grade:score]</strong></h2>
     <h4 class="vertical">Note</h4>
-    <p>Until one of every type of assignment have been graded, the average score can change dramatically from week to week depending on practice, attendance, etc.</p>
+    <p>Until one of every type of assignment have been graded, your score can change dramatically from week to week depending on practice, attendance, etc. Keep an eye on the future—<mark>your grade should improve every week</mark> if you make the appropriate adjustments and refactor your projects.</p>
   </section>  
 </article>

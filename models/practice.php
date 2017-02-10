@@ -45,7 +45,6 @@ namespace models;
 
     public function getScore(\DOMElement $context)
     {
-      $report = $this->total;
       return (float)$context['@value'];
     }
     
@@ -56,14 +55,18 @@ namespace models;
     
     public function getTotal(\DOMElement $context)
     {
-      $report = $this->report;
       return array_sum(str_split($context['@commits']));
     }
+    
+    
+    /*
+      TODO This will need to be placed into the cron that does the nightly updates.
+    */
     
     public function getReport(\DOMElement $context)
     {
       $log = $this->student->log;
-      
+      \bloc\application::instance()->log($log);
       // cross reference the log to assign commits for that week
       $index = $this->criterion["@index"];
       $week = $this->student->section->schedule[$index];

@@ -90,6 +90,30 @@
       });
     });
   </script>
+    
+  <table class="full chart tt bb">
+    <caption>
+      <h3 class="rag-left pad b caps spaced">Practice</h3>
+    </caption>
+    <thead>
+      <tr class="rotate">
+        <th>Week</th>
+        <!-- iterate section:students -->
+        <th><a href="[/records/student/$student:@id]">[$student:shortname]</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- iterate records:practice -->
+      <tr>
+        <th>[$criterion:@index]</th>
+        <!-- iterate records -->
+        <td style="[background-color:hsl(200, $assessment:practice:percentage%, 80%)]" class="[centered $assessment:schedule:status]">
+          <span>[$assessment:practice:total]</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    
   <table class="full chart tt bb">
     <caption>
       <h3 class="rag-left pad b caps spaced">Projects</h3>
@@ -107,7 +131,7 @@
         <th><a href="[[/records/book/$$section:@course/$$section:@id/project/$criterion:@index]]">[$title]</a></th>
         <!-- iterate records -->
         <td class="centered marked" title="[$assessment:project:letter]" style="[--hue: $assessment:stats:standard; --value: $assessment:stats:standard%;]">
-          <a class="edit" href="[[/records/evaluate/project/$$criterion:@index/$student:@id]]">[$assessment:project:@commits]</a>
+          <a class="edit" href="[[/records/evaluate/project/$$criterion:@index/$student:@id]]">[$assessment:project:weighted]</a>
         </td>
       </tr>
     </tbody>

@@ -107,21 +107,26 @@ namespace models;
       foreach ($book as $key => &$record) {
 
         foreach ($section->assignments($key) as $index => $item) {
+          
           $records = [];
+          
           foreach ($students as $student) {
 
             $records[] = [
               'assessment' => $student['student']->{$key}->list[$item['@index']],
               'student'    => $student['student'],
             ];
+            
           }
+          
           $record[] = [
             'criterion' => $item,
             'due' => $student['student']->section->schedule[$item['@assigned'] ?? $index],
-            'title' => $item['@title'],
+            'title' => $item['@title'] ?? $item['@index'],
             'records' => $records,
           ];
         }
+        
 
       }
       return new \bloc\types\Dictionary($book);
@@ -234,11 +239,10 @@ namespace models;
     {
       $reviewed = $this->student->context->find("{$evaluation}[@updated]");
       $total    = $reviewed->count();
-      $average  = 1 / ($total ?: 1);
-      $accrual  = 0;
+      $scores   = [];
       $flags    = ["⚐" => 0, "✗" => 0];
 
-      $collect = Criterion::collect(function ($criterion, $index) use($evaluation, $total, $reviewed, $average, &$accrual, &$flags) {
+      $collect = Criterion::collect(function ($criterion, $index) use($evaluation, $total, $reviewed, &$flags, &$scores) {
         $node = $reviewed->pick($index) ?? $this->student->context->getFirst($evaluation, $index);
         $map = [
           $evaluation => Data::FACTORY($evaluation, $node, null, [new \models\Criterion($criterion), $this->student]),
@@ -247,27 +251,37 @@ namespace models;
         ];
         
         $score = $map[$evaluation]->score;
-        
-        if (($evaluation === 'quiz' || $evaluation === 'project') && $total > $criterion['@index']) {
-          $stats = $this->collective($this->student->section, $criterion);
-          if ($score > 0 && $stats['sd'] > 0) {
-            $z = ($score - $stats['mean']) / $stats['sd'];
-            $score = round($stats['wmean'] + ($z * $stats['sd']), 2);
-          }
+        if ($evaluation === 'project') {
+          $stats             = $this->collective($this->student->section, $criterion);
+          $z                 = ($score - $stats['mean']) / ($stats['sd'] ?: 1);
+          $score             = round($stats['wmean'] + ($z * $stats['sd']), 2);
           $stats['standard'] = $score * 100;
-          $map['stats'] = $map[$evaluation]->stats = $stats;
+          $map['stats']      = $map[$evaluation]->stats = $stats;
         }
-        $accrual = ($accrual + ($score * $average));
-
+        
+        if ($map[$evaluation]->status != 'open') {
+          $scores[] = $score;
+        }
+        
+        
         return $map;
 
       }, "[@type='{$evaluation}' and (@course = '{$course}' or @course = '*')]");
 
       $weight = Assessment::$weight[$evaluation];
+      $list   = iterator_to_array($collect, false);
+      
+      // if necessary I'll drop the practice
+      // if ($evaluation == 'practice') {
+      //   sort($scores);
+      //   unset($scores[0]);
+      // }
+      
+      $avg = array_sum($scores) / (count($scores) ?: 1);
       
       return new \bloc\types\dictionary([
-        'list'   => iterator_to_array($collect, false),
-        'score'  => $average === 1 && $total == 0 ? $weight : max(0, round($accrual * $weight, 1)),
+        'list'   => $list,
+        'score'  => max(0, round($avg * $weight, 1)),
         'weight' => $weight,
       ]);
     }

@@ -667,15 +667,6 @@ summary:focus {
   line-height: 1em;
 }
 
-label h4 {
-  float: left;
-  width: 50%;
-  box-sizing: border-box;
-  margin: 0;
-  padding-right: 0.5em;
-  font-weight: 400;
-  font-size: 1.5em;
-}
 
 label input[type='checkbox'] {
   vertical-align: top;
@@ -698,12 +689,6 @@ aside.note p {
   text-align: justify;
 }
 
-label input[type='range'] {
-  width: 50%;
-  margin: 0.25em 0;
-  box-sizing: border-box;
-  float: left;
-}
 
 ol.linenums {
   font-size: 0.65em;

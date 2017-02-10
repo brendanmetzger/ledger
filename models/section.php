@@ -21,7 +21,7 @@ namespace models;
 
     public function assignments($type)
     {
-      $key = ($type == 'practice' || $type == 'quiz') ? $this['@course'] : '*';
+      $key = ($type == 'quiz') ? $this['@course'] : '*';
       return \models\Criterion::collect(function ($item) use($type){
         return Data::FACTORY($type, $item);
       }, "[@type='{$type}' and @course='{$key}']");

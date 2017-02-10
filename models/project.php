@@ -24,7 +24,18 @@ namespace models;
       ]
     ];
 
-    static public $metrics = ['Concept', 'Precision/Care', 'Syntax/Errors', 'Documentation', 'Presentation', 'Research', 'UX/Accessible', 'Proj. Manage', 'IxD', 'Style/Voice'];
+    static public $metrics = [
+      'Concept'            => 'Is there substance to the work being done',
+      'Potential'          => 'Ideas that can continue to be developed',
+      'Documentation'      => 'Is the README helpful and is code legible',
+      'Experimentation'    => 'Research into ideas and principles of web development',
+      'Accessibility'      => 'Semantic markup is used and the proper attributes for media accessibility',
+      'Project Management' => 'Does the work show that the author has an agenda and can organize tasks',
+      'Interaction Design' => 'Are there elements that utilize interaction, as opposed to static experiences',
+      'Style/Voice'        => 'Is the content and or design seem unique, as opposed to templated or generic',
+      'User Experience'    => 'Visiting the page a user knows how to navigate and experience the content',
+      'Craft'              => 'Does the construction show care and thought but into all details',
+    ];
     
     public function setFile(\DOMElement $context, $data)
     {
@@ -105,6 +116,26 @@ namespace models;
       
       return new \bloc\types\Dictionary($table);
     }
+    
+    public function getChart(\DOMElement $context)
+    {
+      $contributions = $this->contribution['commits'];
+      $view = new \bloc\View('views/css/media/blank.svg');
+      $dom = $view->dom;
+      $dom->documentElement->setAttribute('viewBox', '0 0 70 100');
+      for ($i=0; $i < 70; $i++) {
+        $x = ($i % 7) * 10;
+        $y = floor($i / 7) * 10;
+        $r = $dom->documentElement->appendChild($dom->createElement('rect'));
+        $r->setAttribute('height', 10);
+        $r->setAttribute('width', 10);
+        $r->setAttribute('x', $x);
+        $r->setAttribute('y', $y);
+        $r->setAttribute('class', --$contributions > 0 ? 'y' : 'n');
+      }
+
+      return substr($view->render(['title' => 'ok then']), strlen('<?xml version="1.0"?>'));
+    }
 
     public function getIndex(\DOMelement $context)
     {
@@ -123,8 +154,9 @@ namespace models;
 
     public function getInputs(\DOMElement $context)
     {
-      return (new \bloc\types\Dictionary($this->axes))->map(function ($axis, $idx) {
-        return ['value' => $axis, 'key' => self::$metrics[$idx]];
+      $metrics = array_keys(self::$metrics);
+      return (new \bloc\types\Dictionary($this->axes))->map(function ($axis, $idx) use($metrics) {
+        return ['value' => $axis, 'key' => $metrics[$idx]];
       });
     }
 
