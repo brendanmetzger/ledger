@@ -124,8 +124,8 @@ namespace models;
       $dom = $view->dom;
       $dom->documentElement->setAttribute('viewBox', '0 0 70 100');
       for ($i=0; $i < 70; $i++) {
-        $x = ($i % 7) * 10;
-        $y = floor($i / 7) * 10;
+        $x = floor($i / 10) * 10;
+        $y = ($i % 10) * 10;
         $r = $dom->documentElement->appendChild($dom->createElement('rect'));
         $r->setAttribute('height', 10);
         $r->setAttribute('width', 10);

@@ -83,11 +83,11 @@ window.validate = (function(identity, domain) {
   }
 
 
-  function checkConsole(element) {
+  function checkConsole() {
     var element = new Image();
     Object.defineProperty(element, 'id', {
       get: function () {
-        element.removeAttribute('data-warn');
+        document.documentElement.removeAttribute('data-warn');
       }
     });
     console.debug('%cto debug, run: validate.html() or validate.css()  ', element);
@@ -157,8 +157,8 @@ window.validate = (function(identity, domain) {
   };
   
   addEventListener('load', function() {
-    document.documentElement.dataset.warn = "open dev tools";
-    checkConsole(document.documentElement);
+    document.documentElement.dataset.warn = "open console ↑";
+    checkConsole();
     validate.html(true);
     validate.css(true);
   });
