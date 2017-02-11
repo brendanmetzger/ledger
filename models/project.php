@@ -134,7 +134,7 @@ namespace models;
         $r->setAttribute('class', --$contributions > 0 ? 'y' : 'n');
       }
 
-      return substr($view->render(['title' => 'ok then']), strlen('<?xml version="1.0"?>'));
+      return substr($view->render(), strlen('<?xml version="1.0"?>'));
     }
 
     public function getIndex(\DOMelement $context)

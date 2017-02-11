@@ -42,6 +42,24 @@ namespace models;
     {
       return base64_decode($this->context->nodeValue);
     }
+    
+    public function getVisual(\DOMElement $context)
+    {
+      $view = new \bloc\view('views/css/media/blank.svg');
+      $view->dom->documentElement->setAttribute('viewBox', '0 0 100 70');
+      $view->dom->documentElement->setAttribute('style', 'stroke:rgba(255,255,255,0.1);');
+      $view->dom->documentElement->setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      foreach (str_split($context['@commits']) as $idx => $value) {
+        $r = $view->dom->documentElement->appendChild($view->dom->createElement('rect'));
+        $r->setAttribute('width', 100);
+        $r->setAttribute('height', 10);
+        $r->setAttribute('x', 0);
+        $r->setAttribute('y', 10 * $idx);
+        $r->setAttribute('fill',  'rgba(0,0,255,'.($value/10).')');
+      };
+      
+      return 'data:image/svg+xml;base64,'.base64_encode($view->render());
+    }
 
     public function getScore(\DOMElement $context)
     {
