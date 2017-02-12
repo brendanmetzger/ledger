@@ -25,16 +25,16 @@ namespace models;
     ];
 
     static public $metrics = [
-      'Concept'            => 'Is there substance to the work being done',
-      'Potential'          => 'Ideas that can continue to be developed',
-      'Documentation'      => 'Is the README helpful and is code legible',
-      'Experimentation'    => 'Research into ideas and principles of web development',
-      'Accessibility'      => 'Semantic markup is used and the proper attributes for media accessibility',
-      'Project Management' => 'Does the work show that the author has an agenda and can organize tasks',
+      'Concept'            => 'Is there a rationale and idea behind the project, and is it substantitive?',
+      'Documentation'      => 'Is the README helpful and is code legible. Are notes kept to help others understand process, intentions and goals?',
+      'Potential'          => 'The concept is strong enough to continue to be developed',
+      'Experimentation'    => 'Projects show research into ideas and principles of web development.',
+      'Style/Voice'        => 'Is the content and or design seem unique, as opposed to templated or generic?',
+      'Craft'              => 'Does the construction show care and thought put into the necessary details?',
+      'Project Management' => 'Does the work show that the author has an agenda and can organize tasks and deliverables?',
       'Interaction Design' => 'Are there elements that utilize interaction, as opposed to static experiences',
-      'Style/Voice'        => 'Is the content and or design seem unique, as opposed to templated or generic',
-      'User Experience'    => 'Visiting the page a user knows how to navigate and experience the content',
-      'Craft'              => 'Does the construction show care and thought but into all details',
+      'Accessibility'      => 'Does the designer/developer understand and utilize any methods of universal design and concepts?',
+      'User Experience'    => 'Does the designer/developer understand paradigms of a user centered approach to design?',
     ];
     
     public function setFile(\DOMElement $context, $data)

@@ -71,19 +71,14 @@ class Overview extends \bloc\controller
   }
   
   
-  public function CLIgit()
+  public function GETevaluation()
   {
-    $git = exec('which git');
-    
-    $cmd = 'cd ' . PATH . 'data/ && ' . $git . ' checkout test && ' . $git . ' status';
-    ob_start();
-    passthru($cmd, $ret);
-    $output = ob_get_clean();
-    
-    
-    echo $output;
-    echo $ret;
-    
+    $view = new View(self::layout);
+    $this->criteria = (new \bloc\types\Dictionary(\models\Project::$metrics))->map(function($value, $key) use(&$count) {
+      return ['name' => $key, 'text' => $value ];
+    });
+    $view->content =  "views/layouts/evaluation.html";
+    return $view->render($this());
   }
 
 }
