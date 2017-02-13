@@ -2,19 +2,18 @@
   <header>
     <img src="[$cdn/media/images/squid.png]" class="float left ___" style="mix-blend-mode:multiply;margin:3em 0 0"/>
     <h1 class="massive">Process</h1>
-    <p class="intro">Process represents both an approach to learning as well as instruction. It is about becoming comfortable with with expectations to produce confident, meaningful work.</p>
+    <p class="intro">Process represents both an approach to learning as well as instruction. It is about becoming comfortable with expectations necessary to produce confident, meaningful work.</p>
   </header>
   <style type="text/css" media="screen">
     /* <![CDATA[ */
     .caps-lock {text-transform:uppercase;}
     .caps-lock li {
-      border-bottom:1px solid #AAA;
       margin: 0.25em inherit;
       padding:1em;
     }
 
 
-    #project-outline ul {
+    #project-outline .row, #project-outline .grid {
       margin:0;
       padding:0;
       list-style:none;
@@ -46,41 +45,23 @@
       border-bottom:1px dashed rgba(0,0,0,0.1);
       font-family: 'Avenir Next Condensed';
     }
-    ul.graduated li:nth-child(1):before {
-      content: "To start, the initial review will consider...";
+    
+    ul.graduated li:nth-child(odd) {counter-increment: level;}
+    ul.graduated li:nth-child(odd):before {
+      font-weight:800;
+      letter-spacing: 0.25ch;
+      content: "Level " counter(level);
     }
-    ul.graduated li:nth-child(3):before {
-      content: "By week 6, your the next project will also be judged on...";
-    }
-
-    ul.graduated li:nth-child(5):before {
-      content: "By week 9, the project will consider the following as well...";
-    }
-
-    ul.graduated li:nth-child(7):before {
-      content: "By week 12, these methods will also be weighed...";
-    }
-
-    ul.graduated li:nth-child(9):before {
-      content: "And the final evaluation will also include";
-    }
+    
     ul.graduated li {
       padding:0.5em 1em;
       font-size:2em;
-      background-color:rgba(200,100,50,0.1);
     }
     
-    ul.graduated li:nth-child(n+3) {
-      background-color:rgba(255,100,0,0.2);
-    }
-    ul.graduated li:nth-child(n+5) {
-      background-color:rgba(255,100,0,0.3);
-    }
-    ul.graduated li:nth-child(n+7) {
-      background-color:rgba(255,100,0,0.4);
-    }
-    ul.graduated li:nth-child(n+9) {
-      background-color:rgba(255,100,0,0.5);
+    ul.graduated {
+      padding:5vmax;
+      background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(175, 200, 255, 0.3));
+      margin: 0 -5vmax;
     }
     
 
@@ -110,10 +91,14 @@
     }
 
     .grid li:nth-child(6n+1):after {
-      content: 'critique';
+      content: 'critique (level'  counter(crit) ')';
       display:block;
     }
+  /*  .grid li {
+      counter-reset: crit;
+    }*/
     .grid li:nth-child(6n+1) {
+      counter-increment: crit;
       padding-top:5vh;
       background-color: rgba(255,255,255,0.75);
       opacity: 1;
@@ -173,11 +158,11 @@
       <li>final</li>
     </ul>
   </figure>
-  <section id="critique" class="pulled whitepaper">
+  <section id="critique" class="whitepaper">
     <h2>Reviewing Work</h2>
     <div class="margins three columns">
-      <p>Punitive evaluation of projects is potentially devastating to morale and motivation, and something few instructors enjoy. However, the necessity of higher education mandates certain level of expectations, and thus, scoring should be meaningful, and more importantly, consequential. That last bit in particular is where critiques often fail—on two notable principles in particular: the first is that sometimes novice work is very difficult to discuss and the second is that if feedback is given, it happens <em>after</em> the project has been completed, voiding the opportunity to adjust the outcome.</p>
-      <p>To combat the first pitfall a rubric is used as a stand in for lengthy conversations. The rubric itself is a progressive mechanism designed to allow a student at the beginning of the semester to think most about concept and potential, while at the end of the semester to focus on technical details and project management. A successful student has made progress in many areas that help to articulate design work. By the last critique, a student should be delivering work that is better at speaking for itself, and any critique will reflect that positively.</p>
+      <p>Punitive evaluation of projects is potentially devastating to morale and motivation, and something few instructors enjoy. However, the necessity of higher education mandates certain level of expectations, and thus, scoring should be meaningful, and more importantly, consequential. That last bit in particular is where critiques often fail, especially in the following two ways. First, novice work is very difficult to discuss using one standard and second,  if feedback is given, it happens <em>after</em> the project is complete, voiding the opportunity to adjust techniques for a better outcome.</p>
+      <p>To combat the first pitfall I have a rubric that increases in expectancy as the course progresses. The rubric itself is a progressive mechanism designed to allow a student at the beginning of the semester to think most about concept and potential, while at the end of the semester to focus on technical details and project management. A successful student has made progress in many areas that help to articulate design work. By the last critique, a student should be delivering work that is better at speaking for itself, and any critique will reflect that positively.</p>
     </div>
     <figure class="tt">
       <figcaption class="whitepaper">
