@@ -12,8 +12,6 @@
 - [ ] Clicking on any image will link to the high resolution version
 - [ ] Use a CSS transition
 - [ ] Your code is structurally organized either by your hand or with a plugin
-- [ ] FILL IN WITH YOUR OWN TODO (or accept 10% deduction)
-- [ ] FILL IN WITH YOUR OWN TODO (or accept 10% deduction)
 
 
 ## Questions and Outcome

@@ -240,6 +240,7 @@ summary {
 }
 
 summary h3 {
+  display:inline;
   font-size: 100%;
 }
 

@@ -1,6 +1,0 @@
-# No. 0
-
-## Abstract
-(your words here)
-
-## TODO
