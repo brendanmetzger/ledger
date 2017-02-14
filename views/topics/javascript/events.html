@@ -52,7 +52,18 @@
         <!-- review views/javascript/examples/functions.js callbacks -->
       </pre>
     </figure>
-    
   </section>
-    
+  <p>There are several events an EventTarget can <em>listen</em> for—here is an abbreviated list. <samp>blur</samp>, <samp>change</samp>, <samp>click</samp>, <samp>dblclick</samp>, <samp>focus</samp>, <samp>input</samp>, <samp>keydown</samp>, <samp>keypress</samp>, <samp>keyup</samp>, <samp>load</samp>, <samp>mousedown</samp>, <samp>mousemove</samp>, <samp>mouseout</samp>, <samp>mouseover</samp>, <samp>mouseup</samp>, <samp>mousewheel</samp>, <samp>scroll</samp>, <samp>select</samp>, <samp>submit</samp> (and there are several more). When you receive an event object, there are dozens of methods and properties you have at your disposal, but here are a few you want to be aware of right away. Here is the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event">full Event API</a>. This is the mysterious object passed as the first argument to your callback function when it executes.</p>
+  <dl>
+    <dt><span data-type="long">long</span> <code>clientX</code></dt>
+    <dd>x mouse coordinates when event took place</dd>
+    <dt><span data-type="long">long</span> <code>clientY</code></dt>
+    <dd>y mouse coordinates when event took place</dd>
+    <dt><span data-type="EventTarget">EventTarget</span> <code>target</code></dt>
+    <dd>The target object for this event, or the object on which the event was triggered.</dd>
+    <dt><span data-type="void">void</span> <code>preventDefault()</code></dt>
+    <dd>Tells the web browser not to perform the default action associated with the event.</dd>
+    <dt><span data-type="void">void</span> <code>stopPropagation()</code></dt>
+    <dd>Stops the event from propagating any further through the capturing, target, or bubbling phases.</dd>
+  </dl>
 </article>

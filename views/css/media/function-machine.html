@@ -1,0 +1,37 @@
+  <figure id="function-machine" class="float left" style="width:15%;margin:0 1em 0 0;">
+    <style type="text/css" media="screen">
+      /* <![CDATA[ */
+      @keyframes in {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(2em);
+          opacity: 0;
+        }
+      }
+      @keyframes out {
+        0% {
+          opacity: 0;
+          transform: translateY(-3em);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      svg .in {
+        animation: in 2s infinite;
+      }
+      svg .out {
+        animation: out 2s 1s infinite;
+      }
+      #function-machine {
+        font-size:1.75em;
+      }
+      /* ]]> */
+    </style>
+    <!-- insert views/css/media/function-machine.svg -->
+  </figure>

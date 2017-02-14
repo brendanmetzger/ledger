@@ -1,11 +1,12 @@
 <article id="input-output" data-classification="javascript intermediate function">
+  <!-- insert views/css/media/function-machine.html -->
   <h2>I/O: Arguments and Return Values</h2>
-  <p class="indented">In all of the functions examples so far, we haven’t expected any input or returned any output. While this is sometimes useful, most of the time our function declarations will be more useful with the addition of passing <strong>arguments</strong>, and <strong>returning</strong> some type of output.</p>
-  <p>Arguments, also known as parameters, are declared at <strong>compile-time</strong> and passed in at <strong>call time</strong> in terms of values. A <code>return</code> statement is placed at the end of a function, and it gives you something back. Just like some of the first mathematics we learned like <code>cos x</code>, a function takes some input and gives us some output. Unlike mathematics, functions in JavaScript don’t necessarily need input, and don’t necessarily provide output.</p>
+  <p class="indented">One can go all day writing functions that expect no input and give no output—though a function that doesn’t do either is a bit rare. Functions like <code>Math.random</code> do not require input but it <def>returns</def> a random number between 0 and 1. A function like <code>console.log</code> takes any amount of input then performs a task without <dfn>returning</dfn> any value (which is why you see <samp>undefined</samp> when you run it in the console).</p>
+  <p>Arguments are named between the parentheses when you write the function—an when you call the function, you pass in a parameter. A <code>return</code> statement is placed at the end of a function, and it gives you something back. Just like some of the first mathematics we learned like <code>cos x</code>, a function takes some input and gives us some output. Unlike mathematics, functions in JavaScript don’t necessarily need input, and don’t necessarily provide output.</p>
 
   <figure class="explain whitepaper">
     <figcaption>
-      <p>Functions can have zero up to any number of arguments. Arguments can be named, or they can be accessed with the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments"><code>arguments</code></a> object. Adjacent are several confusing functions</p>
+      <p>Functions can have zero up to any number of arguments. Arguments can be named, or they can be accessed with the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments"><code>arguments</code></a> object or with the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters">rest operator</a> in <abbr title="ecmascript version 6">es6</abbr> Adjacent are some functions to ponder.</p>
       <h3 class="t b">Inspecting Functions</h3>
       <p><mark>Carefully study every example and think carefully about the following questions.</mark> In fact, generally do this review whenever introducing yourself to a function.</p>
       <ul class="stylized star tt">

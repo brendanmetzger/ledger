@@ -1,18 +1,26 @@
 <div>
-  <header>
+  <header class="container">
     <!-- insert views/outline/_/crumbs.html -->
     <img src="[$cdn/media/images/gerd-arntz.png]" class="float left __" style="mix-blend-mode:multiply;margin:1em 5em 0 calc(1em - 2.5vmax);"/>
     <h1 class="massive">Traversal</h1>
     <p class="intro">Moving about the document object model is discipline few take the time to understand fully, but like a fine cup of coffee, once you acquire the taste, roasted corn drink simply will not cut it.</p>
   </header>
-  <article>
+  <aside class="review margins">
+    <h3>Warming Up</h3>
+    <p>Today, start with writing a version of FizzBuzz found at the end of <a href="http://eloquentjavascript.net/02_program_structure.html">Program Structure</a> in <cite>Eloquent JavaScript</cite>. I have witnessed many many solutions to this over the years and read <a href="https://blog.codinghorror.com/why-cant-programmers-program/">dissertations</a> from holier-than-thou types, but ultimately, this is a beautiful thinking problem that someone should just think about. <a href="https://en.wikipedia.org/wiki/Fizz_buzz">FizzBuzz</a> has a technical component, but if you fully read about it you start to understand that solving a problem is an act of an expression, not an act of locking in <em>the</em> solution. Perhaps it is why some individuals choose an art school. Perhaps that is why I've cumulatively spent about several hours playing with this problem when <q>good</q> programmers think it should take less than five minutes.</p>
+    <p>People feel anxiety when they sit down for math and programming because we are taught that smart people figure things out right away, when <em>that is flat-out wrong</em>. <q>Smart people</q> think about things, and sometimes it takes them years to think of something really really simple that someone else saw right away. <strong>Smart people think,</strong> and that is something that anyone can set aside a certain amount of time for.</p>
+    <p>I am an existentialist—both <a href="https://en.wikipedia.org/wiki/Existentialism">philosophically</a> and <a href="https://en.wikipedia.org/wiki/Existential_quantification">computationally</a>. I write my programs, starting from questions <q>like what do I have?</q> <q>and what do I need?</q>—very rarely do I use actual loops or conditions, and sometimes, just for fun, I will spend two hours rewriting a simple program to avoid them. I did that <a href="https://gist.github.com/brendanmetzger/8439fa192a655011eecbde3402f6df19">for my version of of FizzBuzz</a>. In doing so, I unintentionally solved FizzBuzzWoof—and <em>it felt good.</em></p>
+    <p>If you are looking for proof that one problem can be solved in in infinite ways, check this mass of <a href="https://discourse.codinghorror.com/t/fizzbuzz-solution-dumping-ground/1752/75">FizzBuzz garbage fires.</a></p>
+  </aside>
+  <article class="margins">
     <h2>Matching Patterns and Counting in with StyleSheets</h2>
-    <p class="intro">Stay Tuned...</p>
+    <p class="intro">Brushing up on some patterns and light maths, briefly revisit some <abbr>css</abbr> properties and selection techniques.</p>
+    <p>Pseudo Classes—those special classes with a colon—allow you to target an element’s <em>state</em> or <em>context</em>. State means things like <samp>:focus</samp> or <samp>:hover</samp>, whereas <em>context</em> might mean an element’s position in the document. In bygone eras, developers would create classes to do what could often be described by an index number. For example, if you wanted the <samp>nth</samp> item to be bold, create a <code>.nth</code> class and then tack the attribute to the element in question. This was annoying for many reasons—especially if you are creating content on the fly with a feed or from some other origin than a <abbr>html</abbr> file that you have access to.</p>
+    <p>Today one has the availability of pseudo-classes like <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child">nth-child</a> that allow you to select any element based on its position or index, or if it is <dfn>even</dfn> or <dfn>odd</dfn>. Better yet, it allows you to target any element that fits a pattern—like <q>find every third element.</q></p>
+    <p>Here is a <a href="http://jsbin.com/yolomiy/edit?html,css,output">a template</a> to get a going.</p>
   </article>
   <!-- insert views/topics/javascript/input-output.html -->
   <!-- insert views/topics/javascript/programming-dom.html -->
-  <!-- insert views/topics/javascript/closure.html-->
-  <!-- insert views/topics/studies/lightbox-behavior.html -->
   <footer id="">
     <p><strong>Chapter 17</strong> of <cite>JavaScript, The Definitive Guide</cite>.</p>
   </footer>

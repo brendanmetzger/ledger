@@ -50,30 +50,32 @@ var Egg = function () {
 
 
 /* arguments */
-function funcA(param) {
-  // do we have a second argument?
-  var options = arguments[1] ? true : false;
-  console.log(param, options);
+
+// simple; add two numbers
+function add(foo, bar) {
+  return foo + bar;  
 }
 
-function funcB(param) {
-  // same outcome as above
-  return Boolean(arguments[1]) ? arguments[1] : param;
+// arguments is an 'array-like' object
+function howManyArgs() {
+  var total = arguments.length;
+  return `You supplied ${total}`;
 }
 
-function funcC(param, options) {
-  // same as above, options is falsy, what does that mean?
-  var message = typeof param;
-  return arguments.length + ' arguments given: ' + 'first was a ' + message;
-}
-
-// A useful example of the arguments object
-function adder() {
+// a more robust addder, though many (myself included)
+// argue that using `arguments` feels weird.
+function addAll() {
   var sum = 0;
   for (var i = 0; i < arguments.length; i++) {
     sum += arguments[i];
   }
   return sum;
+}
+
+//  As a point of reference, I'm doing the same thing in
+// the *most* esoteric way on earth and somehow it feels better.
+function adder(...nums) {
+  return nums.reduce(add, 0);
 }
 
 /* end arguments */

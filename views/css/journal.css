@@ -168,6 +168,15 @@ article a[href*='en.wikipedia.org'] {
   transition: background-position 0.25s, background-size 0.25s, padding 0.125s;
 }
 
+a[href*="jsbin"]:before,
+a[href*="gist.github"]:before {
+  background: transparent url(//cdn.thirty.cc/css/media/file-code.svg) no-repeat;
+  background-size: auto 95%;
+  padding: 0 0.65em;
+  background-position: 50% 0;
+  content: '';
+}
+
 a[href*='en.wikipedia.org']:hover {
   background-size: auto 5em !important;
   background-position: -2.75em -0.5em;
@@ -231,7 +240,6 @@ summary {
 }
 
 summary h3 {
-  display: inline;
   font-size: 100%;
 }
 

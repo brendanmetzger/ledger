@@ -5,6 +5,8 @@ use \models\Instructor as Admin;
 use \models\Student;
 use \bloc\view;
 use \models\data;
+use \bloc\types\authentication as User;
+
 
 /**
  * Overview
@@ -71,13 +73,19 @@ class Overview extends \bloc\controller
   }
   
   
-  public function GETevaluation()
+  protected function GETevaluation(User $user)
   {
     $view = new View(self::layout);
     $this->criteria = (new \bloc\types\Dictionary(\models\Project::$metrics))->map(function($value, $key) use(&$count) {
       return ['name' => $key, 'text' => $value ];
     });
     $view->content =  "views/layouts/evaluation.html";
+    if ($user instanceof \models\student) {
+      $view->context = "views/layouts/list/schedule.html";
+      $this->schedule = $user->section->schedule;
+      
+    }
+    
     return $view->render($this());
   }
 

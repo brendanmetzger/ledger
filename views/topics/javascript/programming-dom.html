@@ -1,97 +1,150 @@
 <article id="programming-tree-structures">
   <h2>Programming Tree Structures</h2>
-  <p>TODO: review some laws about tree structures - or point a link to reviewing tree structures in another essay</p>
   <p>So JavaScript has something that makes it a bit more complicated than most programming languages, and that is the fact that it has two very robust <abbr title="application programming interface">api</abbr>s—the first being the core language reference, and the second being the <strong>client-side</strong> reference. At the core we have things like types, functions, objects, Date, Math, etc. The client-side of things are where the fun begins: you hove the document object, events, xhr requests, media, web workers, sockets, and a pretty huge list.</p>
-  <p>it’s important to understand that the <abbr>DOM</abbr> is a robust platform and interface not the fancy word for a bunch of text with a bunch of &lt; and &gt; characters. Today the bulk of our focus will be reformulating our perspective to consider it as a data structure and event model built right. Today we will spend time on some topics that might seem a little trivial, but are good to revisit: Understanding whitespace and reading an <abbr>API</abbr></p>
-  <hr class="ruled"/>
-  <h3><code>document</code></h3>
-  <p>TODO: This should be a table</p>
-  <p class="pad">There some methods I've left some methods off my list that you may be familiar with: <code>getElementsByClassName</code>, <code>getElementById</code> and <code>getElementsByTagName</code>… I think you should be able to mostly avoid them. The document object itself has over 25 methods, but the three below should get you quite far.</p>
-  <dl class="pad">
-    <dt><span data-type="Element">Element</span> <code>document.createElement(<span class="typ">string</span> <em>name</em>)</code></dt>
-    <dd>Create and return a new empty Element node with the specified tag name.</dd>
-    <dt><span data-type="Element" rel="Element">Element</span> <code>document.querySelector(<span class="typ">string</span> <em>selector</em>)</code></dt>
-    <dd>Returns the first Element in this document that matches the <abbr>CSS</abbr> selector string</dd>
-    <dd>Note, using the selector "#some-id" as a selector effectively replaces <code>document.getElementById</code></dd>
-    <dt><span data-type="NodeList">NodeList</span> <code>document.querySelectorAll(<span class="typ">string</span> <em>selector</em>)</code></dt>
-    <dd>Returns an array-like NodeList of Elements that match the <abbr>CSS</abbr> selector string. The selector may be comma separated.</dd>
-  </dl>
-  <hr class="ruled"/>
-  <h3><code>Element</code></h3>
-  <p class="pad">An <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element</a> is like a node, but it is what we typically think of as a Node. Remember, attributes and whitespace are also Nodes!</p>
-  <dl>
-    <dt><span data-type="DOMTokenList">DOMTokenList</span><code>classList</code></dt>
-    <dd>Implements methods to <code>.add</code>, <code>.remove</code> and <code>.toggle</code> classes to Element nodes</dd>
-    <dt><span data-type="Element" rel="Element">Element</span> <code>document.querySelector(<span class="typ">string</span> <em>selector</em>)</code></dt>
-    <dd>Same as <code>document.querySelector</code></dd>
-    <dt><span data-type="NodeList">NodeList</span> <code>document.querySelectorAll(<span class="typ">string</span> <em>selector</em>)</code></dt>
-    <dd>same as <code>document.querySelectorAll</code></dd>
-    <dt><span data-type="long">long</span><code>childElementCount</code></dt>
-    <dd>Get the number of child elements (as opposed to <em>all elements</em>, such as white-space)</dd>
-    <dt><span data-type="Element">Element</span><code>firstElementChild</code></dt>
-    <dd>First Element of the requesting Element Node</dd>
-    <dt><span data-type="Element">Element</span><code>lastElementChild</code></dt>
-    <dd>The Last Element of the requesting Element Node</dd>
-    <dt><span data-type="Element">Element</span><code>nextElementSibling</code></dt>
-    <dd>Next Sibling</dd>
-    <dt><span data-type="Element">Element</span><code>previousElementSibling</code></dt>
-    <dd>Previous Sibling</dd>
-    <dt><span data-type="String">String</span><code>innerHTML</code></dt>
-    <dd>Our old favorite: sets raw text to the inside of a Node.</dd>
-    <dt><span data-type="Object">Object</span><code>dataset</code></dt>
-    <dd>the data attributes associated with an element, ie., elements with a <code>data-attr="whatever"</code></dd>
-  </dl>
-  <hr class="ruled"/>
-  <h3><code>Node</code></h3>
-  <p class="pad">Elements descend from Node, so if you have an <code>Element</code>, you have all the methods and properties of a <code>Node</code>. The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node">Node <abbr>api</abbr></a> is robust and platform agnostic. You can parse <abbr>xml</abbr> in C with this very same <abbr>api</abbr>.</p>
-  <dl>
-    <dt><span data-type="Node">Node</span><code>appendChild(<span class="typ">Node</span> <em>newChild</em>)</code></dt>
-    <dd>Appends the given node to the end of the element.</dd>
-    <dd>The child appended does not have to be newly created, it can be from somewhere else in the document: as such, it’s how you would reorder a list.</dd>
-    <dd>returns the appended node</dd>
-    <dt><span data-type="Node">Node</span><code>insertBefore(<span class="typ">Node</span> <em>newChild</em>, <span class="typ">Node</span> refChild)</code></dt>
-    <dd>inserts the <em>newChild</em> node into the document tree as a child of the node that this method is applied to.</dd>
-    <dd>The <em>refChild</em> must be a child of the calling node. Typically, this might be something like <code>someNode.insertBefore(refchild, someNode.firstChild);</code> to insert a node on the beginning of a list.</dd>
-    <dd>returns the appended node</dd>
-    <dt><span data-type="Node">Node</span><code>replaceChild(<span class="typ">Node</span> <em>newChild</em>, <span class="typ">Node</span> oldChild)</code></dt>
-    <dd>Swaps out <em>newChild</em> for <em>oldChild</em>, and <em>oldChild</em> must be a child of the calling node.</dd>
-    <dt><span data-type="Node">Node</span><code>removeChild(<span class="typ">Node</span> <em>oldChild</em>)</code></dt>
-    <dd>Removes the <em>oldNode</em> from the document.</dd>
-    <dd>Typically, this is done with <code>oldNode.parentNode.removeChild(oldNode);</code></dd>
-    <dd>returns the removed node.</dd>
-  </dl>
-  <hr class="ruled"/>
-  <h3><code>NodeList</code>, <code>HTMLCollection</code></h3>
-  <p class="pad">Array-like objects so they can be put in a loop and requested via index like an array, but they do not have array methods like <code>forEach</code>, <code>map</code> and <code>filter</code>, which isn’t immediately obvious.</p>
-  <dl>
-    <dt><span data-type="long">long</span> <code>length</code></dt>
-    <dd>like an array, returns the number of elements in the collection</dd>
-    <dt><span data-type="node">Node</span><code>item(<span class="typ">long</span> index)</code></dt>
-    <dd>returns the specified item from the 0 based index. Can also use bracket [] operator.</dd>
-  </dl>
-  <hr class="ruled"/>
-  <h3><code>EventTarget</code></h3>
-  <p class="pad">Objects that have access to an <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">EventTarget</a> prototype are objects that have events fire on them. Typically, this is mouse events associated with <code>Element</code> objects, but events also fire on window or XHR objects. You may be familiar with the <code>elem.onclick = callback</code> approach, but listeners hold an immediate advantage in that you can add multiple listeners to the target. When defining the event type you are listening for, you drop the 'on', so 'onclick' becomes 'click'.</p>
-  <dl>
-    <dt><span data-type="long">void</span><code>addEventListener(<span class="typ">string</span> <em>type</em>, <span class="typ">function</span> <em>listener</em>, [<span class="typ">boolean</span> <em>useCapture</em>])</code></dt>
-    <dd>registers the specified <em>listener</em> function as an event handler for events of the specified type.</dd>
-    <dd>type is an event name, and <strong>does not include the on prefix.</strong></dd>
-    <dt><span data-type="long">void</span><code>removeEventListener(<span class="typ">string</span> <em>type</em>, <span class="typ">function</span> <em>listener</em>, [<span class="typ">boolean</span> <em>useCapture</em>])</code></dt>
-    <dd>removes an event listener; must take the exact same target as the <code>addEventListener</code> method. This means method must be a named function—an anonymous function cannot be removed.</dd>
-  </dl>
-  <hr class="ruled"/>
-  <h3><code>Event</code></h3>
-  <p>There are several events an EventTarget can <em>listen</em> for—here is an abbreviated list. onblur, onchange, onclick, ondblclick, onfocus, oninput, onkeydown, onkeypress, onkeyup, onload, onmousedown, onmousemove, onmouseout, onmouseover, onmouseup, onmousewheel, onscroll, onselect, onsubmit (and there are several more). When you receive an event object, there are dozens of methods and properties you have at your disposal, but here are a few you want to be aware of right away. Here is the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event">full Event API</a>. This is the mysterious object passed as the first argument to your callback function when it executes.</p>
-  <dl>
-    <dt><span data-type="long">long</span> <code>clientX</code></dt>
-    <dd>x mouse coordinates when event took place</dd>
-    <dt><span data-type="long">long</span> <code>clientY</code></dt>
-    <dd>y mouse coordinates when event took place</dd>
-    <dt><span data-type="EventTarget">EventTarget</span> <code>target</code></dt>
-    <dd>The target object for this event, or the object on which the event was triggered.</dd>
-    <dt><span data-type="void">void</span> <code>preventDefault()</code></dt>
-    <dd>Tells the web browser not to perform the default action associated with the event.</dd>
-    <dt><span data-type="void">void</span> <code>stopPropagation()</code></dt>
-    <dd>Stops the event from propagating any further through the capturing, target, or bubbling phases.</dd>
-  </dl>
+  <p>it’s important to understand that the <abbr>DOM</abbr> is a robust platform and interface not the fancy word for a bunch of text with a bunch of { and } characters. Today the bulk of our focus will be reformulating our perspective to consider it as a data structure and event model built right. Today we will spend time on some topics that might seem a little trivial, but are good to revisit: Understanding whitespace and reading an <abbr>API</abbr></p>
+  
+  <table class="full signatures">
+    <caption class="rag-right">
+      <h3>Accessing the Document Object Model</h3>
+      <p>There is a cohesive <abbr>api</abbr> and a very carefully created <a href="https://dom.spec.whatwg.org/">set of standards</a>, and I promise, if you appreciate these standards, the world will become your oyster. It's sometimes hard, yes, but it is no reason to accept jQuery as your forever-crutch.</p>
+       <p class="pad">There some methods I've left some methods off my list that you should go ahead and boycott. I'm not saying you shouldn't know about them, I'm saying I personally can't find a reason to use them. They are: <code>getElementsByClassName</code>, <code>getElementById</code> and <code>getElementsByTagName</code>. Ok, moving forward, the document object implements dozens and dozens of objects and methods, but the list below is a decent nutshell of some important ones.</p>
+    </caption>
+    <thead>
+      <tr>
+        <th>need to...</th>
+        <th>function / property</th>
+        <th>available on</th>
+        <th>arguments</th>
+        <th>returns</th>
+        <th>example &amp; description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>create an element</th>
+        <td class="method"><code>createElement</code></td>
+        <td><code>document</code></td>
+        <td>
+          <samp class="type">string</samp>
+          <p>name of element to create</p>
+        </td>
+        <td><code>Element</code></td>
+        <td>
+          <pre class="prettyprint">document.createElement('h2')</pre>
+          <p>Create and return a new empty Element node with the specified tag name. Does not append to the document—investigate more methods below</p>
+        </td>
+      </tr>
+      <tr>
+        <th>find <em>one</em> element</th>
+        <td class="method"><code>querySelector</code></td>
+        <td><code>document</code>, <code>Element</code></td>
+        <td>
+          <samp class="type">string</samp>
+          <p>a <abbr>css</abbr> selector</p>
+        </td>
+        <td><code>Element</code></td>
+        <td>
+          <pre class="prettyprint">var div = document.querySelector('div');</pre>
+          <p>Returns the first Element in a document or element specified that match the <abbr>CSS</abbr> selector string.</p>
+        </td>
+      </tr>
+      <tr>
+        <th>find <em>all</em> elements</th>
+        <td class="method"><code>querySelectorAll</code></td>
+        <td><code>document</code>, <code>Element</code></td>
+        <td>
+          <samp class="type">string</samp>
+          <p>a <abbr>css</abbr> selector</p>
+        </td>
+        <td><code>Nodelist</code></td>
+        <td>
+          <pre class="prettyprint">var divs = document.querySelectorAll('div')</pre>
+          <p>Returns an array-like list of Elements in this document or element that matches the <abbr>CSS</abbr> selector string. Selectors can be comma separated, just like in css.</p>
+        </td>
+      </tr>
+      <tr>
+        <th>know how many</th>
+        <td class="method"><code>length</code></td>
+        <td><code>NodeList</code></td>
+        <td>(NA)</td>
+        <td><samp class="type">integer</samp></td>
+        <td>
+          <pre class="prettyPrint">document.querySelectorAll('p').length;</pre>
+          <p>The above would tell you the number of paragraphs in your document.</p>
+        </td>
+      </tr>
+      <tr>
+        <th>change the class attribute</th>
+        <td class="property"><code>classList</code></td>
+        <td><code>Element</code></td>
+        <td>(NA)</td>
+        <td><code>DOMTokenList</code></td>
+        <td>
+          <pre class="prettyprint">{foo}.classList.add('bar');</pre>
+          <p>Implements methods to <code>.add</code>, <code>.remove</code> and <code>.toggle</code> classes to Element nodes</p>
+        </td>
+      </tr>
+      <tr>
+        <th>get/set the content of an Element</th>
+        <td class="method"><code>innerHTML</code></td>
+        <td><code>Element</code></td>
+        <td>(NA)</td>
+        <td>The <abbr>html</abbr> <samp class="type">string</samp> content of the Element</td>
+        <td>
+          <pre class="prettyprint">{foo}.innerHTML = "html";</pre>
+          <p>Our old favorite: sets raw text to the inside of a Node.</p>
+        </td>
+      </tr>
+      <tr>
+        <th>add an Element</th>
+        <td class="method"><code>appendChild</code></td>
+        <td><code>Element</code></td>
+        <td>
+          <p>The <samp class="object">Node</samp> you want appended</p>
+        </td>
+        <td>The appended <samp class="object">Node</samp></td>
+        <td>
+          <pre class="prettyprint">var appended = {foo}.appendChild({bar});</pre>
+          <p>Appends the given node to the end of the element. The child appended does not have to be newly created, it can be from somewhere else in the document: as such, it’s how you would reorder a list.</p>
+        </td>
+      </tr>
+      <tr>
+        <th>prepend an Element</th>
+        <td class="method"><code>insertBefore</code></td>
+        <td><code>Element</code></td>
+        <td>
+          <p>The new <samp class="object">Node</samp> is the first parameter and the replacement <samp class="object">Node</samp> is the second.</p>
+        </td>
+        <td>The inserted <samp class="object">Node</samp></td>
+        <td>
+          <pre class="prettyprint">var inserted = {foo}.insertBefore({bar}, {baz});</pre>
+          <p>Inserts the <em>new</em> node into the document tree as a child of the node that this method is applied to.The <em>reference node</em> must be a child of the calling node. Typically, this might be something like  to insert a node on the beginning of a list.</p>
+        </td>
+      </tr>
+      <tr>
+        <th>replace an Element</th>
+        <td class="method"><code>replaceChild</code></td>
+        <td><code>Element</code></td>
+        <td>
+          <p>The <samp class="object">Node</samp> you want in is first and the <samp class="object">Node</samp> you want out is second.</p>
+        </td>
+        <td>The replaced <samp class="object">Node</samp></td>
+        <td>
+          <pre class="prettyprint">var replaced = {foo}.replaceChild({bar}, {baz});</pre>
+        </td>
+      </tr>
+      <tr>
+        <th>get rid of an Element</th>
+        <td class="method"><code>removeChild</code></td>
+        <td><code>Element</code></td>
+        <td>
+          <p>The <samp class="object">Node</samp> you want removed from the reference</p>
+        </td>
+        <td>The removed <samp class="object">Element</samp></td>
+        <td>
+          <pre class="prettyprint">var removed = {foo}.removeChild({bar});</pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </article>

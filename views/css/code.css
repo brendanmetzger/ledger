@@ -177,6 +177,34 @@ pre .dec {
   color: #72b072;
 }
 
+.signatures thead th {
+  padding:1em;
+  color:rgba(0,0,0,0.5);
+}
+samp.type, samp.object {
+  color:#88a92c;
+  font-size:1.5em;
+}
+samp.object {
+  color:#F57B20;
+}
+.signatures .method, .signatures .property {
+  font-size:1.5em;
+  background-color:rgba(0,0,0,0.05);
+}
+
+.signatures td {
+  vertical-align: middle;
+}
+.signatures td p {
+  font-size:1.25em;
+  line-height:1;
+}
+
+.signatures pre.prettyprint {
+  padding:0.5em 0;
+}
+
 .elements th > code {
   font-size: 150%;
 }
