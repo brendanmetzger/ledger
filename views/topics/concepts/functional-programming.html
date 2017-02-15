@@ -1,0 +1,41 @@
+<article>
+  <h2>Functional Programming</h2>
+  <p class="intro">For a long time the prevailing interest has been in Object Oriented programming, but with the rise in popularity of JavaScript and the ability to execute event-based and asynchronous applications, <a href="https://en.wikipedia.org/wiki/Functional_programming">functional programming</a> is becoming more and more popular.</p>
+  <h3 class="t">First Class and Higher-order Functions</h3>
+  <p>A first order function can take another function as an argument, and return them as results.They are called first-class because the language allows them to be used where any other value is—like a number. Methods like <code>addEventListener</code> and <code>setTimeout</code> need callbacks to function correctly, thus we see immediately how important and fundamental to the JavaScript these concepts are.</p>
+  <h3 class="t">Pure Functions</h3>
+  <p>A general-use programming topic that may become useful down the road, <a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a> are something worth understanding (if only the idea).</p>
+  <figure class="whitepaper explain t">
+    <figcaption class="note">
+      <h4>Pure vs. Impure</h4>
+      <p>Notice the two functions on the left. The <code>multiply</code>  function is <em>impure</em> because it relies on variable state set elsewhere in the program. That variable can be changed elsewhere, thus, the reliability of the function itself is not guaranteed to return the same value every time.</p>
+      <p>Debugging can take up more time than necessary due to inconsistencies like these, but just as importantly, when we consider <a href="https://en.wikipedia.org/wiki/Asynchrony_(computer_programming)">asynchrony</a> or programs that can execute in multiple threads, the pure-ness of functions can ensure composition and thread-safety. This was perhaps not a huge deal in the past, but with the popularity of node.js and the advent of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers">web workers</a>, these ideas are necessarily less foreign.</p>
+    </figcaption>
+    <pre class="prettyprint">
+      <!-- review views/javascript/examples/functions.js pure vs impure -->
+    </pre>
+  </figure>
+  <h3 class="t">Recursion</h3>
+  <p>Iteration in a functional language is usually accomplished via recursion. A function that will invoke itself will perform that operation over and over until it has a base condition met; this sounds very familiar to the looping construct. Recursion has not typically been a suggested practice in javascript due to a condition known as <em>stack overflow</em>, referring to the depth of the call stack—or a function calling a function calling a function and so on. Typically you are only allowed to go so deep, depending on the compiler.</p>
+  <figure class="whitepaper explain t">
+    <figcaption class="note">
+      <h4>A one liner</h4>
+      <p>ECMAScript 6.0 is slated to have a feature called <em>tail-call recursion optimization</em>, so in a nutshell, properly written recursive functions will be a possibility. The adjacent example computes a factorial (n!)—it is often tough to beat the elegance of a recursion.</p>
+    </figcaption>
+    <pre class="prettyprint">
+      <!-- review views/javascript/examples/functions.js recursion -->
+    </pre>
+  </figure>
+  <h3 class="t">Map, Reduce, Filter</h3>
+  <p>These functions were introduced in ECMAScript 5 and I consider indispensable. All three work on arrays; map returns a new array of the same length, each index having been operated on; reduce reduces an array to one value (sums, for instance), and filter returns a new array given that each item meets some condition.</p>
+  <figure class="whitepaper explain t">
+    <figcaption class="note">
+      <h4>Avoiding loops and conditions</h4>
+      <p>I like array functions because they take my frame of mind from thinking about <q>if this, else…</q> to <q>do this</q>. Perhaps a small point, but in my opinion, this syntax makes source code able to be read in a very direct way.</p>
+
+    </figcaption>
+    <pre class="prettyprint">
+      <!-- review views/javascript/examples/functions.js map reduce -->
+    </pre>
+  </figure>
+</article>

@@ -91,4 +91,10 @@ function isEven(value) {
 // 1. based on the above, write a function isOdd
 // 2. rewrite the isEven function to be more artilate
 // 3. Think about if/why one should write either of these.
+
+
+- Make a function that is able to compute `[!n](https://en.wikipedia.org/wiki/Factorial)`
+- Make a function that can compute the [greatest common divisor](https://en.wikipedia.org/wiki/Greatest_common_divisor) between any two numbers
+- Write three functions and randomly call one of them.
+- Write an event listener that will only fire once.
 ```

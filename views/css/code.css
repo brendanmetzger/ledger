@@ -188,6 +188,9 @@ samp.type, samp.object {
 samp.object {
   color:#F57B20;
 }
+.signatures tbody th {
+  padding:0.5em 1em 0 0;
+}
 .signatures .method, .signatures .property {
   font-size:1.5em;
   background-color:rgba(0,0,0,0.05);

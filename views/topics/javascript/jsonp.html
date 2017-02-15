@@ -1,0 +1,36 @@
+<article>
+  <h2><abbr>jsonp</abbr> vs <abbr>xhr</abbr></h2>
+  <div class="two columns outdented">
+    <p>The fundamental difference between <abbr>xhr</abbr> and <abbr>jsonp</abbr> can be nutshelled as thus: <abbr title="XML HTTP Request">xhr</abbr> content must be requested via <abbr title="hypertext transfer protocol">http</abbr> off of <em>your server</em> in the vast majority of cases. <abbr>json</abbr> content can be requested over <abbr title="hypertext transfer protocol">http</abbr> <em>from any server</em>. I remember learning about <abbr>jsonp</abbr> long after a had learned the ropes of Ajax, and remember feeling awestruck at how simple it was.</p>
+    <p>Taking one step back, think about what happens when we load a script from an external site, which is fairly common pattern, such as embedding jQuery from a <abbr title="content delivery network">CDN</abbr>: <code>&lt;script src="//cdn.biz/jquery.js"&gt;</code>. Notice that all your doing is letting another server inject program code into your site. Now recall your <em>profile.js</em> code - it’s nothing more than an object, but a JavaScript object is valid JavaScript code. Here is where the magic happens, perhaps so simple that it’s not immediately obvious: imagine you have a plain javascript object, coming from another server, and that object is tucked into a function call. A on object in a function call will be invoked immediately. Crucially, somewhere in your code, <em>you have already defined that function</em>. The first argument that you expect in that function, is an object.</p>
+    <p>The point to spend a few minutes letting sink in is this: where is your ‘data loading’ function called and by whom? What data do they give it, and where does that data come from? Once you visualize this process then you pretty much have the gist of <abbr>jsonp</abbr>. The only remaining topic to negotiate are how you name those functions, and how you embed the scripts dynamically, which are well within your skillset at this point.</p>
+  </div>
+  
+  <figure class="whitepaper explain">
+    <figcaption>
+      <h4 class="centered pad">The Premises</h4>
+      <ol>
+        <li>JavaScript can be embedded with <code>&lt;script src="path.js"&gt;…</code></li>
+        <li>A JavaScript file could contain a plain JavasScript Object, like <code>var empty = {};</code> or call a function like <code>doThisNow();</code></li>
+        <li>A JavaScript file can call functions that it didn’t declare—most likely declared in a different file (think of using a framework).</li>
+        <li>A JavaScript file can come from a different server and host (think of embedding a framework)</li>
+        <li>Combining the concepts, imagine a JavaScript file, coming from a different server, executing a function that it didn’t declare, and the first argument of that function is some data.</li>
+      </ol>
+    </figcaption>
+    <pre class="prettyprint">
+      <!-- review views/javascript/examples/json.js jsonp -->
+    </pre>
+  </figure>
+
+  
+  <figure class="explain whitepaper">
+    <figcaption class="note">
+      <h4 class="centered">A Practical Application</h4>
+      <p>JSONP has many applications that you can stumble upon, from news feeds to wikipedia articles. Many API’s have this as an option, and though this probably isn’t especially enlightening at first glance, it’s so easy that a lot of people forego documentation and just assume you know the gist of it.</p>
+      <p>I've put together an example of how you could validate your page in a heartbeat. Let’s work on a way to see how we might put together a button on a page that will automatically validate any page that can be reached via ur using the W3C’s own validator.</p>
+    </figcaption>
+    <pre class="prettyprint">
+      <!-- review views/javascript/examples/json.js practical jsonp -->
+    </pre>
+  </figure>
+</article>

@@ -50,7 +50,8 @@ class Overview extends \bloc\controller
       $view->content = 'views/layouts/topics.html';
     } else if ($topic != null){
       // sub for localhost
-      $view->content = sprintf("views/topics/%s/%s.html", $subject, $topic);
+      $view->content = 'views/layouts/topic.html';
+      $view->article = sprintf("views/topics/%s/%s.html", $subject, $topic);
     }
     
 

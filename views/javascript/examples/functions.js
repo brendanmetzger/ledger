@@ -155,7 +155,8 @@ function factorial(n) {
 function even(n) {
   return n % 2 === 0;
 }
-[1,2,3,4,5].map(square).filter(even);
+
+[1,2,3,4,5].filter(even).map(square);
 // returns [4,16]
 
 /* end map reduce */

@@ -1,0 +1,13 @@
+<article>
+  <h2>Coercion &amp; Other Pitfalls</h2>
+  <p class="intro"><a href="https://en.wikipedia.org/wiki/Type_conversion">Type coercion</a> can be a useful feature, or a really deceptive trick. Essentially, it is turning one type of variable into another: <code>“7”</code> and <code>7</code> are <em>entirely different things</em>, yet they can be the same if you want them to be… or if you aren’t paying enough attention.</p>
+  <dl>
+    <dt><code>10 % 5 &amp; true</code></dt>
+    <dd>This code probably does what you think it will, in a way that is completely foreign. Using one ampersand is not an error, but a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators">bitwise operation</a>.</dd>
+    <dd>This is ever more insidious because <code>&amp;</code> will coerce <code>true</code> into the number <code>0</code>, and from there it gets really unpredictable. This is really the truest form of bug in that it won’t cause an error and even might work the way you intend (at first).</dd>
+    <dt><code>"" == 0</code></dt>
+    <dd>The equality operator, or <code>==</code> is not an <em>identity operator</em>. In a nutshell, the above definition is <code>true</code></dd>
+    <dt><code>querySelector</code> vs. <code>querySelectorAll</code></dt>
+    <dd>These functions are very handy—pretty much all you have to remember to get any element out of the <abbr>dom</abbr>, but pay careful attention to the <strong>All</strong> at the end if you are trying to select a list of elements.</dd>
+  </dl>
+</article>

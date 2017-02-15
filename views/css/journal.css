@@ -976,17 +976,18 @@ abbr[title] ~ abbr[title]:after {
   transform: translate(-65%, -100%) rotate(0) scale(1);
 }
 
-p:hover abbr[title] {color:red;}
+/*p:hover abbr[title] {color:red;}
+
 p:hover abbr[title]:after {
   opacity: 1;
   transform: translate(-65%, -100%) rotate(0) scale(1);
 }
 
-p:hover abbr[title] ~ abbr[title]:after {
+p:hover abbr[title]:nth-child(even):after {
   box-shadow: -0.25em -0.25em 1em 0em rgba(0,0,0,0.2);
   transform: translate(-15%, 85%) rotate(0) scale(1);
 }
-
+*/
 
 footer[id] {
   background-color: rgba(0,0,0,0.1);

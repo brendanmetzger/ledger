@@ -43,8 +43,8 @@
         </td>
         <td><code>Element</code></td>
         <td>
-          <pre class="prettyprint">var div = document.querySelector('div');</pre>
-          <p>Returns the first Element in a document or element specified that match the <abbr>CSS</abbr> selector string.</p>
+          <pre class="prettyprint">var div = {e|d}.querySelector('div');</pre>
+          <p>Returns the first Element in a document or element specified that match the <abbr>CSS</abbr> selector string. <samp>{e|d}</samp> represents any element as well as the document object.</p>
         </td>
       </tr>
       <tr>
@@ -57,8 +57,8 @@
         </td>
         <td><code>Nodelist</code></td>
         <td>
-          <pre class="prettyprint">var divs = document.querySelectorAll('div')</pre>
-          <p>Returns an array-like list of Elements in this document or element that matches the <abbr>CSS</abbr> selector string. Selectors can be comma separated, just like in css.</p>
+          <pre class="prettyprint">var divs = {e|d}.querySelectorAll('div')</pre>
+          <p>Returns an array-like list of Elements in this document or element that matches the <abbr>CSS</abbr> selector string. Selectors can be comma separated, just like in css. <samp>{e|d}</samp> represents any element <em>or</em>  the document object.</p>
         </td>
       </tr>
       <tr>
@@ -68,8 +68,8 @@
         <td>(NA)</td>
         <td><samp class="type">integer</samp></td>
         <td>
-          <pre class="prettyPrint">document.querySelectorAll('p').length;</pre>
-          <p>The above would tell you the number of paragraphs in your document.</p>
+          <pre class="prettyPrint">{e|d}.querySelectorAll('p').length;</pre>
+          <p>The above would tell you the number of paragraphs in your document. <samp>{e|d}</samp> represents any element <em>or</em> the document object.</p>
         </td>
       </tr>
       <tr>
@@ -79,7 +79,7 @@
         <td>(NA)</td>
         <td><code>DOMTokenList</code></td>
         <td>
-          <pre class="prettyprint">{foo}.classList.add('bar');</pre>
+          <pre class="prettyprint">{e}.classList.add('bar');</pre>
           <p>Implements methods to <code>.add</code>, <code>.remove</code> and <code>.toggle</code> classes to Element nodes</p>
         </td>
       </tr>
@@ -90,8 +90,8 @@
         <td>(NA)</td>
         <td>The <abbr>html</abbr> <samp class="type">string</samp> content of the Element</td>
         <td>
-          <pre class="prettyprint">{foo}.innerHTML = "html";</pre>
-          <p>Our old favorite: sets raw text to the inside of a Node.</p>
+          <pre class="prettyprint">{e}.innerHTML = "html";</pre>
+          <p>Our old favorite: sets raw text to the inside of a Node. <samp>{e}</samp> represents an Element object</p>
         </td>
       </tr>
       <tr>
@@ -103,8 +103,8 @@
         </td>
         <td>The appended <samp class="object">Node</samp></td>
         <td>
-          <pre class="prettyprint">var appended = {foo}.appendChild({bar});</pre>
-          <p>Appends the given node to the end of the element. The child appended does not have to be newly created, it can be from somewhere else in the document: as such, it’s how you would reorder a list.</p>
+          <pre class="prettyprint">var appended = {p}.appendChild({c});</pre>
+          <p>Appends the given node to the end of the element. The child appended does not have to be newly created, it can be from somewhere else in the document: as such, it’s how you would reorder a list. <samp>{p}</samp> represents the Element object that will do the adopting (the <em>parent</em>) and {c} represents the child Element object.</p>
         </td>
       </tr>
       <tr>
@@ -116,7 +116,7 @@
         </td>
         <td>The inserted <samp class="object">Node</samp></td>
         <td>
-          <pre class="prettyprint">var inserted = {foo}.insertBefore({bar}, {baz});</pre>
+          <pre class="prettyprint">var inserted = {p}.insertBefore({n}, {r});</pre>
           <p>Inserts the <em>new</em> node into the document tree as a child of the node that this method is applied to.The <em>reference node</em> must be a child of the calling node. Typically, this might be something like  to insert a node on the beginning of a list.</p>
         </td>
       </tr>
@@ -129,7 +129,7 @@
         </td>
         <td>The replaced <samp class="object">Node</samp></td>
         <td>
-          <pre class="prettyprint">var replaced = {foo}.replaceChild({bar}, {baz});</pre>
+          <pre class="prettyprint">var replaced = {p}.replaceChild({n}, {r});</pre>
         </td>
       </tr>
       <tr>
@@ -141,7 +141,7 @@
         </td>
         <td>The removed <samp class="object">Element</samp></td>
         <td>
-          <pre class="prettyprint">var removed = {foo}.removeChild({bar});</pre>
+          <pre class="prettyprint">var removed = {p}.removeChild({c});</pre>
         </td>
       </tr>
     </tbody>

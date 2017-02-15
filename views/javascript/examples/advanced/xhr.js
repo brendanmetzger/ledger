@@ -1,28 +1,28 @@
 /* simple request */
-function Request(url, successCallback, failCallback, method) {
+function Request(url, success, failure, method = 'GET') {
   // Declare our default variables
   var XHR;
-  var defaultCallback = function(evt) {
-    console.warn(evt.type  + ' event fired; you have not provided a callback');
+  var warn = function (evt) {
+    console.warn(`${evt.type} event fired; you have not provided a callback`);
   };
 
   // set up the XHR object.
   XHR = new XMLHttpRequest();
-  XHR.open('GET', url);
-  XHR.overrideMimeType('text/xml');
-  XHR.addEventListener('load', successCallback || defaultCallback);
-  XHR.addEventListener('error', failCallback || defaultCallback);
+  XHR.open(method, url);
+  XHR.addEventListener('load',  success || warn);
+  XHR.addEventListener('error', failure || warn);
   XHR.send();
+  return "Sending Request...";
 }
 
-Request('/topics/glossary.html', function(evt) {
-  var xml = this.responseXML;
-  var topics = xml.documentElement.querySelectorAll('details > summary');
-  var DOMlist = document.createElement('ul');
-  document.querySelector('#example').appendChild(DOMlist);
-  [].forEach.call(topics, function (topic) {
-    var li = DOMlist.appendChild(document.createElement('li'));
-    console.log(li.textContent = topic.textContent);
-  });
-});
+function processGists(evt) {
+  // The respons is JSON — we need to parse it
+  var responses = JSON.parse(evt.target.responseText);
+  console.log(responses);
+}
+
+var gist_url = 'https://api.github.com/users/brendanmetzger/gists';
+
+// run below this in console, see what happens!
+// Request(gist_url, processGists);
 /* end simple request */

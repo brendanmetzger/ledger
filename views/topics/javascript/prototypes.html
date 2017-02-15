@@ -1,0 +1,44 @@
+<article>
+  <h2>Prototypes</h2>
+  <img src="[$cdn/media/images/lego-minifigure-patent.png]" class="float right ___" style="mix-blend-mode:multiply;"/>
+  <p class="intro">JavaScript is a <em>prototypal language</em>, which is also known as class-less or instance-based programming. Unlike class-based languages that define relationships in a familial way (inheritance, parents, traits), prototypal languages share their genes by <em>cloning prototypes</em>.</p>
+  <p>It is a rather peculiar concept, but objects have a property called the <code>prototype</code> and objects can copy each others prototypes. A fascinating (and sometimes dangerous) technique, is that because there are no classes, if you happen to change a prototype of an object, it changes the prototype or <em>all</em> objects that share it—even if they existed long before the change was made.</p>
+  <hr class="ruled top clear"/>
+  <section class="container t b">
+    <aside class="____ float left pad indented note">
+      <h5>A function as an object</h5>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG">Scalable Vector Graphics</a> are worth a look if you have not explored them yet. <a href="https://d3js.org/">D3</a> is a popular library for data visualization, and <a href="http://snapsvg.io/">Snap</a> is another popular one for general purpose stuff, probably a bit easier to use. Both rely heavily on understanding their <abbr>api</abbr>s.</p>
+      <p>This function constructor creates a new <abbr>SVG</abbr> interface that takes care of two of the most confusing concepts: adding new elements with the correct namespace and getting accurate mouse coordinates. While not well-documented, it can be read through in its entirety, thus the <abbr>api</abbr> is glean-able. The basic methods are:</p>
+      <ul>
+        <li>The constructor, which wants a parent container for the newly created <code>svg</code> Element, a height, and a width.</li>
+        <li><code>createElement</code>, which wants a string for a tag name, the attributes as an object literal, and an optional node to embed in, defaulting to root svg element if none given.</li>
+        <li><code>cursorPoint</code> can get the mouse coordinates if you are using events.</li>
+        <li>regarding <abbr>css</abbr>, it will be useful to understand <a href="https://svgwg.org/svg2-draft/interact.html#PointerEvents">pointer events</a></li>
+      </ul>
+    </aside>
+    <pre class="______ prettyprint float left">
+      <!-- review views/javascript/bloc.js SVG -->
+    </pre>
+  </section>
+  <section class="whitepaper container">
+    <div id="drawing" class="____ float left pad">
+      <h4>Lines</h4>
+      <style media="screen">
+        #drawing svg {
+          pointer-events: bounding-box;
+        }
+        #drawing line {
+          stroke:tomato;
+          stroke-width:0.5;
+        }
+        #drawing circle {
+          fill:rgba(0,0,0,0.1);
+          stroke:none;
+        }
+      </style>
+    </div>
+    <pre class="______ float left prettyprint">
+      <!-- review views/javascript/examples/draw.js simple drawing-->
+    </pre>
+  </section>
+</article>

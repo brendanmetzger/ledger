@@ -33,7 +33,6 @@ function sum() {
 // given toHours('30 minute'), returns 0.5
 // given toHours('2 day'), returns 48
 function toHours(time) {
-  console.log(time);
   time = time.split(' ');
   var table = {
     day:    24,
@@ -107,7 +106,7 @@ function setup(evt) {
   // find the svg clock element
   var DOMsvgClock  = document.querySelector('svg.clock');
   var DOMcontainer = DOMsvgClock.parentNode;
-  var DOMtimeInput = DOMcontainer.appendChild(document.createElement('input'));
+  var DOMtimeInput = DOMcontainer.parentNode.appendChild(document.createElement('input'));
 
   // What's going on here?
   DOMcontainer.removeChild(DOMsvgClock);

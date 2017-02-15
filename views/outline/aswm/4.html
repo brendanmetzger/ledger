@@ -1,50 +1,7 @@
 <div>
-  <header>
-    <!-- insert views/outline/_/crumbs.html -->
-    <img src="[$cdn/media/images/stop-watch-1886-patent.png]" style="mix-blend-mode: multiply;shape-outside:circle(40% at 50% 60%);width:32.5%;shape-margin:2em;" class="tt float left"/>
-    <h1 class="massive">Controlling time</h1>
-    <p class="intro">Date objects, intervals and timeouts let you time when code executes. At this point, we’ll look at the profile.js file from earlier in the semester, introducing <abbr title="json with padding">JSONP</abbr>. On your own, it will be beneficial to introduce yourself to methods of amending your <abbr>HTML</abbr> with data, and investigate ways to make program state persist by researching topics like data attributes and localStorage.</p>
-  </header>
-
-  <style media="screen">
-    .clock {
-      width:33.3%;
-    }
-
-  </style>
-  <aside class="container">
-    <h3>Review</h3>
-    <p class="__ float left">Take a moment to answer (or research the answer) to the following questions that were introduced last week.</p>
-    <ul class="_______ float left pad">
-      <li>Given: when adding an event listener, you supply a <em>callback</em> function as the second argument. That callback is executed at some point, and upon execution, the caller sends along one argument. <strong>What is that argument?</strong></li>
-      <li>What is most often the <strong>firstChild</strong> of any element, and why is this confusing?</li>
-    </ul>
-  </aside>
-  
-  <article>
-    <h2>Timing Elements</h2>
-    <p>Timing in javascript kind of falls into two camps: the time you can control, and the time you can’t. The latter refers to asynchronous aspects of the language which you've been introduced to through event listeners, and you’ll quickly be a pro at when it comes to XHR (Ajax) stuff. The former is what we will be concerned about today, and it involves getting your code to wait, repeat itself, and </p>
-    <hr class="ruled"/>
-    <section class="two columns indented">
-      <h3 class="bottom ruled">The <code>Date</code> object</h3>
-      <p>The JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date object</a> has always been a tad clunky in my opinion (at least compared to other languages), but should you need it—and you probably will, there are a few tricks to remember.</p>
-      <p>It must be called as a constructor, so just assigning a date to a variable looks like this: <code>var my_date = <strong>new</strong> Date()</code>. The <em>constructor</em> function takes a variety of arguments, which you can read about in the documentation, but if you carefully write your dates, you can pass a string. Given <code>var timestamp = '2015-10-22 08:10:00';</code> we read that as October 22, 2015, 8:10am… but am or pm?? When you write your dates mind the 24 hour clock so the engine will parse pm correctly.</p>
-      <p>When constructing a date from a string, you can pass the string directly to the constructor <strong>if it is formatted properly</strong>—there are standards committees mandate acceptable formats—those are available in the documentation. Luckily, the example date I've given can be <em>parsed</em> by the constructor, so I can write <code>var my_bday = new Date(timestamp);</code> and now I have a legit Date object.</p>
-      <p>A few static <code>Date</code> methods to be aware of: <code>Date.parse(<em>timestring</em>)</code> will return the number of milliseconds since <a href="https://en.wikipedia.org/wiki/Unix_time">January 1, 1970</a>. This is immediately useful, say if you want to calculate the difference between two dates: <code>Date.parse('some date') - Date.parse('some other day');</code>, then you could convert from milliseconds into hours/min, etc, with some arithmetic. Another nice method is <code>Date.now()</code>, which gives you the number of milliseconds at the current moment. Often you see people doing this trick <code>+(new Date)</code> - that’s clever and silly unary operation, Date.now() does the same thing, but in an obvious fashion.</p>
-    </section>    
-  </article>
-  
-  <!-- insert views/topics/javascript/intervals-and-timeouts.html -->
-  <!-- insert views/topics/studies/lightbox-behavior.html -->
-  <article>
-    <h2>JSONP</h2>
-    <p><a href="https://en.wikipedia.org/wiki/JSONP">JavaScript Object Notation, with padding</a> is a simple way to get data into your document. it’s a simple enough concept, and it’s a low-brow and useful approach to getting data into your page when you aren’t able to use XHR (Ajax). You have your profile.js you can experiment with. Later in the semester, we’ll officially use XHR to embed such data, but for now it will be worth your time experimenting with these methods.</p>
-  </article>
-  
+  <!-- insert views/layouts/aswm-default.html -->
   <footer id="reference-and-practice" class="margins">
-    <h3>Reference &amp; Practice Material</h3>
-   
+    <h3>Reference &amp; Practice Material</h3>   
     <p><strong>Chapter 16</strong> on scripting <abbr>css</abbr> as well as revisiting <strong>Chapter 8</strong> for a solid read on functions in <cite>JavaScript, The Definitive Guide</cite>.</p>
   </footer>
-  
 </div>
