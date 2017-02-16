@@ -126,6 +126,14 @@ window.validate = (function(identity, domain) {
     req.send(data);
   }
   
+  // needs work.
+  var getMatchedCSSRules = function (elem, css = document.styleSheets) {
+    return Array.from(css).map( function (stylesheet) {
+      return (stylesheet.cssRules ? Array.from(stylesheet.cssRules) : []).filter(function (item) {
+        return elem.matches(item.selectorText);
+      }).reduce( (a ,b) => a.concat(b), []);
+    });
+  };
   
   // validateCSS('* {fart: none; }', function (evt) {
   //   console.log(JSON.parse(evt.target.responseText));

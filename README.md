@@ -72,6 +72,7 @@ For student-graded quizzes, create an algorithm that as soon as a student gets a
 - [ ] Design a page to be scrolled as the interactive element
 - [ ] Game of Life on Scroll instead of timer
 - [ ] Do a lecture on mapping for ASWM
+- [ ] Do a click-here, open-that-over there
 - [ ] Loops as 99 bottles of beer on the wall
 - [ ] youtube player API
 

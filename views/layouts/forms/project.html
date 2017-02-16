@@ -9,7 +9,22 @@
     </label>
   </section>
   <label for="notes">Notes</label>
-  <textarea name="project[CDATA]" cols="30" rows="20" id="notes" style="font-size:1.25em;height:50vh;width:calc(100% + 2em);margin:0em -1em;padding:1em;">[$project]</textarea>
+  
+  
+  <!--  iterate project:files -->
+  <fieldset>
+    <legend>[$file:@path]</legend>
+    <input type="hidden" name="[project[file][$index][@][errors]]" value="[$file:@errors]" />
+    <input type="hidden" name="[project[file][$index][@][sloc]]" value="[$file:@sloc]" />
+    <input type="hidden" name="[project[file][$index][@][length]]" value="[$file:@length]" />
+    <input type="hidden" name="[project[file][$index][@][hash]]" value="[$file:@hash]"  />
+    <input type="hidden" name="[project[file][$index][@][commits]]" value="[$file:@commits]" />
+    <input type="hidden" name="[project[file][$index][@][age]]" value="[$file:@age]" />
+    <input type="hidden" name="[project[file][$index][@][aux]]" value="[$file:@aux]" />
+    <input type="hidden" name="[project[file][$index][@][report]]" value="[$file:@report]" />
+    <input type="hidden" name="[project[file][$index][@][path]]" value="[$file:@path]" />
+    <textarea name="[project[file][$index][CDATA]]" >[$text]</textarea>
+  </fieldset>
   <script type="text/javascript">
     // <![CDATA[
     bloc.embed('/javascript/iam.js');

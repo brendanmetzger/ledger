@@ -1,25 +1,27 @@
-  <article id="dates-and-times">
-    <h2>Dates and Times</h2>
-    <p class="intro">Timing in javascript kind of falls into two camps: the time you can control, and the time you can’t. The latter refers to asynchronous aspects of the language—aspects dealt with by using <em>event listeners</em> and things like <em>intervals</em> and <em>timeouts</em>. The former, time we do not control, is what we will be concerned with here.</p>
-    <section class="two columns indented">
-      <h3 class="pad">The <code>Date</code> Object</h3>
-      <p>The JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date object</a> has always been a tad clunky in my opinion (at least compared to other languages), but should you need it—and you probably will, there are a few tricks to remember, and the first oddity is that it <em>must</em> be called as a constructor—this means you must use <samp>new</samp> like below.</p>
-      <figure class="pad note t b">
-        <pre class="prettyprint t b">var my_date = <strong>new</strong> Date();</pre>
-      </figure>
-      <p>Deciding when and when not to use <code>new</code> confuses even those with experience, so some general advice is to avoid <code>new</code> unless you have to explicitly use it, like with the Date object.</p>
-      <p>The <em>constructor</em> function takes a variety of arguments, which you can read about in the documentation, but if you carefully write your dates, you can pass a string. Given <samp>'1929-10-05 08:10:00';</samp> we read that as October 5, 2012, 8:10am… but am or pm? When you write you are using the <mark>24 hour clock</mark> so the string will be parsed accurately.</p>
-      <p>When constructing a date from a string, you can pass the string directly to the constructor <strong>if it is formatted properly</strong>—there are standards committees mandate acceptable formats—those are available in the documentation. Luckily, the example date I've given can be <em>parsed</em> by the Date constructor, so I can get a legitimate date object with the sample below.</p>
-      <figure>
-        <pre class="prettyprint">
-          var grandma_birthday = new Date('1929-10-05 08:10:00');
-        </pre>
-      </figure>
-      <p>A few static <code>Date</code> methods to be aware of: <code>Date.parse(<em>timestring</em>)</code> will return the number of milliseconds since <a href="https://en.wikipedia.org/wiki/Unix_time">January 1, 1970</a>. This is immediately useful, say if you want to calculate the difference between two dates: <code>Date.parse('some date') - Date.parse('some other day');</code>, then you could convert from milliseconds into hours/min, etc, with some arithmetic. Another nice method is <code>Date.now()</code>, which gives you the number of milliseconds at the current moment.</p>
-    </section>
-    <h3>Applications of date</h3>
-    <ul>
-      <li>keep your footer relavant</li>
+<article id="dates-and-times">
+  <h2>Dates and Times</h2>
+  <p class="intro">Timing in javascript kind of falls into two camps: the time you can control, and the time you can’t. The latter refers to asynchronous aspects of the language—aspects dealt with by using <em>event listeners</em> and things like <em>intervals</em> and <em>timeouts</em>. The former, time we do not control, is what we will be concerned with here.</p>
+  <section class="two columns margins">
+    <h3 class="pad">The <code>Date</code> Object</h3>
+    <p>The JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date object</a> has always been a tad clunky in my opinion (at least compared to other languages), but should you need it—and you probably will, there are a few tricks to remember, and the first oddity is that it <em>must</em> be called as a constructor—this means you must use <samp>new</samp> like below.</p>
+    <figure class="pad">
+      <pre class="prettyprint">var my_date = <strong>new</strong> Date();</pre>
+    </figure>
+    <p>Deciding when and when not to use <code>new</code> confuses even those with experience, so some general advice is to avoid <code>new</code> unless you have to explicitly use it, like with the Date object.</p>
+    <p>The <em>constructor</em> function takes a variety of arguments, which you can read about in the documentation, but if you carefully write your dates, you can pass a string. Given <samp>'1929-10-24 08:10:00';</samp> we read that as October 5, 2012, 8:10am… but am or pm? When you write you are using the <mark>24 hour clock</mark> so the string will be parsed accurately.</p>
+    <p>When constructing a date from a string, you can pass the string directly to the constructor <strong>if it is formatted properly</strong>—there are standards committees mandate acceptable formats—those are available in the documentation. Luckily, the example date I've given can be <em>parsed</em> by the Date constructor, so I can get a legitimate date object with the sample below.</p>
+    <figure class="pad">
+      <pre class="prettyprint">var crash = new Date('1929-10-24');</pre>
+    </figure>
+    <p>A few static <code>Date</code> methods to be aware of: <code>Date.parse(<em>timestring</em>)</code> will return the number of milliseconds since <a href="https://en.wikipedia.org/wiki/Unix_time">January 1, 1970</a>. With some arithmetic, you can know a lot of things about duration. Another nice method is <code>Date.now()</code>, which gives you the number of milliseconds at the current moment. Having an awareness of time lets you begin asking and answering more difficult questions that can have a visual outcome. Here is a <a href="https://gist.github.com/brendanmetzger/a4bb340a8e98f970b98446d822cdefd9">date based exercise to work out.</a></p>
+  </section>
+  <footer class="whitepaper tt">
+    <h3>Some Applications of <code>Date</code></h3>
+    <ul class="stylized star">
+      <li>Keep dates and times relevant (think of copyright notice in footers)</li>
       <li>Track progress/due date</li>
+      <li>Time on... site, quiz, etc.</li>
+      <li>Location... if you know what a clock says, you know what timezone it is in.</li>
     </ul>
-  </article>
+  </footer>
+</article>

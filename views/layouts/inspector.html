@@ -144,17 +144,18 @@
   </style>
   <script type="text/javascript">bloc.embed('/javascript/inspector.js');</script>
   <ul class="plain buttons stretch" style="background-color:#444;">
-    <li data-file="readme" class="active">README</li>
-    <li data-file="preview">Preview</li>
+    <li data-file="preview" class="active">Preview</li>
+    <li data-file="readme">README</li>
     <!--  iterate project:notes -->
     <li data-file="[$file:@basename]" class="code" data-errors="[$file:@errors]" data-sloc="[$file:@sloc]">[$file:@name]</li>
   </ul>
-  <section class="docs panel visible" data-file="readme">[$project:readme]</section>
-  <section class="panel" data-file="preview">
+  <section class="panel  visible" data-file="preview">
     <iframe src="[$project:baseurl?$entropy]" ondblclick="window.open(this.src);">
       <p>I frame</p>
     </iframe>
   </section>
+  
+  <section class="docs panel" data-file="readme">[$project:readme]</section>
   <!--  iterate project:notes -->
   <section class="panel" data-file="[$file:@basename]">
     <pre class="[prettyprint linenums $file:@type]">[$content]</pre>

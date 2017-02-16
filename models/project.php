@@ -84,6 +84,13 @@ namespace models;
       $content = file_get_contents($repo->getPath($file['@path']));
       return \vendor\Parsedown::render($content);
     }
+    
+    public function getFiles(\DOMElement $context)
+    {
+      return $context['file']->map(function($file, $index) {
+        return ['file' => $file, 'index' => $index, 'text' => base64_decode($file)];
+      });
+    }
 
     public function getAxes(\DOMElement $context)
     {
