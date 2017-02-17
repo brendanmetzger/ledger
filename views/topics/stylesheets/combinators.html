@@ -1,5 +1,32 @@
-<article class="two columns indented">
-  <h2 class="centered"><abbr>css</abbr> combinators</h2>
-  <p>We are familiar with descendant selectors, something like <code>article section</code> will allow us to style all any section so long as it has an article as an <mark>ancestor</mark>. Much of the time, this can be more than we want, but luckily we can limit the reach of the descendant chain with the use of a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Child_selectors">Child Selector</a>. By simply changing our previous selector to <code>article &gt; section</code> we only select sections that are direct children of an article. If you’re not familiar with the difference between children and descendants yet, hit the books.</p>
-  <p>While not as immediately useful, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_selectors">adjacent sibling selectors</a> can be utilized to apply classes based on if elements are directly next to each other. An example would be adding a top border all but the first element of a list with <code>li + li { border-top: 1px solid #000; }</code>. If say, you wanted all the paragraphs following the first one to have an indent, but couldn’t be sure that it would be only p tags, you could switch to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/General_sibling_selectors">general sibling selectors</a> and use a selector like <code> p ~ p { text-indent: 1em; }</code>.</p>
+<article class="margins">
+  <h2><abbr>css</abbr> combinators</h2>
+  <p class="intro">We are familiar with descendant selectors, something like allow us to sift a through our document a little more accurately. Much of the time, this can be more than we want; luckily we can limit the reach of the descendant chain by modifying the descendant chains through use of css <dfn>combinators</dfn>.</p>
+  <p>Specifying the nature of a relationship has many benefits, starting with the fact that you can document your own intention. If one is only looking at a stylesheet and sees something like <samp>.intro ~ p { text-indent: 1em; }</samp> they can begin to enderstand the nature of a <em>designer’s intention</em> without cross-referencing multiple documents, stylesheets, or worst a foreign  <dfn id="dfn-api"><abbr title="application programming interface">api</abbr></dfn>. That sample rule reads to someone, <q>any paragraph following the introduction should be indented.</q></p>
+  <p>Ultimately, combinators are not something you use in high concentrations, but they can let you do clever things and save you a heap of time by modifying the nature of a descendant relationship on a simple selector chain.</p>
+  <figure class="explain whitepaper">
+    <figcaption>
+      <dl>
+        <dt>Descendant Selectors</dt>
+        <dd>A general descendant selector is handy for generalizing and creating context. Used with type selectors, it helps create <a href="/overview/topics/tables/css-specificity">specificity</a>.</dd>
+        <dt><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Child_selectors">Child Selection</a></dt>
+        <dd>A descendant selector becomes a child selector by the addition of a <code>&gt;</code> sign. Often this can untangle necessarily complex descendent chains.</dd>
+        <dt><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_selectors">Adjacent Sibling Selection</a></dt>
+        <dd>The <code>+</code> denotes the relationship between two adjacent <dfn id="dfn-sibling">sibling</dfn> selectors—meaning that the siblings must be directly next to each other in the document. In a made up example, in a litter of cats, say you wanted to separate all the cats after the calico one.</dd>
+        <dt><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/General_sibling_selectors">General Sibling Selection</a></dt>
+        <dd>The <code>~</code> character selects any siblings, like the eldest child of the group telling their younger <em>brother</em> to quiet down.</dd>
+      </dl>
+    </figcaption>
+    <pre class="prettyprint">
+      <!-- review views/css/examples/selectors.css combinators -->
+    </pre>
+    <pre class="prettyprint">
+      <!-- review views/css/examples/selectors.css combinator examples -->
+    </pre>
+  </figure>
+  <footer>
+    <ol>
+      <li><a href="#dfn-api"><abbr>API</abbr></a> here refers to a third party tool or framework that a designer or developer does not author, <a href="http://getbootstrap.com/">like bootstrap</a>. In terms of <abbr>CSS</abbr> often these tools require an adoption of philosophical approaches that <em>may or may not</em> lead to better concepts or design. <mark>When it comes to a rigid and sometimes odd philosophy, I think you should understand all the variables before you take a sip of kool-aid™.</mark></li>
+      <li><a href="#dfn-sibling">Siblings</a> are any elements that have the same parent. They become adjacent depending on their relationship. Given three children, the middle child has two adjacent siblings, the first and last children are not adjacent to one another.</li>
+    </ol>
+  </footer>
 </article>

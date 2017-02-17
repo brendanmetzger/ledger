@@ -1,0 +1,53 @@
+
+/* combinators */
+article span {
+ /*
+   look for Ok  
+ */
+}
+
+footer > div {
+ /*
+   look for a title attribute
+ */
+}
+
+.calico + small {
+ /*
+   Look for gray and tabby
+ */
+}
+
+:first-child ~ .boy {
+  /* 
+    look for jack
+  */
+}
+
+/* end combinators */
+
+/* combinator examples
+
+<body>
+  <article>
+    <p><span>Ok</span></p>
+  </article>
+  <footer>
+    <div title="outer">
+      <div>How big?</div>
+    </div>
+  </footer>
+  <small class="brown">cat</small>
+  <small class="white">cat</small>
+  <small class="calico">cat</small>
+  <small class="gray">cat</small>
+  <small class="tabby">cat</small>
+  <ul>
+    <li class="boy">john</li>
+    <li class="girl">jane</li>
+    <li class="girl">jill</li>
+    <li class="boy">jack</li>
+    <li class="girl">judy</li>
+  </ul>
+</body>
+end combinator examples */

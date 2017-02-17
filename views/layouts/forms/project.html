@@ -1,19 +1,65 @@
-<fieldset id="project" class="notes" data-url="[$url]">
-  <legend>[$index Project]</legend>
-  <h3 class="centered percentage ruled bottom top">[$project:percentage]</h3>
-  <section class="sliders">
+<section id="project" data-url="[$url]">
+  
+  <style type="text/css" media="screen">
+    /* <![CDATA[ */
+    #project {
+      background-color:rgba(255,255,255,0.25);
+    }
+    #project fieldset {
+      min-height:100vh;
+      padding:1em;
+      box-sizing: border-box;
+      border-top:1px solid rgba(0,0,0,0.1);
+      overflow:hidden;
+    }
+    #project fieldset legend {
+      text-align:right;
+      font-size:2em;
+      padding:1em 0
+    }
+    #project fieldset textarea {
+      box-shadow:0 0 0.25em rgba(0,0,0,0.2);
+      width:calc(100% + 2em);
+      height:40vh;
+      margin:1em -1em;
+      padding: 0.5em 0 0 1em;
+      background-size: 1.5em 1.5em;
+      background-position: left 0.175em;
+      background-image: linear-gradient(transparent 95%, rgba(0, 0, 255, 0.05) 2.5%); 
+    }
+    
+    #project dl {
+      display:none;
+    }
+    .file legend {
+      font-family: inconsolata;
+    }
+    /* ]]> */
+  </style>
+
+  
+  
+  <fieldset id="critique">
+    <legend class="condensed">[$project:title Critique]</legend>
     <!-- iterate project:inputs -->
     <label class="container">
-      <h5>[$key]</h5>
+      <h5 class="condensed">[$key]</h5>
       <input type="range" name="project[@][axes][]" min="0" max="0.1" step="0.01" value="[$value]" style="width:100%"/>
     </label>
-  </section>
-  <label for="notes">Notes</label>
-  
+    <h5 class="centered percentage" style="margin:0.25em 0;font-weight:100;font-size:7.5em;">[$project:percentage]</h5>
+  </fieldset>
   
   <!--  iterate project:files -->
-  <fieldset>
+  <fieldset id="[_$file:@hash]" class="file">
     <legend>[$file:@path]</legend>
+    <dl>
+      <dt>History</dt>
+      <dd>???</dd>
+      <dt><abbr title="source lines of code">SLOC</abbr></dt>
+      <dd>[$file:@sloc]</dd>
+      <dt>Errors</dt>
+      <dd>iterate $report:errors</dd>
+    </dl>
     <input type="hidden" name="[project[file][$index][@][errors]]" value="[$file:@errors]" />
     <input type="hidden" name="[project[file][$index][@][sloc]]" value="[$file:@sloc]" />
     <input type="hidden" name="[project[file][$index][@][length]]" value="[$file:@length]" />
@@ -23,19 +69,17 @@
     <input type="hidden" name="[project[file][$index][@][aux]]" value="[$file:@aux]" />
     <input type="hidden" name="[project[file][$index][@][report]]" value="[$file:@report]" />
     <input type="hidden" name="[project[file][$index][@][path]]" value="[$file:@path]" />
-    <textarea name="[project[file][$index][CDATA]]" >[$text]</textarea>
+    <label for="notes">Notes</label>
+    <textarea name="[project[file][$index][CDATA]]" class="lined">[$text]</textarea>
   </fieldset>
   <script type="text/javascript">
     // <![CDATA[
     bloc.embed('/javascript/iam.js');
-    document.querySelector('#project').addEventListener('change', function (evt) {
-      var score = [].map.call(this.querySelectorAll('input[type="range"]'), function(node) {
-        return parseFloat(node.value, 10);
-      }).reduce(function (accumulator, current) {
-        return accumulator + current;
-      }, 0);
+    var ranges = Array.from(document.querySelectorAll('#project input[type="range"]'));
+    document.querySelector('#project').addEventListener('input', function (evt) {
+      var score = ranges.map(node => parseFloat(node.value, 10)).reduce((accumulator, current) => accumulator + current, 0);
       this.querySelector('.percentage').textContent = Math.max(0, Math.round(score * 100));
     });
     // ]]>
   </script>
-</fieldset>
+</section>

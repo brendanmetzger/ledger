@@ -82,7 +82,7 @@ namespace models;
       $repo = $this->student->repo();
       $file = $context->find('file[contains(@path,"README")]')->pick();
       $content = file_get_contents($repo->getPath($file['@path']));
-      return \vendor\Parsedown::render($content);
+      return new \bloc\types\Dictionary(['file' => $file, 'content' => \vendor\Parsedown::render($content)]);
     }
     
     public function getFiles(\DOMElement $context)

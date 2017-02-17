@@ -505,18 +505,6 @@ form textarea {
   height: 10em;
 }
 
-legend {
-  font-size: 2em;
-  font-weight: 400;
-  color: #EC008C;
-}
-
-fieldset {
-  margin: 1em 0;
-  padding: 0;
-  border-width: 1px 0 0;
-  border-color: rgba(0,0,0,0.2);
-}
 
 button,
 form input,
@@ -703,9 +691,6 @@ ol.linenums {
   font-size: 0.65em;
 }
 
-nav form {
-  padding: 1em;
-}
 
 .epilogue,
 .prologue,
@@ -976,6 +961,25 @@ abbr[title] ~ abbr[title]:after {
   transform: translate(-65%, -100%) rotate(0) scale(1);
 }
 
+article {
+  counter-reset: footnotes -1;
+}
+
+article dfn[id]:after {
+  vertical-align: super;
+  font-size:0.75rem;
+  content: '['counter(footnotes)']';
+  counter-increment: footnotes;
+}
+
+ol.footnotes li {
+  font-size:0.85rem;
+}
+dfn:target {
+  background-color:rgba(255,0,0,0.1);
+  padding:0.25em;
+}
+
 /*p:hover abbr[title] {color:red;}
 
 p:hover abbr[title]:after {
@@ -995,9 +999,11 @@ footer[id] {
   padding:5vmax;
   box-shadow:inset 0 0.25em 0.125em  rgba(0,0,0,0.1);
 }
-footer[id] h3 {
+footer[id] h3, .condensed {
   text-transform:uppercase;
   font-family: var(--condensed);
+}
+footer[id] h3 {
   font-size:5em;
 }
 
@@ -1028,4 +1034,18 @@ textarea.lined:focus {
 
 tr:target {
   background-color:rgba(0,0,0,0.1);
+}
+
+
+.design-grid {
+    background-size: 1em 1em;
+    background-position:top left;
+    background-image: linear-gradient(270deg, rgba(0,0,0,0) 90%, rgba(0,255,255,0.5) 90%),
+                      linear-gradient(180deg, rgba(0,0,0,0) 90%, rgba(255,0,255,0.5) 90%);
+}
+
+.design-grid .design-grid {
+    background-color: rgba(255, 255, 255, 0.5);
+    background-blend-mode: exclusion;
+    box-shadow: 0 0 0.125em 1px rgba(255, 0, 0, 0.35);
 }

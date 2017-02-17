@@ -148,8 +148,8 @@ p.note, .note p {padding:1.5vmax;color:rgba(75, 75, 75, 1);text-shadow:0 -1px rg
 .caps {text-transform:uppercase;}
 .underline {text-decoration:underline}
 .massive{font-size:8.5vw;margin:calc(2vh + 0.5em) 0 2vh;line-height:0.85em;}
-.micro, .legal, sup ,a.external:after{font-size:1.5em;line-height:1.75;max-width:100%;}
-sup {line-height:0;font-size:1em;padding:0 0.125em;font-family:Baskerville;}
+.micro, .legal, sup ,a.external:after{font-size:0.85rem;line-height:1.75;max-width:100%;}
+sup {line-height:0;}
 .micro.caps, abbr {text-transform:lowercase;font-variant:small-caps;letter-spacing:0.015em;}
 .spaced {letter-spacing:0.125em;}
 .centered  {text-align:center}

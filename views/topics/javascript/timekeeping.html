@@ -3,12 +3,11 @@
   <p class="intro">Timing in javascript kind of falls into two camps: the time you can control, and the time you can’t. The latter refers to asynchronous aspects of the language—aspects dealt with by using <em>event listeners</em> and things like <em>intervals</em> and <em>timeouts</em>. The former, time we do not control, is what we will be concerned with here.</p>
   <section class="two columns margins">
     <h3 class="pad">The <code>Date</code> Object</h3>
-    <p>The JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date object</a> has always been a tad clunky in my opinion (at least compared to other languages), but should you need it—and you probably will, there are a few tricks to remember, and the first oddity is that it <em>must</em> be called as a constructor—this means you must use <samp>new</samp> like below.</p>
+    <p>The JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date object</a> has always been a tad clunky in my opinion (at least compared to other languages), but should you need it—and you probably will, there are a few tricks to remember, and the first oddity is that it <em>must</em> be called as a constructor—this means you must use an operator called <code>new</code> like below. Deciding when and when not to use that operator confuses even those with a lot of experience, so some general advice is not use it unless required, like with the Date object.</p>
     <figure class="pad">
       <pre class="prettyprint">var my_date = <strong>new</strong> Date();</pre>
     </figure>
-    <p>Deciding when and when not to use <code>new</code> confuses even those with experience, so some general advice is to avoid <code>new</code> unless you have to explicitly use it, like with the Date object.</p>
-    <p>The <em>constructor</em> function takes a variety of arguments, which you can read about in the documentation, but if you carefully write your dates, you can pass a string. Given <samp>'1929-10-24 08:10:00';</samp> we read that as October 5, 2012, 8:10am… but am or pm? When you write you are using the <mark>24 hour clock</mark> so the string will be parsed accurately.</p>
+    <p>The <dfn id="def-constructor">constructor</dfn> function takes a variety of arguments, which you can read about in the documentation, but if you carefully write your dates, you can pass a string. Given <samp>'1929-10-24 08:10:00';</samp> we read that as October 5, 2012, 8:10am… but am or pm? When you write you are using the <mark>24 hour clock</mark> so the string will be parsed accurately.</p>
     <p>When constructing a date from a string, you can pass the string directly to the constructor <strong>if it is formatted properly</strong>—there are standards committees mandate acceptable formats—those are available in the documentation. Luckily, the example date I've given can be <em>parsed</em> by the Date constructor, so I can get a legitimate date object with the sample below.</p>
     <figure class="pad">
       <pre class="prettyprint">var crash = new Date('1929-10-24');</pre>
@@ -23,5 +22,8 @@
       <li>Time on... site, quiz, etc.</li>
       <li>Location... if you know what a clock says, you know what timezone it is in.</li>
     </ul>
+    <ol class="footnotes tt">
+      <li>A <a href="#def-constructor">constructor</a> function in a typical <dfn>Object Oriented</dfn> language is used to <a href="https://en.wikipedia.org/wiki/Constructor_(object-oriented_programming)">create a new object</a>. In JavaScript, it is incredibly esoteric, and the language allows you to avoid it for the most part.</li>
+    </ol>
   </footer>
 </article>

@@ -4,22 +4,34 @@
  a corresponding element with the proper ID, attaches event listener
  to said and animates the scroll of the document to proper position.
 */
-window.addEventListener('load', function () {
-  function tween(timestamp) {
-    if (!this.start) this.start = timestamp;
-    var ratio = Math.min(1, 1 - Math.pow(1 - (timestamp - this.start) / this.duration, 5));
-    window.scroll(0, ( ratio * ( this.y[1] - this.y[0] ) ) + this.y[0]);
-    if (ratio < 1) window.requestAnimationFrame(tween.bind(this));
+
+function scrollToElement(evt) {
+  // evt.preventDefault();
+  function tween(now) {
+    var complete = (now - start) / duration;
+    var ratio = Math.min(1, 1 - Math.pow(1 - complete, 5));
+
+    scroll.scrollTop  = ratio * offset.top + position[1];
+    scroll.scrollLeft = ratio * offset.left + position[0];
+    // scroll(delta + position[0],  );
+    if (ratio < 1) requestAnimationFrame(tween);
   }
-  function goTo(evt) {
-    tween.call({
-      y: [window.pageYOffset, window.pageYOffset + this.getBoundingClientRect().top],
-      duration: 1000
-    }, performance.now());
-  };
-  [].filter.call(document.querySelectorAll('a:not([href^="http"])[href*="#"]'), function (elem) {
-    return Boolean(document.querySelector(elem.hash));
-  }).forEach(function (elem) {
-    elem.addEventListener('click', goTo.bind(document.querySelector(elem.hash)), false);
+  
+  var duration = 1000;
+  var start    = performance.now();
+  var offset  = this.getBoundingClientRect();  
+  var scroll = this.parentNode;
+
+  while (scroll.scrollHeight === scroll.clientHeight) scroll = scroll.parentNode;
+  
+  var position = [scroll.scrollLeft, scroll.scrollTop];
+
+  tween(start);
+}
+
+window.addEventListener('load', function () {
+  var links = Array.from(document.querySelectorAll('a:not([href^="http"])[href*="#"]'));
+  links.filter(elem => Boolean(document.querySelector(elem.hash))).forEach(function (elem) {
+    elem.addEventListener('click', scrollToElement.bind(document.querySelector(elem.hash)), false);
   });
 });
