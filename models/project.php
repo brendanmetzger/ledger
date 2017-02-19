@@ -59,36 +59,34 @@ namespace models;
       }
     }
     
-    public function getNotes(\DOMElement $context)
+    
+    public function getFiles(\DOMElement $context)
     {
       $repo = $this->student->repo();
-
-      return $context->find('file[not(contains(@path,"README"))]')->map(function($file) use($repo){
+      return $context['file']->map(function($file, $index) use($repo){
         $info = pathinfo($file['@path']);
 
         $file['@name']     = $info['filename'];
         $file['@basename'] = $info['basename'];
         $file['@type']     = $info['extension'];
         
-
         $content = file_get_contents($repo->getPath($file["@path"]));
+
+        if (strpos($file['@path'], 'README')) {
+          $content = \vendor\Parsedown::render($content);
+        } else {
+          $doc = new \bloc\DOM\Document();
+
+          $doc->loadXML('<pre/>');
+          
+          $doc->documentElement->setAttribute('class', "prettyprint linenums {$file['@type']}");
+          $doc->documentElement->appendChild($doc->createCDATASection($content));
+          
+          
+          $content = $doc->documentElement->write();
+        }
         
-        return ['file' => $file, 'content' => $content];
-      });
-    }
-    
-    public function getReadme(\DOMElement $context)
-    {
-      $repo = $this->student->repo();
-      $file = $context->find('file[contains(@path,"README")]')->pick();
-      $content = file_get_contents($repo->getPath($file['@path']));
-      return new \bloc\types\Dictionary(['file' => $file, 'content' => \vendor\Parsedown::render($content)]);
-    }
-    
-    public function getFiles(\DOMElement $context)
-    {
-      return $context['file']->map(function($file, $index) {
-        return ['file' => $file, 'index' => $index, 'text' => base64_decode($file)];
+        return ['file' => $file, 'index' => $index, 'text' => base64_decode($file), 'content' => $content];
       });
     }
 

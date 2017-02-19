@@ -19,63 +19,35 @@
       margin:0;
       box-sizing:border-box;
       display:block;
-    }
-    .panel details {
-      position:absolute;
-      background-color:#333;
-      width:100%;
-      padding:1em;
-      color:#fff;
-      z-index: 2;
-      overflow: auto;
-      height:2em;
-      transition: height 0.25s;
-    }
-    .panel details[open] {
-      color: #333;
-      height: 87.5vh;
-      background-color: rgba(255,255,255,0.85);
-      box-shadow: inset 0px 1px 5em 0px rgba(0,0,0,0.5);
+      opacity:1;
+      transition: opacity 0.5s 0.125s;
+      overflow:auto;
     }
     .panel ul.plain {
       padding: 1em 0 0;
     }
-    .panel ul li[data-line] {
-      border-top:1px solid rgba(255,255,255,0.1);
-      font-size:1.25em;
-      padding:0.5em;
-      line-height:1;
-    }
-    .panel summary {
-      margin:0;
-      font-size:1.5em;
-    }
-    
+
 
     .inspector .panel iframe {
-      height:90vh;
+      height:87vh;
       width:100%;
     }
     .inspector .panel pre {
       height:90vh;
       width:100%;
       box-sizing:border-box;
+      white-space:pre-wrap;
     }
 
     .inspector .panel:not(.visible) {
-      display:none;
+      height:0;
+      opacity:0;
     }
-    .buttons li {
-      cursor:pointer;
-      padding:0.5em 0;
-      text-align:center;
-      color:#fff;
-    }
-    .buttons li.active {
+    .buttons a.active {
       background-color:#FEFEFE;
       color:#777;
     }
-    .buttons li.active:before {
+    .buttons a.active:before {
       color:#333;
     }
     .stretch {
@@ -87,7 +59,13 @@
     .stretch > li {
       flex:1 0 auto;
     }
-    li[data-errors]:after {
+    a[data-file] {
+      padding:0.5em 0;
+      text-align:center;
+      color:#fff;
+      display:block;
+    }
+    li a[data-errors]:after {
       content: attr(data-errors);
       background-color: rgb(218, 75, 122);
       color:#fff;
@@ -98,7 +76,7 @@
       font-size: 0.65em;
       margin-left: 0.25em;
     }
-    li[data-sloc]:before {
+    li a[data-sloc]:before {
       content: attr(data-sloc) '\aLINES';
       color:#ffcf01;
       line-height: 1;
@@ -108,7 +86,7 @@
       font-size: 0.5em;
       margin-right: 0.25em;
     }
-    li[data-errors='0']:after {
+    li a[data-errors='0']:after {
       background-color:rgb(78, 210, 131);
     }
     li.error {
@@ -119,7 +97,7 @@
       background-color: rgba(0,0,255,0.05);
       box-shadow: 0 0 1em 0.25em rgba(0,0,255,0.05);
     }
-    li[data-type]:before {
+    li a[data-type]:before {
       border-radius: 50%;
       width: 1.5em;
       display: inline-block;
@@ -130,33 +108,39 @@
       font-family: monospace;
       margin-right: 0.5em;
     }
-    li[data-type='info']:before {
+    li a[data-type='info']:before {
       content: 'i';
       background-color: #00A4E4;
     }
-    li[data-type='error']:before {
+    li a[data-type='error']:before {
       content: 'e';
       background-color: #EE2E24;
     }
+    section.txt * {
+      font-family: Helvetica, arial, sans-serif;
+    }
+    
+    section.txt.visible {  
+      overflow:auto;
+      padding: 5em;
+      background-color:#fff;
+    }
+    
     iframe *:hover {outline: 1px dashed magenta;}
     
   </style>
   <script type="text/javascript">bloc.embed('/javascript/inspector.js');</script>
   <ul class="plain buttons stretch" style="background-color:#444;">
-    <li data-file="preview" class="active" data-rel="#critique">Preview</li>
-    <li data-file="readme" data-rel="[#_$project:readme:file:@hash]">README</li>
-    <!--  iterate project:notes -->
-    <li data-file="[$file:@basename]" class="code" data-errors="[$file:@errors]" data-sloc="[$file:@sloc]" data-rel="[#_$file:@hash]">[$file:@name]</li>
+    <li><a data-file="preview" class="active" href="#critique">Preview</a></li>
+    <!--  iterate project:files -->
+    <li><a data-file="[$file:@basename]" class="code" data-errors="[$file:@errors]" data-sloc="[$file:@sloc]" href="[#_$file:@hash]">[$file:@name]</a></li>
   </ul>
+  
   <section class="panel  visible" data-file="preview">
     <iframe src="[$project:baseurl?$entropy]" ondblclick="window.open(this.src);">
       <p>I frame</p>
     </iframe>
   </section>
-  
-  <section class="docs panel pad" data-file="readme">[$project:readme:content]</section>
-  <!--  iterate project:notes -->
-  <section class="panel" data-file="[$file:@basename]">
-    <pre class="[prettyprint linenums $file:@type]">[$content]</pre>
-  </section>
+  <!--  iterate project:files -->
+  <section class="[panel $file:@type]" data-file="[$file:@basename]">[$content]</section>
 </div>

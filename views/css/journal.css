@@ -599,21 +599,7 @@ pre.error.console {
   border: 1px solid #eee;
   box-shadow: 0 0 1em rgba(0,0,0,0.1);
 }
-/* Editor */
-body.editor > nav div {
-  width: 20vw;
-}
 
-body.editor {
-  padding-bottom: 0;
-}
-
-body.editor > main {
-  padding: 0;
-  margin-left: 20vw;
-  width: 80vw;
-  margin-top: -1.25em;
-}
 
 dl {
   margin: 0;

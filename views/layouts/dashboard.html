@@ -60,7 +60,7 @@
     </table>
   </section>
   <section>
-    <table class="full chart">
+    <table class="full chart projects">
       <caption class="rag-right">
         <!-- insert views/topics/_policy/project.html -->
       </caption>
@@ -115,17 +115,40 @@
         td.chart svg rect.y {
           fill: hsla(225, 100%, 80%, 0.75);
         }
+        .head {
+          font-size:5vw;
+          font-weight:200;
+          line-height:1;
+          letter-spacing:-0.075em;
+          color:rgba(0,0,0,0.65);
+        }
+        @media(max-width: 50em) {
+
+          .collapse {
+            writing-mode: vertical-lr;
+          }
+          table.chart th,
+          table.chart td {
+            padding:0.5em 0.25em;
+            line-height:1;
+            font-size:1em;
+          }
+          table.chart.projects thead th {
+            transform: rotate(-90deg);
+            width:1em;
+          }
+        }
         /* ]]> */
       </style>
       <tbody>
         <!-- iterate student:project:list -->
         <tr class="[$project:status]">
-          <th><span style="font-family:var(--condensed);font-size:5em;font-weight:200;text-transform:uppercase;line-height:1;letter-spacing:-0.075em;color:rgba(0,0,0,0.65);">[$project:criterion:@title]</span></th>
+          <th><span class="head condensed collapse">[$project:criterion:@title]</span></th>
           <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <em class="ticker">[$due:ticker]</em></td>
           <td style="width:15%;vertical-align:middle;">
             <a href="[[/$$student:course/criterion/project/$project:criterion:@index/$$student:section:@id]]">[ $project:criterion]</a>
           </td>
-          <td class="centered"><a href="[[$project:baseurl?$$entropy]]">Preview</a></td>
+          <td class="centered"><a class="collapse" href="[[$project:baseurl?$$entropy]]">Preview</a></td>
           <td class="[$schedule:status centered]">
             <a href="[[/$$student:course/notes/$project:criterion:path/$$student:@id]]">[[$$review]]</a>
             <a href="[[/$$instructor:path/$project:criterion:path/$$student:@id]]">[[$$instructor:edit]]</a>

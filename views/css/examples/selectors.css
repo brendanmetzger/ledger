@@ -14,13 +14,13 @@ footer > div {
 
 .calico + small {
  /*
-   Look for gray and tabby
+   look for gray and tabby
  */
 }
 
 :first-child ~ .boy {
   /* 
-    look for jack
+   look for jack
   */
 }
 
