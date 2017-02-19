@@ -6,7 +6,7 @@
 */
 
 var scroll = (function () {
-  var timeout = -1;
+  var timeout = 0;
   var skip = false;
   function scrollToElement(evt) {
     evt.preventDefault();
@@ -40,15 +40,18 @@ var scroll = (function () {
 
     while (box.scrollHeight === box.clientHeight) box = box.parentNode;
     
-    var position = [box.scrollLeft, box.scrollTop];
-
+    
+    var position = [box.scrollLeft, box.scrollTop - box.offsetTop];
+     skip = true;
     if (!evt.isTrusted) {
+      tween(start);
       box.style.overflow = 'hidden';
       timeout = setTimeout(function () {
-        tween(start);
-      }, 50);
+        
+        
+      }, 10);
     } else {
-      skip = true;
+     
       tween(start);
     }
     

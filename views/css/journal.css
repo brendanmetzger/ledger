@@ -522,6 +522,11 @@ form button {
   padding: 1em;
 }
 
+button.decorated {
+  width:100%;
+  background-image: linear-gradient(#eee, #fff, #eee);
+}
+
 .drawer button {
   position: fixed;
   top: 1em;

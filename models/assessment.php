@@ -41,7 +41,7 @@ namespace models;
       $this->student = $model;
     }
 
-    private function collective(Section $section, $c)
+    private function collective(Section $section, $c, $raw = 'score')
     {
       if (! $storage = self::$storage) {
         $storage = self::$storage = new \bloc\Maybe([]);
@@ -49,11 +49,11 @@ namespace models;
 
       $key = $c['@type'].$c['@index'].$section['@id'].$section['@course'];
 
-      return $storage($key)->get(function ($key) use($section, $c) {
+      return $storage($key)->get(function ($key) use($section, $c, $raw) {
         $scores = [];
         foreach ($section->students as $item) {
           $context = $item['student']->context->getElement($c['@type'], $c['@index']);
-          $score = Data::FACTORY($c['@type'], $context, null, [new \models\Criterion($c)])->score;
+          $score = Data::FACTORY($c['@type'], $context, null, [new \models\Criterion($c)])->{$raw};
           if ($score > 0) {
             $scores[] = $score;
           }
@@ -252,9 +252,10 @@ namespace models;
         
         $score = $map[$evaluation]->score;
         if ($evaluation === 'project') {
-          $stats             = $this->collective($this->student->section, $criterion);
+          $score             = $map[$evaluation]->score;
+          $stats             = $this->collective($this->student->section, $criterion, 'critique');
           $z                 = ($score - $stats['mean']) / ($stats['sd'] ?: 1);
-          $score             = round($stats['wmean'] + ($z * $stats['sd']), 2);
+          // $score             = round($stats['wmean'] + ($z * $stats['sd']), 2);
           $stats['standard'] = $score * 100;
           $map['stats']      = $map[$evaluation]->stats = $stats;
         }

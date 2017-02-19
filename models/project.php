@@ -177,6 +177,12 @@ namespace models;
     
     public function getScore()
     {
+      $score = ($this->contribution['commits'] / 70);
+      return $score;
+    }
+    
+    public function getCritique($value='')
+    {
       return $this->status == 'open' ? 1 : array_sum($this->axes);
     }
 
