@@ -188,7 +188,7 @@ namespace models;
 
     public function getWeighted(\DOMElement $context)
     {
-      return $this->status == 'open' ? 'NA' : $this->stats['standard'];
+      return $this->status == 'open' ? 'NA' : round($this->stats['score'] * 100);
     }
     
   }

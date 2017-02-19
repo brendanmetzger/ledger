@@ -128,7 +128,6 @@
     }
     
     iframe *:hover {outline: 1px dashed magenta;}
-    
   </style>
   <script type="text/javascript">bloc.embed('/javascript/inspector.js');</script>
   <ul class="plain buttons stretch" style="background-color:#444;">
@@ -136,7 +135,6 @@
     <!--  iterate project:files -->
     <li><a data-file="[$file:@basename]" class="code" data-errors="[$file:@errors]" data-sloc="[$file:@sloc]" href="[#_$file:@hash]">[$file:@name]</a></li>
   </ul>
-  
   <section class="panel  visible" data-file="preview">
     <iframe src="[$project:baseurl?$entropy]" ondblclick="window.open(this.src);">
       <p>I frame</p>

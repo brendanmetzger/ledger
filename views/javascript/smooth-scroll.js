@@ -9,7 +9,7 @@ var scroll = (function () {
   var timeout = 0;
   var skip = false;
   function scrollToElement(evt) {
-    evt.preventDefault();
+    
     clearTimeout(timeout);
     // if something else triggers a scroll, do not do anything.
     // if (!evt.isTrusted) return;
@@ -44,6 +44,7 @@ var scroll = (function () {
     var position = [box.scrollLeft, box.scrollTop - box.offsetTop];
      skip = true;
     if (!evt.isTrusted) {
+      evt.preventDefault();
       tween(start);
       box.style.overflow = 'hidden';
       timeout = setTimeout(function () {

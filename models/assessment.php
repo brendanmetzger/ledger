@@ -253,9 +253,10 @@ namespace models;
         $score = $map[$evaluation]->score;
         if ($evaluation === 'project') {
           $score             = $map[$evaluation]->score;
+          $critique          = $map[$evaluation]->critique;
           $stats             = $this->collective($this->student->section, $criterion, 'critique');
-          $z                 = ($score - $stats['mean']) / ($stats['sd'] ?: 1);
-          // $score             = round($stats['wmean'] + ($z * $stats['sd']), 2);
+          $z                 = ($critique - $stats['mean']) / ($stats['sd'] ?: 1);
+          $stats['score']    = round($stats['wmean'] + ($z * $stats['sd']), 2);
           $stats['standard'] = $score * 100;
           $map['stats']      = $map[$evaluation]->stats = $stats;
         }
