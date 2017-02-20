@@ -148,7 +148,6 @@
     
     section.txt.visible {  
       overflow:auto;
-      
       padding: 5em;
       background-color:#fff;
     }
@@ -159,7 +158,7 @@
   <ul class="plain buttons stretch" style="background-color:#444;">
     <li><a data-file="preview" class="active" href="#critique">Preview</a></li>
     <!--  iterate project:files -->
-    <li><a data-file="[$file:@basename]" class="code" data-errors="[$file:@errors]" data-sloc="[$file:@sloc]" href="[#$file:@name-$file:@hash]">[$file:@name]</a></li>
+    <li><a data-file="[$file:@basename]" class="code" data-errors="[$file:@errors]" data-sloc="[$file:@sloc]" href="[#$file:@name-$file:@type]">[$file:@name]</a></li>
   </ul>
   <section class="panel  visible" data-file="preview">
     <iframe src="[$project:baseurl?$entropy]">

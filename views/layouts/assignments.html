@@ -130,10 +130,17 @@
       <tr class="[$criterion:status]">
         <th><a href="[[/records/book/$$section:@course/$$section:@id/project/$criterion:@index]]">[$title]</a></th>
         <!-- iterate records -->
-        <td class="centered marked" title="[$assessment:project:letter]" style="[background-color:hsl(225, $assessment:project:percentage%, 80%);]">
+        <td data-size="[$assessment:project:response]" class="centered marked" style="[background-color:hsla(225, $assessment:project:percentage%, 80%, 0.9);]">
           <a class="edit" href="[[/records/evaluate/project/$$criterion:@index/$student:@id]]">[$assessment:project:percentage / $assessment:project:weighted]</a>
         </td>
       </tr>
     </tbody>
   </table>
+  <style type="text/css" media="screen">
+    /* <![CDATA[ */
+    td[data-size='0'] {
+      background-color:#FFFFA7 !important;
+    }
+    /* ]]> */
+  </style>
 </article>

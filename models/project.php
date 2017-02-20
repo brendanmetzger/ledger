@@ -59,6 +59,13 @@ namespace models;
       }
     }
     
+    public function getResponse(\DOMElement $context)
+    {
+      $out = iterator_to_array($context['file']->map(function($file) {
+        return strlen((string)$file);
+      }));
+      return array_sum($out);
+    }
     
     public function getFiles(\DOMElement $context)
     {
