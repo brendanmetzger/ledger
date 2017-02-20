@@ -32,12 +32,17 @@
     .markdown h5 {
       font-weight:400;
     } 
-    .markdown code {
+    .markdown code:not([class]) {
       border-radius:0.25em;
       padding: 0 0.125em;
       border: 1px solid rgba(0,0,0,0.1);
       background-color:#fff;
     }
+    
+    .markdown pre code {
+      white-space: pre-line;
+    }
+    
     .markdown ul, .markdown ol {
       padding-left:2em;
     }
@@ -57,7 +62,7 @@
 
   <!--  iterate project:files -->
   <article id="[$file:@name-$file:@hash]" class="critique pad">
-    <h3 class="t b">[$file:@path]</h3>
+    <h3 class="t b code">[$file:@path]</h3>
     <a href="[[$$edit:path#$file:@name-$file:@hash]]">[[$$edit:name]]</a>
     <h5><var>[$file:@commits]</var> Commits</h5>
     <h5><var>[$file:@sloc]</var> <abbr title="source lines of code">SLOC</abbr></h5>

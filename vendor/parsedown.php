@@ -414,7 +414,7 @@ class Parsedown
 
             if (isset($matches[1]))
             {
-                $class = 'language-'.$matches[1];
+                $class = 'prettyprint language-'.$matches[1];
 
                 $Element['attributes'] = array(
                     'class' => $class,
@@ -425,6 +425,7 @@ class Parsedown
                 'char' => $Line['text'][0],
                 'element' => array(
                     'name' => 'pre',
+                    'attributs' => ['class' => 'prettyprint'],
                     'handler' => 'element',
                     'text' => $Element,
                 ),
