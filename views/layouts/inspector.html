@@ -1,5 +1,22 @@
 <div class="tabbed inspector">
   <style media="screen">
+    body.editor > nav div {
+      width: 25vw;
+      overflow:hidden;
+      padding:0;
+    }
+
+    body.editor {
+      padding: 0;
+      border:none;
+      overflow:hidden;
+    }
+
+    body.editor > main {
+      padding: 0;
+      margin-left: 25vw;
+      width: 75vw;
+    }
     .inspector nav {
       background-color:#333;
       height:5vh;
@@ -117,7 +134,7 @@
       content: 'e';
       background-color: #EE2E24;
     }
-    section.txt * {
+    section.txt *, .markdown * {
       font-family: Helvetica, arial, sans-serif;
     }
     

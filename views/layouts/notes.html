@@ -1,10 +1,61 @@
-<div>
-  <script type="text/javascript">
-    bloc.embed('/javascript/iam.js');
-  </script>
-  <header class="notes">
-    <a class="pad" href="[/$student:course/dashboard]">Back to dashboard</a>
-    <h3 class="centered percentage ruled bottom top">[$evaluation:percentage]</h3>
-  </header>
-  <section class="pad" style="font-size:0.85em;">[$evaluation:formatted]</section>
+<div style="height:87vh;overflow-y:auto;">
+  <h4 class="button centered pad"><a href="[/$student:course/dashboard]">Back to dashboard</a></h4>
+  <article class="critique pad" id="critique">
+    <h3 class="caps centered">Project: <b class="caps">[$project:title]</b></h3>
+    <h5 class="centered percentage pad"><strong>[$project:percentage]</strong> of <span>[$project:weighted]</span></h5>
+    
+    <!-- iterate project:inputs -->
+    <figure>
+      <figcaption class="h4 condensed">[$key]</figcaption>
+      <meter min="0" max="0.1" low="0.04" high="0.06" optimum="0.08" value="[$value]" style="width:100%">[$key]</meter>
+    </figure>
+  </article>
+  
+  <style type="text/css" media="screen">
+    /* <![CDATA[ */
+    .critique {
+      min-height: 87vh;
+    }
+    .markdown {
+      background-color:rgba(255,255,255,0.75);
+      font-size:0.5rem;
+      padding:2vmax;
+    }
+    .markdown h1,
+    .markdown h2,
+    .markdown h3,
+    .markdown h4,
+    .markdown h5 {
+      font-weight:400;
+    } 
+    .markdown code {
+      border-radius:0.25em;
+      padding: 0 0.125em;
+      border: 1px solid rgba(0,0,0,0.1);
+      background-color:#fff;
+    }
+    .markdown ul, .markdown ol {
+      padding-left:2em;
+    }
+    .markdown blockquote {
+      border-style:solid;
+      border-width:1px 0;
+      font-style:italic;
+      padding:1em;
+    }
+    .critique .markdown {
+      margin:1em -2vmax;
+      box-shadow: 0 0 0.75em rgba(0,0,0,0.15);
+      
+    }
+    /* ]]> */
+  </style>
+
+  <!--  iterate project:files -->
+  <article id="[_$file:@hash]" class="critique pad">
+    <h3 class="t b">[$file:@path]</h3>
+    <h5><var>[$file:@commits]</var> Commits</h5>
+    <h5><var>[$file:@sloc]</var> <abbr title="source lines of code">SLOC</abbr></h5>
+    <section class="markdown t">[$markdown]</section>
+  </article>
 </div>

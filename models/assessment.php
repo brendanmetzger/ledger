@@ -241,7 +241,6 @@ namespace models;
       $total    = $reviewed->count();
       $scores   = [];
       $flags    = ["⚐" => 0, "✗" => 0];
-
       $collect = Criterion::collect(function ($criterion, $index) use($evaluation, $total, $reviewed, &$flags, &$scores) {
         $node = $reviewed->pick($index) ?? $this->student->context->getFirst($evaluation, $index);
         $map = [
@@ -251,7 +250,9 @@ namespace models;
         ];
         
         $score = $map[$evaluation]->score;
+
         if ($evaluation === 'project') {
+          
           $score             = $map[$evaluation]->score;
           $critique          = $map[$evaluation]->critique;
           $stats             = $this->collective($this->student->section, $criterion, 'critique');

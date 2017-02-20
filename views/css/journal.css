@@ -443,14 +443,14 @@ main {
   min-height: 84vh;
 }
 
-body > nav div {
+body > nav > div {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   box-shadow: inset -0.25em 0 1em rgba(0,0,0,0.2);
   border-width: 1px 0 1px;
 }
 
-body > nav div ul {
+body > nav > div ul {
   display: flex;
   height: auto;
   flex-flow: row;
@@ -458,7 +458,7 @@ body > nav div ul {
   background-size: auto 80%;
 }
 
-body > nav div ul li {
+body > nav > div ul li {
   flex: 1 0 10em;
 }
 @media only screen and (min-width:600px) {
@@ -472,7 +472,7 @@ body > nav div ul li {
     background-image: none;
   }
 
-  body > nav div {
+  body > nav > div {
     width: 15vw;
     position: fixed;
     top: 0;

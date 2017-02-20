@@ -84,7 +84,7 @@ class Course extends \bloc\controller
   {
     $view = new View(self::layout);
     $criterion  = \models\Criterion::Collect(null, "[@type='{$topic}' and (@course = '{$student->course}' or @course = '*')]")->pick($index);
-    $this->{$topic} = $this->item = $student->evaluation($topic, $index, $criterion);      
+    $this->{$topic}   = $this->item = $student->{$topic}['list'][$index][$topic];
     $this->template   = 'editor';
     $view->context    = "views/layouts/notes.html";
     $view->content    = "views/layouts/inspector.html";

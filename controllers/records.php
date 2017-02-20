@@ -110,7 +110,7 @@ class Records extends \bloc\controller
 
     if ($topic == 'project') {
       $criterion  = \models\Criterion::Collect(null, "[@type='{$topic}' and (@course = '{$this->student->course}' or @course = '*')]")->pick($index);
-      $this->{$topic} = $this->item = $this->student->evaluation($topic, $index, $criterion);      
+      $this->{$topic} = $this->item = $this->student->evaluation($topic, $index, $criterion);
       $this->template = 'editor';
       $view->context = "views/layouts/forms/assignment.html";
       $view->content = "views/layouts/inspector.html";

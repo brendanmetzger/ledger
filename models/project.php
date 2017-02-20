@@ -81,12 +81,10 @@ namespace models;
           
           $doc->documentElement->setAttribute('class', "prettyprint linenums {$file['@type']}");
           $doc->documentElement->appendChild($doc->createCDATASection($content));
-          
-          
           $content = $doc->documentElement->write();
         }
-        
-        return ['file' => $file, 'index' => $index, 'text' => base64_decode($file), 'content' => $content];
+        $text = base64_decode($file);
+        return ['file' => $file, 'index' => $index, 'text' => $text, 'markdown' => \vendor\Parsedown::render($text), 'content' => $content];
       });
     }
 

@@ -75,7 +75,6 @@
           <th>Your page<sup><a href="/overview/glossary#cache-invalidation">[*]</a></sup></th>
           <th>Notes</th>
           <th>Commits</th>
-          <th>Crit</th>
           <th>Score</th>
         </tr>
       </thead>
@@ -154,13 +153,12 @@
             <a href="[[/$$instructor:path/$project:criterion:path/$$student:@id]]">[[$$instructor:edit]]</a>
           </td>
           <td class="chart">[$project:chart]</td>
-          <td class="centered"><span class="percentage">[$project:weighted]</span></td>
-          <td class="centered"><span class="percentage">[$project:percentage]</span></td>
+          <td class="centered"><strong class="percentage">[$project:percentage]</strong> of <span class="percentage">[$project:weighted]</span></td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="7">µ ⋅ <span class="percentage">[$student:projects:weight]</span></th>
+          <th colspan="6">µ ⋅ <span class="percentage">[$student:projects:weight]</span></th>
           <td class="centered"><strong class="percentage">[$student:projects:score]</strong></td>
         </tr>
       </tfoot>
