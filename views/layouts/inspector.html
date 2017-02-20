@@ -23,17 +23,12 @@
       overflow:hidden;
     }
     
-    .docs {
-      overflow:auto;
-      background-color:rgba(0,0,0,0.1);
-    }
-    .docs li * {
-      font-size:100%;
-    }
+    
     .inspector .panel {
       width:100%;
       height:90vh;
       margin:0;
+      font-size:1em;
       background-color:rgba(255,255,255,0.75);
       box-sizing:border-box;
       display:block;
@@ -55,6 +50,10 @@
       width:100%;
       box-sizing:border-box;
       white-space:pre-wrap;
+    }
+    
+    .inspector pre * {
+      font-size:0.75rem;
     }
 
     .inspector .panel:not(.visible) {
@@ -138,8 +137,21 @@
       font-family: Helvetica, arial, sans-serif;
     }
     
+    section.txt h1, section.txt h2, section.txt h3 {
+      margin: 1em 0 0.25em;
+    }
+    
+    section.txt p {
+      margin: 1em 0;
+    }
+
+    .txt li *, .markdown li {
+      font-size:100%;
+    }
+    
     section.txt.visible {  
       overflow:auto;
+      
       padding: 5em;
       background-color:#fff;
     }
@@ -150,11 +162,11 @@
   <ul class="plain buttons stretch" style="background-color:#444;">
     <li><a data-file="preview" class="active" href="#critique">Preview</a></li>
     <!--  iterate project:files -->
-    <li><a data-file="[$file:@basename]" class="code" data-errors="[$file:@errors]" data-sloc="[$file:@sloc]" href="[#_$file:@hash]">[$file:@name]</a></li>
+    <li><a data-file="[$file:@basename]" class="code" data-errors="[$file:@errors]" data-sloc="[$file:@sloc]" href="[#$file:@name-$file:@hash]">[$file:@name]</a></li>
   </ul>
   <section class="panel  visible" data-file="preview">
-    <iframe src="[$project:baseurl?$entropy]" ondblclick="window.open(this.src);">
-      <p>I frame</p>
+    <iframe data-src="[$project:baseurl?$entropy]">
+      <p>Preview</p>
     </iframe>
   </section>
   <!--  iterate project:files -->

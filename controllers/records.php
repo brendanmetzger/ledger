@@ -62,7 +62,6 @@ class Records extends \bloc\controller
   {
     $view = new View(self::layout);
 
-
     $this->course = new \models\Course($course);
     $this->courses = \Models\Course::collect();
     $this->section = $this->course->section($section);
@@ -100,20 +99,24 @@ class Records extends \bloc\controller
    * @param int $index assignment number
    * @param string $sid student id number
    **/
-  protected function GETevaluate(Admin $instructor, $topic, int $index, $sid = null)
+  protected function GETevaluate(Admin $instructor, $topic, int $index, $sid = null, $review = false)
   {
     $this->student = new Student($sid);
     $this->topic = $topic;
     $this->index = $index;
-
+    $this->dashboard  = "/records/student/{$this->student['@id']}";
+    $this->edit = [
+      'path' => "/records/evaluate/{$topic}/$index/{$sid}",
+      'name' => 'edit',
+    ];
+    
     $view = new View(self::layout);
 
     if ($topic == 'project') {
-      $criterion  = \models\Criterion::Collect(null, "[@type='{$topic}' and (@course = '{$this->student->course}' or @course = '*')]")->pick($index);
-      $this->{$topic} = $this->item = $this->student->evaluation($topic, $index, $criterion);
+      $this->{$topic} = $this->item = $this->student->{$topic}['list'][$index][$topic];
       $this->template = 'editor';
-      $view->context = "views/layouts/forms/assignment.html";
-      $view->content = "views/layouts/inspector.html";
+      $view->context = sprintf("views/layouts/%s.html", $review ? "notes" : "forms/assignment");
+      $view->content  = "views/layouts/inspector.html";
     } else {
       $this->{$topic} = $this->item =  Data::FACTORY($topic, $this->student->evaluation($topic, $index));
       $this->section = $this->student->section;

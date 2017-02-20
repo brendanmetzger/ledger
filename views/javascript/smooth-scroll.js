@@ -6,13 +6,13 @@
 */
 
 var scroll = (function () {
-  var timeout = 0;
   var skip = false;
   function scrollToElement(evt) {
-    
-    clearTimeout(timeout);
+    skip = true;
+
     // if something else triggers a scroll, do not do anything.
-    // if (!evt.isTrusted) return;
+    if (!evt.isTrusted) evt.preventDefault();
+
     
     function tween(now) {
       var complete = (now - start) / duration;
@@ -29,7 +29,6 @@ var scroll = (function () {
           window.location.href = evt.target.href;
         }
         skip = false;
-        box.style.overflow = 'auto';
       }
     }
   
@@ -39,31 +38,20 @@ var scroll = (function () {
     var box      = this.parentNode;
 
     while (box.scrollHeight === box.clientHeight) box = box.parentNode;
-    
-    
     var position = [box.scrollLeft, box.scrollTop - box.offsetTop];
-     skip = true;
-    if (!evt.isTrusted) {
-      evt.preventDefault();
-      tween(start);
-      box.style.overflow = 'hidden';
-      timeout = setTimeout(function () {
-        
-        
-      }, 10);
-    } else {
-     
-      tween(start);
-    }
-    
+   
+    tween(start);
   }
   
   return {
     monitor: function (elem, spots, callback, offset) {
       var current = 0;
       elem.addEventListener('scroll', function (evt) {
+        
+        if (skip) return;
+        
         var position = Math.round(this.scrollTop / this.scrollHeight * spots);
-        if (current !== position && !skip) {
+        if (current !== position) {
           current = position;
           callback(current);
         }

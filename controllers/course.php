@@ -83,9 +83,9 @@ class Course extends \bloc\controller
   protected function GETnotes(Student $student, $topic, $index)
   {
     $view = new View(self::layout);
-    $criterion  = \models\Criterion::Collect(null, "[@type='{$topic}' and (@course = '{$student->course}' or @course = '*')]")->pick($index);
     $this->{$topic}   = $this->item = $student->{$topic}['list'][$index][$topic];
     $this->template   = 'editor';
+    $this->dashboard  = "/{$student->course}/dashboard";
     $view->context    = "views/layouts/notes.html";
     $view->content    = "views/layouts/inspector.html";
     return $view->render($this());

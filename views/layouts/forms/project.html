@@ -66,8 +66,8 @@
   </fieldset>
   
   <!--  iterate project:files -->
-  <fieldset id="[_$file:@hash]" class="file">
-    <legend>[Notes for $file:@path]</legend>
+  <fieldset id="[$file:@name-$file:@hash]" class="file">
+    <legend>Notes: <b>[$file:@path]</b> <button onclick="document.querySelector('form input[name=redirect]').value = this.dataset.redirect;" data-redirect="[[/records/evaluate/project/$$index/$$student:@id/review#$file:@name-$file:@hash]]">Review</button></legend>
     <dl>
       <dt>History</dt>
       <dd>???</dd>
@@ -99,8 +99,7 @@
     
     bloc.init('projects', function () {
       var tabs      = document.querySelectorAll('.inspector a[data-file]');
-      var fieldsets = document.querySelectorAll('#project fieldset');
-      var to = 0;
+      var sections  = document.querySelectorAll('#project fieldset');
       var click = new MouseEvent('click', {
         bubbles: true,
         cancelable: true,
@@ -110,7 +109,7 @@
       var triggerClicks = function (position) {
         tabs[position].dispatchEvent(click);
       }
-      scroll.monitor(document.querySelector('#project'), fieldsets.length, triggerClicks);
+      scroll.monitor(document.querySelector('#project'), sections.length, triggerClicks);
     });
     
     
