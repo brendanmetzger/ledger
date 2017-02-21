@@ -103,8 +103,10 @@ namespace models;
     public function getBaseUrl(\DOMElement $context)
     {
       $url = $_SERVER['REQUEST_SCHEME'] . substr($this->student['@url'], 4);
-      return $url . $this->criterion->context['@path'] . '/';
+      
+      return $url . '/' . $this->title . '/';
     }
+    
     
     public function getContribution(\DOMElement $context)
     {
@@ -159,7 +161,7 @@ namespace models;
         
     public function getTitle(\DOMElement $context)
     {
-      return $this->criterion->context['@title'];
+      return $context['@title'] ?:  $this->criterion->context['@title'];
     }
 
     public function getInputs(\DOMElement $context)
