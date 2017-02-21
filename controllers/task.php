@@ -276,6 +276,29 @@ class Task extends \bloc\controller
     // \/\*([\s\S]*?)\*\/|([^\\:]|^)\/\/.*$
   }
   
+  public function CLIdebug($id, $project, $etc)
+  {
+    $url = 'https://jsbin.com/api/save';
+    
+    $data = [
+      'html' => file_get_contents(PATH . 'views/layouts/journal.html'),
+      'javascript' => 'console.log("hello")',
+      'css' => '* {text-align:center}',
+    ];
+      
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+    $output = curl_exec($ch);
+    $info = curl_getinfo($ch);
+    curl_close($ch);
+    print_r($output);
+    print_r($info);
+  }
+  
   public function POSTvalidate($request, $id, $type, $url, $file)
   {
     // log transaction, time, user, file, hash

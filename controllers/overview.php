@@ -64,12 +64,19 @@ class Overview extends \bloc\controller
     $view->content = 'views/layouts/forms/websocket.html';
     return $view->render();
   }
-
-  public function GETessay($topic = null)
+  
+  protected function GETfeedback(User $user, $index = 1)
   {
     $view = new View(self::layout);
     // get all topics
-    $view->content =  sprintf("views/prologue/%s.html", $topic);
+    $out = '';
+    foreach (\models\data::instance()->query('//')->find("student/project[$index]/file") as $file) {
+      // $out .= preg_replace('/\n+/', ' ', base64_decode($file->nodeValue));
+      $out .= \vendor\Parsedown::render(base64_decode($file->nodeValue));
+    }
+    $this->message = "so far...";
+    $this->description = $out;
+    $view->content = "/views/layouts/error.html";
     return $view->render($this());
   }
   
