@@ -1,24 +1,21 @@
 /* media queries */
 .responsive {
-  background-color:tomato;
-  border-radius:1em;
-  font-size:1.5em;
-  padding:2em;
-  border:1em solid rgba(255,255,255,0.1);
-  transition:all 1s;
+  padding:1em;
+  transition:all 1s 0.5s;
+  line-height: 1.5;
 }
 
 @media (min-aspect-ratio: 2/1) {
   .responsive {
+    line-height:1;
     background-color:lightgreen;
   }
 }
 
 @media (min-width:1200px) {
   .responsive {
-    padding:1em 1em 5em;
-    border-width:1px;
-    border-radius:0;
+    margin: 2.5em;
+    background-color:tomato;
   }
 }
 

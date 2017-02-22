@@ -3,16 +3,23 @@
 .notate:after,
 *[data-markup]:before,
 code,
+.pre,
 pre {
   font-family: var(--mono);
-  white-space: pre;
   letter-spacing: 0;
   font-style: normal;
   tab-size: 2;
 }
 
+
 samp {
   color: #333;
+}
+
+samp var {
+  background-color: rgba(255,255,255,0.5);
+  border-radius:0.25em;
+  padding:0.25em;
 }
 
 .notate:after {

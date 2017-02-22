@@ -1,5 +1,5 @@
   <article class="margins" data-classification="javascript object arary beginner">
-    <h2>Intro to JavaScript by means of Data Storage</h2>
+    <h2>Intro to JavaScript Objects and Arrays</h2>
     <p>The following quote is from <em>How To Design Programs</em> (<a href="http://www.htdp.org">freely available from <abbr title="Massachusetts Institute of Technology">MIT</abbr> Press</a>). While this book goes in in large detail about understanding the connection between mathematics and computing, and though that is not the subject of this course, it hits on a point you may hear me nag about.</p>
     <blockquote cite="http://www.htdp.org/2003-09-26/Book/curriculum-Z-H-11.html" class="two columns quote">
       <p>A programming language is in many ways like a spoken language. It has a vocabulary and a grammar. The vocabulary is the collection of those 'basic words' from which we can compose 'sentences' in our language. A sentence in a programming language is an expression or a function; the language’s grammar dictates how to form complete sentences from words. Programmers use the terminology <strong>syntax</strong> to refer to the vocabularies and grammars of programming languages.</p>
@@ -17,23 +17,32 @@
       <h3>Arrays</h3>
       <p><img src="/css/media/catalog.png" alt="card catalog" class="float right __" style="shape-outside:url(/css/media/catalog.png);shape-image-threshold:0.25;shape-margin:1em;"/>Arrays are <em>a special type of object</em> which maintain order. Instead of using strings as keys, they use integers, called indices.  Instead of using curly braces to declare them, you use square brackets. To access an item in an array, you use brackets along with the index you are interested in. Indices always start at 0. Beyond that, like an object, you can put anything you like in an array, including other arrays. While this might seem like less useful than an object at first glance,  in programming, order is <em>precisely what you want</em> making the array extremely useful and necessary type of object. An array is declared <code>var example = ['value'];</code>, and it is accessed <code>console.log(example[0]);</code> using the bracket operator.</p>
     </section>
-	
-    <section class="explain whitepaper">
-      <aside class="note">
+    <figure class="explain whitepaper">
+      <figcaption class="margins">
         <h4>Using Objects and Arrays to talk about data.</h4>
-        <p>Brackets, both square and curly, are going to become extremely familiar to you by the end of the semester. Objects use curly brackets, arrays use square brackets—make sure you syntactically see the following structure.</p>
-        <p>In my adjacent object definition, I have assigned an object to variable called refrigerator. That object has things called <strong>properties</strong>, and those properties have <strong>values</strong>. A value can be of any <strong>type</strong>—a number, string, boolean, even another object or array. Programmers in other languages really appreciate the JavaScript syntax for describing objects, because it is expressive, powerful and quite legible once you get the hang of it. As a reminder, we have been talking about objects since the very beginning with the <strong>Document Object</strong>; the concept centers around humans and machines exchanging structured data.</p>
-        <p>Also my harping on structure should be clear at this point. Note that the indentation, the opening and closing of braces and brackets helps clarify the hierarchy.</p>
-        <ul>
-          <li>The refrigerator object has several properties containing several types: string, number, boolean, and array.</li>
-          <li><code>refrigerator.ice_maker</code> is a Boolean.</li>
-          <li><code>refrigerator.shelves</code> is an Array containing Objects.</li>
-          <li><code>refrigerator.drawers</code> is an Array containing Objects.</li>
-          <li><code>refrigerator.shelves[1].contents[0]</code> is 'mayonnaise'</li>
-        </ul>
-      </aside>
+        <p>With practice, <dfn id="dfn-delimiters">delimiters</dfn> become very recognizable; this is important, because one might contend that the <mark>vast majority of of syntax errors are a misplaced delimiter.</mark> </p>
+        <p>In my adjacent object definition, I have made up an object (from thin air) and <dfn id="dfn-assignment">assigned</dfn> an object to variable. That object has things called <dfn id="dfn-properties">properties</dfn>, and those properties have <dfn id="dfn-value">values</dfn>. A value can be of any <dfn id="dfn-type">type</dfn>—a number, string, boolean, even another object or array or <dfn id="dfn-function">function</dfn>. Programmers in other languages really appreciate the JavaScript syntax for describing objects, because it is expressive, powerful and quite legible once you get the hang of it.</p>
+        <p>When analyzing the example object, note the indentation, the opening and closing of braces and the use of commas. How one organizes all source code and syntax, in <em>any</em> language, matters a great deal.</p>
+        <ol class="t">
+          <li>What is the object named?</li>
+          <li>How would one get the make? Is the answer a <dfn>string</dfn>?</li>
+          <li>How many shelves are there? How would one get the mustard?</li>
+          <li>How Many drawers?</li>
+          <li>How would you describe the contents of the second drawer?</li>
+        </ol>
+      </figcaption>
       <pre class="prettyprint">
         <!-- review views/javascript/examples/objects.js basic object -->
       </pre>
-    </section>
+    </figure>
+    <footre>
+      <ol>
+        <li>A <a href="#dfn-delimiter">delimiter</a> is a sequence of characters that defines a boundary. The classic comma is a simple one that separates a set of things belonging to one group. Bracket delimiters, such as <samp>""</samp>, <samp>[]</samp>, <samp>''</samp>, <samp>()</samp> and <samp>{}</samp> mark the start and end of regions, and are often responsible for <em>defining</em> a group.</li>
+        <li>An <a href="#dfn-assignment">assignment</a> is an <dfn>operation</dfn> that takes one value and assigns it to a place in memory. That place is given a name, either with the <code>var</code> keyword or in a <dfn>property</dfn> definition</li>
+        <li>A <a href="#dfn-property">property</a> is the like a variable declaration for an object: it holds on to whatever you pass to it. Note, however, to <dfn>assign</dfn> a value to an object property, you use a colon (<samp>:</samp>), not an equal sign (<samp>=</samp>).</li>
+        <li><a href="#dfn-value">values</a> are the actual contents of a variable or property. They can be any number of things, including nothing.</li>
+        <li>A <a href="#dfn-type">type</a> is the finite number of things a variable or property can be. A <samp>string</samp> string is a group of characters delimited by a single or double quotation mark. There are also <samp>numbers</samp>, <samp>true</samp> and <samp>false</samp> which are known as <dfn>booleans</dfn>, and of course, <samp>objects</samp> and <samp>arrays</samp> (and a few more)</li>
+        <li>The <a href="#dfn-function"></a> is another <dfn>type</dfn> that gets its own line because it is of paramount important in JavaScript. The function, described as broadly as possible, takes input, does any number of actions, and returns output.</li>
+      </ol>
+    </footre>
   </article>

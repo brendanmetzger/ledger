@@ -2,31 +2,45 @@
     <h2>Responsive Design</h2>
     <p class="intro">Responsive web design is a technique used to modify layout, typography and other design considerations in response to the size and type of device used by the viewer. It can be elusive and frustrating, so some philosophy is necessary.</p>
     <section class="margins">
+      <img src="[$cdn/media/images/cell-phone.png]" alt="Smartphone Graphic" class="float left" style="shape-outside:polygon(30% 0, 100% 100%, 0 100% ); height:22em;mix-blend-mode:multiply;margin:0 1em "/>
+      
       <h3 class="tt">Mobile First</h3>
-      <p><img src="/css/media/smartphone.svg" alt="Smartphone Graphic" class="float left" style="height:4em;margin-right:0.75em;"/><em>Mobile-first</em> design is an important concept I suggest you practice. Essentially, it means that you design something for the smallest screen you are supporting, and then you <strong>scale up</strong> to accommodate bigger screens and the more space you have available. The fact of the matter is that your mobile-first design is always very simple: it is only one column, type is generally designed to be read about 2 feet from a user’s face and interactive elements need to accommodate a fingertip.</p>
-      <p>While this seems like an obviously good choice, in practice, few designers (or clients) are patient enough for this process, for a couple of reasons. Often the mobile design is done after the desktop because then a client can approve and adjust the look and feel. In addition, most designers don’t work in an interactive design medium (like a text-editor/browser) so they are not very aware of how responsive design even works.</p>
+      <p><em>Mobile-first</em> design is an important concept to practice if you intend to make fully-responsive web sites or applications. Essentially, it means that you design something for the smallest screen you are supporting, and then you <strong>scale up</strong> to accommodate bigger screens and the more space you have available. The fact of the matter is that your mobile-first design is always very simple: it is only one column, type is generally designed to be read about 2 feet from a user’s face and interactive elements need to accommodate a fingertip.</p>
+      <p>While this seems like an obviously good choice, in practice, few designers (or clients) are patient enough for this process, for a couple of reasons. Often the mobile design is done after the desktop because then a client can approve and adjust the look and feel. In addition, most designers don’t work in an interactive design medium (like a text-editor/browser) so they are not very aware of the myriad elements that one can and should consider when making decisions.</p>
       <p>From experience, these caveats delay a project significantly and it’s painful and awkward to go from full-scale design to small, but relatively easy to go small to big. In other words, put on your skinny jeans before your holiday meal, not after. So if you want to get the knack of mobile development, <strong>always start mobile first</strong>.</p>
     </section>
     <section>
       <h3 class="tt">Media Queries</h3>
       <p>Media Queries are pretty simple—if you have the gist of <abbr>CSS</abbr>, the won’t give you any trouble. Essentially, imagine you can divide your styles up by certain criteria: <q>if the screen is too small, load this stylesheet</q>, and likewise, you can target device types, landscape vs. portrait, etc. Say you asked yourself, <q>I want some really big text, but only on a really big screen.</q>. <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">Media Queries</a> are where you begin, and once you get your site schematics figured out and media in place they can offer immediate solutions to problems with text size and layout problems. The <a href="http://www.w3schools.com/cssref/css3_pr_mediaquery.asp">W3Schools</a> reference is also a good starting point.</p>
     </section>
+    
     <section class="tt whitepaper margins">
       <h4>Notes:</h4>
       <p>There is one more technical item you should be aware of. Be sure to investigate mobile-appropriate <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag">meta tags</a> to make sure your <abbr>css</abbr> is applied correctly. Remember, <code>meta</code> tags are used as instructions—they are invisible to users, but machines use that information to make other decisions.</p>
       <p><strong>Responsive design is a lot of philosophy and a little bit of technique</strong>. You've seen me employ all of the techniques you will ever need at this point: relative and viewport units, and now, media queries. From here, it becomes mostly strategy and having a good plan when you design, which we will work together on, but realistically takes years to appreciate.</p>
     </section>
-    <section class="container tt ruled top">
-      <h3 class="tt">Media Query Examples</h3>
-      <p>As developer/designers I want to take every opportunity to point out to you that <strong>interactive design is based on context</strong>. Learn to design by approaching problems with <q>if… then…</q> in mind.</p>
+    <figure class="whitepaper explain">
       <link rel="stylesheet" href="/css/examples/queries.css" media="screen" charset="utf-8" />
-      <div class="float left ______">
-        <p class="note">Try adjusting your screen size and ratio. The media query is set up to monitor aspect-ratio—specifically if your screen is at least two times wider than it is tall. Such a scenario will cause the background color of the box to turn green. Likewise, any screen less than 1200px wide will adjust styles as well.</p>
-        <p class="pad centered"><code>&lt;p class="responsive"&gt;Change….&lt;p&gt;</code></p>
-        <p class="responsive code" style="color:#fff;width:75%;margin:3em auto 0;">Sensitive to window size<br/>and aspect ratio.</p>
-      </div>
+      <figcaption class="margins">
+        <p><mark>Interactive design is largely based on context and thinking in terms of what a user can or will experience.</mark> Learn to design by approaching problems with <q>if… then…</q> in mind.</p>        
+        <p>Adjust your screen size and ratio. The media query is set up to monitor aspect-ratio—specifically if your screen is at least two times wider than it is tall. Such a scenario will cause the background color of the box to turn green. Likewise, any screen less than 1200px wide will adjust styles as well.</p>
+        <p class="responsive pre">This <samp>Element</samp> has a class of <samp>responsive</samp> applied which has made it sensitive to window size and aspect ratio via two media queries. Keep a careful eye on <samp>margin</samp>, <samp>line-height</samp> and <samp>background-color</samp>. Right now the window is <samp><var>0</var>px wide</samp> and has an aspect ratio of <samp><var>0</var></samp></p>
+      </figcaption>
+      <script type="text/javascript">
+        // <![CDATA[
+          var elems = document.querySelectorAll('p.responsive var');
+          var trackRatios = function (evt) {
+            elems[0].textContent = window.innerWidth;
+            elems[1].textContent = (window.innerWidth / window.innerHeight).toFixed(3);
+          }
+        
+          trackRatios();
+          window.addEventListener('resize', trackRatios, {passive: true});
+        
+        // ]]>
+      </script>
       <pre class="prettyprint float left ____">
         <!-- review views/css/examples/queries.css media queries  -->
       </pre>
-    </section>
+    </figure>
   </article>
