@@ -64,12 +64,18 @@ samp var {
 }
 
 
-
-code sup {
+code kbd {
+  color:#444;
+  padding:0.25em;
+  vertical-align:middle;
+  font-weight:800;
+}
+code sup  {
   color: #333;
   font-size: 75%;
   padding: 0 0.25em;
 }
+
 
 code span.typ {
   font-style: italic;
@@ -225,10 +231,14 @@ code.element:after,
   content: '<';
   padding:0 0.25em;
   font-size:75%;
+  opacity:0.75;
 }
 code.element:after,
 .elements code:after {
   content: '>';
+}
+code.empty.element:after {
+  content: '/>';
 }
 
 *[data-markup] {position:relative;}
