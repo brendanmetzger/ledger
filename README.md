@@ -4,12 +4,8 @@ A way to Organize my teaching materials, my students, and my assignments.
 ## todo
 - [x] add date to emails
 - [x] student preview for practice notes
-- [ ] improve way to take attendance (attendance is registered by a quick quiz)
+- [ ] improve way to take attendance (like, attendance is noted via a quick quiz or exercise)
 - [x] crunch notes into 1 line before saving
-- [ ] make a checklist for things to mark off
-  - deprecated techniques
-  - improperly attributed work
-  - precision (both syntax and aesthetic)
 - [x] automatically show validation errors
 - [x] compute unique tags used
 - [x] consider #lines of css & uniqueness.
@@ -46,7 +42,7 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Implement basic usage/analytics tracking
 - [ ] Add a readme for all interactive tidbits
 - [ ] Parse readme.md files for interactives themselves.
-- [ ] **Make a scroll-spy that checks boxes as you continue down outline. Show user analytics as well. Track velocity so
+- [ ] **Make a scroll-spy that checks boxes as you continue down outline. Show user analytics as well. Track velocity.b
 - [ ] When doing a site download/analysis, find images (jpg/png/svg/gif) and do a file size/dimension analysis, generate color-coded FPO replacement.
 - [ ] The above replacement should scan CSS files for url(!http) resources as well.
 - [ ] Add a way to embed specific sections of articles in outlines
@@ -56,7 +52,13 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [x] Auto generate link to edit file in textmate
 - [ ] Flashcards
 - [x] hovering a paragraph writes out abbreviations
+- [ ] let students change the name of their projects
 - [ ] btoa on discourse input
+- [ ] perform analysis to determine if source code is organized 
+- [ ] perform analysis to determine if code is of a certain quality
+- [ ] determine if code meets min/max SLOC requirements
+- [ ] implement a file history (and analyze deltas)
+
 
 ** What about an ajax callback that returns an intention. Like, if true, check this box. I suppose this is a promise maybe? That means investigate promises.
 

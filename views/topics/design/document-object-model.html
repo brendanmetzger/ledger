@@ -2,18 +2,16 @@
   <h2>The Document Object Model</h2>
   <p class="intro">In the beginning all the technologies we are using may have seemed quite independent from one another. As you gain experience you will see that they blur together in useful ways. Let’s start with the things we know a little bit about.</p>
     <p>The nature of the structural relationship of <abbr>HTML</abbr> is going to play a key role in how I talk about the Document Object Model. Parents and children, siblings, ancestors and descendants describe relationships, they inform the ruleset that describes how the interact, they are consequential! Note, I have been using those terms since the very start of the semester.</p>
-  <hr class="ruled t b"/>
-  <section>
+  <section class="tt">
     <h3>Document (Markup Languages)</h3>
     <p>Markup languages take text and media and convert them into structured data. We are becoming familiar with <abbr>html</abbr>, but <abbr>html</abbr> is really just the simple-minded cousin of the affluent and worldly <abbr>xml</abbr>, or eXtensible markup language. Boiled down very simply, <abbr>html</abbr> is nothing more than a subset of <abbr>xml</abbr>—that funny looking bit at the top called <code class="element">!DOCTYPE html</code> defines which tags we can use and how to use them (you could write your own doctype and use any tags if you wanted). These formatting rules allow us to write plain-text documents that can be accurately convert markup into <b>objects</b>.</p>
   </section>
-  <section>
+  <section class="tt">
     <h3>Object</h3>
     <p>The term <strong>object</strong> is a special word in the field of mathematics and computer science, representing various structures that can be described as having distinct qualities. When referring to the <b>the document object model</b> we are talking about the magic that happens after our plain old text—that has been carefully marked-up with <code>/</code> and <code>&lt;</code> and <code>&gt;</code> symbols—has been parsed by an algorithm that converts it into a system of objects that are distinct, meaningful things that can be understood by a machine—most notably so these things can be programmed against. <mark>What once was a simple <code class="element">h1</code> in text has been turned into an object that we can now communicate with.</mark> <q>Hey, h1, I’m going to set your text color to blue. Tell me about your family… who’s your parent… any siblings? I’m going to move you somewhere else, oh and when someone clicks on you, let me know, ok?</q>. An object, just like a toaster, has <em>properties</em> that describe what it is and how it works, and it has <em>methods</em> that allow it to perform certain tasks. <strong>Objects have properties and methods</strong> that we can communicate with, and this conversation could be called programming.</p>
   </section>
-  <hr/>
-  <section class="container">
-    <div class="float left half indented pad">
+  <section class="container tt">
+    <div class="float left half indented">
       <h3>Model (Tree Structures)</h3>
       <p>All together, The Document Object Model, or <abbr>dom</abbr>, is a standardized, cross-platform, language-independent convention for representing and interacting with objects in <abbr>html</abbr>, <abbr>xhtml</abbr> and <abbr>xml</abbr> documents. The objects, or <strong>nodes</strong> of every document are organized in a <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)">tree structure</a>. Objects in the <abbr>dom</abbr> tree may be styled manipulated with other languages, such as Cascading Stylesheets and JavaScript.</p>
       <p>You can visualize tree structures because they are represented by a branch of mathematics known as <a href="https://en.wikipedia.org/wiki/Graph_theory">graph theory</a>, which combines the rigor of math with the real-world pleasure of figuring things with your eyeballs. Taking a look at the diagram, given any node as a starting point, <em>you can get to any other node.</em> via a simple set of operations:  <code>firstChild</code>, <code>lastChild</code>, <code>nextSibling</code>, <code>previousSibling</code> and <code>parentNode</code>.</p>
@@ -41,5 +39,7 @@
       </ul>
     </div>
   </section>
-    <p class="focus clear discuss tt">By this point you may have noted some shortcomings of stylesheets. The first might have been that you can’t add/remove elements or content very robustly or track events beyond 'hover'. You may also notice that we only have <em>descendant selectors</em>, but an inability to work our way backwards up the tree (parentNode, previousSibling). Why might this be?</p>
+  <footer class="tt pad">
+    <p class="discuss">By this point you may have noted some shortcomings of stylesheets. The first might have been that you can’t add/remove elements or content very robustly or track events beyond 'hover'. You may also notice that we only have <em>descendant selectors</em>, but an inability to work our way backwards up the tree (parentNode, previousSibling). Why might this be?</p>
+  </footer>
 </article>

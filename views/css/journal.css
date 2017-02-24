@@ -1,8 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Inconsolata);
-
+@import url('https://fonts.googleapis.com/css?family=Cutive+Mono');
 :root {
   --sans: "Avenir Next", "HelveticaNeue-Light","Helvetica Neue", 'Arial Nova', Helvetica, Arial;
-  --mono: Inconsolata, 'Courier New', monospace;
+  --mono: 'Cutive Mono', 'Courier New', monospace;
   --condensed: 'Avenir Next Condensed', 'Arial Nova Condensed';
 }
 

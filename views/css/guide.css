@@ -76,6 +76,7 @@ strong,.strong{font-weight:600}
 @media screen and (max-width: 600px) {
   .float.left {
     width:100% !important;
+    height: auto !important;
   }
 }
 

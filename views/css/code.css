@@ -82,9 +82,10 @@ code span.typ {
 }
 
 pre {
-  font-size: 1.5em;
+  font-size: 1.65em;
   overflow: auto;
   margin: 0;
+  letter-spacing:-0.175ch;
   line-height: 1.5em;
 }
 
@@ -154,7 +155,7 @@ pre .kwd {
 }
 
 pre .com {
-  color: rgba(39, 164, 214, 0.8);
+  color: #AAA;
 }
 /* comment - skyblue */
 .typ {
@@ -175,7 +176,7 @@ pre .pln {
 }
 /* plaintext */
 pre .tag {
-  color: #a77abd;
+  color: #869;
 }
 /* html/xml tag    - lightyellow */
 pre .atn {
