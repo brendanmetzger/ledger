@@ -103,8 +103,13 @@ namespace models;
     public function getBaseUrl(\DOMElement $context)
     {
       $url = $_SERVER['REQUEST_SCHEME'] . substr($this->student['@url'], 4);
+      if ($context['@title'] ) {
+        $path = '/' .  $context['@title'];
+      } else {
+        $path =  $this->criterion->context['@path'];
+      }
       
-      return $url . '/' . $this->title . '/';
+      return $url . $path . '/';
     }
     
     
