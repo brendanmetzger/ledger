@@ -102,7 +102,7 @@ namespace models;
     
     public function getBaseUrl(\DOMElement $context)
     {
-      $url = $_SERVER['REQUEST_SCHEME'] . substr($this->student['@url'], 4);
+      $url = $_SERVER['REQUEST_SCHEME'] . preg_replace('/https?/', '', $this->student['@url']);
       if ($context['@title'] ) {
         $path = '/' .  $context['@title'];
       } else {
