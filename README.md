@@ -1,5 +1,5 @@
 # Pedagogy
-A way to Organize my teaching materials, my students, and my assignments.
+A way to Organize my teaching materials,  students and  assignments.
 
 ## todo
 - [x] add date to emails
@@ -20,7 +20,6 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [ ] Make a 'Panic Protocol' page
 - [x] Add a Favicion
 - [ ] request that examples/help be done as a gist/codepen/fiddle/gomix
-- [ ] Take screenshots of assignments (http://www.page2images.com/)
 - [ ] Make Screencast for workflow
 - [ ] Make tutorial for node/js localhost server, php, python.
 - [ ] Do several studies on algorithmic art.
@@ -54,11 +53,14 @@ A way to Organize my teaching materials, my students, and my assignments.
 - [x] hovering a paragraph writes out abbreviations
 - [ ] let students change the name of their projects
 - [ ] btoa on discourse input
+
+
+## Priority Items
+- [ ] Take screenshots of assignments (http://www.page2images.com/)
+- [ ] implement a file history (and analyze deltas)
 - [ ] perform analysis to determine if source code is organized 
 - [ ] perform analysis to determine if code is of a certain quality
 - [ ] determine if code meets min/max SLOC requirements
-- [ ] implement a file history (and analyze deltas)
-
 
 ** What about an ajax callback that returns an intention. Like, if true, check this box. I suppose this is a promise maybe? That means investigate promises.
 

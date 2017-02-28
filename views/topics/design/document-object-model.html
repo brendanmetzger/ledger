@@ -22,24 +22,22 @@
       <figcaption class="centered">A <em>Tree Structure</em>. Hover over a node (circle) to visualize the hierarchy. Ancestry is denoted by red, descendants are in blue.</figcaption>
     </figure>
   </section>
-  <hr class="ruled"/>
-  <section class="whitepaper container">
-    <h4>All together</h4>
-    <div class="half float left pad">
-      <h3>Presentation Environment</h3>
-      <p>Tree structures are efficiently and easily <em>queried</em>. Careful arrangement of nodes, careful use of attributes, and careful use of semantic elements impart a great deal of information about our content. Developers convert this structure into a meaningful presentation using a <a href="https://en.wikipedia.org/wiki/Style_sheet_language">stylesheet language</a>—the one we are becoming familiar with is <abbr title="cascading stylesheets">css</abbr>. The document structure can (and should) be the only spot where we store meaning. The presentation view of our application or website can (and should) be the only place where we manipulate the structure into a pleasing design.</p>
-    </div>
-    <div class="half float left pad">
-      <h3>Programming Environment</h3>
-      <p>Programming languages, quite literally, know how to read, write, and manipulate <strong>everything</strong> regarding structured data. Many programming languages can work with the Document Object Model <abbr>api</abbr>, and the one concern ourselves with is, of course, JavaScript. The following list is copied verbatim from <a href="https://en.wikipedia.org/wiki/Document_Object_Model">the Document Object Model</a> Wikipedia Page</p>
-      <ul class="stylized star t">
-        <li>JavaScript can <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete"><abbr title="create read update and delete">crud</abbr></a> every single <abbr>html</abbr> element or attribute in a document</li>
-        <li>JavaScript can change any and all the CSS styles in the page</li>
-        <li>JavaScript can react to any and all events that occur, either incidentally or by user interaction</li>
-      </ul>
-    </div>
+  <h4>All together</h4>
+  <section class="pulled whitepaper two columns">
+    <h3>Presentation Environment</h3>
+    <p>Tree structures are efficiently and easily <em>queried</em>. Careful arrangement of nodes, careful use of attributes, and careful use of semantic elements impart a great deal of information about our content. Developers convert this structure into a meaningful presentation using a <a href="https://en.wikipedia.org/wiki/Style_sheet_language">stylesheet language</a>—the one we are becoming familiar with is <abbr title="cascading stylesheets">css</abbr>. The document structure can (and should) be the only spot where we store meaning. The presentation view of our application or website can (and should) be the only place where we manipulate the structure into a pleasing design.</p>
+    <h3 class="tt">Programming Environment</h3>
+    <p>Programming languages, quite literally, know how to read, write, and manipulate <strong>everything</strong> regarding structured data. Many programming languages can work with the Document Object Model <abbr>api</abbr>, and the one concern ourselves with is, of course, JavaScript. The following list is copied verbatim from <a href="https://en.wikipedia.org/wiki/Document_Object_Model">the Document Object Model</a> Wikipedia Page</p>
+    <ul class="stylized star t">
+      <li>JavaScript can <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete"><abbr title="create read update and delete">crud</abbr></a> every single <abbr>html</abbr> element or attribute in a document</li>
+      <li>JavaScript can change any and all the CSS styles in the page</li>
+      <li>JavaScript can react to any and all events that occur, either incidentally or by user interaction</li>
+    </ul>
   </section>
-  <footer class="tt pad">
-    <p class="discuss">By this point you may have noted some shortcomings of stylesheets. The first might have been that you can’t add/remove elements or content very robustly or track events beyond 'hover'. You may also notice that we only have <em>descendant selectors</em>, but an inability to work our way backwards up the tree (parentNode, previousSibling). Why might this be?</p>
+  <footer class="tt margins">
+    <h4>Technical Notes</h4>
+    <p class="discuss">By this point you may have noted some shortcomings of stylesheets like that you can't observe events beyond 'hover' (and hover is not all that useful of an event due to accessibility and touchscreen considerations). You may also notice that we only have <em>descendant selectors</em>, but an inability to work our way backwards up the tree with ancestor selectors (parentNode, previousSibling). Why might this be?</p>
+    <p>Whitespace—and to be clear, whitespace in <em>source code</em>—is something that is quite easy to forget about. Whitespace in <abbr>html</abbr> exits, though it it <dfn>normalized</dfn> into <em>text nodes</em>. Often this is visualized differently in the rendered view; several spaces will always condense themselves into one space. That whitespace, however, is very much a part of the structure of the document, and as such, it is a <samp>node</samp> that can be located. For instance, if you have a <code class="element">body</code> element, followed by a <em>newline</em>, followed by a <em>tab</em> followed by a <code class="element">h1</code>, then the <em>newline</em> is the <code>firstChild</code>, not the <code class="element">h1</code>. Because of this, there is another property you can use called <code>firstElementChild</code>, which ignores text nodes.</p>
+    <p>I have put together <a href="http://jsbin.com/tizuyi/edit?html,js,output">this example</a> that highlights the benefits of understanding the document structure and gives an entry point into how easy it is to dynamically modify the structure. I have <a href="http://jsbin.com/soyetaq/edit?css,js,output">another example</a> that should highlight a small interactive concept of interacting with one element while changing the state of a completely different element.</p>
   </footer>
 </article>

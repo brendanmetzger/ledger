@@ -88,18 +88,17 @@ td.pending * {
   flex:1 0 auto;
 }
 .banner h1 {
-  font-weight:300;
+  font-weight:600;
+  color:rgba(0,0,0,0.75);
 }
 .banner {
-  text-align:right;
-
-  letter-spacing:0.125em;
-  color:#fff;
-  text-shadow:-2px 0 1px #000;
-  background-color:#333;
-  padding:1vw 2.5vw;
-  margin:0 -2.5vw;
-  background:linear-gradient(to bottom, #333, #282828);
+  text-align: right;
+  letter-spacing: 0.125em;
+  text-shadow: -1px 0 0 rgba(255,255,255,0.5);
+  background-color: rgba(0,0,0,0.125);
+  padding: 1vw 2.5vw;
+  margin: 0 -2.5vw;
+  inset 0 -0.125em 0.25em rgba(0,0,0,0.1)
 }
 th.lighter {
   font-weight:600;

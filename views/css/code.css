@@ -195,6 +195,30 @@ pre .dec {
   padding:1em;
   color:rgba(0,0,0,0.5);
 }
+.signatures .io {
+  padding:0;
+  vertical-align:top;
+}
+
+
+.signatures .io dt {
+  background-color:rgba(0,0,0,0.05);
+  font-weight:600;
+  color:rgba(0,0,0,0.5);
+  letter-spacing:0.125ch;
+  margin:0;
+  padding:1em 0.5em 0.25em;
+}
+.signatures .io dd {
+  padding:0;
+  border:none;
+}
+.signatures .io dl > * {
+  font-size:100%;
+}
+
+
+
 samp.type, samp.object {
   color:#88a92c;
   font-size:1.5em;
@@ -219,7 +243,7 @@ samp.object {
 }
 
 .signatures pre.prettyprint {
-  padding:0.5em 0;
+  padding:0;
 }
 
 .elements th > code {

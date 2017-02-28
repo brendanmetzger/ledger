@@ -10,24 +10,24 @@
     </caption>
     <thead>
       <tr>
-        <th>need to...</th>
-        <th>function / property</th>
-        <th>available on</th>
-        <th>arguments</th>
-        <th>returns</th>
+        <th style="width:5%;">need to...</th>
+        <th>{object} function/property</th>
+        <th>input/output</th>
         <th>example &amp; description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th>create an element</th>
-        <td class="method"><code>createElement</code></td>
-        <td><code>document</code></td>
-        <td>
-          <samp class="type">string</samp>
-          <p>name of element to create</p>
+        <td class="method"><samp>document.</samp><code>createElement</code></td>
+        <td class="io">
+          <dl>
+            <dt>paramaters</dt>
+            <dd><samp class="type">string</samp></dd>
+            <dt>return/value</dt>
+            <dd><code>Element</code></dd>
+          </dl>
         </td>
-        <td><code>Element</code></td>
         <td>
           <pre class="prettyprint">document.createElement('h2')</pre>
           <p>Create and return a new empty Element node with the specified tag name. Does not append to the document—investigate more methods below</p>
@@ -35,49 +35,63 @@
       </tr>
       <tr>
         <th>find <em>one</em> element</th>
-        <td class="method"><code>querySelector</code></td>
-        <td><code>document</code>, <code>Element</code></td>
-        <td>
-          <samp class="type">string</samp>
-          <p>a <abbr>css</abbr> selector</p>
+        <td class="method"><samp>document|{Element}.</samp><code>querySelector</code></td>
+        <td class="io">
+          <dl>
+            <dt>parameters</dt>
+            <dd>A <abbr>css</abbr> selector <samp class="type">string</samp></dd>
+            <dt>return/value</dt>
+            <dd>An <code>Element</code> or <samp class="type">null</samp> if nothing found</dd>
+          </dl>
         </td>
-        <td><code>Element</code></td>
         <td>
           <pre class="prettyprint">var div = {e|d}.querySelector('div');</pre>
           <p>Returns the first Element in a document or element specified that match the <abbr>CSS</abbr> selector string. <samp>{e|d}</samp> represents any element as well as the document object.</p>
         </td>
       </tr>
       <tr>
-        <th>find <em>all</em> elements</th>
-        <td class="method"><code>querySelectorAll</code></td>
-        <td><code>document</code>, <code>Element</code></td>
-        <td>
-          <samp class="type">string</samp>
-          <p>a <abbr>css</abbr> selector</p>
+        <th>find <em>many</em> elements</th>
+        <td class="method"><samp>document|{Element}.</samp><code>querySelectorAll</code></td>
+        <td class="io">
+          <dl>
+            <dt>parameters</dt>
+            <dd>A <abbr>CSS</abbr> selector  <samp class="type">string</samp></dd>
+            <dt>return/value</dt>
+            <dd>A <code>Nodelist</code> object; if nothing found, length will be 0</dd>
+          </dl>
         </td>
-        <td><code>Nodelist</code></td>
         <td>
-          <pre class="prettyprint">var divs = {e|d}.querySelectorAll('div')</pre>
+          <pre class="prettyprint">var divs = {e|d}.querySelectorAll('div');</pre>
           <p>Returns an array-like list of Elements in this document or element that matches the <abbr>CSS</abbr> selector string. Selectors can be comma separated, just like in css. <samp>{e|d}</samp> represents any element <em>or</em>  the document object.</p>
         </td>
       </tr>
       <tr>
         <th>know how many</th>
-        <td class="method"><code>length</code></td>
-        <td><code>NodeList</code></td>
-        <td>(NA)</td>
-        <td><samp class="type">integer</samp></td>
+        <td class="method"><samp>NodeList</samp><code>length</code></td>
+        <td class="io">
+          <dl>
+            <dt>parameters</dt>
+            <dd>None (this is a property)</dd>
+            <dt>return/value</dt>
+            <dd>An <samp class="type">integer</samp></dd>
+          </dl>
+        </td>
         <td>
-          <pre class="prettyPrint">{e|d}.querySelectorAll('p').length;</pre>
+          <pre class="prettyprint">{e|d}.querySelectorAll('p').length;</pre>
           <p>The above would tell you the number of paragraphs in your document. <samp>{e|d}</samp> represents any element <em>or</em> the document object.</p>
         </td>
       </tr>
       <tr>
         <th>change the class attribute</th>
-        <td class="property"><code>classList</code></td>
-        <td><code>Element</code></td>
-        <td>(NA)</td>
-        <td><code>DOMTokenList</code></td>
+        <td class="property"><samp>{Element}.</samp><code>classList</code></td>
+        <td class="io">
+          <dl>
+            <dt>parameters</dt>
+            <dd>None (this is a property)</dd>
+            <dt>return/value</dt>
+            <dd>An object called a <code>DOMTokenList</code> with several methods for manipulating class names.</dd>
+          </dl>
+        </td>
         <td>
           <pre class="prettyprint">{e}.classList.add('bar');</pre>
           <p>Implements methods to <code>.add</code>, <code>.remove</code> and <code>.toggle</code> classes to Element nodes</p>
@@ -85,10 +99,15 @@
       </tr>
       <tr>
         <th>get/set the content of an Element</th>
-        <td class="method"><code>innerHTML</code></td>
-        <td><code>Element</code></td>
-        <td>(NA)</td>
-        <td>The <abbr>html</abbr> <samp class="type">string</samp> content of the Element</td>
+        <td class="method"><samp>{Element}.</samp><code>innerHTML</code></td>
+        <td class="io">
+          <dl>
+            <dt>parameters</dt>
+            <dd>None (this is a property)</dd>
+            <dt>return/value</dt>
+            <dd>The <abbr>html</abbr> <samp class="type">string</samp> content of the Element</dd>
+          </dl>
+        </td>
         <td>
           <pre class="prettyprint">{e}.innerHTML = "html";</pre>
           <p>Our old favorite: sets raw text to the inside of a Node. <samp>{e}</samp> represents an Element object</p>
@@ -96,12 +115,15 @@
       </tr>
       <tr>
         <th>add an Element</th>
-        <td class="method"><code>appendChild</code></td>
-        <td><code>Element</code></td>
-        <td>
-          <p>The <samp class="object">Node</samp> you want appended</p>
+        <td class="method"><samp>{Element}.</samp><code>appendChild</code></td>
+        <td class="io">
+          <dl>
+            <dt>parameters</dt>
+            <dd>The <samp class="object">Node</samp> you want appended</dd>
+            <dt>return/value</dt>
+            <dd>The appended <samp class="object">Node</samp></dd>
+          </dl>
         </td>
-        <td>The appended <samp class="object">Node</samp></td>
         <td>
           <pre class="prettyprint">var appended = {p}.appendChild({c});</pre>
           <p>Appends the given node to the end of the element. The child appended does not have to be newly created, it can be from somewhere else in the document: as such, it’s how you would reorder a list. <samp>{p}</samp> represents the Element object that will do the adopting (the <em>parent</em>) and {c} represents the child Element object.</p>
@@ -109,12 +131,16 @@
       </tr>
       <tr>
         <th>prepend an Element</th>
-        <td class="method"><code>insertBefore</code></td>
-        <td><code>Element</code></td>
-        <td>
-          <p>The new <samp class="object">Node</samp> is the first parameter and the replacement <samp class="object">Node</samp> is the second.</p>
+        <td class="method"><samp>{Element}.</samp><code>insertBefore</code></td>
+        <td class="io">
+          <dl>
+            <dt>parameters</dt>
+            <dd>(1) The new <samp class="object">Node</samp> to insert</dd>
+            <dd>(2) the <samp class="object">Node</samp> to insert in front of</dd>
+            <dt>return/value</dt>
+            <dd>The inserted <samp class="object">Node</samp></dd>
+          </dl>
         </td>
-        <td>The inserted <samp class="object">Node</samp></td>
         <td>
           <pre class="prettyprint">var inserted = {p}.insertBefore({n}, {r});</pre>
           <p>Inserts the <em>new</em> node into the document tree as a child of the node that this method is applied to.The <em>reference node</em> must be a child of the calling node. Typically, this might be something like  to insert a node on the beginning of a list.</p>
@@ -122,24 +148,31 @@
       </tr>
       <tr>
         <th>replace an Element</th>
-        <td class="method"><code>replaceChild</code></td>
-        <td><code>Element</code></td>
-        <td>
-          <p>The <samp class="object">Node</samp> you want in is first and the <samp class="object">Node</samp> you want out is second.</p>
+        <td class="method"><samp>{Element}.</samp><code>replaceChild</code></td>
+        <td class="io">
+          <dl>
+            <dt>parameters</dt>
+            <dd>(1) The new <samp class="object">Node</samp></dd>
+            <dd>(2) <samp class="object">Node</samp> you want replaced</dd>
+            <dt>return/value</dt>
+            <dd>The replaced <samp class="object">Node</samp></dd>
+          </dl>
         </td>
-        <td>The replaced <samp class="object">Node</samp></td>
         <td>
           <pre class="prettyprint">var replaced = {p}.replaceChild({n}, {r});</pre>
         </td>
       </tr>
       <tr>
         <th>get rid of an Element</th>
-        <td class="method"><code>removeChild</code></td>
-        <td><code>Element</code></td>
-        <td>
-          <p>The <samp class="object">Node</samp> you want removed from the reference</p>
+        <td class="method"><samp>{Element}.</samp><code>removeChild</code></td>
+        <td class="io">
+          <dl>
+            <dt>parameters</dt>
+            <dd>The <samp class="object">Node</samp> you want removed</dd>
+            <dt>return/value</dt>
+            <dd>The removed <samp class="object">Node</samp></dd>
+          </dl>
         </td>
-        <td>The removed <samp class="object">Element</samp></td>
         <td>
           <pre class="prettyprint">var removed = {p}.removeChild({c});</pre>
         </td>

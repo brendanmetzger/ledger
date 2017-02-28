@@ -79,7 +79,26 @@ window.validate = (function(identity, domain) {
     // will give back an array of numbers corresponding to spaces/tabs used
     // if pattern starts odd, tabs are used, and it should osscilate between odd/even 
     // if spaces are used, everything should be even.
-    var pattern = htm.match(/\n\s+/gm).map(item => item.match(/[^\n]/g).length);
+    var canvas = document.createElement("canvas"),
+        ctx    = canvas.getContext('2d'),
+        scale  = 10;
+        
+    getSource(window.location.href, function (evt) {
+      var elems = RegExp.prototype.test.bind(/<[\/A-z]/);
+      var text  = evt.target.responseText.split(/\n+/).filter(elems);
+      var size = text.length * scale;
+      canvas.height = canvas.width  = size;
+      text.forEach(function (line, i) {
+        var m = line.match(/\s*<\/?[A-z0-9]+/);
+        var length = m[0].match(/\s|</g).length;
+        ctx.fillStyle = '#' + m[0].replace(/\//, '').split('').map(letter => letter.charCodeAt(0)).reduce((a, b) => a * b, 1).toString(16).substring(0,6).toUpperCase();
+        // ctx.fillRect(x, y, width, height);
+        ctx.fillRect(length * scale, i * scale, length * scale, scale);
+      });
+      document.body.style.backgroundImage  = "url(" + canvas.toDataURL("image/png") + ")";
+      document.body.style.backgroundRepeat = 'no-repeat';
+    });
+
   }
 
 
@@ -147,6 +166,9 @@ window.validate = (function(identity, domain) {
   }
   
   var validate = {
+    quality: function (file = 'html') {
+      return checkHTMLindentation(file);
+    },
     html: function (auto) {
       return getHTMLcheckup(!auto);
     },
