@@ -140,6 +140,19 @@ namespace models;
       $view = new \bloc\View('views/css/media/blank.svg');
       $dom = $view->dom;
       $dom->documentElement->setAttribute('viewBox', '0 0 70 100');
+      
+      $repo = $this->student->repo();
+      $contribs = [];
+      foreach ($context['file'] as $file) {
+        if (strpos($file['@path'], 'README')) continue;
+        $logs = $repo->log($file['@path']);
+        foreach ($logs as $log) {
+          $contribs[] = min(array_sum($log['stats']) / 100, 1);
+        }
+        
+      }
+
+      
       for ($i=0; $i < 70; $i++) {
         $x = floor($i / 10) * 10;
         $y = ($i % 10) * 10;
@@ -148,6 +161,7 @@ namespace models;
         $r->setAttribute('width', 10);
         $r->setAttribute('x', $x);
         $r->setAttribute('y', $y);
+        $r->setAttribute('fill-opacity', $contribs[$i] ?? 0);
         $r->setAttribute('class', --$contributions > 0 ? 'y' : 'n');
       }
 
@@ -189,8 +203,12 @@ namespace models;
     
     public function getScore()
     {
-      $score = ($this->contribution['commits'] / 70);
-      return $score;
+      return $this->contribution['commits'] / 70;
+    }
+    
+    public function getPercentage()
+    {
+      return round($this->score * $this->weighted);
     }
     
     public function getCritique($value='')

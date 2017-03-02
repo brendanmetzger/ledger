@@ -107,12 +107,13 @@
         }
         td.chart svg rect {
           fill: rgba(0,0,0,0.05);
-          stroke: rgba(255,255,255,0.5);
-          stroke-width: 1;
-          shape-rendering:crispEdges;
+          stroke: rgba(220,220,220,0.5);
+          stroke-width: 0.5;
+          shape-rendering:geometricPrecision;
         }
         td.chart svg rect.y {
-          fill: hsla(225, 100%, 80%, 0.75);
+          fill: hsl(225, 100%, 80%);
+          stroke: hsla(225, 100%, 80%, 0.75);
         }
         .head {
           font-size:5vw;
@@ -158,8 +159,8 @@
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="6">µ ⋅ <span class="percentage">[$student:projects:weight]</span></th>
-          <td class="centered"><strong class="percentage">[$student:projects:score]</strong></td>
+          <th colspan="6">µ ⋅ <span class="percentage">[$student:project:weight]</span></th>
+          <td class="centered"><strong class="percentage">[$student:project:score]</strong></td>
         </tr>
       </tfoot>
     </table>

@@ -71,7 +71,6 @@ namespace models;
           'mean' => 0,
           'wmean'=> 0,
           'var'  => 0,
-          'z'    => 0,
         ];
 
         if ($total > 1) {
@@ -84,7 +83,7 @@ namespace models;
             return pow($item - $out['mean'], 2);
           }, $scores)) / $total;
 
-          $out['sd'] = round(sqrt($out['var']), 2);
+          $out['sd'] = round(sqrt($out['var']), 5);
 
         }
 
@@ -257,16 +256,17 @@ namespace models;
           $critique          = $map[$evaluation]->critique;
           $stats             = $this->collective($this->student->section, $criterion, 'critique');
           $z                 = ($critique - $stats['mean']) / ($stats['sd'] ?: 1);
-          $stats['score']    = round($stats['wmean'] + ($z * $stats['sd']), 2);
-          $stats['standard'] = $score * 100;
+          $stats['score']  = $critique == 0 ? 0 : round($stats['wmean'] + ($z * $stats['sd']), 2);
+          
+          $score *= $stats['score'];
           $map['stats']      = $map[$evaluation]->stats = $stats;
-        }
+        } 
+        
         
         if ($map[$evaluation]->status != 'open') {
           $scores[] = $score;
         }
-        
-        
+                
         return $map;
 
       }, "[@type='{$evaluation}' and (@course = '{$course}' or @course = '*')]");
@@ -279,9 +279,11 @@ namespace models;
       //   sort($scores);
       //   unset($scores[0]);
       // }
+
       
       $avg = array_sum($scores) / (count($scores) ?: 1);
       
+
       return new \bloc\types\dictionary([
         'list'   => $list,
         'score'  => max(0, round($avg * $weight, 1)),

@@ -29,12 +29,21 @@ namespace models;
     {
       return $this->execute("diff {$options}");
     }
+    
     public function log($file = '.', $options = '--no-merges --date-order --reverse')
     {
-      $this->execute("log {$options} --pretty=format:'{\"hash\":\"%h\", \"date\":\"%aI\", \"msg\":\"%s\"}' {$file}", $result);
-      return array_map(function($item) {
-        return json_decode($item, true);
-      }, $result);
+      $this->execute("log {$options} --shortstat --pretty=format:'{\"hash\":\"%h\", \"date\":\"%aI\", \"msg\":\"%s\"}' {$file}", $result);
+      $result = array_values(array_filter($result));
+
+      $re = '/([0-9]+)[^,]+\((\+|\-)\)/';
+      $out = [];
+      for ($i=0; $i < count($result); $i+=2) { 
+        $out[$i] = json_decode($result[$i], true);
+        preg_match_all($re, $result[$i+1], $matches);
+        $out[$i]['stats'] = array_combine($matches[2], $matches[1]);
+      }
+      
+      return $out;
     }
     
     public function execute($command, &$output = null, &$status = null)

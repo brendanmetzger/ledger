@@ -55,7 +55,7 @@
   
   <fieldset id="critique">
     <legend class="condensed">[$project:title Critique]</legend>
-    <h5 class="centered percentage" style="margin:0.25em 0;font-weight:100;font-size:7.5em;">[$project:percentage]</h5>
+    <h5 class="rag-left" style="margin:0.25em 0;font-weight:300;letter-spacing:0.1ch;font-size:3em;">[$project:critique]</h5>
     <!-- iterate project:inputs -->
     <label class="container">
       <h5 class="condensed">[$key]</h5>
@@ -90,9 +90,10 @@
     bloc.embed('/javascript/iam.js');
 
     var ranges = Array.from(document.querySelectorAll('#project input[type="range"]'));
+    var indicator = document.querySelector('#critique > h5')
     document.querySelector('#project').addEventListener('input', function (evt) {
       var score = ranges.map(node => parseFloat(node.value, 10)).reduce((accumulator, current) => accumulator + current, 0);
-      this.querySelector('.percentage').textContent = Math.max(0, Math.round(score * 100));
+      indicator.textContent = score.toFixed(2);
     });
     
     bloc.init('projects', function () {
