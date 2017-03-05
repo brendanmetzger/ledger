@@ -1,32 +1,64 @@
 <article id="animation" data-classification="">
+  <link rel="stylesheet" href="[$cdn/css/examples/animation.css]" type="text/css" media="screen" charset="utf-8" />
   <h2>Animation</h2>
-  <p>At its core, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">keyframe animation</a>.</p>
-  <div class="filmstrip">
-    <input type="range" value="0" oninput="this.parentNode.style.animationDuration = this.value + 'ms'" min="0" max="1000" step="10"/>
-    <input type="range" value="10" oninput="this.parentNode.style.width = this.value + '%'" min="10" max="100" step="10"/>
-    <style type="text/css" media="screen">
-      /* <![CDATA[ */
-      
-      @keyframes run {
-        0% {background-position: 100% 0}
-        100% {background-position:0 0}
+  
+  <figure class="explain whitepaper">
+    <figcaption class="margins">
+      <h4>A Classic</h4>
+      <p>At its core, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">keyframe animation</a> can be overdone quickly and become rather annoying, so this example will just literally do some classic animation styled in the likes of <a href="https://en.wikipedia.org/wiki/Eadweard_Muybridge">Eadweard Muybridge</a>.</p>
+      <label class="pad block">
+        <h5>Set the <code>animation-timing-function</code> property</h5>
+        <span class="p">15 steps</span>
+        <input type="radio" value="steps(15)" name="transtition" onchange="_anim.updateTransition(this);" checked="checked"/>
+        <span>linear</span>
+        <input type="radio" value="linear" name="transtition" onchange="_anim.updateTransition(this);" />
+      </label>
+      <label class="pad block">
+        <h5>Set the <code>animation-duration</code> property</h5>
+        <input id="animation-duration" type="range" value="1000" oninput="_anim.updateDuration(this);" min="1000" max="5000" step="100"/>
+      </label>
+      <label class="pad block">
+        <h5>Set the <code>width</code> property of the filmstrip to simulate a shutter</h5>
+        <input id="width-property" type="range" value="100" oninput="_anim.updateWidth(this);" min="1" max="100" step="1"/>
+      </label>
+      <img class="filmstrip tt" src="[$cdn/media/images/dog-running.png]"/>
+    </figcaption>
+    <pre class="prettyprint linenums">
+      <!-- review views/css/examples/animation.css keyframe animation -->
+    </pre>
+  </figure>
+  <script type="text/javascript">
+    // <![CDATA[
+      var _anim = {
+        cleaned: false,
+        updateWidth: function (elem) {
+          elem.parentNode.nextElementSibling.style.width = elem.value + '%';
+          var li = document.querySelector('#animation pre.prettyprint li:nth-of-type(9)')
+          li.querySelector('.lit').textContent = elem.value;
+          this.mark(li);
+        },
+        updateDuration: function (elem) {
+          elem.parentNode.nextElementSibling.nextElementSibling.style.animationDuration = elem.value + 'ms'
+          var li = document.querySelector('#animation pre.prettyprint li:nth-of-type(16)');
+          li.querySelector('.lit').textContent = elem.value + 'ms';
+          this.mark(li);
+        },
+        updateTransition: function (elem) {
+          elem.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.style.animationTimingFunction = elem.value;
+          var li = document.querySelector('#animation pre.prettyprint li:nth-of-type(16)');
+          li.querySelector('span.pln:nth-of-type(5)').textContent = ` infinite ${elem.value};`;
+          
+          if (elem.value == 'linear' && ! this.cleaned) {
+            this.cleaned = true;
+            li.querySelectorAll('span:nth-last-child(-n+3)').forEach(e => e.remove());
+          }
+          this.mark(li);
+        },
+        mark: function (li) {
+          li.classList.add('mark');
+          setTimeout(DOMTokenList.prototype.remove.bind(li.classList, 'mark'), 1500);
+        }
       }
-      .filmstrip input {
-        display:block;
-      }
-      .filmstrip {
-        background-image:url(/media/images/dog-running.png);
-        background-repeat: no-repeat;
-        mix-blend-mode: darken;
-        height:130px;
-        width:10%;
-
-      }
-      .filmstrip:hover {
-        animation: run 1000ms steps(15) infinite;
-      }
-      
-      /* ]]> */
-    </style>
-  </div>
+    // ]]>
+  </script>
 </article>

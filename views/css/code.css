@@ -306,9 +306,14 @@ ol.linenums {
   color: #777;
 }
 ol.linenums li {
+  transition: background-color 1s;
   border-top:none;
   border-bottom:1px dotted #EEE;
   padding:0.125em;
+  border-radius:0.5em;
+}
+ol.linenums li.mark {
+  background-color:rgba(255,0,0,0.125);
 }
 ol.linenums li:last-of-type {
   border:none;

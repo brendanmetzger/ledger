@@ -89,11 +89,12 @@ h1.massive {
   font-family: 'Dr Carbfred W01 Regular', Mistral, Cursize;
   padding: 1vmax 0 0 0.5em;
 }
-
 mark {
   padding: 0.125em 0.5em;
-  border-radius:1em;
   margin: 0 -0.5em;
+}
+mark, .mark {
+  border-radius:0.5em;
   background-color: rgba(50, 235, 255, 0.1);
   -webkit-box-decoration-break: clone;
   -o-box-decoration-break: clone;
@@ -252,12 +253,12 @@ h4 {
   font-weight: 600;
 }
 
+.h5, h5, .block {  display: block;}
 .h5,
 h5 {
   font-weight: 400;
   font-size: 1.8em;
   margin: 0;
-  display: block;
   line-height: 1.125;
 }
 
@@ -412,6 +413,7 @@ ul.good li:before {
 ul.bad li:before {
   color: rgb(244, 75, 121);
 }
+
 
 .error a[href*=line] {
   background:rgba(255,0,0, 0.15);
