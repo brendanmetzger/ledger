@@ -136,16 +136,19 @@ namespace models;
     
     public function getChart(\DOMElement $context)
     {
-      $contributions = $this->contribution['commits'];
       $view = new \bloc\View('views/css/media/blank.svg');
       $dom = $view->dom;
       $dom->documentElement->setAttribute('viewBox', '0 0 70 100');
+      
       $bg = $dom->documentElement->appendChild($dom->createElement('rect'));
       $bg->setAttribute('height', 100);
       $bg->setAttribute('width', 70);
       $bg->setAttribute('class', 'background');
+      
       $repo = $this->student->repo();
+      
       $contribs = [];
+      
       foreach ($context['file'] as $file) {
         if (strpos($file['@path'], 'README')) continue;
         $logs = $repo->log($file['@path']);
@@ -154,7 +157,6 @@ namespace models;
         }
         
       }
-
       
       for ($i=0; $i < 70; $i++) {
         $x = floor($i / 10) * 10;
@@ -165,6 +167,7 @@ namespace models;
         $r->setAttribute('x', $x);
         $r->setAttribute('y', $y);
         $r->setAttribute('fill-opacity', 0);
+        $r->setAttribute('class', 'n');
         if (array_key_exists($i, $contribs)) {
           $contrib = $contribs[$i];
           $add = $dom->documentElement->appendChild($dom->createElement('text', $contrib['stats']['+'] ?? '0'));
@@ -177,13 +180,11 @@ namespace models;
           $del->setAttribute('y', $y);
           $del->setAttribute('dy', 10);
           $del->setAttribute('data-type', '-');
-          
-          $r->setAttribute('fill-opacity', $contrib['sum']);
-          
+          $r->setAttribute('class', 'y');
+          $r->setAttribute('fill-opacity', $contrib['sum']); 
         }
-        $r->setAttribute('class', --$contributions > 0 ? 'y' : 'n');
       }
-
+      
       return substr($view->render(), strlen('<?xml version="1.0"?>'));
     }
 
@@ -214,15 +215,20 @@ namespace models;
     {
       $context->setAttribute('axes', implode($data, '+'));
     }
+    
+    public function getCommits(\DOMElement $context)
+    {
+      return $this->contribution['commits'];
+    }
 
     public function getBenchmark(\DOMElement $context)
     {
-      return $this->status == 'open' ? null : round($this->contribution['commits'] / 70, 2);
+      return $this->status == 'open' ? null : round($this->commits / 70, 2);
     }
     
     public function getScore()
     {
-      return $this->contribution['commits'] / 70;
+      return $this->commits / 70;
     }
     
     public function getPercentage()
