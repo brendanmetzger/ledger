@@ -258,7 +258,7 @@ namespace models;
           $z                 = ($critique - $stats['mean']) / ($stats['sd'] ?: 1);
           $stats['score']  = $critique == 0 ? 0 : round($stats['wmean'] + ($z * $stats['sd']), 2);
           
-          $score *= $stats['score'];
+          $score = min($score, $stats['score']);
           $map['stats']      = $map[$evaluation]->stats = $stats;
         } 
         

@@ -233,7 +233,7 @@ namespace models;
     
     public function getPercentage()
     {
-      return round($this->score * $this->weighted);
+      return min(round($this->score * 100), $this->weighted);
     }
     
     public function getCritique($value='')
