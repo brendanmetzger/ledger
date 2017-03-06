@@ -365,7 +365,8 @@ class Task extends \bloc\controller
           
           echo "-- CHECKING {$file['@path']} for {$student['@name']}\n";
           
-          $commits = count($git->log($file['@path'], "--after='{$start}'")) . "\n\n";
+          $commits = count($git->log($file['@path'], "--after='{$start}'"));
+          
           $file->setAttribute('age', $report->getLastModified(86400));
           
           if ((int)$file['@age'] > 1) continue;
@@ -377,7 +378,7 @@ class Task extends \bloc\controller
           $file->setAttribute('length', $report->getSize());
           $file->setAttribute('hash', $report->getHash());
           $file->setAttribute('report', $report);
-          $file->setAttribute('commits', $commits + ($report->getHash() == $file['@hash'] ? 0 : 1));
+          $file->setAttribute('commits', $commits + 1);
           
           // save file
           echo (! $report->save() ?  'ERROR' : 'success') . " on save\n";

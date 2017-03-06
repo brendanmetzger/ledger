@@ -83,9 +83,7 @@ namespace models;
           $content = \vendor\Parsedown::render($content);
         } else {
           $doc = new \bloc\DOM\Document();
-
           $doc->loadXML('<pre/>');
-          
           $doc->documentElement->setAttribute('class', "prettyprint linenums {$file['@type']}");
           $doc->documentElement->appendChild($doc->createCDATASection($content));
           $content = $doc->documentElement->write();
@@ -149,9 +147,14 @@ namespace models;
       
       $contribs = [];
       
+      $start = $this->student->section->schedule[0]['object']->format(DATE_ISO8601);
+      $options = "--after='{$start}' --no-merges --date-order --reverse";
+      
       foreach ($context['file'] as $file) {
-        if (strpos($file['@path'], 'README')) continue;
-        $logs = $repo->log($file['@path']);
+        if (substr($file['@path'], -3) == 'txt') continue;
+        
+        $logs = $repo->log($file['@path'], $options);
+
         foreach ($logs as $log) {
           $contribs[] = ['stats' => $log['stats'], 'sum' => min(array_sum($log['stats']) / 100, 1)];
         }
@@ -226,12 +229,12 @@ namespace models;
       return $this->status == 'open' ? null : round($this->commits / 70, 2);
     }
     
-    public function getScore()
+    public function getScore(\DOMElement $context)
     {
       return $this->commits / 70;
     }
     
-    public function getPercentage()
+    public function getPercentage(\DOMElement $context)
     {
       return min(round($this->score * 100), $this->weighted);
     }
