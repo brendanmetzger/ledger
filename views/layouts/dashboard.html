@@ -104,6 +104,7 @@
         td.chart svg {
           width: 100%;
           display:block;
+          transition: all 0.35s;
         }
         td.chart svg rect {
           fill: rgba(0,0,0,0.05);
@@ -114,6 +115,34 @@
         td.chart svg rect.y {
           fill: hsl(225, 100%, 80%);
           stroke: hsla(225, 100%, 80%, 0.75);
+        }
+        td.chart rect.background {
+          fill:#fff;
+          stroke:0;
+          fill-opacity:0;
+        }
+        td.chart svg text  {
+          font-size: 25%;
+          fill-opacity:0;
+        }
+       td.chart svg:hover {
+         transform: translate(0, -20%) scale(2);
+       }
+        td.chart svg:hover rect.background {
+          fill-opacity:1;
+          
+        }
+        td.chart svg:hover text {
+          fill-opacity:1;
+        }
+        
+        text[data-type='+'] {
+          transform: translate(0.125em,-0.65em);
+          fill: #007800;
+        }
+        text[data-type='-'] {
+          fill: #ee3124;
+          transform: translate(0.65em, -0.125em);
         }
         .head {
           font-size:5vw;

@@ -140,14 +140,17 @@ namespace models;
       $view = new \bloc\View('views/css/media/blank.svg');
       $dom = $view->dom;
       $dom->documentElement->setAttribute('viewBox', '0 0 70 100');
-      
+      $bg = $dom->documentElement->appendChild($dom->createElement('rect'));
+      $bg->setAttribute('height', 100);
+      $bg->setAttribute('width', 70);
+      $bg->setAttribute('class', 'background');
       $repo = $this->student->repo();
       $contribs = [];
       foreach ($context['file'] as $file) {
         if (strpos($file['@path'], 'README')) continue;
         $logs = $repo->log($file['@path']);
         foreach ($logs as $log) {
-          $contribs[] = min(array_sum($log['stats']) / 100, 1);
+          $contribs[] = ['stats' => $log['stats'], 'sum' => min(array_sum($log['stats']) / 100, 1)];
         }
         
       }
@@ -161,7 +164,23 @@ namespace models;
         $r->setAttribute('width', 10);
         $r->setAttribute('x', $x);
         $r->setAttribute('y', $y);
-        $r->setAttribute('fill-opacity', $contribs[$i] ?? 0);
+        $r->setAttribute('fill-opacity', 0);
+        if (array_key_exists($i, $contribs)) {
+          $contrib = $contribs[$i];
+          $add = $dom->documentElement->appendChild($dom->createElement('text', $contrib['stats']['+'] ?? '0'));
+          $add->setAttribute('x', $x);
+          $add->setAttribute('y', $y);
+          $add->setAttribute('dy', 10);
+          $add->setAttribute('data-type', '+');
+          $del = $dom->documentElement->appendChild($dom->createElement('text', $contrib['stats']['-'] ?? '0'));
+          $del->setAttribute('x', $x);
+          $del->setAttribute('y', $y);
+          $del->setAttribute('dy', 10);
+          $del->setAttribute('data-type', '-');
+          
+          $r->setAttribute('fill-opacity', $contrib['sum']);
+          
+        }
         $r->setAttribute('class', --$contributions > 0 ? 'y' : 'n');
       }
 
