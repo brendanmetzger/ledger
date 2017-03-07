@@ -1,3 +1,5 @@
+(function() {
+  
 /* basic object */
 var bureau = {
   make: 'Ikea',
@@ -44,3 +46,27 @@ if (! fido.happy) {
   console.log('Look at that tail wag!');
 }
 /* end object state */
+
+
+/* basic dom */
+// we can 'find' any element /w a query
+var moi = document.querySelector('section > h2');
+
+// we can find it's siblings
+var sœur  = moi.previousElementSibling;
+var frère = moi.nextElementSibling;
+
+// we can find it's parent
+var mère = moi.parentNode;
+
+// we can swap the order
+mère.insertBefore(moi, sœur);
+
+// we could introspect the new order
+console.log(mère.children);
+
+/* end basic dom */
+  
+  
+})()
+

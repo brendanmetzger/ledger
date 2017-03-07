@@ -1,11 +1,11 @@
 <article id="intro-to-dom-programming" data-classification="introductory">
   <h2>Intro to <abbr title="Document Object Model">DOM</abbr> Programming</h2>
   <p class="intro">Because the Document Object Model is a, well, object that has been modeled, one has the ability to interact with it. Objects have <dfn>properties</dfn> which help define the object in any given state, and <dfn>methods</dfn> which are functions that can perform operations. What follows is an anecdotal look at those concepts.</p>
-  <section class="carousel pulled whitepaper">
+  <section class="">
     
-    <h3>Revisiting simple JavaScript Objects</h3>
-    <figure class="explain">
+    <figure class="explain whitepaper">
       <figcaption class="margins pad">
+        <h3>(Re)Visiting JavaScript Objects</h3>
         <p>The code at right can be told first through a story, so read this and then take apart the code and it's behavior.</p>
         <p>Our pet Fido is a simple emotional creature. Fido has a <dfn>property</dfn> of happy that is <samp>true</samp> when happy or <samp>false</samp> when not (and there is no maybe here, this is a <dfn>boolean</dfn> value). When Fido is bad, one must deliberately scold Fido. Among the products of the scolding, is that always becomes unhappy.</p>
         <h4>Program Notes</h4>
@@ -20,19 +20,22 @@
       </pre>
     </figure>
     
-    <p>To further analyze this way of thought, picture your oven. It has knobs and burners, it has a <i>color</i>, a <i>manufacturer</i>, and it might have properties indicating its state, like <i>‘is clean’</i>. These are all properties, but let’s note the differences between how they describe the oven. The <i>color</i> property is static, that is it will not change, while the <i>‘is clean’</i> property may change as the result of other actions. The knobs property is interesting; notice that they perform an <em>action</em>—turning knob is expected to cause a change the <i>temperature</i> property.</p>
-    <p>As meta as this all seems, this abstraction is important, and perfectly describes programming. Looking back, we already know we have a <code>document</code> object that it has properties and properties tell us things about the object, like when it was last modified: type <code>document.lastModified</code> into your browser console and see what happens (in fact, do it several times).</p>
-    <p>Of present concern is the things we can ask the <code>document</code> to do for us, like find elements. One of the most important parnts of a document is the fact that it can help us find other elements using <em>query selectors</em>—yes, the very same selectors you've been learning about for weeks!</p>
+    <figure class="explain whitepaper">
+      <figcaption class="margins pad">
+        <h3>Visiting JavaScript Document Object Objects</h3>
+        <p>Arguably the most useful feature of JavaScript is the tight integration to the Document Object Model, and the quickest introduction we can make is by employing our <abbr>CSS</abbr> selector knowledge. The <code>document</code> object itself has many methods for selecting Elements, but there are really only two you need to remember. The two methods in question are <em>querySelector</em> and <em>querySelectorAll</em>, and you access them by using the ‘.’ operator on the <code>document</code>. These two methods can be fed regular <abbr>css</abbr> query selectors as arguments and will return the appropriate <abbr>html</abbr> element(s).</p>
+        <p>Imagine you are a French <code class="element">h2</code> Element living in a document. Your mother, a rather classy <code class="element">section</code> element, treats you and your two siblings to a nice pastry every so often. You have a sister in front of you, and a brother behind you, and the three of you are waiting in line to get a chocolate croissant. Your sister, bless her heart, decides to let you go in line first, but the line switching is really up to your mother. <em>Et voila</em>, browse the adjacent program.</p>
+      </figcaption>
+      <pre class="prettyprint">
+        <!-- review views/javascript/examples/objects.js basic dom -->
+      </pre>
+    </figure>
   </section>
-  <hr class="ruled t b" />
-  <p>Arguably the most useful feature of JavaScript is the tight integration to the Document Object Model, and the quickest introduction we can make is by employing our <abbr>CSS</abbr> selector knowledge. The <code>document</code> object itself has many methods for selecting Elements, but there are really only two you need to remember. The two methods in question are <em>querySelector</em> and <em>querySelectorAll</em>, and you access them by using the ‘.’ operator on the <code>document</code>. These two methods can be fed regular <abbr>css</abbr> query selectors as arguments and will return the appropriate <abbr>html</abbr> element(s).</p>
 
-  <section class="t b">
-    <h4>But Why?</h4>
-    <p>I don’t think it becomes immediately apparent why we need JavaScript when <abbr>css</abbr> is so powerful (and in truth an argument could be made that you can do great work without it) so I'll try to distill it as best I can. The first reason is that it gives staying power (<a href="http://codepen.io/brendanmetzger/pen/VKEWpv">example here</a>) in that you can change the state of a document and that change remains—like turning the knob on an oven, the oven is on until you turn the knob back. The second component of JavaScript is how we listen for events that happen on the page. We have hover, sure, but we also can tell if the page is scrolled, if the content has been modified, if a user is mousing over an element, if they have resized a window, etc. At the most essential, I'll put it like this, <strong>JavaScript lets you design in the 4th dimension of time</strong>—something quite fun, but that takes lots of practice. Web design is flat and 1 dimensional without it.</p>
-
-  </section>
-  <footer>
-    <p>Here is a <a href="https://gist.github.com/brendanmetzger/b6eb7d09719745e117e5c1b295a690f2">gist recipe</a> we can work on together.</p>
+  <footer class="margins">
+    <h4>Beyond storytelling</h4>
+    <p>I don’t think it becomes immediately apparent why we need JavaScript when <abbr>css</abbr> is so powerful and many people can, and do, avoid it successfully. Despite all that, here is the quick pitch.</p>
+    <p>First, is that with JavaScript <mark>you can literally make anything you can think of, from an interactive game, to a newspaper, to a full blown audio synthesizer.</mark> Without the use of events and asynchronous data, web design is essentially a piece of paper that can move when you hover over something.</p>
+    <p>Check out this <a href="https://gist.github.com/brendanmetzger/b6eb7d09719745e117e5c1b295a690f2">gist recipe</a> and see if you can follow along in your console.</p>
   </footer>
 </article>

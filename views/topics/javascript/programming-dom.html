@@ -1,7 +1,7 @@
 <article id="programming-tree-structures">
   <h2>Programming Tree Structures</h2>
-  <p>So JavaScript has something that makes it a bit more complicated than most programming languages, and that is the fact that it has two very robust <abbr title="application programming interface">api</abbr>s—the first being the core language reference, and the second being the <strong>client-side</strong> reference. At the core we have things like types, functions, objects, Date, Math, etc. The client-side of things are where the fun begins: you have the document object, events, <abbr title="xml http requests">xml</abbr> requests, media events, web workers, sockets, and a pretty huge list.</p>
-  <p>it’s important to understand that the <abbr>DOM</abbr> is a robust platform and interface not the fancy word for a bunch of text with a bunch of <samp>&lt;tags&gt;</samp> peppered in. As always, viewing documents as a data structure allows us to program with it—meaning we can <em>mutate</em> that structure and assign events against it.</p>
+  <p>JavaScript has something that makes it a bit more complicated than most programming languages, and that is the fact that it has two very robust <abbr title="application programming interface">api</abbr>s—the first being the core language reference, and the second being the <strong>client-side</strong> reference. At the core we have things like types, functions, objects, Date, Math, etc. The client-side of things are where the fun begins: you have the document object, events, asynchronous data requests... and more.</p>
+  <p>It’s important to understand that the <abbr>DOM</abbr> is a robust platform and interface not the fancy word for a bunch of text with a bunch of <samp>&lt;tags&gt;</samp> peppered in. As always, viewing documents as a data structure allows us to program with it—meaning we can <em>mutate</em> that structure and assign events against it.</p>
   
   <table class="full signatures">
     <caption class="rag-right">
@@ -94,7 +94,7 @@
         </td>
         <td>
           <pre class="prettyprint">{e}.classList.add('bar');</pre>
-          <p>Implements methods to <code>.add</code>, <code>.remove</code> and <code>.toggle</code> classes to Element nodes</p>
+          <p>Implements methods to <code>.add</code>, <code>.remove</code> and <code>.toggle</code> classes to Element nodes where <samp>{e}</samp> represents the element you want to add, remove, or toggle a class on.</p>
         </td>
       </tr>
       <tr>
