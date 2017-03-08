@@ -332,6 +332,7 @@ class Task extends \bloc\controller
   
   public function CLIcommits()
   {
+    touch('/tmp/locked');
     $sem  = \models\Data::$SEMESTER;
     $git  = new \models\Source($sem);
     $date = (new \DateTime())->modify('-1 day')->setTime(12, 0)->format(DATE_ISO8601);
@@ -371,7 +372,7 @@ class Task extends \bloc\controller
           
           if ((int)$file['@age'] > 1) continue;
           
-          echo "---- UPDATING... ";
+          echo "---- UPDATING...";
           
           $file->setAttribute('errors', $report->getErrors());
           $file->setAttribute('sloc', $report->getSLOC());
@@ -405,6 +406,7 @@ class Task extends \bloc\controller
       
     }
     print_r($git->push('master', '--all'));
+    unlink('/tmp/locked');
   }
   
   public function CLIbackup($semester, $message = 'Automated Push')

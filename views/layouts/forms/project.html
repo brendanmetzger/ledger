@@ -48,6 +48,10 @@
     .file legend {
       font-family: inconsolata;
     }
+    select {
+      width: 100%;
+      font-size:1.25em;
+    }
     /* ]]> */
   </style>
 
@@ -62,7 +66,6 @@
       <input type="range" name="project[@][axes][]" min="0" max="0.1" step="0.01" value="[$value]" style="width:100%"/>
     </label>
   </fieldset>
-  
   <!--  iterate project:files -->
   <fieldset id="[$file:@name-$file:@type]" class="file">
     <legend>Notes: <b>[$file:@path]</b> <button onclick="document.querySelector('form input[name=redirect]').value = this.dataset.redirect;" data-redirect="[[/records/evaluate/project/$$index/$$student:@id/review#$file:@name-$file:@type]]">Review</button></legend>
@@ -84,6 +87,11 @@
     <input type="hidden" name="[project[file][$index][@][report]]" value="[$file:@report]" />
     <input type="hidden" name="[project[file][$index][@][path]]" value="[$file:@path]" />
     <textarea name="[project[file][$index][CDATA]]" class="lined">[$text]</textarea>
+    <h5>Revision History</h5>
+    <select class="history">
+      <!-- iterate revisions -->
+      <option value="[[[/records/version/$$$student:@id/$$b64path/$hash]]]">[$title]</option>
+    </select>
   </fieldset>
   <script type="text/javascript">
     // <![CDATA[
@@ -109,7 +117,29 @@
         tabs[position].dispatchEvent(click);
       }
       scroll.monitor(document.querySelector('#project'), sections.length, triggerClicks);
+      
+      
+      var updatePanel = function (evt) {
+        var request = new XMLHttpRequest();
+        var url = this.value;
+        request.open('GET', url);
+        request.addEventListener('load', function (evt) {
+
+          var path    = url.split('/');
+          var pre = document.querySelector(`section[data-path='${path[4]}'] pre`);
+          pre.classList.remove('prettyprinted');
+          pre.replaceChild(evt.target.responseXML.documentElement.firstChild, pre.firstChild);
+          
+          prettyPrint();
+        });
+        request.send();
+      };
+      
+      document.querySelectorAll('select').forEach(select => select.addEventListener('change', updatePanel));
+      
     });
+    
+    
     
     
     // ]]>

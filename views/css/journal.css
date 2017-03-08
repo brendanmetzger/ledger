@@ -295,20 +295,8 @@ p + table {
   margin: 5em 0;
 }
 
-time.pending {
-  font-weight: 600;
-}
-
-td time.pending:before {
-  content: '✶';
-  color: #333;
-  padding: 0 0.5em 0 0;
-}
-
-
-time.transpired {
-  color: #AAA;
-}
+time.pending { font-weight: 600; }
+time.transpired { color: rgba(200,0,0,0.25); }
 
 article:target h2 {
   transition: color 1s 0.5s;

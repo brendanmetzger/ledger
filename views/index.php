@@ -3,6 +3,7 @@ namespace bloc;
 
 define('DOMAIN', "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['SERVER_NAME']}");
 date_default_timezone_set ('America/Chicago');
+if (file_exists('/tmp/locked')) die('One moment, the site is digesting some new content and you cannot interact with it. Perhaps try again soon');
 
 #1. Frow where index.php is located, load the application file. This is the only mandatory part I think.
 require  '../bloc/application.php';

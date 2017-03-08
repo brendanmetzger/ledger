@@ -56,6 +56,7 @@ A way to Organize my teaching materials,  students and  assignments.
 
 
 ## Priority Items
+- [ ] Put a lock on the website when updates are occurring
 - [ ] Take screenshots of assignments (http://www.page2images.com/)
 - [ ] implement a file history (and analyze deltas)
 - [ ] perform analysis to determine if source code is organized 
@@ -79,6 +80,7 @@ For student-graded quizzes, create an algorithm that as soon as a student gets a
 - [ ] Do a click-here, open-that-over there
 - [ ] Loops as 99 bottles of beer on the wall
 - [ ] youtube player API
+- [ ] do the classic redesign of craigslist
 
 
 ## Warm-ups

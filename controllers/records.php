@@ -142,6 +142,23 @@ class Records extends \bloc\controller
     }
   }
   
+  protected function GETversion(User $user, $sid, $file, $hash)
+  {
+    // if user is a student, make sure id matches
+    if ($user instanceof \models\student && $user['@id'] == $sid) {
+      $student = $user;
+    } else if ($user instanceof \models\instructor) {
+      $student = new Student($sid);
+    }
+    $file = base64_decode($file);
+    $content = $student->repo()->getSource($file, $hash);
+    $doc = new \bloc\DOM\Document();
+    $doc->loadXML('<pre/>');
+    $doc->documentElement->setAttribute('class', "prettyprint linenums html");
+    $doc->documentElement->appendChild($doc->createCDATASection($content));
+    return $doc->documentElement->write();
+  }
+  
   /*
     TODO make sure this is as student
   */

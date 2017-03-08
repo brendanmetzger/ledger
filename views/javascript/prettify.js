@@ -181,10 +181,26 @@ var prettyPrint;
       "dynamic_cast,explicit,export,friend,generic,late_check," +
       "mutable,namespace,noexcept,noreturn,nullptr,property,reinterpret_cast,static_assert," +
       "static_cast,template,typeid,typename,using,virtual,where"];
+  var JAVA_KEYWORDS = [COMMON_KEYWORDS,
+      "abstract,assert,boolean,byte,extends,finally,final,implements,import," +
+      "instanceof,interface,null,native,package,strictfp,super,synchronized," +
+      "throws,transient"];
+  var CSHARP_KEYWORDS = [COMMON_KEYWORDS,
+      "abstract,add,alias,as,ascending,async,await,base,bool,by,byte,checked,decimal,delegate,descending," +
+      "dynamic,event,finally,fixed,foreach,from,get,global,group,implicit,in,interface," +
+      "internal,into,is,join,let,lock,null,object,out,override,orderby,params," +
+      "partial,readonly,ref,remove,sbyte,sealed,select,set,stackalloc,string,select,uint,ulong," +
+      "unchecked,unsafe,ushort,value,var,virtual,where,yield"];
+  var COFFEE_KEYWORDS = "all,and,by,catch,class,else,extends,false,finally," +
+      "for,if,in,is,isnt,loop,new,no,not,null,of,off,on,or,return,super,then," +
+      "throw,true,try,unless,until,when,while,yes";
   var JSCRIPT_KEYWORDS = [COMMON_KEYWORDS,
       "abstract,async,await,constructor,debugger,enum,eval,export,function," +
       "get,implements,instanceof,interface,let,null,set,undefined,var,with," +
       "yield,Infinity,NaN"];
+  var PERL_KEYWORDS = "caller,delete,die,do,dump,elsif,eval,exit,foreach,for," +
+      "goto,if,import,last,local,my,next,no,our,print,package,redo,require," +
+      "sub,undef,unless,until,use,wantarray,while,BEGIN,END";
   var PYTHON_KEYWORDS = [FLOW_CONTROL_KEYWORDS, "and,as,assert,class,def,del," +
       "elif,except,exec,finally,from,global,import,in,is,lambda," +
       "nonlocal,not,or,pass,print,raise,try,with,yield," +
@@ -195,7 +211,9 @@ var prettyPrint;
       "BEGIN,END"];
   var SH_KEYWORDS = [FLOW_CONTROL_KEYWORDS, "case,done,elif,esac,eval,fi," +
       "function,in,local,set,then,until"];
-  var ALL_KEYWORDS = [CPP_KEYWORDS, JSCRIPT_KEYWORDS, PYTHON_KEYWORDS, RUBY_KEYWORDS, SH_KEYWORDS];
+  var ALL_KEYWORDS = [
+      CPP_KEYWORDS, CSHARP_KEYWORDS, JAVA_KEYWORDS, JSCRIPT_KEYWORDS,
+      PERL_KEYWORDS, PYTHON_KEYWORDS, RUBY_KEYWORDS, SH_KEYWORDS];
   var C_TYPES = /^(DIR|FILE|array|vector|(de|priority_)?queue|(forward_)?list|stack|(const_)?(reverse_)?iterator|(unordered_)?(multi)?(set|map)|bitset|u?(int|float)\d*)\b/;
 
   // token style names.  correspond to css classes
@@ -1382,6 +1400,17 @@ var prettyPrint;
           'keywords': 'null,true,false'
         }), ['json']);
   registerLangHandler(sourceDecorator({
+          'keywords': CSHARP_KEYWORDS,
+          'hashComments': true,
+          'cStyleComments': true,
+          'verbatimStrings': true,
+          'types': C_TYPES
+        }), ['cs']);
+  registerLangHandler(sourceDecorator({
+          'keywords': JAVA_KEYWORDS,
+          'cStyleComments': true
+        }), ['java']);
+  registerLangHandler(sourceDecorator({
           'keywords': SH_KEYWORDS,
           'hashComments': true,
           'multiLineStrings': true
@@ -1393,6 +1422,12 @@ var prettyPrint;
           'tripleQuotedStrings': true
         }), ['cv', 'py', 'python']);
   registerLangHandler(sourceDecorator({
+          'keywords': PERL_KEYWORDS,
+          'hashComments': true,
+          'multiLineStrings': true,
+          'regexLiterals': 2  // multiline regex literals
+        }), ['perl', 'pl', 'pm']);
+  registerLangHandler(sourceDecorator({
           'keywords': RUBY_KEYWORDS,
           'hashComments': true,
           'multiLineStrings': true,
@@ -1403,6 +1438,14 @@ var prettyPrint;
           'cStyleComments': true,
           'regexLiterals': true
         }), ['javascript', 'js', 'ts', 'typescript']);
+  registerLangHandler(sourceDecorator({
+          'keywords': COFFEE_KEYWORDS,
+          'hashComments': 3,  // ### style block comments
+          'cStyleComments': true,
+          'multilineStrings': true,
+          'tripleQuotedStrings': true,
+          'regexLiterals': true
+        }), ['coffee']);
   registerLangHandler(
       createSimpleLexer([], [[PR_STRING, /^[\s\S]+/]]), ['regex']);
 

@@ -11,6 +11,7 @@ body,p,ul,ol,li,div,a,figure{margin:0;text-decoration:none;}
 h1,h2,h4,dt,h6 {margin:0.25em 0 0.5em}
 div.column > * {margin:0 0.5em}
 hr,blockquote,*.flag > * {margin:1em 0;}
+small{font-size:75%;}
 *.negated dt:before {content:'~'}
 
 q:before {content:'“';letter-spacing:0.125em;}
@@ -111,13 +112,8 @@ strong,.strong{font-weight:600}
 .float {box-sizing:border-box}
 
 hr.ruled {
-  border-width: 0;
+  border-width: 1px 0 0;
   clear: both;
-  height: 1px;
-  background-image: linear-gradient(90deg, rgba(0,0,0,0.25) 20%, rgba(0,0,0,0.1));
-  background-position: bottom;
-  background-size: 1em 1px;
-  background-repeat: repeat-x;
 }
 
 .column.ruled > * {border-right-width:1px}
@@ -203,12 +199,14 @@ tbody th:first-of-type {
   border-width:1px 1px 1px 0;
   border-right-color:#000;
   padding-right:2em;
+  background-image: linear-gradient(90deg, rgba(0,0,0,0), rgba(150,150,150,0.05));
 }
 
 tbody td {
-  border:1px solid #AAA;
+  border:1px solid rgba(0,0,0,0.125);
   padding:1em;
   vertical-align:top;
+  border-color: rgba(0,0,0,0.125) rgba(0,0,0,0.075);
 }
 th, td:not(.text) {
   font-size:1.35em;

@@ -70,7 +70,6 @@
       <thead>
         <tr>
           <th>Project</th>
-          <th>Critique</th>
           <th>Details</th>
           <th>Your page<sup><a href="/overview/glossary#cache-invalidation">[*]</a></sup></th>
           <th>Notes</th>
@@ -173,9 +172,11 @@
       <tbody>
         <!-- iterate student:project:list -->
         <tr class="[$project:status]">
-          <th><span class="head condensed collapse">[$project:title]</span></th>
-          <td class="centered"><time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <em class="ticker">[$due:ticker]</em></td>
+          <th>
+            <span class="head condensed collapse">[$project:title]</span>
+          </th>
           <td style="width:15%;vertical-align:middle;">
+            <h5 style="margin-bottom:0.25em;">Critique: <time datetime="[$due:datetime]" class="[$due:status]">[$due:date]</time> <small class="ticker">[$due:ticker]</small></h5>
             <a href="[[/$$student:course/criterion/project/$project:criterion:@index/$$student:section:@id]]">[ $project:criterion]</a>
           </td>
           <td class="centered"><a class="collapse" href="[[$project:baseurl?$$entropy]]">Preview</a></td>
@@ -184,12 +185,16 @@
             <a href="[[/$$instructor:path/$project:criterion:path/$$student:@id]]">[[$$instructor:edit]]</a>
           </td>
           <td class="chart">[$project:chart]</td>
-          <td class="centered"><strong class="percentage">[$project:percentage]</strong> of <span class="percentage">[$project:weighted]</span></td>
+          <td class="centered">
+            <strong class="percentage h3">[$project:percentage]</strong>
+            <hr class="ruled"/>
+            <i class="percentage">[of possible $project:weighted]</i>
+          </td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="6">µ ⋅ <span class="percentage">[$student:project:weight]</span></th>
+          <th colspan="5">µ ⋅ <span class="percentage">[$student:project:weight]</span></th>
           <td class="centered"><strong class="percentage">[$student:project:score]</strong></td>
         </tr>
       </tfoot>

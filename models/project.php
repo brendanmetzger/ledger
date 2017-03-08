@@ -69,15 +69,14 @@ namespace models;
     
     public function getFiles(\DOMElement $context)
     {
-      $repo = $this->student->repo();
-      return $context['file']->map(function($file, $index) use($repo){
+      return $context['file']->map(function($file, $index) use($context){
         $info = pathinfo($file['@path']);
 
         $file['@name']     = $info['filename'];
         $file['@basename'] = $info['basename'];
         $file['@type']     = $info['extension'];
         
-        $content = file_get_contents($repo->getPath($file["@path"]));
+        $content = $this->student->repo()->getSource($file['@path']);
 
         if (strpos($file['@path'], 'README')) {
           $content = \vendor\Parsedown::render($content);
@@ -89,7 +88,16 @@ namespace models;
           $content = $doc->documentElement->write();
         }
         $text = base64_decode($file);
-        return ['file' => $file, 'index' => $index, 'text' => $text, 'markdown' => \vendor\Parsedown::render($text), 'content' => $content];
+        $revisions = $this->getRevisions($context, $file['@path']);
+        return [
+          'b64path'   => base64_encode($file['@path']),
+          'file'      => $file,
+          'index'     => $index,
+          'text'      => $text,
+          'markdown'  => \vendor\Parsedown::render($text),
+          'content'   => $content,
+          'revisions' => array_reverse($revisions),
+        ];
       });
     }
 
@@ -132,6 +140,27 @@ namespace models;
       return new \bloc\types\Dictionary($table);
     }
     
+    
+    public function getRevisions(\DOMElement $context, $path = false)
+    {
+      $revisions = [];
+      $start     = $this->student->section->schedule[0]['object']->format(DATE_ISO8601);
+      $options   = "--after='{$start}' --no-merges --date-order --reverse";
+      
+      if ($path) {
+        return $this->student->repo()->log($path, $options);
+      }
+      
+      foreach ($context['file'] as $file) {
+        if (substr($file['@path'], -3) == 'txt') continue;
+        $logs = $this->student->repo()->log($file['@path'], $options);
+        foreach ($logs as $log) {
+          $revisions[] = ['log' => $log, 'sum' => min(array_sum($log['stats']) / 100, 1)];
+        }
+      }
+      return $revisions;
+    }
+    
     public function getChart(\DOMElement $context)
     {
       $view = new \bloc\View('views/css/media/blank.svg');
@@ -142,24 +171,7 @@ namespace models;
       $bg->setAttribute('height', 100);
       $bg->setAttribute('width', 70);
       $bg->setAttribute('class', 'background');
-      
-      $repo = $this->student->repo();
-      
-      $contribs = [];
-      
-      $start = $this->student->section->schedule[0]['object']->format(DATE_ISO8601);
-      $options = "--after='{$start}' --no-merges --date-order --reverse";
-      
-      foreach ($context['file'] as $file) {
-        if (substr($file['@path'], -3) == 'txt') continue;
-        
-        $logs = $repo->log($file['@path'], $options);
-
-        foreach ($logs as $log) {
-          $contribs[] = ['stats' => $log['stats'], 'sum' => min(array_sum($log['stats']) / 100, 1)];
-        }
-        
-      }
+      $revisions = $this->revisions;
       
       for ($i=0; $i < 70; $i++) {
         $x = floor($i / 10) * 10;
@@ -171,20 +183,20 @@ namespace models;
         $r->setAttribute('y', $y);
         $r->setAttribute('fill-opacity', 0);
         $r->setAttribute('class', 'n');
-        if (array_key_exists($i, $contribs)) {
-          $contrib = $contribs[$i];
-          $add = $dom->documentElement->appendChild($dom->createElement('text', $contrib['stats']['+'] ?? '0'));
+        if (array_key_exists($i, $revisions)) {
+          $revision = $revisions[$i];
+          $add = $dom->documentElement->appendChild($dom->createElement('text', $revision['log']['stats']['+'] ?? '0'));
           $add->setAttribute('x', $x);
           $add->setAttribute('y', $y);
           $add->setAttribute('dy', 10);
           $add->setAttribute('data-type', '+');
-          $del = $dom->documentElement->appendChild($dom->createElement('text', $contrib['stats']['-'] ?? '0'));
+          $del = $dom->documentElement->appendChild($dom->createElement('text', $revision['stats']['-'] ?? '0'));
           $del->setAttribute('x', $x);
           $del->setAttribute('y', $y);
           $del->setAttribute('dy', 10);
           $del->setAttribute('data-type', '-');
           $r->setAttribute('class', 'y');
-          $r->setAttribute('fill-opacity', $contrib['sum']); 
+          $r->setAttribute('fill-opacity', $revision['sum']); 
         }
       }
       
