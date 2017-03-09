@@ -417,6 +417,20 @@ class Task extends \bloc\controller
     $git->push('master', 'origin');
   }
   
+  public function CLIpractice(string $course = '', int $index = -1)
+  {
+    if ($index < 0 || empty($course)) return "Please provide course and an index number";
+    
+    foreach (\models\data::instance()->query('//')->find("section[@course='{$course}']/student[@role!='instructor']") as $node) {
+      $student = new \models\student($node['@id']);
+      $practice = $student->practice['list'][$index]['practice'];
+      print_r($practice->report);
+      $practice->save();
+    }
+    
+   
+  }
+  
   public function CLIpull($chmod)
   {
     $semester = \models\Data::$SEMESTER;

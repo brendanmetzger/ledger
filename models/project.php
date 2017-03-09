@@ -165,17 +165,17 @@ namespace models;
     {
       $view = new \bloc\View('views/css/media/blank.svg');
       $dom = $view->dom;
-      $dom->documentElement->setAttribute('viewBox', '0 0 70 100');
+      $dom->documentElement->setAttribute('viewBox', '0 0 100 70');
       
       $bg = $dom->documentElement->appendChild($dom->createElement('rect'));
-      $bg->setAttribute('height', 100);
-      $bg->setAttribute('width', 70);
+      $bg->setAttribute('height', 70);
+      $bg->setAttribute('width', 100);
       $bg->setAttribute('class', 'background');
       $revisions = $this->revisions;
       
       for ($i=0; $i < 70; $i++) {
-        $x = floor($i / 10) * 10;
-        $y = ($i % 10) * 10;
+        $x = floor($i / 7) * 10;
+        $y = ($i % 7) * 10;
         $r = $dom->documentElement->appendChild($dom->createElement('rect'));
         $r->setAttribute('height', 10);
         $r->setAttribute('width', 10);
@@ -248,7 +248,7 @@ namespace models;
     
     public function getPercentage(\DOMElement $context)
     {
-      return min(round($this->score * 100), $this->weighted);
+      return round($this->score * $this->weighted);
     }
     
     public function getCritique($value='')

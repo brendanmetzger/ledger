@@ -52,11 +52,11 @@ if (! fido.happy) {
 // we can 'find' any element /w a query
 var moi = document.querySelector('section > h2');
 
-// we can find it's siblings
+// we can find its siblings
 var sœur  = moi.previousElementSibling;
 var frère = moi.nextElementSibling;
 
-// we can find it's parent
+// we can find its parent
 var mère = moi.parentNode;
 
 // we can swap the order
