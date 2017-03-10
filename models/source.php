@@ -39,8 +39,13 @@ namespace models;
       $out = [];
       for ($i=0; $i < count($result); $i+=2) { 
         $out[$i] = json_decode($result[$i], true);
+        
         preg_match_all($re, $result[$i+1], $matches);
+
         $out[$i]['stats'] = array_combine($matches[2], $matches[1]);
+        $out[$i]['diff']  = implode(', ', array_map(function ($item) {
+          return preg_replace('/[+\-()]/', '', $item);
+        }, $matches[0]));
         $out[$i]['title'] = (new \DateTime($out[$i]['date']))->format('D M d');
       }
       

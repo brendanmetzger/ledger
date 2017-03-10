@@ -1,6 +1,10 @@
 # Pedagogy
 A way to Organize my teaching materials,  students and  assignments.
 
+Some things to consider.
+- cron must be turned on before the start of the semester
+- since files come from everywhere, mind the line endings `git config --global core.autocrlf input`
+
 ## todo
 - [x] add date to emails
 - [x] student preview for practice notes

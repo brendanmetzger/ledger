@@ -75,7 +75,6 @@ class Course extends \bloc\controller
     $view->content = 'views/layouts/dashboard.html';
     $view->context = "views/layouts/list/schedule.html";
     $this->schedule = $student->section->schedule;
-    $this->review = "Review";
     return $view->render($this());
   }
 

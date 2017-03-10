@@ -512,7 +512,7 @@ form button {
 
 button.decorated {
   width:100%;
-  background-image: linear-gradient(#eee, #fff, #eee);
+  background-color:#f3c62a;
 }
 
 .drawer button {

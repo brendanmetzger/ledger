@@ -50,7 +50,7 @@
     }
     select {
       width: 100%;
-      font-size:1.25em;
+      font-size:1.5em;
     }
     /* ]]> */
   </style>
@@ -90,7 +90,7 @@
     <h5>Revision History</h5>
     <select class="history">
       <!-- iterate revisions -->
-      <option value="[[[/records/version/$$$student:@id/$$b64path/$hash]]]">[$title]</option>
+      <option value="[[[/records/version/$$$student:@id/$$b64path/$hash]]]">[$title - $diff]</option>
     </select>
   </fieldset>
   <script type="text/javascript">
@@ -122,14 +122,15 @@
       var updatePanel = function (evt) {
         var request = new XMLHttpRequest();
         var url = this.value;
+        var pre = document.querySelector(`section[data-path='${url.split('/')[4]}'] pre`);
+        pre.parentNode.style.opacity = 0;
         request.open('GET', url);
         request.addEventListener('load', function (evt) {
 
-          var path    = url.split('/');
-          var pre = document.querySelector(`section[data-path='${path[4]}'] pre`);
+          
           pre.classList.remove('prettyprinted');
           pre.replaceChild(evt.target.responseXML.documentElement.firstChild, pre.firstChild);
-          
+          pre.parentNode.style.opacity = 1;
           prettyPrint();
         });
         request.send();
