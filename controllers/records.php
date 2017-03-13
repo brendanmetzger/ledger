@@ -152,11 +152,17 @@ class Records extends \bloc\controller
     }
     $file = base64_decode($file);
     $content = $student->repo()->getSource($file, $hash);
-    $doc = new \bloc\DOM\Document();
-    $doc->loadXML('<pre/>');
-    $doc->documentElement->setAttribute('class', "prettyprint linenums html");
-    $doc->documentElement->appendChild($doc->createCDATASection($content));
-    return $doc->documentElement->write();
+    
+    if (strpos($file, 'README')) {
+      $content = '<article>'.\vendor\Parsedown::render($content).'</article>';
+    } else {
+      $doc = new \bloc\DOM\Document();
+      $doc->loadXML('<pre/>');
+      $doc->documentElement->setAttribute('class', "prettyprint linenums html");
+      $doc->documentElement->appendChild($doc->createCDATASection($content));
+      $content = $doc->documentElement->write();
+    }
+    return $content;
   }
   
   /*

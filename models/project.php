@@ -79,7 +79,7 @@ namespace models;
         $content = $this->student->repo()->getSource($file['@path']);
 
         if (strpos($file['@path'], 'README')) {
-          $content = \vendor\Parsedown::render($content);
+          $content = '<article>'.\vendor\Parsedown::render($content).'</article>';
         } else {
           $doc = new \bloc\DOM\Document();
           $doc->loadXML('<pre/>');

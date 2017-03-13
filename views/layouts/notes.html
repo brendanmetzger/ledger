@@ -66,8 +66,11 @@
   <article id="[$file:@name-$file:@type]" class="critique pad">
     <h3 class="t b code">[$file:@path]</h3>
     <a href="[[$$edit:path#$file:@name-$file:@type]]">[[$$edit:name]]</a>
-    <h5><var>[$file:@commits]</var> Commits</h5>
-    <h5><var>[$file:@sloc]</var> <abbr title="source lines of code">SLOC</abbr></h5>
+    <h5><var>[$file:@commits]</var> Revisions</h5>
+    <select class="history">
+      <!-- iterate revisions -->
+      <option value="[[[/records/version/$$$student:@id/$$b64path/$hash]]]">[$title - $diff]</option>
+    </select>
     <section class="markdown t">[$markdown]</section>
   </article>
   
