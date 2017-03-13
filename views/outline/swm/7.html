@@ -1,32 +1,87 @@
 <div>
   <header>
     <!-- insert views/outline/_/crumbs.html -->
-    <h1 class="massive">Naming</h1>
+    <script type="text/javascript" defer="defer">
+      // <![CDATA[
+        var size = 100;
+        var svg = null;
+        
+        function drawArcs(arcs) {
+          if (svg === null) {
+            svg = new SVG(document.querySelector('figure.draw'), size, size);
+          } else {
+            svg.element.innerHTML = '';
+          }
+          var offset = size / arcs;
+          for (let i = arcs; i >= 0; i--) {
+            // a rx ry x-axis-rotation large-arc-flag sweep-flag dx dy
+            let x = offset * i;
+            svg.createElement('path', {
+              d: `m0 ${size/2} a${x/2} ${x/2} 0 0 1 ${x} 0`,
+              style: `fill: hsla(100, 75%, 75%, 0.15);`
+            });
+          
+            let dx = size - offset * i;
+            svg.createElement('path', {
+              d: `m${x} ${size/2} a${dx/2} ${dx/2} 0 0 ${i % 2} ${dx} 0`,
+              style: `fill: hsla(50, 75%, 75%, 0.05);`
+            });
+          
+            svg.createElement('path', {
+              d: `m0 ${size/2} a${x/2} ${x/2} 0 ${i % 2} 0 ${x} 0`,
+              style: `fill: hsla(100, 75%, 75%, 0.15);`
+            });
+          }
+        }
+        bloc.init('drawing', drawArcs.bind(null, 5));
+      // ]]>
+    </script>
+    <style type="text/css" media="screen">
+      /* <![CDATA[ */
+      figure.draw {
+        shape-outside: circle(50%);
+        padding: 1em 3em 1em 0;
+      }
+      .draw svg {
+        mix-blend-mode: difference;
+        stroke: #000;
+        stroke-width:0.25;
+        stroke-opacity:0.5;
+      }
+      
+      /* ]]> */
+    </style>
+    <figure class="draw float left ___">
+      <figcaption>
+        <input type="range" min="1" max="25" value="5" oninput="drawArcs(this.value);"/>
+      </figcaption>
+    </figure>
+    <h1 class="massive">Midpoints</h1>
     <p class="intro">Ever advancing <abbr>CSS</abbr> techniques and an introduction to <q>function-esque</q> thinking.</p>
   </header>
-  <aside class="review">
-    <h3>To be determined...</h3>
+  <aside class="pulled review">
+    <h3>Agenda</h3>
+    <p>Today we will watch a creative human do their thing in a documentary. First, I will do what I consider to be a brief amount of work. I'll chat about svg and positioned layouts. Lastly, some one-on-one chats, time permitting.</p>
   </aside>
   <article>
-    <h2>Drawing</h2>
-    <p>TBD</p>
-  </article>
-  <article>
     <h2>Positioned Layouts</h2>
-    <p>TBD</p>
+    <p>A typical document is generated into a normal <em>flow</em>, with block-level elements that can be thought of as structural boxes in inline-level elements that flow and wrap like text in a paragraph. I could explain this over and over, but there is so much literature out there, that in the interest of time, I am going to punt to <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning">this article</a> from <abbr>MDN</abbr>.</p>
+    <p>In the example below, one thing to take a way is that the elements are now layered, like a stack of playing cards. This is important, drawers, light-boxes; essentially anything thit sits on top of anything else must be positioned.</p>
+    <figure class="explain whitepaper">
+      <figcaption class="positions"  style="min-width:40%;margin:5%;border:1px solid rgba(0,0,0,0.1);">
+        <div style="background-color:rgba(0,0,0,0.5);width:10em;padding:5em 0;line-height:0;" class="centered">Box A</div>
+        <div style="background-color:rgba(0,0,0,0.5);width:10em;padding:5em 0;line-height:0;" class="centered">Box B</div>
+        <div style="background-color:rgba(0,0,0,0.5);width:10em;padding:5em 0;line-height:0;" class="centered">Box C</div>
+      </figcaption>
+      <pre class="prettyprint">
+        <!-- review views/css/examples/layout.css positioned layout -->
+      </pre>
+      <link rel="stylesheet" href="/css/examples/layout.css" type="text/css" media="screen" charset="utf-8" />
+    </figure>
   </article>
   <!-- insert views/topics/stylesheets/attribute-selectors.html -->
   <!-- insert views/topics/tables/css-specificity.html -->
   <!-- insert views/topics/stylesheets/advanced-techniques.html -->
-  <!-- insert views/topics/studies/dom-cut-and-paste.html -->
-  <article>
-    <h2>Survey &amp; Next Steps</h2>
-    <p>I hope throughout the course of working on a midterm you have identified some weak spots and areas that you need to focus on. When faced with a blank canvas, it becomes incredibly easy to let frustrations get the better of us. I understand this all too well, but hopefully this exercise reinforces that once you get the ball rolling it becomes easier to apply new concepts.</p>
-    <ol class="t">
-      <li>What is the most important thing you've learned so far?</li>
-      <li>What do you feel we should spend more time on?</li>
-    </ol>
-  </article>
   <footer id="reference-and-practice" class="margins">
     <h3>Reference &amp; Practice Material</h3>
     <p>Read <a href="http://eloquentjavascript.net/02_program_structure.html">program structure</a> from <cite>Eloquent JavasScript</cite>.</p>

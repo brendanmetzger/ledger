@@ -48,7 +48,7 @@ var SVG = function (node, width, height) {
   this.point = this.element.createSVGPoint();
 };
 
-SVG.prototype.createElement = function (name, opt, parent) {
+SVG.prototype.createElement = function (name, opt, parent, position) {
   var node = document.createElementNS('http://www.w3.org/2000/svg', name);
   for (var key in opt) node.setAttribute(key, opt[key]);
   return parent === null ? node : (parent || this.element).appendChild(node);

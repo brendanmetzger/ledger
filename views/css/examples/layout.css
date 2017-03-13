@@ -1,0 +1,26 @@
+.positions {
+  position: relative;
+}
+/* positioned layout */
+.positions > * {
+  position: absolute;
+  transition: all 1s;
+}
+.positions > *:nth-child(1) {
+  top: 0; left:0;
+  transform: translate(0%, 0%);
+}
+.positions > *:nth-child(2) {
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.positions > *:nth-child(3) {
+  top: 100%; left: 100%;
+  transform: translate(-100%, -100%);
+}
+
+.positions:hover > * {
+  top: 50%; left: 50%;
+}
+
+/* end positioned layout */

@@ -119,25 +119,6 @@
       scroll.monitor(document.querySelector('#project'), sections.length, triggerClicks);
       
       
-      var updatePanel = function (evt) {
-        var request = new XMLHttpRequest();
-        var url = this.value;
-        var pre = document.querySelector(`section[data-path='${url.split('/')[4]}'] pre`);
-        pre.parentNode.style.opacity = 0;
-        request.open('GET', url);
-        request.addEventListener('load', function (evt) {
-
-          
-          pre.classList.remove('prettyprinted');
-          pre.replaceChild(evt.target.responseXML.documentElement.firstChild, pre.firstChild);
-          pre.parentNode.style.opacity = 1;
-          prettyPrint();
-        });
-        request.send();
-      };
-      
-      document.querySelectorAll('select').forEach(select => select.addEventListener('change', updatePanel));
-      
     });
     
     
