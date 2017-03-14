@@ -39,9 +39,11 @@
       background-color:#fff;
     }
     
-    .markdown pre code {
-      white-space: pre-line;
+    .markdown pre code:not([class]) {
+      white-space: pre;
+      border: none;
     }
+    
     .markdown a[href] {
       text-decoration:underline;
     }
