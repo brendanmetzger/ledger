@@ -24,12 +24,12 @@
             let dx = size - offset * i;
             svg.createElement('path', {
               d: `m${x} ${size/2} a${dx/2} ${dx/2} 0 0 ${i % 2} ${dx} 0`,
-              style: `fill: hsla(50, 75%, 75%, 0.05);`
+              style: `fill: hsla(100, 75%, 75%, 0.05);`
             });
           
             svg.createElement('path', {
               d: `m0 ${size/2} a${x/2} ${x/2} 0 ${i % 2} 0 ${x} 0`,
-              style: `fill: hsla(100, 75%, 75%, 0.15);`
+              style: `fill: hsla(100, 75%, 75%, 0.1);`
             });
           }
         }
