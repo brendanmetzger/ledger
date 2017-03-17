@@ -248,7 +248,7 @@ namespace models;
     
     public function getPercentage(\DOMElement $context)
     {
-      return round($this->score * $this->weighted);
+      return min(round($this->score * $this->weighted), $this->weighted);
     }
     
     public function getCritique($value='')
