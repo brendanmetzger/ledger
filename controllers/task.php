@@ -328,6 +328,7 @@ class Task extends \bloc\controller
     
     return $output;
   }
+
   
   
   public function CLIcommits()
@@ -364,7 +365,7 @@ class Task extends \bloc\controller
             $report = new \models\Report($student->domain, $file['@path']);
           }
           
-          echo "-- CHECKING {$file['@path']} for {$student['@name']}\n";
+          echo " -- Checking {$file['@path']}\n";
           
           $commits = count($git->log($file['@path'], "--after='{$start}'"));
           
@@ -372,7 +373,7 @@ class Task extends \bloc\controller
           
           if ((int)$file['@age'] > 1) continue;
           
-          echo "---- UPDATING...";
+          echo " ---- UPDATING...";
           
           $file->setAttribute('errors', $report->getErrors());
           $file->setAttribute('sloc', $report->getSLOC());
@@ -393,16 +394,24 @@ class Task extends \bloc\controller
 
       }
       
-      $commit = $git->commit($git->diff('--shortstat'), "--date=\"{$date}\"");
-      print_r($commit);
+      
+      if ($_SERVER['user'] != 'brendanmetzger') {
+        $commit = $git->commit($git->diff('--shortstat'), "--date=\"{$date}\"");
+        print_r($commit);
+      }
+      
       
       $index = \models\Calendar::INDEX($student->section->schedule);
-      $practice = $student->practice['list'][$index]['practice'];
-      print_r($practice->report);
+      if (is_int($index)) {
+        $practice = $student->practice['list'][$index]['practice'];
+        print_r($practice->report);
       
-      echo $practice['@commits'] . ' commits for ' . $practice->score . "%\n";
-      $practice->save();
-      echo "Saving practice no {$practice->index} for {$student['@name']}\n";
+        echo $practice['@commits'] . ' commits for ' . $practice->score . "%\n";
+        $practice->save();
+        echo "Saving practice no {$practice->index} for {$student['@name']}\n";
+      } else {
+        echo "Not Saving Practice because of {$index}";
+      }
       
     }
     print_r($git->push('master', '--all'));

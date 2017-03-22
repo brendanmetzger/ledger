@@ -78,11 +78,11 @@ namespace models;
         
         foreach ($holidays as $idx => $holiday) {
           if ($holiday['start'] <= $begin && $holiday['end'] >= $begin) {
-            $date['index'] = 'Break';
+            $date['index'] = 'break';
             unset($date['section']);
             $date['status'] = 'holiday';
             $index--;
-            $key = 'holiday' . $idx;
+            $key = 'break';
             break;
           }
         }
