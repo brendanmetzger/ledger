@@ -68,7 +68,7 @@ namespace models;
     
     public function getStatus(\DOMElement $context)
     {
-      return $this->criterion['@index'] <= Calendar::INDEX($this->student->section->schedule) ? 'marked' : 'open';
+      return $this->criterion['@index'] <= Calendar::INDEX($this->student->section->schedule, true) ? 'marked' : 'open';
     }
     
     public function getTotal(\DOMElement $context)

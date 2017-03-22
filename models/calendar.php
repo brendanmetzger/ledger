@@ -45,12 +45,12 @@ namespace models;
      *
      * @return int
      */
-    static public function INDEX(array $schedule)
+    static public function INDEX(array $schedule, $force = false)
     {
       $now   = new \DateTime;
       $index = 0;
       foreach ($schedule as $interval ) {
-        if ($now < $interval['object']) break;
+        if ($now < $interval['object'] || ($force && ! is_int($interval['index']))) break;
         $index = $interval['index'];
       }
       return $index;
