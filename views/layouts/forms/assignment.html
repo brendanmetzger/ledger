@@ -1,5 +1,5 @@
 <form action="[/records/evaluate/$topic/$index/$student:@id]" method="post">
-  <button class="decorated caps info" type="submit">[Save Evaluation for $student:@name]</button>
+  <button class="decorated caps info" type="submit">Save Evaluation for <span data-identify="handle">[$student:@name]</span></button>
   <input type="hidden" name="[$topic[@][created]]" value="[$item:created]"/>
   <input type="hidden" name="redirect" value="[$redirect]"/>
   <input type="hidden" name="index" value="[$index]"/>

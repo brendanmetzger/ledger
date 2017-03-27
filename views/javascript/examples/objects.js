@@ -50,7 +50,8 @@ if (! fido.happy) {
 
 /* basic dom */
 // we can 'find' any element /w a query
-var moi = document.querySelector('section > h2');
+var selector = 'section > h2:nth-child(2)';
+var moi = document.querySelector(selector);
 
 // we can find its siblings
 var sœur  = moi.previousElementSibling;

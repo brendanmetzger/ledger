@@ -1,13 +1,13 @@
 <article>
   <h2>Data &amp; The <code>&lt;input&gt;</code> element</h2>
   <div class="three columns indented">
-    <p>In this course, we will mostly be concerned with the basic use of forms to provide input and a point of interaction. It is worth briefly mentioning that they are actually quite complex, and necessarily so: the provide the interface to send huge amounts of information to a back-end server for storage, processing, payment and many other activities. For this reason, they have hundreds of attributes concerning data protection, validation, and accessibility. As such, they can be a bit overwhelming, so for a first pass, the introduction will be brief and any further interest can be self-directed. The Mozilla Developer Network has a <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms">nice guide</a> for creating forms if you are interested.</p>
-    <p>Of fundamental concern to us as <em>interactive</em> designers and developers is a notion of input/output. We are quite familiar with the mouse/trackpad as an input device: x/y movement coordinates, clicking, selection and scrolling are executed through such devices. Considering the keyboard, we have the full range of a keystroke (down, up, and press) which can be executed on any key, and along with meta keys (option, command, control).</p>
+    <p>For introductory purposes, one only needs a very basic implementation of forms to solicit input interactively. It is worth briefly mentioning that they are actually quite complex, and necessarily so: they provide the interface to send huge amounts of information to a back-end server for storage, processing, payment and many other activities. For this reason, they have hundreds of attributes concerning data protection, validation, accessibility and many other nuances. As such, they can be a bit overwhelming, so for a first pass, the introduction will be brief and any further interest can be self-directed. The Mozilla Developer Network has a <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms">nice guide</a> for creating forms if you are interested.</p>
+    <p>Of fundamental concern to <em>interactive</em> designers and developers is the notion of input and output. The mouse/trackpad is a perhaps the most familiar with input device: x/y movement coordinates, clicking, selection and scrolling are executed through such devices. Considering the keyboard, we have the full range of a keystroke (down, up, and press) which can be executed on any key, and along with meta keys (option, command, control) which is also a powerful mechanism.</p>
   </div>
   <hr class="ruled t b" />
   <h4>Inputs</h4>
   <p>Input is largely controlled via the <code>input</code> Element. The input is an <a href="https://developer.mozilla.org/en-US/docs/Glossary/empty_element">empty element</a>, and depending on the <code>type</code> attribute, it well exhibit a different function. For instance, <code>&lt;input type="text"…</code> is your basic text input field, where <code>&lt;input type="checkbox"…</code> would be a checkbox. You can make <a href="https://developer.mozilla.org#the-Input-element">many types of input</a>, below is a quick overview of some interesting ones.</p>
-  <dl class="whitepaper tt bb">
+  <dl class="whitepaper pulled tt bb">
     <dt><pre class="prettyprint">&lt;input type="text" value="<span class="text input">content</span>"/&gt;</pre></dt>
     <dd><input type="text" value="content" class="example" oninput="document.querySelector('.text.input').textContent = this.value;" /></dd>
     <dd>The text input is your go-to for basic input. The value attribute holds whatever is typed into the box</dd>
@@ -20,9 +20,9 @@
     <dt><pre class="prettyprint">&lt;input type="color" value="<span class="color input">EE33AA</span>"/&gt;</pre></dt>
     <dd><input type="color" value="#EE33AA" oninput="document.querySelector('.color.input').textContent = this.value;" /></dd>
     <dt><pre class="prettyprint select"><![CDATA[<select>
-<option value="nothing">default</option>
-<option value="better">another option</option>
-<option value="medium">choose this</option>
+  <option value="nothing">default</option>
+  <option value="better">another option</option>
+  <option value="medium">choose this</option>
 </select>]]></pre></dt>
     <dd>
       <select oninput="alert('you chose: ' + this.value);">

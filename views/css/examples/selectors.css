@@ -18,7 +18,7 @@ footer > div {
  */
 }
 
-:first-child ~ .boy {
+li:first-child ~ .boy {
   /* 
    look for jack
   */

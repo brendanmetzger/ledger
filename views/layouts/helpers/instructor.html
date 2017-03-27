@@ -1,8 +1,8 @@
 <footer class="instructor hud">
   <nav class="rag-left">
     <ul class="plain bar">
-      <li><a href="[/records/student/$student:@id]">[$student:shortname's Dashboard]</a></li>
-      <li><a class="strong" href="[mailto:$student:@email]">[Email $student:@name]</a></li>
+      <li><a href="[/records/student/$student:@id]" data-identify="handle">[$student:shortname's Dashboard]</a></li>
+      <li><a class="strong" href="[mailto:$student:@email]" data-identify="email">[Email $student:@name]</a></li>
       <!-- iterate instructor:sections -->
       <li><a href="[/records/book/$section:@course/$section:@id]">[$section:@course §$section:@id]</a></li>
       <li><a href="/ASWM/index">ASWM Outline</a></li>

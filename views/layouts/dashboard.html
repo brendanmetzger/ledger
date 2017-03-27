@@ -1,8 +1,8 @@
 <article class="coursework">
   <link rel="stylesheet" href="/css/table.css" />
   <header class="banner">
-    <h1>[$student:@name]</h1>
-    <h4>[$student:@role $student:@year]</h4>
+    <h1 data-identify="handle">[$student:@name]</h1>
+    <h4 data-identify="role">[$student:@role $student:@year]</h4>
   </header>
   <section class="b">
     <table class="full chart">
@@ -19,7 +19,7 @@
           <th>Week</th>
           <!-- iterate student:discourse:list -->
           <td>[$discourse:criterion:@index]</td>
-          <th class="lighter"><span>µ × </span><span class="percentage">[$student:discourse:weight]</span></th>
+          <th class="lighter"><span>µ × </span><span class="percentage" data-identify="score">[$student:discourse:weight]</span></th>
         </tr>
         <tr class="tooltip">
           <th>Score</th>
@@ -28,7 +28,7 @@
             <strong>[$discourse:flag]</strong>
             <a href="[[/$$instructor:path/discourse/$discourse:criterion:@index/$$student:@id]]">[[$$instructor:edit]]</a>
           </td>
-          <th class="percentage">[$student:discourse:score]</th>
+          <th class="percentage" data-identify="score">[$student:discourse:score]</th>
         </tr>
       </tbody>
     </table>
@@ -46,7 +46,7 @@
           <th>Week</th>
           <!-- iterate student:practice:list -->
           <td class="centered">[$practice:criterion:@index]</td>
-          <th class="lighter"><span>µ × </span><span class="percentage">[$student:practice:weight]</span></th>
+          <th class="lighter"><span>µ × </span><span class="percentage" data-identify="score">[$student:practice:weight]</span></th>
         </tr>
         <tr>
           <th>Hits</th>
@@ -54,7 +54,7 @@
           <td class="[$schedule:status centered]" style="[background-color:hsl(225, $practice:percentage%, 80%); background-image: url($practice:visual); background-size:auto 100%;]">
             <strong>[$practice:total]</strong>
           </td>
-          <th class="percentage">[$student:practice:score]</th>
+          <th class="percentage" data-identify="score">[$student:practice:score]</th>
         </tr>
       </tbody>
     </table>
@@ -188,14 +188,14 @@
           <td class="centered">
             <strong class="percentage h3">[$project:percentage]</strong>
             <hr class="ruled"/>
-            <i class="percentage">[of possible $project:weighted]</i>
+            <i class="percentage" data-identify="score">[of possible $project:weighted]</i>
           </td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="5">µ ⋅ <span class="percentage">[$student:project:weight]</span></th>
-          <td class="centered"><strong class="percentage">[$student:project:score]</strong></td>
+          <th colspan="5">µ ⋅ <span class="percentage" data-identify="score">[$student:project:weight]</span></th>
+          <td class="centered"><strong class="percentage" data-identify="score">[$student:project:score]</strong></td>
         </tr>
       </tfoot>
     </table>
@@ -234,22 +234,22 @@
           <td class="[$schedule:status centered]"><span>[$stats:max]</span></td>
           <td class="[$schedule:status centered]"><span>[$quiz:@credit / $quiz:criterion:@points]</span></td>
           <td class="[$schedule:status centered]">
-            <span class="percentage">[$quiz:percentage]</span>
+            <span class="percentage" data-identify="score">[$quiz:percentage]</span>
             <a href="[[/$$instructor:path/quiz/$quiz:criterion:@index/$$student:@id]]">[[$$instructor:edit]]</a>
           </td>
-          <td class="centered"><strong class="percentage">[$stats:standard]</strong></td>
+          <td class="centered"><strong class="percentage" data-identify="score">[$stats:standard]</strong></td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="9">µ ⋅ <span class="percentage">[$student:quizzes:weight]</span></th>
-          <td class="centered"><strong class="percentage">[$student:quizzes:score]</strong></td>
+          <th colspan="9">µ ⋅ <span class="percentage" data-identify="score">[$student:quizzes:weight]</span></th>
+          <td class="centered"><strong class="percentage" data-identify="score">[$student:quizzes:score]</strong></td>
         </tr>
       </tfoot>
     </table>
   </section>
   <section style="margin:5em 0;padding:2em;border-top-width:1em;">
-    <h2>Cumulative Grade: <strong class="percentage" data-letter="[$student:grade:letter]" data-score="[$student:grade:score]">[$student:grade:score]</strong></h2>
+    <h2>Cumulative Grade: <strong class="percentage" data-identify="score" data-letter="[$student:grade:letter]" data-score="[$student:grade:score]">[$student:grade:score]</strong></h2>
     <h4 class="vertical">Note</h4>
     <p>Until one of every type of assignment have been graded, your score can change dramatically from week to week depending on practice, attendance, etc. Keep an eye on the future—<mark>your grade should improve every week</mark> if you make the appropriate adjustments and refactor your projects.</p>
   </section>  

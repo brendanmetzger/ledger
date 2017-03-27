@@ -86,7 +86,7 @@ function adder(...nums) {
 
 /* callbacks */
 window.addEventListener('load', function (evt) {
-  // <button data-color="cornflowerblue" class="trigger">Exec...
+  // <button data-color="..." class="trigger">Exec...
   var button = document.querySelector('button[data-color].trigger');
   function flashBgColor (evt) {
     evt.preventDefault(); // ???

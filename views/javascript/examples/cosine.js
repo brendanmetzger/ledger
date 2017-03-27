@@ -2,7 +2,7 @@
 // unlike us, math folk prefer radians over degrees,
 // so let's make a function that converts them for us.
 function deg2rad(deg) {
-  return deg / 180 * Math.PI;
+  return deg / 180 * 3.141592653589793;
 }
 
 // notice this function calls itself

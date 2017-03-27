@@ -1028,3 +1028,7 @@ tr:target {
     background-blend-mode: exclusion;
     box-shadow: 0 0 0.125em 1px rgba(255, 0, 0, 0.35);
 }
+
+.redact *[data-identify] {
+  filter: blur(0.25em);
+}
