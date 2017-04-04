@@ -83,26 +83,24 @@ function adder(...nums) {
 
 
 
-
-/* callbacks */
 window.addEventListener('load', function (evt) {
-  // <button data-color="..." class="trigger">Exec...
-  var button = document.querySelector('button[data-color].trigger');
-  function flashBgColor (evt) {
-    evt.preventDefault(); // ???
+/* callbacks */
+  function flashColor (evt) {
+    evt.preventDefault(); // what does this do
     var old_bg = getComputedStyle(document.body).backgroundColor;
-    document.body.style.transition = 'background-color 0.5s';
+    document.body.style.transition      = 'background-color 0.5s';
     document.body.style.backgroundColor = button.dataset.color;
     setTimeout(function () {
       document.body.style.backgroundColor = old_bg;
-    }, 500);
+    }, 1500);
   }
-  if (button) {
-    button.addEventListener('click', flashBgColor);
-  }
-});
+  
+  var button = document.querySelector('button[data-color].trigger');
+  button.addEventListener('click', flashColor);
+  
 /* end callbacks */
-
+  
+});
 
 /* scopes */
 var everywhere = "This variable is declared in the global scope";

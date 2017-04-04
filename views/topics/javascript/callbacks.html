@@ -1,5 +1,5 @@
 <article>
-  <h2>Getting a <em>callback</em> (as in understanding)</h2>
+  <h2>Understanding the <em>callback</em> pattern</h2>
   <p class="intro">Learning programming syntax is straightforward in terms of new vocabulary. Correctly understanding the patterns and ideas beyond vocabulary is an exercise in abstract thinking.</p>
   <section class="two columns indented">
     <p>Well understood is the idea that functions must exist within the language or be <em>declared</em> before then <em>executed</em> (sometimes termed <em>applying</em> a function or <em>calling</em> a function). When a developer declares a function the <code>function</code> keyword must be written. To execute any previously declared function, you must use the chosen name followed by parentheses. Here is where things get a bit wild: <em>functions do not have to be named</em>, they can be anonymous. The second wild part is that sometimes the developer executes a function in code, sometimes the function is given to another part of the program to execute—usually when a certain event occurs.</p>
@@ -7,4 +7,7 @@
     <p>Recall that a function is a little machine that can be given input or output. When written with the parentheses, it gives you something back. When written without them, it is just the function itself. There are all sorts of moments when you want to talk about a function without executing it.</p>
     <p>Picture your hand as function called squeezer. When you execute that function, the hand clamps down. Now picture all the things a hand can squeeze. Maybe it is a sock, no big deal. But imagine you give it another thing, like a dog toy. Now technically the dog toy is a bigger idea—in fact, it is a function as well. Now, picture the two possibilities of passing dog toy to hand squeeze. If dog toy is passed already executed, it is essentially the same as a sock. If dog toy is passed with all if its squeaky noise-making potential, the hand squeeze function is in control, that arrangment of and state of functions is officially known as a callback.</p>
   </section>
+  <footer class="tt">
+    <p>Here is an <a href="https://gist.github.com/brendanmetzger/ce3cd6b2c13e207e7439876affd9ee6c">example of the dog toy</a> made into  a silly program. Embedding the code in a JavaScript file will expose the following interface: a variable called <samp>socks</samp> a method called <samp>dogToy</samp> and a method called <samp>squeeze</samp>. In the developer console, see what happens when you pass the first two items (one at a time) to the <samp>squeeze</samp> function.</p>
+  </footer>
 </article>
