@@ -51,7 +51,7 @@
         <tr>
           <th>Hits</th>
           <!-- iterate student:practice:list -->
-          <td class="[$schedule:status centered]" style="[background-color:hsl(225, $practice:percentage%, 80%); background-image: url($practice:visual); background-size:auto 100%;]">
+          <td class="[$schedule:status centered]" style="[background-color:hsla(225, $practice:percentage%, 85%, calc($practice:percentage / 100)); background-image: url($practice:visual); background-size:auto 100%;]">
             <strong>[$practice:total]</strong>
           </td>
           <th class="percentage" data-identify="score">[$student:practice:score]</th>
@@ -152,7 +152,6 @@
           color:rgba(0,0,0,0.65);
         }
         @media(max-width: 50em) {
-
           .collapse {
             writing-mode: vertical-lr;
           }

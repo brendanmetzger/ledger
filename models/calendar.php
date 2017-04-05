@@ -50,7 +50,8 @@ namespace models;
       $now   = new \DateTime;
       $index = 0;
       foreach ($schedule as $interval ) {
-        if ($now < $interval['object'] || ($force && ! is_int($interval['index']))) break;
+        if ($force && ! is_int($interval['index'])) continue;
+        if ($now < $interval['object']) break;
         $index = $interval['index'];
       }
       return $index;
