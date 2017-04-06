@@ -22,6 +22,7 @@
   <p>With those rules in mind, especially the last one, lets concern ourselves with the notion of how we keep track of stuff. From my perspective in a classroom, I can address any single person, individually, by finding some unique aspect that they possess (like a name), and direct a message towards. To address an entire room at once is a human convenience—computers can only process one instruction at a time (though they can do it in a fraction of a billionth of a second). Now, to think like a computer would address a room, I would have consider it as a process . The following is the inner-monologue I might have if I was that computer trying to say hello to everyone in a room.</p>
     <div class="explain whitepaper">
       <aside>
+        
         <p class="conversation">A room is a list that I can count. There are 15 people in this room. I want to execute an instruction of ‘hello’ to everyone in the room. I'll start at person 0, is 0 less than 15? Yes. <q>Person 0, hello!</q>. I will increment my mental bookmark by one, so <code>0 + 1 = 1</code>. Is 1 less than 15, which is the length of my room list? Yes. <q>Person number 1, hello!</q>. Update bookmark; I was at 1, now <code>1 + 1 = 2</code>. Is 2 less than 15? Yes. <q>Person 2, hello!</q> (and so on and so forth, until…) . <q>Person number 14, hello!</q> Update my bookmark; <code>14 + 1 = 15</code>. Is 15 less than 14? No. I've said ‘hello’ to everyone.</p>
       </aside>
       <pre class="prettyprint">

@@ -1,29 +1,20 @@
 <div>
-  <link rel="stylesheet" href="/css/review.css" media="screen" charset="utf-8" />
   <header>
     <!-- insert views/outline/_/crumbs.html -->
+    <img src="[$cdn/media/images/shark-head.png]" class="float left __" style="margin-top:3em;"/>
     <h1 class="massive">Artifice</h1>
     <p class="intro">A notion of <abbr title="Cascading Stylesheets">CSS</abbr> <q class="plain">Namespaces</q> as a means of understanding variable scope. Inserting and manipulating DOM content with events.</p>
   </header>
-  <aside>
+  <aside class="review">
     <h3>Review</h3>
-    <p class="intro">We have been discussing functions with more confidence every week. We know about declaring them, applying them, passing them undeclared to other functions <em>as callbacks</em>. You should be thinking about functions as nothing more than another type of variable; let’s revisit what variables are and what values they hold.</p>
+    <p>We have been discussing functions with more confidence every week. We know about declaring them, applying them, passing them undeclared to other functions <em>as callbacks</em>. You should be thinking about functions as nothing more than another type of variable; let’s revisit what variables are and what values they hold.</p>
     <p>Lest we forget, there are a handful of <em>types</em> that can represent a <em>value</em> in JavaScript. First are <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">primitive types</a>, such as <strong>Number</strong>, <strong>String</strong>, <strong>Boolean</strong>, <strong>Null</strong> and <strong>Undefined</strong>. Then, there are <em>object-types</em>: objects are combinations of primitive types as well as other objects, and we can make an <em>object literal</em> in a fashion such as <code>var obj = {};</code>. The <strong>Array</strong> is a special case of object as is the <strong>Function</strong>—in JavaScript, a function is really just a <em>callable object</em>.</p>
     <p>So those are the only 6 things you can declare in JavaScript—devising interesting combinations of them, and regulating them with control structures can loosely be called <q>programming</q>. Recall a control structure is anything with a condition, be it a loop or an if/else branch.</p>
-    <h4 class="tt">Review the following and jot down the answers (there are 11 questions)</h4>
-    <dl class="review b">
-      <dt><code>Math.pow</code></dt>
-      <dd>What is Math, and what is pow? Where is it declared? (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow">hint</a>); Has it been applied?</dd>
-      <dt><code>var ultimate_answer = 42;</code></dt>
-      <dd>What is the value of our declared variable? What is it named? What is its type? How would you make a function that returned the ultimate answer? Why would you make a function that returned the ultimate answer?</dd>
-      <dt><code>var expression = Math.pow(7, 2) - 7;</code></dt>
-      <dd>What is happening here? What is the value? What is the <em>type</em> of the value?</dd>
-    </dl>
   </aside>
-  <!-- insert views/topics/javascript/first-class-functions.html -->
+  
+
   <!-- insert views/topics/markup/drawing.html -->
   <!-- insert views/topics/studies/mouse-trail.html -->
-  <!-- insert views/topics/studies/dom-cut-and-paste.html -->
   
   <footer id="reference-and-practice">
     <h2>Reference and Practice Material</h2>

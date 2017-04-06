@@ -1032,3 +1032,9 @@ tr:target {
 .redact *[data-identify] {
   filter: blur(0.25em);
 }
+
+
+
+.multiply {
+  mix-blend-mode: multiply;
+}

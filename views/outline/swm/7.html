@@ -18,18 +18,18 @@
             let x = offset * i;
             svg.createElement('path', {
               d: `m0 ${size/2} a${x/2} ${x/2} 0 0 1 ${x} 0`,
-              style: `fill: hsla(100, 75%, 75%, 0.15);`
+              style: `fill: hsla(${i*10}, 50%, 75%, 0.1);`
             });
           
             let dx = size - offset * i;
             svg.createElement('path', {
               d: `m${x} ${size/2} a${dx/2} ${dx/2} 0 0 ${i % 2} ${dx} 0`,
-              style: `fill: hsla(100, 75%, 75%, 0.05);`
+              style: `fill: hsla(${i*10}, 50%, 75%, 0.1);`
             });
           
             svg.createElement('path', {
               d: `m0 ${size/2} a${x/2} ${x/2} 0 ${i % 2} 0 ${x} 0`,
-              style: `fill: hsla(100, 75%, 75%, 0.1);`
+              style: `fill: hsla(${i*10}, 50%, 75%, 0.1);`
             });
           }
         }
@@ -43,10 +43,9 @@
         padding: 1em 3em 1em 0;
       }
       .draw svg {
-        mix-blend-mode: difference;
         stroke: #000;
         stroke-width:0.25;
-        stroke-opacity:0.5;
+        stroke-opacity:0.1;
       }
       
       /* ]]> */

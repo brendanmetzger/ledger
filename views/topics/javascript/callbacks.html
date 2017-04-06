@@ -1,9 +1,12 @@
 <article>
   <h2>Understanding the <em>callback</em> pattern</h2>
   <p class="intro">Learning programming syntax is straightforward in terms of new vocabulary. Correctly understanding the patterns and ideas beyond vocabulary is an exercise in abstract thinking.</p>
-  <section class="two columns indented">
+  <section class="three columns indented">
     <p>Well understood is the idea that functions must exist within the language or be <em>declared</em> before then <em>executed</em> (sometimes termed <em>applying</em> a function or <em>calling</em> a function). When a developer declares a function the <code>function</code> keyword must be written. To execute any previously declared function, you must use the chosen name followed by parentheses. Here is where things get a bit wild: <em>functions do not have to be named</em>, they can be anonymous. The second wild part is that sometimes the developer executes a function in code, sometimes the function is given to another part of the program to execute—usually when a certain event occurs.</p>
     <p>It is the latter method that is particularly interesting, and you can send along a declared function or anonymous function as a parameter to another function. You must read and understand that notion: <mark>a function can be passed to another function</mark> and it is so important it has been given its own word to define the concept: a <strong>callback</strong>. Whenever you see or hear it, you know that one function expects another function as a parameter (the parameter being the callback). Commit this to memory!</p>
+    <figure>
+      <img src="[$cdn/media/images/telephone.png]" class="multiply full"/>
+    </figure>
     <p>Recall that a function is a little machine that can be given input and produce output. When written with the parentheses, it gives you something back. When written without them, it is just the function itself. There are all sorts of moments when you want to talk about a function without executing it.</p>
     <p>Picture your hand as function called <code>squeeze</code>. When you execute that function, the hand clamps down. Now picture all the things a hand can squeeze. Maybe it is a sock, in which case, no big deal. But imagine you give it another thing, like a dog toy. Now technically the dog toy is a bigger idea—in fact, it is a function-like thing as well. There are two possibilities for passing the dog toy to hand squeeze. If dog toy is passed already executed, it is essentially the same as a sock. If dog toy is passed with all if its squeaky noise-making potential, the hand squeeze function is in control, that arrangment of and state of functions is officially known as a callback.</p>
   </section>
