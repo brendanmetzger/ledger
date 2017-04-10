@@ -19,21 +19,21 @@
       padding: 0;
       list-style-type: none;
     }
-
     .mouse-trail li {
       position: absolute;
-      width: 5px;
-      height: 5px;
-      background-color: rgba(0, 0, 0, 0.25);
+      z-index: -1;
+      width: 1em;
+      height: 1em;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px dotted rgba(0, 0, 0, 0.25);
     }
   </style>
   <script type="text/javascript">
     // <![CDATA[
       bloc.embed('/javascript/examples/assigned/mouse-trail.js');
       bloc.init('mouse', function() {
-        document.querySelector('#mouse-trail').addEventListener('click', function(evt) {
-          createTrail(25, this);
-        });
+          createTrail(30, document.querySelector('#mouse-trail'));
 
       });
     // ]]>

@@ -12,17 +12,18 @@ trait config {
     \bloc\view::addRenderer('after', Render::PREVIEWS());
     \bloc\view::addRenderer('after', Render::REVIEW());
 
-    $this->year        = date('Y');
-    $this->mode        = getenv('MODE');
-    $this->title       = ucwords($request->controller . ' - ' . $request->action);
-    $this->entropy     = rand();
-    $this->cdn         = $this->mode === 'local' ? '' : '//cdn.thirty.cc';
+    $this->year     = date('Y');
+    $this->mode     = getenv('MODE');
+    $this->title    = ucwords($request->controller . ' - ' . $request->action);
+    $this->entropy  = rand();
+    $this->empty    = '';
+    $this->cdn      = $this->mode === 'local' ? '' : '//cdn.thirty.cc';
     
     //TODO: this should be done automatically
-    $this->semester    = "FA16";
-    $this->email       = 'bmetzger@colum.edu';
-    $this->template    = $request->controller;
-    $this->redirect    = $request->redirect;
+    $this->semester = "FA16";
+    $this->email    = 'bmetzger@colum.edu';
+    $this->template = $request->controller;
+    $this->redirect = $request->redirect;
   }
 
   public function authenticate($user = null)

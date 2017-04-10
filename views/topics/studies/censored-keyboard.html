@@ -1,0 +1,27 @@
+<article>
+  <h2>Case Study: Censoring Keyboards</h2>
+  <p>In Turkey, a law dating back to the 1920s (ended in 2013) banned the use of the letters Q, W and X. This is merely an exercise, and perhaps a decent lesson in the ways that those in power (you the interactive designer) can stifle the opportunities of the citizenry (the user) with some insensitive design implementations. Ultimately, that resides in the field of user experience and accessibility design, so focusing on the <q>how</q> is Ok as the only applicable take-away skill.</p>
+  <style type="text/css" media="screen">
+    /* <![CDATA[ */
+    .keyboards textarea {
+      font-size:2em;
+      width:100%;
+      height: 4em;
+      margin: 1em 0;
+    }
+    /* ]]> */
+  </style>
+  <figure class="explain whitepaper keyboards">
+    <figcaption>
+      <p>The example code at right will render the <code class="element">textarea</code> unable to to print any letters in the <samp>banned</samp> array. You must understand <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase">making a string lowercase</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault">preventing default events</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">finding things in arrays</a>.</p>
+      <textarea class="censor" placeholder="this textarea dos not like q, w and x">[$empty]</textarea>
+      <p>Below is another version, but instead of preventing default, it <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace">replaces</a> the value of the textarea with different characters.</p>
+      <textarea class="replace" placeholder="this textarea dislikes vowels">[$empty]</textarea>
+    </figcaption>
+    <pre class="prettyprint">
+      <!-- review views/javascript/examples/events.js censored keyboard -->
+    </pre>
+  </figure>
+  <script type="text/javascript">bloc.embed('/javascript/examples/events.js');</script>
+  
+</article>
