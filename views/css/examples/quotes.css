@@ -1,22 +1,22 @@
 /* english default */
-q:before {
+html[lang='en'] q:before {
   content:'“';
   padding-right:0.075em;
 }
-q:after {
+html[lang='en'] q:after {
   content:'”';
   padding-left:0.15em;
 }
 /* end english default */
 
-q[lang='fr']:before,
-q[lang='de']:after {
+html q[lang='fr']:before,
+html q[lang='de']:after {
   content:'«';
 }
-q[lang='fr']:after,
-q[lang='de']:before {
+html q[lang='fr']:after,
+html q[lang='de']:before {
   content:'»';
 }
-q[lang='pl']:before {
+html q[lang='pl']:before {
   content: "„";
 }

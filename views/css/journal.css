@@ -894,7 +894,7 @@ h4.vertical {
 h4.vertical + p:first-line, p.note:first-line {
   font-weight:800;
 }
-p.note {
+p.note, p.hint {
   background-color:rgba(0,0,0,0.1);
 }
 

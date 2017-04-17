@@ -44,7 +44,7 @@ samp var {
   .explain.whitepaper, .split.whitepaper {
     box-shadow:0 0 1.5em rgba(0,0,0,0.05);
     margin:2.5vw -2.5vw;
-    padding:0 1em;
+    padding: 0;
   }
   .explain > *:nth-child(n+2) {
     flex:1 0 auto;

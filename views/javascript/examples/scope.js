@@ -18,6 +18,7 @@ function drive() {
 }
 
 drive();
+alert(truck);
 /* end local */
 
 /* arguments */

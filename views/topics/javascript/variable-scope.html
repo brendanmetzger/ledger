@@ -1,6 +1,6 @@
 <article id="variable-scope" data-classification="">
   <header class="container">
-    <img src="[$cdn/media/images/russian-dolls.png]" class="float left ___" style="mix-blend-mode: multiply;margin:0 2em;shape-outside:ellipse(50% 45% at 50% 50%)"/>
+    <img src="[$cdn/media/images/matryoshka.png]" class="float left __ multiply" style="margin: -2em 0 0"/>
     <h2>Variable Scope</h2>
     <p class="intro">Scope can be abstract, but it can also be visualized just as easily by modifying your perspective. Ultimately it describes the familiar organizing principle of separating various concerns into containers.</p>
   </header>
@@ -18,6 +18,8 @@
     <figure class="explain whitepaper">
       <figcaption class="note">
         <p>When you write some code a compilation process takes looks at all of your declarations and converts them to program code. The outermost layer is called <em>the global scope</em>. At right, we have declared two things and added them to the global scope, what are they?</p>
+        <button onclick="this.nextElementSibling.style.display = 'block';this.remove();">Answer</button>
+        <p class="hint" style="display:none;">The variable <samp>jerry</samp> has been declared and assigned a string value. A function named <samp>who</samp> has also been made available in the global scope. The function <samp>alert</samp> is available in the global scope, but it is a part of the language, not declared by a programmer.</p>
       </figcaption>
       <pre class="prettyprint">
         <!-- review views/javascript/examples/scope.js global  -->
@@ -26,7 +28,9 @@
     <h4>Global Scope vs. Local Scope</h4>
     <figure class="explain whitepaper">
       <figcaption class="note">
-        <p>In the current version of javascript, there is only one other type of scope available, called <em>local scope</em>. Local scope is created within the body of a function declaration. Spot the following: there are three variables declared, two in the global scope, one scoped to the <code>drive</code> function. The two <code>truck</code> variables share the <em>same name</em>, but they in <em>different scopes</em>, and thus, <em>different variables</em>.</p>
+        <p>In the current version of javascript, there is only one other type of scope available, called <em>local scope</em>. Local scope is created within the body of a function declaration. Spot the following: there are three variables declared, two in the global scope, one scoped to the <code>drive</code> function. The two <code>truck</code> variables share the <em>same name</em>, but they in <em>different scopes</em>, and thus, <em>different variables</em>. What are the two alert messages? What would happen if the <code>var</code> was left off of the truck variable in the <samp>drive</samp> function declaration?</p>
+        <button onclick="this.nextElementSibling.style.display = 'block';this.remove();">Answer</button>
+        <p class="hint" style="display:none;">The first alert is 'Silverado' and the second alert is 'F-350'. If the programmer chose not do use the <code>var</code> keyword within the function, the previously declared <samp>truck</samp> variable <em>outside</em> of the <samp>drive</samp> function would be the target and would be changed to 'Silverado' (ie., both alerts would be 'Silverado').</p>
       </figcaption>
       <pre class="prettyprint">
         <!-- review views/javascript/examples/scope.js local  -->

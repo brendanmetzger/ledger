@@ -1,53 +1,70 @@
 <article id="namespaces-in-css" data-classification="">
+  <link rel="stylesheet" href="[$cdn/css/examples/namespace.css]" type="text/css" media="screen" title="no title" charset="utf-8" />
   <h2>Getting Organized with Namespaces</h2>
+    <p class="intro">A namespace, beyond programming necessity, is really an organization principle. Picture an office, and in that office is a filing cabinet with three drawers. The middle drawer is used for contracts, and it is filled with folders labeled A–Z. How you might find a contract with your last name?</p>
+    <p>Presumably, this is an easy task. Easier than say if the organizing principle was to put scraps of paper in any fashion in the floor of a barn. At first glance, adding classes to a defined structure may seem like a means to apply a specific visual outcome, but classes can also be thought of as adding the document with meaning, if one chooses to see it that way. Using classes to describe the structure of your document is not only good design, but there are benefits that come with understanding your document intimately.</p>
+    <p>If one imagines the filing cabinet example as a series of classes, then it becomes evident that each time context is added, you can reuse an idea. As an example, you can have two identical drawers with the same A-Z file structure, but if you know the difference between drawer one and drawer two, then the <em>contents can have a different meaning</em> with that same structure.</p>
+  <figure class="explain whitepaper">
+    <figcaption class="am" style="transition: all 1s">
+      <svg version="1.1" class="clock float left __" style="margin:0 2em 0 0;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 110 110">
+        <g class="clock" transform="translate(5, 5) rotate(-90, 50, 50)" style="fill:none;stroke:rgba(0,0,0,0.75);stroke-width:2;stroke-opacity: 0.75;">
+          <circle cx="50" cy="50" r="50" style="stroke-width:2;stroke-dashArray: 2 24.5"/>
+          <line x1="50" y1="50" x2="100" y2="50" style="stroke-width:1;"/>
+          <line x1="50" y1="50" x2="80" y2="50" style="stroke-width:2;"/>
+        </g>
+      </svg>
+      <p class="margins">Given two classes with the same name, can you conceive of a way to have them behave differently? The solution requires a consideration the parent element’s role in controlling layout. Child elements can (and just by the nature of their position) have additional information inherited from their parent, whether a class or any other type of selector.</p>
+      <p>This example is indented to highlight the following point: <strong>setting a class on an element changes the context of every single item within that element.</strong> When utilizing careful and considered markup, this is like a lever in that it provides a huge mechanical advantage. Like so many things, it's not the power of the tool that matters, it is the ability of the craftsperson to employ a technique.</p>
+      <p class="context tt" style="padding:2em;transition: all 0.5s">The is text set in a <code class="element">p</code> element given a <code>class="context"</code> attribute. That element is a descendant of another element that will either have its <code>class</code> set to <samp>am</samp> or <samp>pm</samp>. Changing the <samp>am</samp> or <samp>pm</samp> class will change that element, as well as the <samp>context</samp> paragraph.</p>
+    </figcaption>
+    
+    <pre class="prettyprint">
+      <!-- review views/css/examples/namespace.css night  -->
+      <hr class="divider" data-before="am" data-after="pm"/>
+      <!-- review views/css/examples/namespace.css day -->
+    </pre>
+    <script type="text/javascript">
+      // <![CDATA[
+      var hands    = document.querySelectorAll('svg g.clock line');
+      var example = hands[0].parentNode.parentNode.parentNode;
+      var radius   = 50;
+      var position = Math.PI * 2 * 60;
+      var advance = (Math.PI * 2) / 5; // this is a minute, in radians
+      var classes = ['am', 'pm'];
+      var tick = function () {
+        position += advance;
+        var sin = Math.sin(position / 12);
+        var cos = Math.cos(position / 12);
+        hands[0].setAttribute('x2', Math.cos(position) * 50 + radius);
+        hands[0].setAttribute('y2', Math.sin(position) * 50 + radius);
+        hands[1].setAttribute('x2', cos * 30 + radius);
+        hands[1].setAttribute('y2', sin * 30 + radius);
+        
+        if(cos.toFixed(3) === '1.000' && Math.abs(sin).toFixed(3) == '0.000') {
+          example.className = classes.reverse()[0]
+          
+        };
+      };
+      setInterval(tick, 250);
+      // ]]>
+    </script>
+  </figure>
   <section>
-    <h3>Context-based style</h3>
-    <p>Given two classes with the same name, can you conceive of a way to have them behave differently? In the beginning of our lightbox case-study, I discussed the method of using a parent element to control the visibility of a child element by adding a class to the parent.</p>
-    <h4>A silly example</h4>
-    <p class="focus">Have this be an actual clock that switches the class</p>
-    <div class="comparison container whitepaper t b">
-      <h4>Night/Day</h4>
-      <p>Note how <code>.attitude</code> has two entirely different meanings depending on where it is in the descendant chain base on the parent element class. <strong>Employ such tactics frequently</strong>!</p>
-      <hr class="ruled t b" />
-      <link rel="stylesheet" href="/css/examples/namespace.css" media="screen" charset="utf-8" />
-      <div class="half float left">
-        <pre class="prettyprint">
-          <!-- review views/css/examples/namespace.css night  -->
-        </pre>
-        <h5 class="pad code">&lt;div class="night"&gt;<br/>  &lt;p class="attitude"&gt;…</h5>
-        <div class="night">
-          <p class="attitude">What color and font-family is this text and why?</p>
-        </div>
-      </div>
-      <div class="half float left">
-        <pre class="prettyprint">
-          <!-- review views/css/examples/namespace.css day -->
-        </pre>
-        <h5 class="pad code">&lt;div class="day"&gt;<br/>  &lt;p class="attitude"&gt;…</h5>
-        <div class="day">
-          <p class="attitude">What color and font-family is this text and why?</p>
-        </div>
-      </div>
-    </div>
-    <h4>A practical example</h4>
+    <h3>A practical example</h3>
     <p>Remembering the first ‘W’ in <abbr title="world wide web">www</abbr> stands for world, let’s recall that in the root element of our <abbr>html</abbr> document there is an attribute named <code>lang</code>. In that attribute, we specify the two character <a href="http://www.w3schools.com/tags/ref_language_codes.asp">language code</a> of our document—typically <code>lang="en"</code> for english.</p>
     <p>Obviously there is a lot of <a href="https://en.wikipedia.org/wiki/Internationalization_and_localization">internationalization</a> that must occur to adapt applications different languages and regions, but let’s start with some simple (and interesting) typographic principles. In Spanish, a question is prefixed with an inverted question mark, in Greek, a question phrase is terminated with a semi-colon. In many languages, different punctuation marks are expressed differently, many countries use <a href="https://en.wikipedia.org/wiki/Guillemet">Guillemets</a>, some subscripted apostrophes and many a combination thereof in reversed order. With that, let us begin a useful investigation of the <a href="https://developer.mozilla.org#the-q-element">quote</a> element.</p>
-    <div class="whitepaper t container">
-      <aside class="note ___ float left">
-        <h6>Consider a way to internationalize the quote given in the following languages. The adjacent <abbr>CSS</abbr> takes care of the default (English) version.</h6>
-        <p><q lang="en">English</q></p>
-        <p><q lang="fr">French</q></p>
-        <p><q lang="de">German</q></p>
-        <p><q lang="pl">Polish</q></p>
+    <figure class="whitepaper explain">
+      <figcaption class="margins">
+        <p>Below are several languages using their preferred quotation method. Note, that in a carefully designed stylesheet in conjunction with proper use of html, it is much easier to apply considerate and accessible designs. <mark>In the code on the right, consider what would have to be implemented to employ the appropriate marks for each proverb below.</mark></p>
+        <p><q lang="en">The squeaky wheel gets the grease.</q></p>
+        <p><q lang="fr">Qui court deux lievres a la fois, n’en prend aucun</q> Translated from French: those who chase two hares catch none.</p>
+        <p><q lang="de">Aller Anfang ist schwer</q> Translated from German: all beginnings are hard.</p>
+
         <link rel="stylesheet" href="/css/examples/quotes.css" />
-      </aside>
-      <div class=" _______ float left">
-        <pre class="prettyprint">&lt;q cite="https://goo.gl/zN7JT"&gt;Any fool can know. The point is to understand&lt;/q&gt;</pre>
-        <pre class="prettyprint">
-          <hr class="divider" data-before="HTML" data-after="CSS" />
-          <!-- review views/css/examples/quotes.css english default -->
-        </pre>
-      </div>
-    </div>
+      </figcaption>
+      <pre class="prettyprint">
+        <!-- review views/css/examples/quotes.css english default -->
+      </pre>
+    </figure>
   </section>
 </article>

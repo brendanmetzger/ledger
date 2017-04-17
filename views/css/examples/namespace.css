@@ -1,14 +1,23 @@
 /* night */
-.night { background-color:#7B2B83 }
-.night > .attitude {
-  color:#fff;
-  font-family:fantasy;
+.am {
+  background-color:rgba(120,40,80,0.25);
+}
+.am .context {
+  background-color: #DBDCDD;
+  font-family: Helvetica;
+  box-shadow: 0 0 1em rgba(0,0,0,0.1);
 }
 /* end night*/
+
 /* day */
-.day { background-color: #FFCF01 }
-.day > .attitude {
-  color:#000;
-  font-family:sans-serif;
+.pm {
+  background-color: rgba(255,200,100, 0.25);
 }
+
+.pm .context {
+  font-family: Courier;
+  background-color:#fff;
+  border-radius: 1em;
+}
+
 /* end day */
