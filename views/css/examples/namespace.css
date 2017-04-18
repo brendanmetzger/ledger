@@ -4,7 +4,7 @@
 }
 .am .context {
   background-color: #DBDCDD;
-  font-family: Helvetica;
+  margin: 2em 5em 0 0;
   box-shadow: 0 0 1em rgba(0,0,0,0.1);
 }
 /* end night*/
@@ -15,8 +15,8 @@
 }
 
 .pm .context {
-  font-family: Courier;
   background-color:#fff;
+  margin: 2em 0 0 5em;
   border-radius: 1em;
 }
 
