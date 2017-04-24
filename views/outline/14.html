@@ -12,26 +12,14 @@
     <ul class="plain cards">
       <!-- iterate section:students -->
       <li class="card">
-        <a href="[$student:@url/project/final/]" data-identify="handle">[$student:@name]</a>
+        <a href="[$student:@url]" data-identify="handle">[$student:@name]</a>
       </li>
     </ul>
-    <script type="text/javascript">
-      // <![CDATA[
-        document.querySelectorAll('.card a').forEach(a => a.parentNode.style.backgroundImage = 'url(/media/screenshots/'+btoa(a.href) + '.jpg)');
-      // ]]>
-    </script>
+    
     <style type="text/css" media="screen">
       /* <![CDATA[ */
       .card {
-        background-size:cover;
-      }
-      .card a {
-        display: block;
-        color:#fff;
-        background-color:rgba(0,0,0,0.5);
-        text-shadow:1px 1px #333;
-        box-shadow: inset 0 0 10em rgba(0,0,0,0.9);
-        padding: 5em 1em;
+        padding: 1em;
       }
       /* ]]> */
     </style>

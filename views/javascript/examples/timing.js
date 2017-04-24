@@ -29,7 +29,10 @@ elem.value = '';
 function tap() {
   if (size > elem.dataset.text.length) size = 0;
   elem.value = elem.dataset.text.substring(0, size++);
-  var delay = /[A-Z\W]$/.test(elem.value) ? 2 : Math.random();
+  // for a more organic feeling, if the next letter is not
+  // a lowercase letter, we'll set the delay longer.
+  var next   = elem.dataset.text.substring(size, size+1); 
+  var delay = /[^a-z]$/.test(next) ? 2 : Math.random();
   tID = setTimeout(tap, 150 * delay);
 }
 

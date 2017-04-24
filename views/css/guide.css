@@ -38,7 +38,7 @@ blockquote {
   font:italic normal 200 inherit/inherit 'Baskerville Old Face',Didot,'Baskerville',Georgia;
 }
 blockquote q {text-indent:-1em;}
-abbr[title]{cursor:help;}
+abbr[title]{cursor:help;text-decoration:none;}
 i,.i,q:not([class]) {font-style:italic;}
 em, .em {font-style:oblique}
 strong,.strong{font-weight:600}
