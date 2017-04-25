@@ -410,9 +410,10 @@ class Task extends \bloc\controller
         $practice->save();
         echo "Saving practice no {$practice->index} for {$student['@name']}\n";
       } else {
-        echo "Not Saving Practice because of {$index}";
+        echo "Not Saving Practice because of {$index}\n";
       }
-      
+      // pause for a 1/5 second to account for filesystem activity.
+      usleep(200000);
     }
     print_r($git->push('master', '--all'));
     unlink('/tmp/locked');
