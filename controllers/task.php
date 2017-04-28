@@ -412,7 +412,7 @@ class Task extends \bloc\controller
       } else {
         echo "Not Saving Practice because of {$index}\n";
       }
-      // pause for a 1/5 second to account for filesystem activity.
+      // pause for a 1/5 second to account for filesystem activity.   
       usleep(200000);
     }
     print_r($git->push('master', '--all'));

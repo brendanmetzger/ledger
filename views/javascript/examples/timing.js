@@ -41,7 +41,7 @@ function stop() {
 }
 
 elem.addEventListener('focus', tap);
-elem.addEventListener('blur', stop)
+elem.addEventListener('blur', stop);
 
 /* end clearing timers */
 },
