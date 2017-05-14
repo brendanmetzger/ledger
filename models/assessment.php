@@ -256,7 +256,7 @@ namespace models;
           $critique          = $map[$evaluation]->critique;
           $stats             = $this->collective($this->student->section, $criterion, 'critique');
           $z                 = ($critique - $stats['mean']) / ($stats['sd'] ?: 1);
-          $stats['score']  = $critique == 0 ? 0 : round($stats['wmean'] + ($z * $stats['sd']), 2);
+          $stats['score']    = $critique == 0 ? 0 : round($stats['wmean'] + ($z * $stats['sd']), 2);
           
           $score = min($score * $stats['score'], $stats['score']);
           $map['stats']      = $map[$evaluation]->stats = $stats;
@@ -275,10 +275,11 @@ namespace models;
       $list   = iterator_to_array($collect, false);
       
       // if necessary I'll drop the practice
-      // if ($evaluation == 'practice') {
-      //   sort($scores);
-      //   unset($scores[0]);
-      // }
+      if ($evaluation == 'practice') {
+        sort($scores);
+        unset($scores[0]);
+        unset($scores[1]);
+      }
 
       
       $avg = array_sum($scores) / (count($scores) ?: 1);

@@ -21,11 +21,60 @@
           <!-- iterate section:students -->
           <td style="[--hue: $student:grade:score; --value: $student:grade:score%;]" class="centered">[$student:grade:letter]</td>
         </tr>
-        <tr>
+        <tr class="scores">
           <!-- iterate section:students -->
           <td class="centered percentage">[$student:grade:score]</td>
         </tr>
       </tbody>
+      <script type="text/javascript">
+        // <![CDATA[
+        /*
+       
+          $out['min']  = round($scores[0], 2);
+          $out['max']  = round($scores[$total-1], 2);
+          $out['sum']  = array_sum($scores);
+          $out['mean'] = round($out['sum'] / $total, 2);
+          $out['wmean'] = 1 - ($out['max'] - $out['mean']);
+          $out['var']  = array_sum(array_map(function ($item) use($out){
+            return pow($item - $out['mean'], 2);
+          }, $scores)) / $total;
+
+          $out['sd'] = round(sqrt($out['var']), 5);
+        */
+          var add = (acc, val) => acc + val;
+          var stats = {};
+          stats.scores = Array.from(document.querySelectorAll('tr.scores td')).map(td => parseFloat(td.textContent));
+          // stats.scores.sort((a,b) => a > b ? 1 : -1);
+          stats.max    = Math.max(...stats.scores);
+          stats.min    = Math.min(...stats.scores);
+          stats.sum    = stats.scores.reduce(add, 0);
+          stats.mean   = stats.sum / stats.scores.length;
+          stats.var    = stats.scores.map( score => (score / stats.mean) ** 2).reduce(add, 0) / stats.scores.length;
+          stats.sd     = Math.sqrt(stats.var);
+          
+          stats.z      = stats.scores.map(score => ((score - stats.mean) / stats.sd) / 10);
+
+          var curve  = function(z, grades = ['A','A-','B+','B','B-','C+','C','C-','D','F'], start = 2.5, step = 0.5) {
+            var count = 0;
+            while (z < start) {
+              start-=step;
+              count++;
+            }
+            console.log(z, grades[count]);
+            return grades[count] || 'F';
+          };
+          
+          var curved_row = document.querySelector('tr.scores').parentNode.appendChild(document.createElement('tr'));
+          stats.z.forEach(function (z) {
+            var td = curved_row.appendChild(document.createElement('td'));
+            td.innerText = curve(z);
+            td.className = 'centered';
+          });
+          
+          console.log(stats);
+          
+        // ]]>
+      </script>
     </table>
 
     <table class="full chart tt bb" style="table-layout: fixed;">
